@@ -1042,3 +1042,7 @@ Daily activity and development milestones tracking.
 - **Scope**: `feat(pipeline): build distributed batch processor for multi-source data aggregation`
 - **Ref**: `chk-754575`
 
+### Milestone: 2025-09-05 10:16:26
+- **Scope**: `refactor(core): consolidate event-driven notification handlers into unified dispatcher`
+- **Ref**: `chk-570099`
+
