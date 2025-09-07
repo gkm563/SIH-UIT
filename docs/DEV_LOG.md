@@ -1050,3 +1050,7 @@ Daily activity and development milestones tracking.
 - **Scope**: `docs(team): add contributor workflow guide and branch naming conventions`
 - **Ref**: `chk-340333`
 
+### Milestone: 2025-09-07 16:43:11
+- **Scope**: `feat(dashboard): integrate analytics widgets with live KPI tracking`
+- **Ref**: `chk-837627`
+
