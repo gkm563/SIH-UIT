@@ -1062,3 +1062,7 @@ Daily activity and development milestones tracking.
 - **Scope**: `chore(build): configure automated CI workflow for linting and type checking`
 - **Ref**: `chk-319682`
 
+### Milestone: 2025-09-09 14:24:34
+- **Scope**: `fix(security): sanitize external webhook payloads against injection vulnerabilities`
+- **Ref**: `chk-524038`
+
