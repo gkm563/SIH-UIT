@@ -1078,3 +1078,7 @@ Daily activity and development milestones tracking.
 - **Scope**: `fix(config): resolve cross-origin resource sharing headers for mobile client`
 - **Ref**: `chk-164831`
 
+### Milestone: 2025-09-11 09:49:55
+- **Scope**: `feat(dashboard): integrate analytics widgets with live KPI tracking`
+- **Ref**: `chk-235081`
+
