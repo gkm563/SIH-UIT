@@ -1106,3 +1106,7 @@ Daily activity and development milestones tracking.
 - **Scope**: `refactor(core): consolidate event-driven notification handlers into unified dispatcher`
 - **Ref**: `chk-493881`
 
+### Milestone: 2025-09-15 11:52:35
+- **Scope**: `fix(security): sanitize external webhook payloads against injection vulnerabilities`
+- **Ref**: `chk-436033`
+
