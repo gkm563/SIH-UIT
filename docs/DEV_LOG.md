@@ -1118,3 +1118,7 @@ Daily activity and development milestones tracking.
 - **Scope**: `perf(concurrency): optimize asynchronous thread pool allocation for high-load tasks`
 - **Ref**: `chk-843709`
 
+### Milestone: 2025-09-16 19:49:55
+- **Scope**: `docs(team): add contributor workflow guide and branch naming conventions`
+- **Ref**: `chk-658949`
+
