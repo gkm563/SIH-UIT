@@ -1130,3 +1130,7 @@ Daily activity and development milestones tracking.
 - **Scope**: `feat(pipeline): build distributed batch processor for multi-source data aggregation`
 - **Ref**: `chk-646219`
 
+### Milestone: 2025-09-19 10:44:45
+- **Scope**: `refactor(auth): migrate API authentication to cryptographic token signing`
+- **Ref**: `chk-906312`
+
