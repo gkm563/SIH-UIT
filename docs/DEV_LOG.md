@@ -1150,3 +1150,7 @@ Daily activity and development milestones tracking.
 - **Scope**: `test(stress): add load testing scripts to benchmark API endpoint latencies`
 - **Ref**: `chk-437164`
 
+### Milestone: 2025-09-20 11:49:45
+- **Scope**: `feat(dashboard): integrate analytics widgets with live KPI tracking`
+- **Ref**: `chk-320966`
+
