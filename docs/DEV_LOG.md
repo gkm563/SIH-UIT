@@ -1210,3 +1210,7 @@ Daily activity and development milestones tracking.
 - **Scope**: `fix(security): sanitize external webhook payloads against injection vulnerabilities`
 - **Ref**: `chk-354459`
 
+### Milestone: 2025-10-05 16:00:07
+- **Scope**: `style(format): standardize logging format with structured JSON logs`
+- **Ref**: `chk-476945`
+
