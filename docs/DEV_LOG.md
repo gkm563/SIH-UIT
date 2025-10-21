@@ -1294,3 +1294,7 @@ Daily activity and development milestones tracking.
 - **Scope**: `test(stress): add load testing scripts to benchmark API endpoint latencies`
 - **Ref**: `chk-540774`
 
+### Milestone: 2025-10-21 22:00:01
+- **Scope**: `refactor(core): consolidate event-driven notification handlers into unified dispatcher`
+- **Ref**: `chk-728024`
+
