@@ -1322,3 +1322,7 @@ Daily activity and development milestones tracking.
 - **Scope**: `style(format): standardize logging format with structured JSON logs`
 - **Ref**: `chk-620760`
 
+### Milestone: 2025-10-24 17:06:02
+- **Scope**: `style(format): standardize logging format with structured JSON logs`
+- **Ref**: `chk-763762`
+
