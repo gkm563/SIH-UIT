@@ -1330,3 +1330,7 @@ Daily activity and development milestones tracking.
 - **Scope**: `refactor(core): consolidate event-driven notification handlers into unified dispatcher`
 - **Ref**: `chk-421205`
 
+### Milestone: 2025-10-25 20:04:36
+- **Scope**: `refactor(auth): migrate API authentication to cryptographic token signing`
+- **Ref**: `chk-351010`
+
