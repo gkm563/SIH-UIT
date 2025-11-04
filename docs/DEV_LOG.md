@@ -1382,3 +1382,7 @@ Daily activity and development milestones tracking.
 - **Scope**: `docs(team): add contributor workflow guide and branch naming conventions`
 - **Ref**: `chk-320077`
 
+### Milestone: 2025-11-04 11:23:11
+- **Scope**: `chore(build): configure automated CI workflow for linting and type checking`
+- **Ref**: `chk-519095`
+
