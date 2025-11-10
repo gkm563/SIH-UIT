@@ -1410,3 +1410,7 @@ Daily activity and development milestones tracking.
 - **Scope**: `docs(specs): update hackathon architectural diagrams and subsystem interfaces`
 - **Ref**: `chk-225838`
 
+### Milestone: 2025-11-10 17:21:15
+- **Scope**: `docs(team): add contributor workflow guide and branch naming conventions`
+- **Ref**: `chk-949417`
+
