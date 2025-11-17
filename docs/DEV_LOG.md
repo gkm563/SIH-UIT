@@ -2490,3 +2490,7 @@ Daily activity and development milestones tracking.
 - **Scope**: `test(load): simulate 500 concurrent user requests on analytics endpoint`
 - **Ref**: `sync-472330`
 
+### Sprint Update: 2025-11-17 09:28:22
+- **Scope**: `feat(realtime): add websocket channel for live dashboard updates`
+- **Ref**: `sync-592138`
+
