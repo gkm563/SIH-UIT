@@ -1442,3 +1442,7 @@ Daily activity and development milestones tracking.
 - **Scope**: `style(format): standardize logging format with structured JSON logs`
 - **Ref**: `chk-538845`
 
+### Milestone: 2025-11-20 18:42:38
+- **Scope**: `docs(specs): update hackathon architectural diagrams and subsystem interfaces`
+- **Ref**: `chk-366607`
+
