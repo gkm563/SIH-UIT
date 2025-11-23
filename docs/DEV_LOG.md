@@ -2550,3 +2550,7 @@ Daily activity and development milestones tracking.
 - **Scope**: `docs(arch): update architecture topology diagrams and network flow`
 - **Ref**: `sync-107143`
 
+### Sprint Update: 2025-11-23 10:37:18
+- **Scope**: `fix(resilience): implement dead-letter queue for failed event processing`
+- **Ref**: `sync-111954`
+
