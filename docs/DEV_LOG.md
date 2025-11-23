@@ -1458,3 +1458,7 @@ Daily activity and development milestones tracking.
 - **Scope**: `fix(config): resolve cross-origin resource sharing headers for mobile client`
 - **Ref**: `chk-256226`
 
+### Milestone: 2025-11-23 19:15:35
+- **Scope**: `style(format): standardize logging format with structured JSON logs`
+- **Ref**: `chk-549830`
+
