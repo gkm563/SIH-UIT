@@ -2566,3 +2566,7 @@ Daily activity and development milestones tracking.
 - **Scope**: `chore(lint): fix remaining type annotation warnings across codebase`
 - **Ref**: `sync-954757`
 
+### Sprint Update: 2025-11-25 22:17:32
+- **Scope**: `feat(realtime): add websocket channel for live dashboard updates`
+- **Ref**: `sync-342445`
+
