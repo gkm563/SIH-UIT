@@ -1494,3 +1494,7 @@ Daily activity and development milestones tracking.
 - **Scope**: `fix(config): resolve cross-origin resource sharing headers for mobile client`
 - **Ref**: `chk-256295`
 
+### Milestone: 2025-11-28 22:00:22
+- **Scope**: `refactor(auth): migrate API authentication to cryptographic token signing`
+- **Ref**: `chk-417734`
+
