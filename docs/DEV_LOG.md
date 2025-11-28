@@ -2578,3 +2578,7 @@ Daily activity and development milestones tracking.
 - **Scope**: `fix(resilience): implement dead-letter queue for failed event processing`
 - **Ref**: `sync-198347`
 
+### Sprint Update: 2025-11-28 10:21:36
+- **Scope**: `refactor(adapter): decouple data source adapters from business logic`
+- **Ref**: `sync-528086`
+
