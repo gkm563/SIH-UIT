@@ -1510,3 +1510,7 @@ Daily activity and development milestones tracking.
 - **Scope**: `fix(security): sanitize external webhook payloads against injection vulnerabilities`
 - **Ref**: `chk-910726`
 
+### Milestone: 2025-12-01 20:18:19
+- **Scope**: `refactor(core): consolidate event-driven notification handlers into unified dispatcher`
+- **Ref**: `chk-818144`
+
