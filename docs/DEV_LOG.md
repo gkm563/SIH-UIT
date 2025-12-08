@@ -1566,3 +1566,7 @@ Daily activity and development milestones tracking.
 - **Scope**: `perf(concurrency): optimize asynchronous thread pool allocation for high-load tasks`
 - **Ref**: `chk-420474`
 
+### Milestone: 2025-12-08 20:49:16
+- **Scope**: `fix(security): sanitize external webhook payloads against injection vulnerabilities`
+- **Ref**: `chk-101692`
+
