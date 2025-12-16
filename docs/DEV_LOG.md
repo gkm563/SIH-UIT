@@ -1594,3 +1594,7 @@ Daily activity and development milestones tracking.
 - **Scope**: `docs(specs): update hackathon architectural diagrams and subsystem interfaces`
 - **Ref**: `chk-201440`
 
+### Milestone: 2025-12-16 11:11:15
+- **Scope**: `feat(dashboard): integrate analytics widgets with live KPI tracking`
+- **Ref**: `chk-631375`
+
