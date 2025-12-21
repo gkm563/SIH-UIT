@@ -1626,3 +1626,7 @@ Daily activity and development milestones tracking.
 - **Scope**: `feat(pipeline): build distributed batch processor for multi-source data aggregation`
 - **Ref**: `chk-599602`
 
+### Milestone: 2025-12-21 23:06:21
+- **Scope**: `fix(security): sanitize external webhook payloads against injection vulnerabilities`
+- **Ref**: `chk-875385`
+
