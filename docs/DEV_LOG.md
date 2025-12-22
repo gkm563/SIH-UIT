@@ -1634,3 +1634,7 @@ Daily activity and development milestones tracking.
 - **Scope**: `fix(security): sanitize external webhook payloads against injection vulnerabilities`
 - **Ref**: `chk-395458`
 
+### Milestone: 2025-12-22 22:11:10
+- **Scope**: `refactor(auth): migrate API authentication to cryptographic token signing`
+- **Ref**: `chk-378634`
+
