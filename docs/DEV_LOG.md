@@ -1670,3 +1670,7 @@ Daily activity and development milestones tracking.
 - **Scope**: `docs(team): add contributor workflow guide and branch naming conventions`
 - **Ref**: `chk-283816`
 
+### Milestone: 2025-12-26 14:06:27
+- **Scope**: `refactor(core): consolidate event-driven notification handlers into unified dispatcher`
+- **Ref**: `chk-155391`
+
