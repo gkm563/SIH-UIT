@@ -1666,3 +1666,7 @@ Daily activity and development milestones tracking.
 - **Scope**: `style(format): standardize logging format with structured JSON logs`
 - **Ref**: `chk-558159`
 
+### Milestone: 2025-12-26 11:28:14
+- **Scope**: `docs(team): add contributor workflow guide and branch naming conventions`
+- **Ref**: `chk-283816`
+
