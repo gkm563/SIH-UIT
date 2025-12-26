@@ -2734,3 +2734,7 @@ Daily activity and development milestones tracking.
 - **Scope**: `fix(resilience): implement dead-letter queue for failed event processing`
 - **Ref**: `sync-422449`
 
+### Sprint Update: 2025-12-26 15:46:51
+- **Scope**: `perf(worker): scale concurrent processing threads dynamically`
+- **Ref**: `sync-844145`
+
