@@ -1710,3 +1710,7 @@ Daily activity and development milestones tracking.
 - **Scope**: `test(stress): add load testing scripts to benchmark API endpoint latencies`
 - **Ref**: `chk-712560`
 
+### Milestone: 2026-01-04 20:53:46
+- **Scope**: `refactor(auth): migrate API authentication to cryptographic token signing`
+- **Ref**: `chk-602021`
+
