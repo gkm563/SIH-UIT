@@ -1742,3 +1742,7 @@ Daily activity and development milestones tracking.
 - **Scope**: `perf(concurrency): optimize asynchronous thread pool allocation for high-load tasks`
 - **Ref**: `chk-452503`
 
+### Milestone: 2026-01-08 11:50:23
+- **Scope**: `refactor(core): consolidate event-driven notification handlers into unified dispatcher`
+- **Ref**: `chk-604832`
+
