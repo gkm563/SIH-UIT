@@ -1746,3 +1746,7 @@ Daily activity and development milestones tracking.
 - **Scope**: `refactor(core): consolidate event-driven notification handlers into unified dispatcher`
 - **Ref**: `chk-604832`
 
+### Milestone: 2026-01-08 20:25:31
+- **Scope**: `style(format): standardize logging format with structured JSON logs`
+- **Ref**: `chk-900576`
+
