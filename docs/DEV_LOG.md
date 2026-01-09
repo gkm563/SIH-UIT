@@ -1762,3 +1762,7 @@ Daily activity and development milestones tracking.
 - **Scope**: `refactor(auth): migrate API authentication to cryptographic token signing`
 - **Ref**: `chk-169815`
 
+### Milestone: 2026-01-09 21:14:37
+- **Scope**: `style(format): standardize logging format with structured JSON logs`
+- **Ref**: `chk-198622`
+
