@@ -1782,3 +1782,7 @@ Daily activity and development milestones tracking.
 - **Scope**: `fix(config): resolve cross-origin resource sharing headers for mobile client`
 - **Ref**: `chk-712030`
 
+### Milestone: 2026-01-14 10:42:56
+- **Scope**: `fix(security): sanitize external webhook payloads against injection vulnerabilities`
+- **Ref**: `chk-798080`
+
