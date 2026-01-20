@@ -1814,3 +1814,7 @@ Daily activity and development milestones tracking.
 - **Scope**: `test(stress): add load testing scripts to benchmark API endpoint latencies`
 - **Ref**: `chk-973827`
 
+### Milestone: 2026-01-20 09:45:07
+- **Scope**: `style(format): standardize logging format with structured JSON logs`
+- **Ref**: `chk-606585`
+
