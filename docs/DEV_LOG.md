@@ -1854,3 +1854,7 @@ Daily activity and development milestones tracking.
 - **Scope**: `perf(concurrency): optimize asynchronous thread pool allocation for high-load tasks`
 - **Ref**: `chk-220553`
 
+### Milestone: 2026-01-31 14:16:31
+- **Scope**: `refactor(auth): migrate API authentication to cryptographic token signing`
+- **Ref**: `chk-125376`
+
