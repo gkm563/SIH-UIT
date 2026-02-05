@@ -2886,3 +2886,7 @@ Daily activity and development milestones tracking.
 - **Scope**: `chore(lint): fix remaining type annotation warnings across codebase`
 - **Ref**: `sync-901651`
 
+### Sprint Update: 2026-02-05 19:41:30
+- **Scope**: `fix(resilience): implement dead-letter queue for failed event processing`
+- **Ref**: `sync-759884`
+
