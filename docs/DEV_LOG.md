@@ -1882,3 +1882,7 @@ Daily activity and development milestones tracking.
 - **Scope**: `chore(build): configure automated CI workflow for linting and type checking`
 - **Ref**: `chk-725476`
 
+### Milestone: 2026-02-09 21:10:22
+- **Scope**: `refactor(core): consolidate event-driven notification handlers into unified dispatcher`
+- **Ref**: `chk-140609`
+
