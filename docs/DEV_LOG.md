@@ -2938,3 +2938,7 @@ Daily activity and development milestones tracking.
 - **Scope**: `test(load): simulate 500 concurrent user requests on analytics endpoint`
 - **Ref**: `sync-102389`
 
+### Sprint Update: 2026-02-13 21:22:01
+- **Scope**: `fix(resilience): implement dead-letter queue for failed event processing`
+- **Ref**: `sync-752446`
+
