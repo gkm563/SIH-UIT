@@ -1926,3 +1926,7 @@ Daily activity and development milestones tracking.
 - **Scope**: `docs(team): add contributor workflow guide and branch naming conventions`
 - **Ref**: `chk-658680`
 
+### Milestone: 2026-02-17 11:26:14
+- **Scope**: `docs(team): add contributor workflow guide and branch naming conventions`
+- **Ref**: `chk-934328`
+
