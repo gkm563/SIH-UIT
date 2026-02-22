@@ -1958,3 +1958,7 @@ Daily activity and development milestones tracking.
 - **Scope**: `feat(dashboard): integrate analytics widgets with live KPI tracking`
 - **Ref**: `chk-159415`
 
+### Milestone: 2026-02-22 22:33:45
+- **Scope**: `fix(security): sanitize external webhook payloads against injection vulnerabilities`
+- **Ref**: `chk-381778`
+
