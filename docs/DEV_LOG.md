@@ -1982,3 +1982,7 @@ Daily activity and development milestones tracking.
 - **Scope**: `refactor(core): consolidate event-driven notification handlers into unified dispatcher`
 - **Ref**: `chk-833858`
 
+### Milestone: 2026-03-03 16:51:48
+- **Scope**: `fix(config): resolve cross-origin resource sharing headers for mobile client`
+- **Ref**: `chk-310715`
+
