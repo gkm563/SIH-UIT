@@ -1998,3 +1998,7 @@ Daily activity and development milestones tracking.
 - **Scope**: `feat(dashboard): integrate analytics widgets with live KPI tracking`
 - **Ref**: `chk-318638`
 
+### Milestone: 2026-03-05 12:50:29
+- **Scope**: `refactor(core): consolidate event-driven notification handlers into unified dispatcher`
+- **Ref**: `chk-416873`
+
