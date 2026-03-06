@@ -2010,3 +2010,7 @@ Daily activity and development milestones tracking.
 - **Scope**: `refactor(auth): migrate API authentication to cryptographic token signing`
 - **Ref**: `chk-891476`
 
+### Milestone: 2026-03-06 22:20:32
+- **Scope**: `fix(security): sanitize external webhook payloads against injection vulnerabilities`
+- **Ref**: `chk-533597`
+
