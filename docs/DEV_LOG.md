@@ -2014,3 +2014,7 @@ Daily activity and development milestones tracking.
 - **Scope**: `fix(security): sanitize external webhook payloads against injection vulnerabilities`
 - **Ref**: `chk-533597`
 
+### Milestone: 2026-03-06 22:38:30
+- **Scope**: `test(stress): add load testing scripts to benchmark API endpoint latencies`
+- **Ref**: `chk-728017`
+
