@@ -2050,3 +2050,7 @@ Daily activity and development milestones tracking.
 - **Scope**: `chore(build): configure automated CI workflow for linting and type checking`
 - **Ref**: `chk-214642`
 
+### Milestone: 2026-03-15 14:46:19
+- **Scope**: `docs(specs): update hackathon architectural diagrams and subsystem interfaces`
+- **Ref**: `chk-543235`
+
