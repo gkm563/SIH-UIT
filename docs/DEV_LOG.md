@@ -2058,3 +2058,7 @@ Daily activity and development milestones tracking.
 - **Scope**: `refactor(core): consolidate event-driven notification handlers into unified dispatcher`
 - **Ref**: `chk-163956`
 
+### Milestone: 2026-03-16 10:29:02
+- **Scope**: `docs(specs): update hackathon architectural diagrams and subsystem interfaces`
+- **Ref**: `chk-708990`
+
