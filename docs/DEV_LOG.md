@@ -2126,3 +2126,7 @@ Daily activity and development milestones tracking.
 - **Scope**: `chore(build): configure automated CI workflow for linting and type checking`
 - **Ref**: `chk-557747`
 
+### Milestone: 2026-03-25 15:24:29
+- **Scope**: `style(format): standardize logging format with structured JSON logs`
+- **Ref**: `chk-933951`
+
