@@ -3346,3 +3346,7 @@ Daily activity and development milestones tracking.
 - **Scope**: `refactor(adapter): decouple data source adapters from business logic`
 - **Ref**: `sync-687985`
 
+### Sprint Update: 2026-05-23 17:51:15
+- **Scope**: `feat(realtime): add websocket channel for live dashboard updates`
+- **Ref**: `sync-882800`
+
