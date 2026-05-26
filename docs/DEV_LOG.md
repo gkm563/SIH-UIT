@@ -3370,3 +3370,7 @@ Daily activity and development milestones tracking.
 - **Scope**: `chore(lint): fix remaining type annotation warnings across codebase`
 - **Ref**: `sync-422708`
 
+### Sprint Update: 2026-05-26 10:50:06
+- **Scope**: `perf(worker): scale concurrent processing threads dynamically`
+- **Ref**: `sync-610378`
+
