@@ -3394,3 +3394,7 @@ Daily activity and development milestones tracking.
 - **Scope**: `perf(worker): scale concurrent processing threads dynamically`
 - **Ref**: `sync-430916`
 
+### Sprint Update: 2026-05-30 17:54:56
+- **Scope**: `feat(realtime): add websocket channel for live dashboard updates`
+- **Ref**: `sync-957772`
+
