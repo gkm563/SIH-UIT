@@ -3406,3 +3406,7 @@ Daily activity and development milestones tracking.
 - **Scope**: `docs(arch): update architecture topology diagrams and network flow`
 - **Ref**: `sync-786966`
 
+### Sprint Update: 2026-06-02 09:11:32
+- **Scope**: `feat(realtime): add websocket channel for live dashboard updates`
+- **Ref**: `sync-284861`
+
