@@ -3450,3 +3450,7 @@ Daily activity and development milestones tracking.
 - **Scope**: `fix(resilience): implement dead-letter queue for failed event processing`
 - **Ref**: `sync-924581`
 
+### Sprint Update: 2026-06-08 14:34:12
+- **Scope**: `docs(arch): update architecture topology diagrams and network flow`
+- **Ref**: `sync-763026`
+
