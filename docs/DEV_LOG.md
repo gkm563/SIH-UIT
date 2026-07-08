@@ -3578,3 +3578,7 @@ Daily activity and development milestones tracking.
 - **Scope**: `refactor(adapter): decouple data source adapters from business logic`
 - **Ref**: `sync-544216`
 
+### Sprint Update: 2026-07-08 16:27:09
+- **Scope**: `perf(worker): scale concurrent processing threads dynamically`
+- **Ref**: `sync-310848`
+
