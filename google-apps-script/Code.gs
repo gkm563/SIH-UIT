@@ -398,6 +398,106 @@ function resendFailedEmails() {
 }
 
 /**
+ * ONE-TIME ADMIN UTILITY: Send confirmation emails for real teams SIH2026-0019 and SIH2026-0021
+ * and send a copy to the admin email (gkmwin563@gmail.com).
+ * Select "sendPendingRealTeamsEmails" in Apps Script dropdown and click Run!
+ */
+function sendPendingRealTeamsEmails() {
+  var targetIds = ['SIH2026-0019', 'SIH2026-0021'];
+  var adminEmail = 'gkmwin563@gmail.com';
+
+  var sheet = getOrCreateSheet_();
+  var lastRow = sheet.getLastRow();
+  if (lastRow < 2) return 'No rows found in sheet.';
+
+  var data = sheet.getRange(2, 1, lastRow - 1, HEADERS.length).getValues();
+  var results = [];
+
+  for (var i = 0; i < data.length; i++) {
+    var rowIndex = i + 2;
+    var row = data[i];
+    var regId = String(row[1] || '').trim();
+
+    if (targetIds.indexOf(regId) !== -1) {
+      var timestamp = String(row[0] || '');
+      var leaderEmail = cleanEmailAddress_(row[11]);
+      var leaderName = String(row[4] || '');
+      var teamName = String(row[2] || '');
+      var teamSize = parseInt(row[3] || 6, 10);
+
+      var payloadObj = {
+        teamName: teamName,
+        teamSize: teamSize,
+        leader: {
+          fullName: leaderName,
+          rollNumber: String(row[5] || ''),
+          collegeId: String(row[6] || ''),
+          branch: String(row[7] || ''),
+          year: String(row[8] || ''),
+          semester: String(row[9] || ''),
+          gender: String(row[10] || ''),
+          email: leaderEmail,
+          whatsapp: String(row[12] || '')
+        },
+        members: [],
+        declarations: { truth: true, internal: true, contact: true }
+      };
+
+      // Reconstruct members 1..5
+      for (var m = 1; m <= 5; m++) {
+        var baseIdx = 13 + (m - 1) * 9;
+        if (row[baseIdx]) {
+          payloadObj.members.push({
+            fullName: String(row[baseIdx] || ''),
+            rollNumber: String(row[baseIdx + 1] || ''),
+            collegeId: String(row[baseIdx + 2] || ''),
+            branch: String(row[baseIdx + 3] || ''),
+            year: String(row[baseIdx + 4] || ''),
+            semester: String(row[baseIdx + 5] || ''),
+            gender: String(row[baseIdx + 6] || ''),
+            email: cleanEmailAddress_(row[baseIdx + 7]),
+            whatsapp: String(row[baseIdx + 8] || '')
+          });
+        }
+      }
+
+      // 1. Send confirmation email to Team Leader
+      var res = sendLeaderConfirmationEmail_(payloadObj, regId, timestamp);
+
+      // 2. Send a copy to Admin Email (gkmwin563@gmail.com) so Admin gets confirmed
+      try {
+        var adminSubject = '[COPY] ' + regId + ' Confirmation Email - ' + teamName;
+        var htmlBody = buildConfirmationEmailHtml_(payloadObj, regId, timestamp);
+        var plainBody = buildConfirmationEmailText_(payloadObj, regId, timestamp);
+        MailApp.sendEmail(adminEmail, adminSubject, plainBody, { htmlBody: htmlBody, name: 'SIH 2026 Registration Copy' });
+      } catch (adminErr) {
+        Logger.log('Could not send copy to admin: ' + adminErr);
+      }
+
+      // 3. Update Sheet status to Green
+      var cell = sheet.getRange(rowIndex, HEADERS.length);
+      if (res.sent) {
+        cell.setValue('Sent to ' + leaderEmail + ' (+Copy to Admin)');
+        cell.setBackground('#e6f4ea'); // Light green
+        cell.setFontColor('#137333');
+        cell.setFontWeight('bold');
+        results.push(regId + ': Sent successfully to ' + leaderEmail + ' and Admin copy sent to ' + adminEmail);
+      } else {
+        cell.setValue('FAILED: ' + (res.message || 'unknown'));
+        cell.setBackground('#fce8e6'); // Red alert
+        cell.setFontColor('#c5221f');
+        cell.setFontWeight('bold');
+        results.push(regId + ': Failed - ' + res.message);
+      }
+    }
+  }
+
+  var msg = results.join('\n');
+  Logger.log(msg);
+  return msg;
+}
+
+/**
  * Send a full registration confirmation email to the Team Leader.
  * Registration still succeeds even if email fails.
  */
