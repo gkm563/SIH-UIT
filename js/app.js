@@ -14,7 +14,7 @@
   const YEARS = ['First Year', 'Second Year', 'Third Year', 'Fourth Year'];
   const GENDERS = ['Male', 'Female', 'Prefer not to say'];
   const SEMESTERS = [1, 2, 3, 4, 5, 6, 7, 8];
-  const TEAM_SIZES = [2, 3, 4, 5, 6];
+  const TEAM_SIZES = [6];
 
   const els = {
     form: document.getElementById('registration-form'),
@@ -43,7 +43,7 @@
 
   const state = {
     currentIndex: 0,
-    teamSize: 2,
+    teamSize: 6,
     completed: new Set(),
     saveTimer: null,
     submission: null,
@@ -198,11 +198,20 @@
         validate: 'required',
         placeholder: 'Enter your team name'
       });
-      html += selectField(
-        'teamSize',
-        'Total Number of Team Members',
-        optionList(TEAM_SIZES, 'Select team size')
-      );
+      html += `
+        <div class="field" data-name="teamSize">
+          <label class="field-label">Total Number of Team Members</label>
+          <input
+            class="field-input"
+            type="text"
+            value="6 Members (1 Team Leader + 5 Team Members)"
+            readonly
+            disabled
+            style="background-color: #f8f9fa; color: #3c4043; font-weight: 500; cursor: not-allowed;"
+          />
+          <input type="hidden" name="teamSize" value="6" />
+          <p class="field-hint">SIH 2026 mandates a team size of exactly 6 members (1 Team Leader + 5 Members).</p>
+        </div>`;
     }
 
     return html;
@@ -292,12 +301,6 @@
 
     // Restore values after rebuild
     applyFormData(existingData);
-
-    // Team size change listener
-    const teamSizeSelect = document.getElementById('teamSize');
-    if (teamSizeSelect) {
-      teamSizeSelect.addEventListener('change', onTeamSizeChange);
-    }
 
     bindLiveValidation();
     updateUI();
@@ -434,9 +437,9 @@
   function collectFormData(normalize = true) {
     const data = {
       currentIndex: state.currentIndex,
-      teamSize: state.teamSize,
+      teamSize: 6,
       completed: [...state.completed],
-      fields: {}
+      fields: { teamSize: '6' }
     };
 
     els.form.querySelectorAll('input, select').forEach((el) => {
@@ -515,9 +518,7 @@
     const draft = Storage.loadDraft();
     if (!draft) return false;
 
-    if (draft.teamSize && TEAM_SIZES.includes(draft.teamSize)) {
-      state.teamSize = draft.teamSize;
-    }
+    state.teamSize = 6;
     if (Array.isArray(draft.completed)) {
       state.completed = new Set(draft.completed);
     }
@@ -652,7 +653,7 @@
     Storage.clearSubmission();
     state.submission = null;
     state.currentIndex = 0;
-    state.teamSize = 2;
+    state.teamSize = 6;
     state.completed = new Set();
 
     els.confirmationView.classList.remove('visible');
@@ -677,10 +678,6 @@
     const restored = !existingSubmission && restoreDraft();
     if (!restored) {
       renderSections();
-      const teamSizeSelect = document.getElementById('teamSize');
-      if (teamSizeSelect && !teamSizeSelect.value) {
-        teamSizeSelect.value = String(state.teamSize);
-      }
     }
 
     els.btnNext.addEventListener('click', goNext);
