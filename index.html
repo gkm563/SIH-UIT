@@ -1,0 +1,149 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="description" content="United Institute of Technology, Naini, Prayagraj — Smart India Hackathon (SIH) 2026 Internal Registration Portal for students." />
+  <meta name="keywords" content="SIH 2026, Smart India Hackathon, United Institute of Technology, UIT Naini, Prayagraj, Internal Registration" />
+  <meta name="robots" content="index, follow" />
+  <meta name="theme-color" content="#1a73e8" />
+  <title>SIH 2026 Internal Registration | United Institute of Technology</title>
+  <link rel="icon" href="assets/united-logo.png" type="image/png" />
+  <script src="https://cdn.tailwindcss.com"></script>
+  <script>
+    tailwind.config = {
+      theme: {
+        extend: {
+          colors: {
+            primary: { DEFAULT: '#1a73e8', dark: '#1557b0', light: '#e8f0fe' },
+            united: { DEFAULT: '#2A4B8D', red: '#D63333' }
+          }
+        }
+      }
+    };
+  </script>
+  <link rel="stylesheet" href="css/styles.css" />
+</head>
+<body>
+  <a class="sr-only" href="#main-content">Skip to main content</a>
+
+  <header class="site-header sticky top-0 z-50 bg-white border-b border-gray-200" role="banner">
+    <div class="header-inner max-w-[720px] mx-auto px-5 py-3 flex items-center gap-3 sm:gap-4">
+      <img
+        class="college-logo"
+        src="assets/united-logo.png"
+        alt="United Group of Institutions logo"
+        width="72"
+        height="72"
+      />
+      <div class="header-text min-w-0">
+        <h1 class="college-name m-0">United Institute of Technology</h1>
+        <p class="college-campus m-0">Naini, Prayagraj</p>
+        <p class="sih-title m-0">Smart India Hackathon (SIH) 2026</p>
+        <p class="portal-label m-0">Internal Registration Portal</p>
+      </div>
+    </div>
+  </header>
+
+  <main id="main-content" class="main max-w-[720px] mx-auto px-5 py-6 pb-12" role="main">
+    <!-- Progress Indicator -->
+    <div id="progress-wrap" class="progress-wrap" aria-live="polite">
+      <div class="progress-meta">
+        <span id="progress-label" class="progress-label">Section 1 of 3</span>
+        <span id="progress-pct" class="progress-pct">0% complete</span>
+      </div>
+      <div class="progress-track" role="progressbar" aria-valuemin="0" aria-valuemax="100" aria-valuenow="0" id="progress-bar" aria-label="Form completion progress">
+        <div id="progress-fill" class="progress-fill"></div>
+      </div>
+      <div id="section-dots" class="section-dots" aria-hidden="true"></div>
+    </div>
+
+    <!-- Registration Form -->
+    <div id="form-view">
+      <form id="registration-form" class="form-card" novalidate aria-labelledby="form-title">
+        <div class="form-card-header">
+          <h2 id="form-title">Smart India Hackathon (SIH) 2026 – Internal Registration Form</h2>
+          <p>Mandatory registration for all students who wish to participate in Smart India Hackathon (SIH) 2026 through the college.</p>
+          <p>Please provide accurate information.</p>
+          <p id="draft-status" class="draft-status" aria-live="polite"></p>
+        </div>
+
+        <div id="form-alert" class="alert alert-error" role="alert"></div>
+
+        <!-- Dynamic sections injected by JS -->
+        <div id="sections-container"></div>
+
+        <div class="form-nav">
+          <button type="button" id="btn-prev" class="btn btn-secondary" hidden>
+            Previous
+          </button>
+          <div class="nav-right">
+            <button type="button" id="btn-next" class="btn btn-primary">
+              Next
+            </button>
+            <button type="submit" id="btn-submit" class="btn btn-primary" hidden>
+              Submit
+            </button>
+          </div>
+        </div>
+      </form>
+    </div>
+
+    <!-- Confirmation Screen -->
+    <div id="confirmation-view" class="confirmation" aria-live="polite">
+      <div class="confirmation-card">
+        <div class="success-icon" aria-hidden="true">
+          <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2.5">
+            <path stroke-linecap="round" stroke-linejoin="round" d="M5 13l4 4L19 7" />
+          </svg>
+        </div>
+        <h2>Registration Submitted Successfully</h2>
+        <p class="lead">Thank you for registering for Smart India Hackathon (SIH) 2026 Internal Registration.</p>
+        <p class="detail">Your response has been recorded successfully. Further updates regarding team verification, mentorship, problem statements, and official SIH registration will be communicated through your registered Email ID and WhatsApp number.</p>
+
+        <dl class="meta-box">
+          <div class="meta-row">
+            <dt>Registration ID</dt>
+            <dd id="conf-reg-id">—</dd>
+          </div>
+          <div class="meta-row">
+            <dt>Submission Date &amp; Time</dt>
+            <dd id="conf-datetime">—</dd>
+          </div>
+          <div class="meta-row">
+            <dt>Team Name</dt>
+            <dd id="conf-team">—</dd>
+          </div>
+          <div class="meta-row">
+            <dt>Team Leader</dt>
+            <dd id="conf-leader">—</dd>
+          </div>
+        </dl>
+
+        <div class="confirmation-actions">
+          <button type="button" id="btn-download" class="btn btn-primary">Download Receipt (PDF)</button>
+          <button type="button" id="btn-home" class="btn btn-ghost">Return to Home</button>
+        </div>
+      </div>
+    </div>
+  </main>
+
+  <div id="loading-overlay" class="loading-overlay" role="status" aria-live="assertive" aria-busy="false" hidden>
+    <div class="loading-spinner" aria-hidden="true"></div>
+    <p class="loading-text">Submitting registration…</p>
+  </div>
+
+  <footer class="site-footer text-center px-5 pt-6 pb-8 text-xs text-gray-500" role="contentinfo">
+    <p class="m-0">&copy; 2026 United Institute of Technology, Naini, Prayagraj · Smart India Hackathon (SIH) 2026 Internal Registration</p>
+    <p class="m-0 mt-1">This portal is for internal college use only and does not replace official SIH registration.</p>
+  </footer>
+
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/2.5.2/jspdf.umd.min.js"></script>
+  <script src="js/config.js"></script>
+  <script src="js/storage.js"></script>
+  <script src="js/validation.js"></script>
+  <script src="js/api.js"></script>
+  <script src="js/receipt.js"></script>
+  <script src="js/app.js"></script>
+</body>
+</html>
