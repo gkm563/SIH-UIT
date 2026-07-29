@@ -30,17 +30,42 @@ const Receipt = (() => {
     return { count, members };
   }
 
-  function ensureJsPdf() {
+  async function ensureJsPdf() {
     if (window.jspdf && window.jspdf.jsPDF) return window.jspdf.jsPDF;
+    if (typeof window.jspdf === 'function') return window.jspdf;
     if (window.jsPDF) return window.jsPDF;
+
+    const sources = [
+      'js/vendor/jspdf.umd.min.js',
+      'https://cdnjs.cloudflare.com/ajax/libs/jspdf/2.5.2/jspdf.umd.min.js',
+      'https://cdn.jsdelivr.net/npm/jspdf@2.5.2/dist/jspdf.umd.min.js'
+    ];
+
+    for (const src of sources) {
+      try {
+        await new Promise((resolve, reject) => {
+          const script = document.createElement('script');
+          script.src = src;
+          script.onload = resolve;
+          script.onerror = reject;
+          document.head.appendChild(script);
+        });
+        if (window.jspdf && window.jspdf.jsPDF) return window.jspdf.jsPDF;
+        if (typeof window.jspdf === 'function') return window.jspdf;
+        if (window.jsPDF) return window.jsPDF;
+      } catch (e) {
+        // try next source
+      }
+    }
+
     throw new Error('PDF library failed to load. Please refresh the page and try again.');
   }
 
   /**
    * Build and download a PDF receipt.
    */
-  function downloadPdf(submission) {
-    const JsPDF = ensureJsPdf();
+  async function downloadPdf(submission) {
+    const JsPDF = await ensureJsPdf();
     const doc = new JsPDF({ unit: 'mm', format: 'a4' });
     const pageW = doc.internal.pageSize.getWidth();
     const margin = 16;

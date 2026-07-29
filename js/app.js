@@ -637,12 +637,12 @@
     window.scrollTo({ top: 0, behavior: 'smooth' });
   }
 
-  function downloadAcknowledgement() {
+  async function downloadAcknowledgement() {
     const submission = state.submission || Storage.loadSubmission();
     if (!submission) return;
 
     try {
-      Receipt.downloadPdf(submission);
+      await Receipt.downloadPdf(submission);
     } catch (err) {
       alert(err.message || 'Unable to generate PDF receipt. Please refresh and try again.');
     }
