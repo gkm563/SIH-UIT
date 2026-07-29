@@ -19,8 +19,8 @@
  * =============================================================================
  */
 
-// Optional: set if this script is NOT container-bound to the spreadsheet
-const SPREADSHEET_ID = ''; // e.g. '1BxiMVs0XRA5nFMdKvBdBZjgmUUqptlbs74OgvE2upms'
+// Bound spreadsheet — all registrations are written here
+const SPREADSHEET_ID = '1vbDZMAJJgZpELJpfGtdPCres5puMHxe3ac4vvLIoNbs';
 
 const SHEET_NAME = 'Registrations';
 const REG_ID_PREFIX = 'SIH2026-';
@@ -100,16 +100,34 @@ const HEADERS = [
 
 /**
  * Health check / connectivity test.
- * GET → { success: true, message: "...", sheetReady: true|false }
+ * Also returns which spreadsheet is receiving data (so you can verify the link).
  */
 function doGet(e) {
   try {
+    // Optional: register via GET ?action=submit&data=...
+    // (backup path if a browser turns POST into GET on redirect)
+    if (e && e.parameter && e.parameter.action === 'submit' && e.parameter.data) {
+      return handleRegistration_(e.parameter.data);
+    }
+
+    const ss = getSpreadsheet_();
     const sheet = getOrCreateSheet_();
+    const lastRow = sheet.getLastRow();
+    var lastId = '';
+    if (lastRow >= 2) {
+      lastId = String(sheet.getRange(lastRow, 2).getValue() || '');
+    }
+
     return jsonResponse_({
       success: true,
       message: 'SIH 2026 Internal Registration API is online.',
       sheetReady: !!sheet,
-      sheetName: SHEET_NAME
+      sheetName: SHEET_NAME,
+      spreadsheetName: ss.getName(),
+      spreadsheetId: ss.getId(),
+      spreadsheetUrl: ss.getUrl(),
+      totalRegistrations: Math.max(0, lastRow - 1),
+      lastRegistrationId: lastId
     });
   } catch (err) {
     return jsonResponse_({
@@ -121,10 +139,32 @@ function doGet(e) {
 
 /**
  * Accept registration JSON and append a new row.
- * Clients should send Content-Type: text/plain (JSON body) to avoid CORS preflight.
+ * Supports:
+ *  - raw JSON body (text/plain or application/json)
+ *  - form field "data" with JSON string (application/x-www-form-urlencoded)
  */
 function doPost(e) {
-  // Script lock prevents duplicate Registration IDs under concurrent submits
+  try {
+    var raw = '';
+    if (e && e.parameter && e.parameter.data) {
+      raw = e.parameter.data;
+    } else if (e && e.postData && e.postData.contents) {
+      raw = e.postData.contents;
+    }
+    return handleRegistration_(raw);
+  } catch (err) {
+    console.error('doPost error:', err);
+    return jsonResponse_({
+      success: false,
+      message: 'Unexpected server error. Please try again later.'
+    });
+  }
+}
+
+/**
+ * Shared registration handler (used by doPost and doGet backup).
+ */
+function handleRegistration_(raw) {
   const lock = LockService.getScriptLock();
   try {
     const locked = lock.tryLock(30000);
@@ -135,16 +175,16 @@ function doPost(e) {
       });
     }
 
-    if (!e || !e.postData || !e.postData.contents) {
+    if (!raw || String(raw).trim() === '') {
       return jsonResponse_({
         success: false,
         message: 'Empty submission. Request body is required.'
       });
     }
 
-    let payload;
+    var payload;
     try {
-      payload = JSON.parse(e.postData.contents);
+      payload = JSON.parse(raw);
     } catch (parseErr) {
       return jsonResponse_({
         success: false,
@@ -152,7 +192,6 @@ function doPost(e) {
       });
     }
 
-    // Support both { ...fields } and { fields: {...} } shapes
     const data = normalizePayload_(payload);
     const validation = validateRegistration_(data);
     if (!validation.ok) {
@@ -175,17 +214,21 @@ function doPost(e) {
     const row = buildRow_(data, registrationId, timestamp);
     sheet.appendRow(row);
 
+    // Flush to make sure the write is committed before responding
+    SpreadsheetApp.flush();
+
     return jsonResponse_({
       success: true,
       registrationId: registrationId,
       timestamp: timestamp,
-      message: 'Registration submitted successfully.'
+      message: 'Registration submitted successfully.',
+      spreadsheetUrl: getSpreadsheet_().getUrl()
     });
   } catch (err) {
-    console.error('doPost error:', err);
+    console.error('handleRegistration_ error:', err);
     return jsonResponse_({
       success: false,
-      message: 'Unexpected server error. Please try again later.'
+      message: 'Unexpected server error: ' + String(err.message || err)
     });
   } finally {
     try {

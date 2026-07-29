@@ -30,6 +30,7 @@
     btnSubmit: document.getElementById('btn-submit'),
     formAlert: document.getElementById('form-alert'),
     draftStatus: document.getElementById('draft-status'),
+    sheetStatus: document.getElementById('sheet-status'),
     formView: document.getElementById('form-view'),
     confirmationView: document.getElementById('confirmation-view'),
     confRegId: document.getElementById('conf-reg-id'),
@@ -668,17 +669,77 @@
 
   /* ---------- Init ---------- */
 
+  async function checkSheetConnection() {
+    if (!els.sheetStatus) return;
+    if (window.location.protocol === 'file:') {
+      els.sheetStatus.textContent = 'Google Sheets: blocked (open via http://localhost:5500)';
+      els.sheetStatus.style.color = '#d93025';
+      return;
+    }
+    try {
+      const info = await Api.ping();
+      if (!info || !info.success) {
+        els.sheetStatus.textContent = 'Google Sheets: not connected — ' + (info?.message || 'ping failed');
+        els.sheetStatus.style.color = '#d93025';
+        return;
+      }
+
+      const count = info.totalRegistrations ?? info.registrationCount;
+      const name = info.spreadsheetName || 'connected spreadsheet';
+      const last = info.lastRegistrationId ? ` · last ID ${info.lastRegistrationId}` : '';
+      const countText = typeof count === 'number' ? ` · ${count} row(s)` : '';
+
+      els.sheetStatus.innerHTML = '';
+      els.sheetStatus.style.color = '#188038';
+
+      if (info.spreadsheetUrl) {
+        els.sheetStatus.appendChild(document.createTextNode(`Google Sheets OK: ${name}${countText}${last} — `));
+        const a = document.createElement('a');
+        a.href = info.spreadsheetUrl;
+        a.target = '_blank';
+        a.rel = 'noopener noreferrer';
+        a.textContent = 'Open sheet';
+        a.style.color = '#1a73e8';
+        a.style.textDecoration = 'underline';
+        els.sheetStatus.appendChild(a);
+      } else {
+        els.sheetStatus.textContent =
+          `Google Sheets API online${countText}${last}. Redeploy latest Code.gs to show the exact spreadsheet link here.`;
+      }
+    } catch {
+      els.sheetStatus.textContent = 'Google Sheets: connection check failed';
+      els.sheetStatus.style.color = '#d93025';
+    }
+  }
+
   function init() {
+    // Only restore confirmation for real server Registration IDs (SIH2026-XXXX)
     const existingSubmission = Storage.loadSubmission();
-    if (existingSubmission) {
+    const validStored =
+      existingSubmission &&
+      existingSubmission.registrationId &&
+      Api.REG_ID_RE.test(String(existingSubmission.registrationId));
+
+    if (validStored) {
       state.submission = existingSubmission;
       showConfirmation(existingSubmission);
+    } else if (existingSubmission) {
+      Storage.clearSubmission();
     }
 
-    const restored = !existingSubmission && restoreDraft();
+    const restored = !validStored && restoreDraft();
     if (!restored) {
       renderSections();
     }
+
+    if (window.location.protocol === 'file:') {
+      showAlert(
+        'Important: Do not open this page as a file. Run a local server and open http://localhost:5500 — otherwise Google Sheets will not receive data.'
+      );
+    }
+
+    // Show which Google Sheet is connected (helps debugging "data not appearing")
+    checkSheetConnection();
 
     els.btnNext.addEventListener('click', goNext);
     els.btnPrev.addEventListener('click', goPrev);
