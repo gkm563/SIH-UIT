@@ -391,24 +391,38 @@ function validateRegistration_(data) {
     return { ok: false, message: 'Team name is required.' };
   }
 
-  if ([2, 3, 4, 5, 6].indexOf(data.teamSize) === -1) {
-    return { ok: false, message: 'Total team members must be between 2 and 6.' };
+  if (data.teamSize !== 6) {
+    return { ok: false, message: 'SIH 2026 mandates a team size of exactly 6 members (1 Team Leader + 5 Members).' };
   }
 
   var leaderCheck = validatePerson_(data.leader, 'Team Leader');
   if (!leaderCheck.ok) return leaderCheck;
 
-  var expectedMembers = data.teamSize - 1;
+  var expectedMembers = 5;
   if (data.members.length !== expectedMembers) {
     return {
       ok: false,
-      message: 'Team member details do not match total team size.'
+      message: 'Please provide details for all 5 team members.'
     };
   }
 
   for (var i = 0; i < data.members.length; i++) {
     var mCheck = validatePerson_(data.members[i], 'Member ' + (i + 1));
     if (!mCheck.ok) return mCheck;
+  }
+
+  var hasFemale = data.leader.gender === 'Female';
+  for (var j = 0; j < data.members.length; j++) {
+    if (data.members[j].gender === 'Female') {
+      hasFemale = true;
+      break;
+    }
+  }
+  if (!hasFemale) {
+    return {
+      ok: false,
+      message: 'Each team must include at least one female member.'
+    };
   }
 
   if (!data.declarations.truth || !data.declarations.internal || !data.declarations.contact) {

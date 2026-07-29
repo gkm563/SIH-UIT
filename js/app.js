@@ -14,7 +14,7 @@
   const YEARS = ['First Year', 'Second Year', 'Third Year', 'Fourth Year'];
   const GENDERS = ['Male', 'Female', 'Prefer not to say'];
   const SEMESTERS = [1, 2, 3, 4, 5, 6, 7, 8];
-  const TEAM_SIZES = [2, 3, 4, 5, 6];
+  const TEAM_SIZES = [6];
 
   const els = {
     form: document.getElementById('registration-form'),
@@ -45,7 +45,7 @@
 
   const state = {
     currentIndex: 0,
-    teamSize: 2,
+    teamSize: 6,
     completed: new Set(),
     saveTimer: null,
     submission: null,
@@ -201,11 +201,22 @@
         validate: 'required',
         placeholder: 'Enter your team name'
       });
-      html += selectField(
-        'teamSize',
-        'Total Number of Team Members',
-        optionList(TEAM_SIZES, 'Select team size')
-      );
+      html += `
+        <div class="field" data-name="teamSize">
+          <label class="field-label">Total Number of Team Members <span class="required" aria-hidden="true">*</span></label>
+          <input
+            class="field-input"
+            type="text"
+            value="6 Members (1 Team Leader + 5 Team Members)"
+            readonly
+            disabled
+            aria-readonly="true"
+            style="background-color: #f8f9fa; color: #3c4043; font-weight: 500; cursor: not-allowed;"
+          />
+          <input type="hidden" name="teamSize" id="teamSize" value="6" />
+          <p class="field-hint">SIH 2026 mandates a team size of exactly 6 members (1 Team Leader + 5 Members).</p>
+          <p class="field-hint">At least <strong>one female member</strong> is mandatory in every team.</p>
+        </div>`;
     }
 
     return html;
@@ -400,6 +411,17 @@
     els.formAlert.classList.remove('visible');
   }
 
+  function hasAtLeastOneFemaleMember() {
+    const genders = [];
+    const leader = els.form.querySelector('input[name="leader_gender"]:checked');
+    if (leader) genders.push(leader.value);
+    for (let i = 1; i <= 5; i++) {
+      const m = els.form.querySelector(`input[name="member${i}_gender"]:checked`);
+      if (m) genders.push(m.value);
+    }
+    return genders.some((g) => g === 'Female');
+  }
+
   function goNext() {
     const sections = getSections();
     const current = sections[state.currentIndex];
@@ -431,7 +453,7 @@
   function collectFormData(normalize = true) {
     const data = {
       currentIndex: state.currentIndex,
-      teamSize: state.teamSize,
+      teamSize: 6,
       completed: [...state.completed],
       fields: {}
     };
@@ -453,10 +475,8 @@
       data.fields[el.name] = value;
     });
 
-    // Ensure teamSize from select if present
-    if (data.fields.teamSize) {
-      data.teamSize = parseInt(data.fields.teamSize, 10) || data.teamSize;
-    }
+    data.fields.teamSize = '6';
+    data.teamSize = 6;
 
     return data;
   }
@@ -581,7 +601,16 @@
     state.currentIndex = sections.length - 1;
     updateUI();
 
+    if (!hasAtLeastOneFemaleMember()) {
+      showAlert(
+        'Each team must include at least one female member. Please update Gender for the Team Leader or a Team Member, then submit again.'
+      );
+      return;
+    }
+
     const formData = collectFormData(true);
+    formData.teamSize = 6;
+    formData.fields.teamSize = '6';
     setSubmitting(true);
     hideAlert();
 
@@ -692,7 +721,7 @@
     Storage.clearSubmission();
     state.submission = null;
     state.currentIndex = 0;
-    state.teamSize = 2;
+    state.teamSize = 6;
     state.completed = new Set();
 
     els.confirmationView.classList.remove('visible');
