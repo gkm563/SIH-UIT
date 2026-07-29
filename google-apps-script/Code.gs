@@ -217,11 +217,15 @@ function handleRegistration_(raw) {
     // Flush to make sure the write is committed before responding
     SpreadsheetApp.flush();
 
+    var emailResult = sendLeaderConfirmationEmail_(data, registrationId, timestamp);
+
     return jsonResponse_({
       success: true,
       registrationId: registrationId,
       timestamp: timestamp,
       message: 'Registration submitted successfully.',
+      emailSent: emailResult.sent,
+      emailMessage: emailResult.message || '',
       spreadsheetUrl: getSpreadsheet_().getUrl()
     });
   } catch (err) {
@@ -237,6 +241,172 @@ function handleRegistration_(raw) {
       // ignore
     }
   }
+}
+
+/* =============================================================================
+ * CONFIRMATION EMAIL (Team Leader)
+ * ============================================================================= */
+
+/**
+ * Send a full registration confirmation email to the Team Leader.
+ * Registration still succeeds even if email fails.
+ */
+function sendLeaderConfirmationEmail_(data, registrationId, timestamp) {
+  try {
+    var to = data.leader && data.leader.email ? String(data.leader.email).trim() : '';
+    if (!to || !isValidEmail_(to)) {
+      return { sent: false, message: 'Team Leader email missing or invalid.' };
+    }
+
+    var subject =
+      'SIH 2026 Internal Registration Confirmed — ' +
+      registrationId +
+      ' — ' +
+      (data.teamName || 'Team');
+
+    var html = buildConfirmationEmailHtml_(data, registrationId, timestamp);
+    var plain = buildConfirmationEmailText_(data, registrationId, timestamp);
+
+    MailApp.sendEmail({
+      to: to,
+      subject: subject,
+      htmlBody: html,
+      body: plain,
+      name: 'UIT SIH 2026 Internal Registration'
+    });
+
+    return { sent: true, message: 'Confirmation email sent to Team Leader.' };
+  } catch (err) {
+    console.error('sendLeaderConfirmationEmail_ error:', err);
+    return {
+      sent: false,
+      message: 'Registration saved, but confirmation email could not be sent: ' + String(err.message || err)
+    };
+  }
+}
+
+function escapeEmail_(value) {
+  return String(value == null ? '' : value)
+    .replace(/&/g, '&amp;')
+    .replace(/</g, '&lt;')
+    .replace(/>/g, '&gt;')
+    .replace(/"/g, '&quot;');
+}
+
+function personEmailBlockHtml_(title, person) {
+  if (!person) return '';
+  return (
+    '<h3 style="margin:18px 0 8px;color:#1a73e8;font-size:15px;border-bottom:1px solid #e8eaed;padding-bottom:6px;">' +
+    escapeEmail_(title) +
+    '</h3>' +
+    '<table style="width:100%;border-collapse:collapse;font-size:13px;color:#202124;">' +
+    emailRow_('Full Name', person.fullName) +
+    emailRow_('Roll Number', person.rollNumber) +
+    emailRow_('Enrollment Number', person.collegeId) +
+    emailRow_('Branch', person.branch) +
+    emailRow_('Year / Semester', (person.year || '—') + ' / ' + (person.semester || '—')) +
+    emailRow_('Gender', person.gender) +
+    emailRow_('Email', person.email) +
+    emailRow_('WhatsApp', person.whatsapp) +
+    '</table>'
+  );
+}
+
+function emailRow_(label, value) {
+  return (
+    '<tr>' +
+    '<td style="padding:4px 8px 4px 0;color:#5f6368;width:38%;vertical-align:top;">' +
+    escapeEmail_(label) +
+    '</td>' +
+    '<td style="padding:4px 0;font-weight:600;vertical-align:top;">' +
+    escapeEmail_(value || '—') +
+    '</td>' +
+    '</tr>'
+  );
+}
+
+function buildConfirmationEmailHtml_(data, registrationId, timestamp) {
+  var membersHtml = '';
+  for (var i = 0; i < data.members.length; i++) {
+    membersHtml += personEmailBlockHtml_('Team Member ' + (i + 1), data.members[i]);
+  }
+
+  return (
+    '<div style="font-family:Segoe UI,Roboto,Arial,sans-serif;max-width:640px;margin:0 auto;background:#ffffff;border:1px solid #dadce0;border-radius:10px;overflow:hidden;">' +
+    '<div style="background:#1a73e8;color:#fff;padding:16px 20px;">' +
+    '<div style="font-size:13px;opacity:.9;">United Institute of Technology, Naini, Prayagraj</div>' +
+    '<div style="font-size:20px;font-weight:700;margin-top:4px;">SIH 2026 Internal Registration</div>' +
+    '</div>' +
+    '<div style="padding:20px;">' +
+    '<p style="margin:0 0 12px;font-size:15px;color:#188038;font-weight:700;">Registration Submitted Successfully</p>' +
+    '<p style="margin:0 0 14px;font-size:14px;color:#202124;">Dear ' +
+    escapeEmail_(data.leader.fullName) +
+    ',</p>' +
+    '<p style="margin:0 0 14px;font-size:14px;color:#5f6368;line-height:1.5;">' +
+    'Thank you for registering your team for the Smart India Hackathon (SIH) 2026 Internal Registration Portal. ' +
+    'Your response has been recorded successfully. Please find your registration details below.' +
+    '</p>' +
+    '<div style="background:#f8f9fa;border:1px solid #e8eaed;border-radius:8px;padding:12px 14px;margin-bottom:16px;">' +
+    '<table style="width:100%;border-collapse:collapse;font-size:13px;">' +
+    emailRow_('Registration ID', registrationId) +
+    emailRow_('Submitted On', timestamp) +
+    emailRow_('Team Name', data.teamName) +
+    emailRow_('Total Members', data.teamSize) +
+    '</table>' +
+    '</div>' +
+    personEmailBlockHtml_('Team Leader', data.leader) +
+    membersHtml +
+    '<div style="margin-top:18px;padding:12px 14px;background:#e8f0fe;border-radius:8px;font-size:12px;color:#1557b0;line-height:1.5;">' +
+    '<strong>Important:</strong> This is only Internal Registration and does not guarantee selection or official SIH registration. ' +
+    'Further updates will be shared on your registered Email ID and WhatsApp number.' +
+    '</div>' +
+    '<p style="margin:18px 0 0;font-size:12px;color:#5f6368;">' +
+    'United Institute of Technology · Smart India Hackathon (SIH) 2026 Internal Registration Portal' +
+    '</p>' +
+    '</div></div>'
+  );
+}
+
+function buildConfirmationEmailText_(data, registrationId, timestamp) {
+  var lines = [];
+  lines.push('SIH 2026 INTERNAL REGISTRATION CONFIRMATION');
+  lines.push('United Institute of Technology, Naini, Prayagraj');
+  lines.push('');
+  lines.push('Registration Submitted Successfully');
+  lines.push('');
+  lines.push('Registration ID : ' + registrationId);
+  lines.push('Submitted On    : ' + timestamp);
+  lines.push('Team Name       : ' + (data.teamName || ''));
+  lines.push('Total Members   : ' + data.teamSize);
+  lines.push('');
+  lines.push('TEAM LEADER');
+  lines.push('Name       : ' + (data.leader.fullName || ''));
+  lines.push('Roll       : ' + (data.leader.rollNumber || ''));
+  lines.push('Enrollment : ' + (data.leader.collegeId || ''));
+  lines.push('Branch     : ' + (data.leader.branch || ''));
+  lines.push('Year/Sem   : ' + (data.leader.year || '') + ' / ' + (data.leader.semester || ''));
+  lines.push('Gender     : ' + (data.leader.gender || ''));
+  lines.push('Email      : ' + (data.leader.email || ''));
+  lines.push('WhatsApp   : ' + (data.leader.whatsapp || ''));
+  lines.push('');
+
+  for (var i = 0; i < data.members.length; i++) {
+    var m = data.members[i];
+    lines.push('TEAM MEMBER ' + (i + 1));
+    lines.push('Name       : ' + (m.fullName || ''));
+    lines.push('Roll       : ' + (m.rollNumber || ''));
+    lines.push('Enrollment : ' + (m.collegeId || ''));
+    lines.push('Branch     : ' + (m.branch || ''));
+    lines.push('Year/Sem   : ' + (m.year || '') + ' / ' + (m.semester || ''));
+    lines.push('Gender     : ' + (m.gender || ''));
+    lines.push('Email      : ' + (m.email || ''));
+    lines.push('WhatsApp   : ' + (m.whatsapp || ''));
+    lines.push('');
+  }
+
+  lines.push('NOTE: This is Internal Registration only and does not guarantee selection.');
+  lines.push('United Institute of Technology · SIH 2026 Internal Registration Portal');
+  return lines.join('\n');
 }
 
 /* =============================================================================
