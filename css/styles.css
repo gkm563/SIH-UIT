@@ -180,6 +180,116 @@ body {
   box-shadow: 0 0 0 3px var(--primary-light);
 }
 
+/* Instructions page */
+.instructions-card {
+  background: var(--card);
+  border-radius: var(--radius);
+  box-shadow: var(--shadow);
+  border-top: 6px solid var(--primary);
+  padding: 1.5rem 1.5rem 1.75rem;
+  margin-bottom: 1.25rem;
+}
+
+#form-view[hidden],
+#progress-wrap[hidden] {
+  display: none !important;
+}
+
+.instructions-card h2 {
+  margin: 0 0 0.75rem;
+  font-size: 1.35rem;
+  font-weight: 500;
+  line-height: 1.35;
+  color: var(--text);
+}
+
+.instructions-card h3 {
+  margin: 1.5rem 0 0.65rem;
+  font-size: 1.05rem;
+  font-weight: 600;
+  color: #2a4b8d;
+}
+
+.instructions-lead {
+  margin: 0 0 0.5rem;
+  font-size: 0.95rem;
+  color: var(--text);
+}
+
+.instructions-note {
+  margin: 0 0 0.75rem;
+  font-size: 0.9rem;
+  color: var(--text-muted);
+}
+
+.instructions-list {
+  margin: 0;
+  padding-left: 1.25rem;
+  font-size: 0.9rem;
+  color: var(--text);
+}
+
+.instructions-list > li {
+  margin-bottom: 0.7rem;
+  padding-left: 0.25rem;
+}
+
+.instructions-list ul {
+  margin: 0.45rem 0 0;
+  padding-left: 1.15rem;
+}
+
+.instructions-list ul li {
+  margin-bottom: 0.25rem;
+  color: var(--text-muted);
+}
+
+.instructions-list a {
+  color: var(--primary);
+  word-break: break-all;
+}
+
+.ready-list {
+  margin: 0;
+  padding-left: 1.25rem;
+  font-size: 0.9rem;
+  color: var(--text);
+}
+
+.ready-list li {
+  margin-bottom: 0.35rem;
+}
+
+.instructions-closing {
+  margin: 1.35rem 0 0;
+  padding: 0.9rem 1rem;
+  background: var(--primary-light);
+  border-radius: 8px;
+  font-size: 0.95rem;
+  color: #1557b0;
+}
+
+.instructions-actions {
+  margin-top: 1.5rem;
+  display: flex;
+  justify-content: center;
+}
+
+.instructions-actions .btn {
+  width: 100%;
+  max-width: 28rem;
+}
+
+@media (max-width: 480px) {
+  .instructions-card {
+    padding: 1.15rem 1rem 1.35rem;
+  }
+
+  .instructions-card h2 {
+    font-size: 1.15rem;
+  }
+}
+
 /* Form card */
 .form-card {
   background: var(--card);

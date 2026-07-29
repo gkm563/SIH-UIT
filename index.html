@@ -46,8 +46,80 @@
   </header>
 
   <main id="main-content" class="main max-w-[720px] mx-auto px-5 py-6 pb-12" role="main">
+    <!-- Instructions (shown first) -->
+    <section id="instructions-view" class="instructions-card" aria-labelledby="instructions-title">
+      <div class="sih-banner-wrap text-center mb-4">
+        <img src="assets/sih-logo.png" alt="Smart India Hackathon 2026 Logo" class="sih-banner-img max-h-36 mx-auto rounded-lg" />
+      </div>
+
+      <h2 id="instructions-title">Instructions for Smart India Hackathon (SIH) 2026 Internal Registration</h2>
+      <p class="instructions-lead">
+        Welcome to the <strong>Smart India Hackathon (SIH) 2026 Internal Registration Portal</strong> of
+        <strong>United Institute of Technology, Prayagraj</strong>.
+      </p>
+      <p class="instructions-note">Please read the following instructions carefully before filling out the registration form.</p>
+
+      <h3>Important Instructions</h3>
+      <ol class="instructions-list">
+        <li>This registration is <strong>only for the college-level internal registration process</strong> for Smart India Hackathon (SIH) 2026.</li>
+        <li>Submission of this form <strong>does not guarantee selection</strong> for Smart India Hackathon 2026. Teams will be shortlisted through the college's internal evaluation process.</li>
+        <li>The <strong>official SIH 2026 Problem Statements have not yet been released</strong>. Further information regarding problem statement selection, team verification, mentoring, and the official SIH registration process will be communicated after their release.</li>
+        <li>Students are advised to form their teams in advance. A team may consist of <strong>2 to 6 members</strong>, including the Team Leader.</li>
+        <li>The <strong>Team Leader</strong> must complete this registration form on behalf of the entire team.</li>
+        <li>Ensure that the details of <strong>all team members</strong> are entered correctly. Incorrect or incomplete information may result in rejection during verification.</li>
+        <li>Each student should be a member of <strong>only one team</strong>. Multiple registrations using the same participant details may be considered invalid.</li>
+        <li>Use a valid and active <strong>Personal Email ID</strong> and <strong>WhatsApp Number</strong>, as all official communication regarding SIH will be shared through these channels.</li>
+        <li>Verify all information carefully before submitting the form. Once submitted, modifications may not be possible.</li>
+        <li>The registration must be completed <strong>before the announced deadline</strong>. Late submissions may not be considered.</li>
+        <li>
+          The information collected through this form will be used only for:
+          <ul>
+            <li>Internal registration and participant verification.</li>
+            <li>Team formation and validation.</li>
+            <li>Mentor allocation.</li>
+            <li>College-level screening and evaluation.</li>
+            <li>Official communication related to Smart India Hackathon (SIH) 2026.</li>
+          </ul>
+        </li>
+        <li>
+          Students are encouraged to regularly visit the official Smart India Hackathon website for the latest announcements and problem statement releases:
+          <a href="https://www.sih.gov.in/" target="_blank" rel="noopener noreferrer">https://www.sih.gov.in/</a>
+        </li>
+      </ol>
+
+      <h3>Before You Begin</h3>
+      <p class="instructions-note">Please keep the following information ready:</p>
+      <ul class="ready-list">
+        <li>Team Name</li>
+        <li>Team Leader Details</li>
+        <li>Details of all Team Members</li>
+        <li>University Roll Numbers</li>
+        <li>Enrollment Numbers</li>
+        <li>Branch and Semester Information</li>
+        <li>Personal Email IDs</li>
+        <li>WhatsApp Numbers</li>
+      </ul>
+
+      <h3>Declaration</h3>
+      <p class="instructions-note">By submitting this form, the Team Leader confirms that:</p>
+      <ul class="ready-list">
+        <li>All information provided is true and accurate.</li>
+        <li>All team members have consented to participate.</li>
+        <li>The team agrees to follow the rules and guidelines issued by the college and Smart India Hackathon (SIH).</li>
+        <li>The team understands that this is an internal registration process and that final participation is subject to the college's selection process and the official SIH guidelines.</li>
+      </ul>
+
+      <p class="instructions-closing">We wish all participants the very best for <strong>Smart India Hackathon (SIH) 2026</strong>.</p>
+
+      <div class="instructions-actions">
+        <button type="button" id="btn-start-registration" class="btn btn-primary">
+          I have read the instructions — Start Registration
+        </button>
+      </div>
+    </section>
+
     <!-- Progress Indicator -->
-    <div id="progress-wrap" class="progress-wrap" aria-live="polite">
+    <div id="progress-wrap" class="progress-wrap" aria-live="polite" hidden>
       <div class="progress-meta">
         <span id="progress-label" class="progress-label">Section 1 of 3</span>
         <span id="progress-pct" class="progress-pct">0% complete</span>
@@ -59,7 +131,7 @@
     </div>
 
     <!-- Registration Form -->
-    <div id="form-view">
+    <div id="form-view" hidden>
       <form id="registration-form" class="form-card" novalidate aria-labelledby="form-title">
         <div class="form-card-header">
           <div class="sih-banner-wrap text-center mb-4">

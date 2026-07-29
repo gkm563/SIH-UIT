@@ -14,7 +14,7 @@
   const YEARS = ['First Year', 'Second Year', 'Third Year', 'Fourth Year'];
   const GENDERS = ['Male', 'Female', 'Prefer not to say'];
   const SEMESTERS = [1, 2, 3, 4, 5, 6, 7, 8];
-  const TEAM_SIZES = [6];
+  const TEAM_SIZES = [2, 3, 4, 5, 6];
 
   const els = {
     form: document.getElementById('registration-form'),
@@ -32,6 +32,8 @@
     draftStatus: document.getElementById('draft-status'),
     sheetStatus: document.getElementById('sheet-status'),
     formView: document.getElementById('form-view'),
+    instructionsView: document.getElementById('instructions-view'),
+    btnStartRegistration: document.getElementById('btn-start-registration'),
     confirmationView: document.getElementById('confirmation-view'),
     confRegId: document.getElementById('conf-reg-id'),
     confDatetime: document.getElementById('conf-datetime'),
@@ -44,11 +46,12 @@
 
   const state = {
     currentIndex: 0,
-    teamSize: 6,
+    teamSize: 2,
     completed: new Set(),
     saveTimer: null,
     submission: null,
-    isSubmitting: false
+    isSubmitting: false,
+    instructionsAccepted: false
   };
 
   /* ---------- Helpers ---------- */
@@ -199,20 +202,11 @@
         validate: 'required',
         placeholder: 'Enter your team name'
       });
-      html += `
-        <div class="field" data-name="teamSize">
-          <label class="field-label">Total Number of Team Members</label>
-          <input
-            class="field-input"
-            type="text"
-            value="6 Members (1 Team Leader + 5 Team Members)"
-            readonly
-            disabled
-            style="background-color: #f8f9fa; color: #3c4043; font-weight: 500; cursor: not-allowed;"
-          />
-          <input type="hidden" name="teamSize" value="6" />
-          <p class="field-hint">SIH 2026 mandates a team size of exactly 6 members (1 Team Leader + 5 Members).</p>
-        </div>`;
+      html += selectField(
+        'teamSize',
+        'Total Number of Team Members',
+        optionList(TEAM_SIZES, 'Select team size')
+      );
     }
 
     return html;
@@ -438,9 +432,9 @@
   function collectFormData(normalize = true) {
     const data = {
       currentIndex: state.currentIndex,
-      teamSize: 6,
+      teamSize: state.teamSize,
       completed: [...state.completed],
-      fields: { teamSize: '6' }
+      fields: {}
     };
 
     els.form.querySelectorAll('input, select').forEach((el) => {
@@ -626,8 +620,54 @@
     }
   }
 
+  function showInstructions() {
+    state.instructionsAccepted = false;
+    try {
+      sessionStorage.removeItem('sih2026_instructions_accepted');
+    } catch {
+      // ignore
+    }
+    if (els.instructionsView) {
+      els.instructionsView.hidden = false;
+    }
+    if (els.formView) {
+      els.formView.hidden = true;
+      els.formView.style.display = 'none';
+    }
+    if (els.progressWrap) {
+      els.progressWrap.hidden = true;
+      els.progressWrap.style.display = 'none';
+    }
+    els.confirmationView.classList.remove('visible');
+  }
+
+  function startRegistration() {
+    state.instructionsAccepted = true;
+    try {
+      sessionStorage.setItem('sih2026_instructions_accepted', '1');
+    } catch {
+      // ignore
+    }
+    if (els.instructionsView) {
+      els.instructionsView.hidden = true;
+    }
+    if (els.formView) {
+      els.formView.hidden = false;
+      els.formView.style.display = '';
+    }
+    if (els.progressWrap) {
+      els.progressWrap.hidden = false;
+      els.progressWrap.style.display = '';
+    }
+    window.scrollTo({ top: 0, behavior: 'smooth' });
+    checkSheetConnection();
+  }
+
   function showConfirmation(submission) {
+    if (els.instructionsView) els.instructionsView.hidden = true;
+    els.formView.hidden = true;
     els.formView.style.display = 'none';
+    els.progressWrap.hidden = true;
     els.progressWrap.style.display = 'none';
     els.confirmationView.classList.add('visible');
 
@@ -654,16 +694,15 @@
     Storage.clearSubmission();
     state.submission = null;
     state.currentIndex = 0;
-    state.teamSize = 6;
+    state.teamSize = 2;
     state.completed = new Set();
 
     els.confirmationView.classList.remove('visible');
-    els.formView.style.display = '';
-    els.progressWrap.style.display = '';
     els.form.reset();
     renderSections();
     els.draftStatus.textContent = '';
     els.draftStatus.classList.remove('saved');
+    showInstructions();
     window.scrollTo({ top: 0, behavior: 'smooth' });
   }
 
@@ -732,14 +771,31 @@
       renderSections();
     }
 
+    // Show instructions first unless already accepted this session or confirming
+    let accepted = false;
+    try {
+      accepted = sessionStorage.getItem('sih2026_instructions_accepted') === '1';
+    } catch {
+      accepted = false;
+    }
+
+    if (validStored) {
+      if (els.instructionsView) els.instructionsView.hidden = true;
+    } else if (accepted) {
+      startRegistration();
+    } else {
+      showInstructions();
+    }
+
     if (window.location.protocol === 'file:') {
       showAlert(
         'Important: Do not open this page as a file. Run a local server and open http://localhost:5500 — otherwise Google Sheets will not receive data.'
       );
     }
 
-    // Show which Google Sheet is connected (helps debugging "data not appearing")
-    checkSheetConnection();
+    if (els.btnStartRegistration) {
+      els.btnStartRegistration.addEventListener('click', startRegistration);
+    }
 
     els.btnNext.addEventListener('click', goNext);
     els.btnPrev.addEventListener('click', goPrev);
