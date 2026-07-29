@@ -27,8 +27,8 @@
 <body>
   <a class="sr-only" href="#main-content">Skip to main content</a>
 
-  <header class="site-header sticky top-0 z-50 bg-white border-b border-gray-200" role="banner">
-    <div class="header-inner max-w-[720px] mx-auto px-5 py-3 flex items-center gap-3 sm:gap-4">
+  <header class="site-header" role="banner">
+    <div class="header-inner">
       <img
         class="college-logo"
         src="assets/united-logo.png"
@@ -87,19 +87,6 @@
         </li>
       </ol>
 
-      <h3>Before You Begin</h3>
-      <p class="instructions-note">Please keep the following information ready:</p>
-      <ul class="ready-list">
-        <li>Team Name</li>
-        <li>Team Leader Details</li>
-        <li>Details of all Team Members</li>
-        <li>University Roll Numbers</li>
-        <li>Enrollment Numbers</li>
-        <li>Branch and Semester Information</li>
-        <li>Personal Email IDs</li>
-        <li>WhatsApp Numbers</li>
-      </ul>
-
       <h3>Declaration</h3>
       <p class="instructions-note">By submitting this form, the Team Leader confirms that:</p>
       <ul class="ready-list">
@@ -141,7 +128,6 @@
           <p>Mandatory registration for all students who wish to participate in Smart India Hackathon (SIH) 2026 through the college.</p>
           <p>Please provide accurate information.</p>
           <p id="draft-status" class="draft-status" aria-live="polite"></p>
-          <p id="sheet-status" class="draft-status" aria-live="polite">Checking Google Sheets connection…</p>
         </div>
 
         <div id="form-alert" class="alert alert-error" role="alert"></div>
@@ -209,9 +195,16 @@
     <p class="loading-text">Submitting registration…</p>
   </div>
 
-  <footer class="site-footer text-center px-5 pt-6 pb-8 text-xs text-gray-500" role="contentinfo">
-    <p class="m-0">&copy; 2026 United Institute of Technology, Naini, Prayagraj · Smart India Hackathon (SIH) 2026 Internal Registration</p>
-    <p class="m-0 mt-1">This portal is for internal college use only and does not replace official SIH registration.</p>
+  <footer class="site-footer" role="contentinfo">
+    <div class="footer-inner">
+      <p class="footer-college">&copy; 2026 United Institute of Technology, Naini, Prayagraj</p>
+      <p class="footer-meta">Smart India Hackathon (SIH) 2026 Internal Registration Portal</p>
+      <p class="footer-note">This portal is for internal college use only and does not replace official SIH registration.</p>
+      <p class="footer-credit">
+        Developed by
+        <a href="https://www.linkedin.com/in/gkm563" target="_blank" rel="noopener noreferrer">GKM</a>
+      </p>
+    </div>
   </footer>
 
   <script src="js/vendor/jspdf.umd.min.js"></script>

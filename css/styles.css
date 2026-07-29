@@ -31,6 +31,8 @@ body {
   background: var(--bg);
   line-height: 1.5;
   min-height: 100vh;
+  display: flex;
+  flex-direction: column;
 }
 
 .sr-only {
@@ -47,17 +49,20 @@ body {
 
 /* Header */
 .site-header {
-  background: var(--card);
+  background: rgba(255, 255, 255, 0.96);
+  backdrop-filter: blur(10px);
+  -webkit-backdrop-filter: blur(10px);
   border-bottom: 1px solid var(--border);
   position: sticky;
   top: 0;
   z-index: 50;
+  box-shadow: 0 1px 0 rgba(60, 64, 67, 0.06), 0 2px 8px rgba(60, 64, 67, 0.06);
 }
 
 .header-inner {
   max-width: 720px;
   margin: 0 auto;
-  padding: 1rem 1.25rem;
+  padding: 0.85rem 1.25rem;
   display: flex;
   align-items: center;
   gap: 1rem;
@@ -740,10 +745,57 @@ body {
 
 /* Footer */
 .site-footer {
+  margin-top: auto;
+  border-top: 1px solid var(--border);
+  background: #fff;
   text-align: center;
-  padding: 1.5rem 1.25rem 2rem;
+}
+
+.footer-inner {
+  max-width: 720px;
+  margin: 0 auto;
+  padding: 1.35rem 1.25rem 1.6rem;
+}
+
+.footer-college {
+  margin: 0;
+  font-size: 0.8rem;
+  font-weight: 600;
+  color: #2a4b8d;
+}
+
+.footer-meta {
+  margin: 0.3rem 0 0;
   font-size: 0.75rem;
+  color: var(--text);
+}
+
+.footer-note {
+  margin: 0.4rem 0 0;
+  font-size: 0.72rem;
   color: var(--text-muted);
+}
+
+.footer-credit {
+  margin: 0.85rem 0 0;
+  padding-top: 0.85rem;
+  border-top: 1px solid #f1f3f4;
+  font-size: 0.78rem;
+  color: var(--text-muted);
+}
+
+.footer-credit a {
+  color: var(--primary);
+  font-weight: 600;
+  text-decoration: none;
+}
+
+.footer-credit a:hover {
+  text-decoration: underline;
+}
+
+.main {
+  flex: 1 0 auto;
 }
 
 /* Alert banner */
