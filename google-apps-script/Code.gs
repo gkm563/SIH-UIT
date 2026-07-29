@@ -264,13 +264,13 @@ function handleRegistration_(raw) {
 
 /**
  * RUN THIS ONCE in the Apps Script editor before expecting emails to work:
- * 1. Select function: authorizeMailPermissions_
+ * 1. Select function: authorizeMailPermissions
  * 2. Click Run
  * 3. Review permissions → Allow (Gmail/Mail access)
  * 4. Check your inbox for "SIH 2026 Mail Test OK"
  * 5. Then Deploy → Manage deployments → Edit → New version → Deploy
  */
-function authorizeMailPermissions_() {
+function authorizeMailPermissions() {
   var quota = MailApp.getRemainingDailyQuota();
   Logger.log('Mail quota remaining: ' + quota);
 
@@ -304,7 +304,7 @@ function sendLeaderConfirmationEmail_(data, registrationId, timestamp) {
       sent: false,
       quota: -1,
       message:
-        'Mail permission not granted. In Apps Script, run authorizeMailPermissions_ once and Allow access, then redeploy (New version).'
+        'Mail permission not granted. In Apps Script, run authorizeMailPermissions once and Allow access, then redeploy (New version).'
     };
   }
 
@@ -356,7 +356,7 @@ function sendLeaderConfirmationEmail_(data, registrationId, timestamp) {
     var msg = String(err.message || err);
     if (/Authorization|permission|access|scope/i.test(msg)) {
       msg =
-        'Mail permission missing. Run authorizeMailPermissions_ in Apps Script editor, click Allow, then Deploy → New version.';
+        'Mail permission missing. Run authorizeMailPermissions in Apps Script editor, click Allow, then Deploy → New version.';
     }
     return {
       sent: false,
