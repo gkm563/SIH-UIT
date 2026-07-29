@@ -194,6 +194,27 @@ body {
   border-bottom: 1px solid #f1f3f4;
 }
 
+.sih-banner-wrap {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 0.25rem 0 0.5rem;
+  margin-bottom: 1rem;
+}
+
+.sih-banner-img {
+  max-height: 140px;
+  width: auto;
+  max-width: 100%;
+  object-fit: contain;
+  border-radius: 10px;
+  transition: transform 0.3s ease;
+}
+
+.sih-banner-img:hover {
+  transform: scale(1.02);
+}
+
 .form-card-header h2 {
   margin: 0 0 0.5rem;
   font-size: 1.375rem;
