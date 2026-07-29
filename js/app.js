@@ -38,6 +38,7 @@
     confDatetime: document.getElementById('conf-datetime'),
     confTeam: document.getElementById('conf-team'),
     confLeader: document.getElementById('conf-leader'),
+    confEmailStatus: document.getElementById('conf-email-status'),
     btnDownload: document.getElementById('btn-download'),
     btnHome: document.getElementById('btn-home'),
     loadingOverlay: document.getElementById('loading-overlay')
@@ -634,6 +635,9 @@
         submittedAt: new Date().toISOString(),
         submittedAtDisplay,
         message: result.message,
+        emailSent: !!result.emailSent,
+        emailTo: result.emailTo || formData.fields.leader_email || '',
+        emailMessage: result.emailMessage || '',
         ...formData
       };
 
@@ -702,6 +706,21 @@
     els.confDatetime.textContent = submission.submittedAtDisplay;
     els.confTeam.textContent = submission.fields.teamName || '—';
     els.confLeader.textContent = submission.fields.leader_fullName || '—';
+
+    if (els.confEmailStatus) {
+      if (submission.emailSent) {
+        els.confEmailStatus.textContent =
+          'Sent to ' + (submission.emailTo || submission.fields.leader_email || 'Team Leader');
+        els.confEmailStatus.style.color = '#188038';
+      } else if (submission.emailMessage) {
+        els.confEmailStatus.textContent = 'Not sent — ' + submission.emailMessage;
+        els.confEmailStatus.style.color = '#d93025';
+      } else {
+        els.confEmailStatus.textContent =
+          'Check Team Leader inbox/Spam. If missing, Apps Script mail permission may need authorization.';
+        els.confEmailStatus.style.color = '#5f6368';
+      }
+    }
 
     window.scrollTo({ top: 0, behavior: 'smooth' });
   }

@@ -91,7 +91,8 @@ const HEADERS = [
   'Member 5 Email',
   'Member 5 WhatsApp',
   'Declaration Accepted',
-  'Submission Status'
+  'Submission Status',
+  'Email Status'
 ];
 
 /* =============================================================================
@@ -213,19 +214,33 @@ function handleRegistration_(raw) {
 
     const row = buildRow_(data, registrationId, timestamp);
     sheet.appendRow(row);
-
-    // Flush to make sure the write is committed before responding
     SpreadsheetApp.flush();
 
     var emailResult = sendLeaderConfirmationEmail_(data, registrationId, timestamp);
+
+    // Write email result into the last column of the row just added
+    try {
+      var lastRow = sheet.getLastRow();
+      var emailCol = HEADERS.length; // Email Status
+      sheet.getRange(lastRow, emailCol).setValue(
+        emailResult.sent ? 'Sent to ' + cleanEmailAddress_(data.leader.email) : 'FAILED: ' + (emailResult.message || 'unknown')
+      );
+      SpreadsheetApp.flush();
+    } catch (sheetEmailErr) {
+      console.error('Could not write Email Status column:', sheetEmailErr);
+    }
 
     return jsonResponse_({
       success: true,
       registrationId: registrationId,
       timestamp: timestamp,
-      message: 'Registration submitted successfully.',
+      message: emailResult.sent
+        ? 'Registration submitted successfully. Confirmation email sent to Team Leader.'
+        : 'Registration submitted successfully, but confirmation email failed: ' + (emailResult.message || 'unknown error'),
       emailSent: emailResult.sent,
+      emailTo: cleanEmailAddress_(data.leader.email),
       emailMessage: emailResult.message || '',
+      emailQuota: emailResult.quota,
       spreadsheetUrl: getSpreadsheet_().getUrl()
     });
   } catch (err) {
@@ -248,41 +263,116 @@ function handleRegistration_(raw) {
  * ============================================================================= */
 
 /**
+ * RUN THIS ONCE in the Apps Script editor before expecting emails to work:
+ * 1. Select function: authorizeMailPermissions_
+ * 2. Click Run
+ * 3. Review permissions → Allow (Gmail/Mail access)
+ * 4. Check your inbox for "SIH 2026 Mail Test OK"
+ * 5. Then Deploy → Manage deployments → Edit → New version → Deploy
+ */
+function authorizeMailPermissions_() {
+  var quota = MailApp.getRemainingDailyQuota();
+  Logger.log('Mail quota remaining: ' + quota);
+
+  var me = Session.getActiveUser().getEmail();
+  if (!me) {
+    throw new Error('Could not detect your Google account email. Sign in and try again.');
+  }
+
+  MailApp.sendEmail(
+    me,
+    'SIH 2026 Mail Test OK',
+    'Mail permission is working for the SIH 2026 registration script.\n\nQuota remaining: ' +
+      quota +
+      '\n\nYou can now redeploy the Web App (New version).'
+  );
+
+  Logger.log('Test email sent to: ' + me);
+  return 'OK — test email sent to ' + me + '. Quota left: ' + quota;
+}
+
+/**
  * Send a full registration confirmation email to the Team Leader.
  * Registration still succeeds even if email fails.
  */
 function sendLeaderConfirmationEmail_(data, registrationId, timestamp) {
+  var quota = -1;
   try {
-    var to = data.leader && data.leader.email ? String(data.leader.email).trim() : '';
+    quota = MailApp.getRemainingDailyQuota();
+  } catch (quotaErr) {
+    return {
+      sent: false,
+      quota: -1,
+      message:
+        'Mail permission not granted. In Apps Script, run authorizeMailPermissions_ once and Allow access, then redeploy (New version).'
+    };
+  }
+
+  if (quota === 0) {
+    return {
+      sent: false,
+      quota: 0,
+      message: 'Daily email quota exhausted for this Google account. Try again tomorrow.'
+    };
+  }
+
+  try {
+    var to = cleanEmailAddress_(data.leader && data.leader.email);
     if (!to || !isValidEmail_(to)) {
-      return { sent: false, message: 'Team Leader email missing or invalid.' };
+      return { sent: false, quota: quota, message: 'Team Leader email missing or invalid: ' + to };
     }
 
     var subject =
-      'SIH 2026 Internal Registration Confirmed — ' +
+      'SIH 2026 Internal Registration Confirmed - ' +
       registrationId +
-      ' — ' +
-      (data.teamName || 'Team');
+      ' - ' +
+      String(data.teamName || 'Team').replace(/[^\w\s\-_.]/g, ' ');
 
     var html = buildConfirmationEmailHtml_(data, registrationId, timestamp);
     var plain = buildConfirmationEmailText_(data, registrationId, timestamp);
 
-    MailApp.sendEmail({
-      to: to,
-      subject: subject,
-      htmlBody: html,
-      body: plain,
-      name: 'UIT SIH 2026 Internal Registration'
-    });
+    // Primary: MailApp (works for consumer + Workspace when authorized)
+    try {
+      MailApp.sendEmail(to, subject, plain, {
+        htmlBody: html,
+        name: 'UIT SIH 2026 Registration'
+      });
+    } catch (mailErr) {
+      // Fallback: GmailApp (needs Gmail scope; helps on some accounts)
+      console.error('MailApp failed, trying GmailApp:', mailErr);
+      GmailApp.sendEmail(to, subject, plain, {
+        htmlBody: html,
+        name: 'UIT SIH 2026 Registration'
+      });
+    }
 
-    return { sent: true, message: 'Confirmation email sent to Team Leader.' };
+    return {
+      sent: true,
+      quota: quota - 1,
+      message: 'Confirmation email sent to ' + to
+    };
   } catch (err) {
     console.error('sendLeaderConfirmationEmail_ error:', err);
+    var msg = String(err.message || err);
+    if (/Authorization|permission|access|scope/i.test(msg)) {
+      msg =
+        'Mail permission missing. Run authorizeMailPermissions_ in Apps Script editor, click Allow, then Deploy → New version.';
+    }
     return {
       sent: false,
-      message: 'Registration saved, but confirmation email could not be sent: ' + String(err.message || err)
+      quota: quota,
+      message: msg
     };
   }
+}
+
+/** Strip sheet formula-injection quotes and normalize email for sending */
+function cleanEmailAddress_(email) {
+  var s = String(email == null ? '' : email).trim().toLowerCase();
+  while (s.charAt(0) === "'") {
+    s = s.substring(1);
+  }
+  return s;
 }
 
 function escapeEmail_(value) {
@@ -450,6 +540,14 @@ function ensureHeaders_(sheet) {
       .setFontWeight('bold')
       .setBackground('#e8f0fe');
     sheet.setFrozenRows(1);
+    return;
+  }
+
+  // Upgrade existing sheet: add Email Status header if missing
+  var lastHeader = String(existing[HEADERS.length - 1] || '').trim();
+  if (lastHeader !== 'Email Status') {
+    sheet.getRange(1, HEADERS.length).setValue('Email Status');
+    sheet.getRange(1, HEADERS.length).setFontWeight('bold').setBackground('#e8f0fe');
   }
 }
 
@@ -522,7 +620,7 @@ function normalizePayload_(payload) {
       year: sanitize_(src.leader_year),
       semester: sanitize_(String(src.leader_semester || '')),
       gender: sanitize_(src.leader_gender),
-      email: sanitize_(src.leader_email).toLowerCase(),
+      email: cleanEmailAddress_(sanitize_(src.leader_email)),
       whatsapp: normalizePhone_(src.leader_whatsapp)
     },
     members: [],
@@ -544,7 +642,7 @@ function normalizePayload_(payload) {
       year: sanitize_(src['member' + i + '_year']),
       semester: sanitize_(String(src['member' + i + '_semester'] || '')),
       gender: sanitize_(src['member' + i + '_gender']),
-      email: sanitize_(src['member' + i + '_email']).toLowerCase(),
+      email: cleanEmailAddress_(sanitize_(src['member' + i + '_email'])),
       whatsapp: normalizePhone_(src['member' + i + '_whatsapp'])
     });
   }
@@ -699,7 +797,7 @@ function buildRow_(data, registrationId, timestamp) {
       ? 'Yes'
       : 'No';
 
-  row.push(declarationAccepted, 'Submitted');
+  row.push(declarationAccepted, 'Submitted', 'Pending');
   return row;
 }
 
