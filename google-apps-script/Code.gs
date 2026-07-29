@@ -218,13 +218,22 @@ function handleRegistration_(raw) {
 
     var emailResult = sendLeaderConfirmationEmail_(data, registrationId, timestamp);
 
-    // Write email result into the last column of the row just added
+    // Write email result into the last column of the row just added with RED/GREEN highlights
     try {
       var lastRow = sheet.getLastRow();
       var emailCol = HEADERS.length; // Email Status
-      sheet.getRange(lastRow, emailCol).setValue(
-        emailResult.sent ? 'Sent to ' + cleanEmailAddress_(data.leader.email) : 'FAILED: ' + (emailResult.message || 'unknown')
-      );
+      var emailCell = sheet.getRange(lastRow, emailCol);
+      if (emailResult.sent) {
+        emailCell.setValue('Sent to ' + cleanEmailAddress_(data.leader.email) + ' (Quota left: ' + emailResult.quota + ')');
+        emailCell.setBackground('#e6f4ea'); // Light Green
+        emailCell.setFontColor('#137333');  // Dark Green text
+        emailCell.setFontWeight('bold');
+      } else {
+        emailCell.setValue('FAILED: ' + (emailResult.message || 'unknown'));
+        emailCell.setBackground('#fce8e6'); // RED alert background
+        emailCell.setFontColor('#c5221f');  // Bold Red text
+        emailCell.setFontWeight('bold');
+      }
       SpreadsheetApp.flush();
     } catch (sheetEmailErr) {
       console.error('Could not write Email Status column:', sheetEmailErr);
@@ -289,6 +298,103 @@ function authorizeMailPermissions() {
 
   Logger.log('Test email sent to: ' + me);
   return 'OK — test email sent to ' + me + '. Quota left: ' + quota;
+}
+
+/**
+ * ADMIN UTILITY: Resend confirmation emails for all failed rows in the Google Sheet.
+ * Run this function from the Apps Script editor dropdown when your daily email quota resets!
+ */
+function resendFailedEmails() {
+  var sheet = getOrCreateSheet_();
+  var lastRow = sheet.getLastRow();
+  if (lastRow < 2) {
+    Logger.log('No registration rows found.');
+    return 'No registrations found.';
+  }
+
+  var data = sheet.getRange(2, 1, lastRow - 1, HEADERS.length).getValues();
+  var sentCount = 0;
+  var failCount = 0;
+
+  for (var i = 0; i < data.length; i++) {
+    var rowIndex = i + 2;
+    var row = data[i];
+    var status = String(row[HEADERS.length - 1] || '');
+
+    // Process only rows where Email Status starts with "FAILED" or is empty
+    if (status.indexOf('FAILED') === 0 || !status) {
+      var regId = String(row[1] || '');
+      var timestamp = String(row[0] || '');
+      var leaderEmail = cleanEmailAddress_(row[11]);
+      var leaderName = String(row[4] || '');
+      var teamName = String(row[2] || '');
+      var teamSize = parseInt(row[3] || 6, 10);
+
+      if (!leaderEmail || !isValidEmail_(leaderEmail)) {
+        continue;
+      }
+
+      var payloadObj = {
+        teamName: teamName,
+        teamSize: teamSize,
+        leader: {
+          fullName: leaderName,
+          rollNumber: String(row[5] || ''),
+          collegeId: String(row[6] || ''),
+          branch: String(row[7] || ''),
+          year: String(row[8] || ''),
+          semester: String(row[9] || ''),
+          gender: String(row[10] || ''),
+          email: leaderEmail,
+          whatsapp: String(row[12] || '')
+        },
+        members: [],
+        declarations: { truth: true, internal: true, contact: true }
+      };
+
+      // Reconstruct members 1..5
+      for (var m = 1; m <= 5; m++) {
+        var baseIdx = 13 + (m - 1) * 9;
+        if (row[baseIdx]) {
+          payloadObj.members.push({
+            fullName: String(row[baseIdx] || ''),
+            rollNumber: String(row[baseIdx + 1] || ''),
+            collegeId: String(row[baseIdx + 2] || ''),
+            branch: String(row[baseIdx + 3] || ''),
+            year: String(row[baseIdx + 4] || ''),
+            semester: String(row[baseIdx + 5] || ''),
+            gender: String(row[baseIdx + 6] || ''),
+            email: cleanEmailAddress_(row[baseIdx + 7]),
+            whatsapp: String(row[baseIdx + 8] || '')
+          });
+        }
+      }
+
+      var res = sendLeaderConfirmationEmail_(payloadObj, regId, timestamp);
+      var cell = sheet.getRange(rowIndex, HEADERS.length);
+      if (res.sent) {
+        cell.setValue('Sent to ' + leaderEmail + ' (Quota left: ' + res.quota + ')');
+        cell.setBackground('#e6f4ea'); // Light green
+        cell.setFontColor('#137333');
+        cell.setFontWeight('bold');
+        sentCount++;
+      } else {
+        cell.setValue('FAILED: ' + (res.message || 'unknown'));
+        cell.setBackground('#fce8e6'); // Red alert
+        cell.setFontColor('#c5221f');
+        cell.setFontWeight('bold');
+        failCount++;
+        if (res.quota === 0) {
+          Logger.log('Quota exhausted again while resending. Stopped.');
+          break;
+        }
+      }
+    }
+  }
+
+  var msg = 'Bulk resend complete. Sent: ' + sentCount + ', Remaining Failed: ' + failCount;
+  Logger.log(msg);
+  return msg;
 }
 
 /**
