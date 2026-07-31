@@ -1,0 +1,158 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="description" content="United Institute of Technology - Smart India Hackathon (SIH) 2026 Registered Teams Showcase & Team Name Verification Portal." />
+  <meta name="robots" content="index, follow" />
+  <meta name="theme-color" content="#1a73e8" />
+  <title>Registered Teams Showcase | SIH 2026 - United Institute of Technology</title>
+  <link rel="icon" href="assets/united-logo.png" type="image/png" />
+  <script src="https://cdn.tailwindcss.com"></script>
+  <script>
+    tailwind.config = {
+      theme: {
+        extend: {
+          colors: {
+            primary: { DEFAULT: '#1a73e8', dark: '#1557b0', light: '#e8f0fe' },
+            united: { DEFAULT: '#2A4B8D', red: '#D63333' }
+          }
+        }
+      }
+    };
+  </script>
+  <link rel="stylesheet" href="css/styles.css" />
+</head>
+<body>
+  <a class="sr-only" href="#main-content">Skip to main content</a>
+
+  <!-- Header -->
+  <header class="site-header" role="banner">
+    <div class="header-inner">
+      <img
+        class="college-logo"
+        src="assets/united-logo.png"
+        alt="United Group of Institutions logo"
+        width="72"
+        height="72"
+      />
+      <div class="header-text min-w-0">
+        <h1 class="college-name m-0">United Institute of Technology</h1>
+        <p class="college-campus m-0">Naini, Prayagraj</p>
+        <p class="sih-title m-0">Smart India Hackathon (SIH) 2026</p>
+        <p class="portal-label m-0">Internal Registration Portal</p>
+      </div>
+    </div>
+  </header>
+
+  <!-- Navigation Bar -->
+  <nav class="nav-bar" role="navigation" aria-label="Main navigation">
+    <div class="nav-container">
+      <a href="index.html" class="nav-link">
+        <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M11 5H6a2 2 0 00-2 2v11a2 2 0 002 2h11a2 2 0 002-2v-5m-1.414-9.414a2 2 0 112.828 2.828L11.828 15H9v-2.828l8.586-8.586z"/></svg>
+        Register Team
+      </a>
+      <a href="teams.html" class="nav-link active" aria-current="page">
+        <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 20h5v-2a3 3 0 00-5.356-1.857M17 20H7m10 0v-2c0-.656-.126-1.283-.356-1.857M7 20H2v-2a3 3 0 015.356-1.857M7 20v-2c0-.656.126-1.283.356-1.857m0 0a5.002 5.002 0 019.288 0M15 7a3 3 0 11-6 0 3 3 0 016 0zm6 3a2 2 0 11-4 0 2 2 0 014 0zM7 10a2 2 0 11-4 0 2 2 0 014 0z"/></svg>
+        Registered Teams
+      </a>
+    </div>
+  </nav>
+
+  <main id="main-content" class="main max-w-[760px] mx-auto px-4 py-6 pb-16" role="main">
+    <!-- Banner & Title -->
+    <div class="text-center mb-6">
+      <img src="assets/sih-logo.png" alt="Smart India Hackathon 2026 Logo" class="sih-banner-img max-h-28 mx-auto rounded-lg mb-3" />
+      <h2 class="text-2xl font-bold text-gray-900 mb-1">Registered Teams Showcase</h2>
+      <p class="text-sm text-gray-600">Smart India Hackathon (SIH) 2026 – Internal College Directory</p>
+    </div>
+
+    <!-- SIH Naming Rule Alert Box -->
+    <div class="bg-amber-50 border-l-4 border-amber-500 p-4 rounded-r-lg mb-6 shadow-sm">
+      <div class="flex items-start">
+        <div class="flex-shrink-0">
+          <svg class="h-5 w-5 text-amber-600 mt-0.5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 9v2m0 4h.01m-6.938 4h13.856c1.54 0 2.502-1.667 1.732-3L13.732 4c-.77-1.333-2.694-1.333-3.464 0L3.34 16c-.77 1.333.192 3 1.732 3z"/>
+          </svg>
+        </div>
+        <div class="ml-3">
+          <h3 class="text-sm font-bold text-amber-800">Important SIH Team Naming Guideline</h3>
+          <p class="text-xs text-amber-700 mt-1 leading-relaxed">
+            <strong>Rule:</strong> <em>"The team name should be unique and must not contain the name of your institute (e.g. UIT, United) in any form."</em>
+            Use the availability checker below to verify that your proposed team name is distinct and not already registered.
+          </p>
+        </div>
+      </div>
+    </div>
+
+    <!-- Team Name Checker & Search -->
+    <div class="teams-search-box mb-6">
+      <label for="search-input" class="block text-sm font-semibold text-gray-800 mb-2">
+        Search &amp; Team Name Availability Checker
+      </label>
+      <div class="relative">
+        <input
+          type="text"
+          id="search-input"
+          class="w-full pl-10 pr-4 py-3 border border-gray-300 rounded-lg text-sm focus:ring-2 focus:ring-blue-500 focus:border-blue-500 transition-colors"
+          placeholder="Type a team name to check availability or filter..."
+          autocomplete="off"
+        />
+        <div class="absolute inset-y-0 left-0 pl-3.5 flex items-center pointer-events-none text-gray-400">
+          <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z" />
+          </svg>
+        </div>
+      </div>
+
+      <!-- Checker feedback badge -->
+      <div id="availability-badge" class="mt-3 text-xs hidden"></div>
+    </div>
+
+    <!-- Stats & Header Bar -->
+    <div class="flex items-center justify-between mb-4 px-1">
+      <div class="flex items-center gap-2">
+        <span class="text-sm font-bold text-gray-800">Registered Teams</span>
+        <span id="teams-count-badge" class="bg-blue-100 text-blue-800 text-xs font-semibold px-2.5 py-0.5 rounded-full">
+          Loading…
+        </span>
+      </div>
+      <button id="btn-refresh-teams" class="inline-flex items-center gap-1.5 text-xs text-blue-600 hover:text-blue-800 font-semibold transition-colors">
+        <svg class="w-3.5 h-3.5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+          <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 4v5h.582m15.356 2A8.001 8.001 0 004.582 9m0 0H9m11 11v-5h-.581m0 0a8.003 8.003 0 01-15.357-2m15.357 2H15" />
+        </svg>
+        Refresh List
+      </button>
+    </div>
+
+    <!-- Teams List Grid -->
+    <div id="teams-grid" class="grid grid-cols-1 md:grid-cols-2 gap-3" aria-live="polite">
+      <!-- Loading Skeleton Cards -->
+      <div class="team-card animate-pulse bg-white border border-gray-200 rounded-lg p-4">
+        <div class="h-4 bg-gray-200 rounded w-3/4 mb-3"></div>
+        <div class="h-3 bg-gray-100 rounded w-1/2 mb-2"></div>
+        <div class="h-3 bg-gray-100 rounded w-1/3"></div>
+      </div>
+      <div class="team-card animate-pulse bg-white border border-gray-200 rounded-lg p-4">
+        <div class="h-4 bg-gray-200 rounded w-3/4 mb-3"></div>
+        <div class="h-3 bg-gray-100 rounded w-1/2 mb-2"></div>
+        <div class="h-3 bg-gray-100 rounded w-1/3"></div>
+      </div>
+    </div>
+  </main>
+
+  <!-- Footer -->
+  <footer class="site-footer" role="contentinfo">
+    <div class="footer-inner">
+      <p class="footer-college">&copy; 2026 United Institute of Technology, Naini, Prayagraj</p>
+      <p class="footer-meta">Smart India Hackathon (SIH) 2026 Internal Registration Portal</p>
+      <p class="footer-note">Public Registered Teams Showcase · For team verification &amp; uniqueness checks.</p>
+    </div>
+  </footer>
+
+  <script src="js/config.js"></script>
+  <script src="js/validation.js"></script>
+  <script src="js/api.js"></script>
+  <script src="js/teams.js"></script>
+</body>
+</html>

@@ -933,3 +933,68 @@ body {
     border: 1px solid #ccc;
   }
 }
+
+/* Navigation Bar */
+.nav-bar {
+  background: #ffffff;
+  border-bottom: 1px solid var(--border);
+}
+
+.nav-container {
+  max-width: 720px;
+  margin: 0 auto;
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  padding: 0 1rem;
+}
+
+.nav-link {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.4rem;
+  padding: 0.75rem 1rem;
+  font-size: 0.9rem;
+  font-weight: 600;
+  color: var(--text-muted);
+  text-decoration: none;
+  border-bottom: 3px solid transparent;
+  transition: all 0.2s ease;
+  white-space: nowrap;
+}
+
+.nav-link:hover {
+  color: var(--primary);
+  background-color: var(--primary-light);
+}
+
+.nav-link.active {
+  color: var(--primary-dark);
+  font-weight: 700;
+  border-bottom-color: var(--primary);
+  background-color: var(--primary-light);
+}
+
+/* Showcase Portal styling */
+.teams-search-box {
+  background: #ffffff;
+  border: 1px solid var(--border);
+  border-radius: 12px;
+  padding: 1.15rem;
+  box-shadow: var(--shadow);
+}
+
+.team-card {
+  background: #ffffff;
+  border: 1px solid var(--border);
+  border-radius: 10px;
+  padding: 1rem 1.15rem;
+  transition: transform 0.15s ease, box-shadow 0.15s ease, border-color 0.15s ease;
+}
+
+.team-card:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 4px 14px rgba(26, 115, 232, 0.12);
+  border-color: #93c5fd;
+}
+

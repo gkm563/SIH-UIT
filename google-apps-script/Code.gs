@@ -105,6 +105,43 @@ const HEADERS = [
  */
 function doGet(e) {
   try {
+    // Public showcase API: GET ?action=teams (or action=getTeams)
+    // Returns ONLY public non-sensitive data: registrationId, teamName, timestamp
+    if (e && e.parameter && (e.parameter.action === 'teams' || e.parameter.action === 'getTeams')) {
+      const sheet = getOrCreateSheet_();
+      const lastRow = sheet.getLastRow();
+      const teams = [];
+
+      if (lastRow >= 2) {
+        // Read columns A:D (Timestamp, Registration ID, Team Name, Total Team Members)
+        const rows = sheet.getRange(2, 1, lastRow - 1, 4).getValues();
+        for (var i = 0; i < rows.length; i++) {
+          var row = rows[i];
+          var regId = String(row[1] || '').trim();
+          var tName = String(row[2] || '').trim();
+          var timeStr = String(row[0] || '').trim();
+
+          // Clean formula injection single quotes if present
+          if (tName.charAt(0) === "'") tName = tName.substring(1);
+          if (regId.charAt(0) === "'") regId = regId.substring(1);
+
+          if (tName && regId) {
+            teams.push({
+              registrationId: regId,
+              teamName: tName,
+              timestamp: timeStr
+            });
+          }
+        }
+      }
+
+      return jsonResponse_({
+        success: true,
+        totalTeams: teams.length,
+        teams: teams
+      });
+    }
+
     // Optional: register via GET ?action=submit&data=...
     // (backup path if a browser turns POST into GET on redirect)
     if (e && e.parameter && e.parameter.action === 'submit' && e.parameter.data) {

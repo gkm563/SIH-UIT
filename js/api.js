@@ -190,8 +190,36 @@ const Api = (() => {
     }
   }
 
+  async function getRegisteredTeams() {
+    const baseUrl = (AppConfig.GOOGLE_SCRIPT_URL || '').trim();
+    if (!baseUrl) return { success: false, message: 'Google Script URL not configured.', teams: [] };
+
+    const fetchUrl = baseUrl + (baseUrl.includes('?') ? '&' : '?') + 'action=teams';
+
+    try {
+      const response = await fetch(fetchUrl, {
+        method: 'GET',
+        mode: 'cors',
+        redirect: 'follow'
+      });
+      const text = await response.text();
+      try {
+        const data = JSON.parse(text);
+        if (data && data.success && Array.isArray(data.teams)) {
+          return data;
+        }
+        return { success: false, message: data.message || 'Invalid teams response format.', teams: [] };
+      } catch {
+        return { success: false, message: 'Non-JSON response received.', teams: [] };
+      }
+    } catch {
+      return { success: false, message: 'Network error fetching registered teams.', teams: [] };
+    }
+  }
+
   return {
     submitRegistration,
+    getRegisteredTeams,
     ping,
     buildPayload,
     isValidSuccess,
