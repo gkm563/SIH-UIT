@@ -975,26 +975,77 @@ body {
   background-color: var(--primary-light);
 }
 
-/* Showcase Portal styling */
+/* Showcase Portal Mobile & Interactive Enhancements */
 .teams-search-box {
   background: #ffffff;
   border: 1px solid var(--border);
-  border-radius: 12px;
+  border-radius: 14px;
   padding: 1.15rem;
-  box-shadow: var(--shadow);
+  box-shadow: 0 4px 16px rgba(0, 0, 0, 0.04);
+}
+
+.teams-search-sticky {
+  position: sticky;
+  top: 60px;
+  z-index: 40;
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+  background: rgba(248, 249, 250, 0.95);
+  padding: 0.5rem 0;
 }
 
 .team-card {
   background: #ffffff;
   border: 1px solid var(--border);
-  border-radius: 10px;
-  padding: 1rem 1.15rem;
-  transition: transform 0.15s ease, box-shadow 0.15s ease, border-color 0.15s ease;
+  border-radius: 12px;
+  padding: 1.15rem;
+  transition: all 0.2s cubic-bezier(0.4, 0, 0.2, 1);
+  position: relative;
+  overflow: hidden;
+}
+
+.team-card::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 4px;
+  height: 100%;
+  background: linear-gradient(180deg, #1a73e8 0%, #2A4B8D 100%);
+  border-top-left-radius: 12px;
+  border-bottom-left-radius: 12px;
 }
 
 .team-card:hover {
-  transform: translateY(-2px);
-  box-shadow: 0 4px 14px rgba(26, 115, 232, 0.12);
+  transform: translateY(-3px);
+  box-shadow: 0 8px 24px rgba(26, 115, 232, 0.14);
   border-color: #93c5fd;
 }
+
+.badge-pulse {
+  animation: pulseBadge 2s ease-in-out infinite;
+}
+
+@keyframes pulseBadge {
+  0% { transform: scale(1); }
+  50% { transform: scale(1.015); }
+  100% { transform: scale(1); }
+}
+
+@media (max-width: 640px) {
+  .nav-container {
+    padding: 0 0.5rem;
+  }
+  .nav-link {
+    padding: 0.65rem 0.75rem;
+    font-size: 0.825rem;
+  }
+  .teams-search-sticky {
+    top: 54px;
+  }
+  .team-card {
+    padding: 0.95rem 1rem 0.95rem 1.15rem;
+  }
+}
+
 

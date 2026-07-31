@@ -23,7 +23,7 @@
   </script>
   <link rel="stylesheet" href="css/styles.css" />
 </head>
-<body>
+<body class="bg-gray-50 text-gray-900 min-h-screen flex flex-col antialiased">
   <a class="sr-only" href="#main-content">Skip to main content</a>
 
   <!-- Header -->
@@ -46,7 +46,7 @@
   </header>
 
   <!-- Navigation Bar -->
-  <nav class="nav-bar" role="navigation" aria-label="Main navigation">
+  <nav class="nav-bar shadow-xs" role="navigation" aria-label="Main navigation">
     <div class="nav-container">
       <a href="index.html" class="nav-link">
         <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M11 5H6a2 2 0 00-2 2v11a2 2 0 002 2h11a2 2 0 002-2v-5m-1.414-9.414a2 2 0 112.828 2.828L11.828 15H9v-2.828l8.586-8.586z"/></svg>
@@ -59,65 +59,97 @@
     </div>
   </nav>
 
-  <main id="main-content" class="main max-w-[760px] mx-auto px-4 py-6 pb-16" role="main">
-    <!-- Banner & Title -->
-    <div class="text-center mb-6">
-      <img src="assets/sih-logo.png" alt="Smart India Hackathon 2026 Logo" class="sih-banner-img max-h-28 mx-auto rounded-lg mb-3" />
-      <h2 class="text-2xl font-bold text-gray-900 mb-1">Registered Teams Showcase</h2>
-      <p class="text-sm text-gray-600">Smart India Hackathon (SIH) 2026 – Internal College Directory</p>
+  <main id="main-content" class="main max-w-[760px] mx-auto px-4 py-5 pb-16 flex-1 w-full" role="main">
+    <!-- Hero Title Banner Card -->
+    <div class="bg-gradient-to-r from-blue-900 via-indigo-900 to-slate-900 text-white rounded-2xl p-5 sm:p-6 mb-6 shadow-md relative overflow-hidden">
+      <div class="absolute -right-6 -bottom-6 w-32 h-32 bg-blue-500/10 rounded-full blur-xl pointer-events-none"></div>
+      <div class="flex items-center gap-4 relative z-10">
+        <img src="assets/sih-logo.png" alt="SIH 2026 Logo" class="h-16 w-auto rounded-lg bg-white/90 p-1 flex-shrink-0 shadow-sm" />
+        <div>
+          <span class="inline-block bg-blue-500/20 text-blue-200 text-xs font-semibold px-2.5 py-0.5 rounded-full mb-1 border border-blue-400/30">
+            Live Verification Portal
+          </span>
+          <h2 class="text-xl sm:text-2xl font-extrabold tracking-tight text-white">Registered Teams Showcase</h2>
+          <p class="text-xs sm:text-sm text-blue-200/80 mt-0.5">Verify team registrations and check unique team names for SIH 2026</p>
+        </div>
+      </div>
     </div>
 
-    <!-- SIH Naming Rule Alert Box -->
-    <div class="bg-amber-50 border-l-4 border-amber-500 p-4 rounded-r-lg mb-6 shadow-sm">
-      <div class="flex items-start">
-        <div class="flex-shrink-0">
-          <svg class="h-5 w-5 text-amber-600 mt-0.5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+    <!-- SIH Naming Guidelines Card -->
+    <div class="bg-amber-50/90 border border-amber-200 rounded-xl p-4 mb-6 shadow-xs">
+      <div class="flex items-start gap-3">
+        <div class="p-2 bg-amber-100 rounded-lg text-amber-700 flex-shrink-0">
+          <svg class="h-5 w-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
             <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 9v2m0 4h.01m-6.938 4h13.856c1.54 0 2.502-1.667 1.732-3L13.732 4c-.77-1.333-2.694-1.333-3.464 0L3.34 16c-.77 1.333.192 3 1.732 3z"/>
           </svg>
         </div>
-        <div class="ml-3">
-          <h3 class="text-sm font-bold text-amber-800">Important SIH Team Naming Guideline</h3>
-          <p class="text-xs text-amber-700 mt-1 leading-relaxed">
-            <strong>Rule:</strong> <em>"The team name should be unique and must not contain the name of your institute (e.g. UIT, United) in any form."</em>
-            Use the availability checker below to verify that your proposed team name is distinct and not already registered.
-          </p>
+        <div>
+          <h3 class="text-sm font-bold text-amber-900">SIH 2026 Team Naming Guidelines</h3>
+          <ul class="text-xs text-amber-800 mt-1 space-y-1">
+            <li class="flex items-center gap-1.5">
+              <span class="text-amber-600 font-bold">1.</span>
+              <span><strong>Must be unique:</strong> Duplicate team names are not allowed.</span>
+            </li>
+            <li class="flex items-center gap-1.5">
+              <span class="text-amber-600 font-bold">2.</span>
+              <span><strong>No institute names:</strong> Do not include "UIT" or "United" in your team name.</span>
+            </li>
+            <li class="flex items-center gap-1.5">
+              <span class="text-amber-600 font-bold">3.</span>
+              <span><strong>Team Rules:</strong> Exactly 6 members per team (1 leader + 5 members, at least 1 female).</span>
+            </li>
+          </ul>
         </div>
       </div>
     </div>
 
-    <!-- Team Name Checker & Search -->
-    <div class="teams-search-box mb-6">
-      <label for="search-input" class="block text-sm font-semibold text-gray-800 mb-2">
-        Search &amp; Team Name Availability Checker
-      </label>
-      <div class="relative">
-        <input
-          type="text"
-          id="search-input"
-          class="w-full pl-10 pr-4 py-3 border border-gray-300 rounded-lg text-sm focus:ring-2 focus:ring-blue-500 focus:border-blue-500 transition-colors"
-          placeholder="Type a team name to check availability or filter..."
-          autocomplete="off"
-        />
-        <div class="absolute inset-y-0 left-0 pl-3.5 flex items-center pointer-events-none text-gray-400">
-          <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z" />
-          </svg>
+    <!-- Team Name Checker & Search (Sticky Container) -->
+    <div class="teams-search-sticky mb-5">
+      <div class="teams-search-box">
+        <div class="flex items-center justify-between mb-2">
+          <label for="search-input" class="text-xs sm:text-sm font-bold text-gray-800 flex items-center gap-1.5">
+            <svg class="w-4 h-4 text-blue-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z" />
+            </svg>
+            Search &amp; Real-Time Availability Checker
+          </label>
+          <span class="text-[11px] text-gray-400 font-medium hidden sm:inline">Instant Check</span>
         </div>
-      </div>
 
-      <!-- Checker feedback badge -->
-      <div id="availability-badge" class="mt-3 text-xs hidden"></div>
+        <div class="relative">
+          <input
+            type="text"
+            id="search-input"
+            class="w-full pl-10 pr-10 py-3 border border-gray-300 rounded-xl text-sm focus:ring-2 focus:ring-blue-500 focus:border-blue-500 transition-all shadow-2xs"
+            placeholder="Type a team name to check availability..."
+            autocomplete="off"
+          />
+          <div class="absolute inset-y-0 left-0 pl-3.5 flex items-center pointer-events-none text-gray-400">
+            <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z" />
+            </svg>
+          </div>
+          <button id="btn-clear-search" class="absolute inset-y-0 right-0 pr-3 flex items-center text-gray-400 hover:text-gray-600 hidden">
+            <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12" />
+            </svg>
+          </button>
+        </div>
+
+        <!-- Checker feedback badge -->
+        <div id="availability-badge" class="mt-2.5 text-xs hidden"></div>
+      </div>
     </div>
 
-    <!-- Stats & Header Bar -->
+    <!-- Stats & Refresh Bar -->
     <div class="flex items-center justify-between mb-4 px-1">
       <div class="flex items-center gap-2">
-        <span class="text-sm font-bold text-gray-800">Registered Teams</span>
-        <span id="teams-count-badge" class="bg-blue-100 text-blue-800 text-xs font-semibold px-2.5 py-0.5 rounded-full">
+        <span class="text-xs sm:text-sm font-bold text-gray-800">Registered Teams</span>
+        <span id="teams-count-badge" class="bg-blue-100 text-blue-800 text-xs font-bold px-2.5 py-0.5 rounded-full border border-blue-200">
           Loading…
         </span>
       </div>
-      <button id="btn-refresh-teams" class="inline-flex items-center gap-1.5 text-xs text-blue-600 hover:text-blue-800 font-semibold transition-colors">
+      <button id="btn-refresh-teams" class="inline-flex items-center gap-1.5 text-xs text-blue-600 hover:text-blue-800 font-bold active:scale-95 transition-all py-1 px-2.5 rounded-md hover:bg-blue-50">
         <svg class="w-3.5 h-3.5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
           <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 4v5h.582m15.356 2A8.001 8.001 0 004.582 9m0 0H9m11 11v-5h-.581m0 0a8.003 8.003 0 01-15.357-2m15.357 2H15" />
         </svg>
@@ -126,14 +158,14 @@
     </div>
 
     <!-- Teams List Grid -->
-    <div id="teams-grid" class="grid grid-cols-1 md:grid-cols-2 gap-3" aria-live="polite">
-      <!-- Loading Skeleton Cards -->
-      <div class="team-card animate-pulse bg-white border border-gray-200 rounded-lg p-4">
+    <div id="teams-grid" class="grid grid-cols-1 sm:grid-cols-2 gap-3" aria-live="polite">
+      <!-- Loading Skeletons -->
+      <div class="team-card animate-pulse bg-white border border-gray-200 rounded-xl p-4">
         <div class="h-4 bg-gray-200 rounded w-3/4 mb-3"></div>
         <div class="h-3 bg-gray-100 rounded w-1/2 mb-2"></div>
         <div class="h-3 bg-gray-100 rounded w-1/3"></div>
       </div>
-      <div class="team-card animate-pulse bg-white border border-gray-200 rounded-lg p-4">
+      <div class="team-card animate-pulse bg-white border border-gray-200 rounded-xl p-4">
         <div class="h-4 bg-gray-200 rounded w-3/4 mb-3"></div>
         <div class="h-3 bg-gray-100 rounded w-1/2 mb-2"></div>
         <div class="h-3 bg-gray-100 rounded w-1/3"></div>
@@ -142,8 +174,8 @@
   </main>
 
   <!-- Footer -->
-  <footer class="site-footer" role="contentinfo">
-    <div class="footer-inner">
+  <footer class="site-footer mt-auto" role="contentinfo">
+    <div class="footer-inner text-center">
       <p class="footer-college">&copy; 2026 United Institute of Technology, Naini, Prayagraj</p>
       <p class="footer-meta">Smart India Hackathon (SIH) 2026 Internal Registration Portal</p>
       <p class="footer-note">Public Registered Teams Showcase · For team verification &amp; uniqueness checks.</p>
