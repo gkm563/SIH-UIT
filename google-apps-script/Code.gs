@@ -836,6 +836,26 @@ function registrationIdExists_(sheet, id) {
   return false;
 }
 
+function isTeamNameTaken_(sheet, teamName) {
+  if (!teamName || !sheet) return false;
+  var lastRow = sheet.getLastRow();
+  if (lastRow < 2) return false;
+
+  var target = String(teamName).trim().toLowerCase();
+  while (target.charAt(0) === "'") target = target.substring(1);
+
+  // Column C contains Team Names
+  var names = sheet.getRange(2, 3, lastRow - 1, 1).getValues();
+  for (var i = 0; i < names.length; i++) {
+    var existing = String(names[i][0] || '').trim().toLowerCase();
+    while (existing.charAt(0) === "'") existing = existing.substring(1);
+    if (existing && existing === target) {
+      return true;
+    }
+  }
+  return false;
+}
+
 function pad4_(n) {
   var s = String(n);
   while (s.length < 4) s = '0' + s;
@@ -900,6 +920,28 @@ function validateRegistration_(data) {
 
   if (!data.teamName) {
     return { ok: false, message: 'Team name is required.' };
+  }
+
+  // Check SIH Rule: Must not contain institute name
+  var lowerName = String(data.teamName || '').toLowerCase();
+  if (lowerName.includes('uit') || lowerName.includes('united')) {
+    return {
+      ok: false,
+      message: 'SIH Rule Violation: Team name must not contain the name of your institute ("United" / "UIT") in any form.'
+    };
+  }
+
+  // Check duplicate team name in sheet
+  try {
+    const sheet = getOrCreateSheet_();
+    if (isTeamNameTaken_(sheet, data.teamName)) {
+      return {
+        ok: false,
+        message: 'The team name "' + data.teamName + '" is already registered. Please choose a unique team name.'
+      };
+    }
+  } catch (ignore) {
+    // continue
   }
 
   if (data.teamSize !== 6) {

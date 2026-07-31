@@ -60,6 +60,37 @@ const Validation = (() => {
     return '';
   }
 
+  function validateTeamName(value, registeredTeams = []) {
+    if (isEmpty(value)) return { ok: false, message: 'Team name is required.' };
+    const trimmed = String(value).trim();
+    if (trimmed.length < 2) return { ok: false, message: 'Team name must be at least 2 characters.' };
+
+    const lower = trimmed.toLowerCase();
+    if (lower.includes('uit') || lower.includes('united')) {
+      return {
+        ok: false,
+        type: 'institute_name',
+        message: 'SIH Rule: Team name must not contain the name of your institute ("United" / "UIT").'
+      };
+    }
+
+    if (Array.isArray(registeredTeams) && registeredTeams.length > 0) {
+      const match = registeredTeams.find(
+        (t) => String(t.teamName || '').trim().toLowerCase() === lower
+      );
+      if (match) {
+        return {
+          ok: false,
+          type: 'duplicate',
+          regId: match.registrationId,
+          message: `Team name "${trimmed}" is already registered (${match.registrationId}). Please choose a unique team name!`
+        };
+      }
+    }
+
+    return { ok: true, message: `✨ "${trimmed}" is unique & available!` };
+  }
+
   function setFieldError(fieldEl, message) {
     if (!fieldEl) return;
     const input = fieldEl.querySelector('.field-input, .field-select, .radio-group, .checkbox-option');
@@ -125,6 +156,11 @@ const Validation = (() => {
       case 'name':
         message = validateName(value);
         break;
+      case 'teamName': {
+        const check = validateTeamName(value, window._registeredTeamsList || []);
+        message = check.ok ? '' : check.message;
+        break;
+      }
       case 'email':
         message = validateEmail(value);
         break;
@@ -186,6 +222,7 @@ const Validation = (() => {
     setFieldError,
     normalizePhone,
     validateEmail,
-    validatePhone
+    validatePhone,
+    validateTeamName
   };
 })();

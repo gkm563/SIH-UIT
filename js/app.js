@@ -199,9 +199,11 @@
       html += textField({
         name: 'teamName',
         label: 'Team Name',
-        validate: 'required',
-        placeholder: 'Enter your team name'
+        validate: 'teamName',
+        placeholder: 'Enter a unique team name (e.g. CodeCrafters)',
+        hint: 'Rule: Must be unique and must not contain institute name (e.g. UIT, United).'
       });
+      html += `<div id="teamName-live-badge" class="mt-2 text-xs font-semibold hidden" aria-live="polite"></div>`;
       html += `
         <div class="field" data-name="teamSize">
           <label class="field-label">Total Number of Team Members <span class="required" aria-hidden="true">*</span></label>
@@ -752,9 +754,64 @@
     window.scrollTo({ top: 0, behavior: 'smooth' });
   }
 
+  async function fetchRegisteredTeams() {
+    try {
+      const res = await Api.getRegisteredTeams();
+      if (res && res.success && Array.isArray(res.teams)) {
+        window._registeredTeamsList = res.teams;
+      }
+    } catch {
+      window._registeredTeamsList = [];
+    }
+  }
+
+  function checkTeamNameLive(inputEl) {
+    if (!inputEl) return;
+    const value = inputEl.value;
+    const badgeEl = document.getElementById('teamName-live-badge');
+    const fieldEl = inputEl.closest('.field');
+
+    if (!value || !value.trim()) {
+      if (badgeEl) {
+        badgeEl.classList.add('hidden');
+        badgeEl.innerHTML = '';
+      }
+      Validation.clearFieldError(fieldEl);
+      return;
+    }
+
+    const check = Validation.validateTeamName(value, window._registeredTeamsList || []);
+
+    if (!check.ok) {
+      if (badgeEl) {
+        badgeEl.className = 'mt-2 text-xs font-semibold px-3 py-2 rounded-lg bg-red-50 text-red-700 border border-red-200 flex items-center gap-1.5';
+        badgeEl.innerHTML = `
+          <svg class="w-4 h-4 text-red-600 flex-shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 9v2m0 4h.01m-6.938 4h13.856c1.54 0 2.502-1.667 1.732-3L13.732 4c-.77-1.333-2.694-1.333-3.464 0L3.34 16c-.77 1.333.192 3 1.732 3z"/>
+          </svg>
+          <span>${escapeHtml(check.message)}</span>`;
+        badgeEl.classList.remove('hidden');
+      }
+      Validation.setFieldError(fieldEl, check.message);
+    } else {
+      if (badgeEl) {
+        badgeEl.className = 'mt-2 text-xs font-semibold px-3 py-2 rounded-lg bg-emerald-50 text-emerald-700 border border-emerald-200 flex items-center gap-1.5';
+        badgeEl.innerHTML = `
+          <svg class="w-4 h-4 text-emerald-600 flex-shrink-0" fill="currentColor" viewBox="0 0 20 20">
+            <path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clip-rule="evenodd"/>
+          </svg>
+          <span>✨ "${escapeHtml(value.trim())}" is unique &amp; available!</span>`;
+        badgeEl.classList.remove('hidden');
+      }
+      Validation.clearFieldError(fieldEl);
+    }
+  }
+
   /* ---------- Init ---------- */
 
   function init() {
+    fetchRegisteredTeams();
+
     // Only restore confirmation for real server Registration IDs (SIH2026-XXXX)
     const existingSubmission = Storage.loadSubmission();
     const validStored =
@@ -805,6 +862,16 @@
     els.form.addEventListener('submit', handleSubmit);
     els.btnDownload.addEventListener('click', downloadAcknowledgement);
     els.btnHome.addEventListener('click', returnHome);
+
+    let checkTimer = null;
+    els.form.addEventListener('input', (e) => {
+      if (e.target && e.target.name === 'teamName') {
+        clearTimeout(checkTimer);
+        checkTimer = setTimeout(() => {
+          checkTeamNameLive(e.target);
+        }, 150);
+      }
+    });
 
     // Keyboard: Enter moves focus to next field, or advances section
     els.form.addEventListener('keydown', (e) => {
