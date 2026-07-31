@@ -33,6 +33,7 @@
     formView: document.getElementById('form-view'),
     instructionsView: document.getElementById('instructions-view'),
     btnStartRegistration: document.getElementById('btn-start-registration'),
+    btnViewInstructionsHeader: document.getElementById('btn-view-instructions-header'),
     confirmationView: document.getElementById('confirmation-view'),
     confRegId: document.getElementById('conf-reg-id'),
     confDatetime: document.getElementById('conf-datetime'),
@@ -397,7 +398,15 @@
     const isFirst = index === 0;
     const isLast = index === total - 1;
 
-    els.btnPrev.hidden = isFirst;
+    els.btnPrev.hidden = false;
+    if (isFirst) {
+      els.btnPrev.textContent = '← Back to Instructions';
+      els.btnPrev.title = 'Re-read the registration guidelines & instructions';
+    } else {
+      els.btnPrev.textContent = 'Previous';
+      els.btnPrev.title = 'Go back to previous section';
+    }
+
     els.btnNext.hidden = isLast;
     els.btnSubmit.hidden = !isLast;
 
@@ -448,6 +457,8 @@
       updateUI();
       scheduleSave();
       window.scrollTo({ top: 0, behavior: 'smooth' });
+    } else {
+      showInstructions();
     }
   }
 
@@ -673,6 +684,14 @@
       els.progressWrap.style.display = 'none';
     }
     els.confirmationView.classList.remove('visible');
+
+    if (els.btnStartRegistration) {
+      const hasEnteredData = Boolean(Storage.loadDraft() || state.currentIndex > 0);
+      els.btnStartRegistration.textContent = hasEnteredData
+        ? 'Continue Registration →'
+        : 'I have read the instructions — Start Registration';
+    }
+    window.scrollTo({ top: 0, behavior: 'smooth' });
   }
 
   function startRegistration() {
@@ -855,6 +874,9 @@
 
     if (els.btnStartRegistration) {
       els.btnStartRegistration.addEventListener('click', startRegistration);
+    }
+    if (els.btnViewInstructionsHeader) {
+      els.btnViewInstructionsHeader.addEventListener('click', showInstructions);
     }
 
     els.btnNext.addEventListener('click', goNext);
