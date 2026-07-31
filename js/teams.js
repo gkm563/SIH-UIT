@@ -99,14 +99,20 @@
     }
 
     const html = teamsToDisplay.map((team, idx) => {
-      const regId = escapeHtml(team.registrationId || `SIH2026-${idx + 1}`);
+      const serialNum = idx + 1;
+      const regId = escapeHtml(team.registrationId || `SIH2026-${serialNum}`);
       const name = escapeHtml(team.teamName || 'Unnamed Team');
       const dateStr = escapeHtml(formatDate(team.timestamp));
 
       return `
         <div class="team-card bg-white border border-gray-200/80 rounded-xl p-4 shadow-2xs hover:shadow-md transition-all">
           <div class="flex items-start justify-between gap-2 mb-2.5">
-            <h3 class="font-extrabold text-gray-900 text-sm sm:text-base leading-snug tracking-tight">${name}</h3>
+            <div class="flex items-start gap-2.5 min-w-0">
+              <span class="inline-flex items-center justify-center w-6 h-6 rounded-lg bg-slate-100 text-slate-700 font-extrabold text-xs flex-shrink-0 mt-0.5 border border-slate-200/80" title="Team #${serialNum}">
+                ${serialNum}
+              </span>
+              <h3 class="font-extrabold text-gray-900 text-sm sm:text-base leading-snug tracking-tight">${name}</h3>
+            </div>
             <span class="inline-flex items-center px-2.5 py-0.5 rounded-full text-[11px] font-extrabold bg-blue-50 text-blue-800 border border-blue-200/80 flex-shrink-0">
               ${regId}
             </span>
