@@ -689,7 +689,20 @@ function buildConfirmationEmailHtml_(data, registrationId, timestamp) {
     '</div>' +
     personEmailBlockHtml_('Team Leader', data.leader) +
     membersHtml +
-    '<div style="margin-top:18px;padding:12px 14px;background:#e8f0fe;border-radius:8px;font-size:12px;color:#1557b0;line-height:1.5;">' +
+    '<div style="margin-top:18px;padding:14px 16px;background:#e7fce9;border:1px solid #25d366;border-radius:8px;font-size:13px;color:#075e54;line-height:1.5;">' +
+    '<p style="margin:0 0 8px;font-weight:700;font-size:14px;color:#128c7e;">' +
+    '📢 For all official announcements and updates, join the SIH 2026 Official WhatsApp Group:' +
+    '</p>' +
+    '<p style="margin:0 0 6px;">' +
+    '<a href="https://chat.whatsapp.com/GrZQAnzbHEJ7nKTXsOUzYR?s=cl&amp;p=a&amp;ilr=0" target="_blank" style="display:inline-block;background:#25d366;color:#ffffff;text-decoration:none;font-weight:700;padding:8px 14px;border-radius:6px;font-size:13px;">' +
+    '👉 Join SIH 2026 Official WhatsApp Group' +
+    '</a>' +
+    '</p>' +
+    '<p style="margin:0;font-size:11px;color:#075e54;">' +
+    'https://chat.whatsapp.com/GrZQAnzbHEJ7nKTXsOUzYR?s=cl&amp;p=a&amp;ilr=0' +
+    '</p>' +
+    '</div>' +
+    '<div style="margin-top:14px;padding:12px 14px;background:#e8f0fe;border-radius:8px;font-size:12px;color:#1557b0;line-height:1.5;">' +
     '<strong>Important:</strong> This is only Internal Registration and does not guarantee selection or official SIH registration. ' +
     'Further updates will be shared on your registered Email ID and WhatsApp number.' +
     '</div>' +
@@ -737,6 +750,9 @@ function buildConfirmationEmailText_(data, registrationId, timestamp) {
     lines.push('');
   }
 
+  lines.push('📢 For all official announcements and updates, join the SIH 2026 Official WhatsApp Group:');
+  lines.push('https://chat.whatsapp.com/GrZQAnzbHEJ7nKTXsOUzYR?s=cl&p=a&ilr=0');
+  lines.push('');
   lines.push('NOTE: This is Internal Registration only and does not guarantee selection.');
   lines.push('United Institute of Technology · SIH 2026 Internal Registration Portal');
   return lines.join('\n');
