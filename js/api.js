@@ -26,25 +26,37 @@ const Api = (() => {
   }
 
   function isValidSuccess(data) {
-    return (
-      data &&
-      data.success === true &&
-      typeof data.registrationId === 'string' &&
-      REG_ID_RE.test(data.registrationId.trim())
-    );
+    if (!data || data.success !== true) return false;
+    if (typeof data.registrationId === 'string' && data.registrationId.trim().length > 0) {
+      return true;
+    }
+    return false;
   }
 
   function parseResponseText(text) {
     if (!text || !String(text).trim()) {
       return {
         success: false,
-        message: 'Empty response from server. Redeploy the Apps Script Web App and try again.'
+        message: 'Empty response from server. Please try again.'
       };
     }
 
     const trimmed = String(text).trim();
 
-    // Apps Script sometimes returns HTML login / error pages
+    // 1. Try parsing JSON first (highest priority)
+    try {
+      const data = JSON.parse(trimmed);
+      if (data && typeof data === 'object') {
+        if (data.registrationId) {
+          data.registrationId = String(data.registrationId).replace(/^'/, '').trim();
+        }
+        return data;
+      }
+    } catch {
+      // Not JSON
+    }
+
+    // 2. Apps Script returns HTML login or permission error pages if Web App deployment access is restricted
     if (trimmed.startsWith('<!') || trimmed.toLowerCase().startsWith('<html')) {
       return {
         success: false,
@@ -53,34 +65,10 @@ const Api = (() => {
       };
     }
 
-    let data;
-    try {
-      data = JSON.parse(trimmed);
-    } catch {
-      return {
-        success: false,
-        message:
-          'Unexpected server response. Confirm the Web App is deployed (Anyone) and you pasted the /exec URL in js/config.js.'
-      };
-    }
-
-    // Health-check GET mistaken for submit (no registrationId)
-    if (data.success === true && !data.registrationId) {
-      return {
-        success: false,
-        message:
-          'Server responded without a Registration ID. The submission was not saved. Please try again, or redeploy Apps Script.'
-      };
-    }
-
-    if (data.success === true && !isValidSuccess(data)) {
-      return {
-        success: false,
-        message: 'Invalid Registration ID returned by server. Submission may not have been saved.'
-      };
-    }
-
-    return data;
+    return {
+      success: false,
+      message: 'Unexpected server response. Please try again.'
+    };
   }
 
   /**
@@ -114,7 +102,7 @@ const Api = (() => {
       : null;
 
     try {
-      // Primary: raw JSON as text/plain (works with current Apps Script deploy, no CORS preflight)
+      // Primary: raw JSON as text/plain (works cleanly with Apps Script deploy, avoiding CORS preflight)
       const response = await fetch(url, {
         method: 'POST',
         mode: 'cors',
@@ -126,10 +114,21 @@ const Api = (() => {
         signal: controller ? controller.signal : undefined
       });
 
-      let data = parseResponseText(await response.text());
+      const responseText = await response.text();
+      let data = parseResponseText(responseText);
 
-      // Fallback: form field "data" (for newer Code.gs that reads e.parameter.data)
-      if (!isValidSuccess(data)) {
+      // If the primary request succeeded or returned JSON with a registrationId, return it directly!
+      if (data && (data.success === true || data.registrationId)) {
+        return data;
+      }
+
+      // If server returned a business validation error (e.g. duplicate team name), return it without fallback
+      if (data && data.success === false && data.message && !data.message.includes('Google returned an HTML')) {
+        return data;
+      }
+
+      // Fallback ONLY if primary request suffered a network/CORS failure (data was NOT saved)
+      try {
         const formBody = new URLSearchParams();
         formBody.append('data', body);
         const response2 = await fetch(url, {
@@ -142,15 +141,13 @@ const Api = (() => {
           body: formBody.toString(),
           signal: controller ? controller.signal : undefined
         });
-        data = parseResponseText(await response2.text());
-      }
-
-      if (!data.success) return data;
-      if (!isValidSuccess(data)) {
-        return {
-          success: false,
-          message: 'Submission failed: no valid Registration ID received from Google Sheets.'
-        };
+        const text2 = await response2.text();
+        const data2 = parseResponseText(text2);
+        if (data2 && (data2.success || data2.registrationId)) {
+          return data2;
+        }
+      } catch {
+        // Keep primary response error if fallback fails
       }
 
       return data;
@@ -164,7 +161,7 @@ const Api = (() => {
       return {
         success: false,
         message:
-          'Could not reach Google Sheets. Use http://localhost (not file://), check your internet, and confirm the Web App URL.'
+          'Could not reach Google Sheets. Check your internet connection and confirm the Web App URL.'
       };
     } finally {
       if (timer) clearTimeout(timer);
