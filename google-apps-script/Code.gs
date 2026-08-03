@@ -295,6 +295,10 @@ function handleRegistration_(raw) {
         emailCell.setFontWeight('bold');
       }
       SpreadsheetApp.flush();
+    } catch (sheetEmailErr) {
+      console.error('Could not write Email Status column:', sheetEmailErr);
+    }
+
     try {
       CacheService.getScriptCache().remove('teams_json_v1');
     } catch (cacheClearErr) {
