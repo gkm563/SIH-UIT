@@ -204,29 +204,43 @@
     }
   }
 
-  async function loadTeams() {
+  async function loadTeams(showLoadingSkeleton = true) {
     if (isLoading) return;
     isLoading = true;
-    renderLoadingState();
+
+    // 1. Instant Cache Display (0ms response time)
+    const cachedData = Api.getLocalCachedTeams && Api.getLocalCachedTeams();
+    if (cachedData && cachedData.success && Array.isArray(cachedData.teams) && cachedData.teams.length > 0) {
+      allTeams = cachedData.teams;
+      els.teamsCountBadge.textContent = `${allTeams.length} ${allTeams.length === 1 ? 'Team' : 'Teams'}`;
+      handleSearchAndCheck();
+      showLoadingSkeleton = false; // Already showing cached teams, no need for skeleton
+    }
+
+    if (showLoadingSkeleton && (!allTeams || allTeams.length === 0)) {
+      renderLoadingState();
+    }
 
     try {
-      const res = await Api.getRegisteredTeams();
+      const res = await Api.getRegisteredTeams(true);
       if (res && res.success && Array.isArray(res.teams)) {
         allTeams = res.teams;
         els.teamsCountBadge.textContent = `${allTeams.length} ${allTeams.length === 1 ? 'Team' : 'Teams'}`;
         handleSearchAndCheck();
-      } else {
+      } else if (!allTeams || allTeams.length === 0) {
         renderErrorState(res.message || 'Could not retrieve registered teams list.');
       }
     } catch (err) {
-      renderErrorState('Failed to fetch teams. Please try again.');
+      if (!allTeams || allTeams.length === 0) {
+        renderErrorState('Failed to fetch teams. Please try again.');
+      }
     } finally {
       isLoading = false;
     }
   }
 
   function init() {
-    loadTeams();
+    loadTeams(true);
 
     if (els.searchInput) {
       els.searchInput.addEventListener('input', handleSearchAndCheck);
@@ -239,7 +253,7 @@
       });
     }
     if (els.btnRefresh) {
-      els.btnRefresh.addEventListener('click', loadTeams);
+      els.btnRefresh.addEventListener('click', () => loadTeams(true));
     }
   }
 

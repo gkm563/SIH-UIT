@@ -108,12 +108,25 @@ function doGet(e) {
     // Public showcase API: GET ?action=teams (or action=getTeams)
     // Returns ONLY public non-sensitive data: registrationId, teamName, timestamp
     if (e && e.parameter && (e.parameter.action === 'teams' || e.parameter.action === 'getTeams')) {
+      // 1. Check server-side cache for ultra-fast response (~50ms)
+      try {
+        var cache = CacheService.getScriptCache();
+        var cachedJson = cache.get('teams_json_v1');
+        if (cachedJson) {
+          return ContentService
+            .createTextOutput(cachedJson)
+            .setMimeType(ContentService.MimeType.JSON);
+        }
+      } catch (cacheReadErr) {
+        // ignore cache read error
+      }
+
+      // 2. Read sheet A:D
       const sheet = getOrCreateSheet_();
       const lastRow = sheet.getLastRow();
       const teams = [];
 
       if (lastRow >= 2) {
-        // Read columns A:D (Timestamp, Registration ID, Team Name, Total Team Members)
         const rows = sheet.getRange(2, 1, lastRow - 1, 4).getValues();
         for (var i = 0; i < rows.length; i++) {
           var row = rows[i];
@@ -121,7 +134,6 @@ function doGet(e) {
           var tName = String(row[2] || '').trim();
           var timeStr = String(row[0] || '').trim();
 
-          // Clean formula injection single quotes if present
           if (tName.charAt(0) === "'") tName = tName.substring(1);
           if (regId.charAt(0) === "'") regId = regId.substring(1);
 
@@ -135,11 +147,22 @@ function doGet(e) {
         }
       }
 
-      return jsonResponse_({
+      var resObj = {
         success: true,
         totalTeams: teams.length,
         teams: teams
-      });
+      };
+      var jsonStr = JSON.stringify(resObj);
+
+      try {
+        CacheService.getScriptCache().put('teams_json_v1', jsonStr, 300); // 5 min cache
+      } catch (cacheWriteErr) {
+        // ignore cache write error
+      }
+
+      return ContentService
+        .createTextOutput(jsonStr)
+        .setMimeType(ContentService.MimeType.JSON);
     }
 
     // Optional: register via GET ?action=submit&data=...
@@ -272,8 +295,10 @@ function handleRegistration_(raw) {
         emailCell.setFontWeight('bold');
       }
       SpreadsheetApp.flush();
-    } catch (sheetEmailErr) {
-      console.error('Could not write Email Status column:', sheetEmailErr);
+    try {
+      CacheService.getScriptCache().remove('teams_json_v1');
+    } catch (cacheClearErr) {
+      // ignore
     }
 
     return jsonResponse_({

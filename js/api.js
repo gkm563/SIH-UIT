@@ -187,29 +187,77 @@ const Api = (() => {
     }
   }
 
-  async function getRegisteredTeams() {
-    const baseUrl = (AppConfig.GOOGLE_SCRIPT_URL || '').trim();
-    if (!baseUrl) return { success: false, message: 'Google Script URL not configured.', teams: [] };
+  const TEAMS_CACHE_KEY = 'sih2026_registered_teams_cache';
 
-    const fetchUrl = baseUrl + (baseUrl.includes('?') ? '&' : '?') + 'action=teams';
+  function getLocalCachedTeams() {
+    try {
+      const raw = localStorage.getItem(TEAMS_CACHE_KEY) || sessionStorage.getItem(TEAMS_CACHE_KEY);
+      if (!raw) return null;
+      const parsed = JSON.parse(raw);
+      if (parsed && parsed.success && Array.isArray(parsed.teams)) {
+        return parsed;
+      }
+    } catch {
+      // ignore
+    }
+    return null;
+  }
+
+  function setLocalCachedTeams(data) {
+    try {
+      const str = JSON.stringify(data);
+      localStorage.setItem(TEAMS_CACHE_KEY, str);
+      sessionStorage.setItem(TEAMS_CACHE_KEY, str);
+    } catch {
+      // ignore
+    }
+  }
+
+  async function getRegisteredTeams(forceFresh = false) {
+    const baseUrl = (AppConfig.GOOGLE_SCRIPT_URL || '').trim();
+    const cached = getLocalCachedTeams();
+
+    if (!baseUrl) {
+      if (cached) return cached;
+      return { success: false, message: 'Google Script URL not configured.', teams: [] };
+    }
+
+    const fetchUrl = baseUrl + (baseUrl.includes('?') ? '&' : '?') + 'action=teams&_t=' + Date.now();
 
     try {
+      const controller = typeof AbortController !== 'undefined' ? new AbortController() : null;
+      const timeout = setTimeout(() => controller && controller.abort(), 12000);
+
       const response = await fetch(fetchUrl, {
         method: 'GET',
         mode: 'cors',
-        redirect: 'follow'
+        redirect: 'follow',
+        signal: controller ? controller.signal : undefined
       });
+      if (timeout) clearTimeout(timeout);
+
       const text = await response.text();
+
       try {
         const data = JSON.parse(text);
         if (data && data.success && Array.isArray(data.teams)) {
+          setLocalCachedTeams(data);
           return data;
         }
-        return { success: false, message: data.message || 'Invalid teams response format.', teams: [] };
       } catch {
-        return { success: false, message: 'Non-JSON response received.', teams: [] };
+        // Response was non-JSON
       }
-    } catch {
+
+      // If server returned non-JSON/error but we have cached teams, return cached teams!
+      if (cached && Array.isArray(cached.teams)) {
+        return cached;
+      }
+
+      return { success: false, message: 'Could not load teams. Please try again.', teams: [] };
+    } catch (err) {
+      if (cached && Array.isArray(cached.teams)) {
+        return cached;
+      }
       return { success: false, message: 'Network error fetching registered teams.', teams: [] };
     }
   }
@@ -217,6 +265,8 @@ const Api = (() => {
   return {
     submitRegistration,
     getRegisteredTeams,
+    getLocalCachedTeams,
+    setLocalCachedTeams,
     ping,
     buildPayload,
     isValidSuccess,
