@@ -3710,3 +3710,7 @@ Daily activity and development milestones tracking.
 - **Scope**: `docs(arch): update architecture topology diagrams and network flow`
 - **Ref**: `sync-362760`
 
+### Sprint Update: 2026-08-04 16:02:23
+- **Scope**: `perf(worker): scale concurrent processing threads dynamically`
+- **Ref**: `sync-326961`
+
