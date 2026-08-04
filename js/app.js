@@ -263,12 +263,79 @@
     els.container.innerHTML = defs
       .map((def, index) => {
         let body = '';
+        let bannerHtml = '';
+
         if (def.type === 'leader') {
           body = personFields('leader', true);
+          bannerHtml = `
+            <div class="section-banner bg-gradient-to-r from-blue-700 via-indigo-800 to-slate-900 text-white rounded-2xl p-4 sm:p-5 mb-5 shadow-sm border border-blue-600/30">
+              <div class="flex items-center justify-between gap-3">
+                <div class="flex items-center gap-3">
+                  <div class="w-10 h-10 sm:w-12 sm:h-12 rounded-xl bg-white/15 text-white flex items-center justify-center text-xl sm:text-2xl font-bold flex-shrink-0 border border-white/20">
+                    👑
+                  </div>
+                  <div>
+                    <span class="inline-block bg-blue-500/30 text-blue-100 text-[10px] sm:text-xs font-extrabold px-2.5 py-0.5 rounded-full mb-0.5 border border-blue-400/30">
+                      Person 1 of 6 · Team Leader
+                    </span>
+                    <h3 class="text-base sm:text-xl font-extrabold text-white leading-tight m-0">Team Leader Details</h3>
+                    <p class="text-xs text-blue-100/90 m-0 mt-0.5">Enter the personal &amp; college details of the main Team Leader.</p>
+                  </div>
+                </div>
+                <span class="text-xs font-extrabold bg-white text-blue-900 px-3 py-1.5 rounded-lg flex-shrink-0 shadow-2xs">
+                  Step 1 of 7
+                </span>
+              </div>
+            </div>`;
         } else if (def.type === 'member') {
-          body = personFields(`member${def.memberIndex}`, false);
+          const mIdx = def.memberIndex;
+          const personNum = mIdx + 1;
+          body = personFields(`member${mIdx}`, false);
+          bannerHtml = `
+            <div class="section-banner bg-gradient-to-r from-slate-900 via-indigo-950 to-slate-900 text-white rounded-2xl p-4 sm:p-5 mb-5 shadow-sm border-l-4 border-amber-400 border-t border-r border-b border-slate-700/50">
+              <div class="flex items-start justify-between gap-3">
+                <div class="flex items-start gap-3">
+                  <div class="w-10 h-10 sm:w-12 sm:h-12 rounded-xl bg-amber-400/20 text-amber-300 flex items-center justify-center text-xl sm:text-2xl font-bold flex-shrink-0 border border-amber-400/30">
+                    👤
+                  </div>
+                  <div>
+                    <div class="flex items-center gap-2 flex-wrap mb-1">
+                      <span class="inline-block bg-amber-400/20 text-amber-200 text-[10px] sm:text-xs font-extrabold px-2.5 py-0.5 rounded-full border border-amber-400/30">
+                        Person ${personNum} of 6 · Team Member ${mIdx}
+                      </span>
+                      <span class="inline-block bg-red-500/20 text-red-200 text-[10px] font-extrabold px-2 py-0.5 rounded-full border border-red-400/30">
+                        ⛔ NOT Team Leader
+                      </span>
+                    </div>
+                    <h3 class="text-base sm:text-xl font-extrabold text-white leading-tight m-0">Team Member ${mIdx} Details</h3>
+                    <div class="mt-1.5 p-2 bg-amber-500/10 border border-amber-400/30 rounded-lg text-xs text-amber-100 font-medium">
+                      ⚠️ <strong>Attention:</strong> Enter <u>Member ${mIdx}'s OWN name &amp; roll number</u>. Do <strong>NOT</strong> fill Team Leader's details again!
+                    </div>
+                  </div>
+                </div>
+                <span class="text-xs font-extrabold bg-amber-400 text-slate-950 px-3 py-1.5 rounded-lg flex-shrink-0 shadow-2xs">
+                  Step ${personNum} of 7
+                </span>
+              </div>
+            </div>`;
         } else {
           body = `
+            <div class="section-banner bg-gradient-to-r from-emerald-800 to-teal-900 text-white rounded-2xl p-4 sm:p-5 mb-5 shadow-sm">
+              <div class="flex items-center justify-between gap-3">
+                <div class="flex items-center gap-3">
+                  <div class="w-10 h-10 sm:w-12 sm:h-12 rounded-xl bg-white/20 text-white flex items-center justify-center text-xl sm:text-2xl font-bold flex-shrink-0">
+                    📋
+                  </div>
+                  <div>
+                    <span class="inline-block bg-emerald-400/30 text-emerald-100 text-[10px] sm:text-xs font-extrabold px-2.5 py-0.5 rounded-full mb-0.5">
+                      Final Step 7 of 7 · Declaration
+                    </span>
+                    <h3 class="text-base sm:text-xl font-extrabold text-white leading-tight m-0">Final Declaration &amp; Submit</h3>
+                    <p class="text-xs text-emerald-100/90 m-0 mt-0.5">Review and accept rules before submitting form.</p>
+                  </div>
+                </div>
+              </div>
+            </div>
             <div class="checkbox-group">
               <div class="field" data-validate="checkbox" data-name="declare_truth">
                 <label class="checkbox-option">
@@ -302,7 +369,7 @@
             aria-labelledby="section-title-${index}"
             ${index === state.currentIndex ? '' : 'hidden'}
           >
-            <h3 class="section-title" id="section-title-${index}">${escapeHtml(def.title)}</h3>
+            ${bannerHtml}
             ${body}
           </section>`;
       })
@@ -345,14 +412,72 @@
         const eventName = input.type === 'radio' || input.type === 'checkbox' ? 'change' : 'blur';
         input.addEventListener(eventName, () => {
           Validation.validateField(field);
+          checkCrossMemberDuplicates();
           scheduleSave();
         });
         if (input.tagName === 'SELECT' || input.type === 'radio' || input.type === 'checkbox') {
           input.addEventListener('change', () => scheduleSave());
         } else {
-          input.addEventListener('input', () => scheduleSave());
+          input.addEventListener('input', () => {
+            scheduleSave();
+            if (input.name && (input.name.includes('rollNumber') || input.name.includes('email'))) {
+              checkCrossMemberDuplicates();
+            }
+          });
         }
       });
+    });
+  }
+
+  function checkCrossMemberDuplicates() {
+    const data = collectFormData(false);
+    const fields = data.fields || {};
+
+    const rollMap = {};
+    const emailMap = {};
+
+    const people = [
+      { key: 'leader', label: 'Team Leader' },
+      { key: 'member1', label: 'Team Member 1' },
+      { key: 'member2', label: 'Team Member 2' },
+      { key: 'member3', label: 'Team Member 3' },
+      { key: 'member4', label: 'Team Member 4' },
+      { key: 'member5', label: 'Team Member 5' }
+    ];
+
+    people.forEach((p) => {
+      const roll = String(fields[`${p.key}_rollNumber`] || '').trim().toUpperCase();
+      const email = String(fields[`${p.key}_email`] || '').trim().toLowerCase();
+
+      if (roll) {
+        if (rollMap[roll]) {
+          const inputEl = els.form.querySelector(`input[name="${p.key}_rollNumber"]`);
+          if (inputEl) {
+            const fieldEl = inputEl.closest('.field');
+            Validation.setFieldError(
+              fieldEl,
+              `⚠️ Warning: Roll Number "${roll}" is already used by ${rollMap[roll]}! Enter ${p.label}'s own Roll Number.`
+            );
+          }
+        } else {
+          rollMap[roll] = p.label;
+        }
+      }
+
+      if (email) {
+        if (emailMap[email]) {
+          const inputEl = els.form.querySelector(`input[name="${p.key}_email"]`);
+          if (inputEl) {
+            const fieldEl = inputEl.closest('.field');
+            Validation.setFieldError(
+              fieldEl,
+              `⚠️ Warning: Email "${email}" is already used by ${emailMap[email]}! Enter ${p.label}'s own Email ID.`
+            );
+          }
+        } else {
+          emailMap[email] = p.label;
+        }
+      }
     });
   }
 
@@ -380,18 +505,34 @@
 
     const displayPct = Math.round(((index + 1) / total) * 100);
 
-    els.progressLabel.textContent = `Section ${index + 1} of ${total}`;
+    const stepTitles = [
+      '👑 Team Leader Details (Person 1/6)',
+      '👤 Member 1 Details (Person 2/6)',
+      '👤 Member 2 Details (Person 3/6)',
+      '👤 Member 3 Details (Person 4/6)',
+      '👤 Member 4 Details (Person 5/6)',
+      '👤 Member 5 Details (Person 6/6)',
+      '📋 Final Declaration & Submit'
+    ];
+
+    els.progressLabel.innerHTML = `<strong>Step ${index + 1} of ${total}:</strong> ${stepTitles[index] || `Section ${index + 1}`}`;
     els.progressPct.textContent = `${displayPct}% complete`;
     els.progressFill.style.width = `${displayPct}%`;
     els.progressBar.setAttribute('aria-valuenow', String(displayPct));
 
-    // Dots
+    // Dots / Stepper Chips
+    const chipLabels = ['👑 Leader', '👤 M1', '👤 M2', '👤 M3', '👤 M4', '👤 M5', '📋 Submit'];
     els.sectionDots.innerHTML = sections
       .map((_, i) => {
-        let cls = 'section-dot';
-        if (i === index) cls += ' current';
-        else if (state.completed.has(i)) cls += ' completed';
-        return `<span class="${cls}" title="Section ${i + 1}"></span>`;
+        let cls = 'px-2 py-0.5 rounded-md text-[11px] font-bold transition-all flex items-center gap-1 cursor-pointer border';
+        if (i === index) {
+          cls += ' bg-blue-600 text-white border-blue-700 shadow-2xs scale-105 ring-2 ring-blue-300';
+        } else if (state.completed.has(i)) {
+          cls += ' bg-emerald-100 text-emerald-800 border-emerald-300 hover:bg-emerald-200';
+        } else {
+          cls += ' bg-slate-100 text-slate-600 border-slate-200 hover:bg-slate-200';
+        }
+        return `<button type="button" class="${cls}" data-step-btn="${i}">${chipLabels[i] || `S${i + 1}`}</button>`;
       })
       .join('');
 
@@ -884,6 +1025,20 @@
     els.form.addEventListener('submit', handleSubmit);
     els.btnDownload.addEventListener('click', downloadAcknowledgement);
     els.btnHome.addEventListener('click', returnHome);
+
+    els.sectionDots.addEventListener('click', (e) => {
+      const btn = e.target.closest('[data-step-btn]');
+      if (!btn) return;
+      const targetIdx = parseInt(btn.dataset.stepBtn, 10);
+      if (!isNaN(targetIdx) && targetIdx >= 0 && targetIdx < getSections().length) {
+        if (targetIdx <= state.currentIndex || state.completed.has(targetIdx - 1)) {
+          state.currentIndex = targetIdx;
+          updateUI();
+          scheduleSave();
+          window.scrollTo({ top: 0, behavior: 'smooth' });
+        }
+      }
+    });
 
     let checkTimer = null;
     els.form.addEventListener('input', (e) => {
