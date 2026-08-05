@@ -27,56 +27,54 @@
 <body>
   <a class="sr-only" href="#main-content">Skip to main content</a>
 
-  <!-- Header -->
-  <header class="site-header bg-white/95 backdrop-blur-md border-b border-gray-200 sticky top-0 z-50 shadow-2xs" role="banner">
-    <div class="header-inner max-w-[760px] mx-auto px-3 sm:px-4 py-2.5 sm:py-3 flex items-center justify-between gap-2 sm:gap-4">
-      <!-- Left: College Logo -->
-      <a href="index.html" class="flex-shrink-0 flex items-center group transition-transform active:scale-95" title="United Institute of Technology">
+  <!-- Ultra-Sleek Glassmorphic Header -->
+  <header class="site-header bg-white/95 backdrop-blur-md border-b border-gray-200/80 sticky top-0 z-50 shadow-2xs" role="banner">
+    <div class="header-inner max-w-[800px] mx-auto px-3 sm:px-5 py-2 sm:py-2.5 flex items-center justify-between gap-2 sm:gap-4">
+      
+      <!-- Left: Dual Logo Brand (UIT Logo + Brand Text) -->
+      <a href="index.html" class="flex items-center gap-2 sm:gap-3 flex-shrink-0 group transition-transform active:scale-95" title="United Institute of Technology">
         <img
-          class="college-logo w-11 h-11 sm:w-14 sm:h-14 object-contain transition-transform group-hover:scale-105"
+          class="college-logo w-9 h-9 sm:w-11 sm:h-11 object-contain transition-transform group-hover:scale-105"
           src="assets/united-logo.png"
           alt="United Group of Institutions logo"
         />
+        <div class="flex flex-col justify-center min-w-0">
+          <div class="flex items-center gap-1.5 flex-wrap">
+            <span class="text-xs sm:text-base font-black text-[#2A4B8D] leading-none tracking-tight">
+              UIT <span class="hidden xs:inline font-bold text-[#2A4B8D]/90">Prayagraj</span>
+            </span>
+            <span class="text-[9px] sm:text-[10px] font-extrabold text-blue-700 bg-blue-50 border border-blue-200/80 px-1.5 py-0.5 rounded-full leading-none">
+              SIH 2026
+            </span>
+          </div>
+          <span class="text-[10px] sm:text-xs font-semibold text-slate-500 leading-tight mt-0.5 hidden sm:block">
+            Smart India Hackathon · Internal Portal
+          </span>
+        </div>
       </a>
 
-      <!-- Center: Text Info -->
-      <div class="header-text text-center min-w-0 flex-1 px-1">
-        <h1 class="college-name text-xs sm:text-base font-extrabold text-[#2A4B8D] leading-tight tracking-tight m-0 truncate sm:whitespace-normal">
-          United Institute of Technology
-        </h1>
-        <p class="college-campus text-[10px] sm:text-xs font-semibold text-gray-500 m-0">Naini, Prayagraj</p>
-        <p class="sih-title text-[11px] sm:text-sm font-bold text-blue-600 m-0 leading-tight">
-          Smart India Hackathon (SIH) 2026
-        </p>
-        <span class="inline-block text-[9px] sm:text-[11px] font-bold text-slate-600 bg-slate-100 px-2 py-0.5 rounded-full mt-0.5 border border-slate-200">
-          Internal Registration Portal
-        </span>
-      </div>
+      <!-- Right: Interactive Navigation Switch + SIH Logo -->
+      <div class="flex items-center gap-2 sm:gap-3 flex-shrink-0">
+        <nav class="nav-switch flex items-center bg-slate-100/90 p-1 rounded-full border border-slate-200/80 shadow-2xs" role="navigation" aria-label="Main navigation">
+          <a href="index.html" class="nav-pill active" aria-current="page">
+            <svg class="w-3.5 h-3.5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M11 5H6a2 2 0 00-2 2v11a2 2 0 002 2h11a2 2 0 002-2v-5m-1.414-9.414a2 2 0 112.828 2.828L11.828 15H9v-2.828l8.586-8.586z"/></svg>
+            <span class="text-xs font-bold">Register</span>
+          </a>
+          <a href="teams.html" class="nav-pill">
+            <svg class="w-3.5 h-3.5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 20h5v-2a3 3 0 00-5.356-1.857M17 20H7m10 0v-2c0-.656-.126-1.283-.356-1.857M7 20H2v-2a3 3 0 015.356-1.857M7 20v-2c0-.656.126-1.283.356-1.857m0 0a5.002 5.002 0 019.288 0M15 7a3 3 0 11-6 0 3 3 0 016 0zm6 3a2 2 0 11-4 0 2 2 0 014 0zM7 10a2 2 0 11-4 0 2 2 0 014 0z"/></svg>
+            <span class="text-xs font-bold">Teams</span>
+          </a>
+        </nav>
 
-      <!-- Right: SIH 2026 Logo -->
-      <div class="flex-shrink-0 flex items-center">
         <img
-          class="sih-header-logo h-10 sm:h-14 w-auto object-contain bg-white p-1 rounded-lg border border-slate-200/80 shadow-2xs transition-transform hover:scale-105"
+          class="sih-header-logo h-8 sm:h-10 w-auto object-contain bg-white p-1 rounded-lg border border-slate-200/80 shadow-2xs hidden sm:block"
           src="assets/sih-logo.png"
-          alt="Smart India Hackathon 2026 logo"
+          alt="SIH 2026 logo"
         />
       </div>
+
     </div>
   </header>
-
-  <!-- Navigation Bar -->
-  <nav class="nav-bar bg-white/90 backdrop-blur-md border-b border-gray-200 sticky top-[61px] sm:top-[73px] z-40 shadow-2xs" role="navigation" aria-label="Main navigation">
-    <div class="nav-container max-w-[760px] mx-auto flex items-center justify-center gap-2 sm:gap-4 px-3 py-1.5">
-      <a href="index.html" class="nav-link active" aria-current="page">
-        <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M11 5H6a2 2 0 00-2 2v11a2 2 0 002 2h11a2 2 0 002-2v-5m-1.414-9.414a2 2 0 112.828 2.828L11.828 15H9v-2.828l8.586-8.586z"/></svg>
-        <span>Register Team</span>
-      </a>
-      <a href="teams.html" class="nav-link">
-        <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 20h5v-2a3 3 0 00-5.356-1.857M17 20H7m10 0v-2c0-.656-.126-1.283-.356-1.857M7 20H2v-2a3 3 0 015.356-1.857M7 20v-2c0-.656.126-1.283.356-1.857m0 0a5.002 5.002 0 019.288 0M15 7a3 3 0 11-6 0 3 3 0 016 0zm6 3a2 2 0 11-4 0 2 2 0 014 0zM7 10a2 2 0 11-4 0 2 2 0 014 0z"/></svg>
-        <span>Registered Teams</span>
-      </a>
-    </div>
-  </nav>
 
   <main id="main-content" class="main max-w-[720px] mx-auto px-5 py-6 pb-12" role="main">
     <!-- Instructions (shown first) -->
@@ -262,44 +260,36 @@
     <p class="loading-text">Submitting registration…</p>
   </div>
 
-  <!-- Footer -->
-  <footer class="site-footer border-t border-gray-200 bg-white mt-auto py-6" role="contentinfo">
-    <div class="footer-inner max-w-[760px] mx-auto px-4 text-center">
-      <p class="footer-college text-xs sm:text-sm font-extrabold text-[#2A4B8D] m-0">&copy; 2026 United Institute of Technology, Naini, Prayagraj</p>
-      <p class="footer-meta text-[11px] sm:text-xs font-semibold text-gray-600 mt-1 mb-2">Smart India Hackathon (SIH) 2026 Internal Registration Portal</p>
+  <!-- Sleek Compact Footer -->
+  <footer class="site-footer border-t border-slate-200/80 bg-white/90 backdrop-blur-sm py-4 mt-auto" role="contentinfo">
+    <div class="footer-inner max-w-[800px] mx-auto px-4 text-center">
       
-      <!-- Organising Team / Contact Us Support Box -->
-      <div class="my-3.5 p-3.5 bg-gradient-to-r from-blue-50 via-indigo-50 to-slate-50 border border-blue-200/80 rounded-xl max-w-md mx-auto text-center shadow-2xs">
-        <p class="text-[11px] sm:text-xs font-bold text-slate-700 m-0 mb-1">
-          📞 <strong>Organising Team &amp; Helpdesk Support:</strong>
-        </p>
-        <p class="text-xs sm:text-sm font-extrabold text-blue-950 m-0 flex items-center justify-center gap-2 flex-wrap">
-          <span>Gautam Kumar Maurya</span>
-          <span class="text-blue-300">•</span>
-          <a href="tel:8924059058" class="inline-flex items-center gap-1 text-blue-700 hover:text-blue-900 underline font-extrabold transition-colors" title="Call Organising Team">
-            <svg class="w-3.5 h-3.5 fill-current text-emerald-600" viewBox="0 0 24 24"><path d="M6.62 10.79a15.053 15.053 0 006.59 6.59l2.2-2.2a1.003 1.003 0 011.02-.24c1.12.37 2.33.57 3.57.57.55 0 1 .45 1 1V20c0 .55-.45 1-1 1-9.39 0-17-7.61-17-17 0-.55.45-1 1-1h3.5c.55 0 1 .45 1 1 0 1.25.2 2.45.57 3.57.11.35.03.74-.25 1.02l-2.2 2.2z"/></svg>
-            <span>8924059058</span>
-          </a>
-        </p>
-        <p class="text-[10px] sm:text-[11px] text-slate-500 mt-1 m-0 font-medium">Facing any issue in registration? Feel free to call or contact us.</p>
-      </div>
-
-      <!-- Developer Credit with LinkedIn Link -->
-      <div class="inline-flex items-center justify-center gap-1.5 px-3.5 py-1.5 bg-blue-50/80 border border-blue-200/80 rounded-full text-xs font-bold text-gray-700 shadow-2xs mt-1">
-        <span>Designed &amp; Developed with ❤️ by</span>
-        <a
-          href="https://www.linkedin.com/in/gkm563/"
-          target="_blank"
-          rel="noopener noreferrer"
-          class="inline-flex items-center gap-1 text-blue-700 hover:text-blue-900 underline font-extrabold transition-colors"
-          title="Visit GKM's LinkedIn Profile"
-        >
-          <svg class="w-3.5 h-3.5 fill-current text-[#0A66C2]" viewBox="0 0 24 24">
-            <path d="M19 3a2 2 0 0 1 2 2v14a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h14m-.5 15.5v-5.3a3.26 3.26 0 0 0-3.26-3.26c-.85 0-1.84.52-2.28 1.3v-1.11h-2.79v8.37h2.79v-4.93c0-.77.62-1.4 1.39-1.4a1.4 1.4 0 0 1 1.4 1.4v4.93h2.75M6.46 10.9v8.37H9.25V10.9H6.46M7.86 6.78a1.63 1.63 0 1 0 1.63 1.63 1.63 1.63 0 0 0-1.63-1.63Z"/>
-          </svg>
-          <span>GKM</span>
+      <!-- Compact Organising Team Support Pill -->
+      <div class="inline-flex items-center justify-center gap-2 flex-wrap px-3.5 py-1.5 bg-slate-50 border border-slate-200/80 rounded-full text-xs font-medium text-slate-700 mb-2.5 shadow-2xs max-w-full">
+        <span class="font-bold text-slate-800 flex items-center gap-1">
+          <span>📞 Organising Team:</span>
+          <span class="text-blue-900 font-extrabold">Gautam Kumar Maurya</span>
+        </span>
+        <span class="text-slate-300 hidden sm:inline">•</span>
+        <a href="tel:8924059058" class="inline-flex items-center gap-1 text-blue-700 hover:text-blue-900 font-extrabold underline transition-colors" title="Call Organising Team Support">
+          <svg class="w-3.5 h-3.5 fill-current text-emerald-600" viewBox="0 0 24 24"><path d="M6.62 10.79a15.053 15.053 0 006.59 6.59l2.2-2.2a1.003 1.003 0 011.02-.24c1.12.37 2.33.57 3.57.57.55 0 1 .45 1 1V20c0 .55-.45 1-1 1-9.39 0-17-7.61-17-17 0-.55.45-1 1-1h3.5c.55 0 1 .45 1 1 0 1.25.2 2.45.57 3.57.11.35.03.74-.25 1.02l-2.2 2.2z"/></svg>
+          <span>8924059058</span>
         </a>
       </div>
+
+      <!-- College Meta & Developer Credit -->
+      <div class="flex flex-col sm:flex-row items-center justify-center gap-1 sm:gap-3 text-[11px] font-medium text-slate-500">
+        <span>&copy; 2026 United Institute of Technology, Naini, Prayagraj</span>
+        <span class="hidden sm:inline text-slate-300">•</span>
+        <div class="inline-flex items-center gap-1">
+          <span>Developed with ❤️ by</span>
+          <a href="https://www.linkedin.com/in/gkm563/" target="_blank" rel="noopener noreferrer" class="text-blue-700 hover:text-blue-900 font-bold underline transition-colors inline-flex items-center gap-0.5">
+            <svg class="w-3 h-3 fill-current text-[#0A66C2]" viewBox="0 0 24 24"><path d="M19 3a2 2 0 0 1 2 2v14a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h14m-.5 15.5v-5.3a3.26 3.26 0 0 0-3.26-3.26c-.85 0-1.84.52-2.28 1.3v-1.11h-2.79v8.37h2.79v-4.93c0-.77.62-1.4 1.39-1.4a1.4 1.4 0 0 1 1.4 1.4v4.93h2.75M6.46 10.9v8.37H9.25V10.9H6.46M7.86 6.78a1.63 1.63 0 1 0 1.63 1.63 1.63 1.63 0 0 0-1.63-1.63Z"/></svg>
+            <span>GKM</span>
+          </a>
+        </div>
+      </div>
+
     </div>
   </footer>
 

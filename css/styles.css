@@ -120,7 +120,7 @@ body {
   padding: 1rem 1.25rem;
   margin-bottom: 1.25rem;
   position: sticky;
-  top: 100px;
+  top: 60px;
   z-index: 40;
 }
 
@@ -1037,6 +1037,38 @@ body {
   0% { transform: scale(1); }
   50% { transform: scale(1.015); }
   100% { transform: scale(1); }
+}
+
+/* Sleek Compact Header & Navigation Switch */
+.nav-switch {
+  display: inline-flex;
+  align-items: center;
+  gap: 2px;
+}
+
+.nav-pill {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.35rem;
+  padding: 0.35rem 0.75rem;
+  border-radius: 9999px;
+  font-size: 0.75rem;
+  font-weight: 700;
+  color: #475569;
+  text-decoration: none;
+  transition: all 0.2s cubic-bezier(0.4, 0, 0.2, 1);
+  white-space: nowrap;
+}
+
+.nav-pill:hover {
+  color: #1e293b;
+  background: rgba(255, 255, 255, 0.6);
+}
+
+.nav-pill.active {
+  background: #ffffff;
+  color: #1a73e8;
+  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1), 0 1px 2px rgba(0, 0, 0, 0.06);
 }
 
 @media (max-width: 640px) {
