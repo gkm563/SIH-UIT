@@ -165,10 +165,10 @@ function doGet(e) {
         .setMimeType(ContentService.MimeType.JSON);
     }
 
-    // Optional: register via GET ?action=submit&data=...
-    // (backup path if a browser turns POST into GET on redirect)
-    if (e && e.parameter && e.parameter.action === 'submit' && e.parameter.data) {
-      return handleRegistration_(e.parameter.data);
+    // Register via GET ?action=submit&data=... (backup path if a browser converts POST into GET on redirect)
+    if (e && e.parameter && (e.parameter.action === 'submit' || e.parameter.data || e.parameter.teamName)) {
+      var rawPayload = e.parameter.data || JSON.stringify(e.parameter);
+      return handleRegistration_(rawPayload);
     }
 
     const ss = getSpreadsheet_();

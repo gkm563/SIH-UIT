@@ -122,12 +122,12 @@ const Api = (() => {
         return data;
       }
 
-      // If server returned a business validation error (e.g. duplicate team name), return it without fallback
-      if (data && data.success === false && data.message && !data.message.includes('Google returned an HTML')) {
+      // If primary request returned a business validation error (e.g. duplicate team name / roll), return it directly
+      if (data && data.success === false && data.message && !data.message.includes('Google returned an HTML') && !data.message.includes('online')) {
         return data;
       }
 
-      // Fallback ONLY if primary request suffered a network/CORS failure (data was NOT saved)
+      // Fallback 1: urlencoded POST
       try {
         const formBody = new URLSearchParams();
         formBody.append('data', body);
@@ -143,14 +143,35 @@ const Api = (() => {
         });
         const text2 = await response2.text();
         const data2 = parseResponseText(text2);
-        if (data2 && (data2.success || data2.registrationId)) {
+        if (data2 && (data2.success === true || data2.registrationId)) {
           return data2;
         }
       } catch {
-        // Keep primary response error if fallback fails
+        // ignore
       }
 
-      return data;
+      // Fallback 2: GET submission (handles browser 302 redirect conversion cleanly)
+      try {
+        const getUrl = url + (url.includes('?') ? '&' : '?') + 'action=submit&data=' + encodeURIComponent(body);
+        const response3 = await fetch(getUrl, {
+          method: 'GET',
+          mode: 'cors',
+          redirect: 'follow',
+          signal: controller ? controller.signal : undefined
+        });
+        const text3 = await response3.text();
+        const data3 = parseResponseText(text3);
+        if (data3 && (data3.success === true || data3.registrationId)) {
+          return data3;
+        }
+        if (data3 && data3.success === false && data3.message) {
+          return data3;
+        }
+      } catch {
+        // ignore
+      }
+
+      return data || { success: false, message: 'Submission failed. Please try again.' };
     } catch (err) {
       if (err && err.name === 'AbortError') {
         return {
@@ -158,10 +179,31 @@ const Api = (() => {
           message: 'Request timed out. Check your connection and try again.'
         };
       }
+
+      // Emergency Fallback: GET submission on CORS exception
+      try {
+        const getUrl = url + (url.includes('?') ? '&' : '?') + 'action=submit&data=' + encodeURIComponent(body);
+        const response3 = await fetch(getUrl, {
+          method: 'GET',
+          mode: 'cors',
+          redirect: 'follow'
+        });
+        const text3 = await response3.text();
+        const data3 = parseResponseText(text3);
+        if (data3 && (data3.success === true || data3.registrationId)) {
+          return data3;
+        }
+        if (data3 && data3.success === false && data3.message) {
+          return data3;
+        }
+      } catch {
+        // ignore
+      }
+
       return {
         success: false,
         message:
-          'Could not reach Google Sheets. Check your internet connection and confirm the Web App URL.'
+          'Could not reach Google Sheets. Check your internet connection and confirm the Web App URL is deployed.'
       };
     } finally {
       if (timer) clearTimeout(timer);
