@@ -358,6 +358,36 @@
                 </label>
                 <p class="field-error" role="alert"></p>
               </div>
+
+              <!-- Security Math Captcha Box -->
+              <div class="my-5 p-4 bg-slate-50 border-2 border-slate-300 rounded-xl shadow-xs" id="captcha-container">
+                <div class="flex items-center gap-2 mb-2">
+                  <div class="w-8 h-8 rounded-lg bg-blue-600 text-white flex items-center justify-center font-bold text-sm">
+                    🔒
+                  </div>
+                  <div>
+                    <h4 class="text-sm font-extrabold text-slate-800 m-0">Security Check (Anti-Bot Verification)</h4>
+                    <p class="text-xs text-slate-600 m-0">Solve simple math puzzle to submit form.</p>
+                  </div>
+                </div>
+                <div class="flex items-center gap-3 mt-3 bg-white p-3 rounded-lg border border-slate-200">
+                  <span id="captcha-question" class="text-sm sm:text-base font-black text-blue-900 bg-blue-50 px-3 py-1.5 rounded-md border border-blue-200 tracking-wider">
+                    What is 7 + 4 = ?
+                  </span>
+                  <input
+                    type="number"
+                    id="captcha-input"
+                    name="captcha-input"
+                    class="w-24 p-2 text-base font-bold text-center border-2 border-slate-300 rounded-lg focus:border-blue-600 focus:outline-hidden"
+                    placeholder="Answer"
+                    required
+                  />
+                  <button type="button" id="btn-refresh-captcha" class="text-xs text-blue-600 hover:text-blue-800 font-bold underline px-1">
+                    🔄 New
+                  </button>
+                </div>
+                <p id="captcha-error" class="text-xs font-bold text-red-600 mt-2 hidden" role="alert"></p>
+              </div>
             </div>`;
         }
 
@@ -763,6 +793,24 @@
       return;
     }
 
+    // Anti-Bot Math Captcha Validation
+    const captchaInputEl = document.getElementById('captcha-input');
+    const captchaErrorEl = document.getElementById('captcha-error');
+    if (captchaInputEl) {
+      const userAns = parseInt(captchaInputEl.value, 10);
+      if (isNaN(userAns) || userAns !== state.captchaAnswer) {
+        if (captchaErrorEl) {
+          captchaErrorEl.textContent = '❌ Incorrect answer to security math puzzle. Please try again.';
+          captchaErrorEl.classList.remove('hidden');
+        }
+        showAlert('Security Check Failed: Incorrect answer to math puzzle.');
+        generateCaptcha();
+        return;
+      } else if (captchaErrorEl) {
+        captchaErrorEl.classList.add('hidden');
+      }
+    }
+
     const formData = collectFormData(true);
     formData.teamSize = 6;
     formData.fields.teamSize = '6';
@@ -898,6 +946,21 @@
     }
   }
 
+  function generateCaptcha() {
+    state.captchaA = Math.floor(Math.random() * 9) + 1;
+    state.captchaB = Math.floor(Math.random() * 9) + 1;
+    state.captchaAnswer = state.captchaA + state.captchaB;
+
+    const qEl = document.getElementById('captcha-question');
+    if (qEl) {
+      qEl.textContent = `What is ${state.captchaA} + ${state.captchaB} = ?`;
+    }
+    const inputEl = document.getElementById('captcha-input');
+    if (inputEl) inputEl.value = '';
+    const errorEl = document.getElementById('captcha-error');
+    if (errorEl) errorEl.classList.add('hidden');
+  }
+
   function returnHome() {
     Storage.clearSubmission();
     state.submission = null;
@@ -1025,6 +1088,14 @@
     els.form.addEventListener('submit', handleSubmit);
     els.btnDownload.addEventListener('click', downloadAcknowledgement);
     els.btnHome.addEventListener('click', returnHome);
+
+    generateCaptcha();
+
+    els.form.addEventListener('click', (e) => {
+      if (e.target && (e.target.id === 'btn-refresh-captcha' || e.target.closest('#btn-refresh-captcha'))) {
+        generateCaptcha();
+      }
+    });
 
     els.sectionDots.addEventListener('click', (e) => {
       const btn = e.target.closest('[data-step-btn]');

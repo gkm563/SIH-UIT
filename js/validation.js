@@ -13,7 +13,19 @@ const Validation = (() => {
 
   function validateEmail(value) {
     if (isEmpty(value)) return 'Email address is required.';
-    if (!EMAIL_RE.test(String(value).trim())) return 'Enter a valid email address.';
+    const trimmed = String(value).trim().toLowerCase();
+    if (!EMAIL_RE.test(trimmed)) return 'Enter a valid email address.';
+
+    // Reject fake extensions like .png, .jpg, .ci, .ck, etc.
+    if (/\.(png|jpg|jpeg|gif|webp|svg|pdf|html|php|js|css|exe|zip|rar)$/i.test(trimmed)) {
+      return 'Enter a valid email address (fake image/file extension detected).';
+    }
+
+    const parts = trimmed.split('@');
+    if (parts.length === 2 && parts[0].length < 2) {
+      return 'Email username must be at least 2 characters.';
+    }
+
     return '';
   }
 

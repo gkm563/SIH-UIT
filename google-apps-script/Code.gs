@@ -963,13 +963,24 @@ function validateRegistration_(data) {
     return { ok: false, message: 'Required fields are missing.' };
   }
 
+  // Honeypot anti-bot check
+  if (data.hp_website && String(data.hp_website).trim().length > 0) {
+    return { ok: false, message: 'Automated spam submission detected.' };
+  }
+
   if (!data.teamName) {
     return { ok: false, message: 'Team name is required.' };
   }
 
-  // Check SIH Rule: Must not contain institute name
-  var lowerName = String(data.teamName || '').toLowerCase();
-  if (lowerName.includes('uit') || lowerName.includes('united')) {
+  // Check SIH Rule: Must not contain institute name (with Unicode homoglyph normalization)
+  var rawName = String(data.teamName || '').toLowerCase();
+  var normalizedName = normalizeHomoglyphs_(rawName).toLowerCase();
+  if (
+    normalizedName.includes('uit') ||
+    normalizedName.includes('united') ||
+    rawName.includes('uit') ||
+    rawName.includes('united')
+  ) {
     return {
       ok: false,
       message: 'SIH Rule Violation: Team name must not contain the name of your institute ("United" / "UIT") in any form.'
@@ -983,6 +994,15 @@ function validateRegistration_(data) {
       return {
         ok: false,
         message: 'The team name "' + data.teamName + '" is already registered. Please choose a unique team name.'
+      };
+    }
+
+    // Check duplicate Leader Roll Number or Leader Email in sheet
+    var leaderRegCheck = isLeaderOrRollAlreadyRegistered_(sheet, data.leader.rollNumber, data.leader.email);
+    if (leaderRegCheck.registered) {
+      return {
+        ok: false,
+        message: 'Registration blocked: ' + leaderRegCheck.reason
       };
     }
   } catch (ignore) {
@@ -1041,14 +1061,91 @@ function validatePerson_(person, label) {
   if (!person.semester) return { ok: false, message: label + ' semester is required.' };
   if (!person.gender) return { ok: false, message: label + ' gender is required.' };
 
-  if (!isValidEmail_(person.email)) {
-    return { ok: false, message: label + ' email is invalid.' };
+  if (!isValidStrictEmail_(person.email)) {
+    return { ok: false, message: label + ' email address is invalid or unverified.' };
   }
   if (!isValidPhone_(person.whatsapp)) {
     return { ok: false, message: label + ' WhatsApp number is invalid.' };
   }
 
   return { ok: true };
+}
+
+function isLeaderOrRollAlreadyRegistered_(sheet, rollNumber, email) {
+  if (!sheet) return { registered: false };
+  var lastRow = sheet.getLastRow();
+  if (lastRow < 2) return { registered: false };
+
+  var targetRoll = String(rollNumber || '').trim().toUpperCase();
+  var targetEmail = String(email || '').trim().toLowerCase();
+  while (targetRoll.charAt(0) === "'") targetRoll = targetRoll.substring(1);
+  while (targetEmail.charAt(0) === "'") targetEmail = targetEmail.substring(1);
+
+  if (!targetRoll && !targetEmail) return { registered: false };
+
+  var data = sheet.getRange(2, 1, lastRow - 1, HEADERS.length).getValues();
+  for (var i = 0; i < data.length; i++) {
+    var row = data[i];
+    var regId = String(row[1] || '').trim();
+    var existingRoll = String(row[5] || '').trim().toUpperCase();
+    var existingEmail = String(row[11] || '').trim().toLowerCase();
+
+    while (existingRoll.charAt(0) === "'") existingRoll = existingRoll.substring(1);
+    while (existingEmail.charAt(0) === "'") existingEmail = existingEmail.substring(1);
+
+    if (targetRoll && existingRoll && targetRoll === existingRoll) {
+      return { registered: true, reason: 'Roll Number "' + targetRoll + '" is already registered under ' + regId + '.' };
+    }
+    if (targetEmail && existingEmail && targetEmail === existingEmail) {
+      return { registered: true, reason: 'Email "' + targetEmail + '" is already registered under ' + regId + '.' };
+    }
+  }
+
+  return { registered: false };
+}
+
+function isValidStrictEmail_(email) {
+  var s = String(email || '').trim().toLowerCase();
+  while (s.charAt(0) === "'") s = s.substring(1);
+
+  if (!/^[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,}$/i.test(s)) {
+    return false;
+  }
+
+  // Reject image/file extensions or fake domains
+  if (/\.(png|jpg|jpeg|gif|webp|svg|pdf|html|php|js|css|exe|zip|rar|ci|ck|ok)$/i.test(s)) {
+    return false;
+  }
+
+  var parts = s.split('@');
+  if (parts.length !== 2) return false;
+  var user = parts[0];
+  var domain = parts[1];
+
+  if (user.length < 2 || domain.length < 3) return false;
+
+  var domainParts = domain.split('.');
+  var tld = domainParts[domainParts.length - 1];
+  if (!/^(com|in|org|edu|net|io|co|gov|ac|info|tech|me|app)$/i.test(tld)) {
+    return false;
+  }
+
+  return true;
+}
+
+function normalizeHomoglyphs_(str) {
+  if (!str) return '';
+  var s = String(str).trim();
+  try {
+    s = s.normalize('NFKD');
+  } catch (ignore) {}
+
+  s = s.replace(/[\u0410-\u044F]/g, function(c) {
+    var map = {'А':'A','а':'a','В':'B','Е':'E','е':'e','К':'K','М':'M','Н':'H','О':'O','о':'o','Р':'P','р':'p','С':'C','с':'c','Т':'T','т':'t','Х':'X','х':'x','І':'I','і':'i'};
+    return map[c] || c;
+  });
+
+  return s.replace(/[^\x00-\x7F]/g, '');
 }
 
 function sanitize_(value) {
@@ -1074,7 +1171,7 @@ function normalizePhone_(value) {
 }
 
 function isValidEmail_(email) {
-  return /^[^\s@]+@[^\s@]+\.[^\s@]{2,}$/i.test(String(email || ''));
+  return isValidStrictEmail_(email);
 }
 
 function isValidPhone_(phone) {
@@ -1212,8 +1309,51 @@ function testSubmit_() {
     declare_internal: true,
     declare_contact: true
   };
+  var res = handleRegistration_(JSON.stringify(sample));
+  Logger.log(res.getContent());
+}
 
-  var e = { postData: { contents: JSON.stringify(sample) } };
-  var result = doPost(e);
-  Logger.log(result.getContent());
+/**
+ * ADMIN UTILITY: Identify and clean up spam rows in the Google Sheet.
+ * How to run:
+ * 1. Open Apps Script Editor
+ * 2. Select function: cleanSpamRows
+ * 3. Click Run
+ */
+function cleanSpamRows() {
+  var sheet = getOrCreateSheet_();
+  var lastRow = sheet.getLastRow();
+  if (lastRow < 2) return 'No rows to clean.';
+
+  var data = sheet.getRange(2, 1, lastRow - 1, HEADERS.length).getValues();
+  var deletedCount = 0;
+
+  for (var i = data.length - 1; i >= 0; i--) {
+    var rowIndex = i + 2;
+    var row = data[i];
+    var leaderEmail = String(row[11] || '').trim().toLowerCase();
+    var leaderName = String(row[4] || '').trim().toLowerCase();
+    var teamName = String(row[2] || '').trim().toLowerCase();
+
+    var isSpam = false;
+
+    // Detect fake email extensions or single letter emails
+    if (/\.(png|jpg|jpeg|gif|ci|ck|ok)$/i.test(leaderEmail) || leaderEmail === 'a@a.png' || leaderEmail.length < 6) {
+      isSpam = true;
+    }
+
+    // Detect fake team name "UIT" and fake leader name "UIT"
+    if (teamName === 'uit' && leaderName === 'uit') {
+      isSpam = true;
+    }
+
+    if (isSpam) {
+      sheet.deleteRow(rowIndex);
+      deletedCount++;
+    }
+  }
+
+  var msg = 'SUCCESS: Cleaned ' + deletedCount + ' spam row(s) from sheet.';
+  Logger.log(msg);
+  return msg;
 }
