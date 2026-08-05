@@ -641,7 +641,9 @@
     const sections = getSections();
     const current = sections[state.currentIndex];
     if (!Validation.validateSection(current)) {
-      showAlert('Please complete all required fields in this section before continuing.');
+      const firstErrorEl = current.querySelector('.field-error.visible');
+      const errText = firstErrorEl && firstErrorEl.textContent ? firstErrorEl.textContent : 'Please complete all required fields in this section.';
+      showAlert(`⚠️ Cannot proceed: ${errText}`);
       return;
     }
     hideAlert();

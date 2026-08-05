@@ -193,6 +193,15 @@ const Validation = (() => {
       }
     }
 
+    if (!message && name && name.endsWith('_semester')) {
+      const prefix = name.replace('_semester', '');
+      const yearChecked = fieldEl.closest('.form-section')?.querySelector(`input[name="${prefix}_year"]:checked`);
+      const yearVal = yearChecked ? yearChecked.value : '';
+      if (yearVal) {
+        message = validateYearSemesterMatch(yearVal, value);
+      }
+    }
+
     setFieldError(fieldEl, message);
     return !message;
   }
