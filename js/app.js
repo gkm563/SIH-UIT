@@ -115,6 +115,34 @@
 
   function personFields(prefix, includeTeamFields = false) {
     let html = '';
+
+    if (includeTeamFields) {
+      html += textField({
+        name: 'teamName',
+        label: 'Team Name',
+        validate: 'teamName',
+        placeholder: 'Enter a unique team name (e.g. CodeCrafters)',
+        hint: 'Rule: Must be unique and must not contain institute name (e.g. UIT, United).'
+      });
+      html += `<div id="teamName-live-badge" class="mt-2 text-xs font-semibold hidden mb-4" aria-live="polite"></div>`;
+      html += `
+        <div class="field mb-4" data-name="teamSize">
+          <label class="field-label">Total Number of Team Members <span class="required" aria-hidden="true">*</span></label>
+          <input
+            class="field-input"
+            type="text"
+            value="6 Members (1 Team Leader + 5 Team Members)"
+            readonly
+            disabled
+            aria-readonly="true"
+            style="background-color: #f8f9fa; color: #3c4043; font-weight: 500; cursor: not-allowed;"
+          />
+          <input type="hidden" name="teamSize" id="teamSize" value="6" />
+          <p class="field-hint">SIH 2026 mandates a team size of exactly 6 members (1 Team Leader + 5 Members).</p>
+          <p class="field-hint">At least <strong>one female member</strong> is mandatory in every team.</p>
+        </div>`;
+    }
+
     html += textField({
       name: `${prefix}_fullName`,
       label: 'Full Name',
@@ -195,33 +223,6 @@
       autocomplete: 'tel',
       hint: 'Enter 10-digit Indian mobile number without +91'
     });
-
-    if (includeTeamFields) {
-      html += textField({
-        name: 'teamName',
-        label: 'Team Name',
-        validate: 'teamName',
-        placeholder: 'Enter a unique team name (e.g. CodeCrafters)',
-        hint: 'Rule: Must be unique and must not contain institute name (e.g. UIT, United).'
-      });
-      html += `<div id="teamName-live-badge" class="mt-2 text-xs font-semibold hidden" aria-live="polite"></div>`;
-      html += `
-        <div class="field" data-name="teamSize">
-          <label class="field-label">Total Number of Team Members <span class="required" aria-hidden="true">*</span></label>
-          <input
-            class="field-input"
-            type="text"
-            value="6 Members (1 Team Leader + 5 Team Members)"
-            readonly
-            disabled
-            aria-readonly="true"
-            style="background-color: #f8f9fa; color: #3c4043; font-weight: 500; cursor: not-allowed;"
-          />
-          <input type="hidden" name="teamSize" id="teamSize" value="6" />
-          <p class="field-hint">SIH 2026 mandates a team size of exactly 6 members (1 Team Leader + 5 Members).</p>
-          <p class="field-hint">At least <strong>one female member</strong> is mandatory in every team.</p>
-        </div>`;
-    }
 
     return html;
   }
@@ -640,6 +641,12 @@
   function goNext() {
     const sections = getSections();
     const current = sections[state.currentIndex];
+
+    const teamNameInput = current.querySelector('input[name="teamName"]');
+    if (teamNameInput) {
+      checkTeamNameLive(teamNameInput);
+    }
+
     if (!Validation.validateSection(current)) {
       const firstErrorEl = current.querySelector('.field-error.visible');
       const errText = firstErrorEl && firstErrorEl.textContent ? firstErrorEl.textContent : 'Please complete all required fields in this section.';
@@ -1025,13 +1032,19 @@
   }
 
   async function fetchRegisteredTeams() {
+    const cached = Api.getLocalCachedTeams();
+    if (Array.isArray(cached) && cached.length > 0) {
+      window._registeredTeamsList = cached;
+    }
     try {
       const res = await Api.getRegisteredTeams();
       if (res && res.success && Array.isArray(res.teams)) {
         window._registeredTeamsList = res.teams;
       }
     } catch {
-      window._registeredTeamsList = [];
+      if (!window._registeredTeamsList) {
+        window._registeredTeamsList = [];
+      }
     }
   }
 
