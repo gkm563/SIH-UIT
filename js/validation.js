@@ -221,10 +221,22 @@ const Validation = (() => {
     return valid;
   }
 
-  function normalizePhone(value) {
-    const digits = String(value).replace(/\D/g, '');
-    if (digits.length === 12 && digits.startsWith('91')) return digits.slice(2);
-    return digits;
+  function validateYearSemesterMatch(year, semester) {
+    if (!year || !semester) return '';
+    const semNum = parseInt(semester, 10);
+    if (year === 'First Year' && semNum !== 1 && semNum !== 2) {
+      return 'First Year students can only be in Semester 1 or 2.';
+    }
+    if (year === 'Second Year' && semNum !== 3 && semNum !== 4) {
+      return 'Second Year students can only be in Semester 3 or 4.';
+    }
+    if (year === 'Third Year' && semNum !== 5 && semNum !== 6) {
+      return 'Third Year students can only be in Semester 5 or 6.';
+    }
+    if (year === 'Fourth Year' && semNum !== 7 && semNum !== 8) {
+      return 'Fourth Year students can only be in Semester 7 or 8.';
+    }
+    return '';
   }
 
   return {
@@ -235,6 +247,7 @@ const Validation = (() => {
     normalizePhone,
     validateEmail,
     validatePhone,
-    validateTeamName
+    validateTeamName,
+    validateYearSemesterMatch
   };
 })();

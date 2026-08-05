@@ -1061,11 +1061,34 @@ function validatePerson_(person, label) {
   if (!person.semester) return { ok: false, message: label + ' semester is required.' };
   if (!person.gender) return { ok: false, message: label + ' gender is required.' };
 
+  var ysCheck = validateYearSemesterMatch_(person.year, person.semester, label);
+  if (!ysCheck.ok) return ysCheck;
+
   if (!isValidStrictEmail_(person.email)) {
     return { ok: false, message: label + ' email address is invalid or unverified.' };
   }
   if (!isValidPhone_(person.whatsapp)) {
     return { ok: false, message: label + ' WhatsApp number is invalid.' };
+  }
+
+  return { ok: true };
+}
+
+function validateYearSemesterMatch_(year, semester, label) {
+  var y = String(year || '').trim();
+  var sem = parseInt(semester || '0', 10);
+
+  if (y === 'First Year' && sem !== 1 && sem !== 2) {
+    return { ok: false, message: label + ': First Year students can only be in Semester 1 or 2.' };
+  }
+  if (y === 'Second Year' && sem !== 3 && sem !== 4) {
+    return { ok: false, message: label + ': Second Year students can only be in Semester 3 or 4.' };
+  }
+  if (y === 'Third Year' && sem !== 5 && sem !== 6) {
+    return { ok: false, message: label + ': Third Year students can only be in Semester 5 or 6.' };
+  }
+  if (y === 'Fourth Year' && sem !== 7 && sem !== 8) {
+    return { ok: false, message: label + ': Fourth Year students can only be in Semester 7 or 8.' };
   }
 
   return { ok: true };

@@ -445,6 +445,12 @@
           checkCrossMemberDuplicates();
           scheduleSave();
         });
+        if (input.type === 'radio' && input.name && input.name.endsWith('_year')) {
+          input.addEventListener('change', () => {
+            const prefix = input.name.replace('_year', '');
+            updateSemesterOptionsForYear(prefix, input.value);
+          });
+        }
         if (input.tagName === 'SELECT' || input.type === 'radio' || input.type === 'checkbox') {
           input.addEventListener('change', () => scheduleSave());
         } else {
@@ -457,6 +463,32 @@
         }
       });
     });
+  }
+
+  function updateSemesterOptionsForYear(prefix, yearValue) {
+    const semSelect = els.form.querySelector(`select[name="${prefix}_semester"]`);
+    if (!semSelect) return;
+
+    let allowed = [];
+    if (yearValue === 'First Year') allowed = ['1', '2'];
+    else if (yearValue === 'Second Year') allowed = ['3', '4'];
+    else if (yearValue === 'Third Year') allowed = ['5', '6'];
+    else if (yearValue === 'Fourth Year') allowed = ['7', '8'];
+
+    const currentVal = semSelect.value;
+    let html = '<option value="">Select semester</option>';
+    if (allowed.length > 0) {
+      html += allowed.map((s) => `<option value="${s}">Semester ${s}</option>`).join('');
+    } else {
+      html += SEMESTERS.map((s) => `<option value="${s}">Semester ${s}</option>`).join('');
+    }
+
+    semSelect.innerHTML = html;
+    if (allowed.includes(currentVal)) {
+      semSelect.value = currentVal;
+    } else {
+      semSelect.value = '';
+    }
   }
 
   function checkCrossMemberDuplicates() {
@@ -694,6 +726,19 @@
     if (teamSizeSelect && data.teamSize) {
       teamSizeSelect.value = String(data.teamSize);
     }
+
+    const prefixes = ['leader', 'member1', 'member2', 'member3', 'member4', 'member5'];
+    prefixes.forEach((p) => {
+      const yearChecked = els.form.querySelector(`input[name="${p}_year"]:checked`);
+      if (yearChecked) {
+        updateSemesterOptionsForYear(p, yearChecked.value);
+        const savedSem = data.fields[`${p}_semester`];
+        if (savedSem) {
+          const semSelect = els.form.querySelector(`select[name="${p}_semester"]`);
+          if (semSelect) semSelect.value = savedSem;
+        }
+      }
+    });
   }
 
   /* ---------- Auto-save ---------- */
