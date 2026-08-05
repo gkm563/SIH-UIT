@@ -1,0 +1,352 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="description" content="SIH 2026 Internal Hackathon Problem Statement Bank — United Institute of Technology, Prayagraj" />
+  <meta name="robots" content="noindex, nofollow" />
+  <meta name="theme-color" content="#1a73e8" />
+  <title>Problem Statement Bank | SIH 2026 UIT Prayagraj</title>
+  <link rel="icon" href="assets/united-logo.png" type="image/png" />
+  <script src="https://cdn.tailwindcss.com"></script>
+  <script>
+    tailwind.config = {
+      theme: {
+        extend: {
+          colors: {
+            primary: { DEFAULT: '#1a73e8', dark: '#1557b0', light: '#e8f0fe' },
+            united: { DEFAULT: '#2A4B8D', red: '#D63333' }
+          }
+        }
+      }
+    };
+  </script>
+  <link rel="stylesheet" href="css/styles.css" />
+</head>
+<body class="bg-slate-50 min-h-screen flex flex-col font-sans">
+  <a class="sr-only" href="#ps-browser">Skip to Problem Statements</a>
+
+  <!-- Ultra-Sleek Glassmorphic Header (Private / Hidden link mode) -->
+  <header class="site-header bg-white/95 backdrop-blur-md border-b border-gray-200/80 sticky top-0 z-50 shadow-2xs" role="banner">
+    <div class="header-inner max-w-[1200px] mx-auto px-3 sm:px-5 py-2 sm:py-2.5 flex items-center justify-between gap-2 sm:gap-4">
+      
+      <!-- Left: Brand -->
+      <a href="index.html" class="flex items-center gap-2 sm:gap-3 flex-shrink-0 group transition-transform active:scale-95" title="United Institute of Technology">
+        <img
+          class="college-logo w-9 h-9 sm:w-11 sm:h-11 object-contain transition-transform group-hover:scale-105"
+          src="assets/united-logo.png"
+          alt="United Group of Institutions logo"
+        />
+        <div class="flex flex-col justify-center min-w-0">
+          <div class="flex items-center gap-1.5 flex-wrap">
+            <span class="text-xs sm:text-base font-black text-[#2A4B8D] leading-none tracking-tight">
+              UIT <span class="hidden xs:inline font-bold text-[#2A4B8D]/90">Prayagraj</span>
+            </span>
+            <span class="text-[9px] sm:text-[10px] font-extrabold text-blue-700 bg-blue-50 border border-blue-200/80 px-1.5 py-0.5 rounded-full leading-none">
+              SIH 2026
+            </span>
+            <span class="text-[9px] font-extrabold text-amber-700 bg-amber-50 border border-amber-200/80 px-1.5 py-0.5 rounded-full leading-none">
+              🔒 Internal Draft
+            </span>
+          </div>
+          <span class="text-[10px] sm:text-xs font-semibold text-slate-500 leading-tight mt-0.5 hidden sm:block">
+            Problem Statement Bank (30 Problem Statements)
+          </span>
+        </div>
+      </a>
+
+      <!-- Right: Navigation -->
+      <div class="flex items-center gap-2 sm:gap-3 flex-shrink-0">
+        <nav class="nav-switch flex items-center bg-slate-100/90 p-1 rounded-full border border-slate-200/80 shadow-2xs">
+          <a href="index.html" class="nav-pill">
+            <svg class="w-3.5 h-3.5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M11 5H6a2 2 0 00-2 2v11a2 2 0 002 2h11a2 2 0 002-2v-5m-1.414-9.414a2 2 0 112.828 2.828L11.828 15H9v-2.828l8.586-8.586z"/></svg>
+            <span class="text-xs font-bold">Register</span>
+          </a>
+          <a href="teams.html" class="nav-pill">
+            <svg class="w-3.5 h-3.5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 20h5v-2a3 3 0 00-5.356-1.857M17 20H7m10 0v-2c0-.656-.126-1.283-.356-1.857M7 20H2v-2a3 3 0 015.356-1.857M7 20v-2c0-.656.126-1.283.356-1.857m0 0a5.002 5.002 0 019.288 0M15 7a3 3 0 11-6 0 3 3 0 016 0zm6 3a2 2 0 11-4 0 2 2 0 014 0zM7 10a2 2 0 11-4 0 2 2 0 014 0z"/></svg>
+            <span class="text-xs font-bold">Teams</span>
+          </a>
+          <a href="problems.html" class="nav-pill active" aria-current="page">
+            <svg class="w-3.5 h-3.5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9.663 17h4.673M12 3v1m6.364 1.636l-.707.707M21 12h-1M4 12H3m3.343-5.657l-.707-.707m2.828 9.9a5 5 0 117.072 0l-.548.547A3.374 3.374 0 0014 18.469V19a2 2 0 11-4 0v-.531c0-.895-.356-1.754-.988-2.386l-.548-.547z"/></svg>
+            <span class="text-xs font-bold">PS Bank</span>
+          </a>
+        </nav>
+
+        <img
+          class="sih-header-logo h-8 sm:h-10 w-auto object-contain bg-white p-1 rounded-lg border border-slate-200/80 shadow-2xs hidden sm:block"
+          src="assets/sih-logo.png"
+          alt="SIH 2026 logo"
+        />
+      </div>
+
+    </div>
+  </header>
+
+  <!-- Hero Section -->
+  <section class="bg-gradient-to-r from-blue-950 via-indigo-950 to-slate-950 text-white py-10 px-4 shadow-inner relative overflow-hidden">
+    <div class="max-w-[1200px] mx-auto text-center relative z-10">
+      <div class="inline-flex items-center gap-2 px-3 py-1 bg-blue-500/20 border border-blue-400/30 rounded-full text-blue-300 text-xs font-bold mb-3 backdrop-blur-md">
+        <span>💡 Official SIH 2026 Problem Statement Bank</span>
+      </div>
+      <h1 class="text-2xl sm:text-4xl font-black tracking-tight mb-2 text-white">
+        Smart India Hackathon 2026 — Problem Statements
+      </h1>
+      <p class="text-sm sm:text-base text-slate-300 max-w-2xl mx-auto mb-6">
+        Browse 30 real-world problem statements, filter by domain &amp; difficulty, and claim the ideal challenge for your team!
+      </p>
+
+      <!-- Key Info Bar -->
+      <div class="inline-flex flex-wrap items-center justify-center gap-3 sm:gap-6 bg-white/10 backdrop-blur-md p-3 sm:px-6 sm:py-3 rounded-2xl border border-white/15 text-xs sm:text-sm font-semibold mb-6">
+        <div class="flex items-center gap-1.5 text-blue-200">
+          <svg class="w-4 h-4 text-blue-400" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M8 7V3m8 4V3m-9 8h10M5 21h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v12a2 2 0 002 2z"/></svg>
+          <span>Hackathon: March 15–16, 2026</span>
+        </div>
+        <div class="hidden sm:inline text-white/30">•</div>
+        <div class="flex items-center gap-1.5 text-emerald-200">
+          <svg class="w-4 h-4 text-emerald-400" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17.657 16.657L13.414 20.9a1.998 1.998 0 01-2.827 0l-4.244-4.243a8 8 0 1111.314 0z"/><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 11a3 3 0 11-6 0 3 3 0 016 0z"/></svg>
+          <span>Venue: UIT Main Campus, Prayagraj</span>
+        </div>
+        <div class="hidden sm:inline text-white/30">•</div>
+        <div class="flex items-center gap-1.5 text-amber-200">
+          <svg class="w-4 h-4 text-amber-400" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 8v4l3 3m6-3a9 9 0 11-18 0 9 9 0 0118 0z"/></svg>
+          <span>PS Selection Deadline: Feb 28, 2026</span>
+        </div>
+      </div>
+
+      <div>
+        <a href="#ps-browser" class="inline-flex items-center gap-2 bg-blue-600 hover:bg-blue-500 text-white font-extrabold text-xs sm:text-sm px-6 py-3 rounded-full shadow-lg transition-transform active:scale-95">
+          <span>Browse Problem Statements</span>
+          <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"/></svg>
+        </a>
+      </div>
+    </div>
+  </section>
+
+  <!-- Main Browser Section -->
+  <main id="ps-browser" class="max-w-[1200px] mx-auto px-4 py-8 flex-1 w-full" role="main">
+    
+    <!-- Filter Control Bar -->
+    <div class="bg-white border border-slate-200/90 rounded-2xl p-4 sm:p-5 shadow-sm mb-6">
+      
+      <!-- Top Row: Search + Quick Stats -->
+      <div class="flex flex-col sm:flex-row items-center justify-between gap-3 mb-4">
+        <div class="relative w-full sm:max-w-md">
+          <input
+            type="text"
+            id="ps-search"
+            placeholder="Search by Title, ID (e.g. PS-01) or Domain..."
+            class="w-full pl-10 pr-4 py-2.5 bg-slate-50 border border-slate-300 rounded-xl text-xs sm:text-sm text-slate-800 placeholder-slate-400 focus:outline-none focus:ring-2 focus:ring-blue-500 focus:bg-white transition-colors"
+          />
+          <svg class="w-4 h-4 text-slate-400 absolute left-3.5 top-3" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z"/>
+          </svg>
+        </div>
+
+        <div class="flex items-center gap-3 w-full sm:w-auto justify-between sm:justify-end text-xs font-bold text-slate-600">
+          <span id="ps-results-count" class="bg-blue-50 text-blue-800 border border-blue-200 px-3 py-1.5 rounded-lg">
+            Showing 30 of 30 problem statements
+          </span>
+          <button type="button" id="ps-reset-filters" class="text-blue-600 hover:text-blue-800 underline font-semibold text-xs transition-colors hidden">
+            Reset Filters
+          </button>
+        </div>
+      </div>
+
+      <!-- Second Row: Type & Difficulty Filters -->
+      <div class="grid grid-cols-1 sm:grid-cols-2 gap-3 mb-4">
+        <!-- Type Filter -->
+        <div>
+          <label class="block text-[11px] font-bold text-slate-600 uppercase tracking-wider mb-1.5">Technology Type</label>
+          <div class="flex items-center gap-1.5 flex-wrap" id="type-filter-group">
+            <button type="button" class="type-btn active" data-type="All">All Types</button>
+            <button type="button" class="type-btn" data-type="Software">🖥️ Software</button>
+            <button type="button" class="type-btn" data-type="Hardware">⚙️ Hardware</button>
+            <button type="button" class="type-btn" data-type="Hybrid">🔀 Hybrid</button>
+          </div>
+        </div>
+
+        <!-- Difficulty Filter -->
+        <div>
+          <label class="block text-[11px] font-bold text-slate-600 uppercase tracking-wider mb-1.5">Difficulty Level</label>
+          <div class="flex items-center gap-1.5 flex-wrap" id="difficulty-filter-group">
+            <button type="button" class="diff-btn active" data-diff="All">All Levels</button>
+            <button type="button" class="diff-btn" data-diff="Beginner">🟢 Beginner</button>
+            <button type="button" class="diff-btn" data-diff="Intermediate">🟡 Intermediate</button>
+            <button type="button" class="diff-btn" data-diff="Advanced">🔴 Advanced</button>
+          </div>
+        </div>
+      </div>
+
+      <!-- Third Row: Domain Chips -->
+      <div>
+        <div class="flex items-center justify-between mb-1.5">
+          <label class="block text-[11px] font-bold text-slate-600 uppercase tracking-wider">Filter by Domain</label>
+          <span class="text-[10px] text-slate-400 font-medium">Click domain chip to toggle</span>
+        </div>
+        <div class="flex items-center gap-1.5 flex-wrap max-h-36 overflow-y-auto p-1 border border-slate-100 rounded-xl bg-slate-50/50" id="domain-chips-container">
+          <!-- Domain chips rendered dynamically -->
+        </div>
+      </div>
+
+    </div>
+
+    <!-- Grid of Problem Statement Cards -->
+    <div id="ps-grid" class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-5">
+      <!-- Dynamic Problem Statement Cards -->
+    </div>
+
+    <!-- Empty State Message -->
+    <div id="ps-empty-state" class="hidden text-center py-16 px-4 bg-white border border-slate-200/80 rounded-2xl shadow-xs">
+      <div class="w-16 h-16 bg-slate-100 text-slate-400 rounded-full flex items-center justify-center mx-auto mb-3 text-2xl">🔍</div>
+      <h3 class="text-base font-bold text-slate-800 mb-1">No Problem Statements Found</h3>
+      <p class="text-xs text-slate-500 max-w-sm mx-auto mb-4">No problem statements match your selected filter criteria. Try clearing search or domain filters.</p>
+      <button type="button" id="btn-clear-empty" class="inline-flex items-center gap-1.5 bg-blue-600 text-white font-bold text-xs px-4 py-2 rounded-xl hover:bg-blue-700 transition-colors">
+        Clear All Filters
+      </button>
+    </div>
+
+  </main>
+
+  <!-- Problem Statement Detail Modal -->
+  <div id="ps-detail-modal" class="fixed inset-0 z-50 hidden bg-slate-900/60 backdrop-blur-xs flex items-center justify-center p-3 sm:p-4 overflow-y-auto" role="dialog" aria-modal="true">
+    <div class="bg-white border border-slate-200 rounded-2xl max-w-2xl w-full max-h-[90vh] flex flex-col shadow-2xl overflow-hidden animate-in fade-in zoom-in-95 duration-200">
+      
+      <!-- Modal Header -->
+      <div class="px-5 py-4 border-b border-slate-200 flex items-start justify-between gap-3 bg-slate-50">
+        <div class="flex-1 min-w-0">
+          <div class="flex items-center gap-2 flex-wrap mb-1">
+            <span id="modal-ps-id" class="px-2 py-0.5 rounded-md text-xs font-black bg-blue-600 text-white"></span>
+            <span id="modal-ps-domain" class="px-2.5 py-0.5 rounded-full text-xs font-bold border"></span>
+            <span id="modal-ps-type" class="px-2 py-0.5 rounded-md text-xs font-bold bg-slate-200 text-slate-700"></span>
+            <span id="modal-ps-diff" class="px-2 py-0.5 rounded-md text-xs font-bold border"></span>
+          </div>
+          <h2 id="modal-ps-title" class="text-base sm:text-lg font-extrabold text-slate-900 leading-snug"></h2>
+        </div>
+        <button type="button" id="modal-close-btn" class="text-slate-400 hover:text-slate-700 p-1.5 rounded-lg hover:bg-slate-200/60 transition-colors" title="Close dialog">
+          <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12"/></svg>
+        </button>
+      </div>
+
+      <!-- Modal Body -->
+      <div class="p-5 overflow-y-auto space-y-4 text-xs sm:text-sm text-slate-700 flex-1">
+        <div>
+          <h4 class="text-xs font-bold uppercase tracking-wider text-slate-500 mb-1">Problem Statement</h4>
+          <p id="modal-ps-desc" class="text-slate-800 leading-relaxed font-medium bg-slate-50 p-3 rounded-xl border border-slate-200/80"></p>
+        </div>
+
+        <div>
+          <h4 class="text-xs font-bold uppercase tracking-wider text-slate-500 mb-1.5">Expected Solution Checklist</h4>
+          <ul id="modal-ps-solution" class="space-y-1.5">
+            <!-- Rendered solution points -->
+          </ul>
+        </div>
+
+        <div>
+          <h4 class="text-xs font-bold uppercase tracking-wider text-slate-500 mb-1.5">Suggested Tech Stack</h4>
+          <div id="modal-ps-tech" class="flex flex-wrap gap-1.5">
+            <!-- Rendered tech pills -->
+          </div>
+        </div>
+
+        <div>
+          <h4 class="text-xs font-bold uppercase tracking-wider text-slate-500 mb-1">Beneficiaries</h4>
+          <p id="modal-ps-beneficiaries" class="text-slate-800 font-semibold"></p>
+        </div>
+      </div>
+
+      <!-- Modal Footer -->
+      <div class="p-4 border-t border-slate-200 bg-slate-50 flex flex-col sm:flex-row items-center justify-between gap-3">
+        <p class="text-[11px] text-slate-500 m-0">
+          💡 <em>Note: Selection tracks in browser (localStorage).</em>
+        </p>
+        <div id="modal-action-wrap">
+          <!-- Rendered action button or claimed badge -->
+        </div>
+      </div>
+
+    </div>
+  </div>
+
+  <!-- Team Selection Modal -->
+  <div id="select-team-modal" class="fixed inset-0 z-50 hidden bg-slate-900/60 backdrop-blur-xs flex items-center justify-center p-3 sm:p-4 overflow-y-auto" role="dialog" aria-modal="true">
+    <div class="bg-white border border-slate-200 rounded-2xl max-w-md w-full p-5 shadow-2xl animate-in fade-in zoom-in-95 duration-200">
+      
+      <div class="flex items-center justify-between mb-3 border-b border-slate-100 pb-3">
+        <div>
+          <span class="text-[10px] font-black uppercase tracking-wider text-blue-600 bg-blue-50 px-2 py-0.5 rounded-md border border-blue-200">Team Claim Form</span>
+          <h3 class="text-base font-extrabold text-slate-900 m-0 mt-1" id="select-modal-ps-id-title"></h3>
+        </div>
+        <button type="button" id="select-modal-close" class="text-slate-400 hover:text-slate-700 p-1.5 rounded-lg hover:bg-slate-100">
+          <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12"/></svg>
+        </button>
+      </div>
+
+      <form id="team-claim-form" class="space-y-3">
+        <input type="hidden" id="claim-ps-id" name="psId" />
+        
+        <div>
+          <label class="block text-xs font-bold text-slate-700 mb-1" for="claim-teamName">Team Name <span class="text-red-500">*</span></label>
+          <input type="text" id="claim-teamName" name="teamName" required placeholder="Enter team name (e.g. CodeCrafters)" class="w-full px-3 py-2 border border-slate-300 rounded-xl text-xs sm:text-sm focus:ring-2 focus:ring-blue-500 focus:outline-none" />
+        </div>
+
+        <div>
+          <label class="block text-xs font-bold text-slate-700 mb-1" for="claim-leaderName">Team Leader Name <span class="text-red-500">*</span></label>
+          <input type="text" id="claim-leaderName" name="leaderName" required placeholder="Enter leader full name" class="w-full px-3 py-2 border border-slate-300 rounded-xl text-xs sm:text-sm focus:ring-2 focus:ring-blue-500 focus:outline-none" />
+        </div>
+
+        <div>
+          <label class="block text-xs font-bold text-slate-700 mb-1" for="claim-leaderEmail">Leader Personal Email ID <span class="text-red-500">*</span></label>
+          <input type="email" id="claim-leaderEmail" name="leaderEmail" required placeholder="name@example.com" class="w-full px-3 py-2 border border-slate-300 rounded-xl text-xs sm:text-sm focus:ring-2 focus:ring-blue-500 focus:outline-none" />
+        </div>
+
+        <div>
+          <label class="block text-xs font-bold text-slate-700 mb-1" for="claim-members">Number of Team Members</label>
+          <input type="text" id="claim-members" value="6 Members (1 Leader + 5 Members)" readonly disabled class="w-full px-3 py-2 border border-slate-200 rounded-xl text-xs bg-slate-100 text-slate-600 font-semibold cursor-not-allowed" />
+        </div>
+
+        <p class="text-[11px] text-slate-500 italic bg-amber-50 p-2.5 rounded-lg border border-amber-200">
+          ⚠️ Note: This action claims the Problem Statement in your browser (localStorage).
+        </p>
+
+        <div class="flex items-center justify-end gap-2 pt-2 border-t border-slate-100">
+          <button type="button" id="btn-cancel-claim" class="px-4 py-2 rounded-xl text-xs font-bold text-slate-600 hover:bg-slate-100 transition-colors">
+            Cancel
+          </button>
+          <button type="submit" class="px-5 py-2 rounded-xl text-xs font-extrabold bg-blue-600 hover:bg-blue-700 text-white shadow-md transition-transform active:scale-95">
+            Confirm &amp; Claim PS
+          </button>
+        </div>
+      </form>
+
+    </div>
+  </div>
+
+  <!-- Ultra-Slim Footer -->
+  <footer class="site-footer border-t border-slate-200/80 bg-white/90 backdrop-blur-sm py-2.5 mt-auto" role="contentinfo">
+    <div class="footer-inner max-w-[1200px] mx-auto px-4 flex flex-col sm:flex-row items-center justify-between gap-1.5 text-[11px] sm:text-xs text-slate-500">
+      <!-- Left: Support Contact -->
+      <div class="flex items-center gap-1.5 flex-wrap justify-center">
+        <span class="font-bold text-slate-700">📞 Organising Team:</span>
+        <span class="font-extrabold text-blue-950">Gautam Kumar Maurya</span>
+        <a href="tel:8924059058" class="inline-flex items-center gap-1 text-blue-700 hover:text-blue-900 font-extrabold underline transition-colors" title="Call Organising Support">
+          <span>(8924059058)</span>
+        </a>
+      </div>
+
+      <!-- Right: College & Developer Credit -->
+      <div class="flex items-center gap-1.5 flex-wrap justify-center text-[10px] sm:text-[11px]">
+        <span>&copy; 2026 UIT Prayagraj</span>
+        <span class="text-slate-300">•</span>
+        <span>Dev with ❤️ by</span>
+        <a href="https://www.linkedin.com/in/gkm563/" target="_blank" rel="noopener noreferrer" class="text-blue-700 hover:text-blue-900 font-extrabold underline transition-colors inline-flex items-center gap-0.5" title="GKM's LinkedIn Profile">
+          <svg class="w-3 h-3 fill-current text-[#0A66C2]" viewBox="0 0 24 24"><path d="M19 3a2 2 0 0 1 2 2v14a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h14m-.5 15.5v-5.3a3.26 3.26 0 0 0-3.26-3.26c-.85 0-1.84.52-2.28 1.3v-1.11h-2.79v8.37h2.79v-4.93c0-.77.62-1.4 1.39-1.4a1.4 1.4 0 0 1 1.4 1.4v4.93h2.75M6.46 10.9v8.37H9.25V10.9H6.46M7.86 6.78a1.63 1.63 0 1 0 1.63 1.63 1.63 1.63 0 0 0-1.63-1.63Z"/></svg>
+          <span>GKM</span>
+        </a>
+      </div>
+    </div>
+  </footer>
+
+  <script src="js/data/problem-statements.js"></script>
+  <script src="js/problems.js"></script>
+</body>
+</html>
