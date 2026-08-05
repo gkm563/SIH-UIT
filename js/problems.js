@@ -345,6 +345,21 @@
     document.body.style.overflow = '';
   }
 
+  function getTeamExistingClaim(teamName, leaderEmail) {
+    const tLower = String(teamName || '').trim().toLowerCase();
+    const eLower = String(leaderEmail || '').trim().toLowerCase();
+
+    for (const [psId, data] of Object.entries(state.claimedMap)) {
+      const claimTeam = String(data.teamName || '').trim().toLowerCase();
+      const claimEmail = String(data.leaderEmail || '').trim().toLowerCase();
+
+      if ((tLower && claimTeam === tLower) || (eLower && claimEmail === eLower)) {
+        return { psId, ...data };
+      }
+    }
+    return null;
+  }
+
   function handleClaimSubmit(e) {
     e.preventDefault();
     const psId = els.claimPsIdInput.value;
@@ -354,6 +369,13 @@
 
     if (!psId || !teamName || !leaderName || !leaderEmail) {
       alert('Please complete all required fields.');
+      return;
+    }
+
+    // Check if team or email has ALREADY claimed another problem statement
+    const existingClaim = getTeamExistingClaim(teamName, leaderEmail);
+    if (existingClaim && existingClaim.psId !== psId) {
+      alert(`⛔ Action Blocked!\n\nYour team "${teamName}" (or email "${leaderEmail}") has ALREADY selected Problem Statement ${existingClaim.psId}.\n\nRule: Each team is allowed to select ONLY ONE Problem Statement. You cannot change or select a second problem statement!`);
       return;
     }
 
@@ -367,7 +389,7 @@
     saveClaim(psId, teamData);
     closeClaimModal();
     renderGrid();
-    alert(`🎉 Success! Problem Statement ${psId} is now claimed by Team "${teamName}".`);
+    alert(`🎉 Success! Problem Statement ${psId} is officially claimed by Team "${teamName}".`);
   }
 
   /* ---------- Event Listeners ---------- */
