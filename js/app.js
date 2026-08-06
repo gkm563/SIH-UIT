@@ -818,6 +818,13 @@
     e.preventDefault();
     if (state.isSubmitting) return;
 
+    // Strict Registration Closed Check
+    if (typeof AppConfig !== 'undefined' && !AppConfig.isRegistrationOpen) {
+      alert('⛔ Registration is currently CLOSED.\n\nDeadline Passed: 05 August 2026, Wednesday (11:59 PM).\n\nSubmissions are no longer accepted.');
+      showInstructions();
+      return false;
+    }
+
     const sections = getSections();
     const current = sections[state.currentIndex];
     if (!Validation.validateSection(current)) {
@@ -938,6 +945,11 @@
   }
 
   function startRegistration() {
+    if (typeof AppConfig !== 'undefined' && !AppConfig.isRegistrationOpen) {
+      alert('🔒 College-Level Internal Registration is currently CLOSED.\n\nDeadline Passed: 05 August 2026, Wednesday (11:59 PM).\n\nSubmissions are no longer accepted.');
+      showInstructions();
+      return;
+    }
     state.instructionsAccepted = true;
     try {
       sessionStorage.setItem('sih2026_instructions_accepted', '1');
@@ -1121,14 +1133,25 @@
 
     if (!isOpen) {
       if (closedCard) closedCard.classList.remove('hidden');
+      if (els.formView) {
+        els.formView.hidden = true;
+        els.formView.style.display = 'none';
+      }
+      if (els.progressWrap) {
+        els.progressWrap.hidden = true;
+        els.progressWrap.style.display = 'none';
+      }
+      if (els.instructionsView && (!state.submission || !state.submission.registrationId)) {
+        els.instructionsView.hidden = false;
+      }
       if (btnStart) {
-        btnStart.classList.add('opacity-60');
+        btnStart.classList.add('opacity-60', 'cursor-not-allowed');
         btnStart.textContent = '🔒 Registration Closed (Deadline Passed)';
       }
     } else {
       if (closedCard) closedCard.classList.add('hidden');
       if (btnStart) {
-        btnStart.classList.remove('opacity-60');
+        btnStart.classList.remove('opacity-60', 'cursor-not-allowed');
         btnStart.textContent = 'I have read the instructions — Start Registration';
       }
     }
