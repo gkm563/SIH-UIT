@@ -1072,15 +1072,24 @@ body {
 }
 
 @media (max-width: 640px) {
-  .nav-container {
-    padding: 0 0.5rem;
+  .header-inner {
+    padding: 0.4rem 0.6rem !important;
   }
-  .nav-link {
-    padding: 0.65rem 0.75rem;
-    font-size: 0.825rem;
+  .nav-switch {
+    padding: 0.15rem !important;
+    gap: 1px !important;
+  }
+  .nav-pill {
+    padding: 0.3rem 0.5rem !important;
+    font-size: 0.7rem !important;
+    gap: 0.2rem !important;
+  }
+  .nav-pill svg {
+    width: 12px !important;
+    height: 12px !important;
   }
   .teams-search-sticky {
-    top: 54px;
+    top: 52px;
   }
   .team-card {
     padding: 0.95rem 1rem 0.95rem 1.15rem;
