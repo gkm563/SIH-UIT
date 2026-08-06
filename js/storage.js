@@ -1,40 +1,29 @@
 /**
- * Draft auto-save using localStorage
+ * Lightweight Storage Utility & Automatic Legacy Draft Cleanup
  */
 const Storage = (() => {
   const KEY_DRAFT = 'sih2026_registration_draft';
   const KEY_SUBMISSION = 'sih2026_registration_submission';
 
-  function saveDraft(data) {
-    try {
-      const payload = {
-        ...data,
-        savedAt: new Date().toISOString()
-      };
-      localStorage.setItem(KEY_DRAFT, JSON.stringify(payload));
-      return true;
-    } catch {
-      return false;
-    }
-  }
-
-  function loadDraft() {
-    try {
-      const raw = localStorage.getItem(KEY_DRAFT);
-      if (!raw) return null;
-      return JSON.parse(raw);
-    } catch {
-      return null;
-    }
-  }
-
-  function clearDraft() {
+  // Automatically clear old heavy draft items from browser storage on load
+  try {
     localStorage.removeItem(KEY_DRAFT);
+    localStorage.removeItem(KEY_SUBMISSION);
+    sessionStorage.removeItem(KEY_DRAFT);
+  } catch {}
+
+  function saveDraft() { return true; }
+  function loadDraft() { return null; }
+  function clearDraft() {
+    try {
+      localStorage.removeItem(KEY_DRAFT);
+      sessionStorage.removeItem(KEY_DRAFT);
+    } catch {}
   }
 
   function saveSubmission(data) {
     try {
-      localStorage.setItem(KEY_SUBMISSION, JSON.stringify(data));
+      sessionStorage.setItem(KEY_SUBMISSION, JSON.stringify(data));
       return true;
     } catch {
       return false;
@@ -43,7 +32,7 @@ const Storage = (() => {
 
   function loadSubmission() {
     try {
-      const raw = localStorage.getItem(KEY_SUBMISSION);
+      const raw = sessionStorage.getItem(KEY_SUBMISSION);
       if (!raw) return null;
       return JSON.parse(raw);
     } catch {
@@ -52,7 +41,9 @@ const Storage = (() => {
   }
 
   function clearSubmission() {
-    localStorage.removeItem(KEY_SUBMISSION);
+    try {
+      sessionStorage.removeItem(KEY_SUBMISSION);
+    } catch {}
   }
 
   return {
