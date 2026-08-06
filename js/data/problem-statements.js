@@ -228,7 +228,7 @@ const PROBLEM_STATEMENTS = [
   {
     id: 'PS-15',
     title: 'Water Quality & Contamination Sensor Network',
-    domain: 'Water Resources',
+    domain: 'Water Management',
     type: 'Hardware',
     difficulty: 'Intermediate',
     problemStatement: 'Groundwater and public water-supply contamination is a major rural health hazard, often detected only after illness outbreaks.',
@@ -243,7 +243,7 @@ const PROBLEM_STATEMENTS = [
   {
     id: 'PS-16',
     title: 'Solar Microgrid Health Monitoring System',
-    domain: 'Energy',
+    domain: 'Renewable Energy',
     type: 'Hardware',
     difficulty: 'Advanced',
     problemStatement: 'Off-grid solar microgrids serving rural hamlets frequently fail silently with no remote diagnostics, leading to prolonged outages before a technician visits.',
@@ -478,6 +478,102 @@ const PROBLEM_STATEMENTS = [
     ],
     techStack: ['Raspberry Pi / Arduino', 'Motor drivers', 'DC geared motors', 'OpenCV', 'RF/Bluetooth remote'],
     beneficiaries: 'Small and marginal farmers, agricultural labor cooperatives.'
+  },
+  {
+    id: 'PS-31',
+    title: 'Smart Underground Water Leakage & Non-Revenue Water (NRW) Detector',
+    domain: 'Water Management',
+    type: 'Hybrid',
+    difficulty: 'Advanced',
+    problemStatement: 'Urban municipal water utilities lose 35-40% of treated drinking water to undetected underground pipe bursts, illegal valve connections, and pressure surges before reaching household meters.',
+    expectedSolution: [
+      'IoT pressure & acoustic sensors installed at critical municipal pipeline junctions',
+      'AI anomaly detection algorithm identifying micro-leaks and sudden burst drops in real time',
+      'Interactive GIS dashboard for municipal engineers pinpointing exact pipe burst coordinates',
+      'Automated motor/solenoid valve shutoff to prevent massive clean water loss and street flooding'
+    ],
+    techStack: ['ESP32', 'Pressure Transducer', 'Acoustic Pulse Sensor', 'Python / Scikit-Learn', 'Mapbox / Leaflet'],
+    beneficiaries: 'Municipal Corporations, Jal Nigam, urban households, conservation agencies.'
+  },
+  {
+    id: 'PS-32',
+    title: 'Automated Rainwater Harvesting & Aquifer Recharge Quality Monitor',
+    domain: 'Water Management',
+    type: 'Hardware',
+    difficulty: 'Intermediate',
+    problemStatement: 'Unmaintained urban rooftop rainwater harvesting pits frequently flush silt, oils, and toxic runoff directly into borewells and groundwater tables, causing severe aquifer contamination.',
+    expectedSolution: [
+      'Multi-stage motorized self-cleaning filter unit diverting initial dirty rainwater flush',
+      'Sensors tracking turbidity, pH, and water volume recharged into borewells',
+      'Microcontroller logging seasonal groundwater recharge metrics to cloud',
+      'Mobile app for building managers with automatic maintenance and filter clog alerts'
+    ],
+    techStack: ['Turbidity & pH sensors', 'Water Flow Sensor', 'ESP32 / Arduino', 'Blynk / Firebase'],
+    beneficiaries: 'Housing societies, university campuses, commercial complexes, Jal Shakti Abhiyan.'
+  },
+  {
+    id: 'PS-33',
+    title: 'AI Smart E-Waste Classifier & Doorstep Recycler Valuation Platform',
+    domain: 'Waste Management',
+    type: 'Software',
+    difficulty: 'Intermediate',
+    problemStatement: 'Over 85% of e-waste in India is processed informally using hazardous acid baths and open burning because citizens lack easy doorstep collection and transparent metal scrap valuation.',
+    expectedSolution: [
+      'AI computer-vision mobile camera scanner recognizing gadgets, PCBs, and appliances',
+      'Real-time scrap value calculator based on precious metal market rates (Copper, Gold, Lithium)',
+      'Doorstep pickup scheduling connecting households to CPCB-authorized e-waste recyclers',
+      'Green credit points and digital certificates issued for certified eco-friendly disposal'
+    ],
+    techStack: ['TensorFlow.js / OpenCV', 'React Native / Web PWA', 'Node.js + Express', 'MongoDB'],
+    beneficiaries: 'Urban households, CPCB authorized recyclers, informal waste sector workers.'
+  },
+  {
+    id: 'PS-34',
+    title: 'Bio-Medical Waste Segregation & QR Chain-of-Custody Tracker',
+    domain: 'Waste Management',
+    type: 'Hybrid',
+    difficulty: 'Advanced',
+    problemStatement: 'Illegal dumping and mixing of bio-medical waste (sharps, anatomical waste, infected gloves) with general waste poses high biosecurity risks due to lack of real-time tracking from clinics to incinerators.',
+    expectedSolution: [
+      'Smart color-coded bins (Red, Yellow, Blue, Black) with RFID/QR scanners and weight sensors',
+      'Bedside-to-incinerator digital chain-of-custody tracking preventing unauthorized bag dumping',
+      'Real-time weight discrepancy alerts flagging missing or stolen hospital waste bags',
+      'Automated bio-hazard compliance report generation for State Pollution Control Boards (SPCB)'
+    ],
+    techStack: ['ESP32', 'HX711 Load Cell Weight Sensor', 'QR / Barcode Scanner', 'PostgreSQL', 'Flutter'],
+    beneficiaries: 'Hospitals, diagnostic laboratories, bio-medical waste treatment plants, SPCB officers.'
+  },
+  {
+    id: 'PS-35',
+    title: 'AI Solar PV Panel Defect & Dust Degradation Diagnostics',
+    domain: 'Renewable Energy',
+    type: 'Software',
+    difficulty: 'Intermediate',
+    problemStatement: 'Dust accumulation, micro-cracks, and hotspots reduce solar PV plant power generation by up to 25%, but manual physical inspection of rooftop arrays is dangerous, slow, and expensive.',
+    expectedSolution: [
+      'AI computer-vision model analyzing drone/smartphone thermal & RGB photographs of solar arrays',
+      'Automatic classification of dust coating, shading, bird droppings, and cracked cell hotspots',
+      'Monetary revenue loss estimator calculating power generation loss vs cleaning cost',
+      'Weather-integrated automated cleaning scheduler recommending optimal wash intervals'
+    ],
+    techStack: ['YOLOv8 / PyTorch', 'OpenCV', 'FastAPI', 'Next.js / React'],
+    beneficiaries: 'Rooftop solar owners, commercial solar plant operators, green energy developers.'
+  },
+  {
+    id: 'PS-36',
+    title: 'Smart EV Charging & Microgrid Solar Load Balancer',
+    domain: 'Renewable Energy',
+    type: 'Hardware',
+    difficulty: 'Advanced',
+    problemStatement: 'Uncontrolled simultaneous fast charging of Electric Vehicles (EVs) overloads local grid transformers and drains renewable microgrid batteries during peak non-solar hours.',
+    expectedSolution: [
+      'Dynamic EV charge-rate controller dynamically scaling power based on live solar generation',
+      'Battery Energy Storage System (BESS) integration feeding stored solar energy to chargers during grid peaks',
+      'Mobile app displaying dynamic green tariff rates (cheaper charging during peak solar hours)',
+      'Transformer overload protection system preventing localized power grid brownouts'
+    ],
+    techStack: ['ESP32', 'Modbus / CAN Bus protocol', 'PWM Current Controller', 'Node.js / MQTT'],
+    beneficiaries: 'EV charging station operators, DISCOMs, renewable microgrid developers, EV owners.'
   }
 ];
 
