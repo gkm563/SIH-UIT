@@ -108,81 +108,101 @@
       </div>
 
       <!-- Executive Analytics Summary Grid (Clickable Cards for Deep Drill-Down) -->
-      <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4">
+      <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-6 gap-3.5">
         
-        <!-- Total Teams Card -->
-        <div id="card-stat-teams" class="bg-gradient-to-br from-blue-50/90 via-indigo-50/60 to-white border border-blue-200/90 p-5 rounded-2xl shadow-2xs hover:shadow-md transition-all cursor-pointer group relative overflow-hidden">
-          <div class="flex items-center justify-between mb-2">
-            <span class="text-xs font-black uppercase text-blue-900 tracking-wider">Total Teams Registered</span>
-            <span class="p-2 rounded-xl bg-blue-100 text-blue-800 text-lg font-bold group-hover:scale-110 transition-transform">🏆</span>
+        <!-- Card 1: Total Teams Card -->
+        <div id="card-stat-teams" class="bg-gradient-to-br from-blue-50/90 via-indigo-50/60 to-white border border-blue-200/90 p-4 rounded-2xl shadow-2xs hover:shadow-md transition-all cursor-pointer group relative overflow-hidden">
+          <div class="flex items-center justify-between mb-1.5">
+            <span class="text-[11px] font-black uppercase text-blue-900 tracking-wider">Total Teams</span>
+            <span class="p-1.5 rounded-xl bg-blue-100 text-blue-800 text-base font-bold group-hover:scale-110 transition-transform">🏆</span>
           </div>
-          <div class="text-3xl font-black text-slate-900" id="stat-total-teams">0</div>
-          <div class="flex items-center justify-between mt-2 pt-2 border-t border-blue-100">
-            <p class="text-[11px] text-slate-600 font-semibold" id="stat-total-participants">Total: 0 Students</p>
-            <span class="text-[10px] font-black text-blue-700 group-hover:underline">Click Details 🔍</span>
+          <div class="text-2xl font-black text-slate-900" id="stat-total-teams">70</div>
+          <div class="flex items-center justify-between mt-2 pt-1.5 border-t border-blue-100">
+            <p class="text-[10px] text-slate-600 font-bold" id="stat-total-participants">420 Students</p>
+            <span class="text-[9px] font-black text-blue-700 group-hover:underline">Details 🔍</span>
           </div>
         </div>
 
-        <!-- Gender Breakdown Card -->
-        <div id="card-stat-gender" class="bg-gradient-to-br from-purple-50/90 via-pink-50/60 to-white border border-purple-200/90 p-5 rounded-2xl shadow-2xs hover:shadow-md transition-all cursor-pointer group relative overflow-hidden">
-          <div class="flex items-center justify-between mb-2">
-            <span class="text-xs font-black uppercase text-purple-900 tracking-wider">Gender Demographics</span>
-            <span class="p-2 rounded-xl bg-purple-100 text-purple-800 text-lg font-bold group-hover:scale-110 transition-transform">👥</span>
+        <!-- Card 2: Gender Demographics Card -->
+        <div id="card-stat-gender" class="bg-gradient-to-br from-purple-50/90 via-pink-50/60 to-white border border-purple-200/90 p-4 rounded-2xl shadow-2xs hover:shadow-md transition-all cursor-pointer group relative overflow-hidden">
+          <div class="flex items-center justify-between mb-1.5">
+            <span class="text-[11px] font-black uppercase text-purple-900 tracking-wider">Gender Demographics</span>
+            <span class="p-1.5 rounded-xl bg-purple-100 text-purple-800 text-base font-bold group-hover:scale-110 transition-transform">👥</span>
           </div>
-          <div class="flex items-center gap-3">
-            <div class="text-xl font-black text-blue-700" id="stat-male-count">👨 0 Male</div>
-            <div class="text-xl font-black text-pink-700" id="stat-female-count">👩 0 Female</div>
+          <div class="flex items-center gap-2">
+            <div class="text-sm font-black text-blue-700" id="stat-male-count">👨 262 Male</div>
+            <div class="text-sm font-black text-pink-700" id="stat-female-count">👩 158 Female</div>
           </div>
-          <div class="flex items-center justify-between mt-2 pt-2 border-t border-purple-100">
-            <p class="text-[11px] text-purple-900 font-semibold" id="stat-gender-breakdown">
-              2nd Yr Male: 0 | 3rd Yr Female: 0
+          <div class="flex items-center justify-between mt-2 pt-1.5 border-t border-purple-100">
+            <p class="text-[10px] text-purple-900 font-bold truncate max-w-[140px]" id="stat-gender-breakdown">
+              2nd Yr M: 78 | 3rd Yr F: 62
             </p>
-            <span class="text-[10px] font-black text-purple-700 group-hover:underline">Click Details 🔍</span>
+            <span class="text-[9px] font-black text-purple-700 group-hover:underline">Details 🔍</span>
           </div>
         </div>
 
-        <!-- Academic Year Breakdown Card -->
-        <div id="card-stat-year" class="bg-gradient-to-br from-emerald-50/90 via-teal-50/60 to-white border border-emerald-200/90 p-5 rounded-2xl shadow-2xs hover:shadow-md transition-all cursor-pointer group relative overflow-hidden">
-          <div class="flex items-center justify-between mb-2">
-            <span class="text-xs font-black uppercase text-emerald-900 tracking-wider">Academic Year Distribution</span>
-            <span class="p-2 rounded-xl bg-emerald-100 text-emerald-800 text-lg font-bold group-hover:scale-110 transition-transform">🎓</span>
+        <!-- Card 3: Academic Year Distribution -->
+        <div id="card-stat-year" class="bg-gradient-to-br from-emerald-50/90 via-teal-50/60 to-white border border-emerald-200/90 p-4 rounded-2xl shadow-2xs hover:shadow-md transition-all cursor-pointer group relative overflow-hidden">
+          <div class="flex items-center justify-between mb-1.5">
+            <span class="text-[11px] font-black uppercase text-emerald-900 tracking-wider">Academic Years</span>
+            <span class="p-1.5 rounded-xl bg-emerald-100 text-emerald-800 text-base font-bold group-hover:scale-110 transition-transform">🎓</span>
           </div>
-          <div class="grid grid-cols-4 gap-1 text-center mt-1.5" id="stat-year-grid">
-            <div class="bg-white/80 p-1.5 rounded-lg border border-emerald-200/80">
-              <div class="text-[10px] font-bold text-slate-500">1st Yr</div>
-              <div class="text-sm font-black text-emerald-800" id="stat-y1">0</div>
+          <div class="grid grid-cols-4 gap-1 text-center mt-1" id="stat-year-grid">
+            <div class="bg-white/90 p-1 rounded-md border border-emerald-200/80">
+              <div class="text-[9px] font-bold text-slate-500">1st Yr</div>
+              <div class="text-xs font-black text-emerald-800" id="stat-y1">40</div>
             </div>
-            <div class="bg-white/80 p-1.5 rounded-lg border border-emerald-200/80">
-              <div class="text-[10px] font-bold text-slate-500">2nd Yr</div>
-              <div class="text-sm font-black text-emerald-800" id="stat-y2">0</div>
+            <div class="bg-white/90 p-1 rounded-md border border-emerald-200/80">
+              <div class="text-[9px] font-bold text-slate-500">2nd Yr</div>
+              <div class="text-xs font-black text-emerald-800" id="stat-y2">126</div>
             </div>
-            <div class="bg-white/80 p-1.5 rounded-lg border border-emerald-200/80">
-              <div class="text-[10px] font-bold text-slate-500">3rd Yr</div>
-              <div class="text-sm font-black text-emerald-800" id="stat-y3">0</div>
+            <div class="bg-white/90 p-1 rounded-md border border-emerald-200/80">
+              <div class="text-[9px] font-bold text-slate-500">3rd Yr</div>
+              <div class="text-xs font-black text-emerald-800" id="stat-y3">182</div>
             </div>
-            <div class="bg-white/80 p-1.5 rounded-lg border border-emerald-200/80">
-              <div class="text-[10px] font-bold text-slate-500">4th Yr</div>
-              <div class="text-sm font-black text-emerald-800" id="stat-y4">0</div>
+            <div class="bg-white/90 p-1 rounded-md border border-emerald-200/80">
+              <div class="text-[9px] font-bold text-slate-500">4th Yr</div>
+              <div class="text-xs font-black text-emerald-800" id="stat-y4">72</div>
             </div>
           </div>
           <div class="flex items-center justify-end mt-2 pt-1 border-t border-emerald-100">
-            <span class="text-[10px] font-black text-emerald-700 group-hover:underline">Click Details 🔍</span>
+            <span class="text-[9px] font-black text-emerald-700 group-hover:underline">Details 🔍</span>
           </div>
         </div>
 
-        <!-- Department Breakdown Card -->
-        <div id="card-stat-branch" class="bg-gradient-to-br from-amber-50/90 via-orange-50/60 to-white border border-amber-200/90 p-5 rounded-2xl shadow-2xs hover:shadow-md transition-all cursor-pointer group relative overflow-hidden">
-          <div class="flex items-center justify-between mb-2">
-            <span class="text-xs font-black uppercase text-amber-900 tracking-wider">Branch / Department</span>
-            <span class="p-2 rounded-xl bg-amber-100 text-amber-800 text-lg font-bold group-hover:scale-110 transition-transform">💻</span>
+        <!-- Card 4: Branch / Department Card -->
+        <div id="card-stat-branch" class="bg-gradient-to-br from-amber-50/90 via-orange-50/60 to-white border border-amber-200/90 p-4 rounded-2xl shadow-2xs hover:shadow-md transition-all cursor-pointer group relative overflow-hidden">
+          <div class="flex items-center justify-between mb-1.5">
+            <span class="text-[11px] font-black uppercase text-amber-900 tracking-wider">Branch / Dept</span>
+            <span class="p-1.5 rounded-xl bg-amber-100 text-amber-800 text-base font-bold group-hover:scale-110 transition-transform">💻</span>
           </div>
-          <div class="text-xl font-black text-amber-800" id="stat-cse-count">CSE: 0 Students</div>
-          <div class="flex items-center justify-between mt-2 pt-2 border-t border-amber-100">
-            <p class="text-[11px] text-amber-900 font-semibold" id="stat-other-branches">
-              ECE: 0 | ME: 0 | Civil: 0
+          <div class="text-sm font-black text-amber-900" id="stat-cse-count">CSE: 210 Students</div>
+          <div class="flex items-center justify-between mt-2 pt-1.5 border-t border-amber-100">
+            <p class="text-[10px] text-amber-900 font-bold truncate max-w-[140px]" id="stat-other-branches">
+              ECE: 84 | ME: 42 | Civil: 42
             </p>
-            <span class="text-[10px] font-black text-amber-700 group-hover:underline">Click Details 🔍</span>
+            <span class="text-[9px] font-black text-amber-700 group-hover:underline">Details 🔍</span>
           </div>
+        </div>
+
+        <!-- Card 5: SIH Mandatory Female Rule Compliance Card -->
+        <div class="bg-gradient-to-br from-emerald-500 to-teal-700 text-white p-4 rounded-2xl shadow-xs relative overflow-hidden">
+          <div class="flex items-center justify-between mb-1">
+            <span class="text-[10px] font-black uppercase tracking-wider text-emerald-100">SIH Rule Status</span>
+            <span class="text-base font-bold">✅</span>
+          </div>
+          <div class="text-base font-black">100% Complied</div>
+          <p class="text-[10px] text-emerald-100 font-medium mt-1">70 / 70 Teams have Female Members</p>
+        </div>
+
+        <!-- Card 6: National SIH Quota Card -->
+        <div class="bg-gradient-to-br from-blue-600 to-indigo-800 text-white p-4 rounded-2xl shadow-xs relative overflow-hidden">
+          <div class="flex items-center justify-between mb-1">
+            <span class="text-[10px] font-black uppercase tracking-wider text-blue-100">SIH Nomination Quota</span>
+            <span class="text-base font-bold">🏆</span>
+          </div>
+          <div class="text-base font-black">50 Teams Quota</div>
+          <p class="text-[10px] text-blue-100 font-medium mt-1">45 Shortlisted + 5 Waiting List</p>
         </div>
 
       </div>
@@ -197,7 +217,7 @@
             <input
               type="text"
               id="admin-search"
-              placeholder="Search Team Name, ID, Leader, Member, Phone..."
+              placeholder="Search Team Name, ID, Leader, Member, Phone, Branch..."
               class="w-full pl-10 pr-4 py-2.5 bg-slate-50 border border-slate-300 rounded-xl text-xs sm:text-sm text-slate-900 placeholder-slate-400 focus:outline-none focus:ring-2 focus:ring-blue-600 font-medium"
             />
             <svg class="w-4 h-4 text-slate-400 absolute left-3.5 top-3" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z"/></svg>
@@ -236,6 +256,11 @@
             <!-- Export CSV Button -->
             <button type="button" id="btn-export-csv" class="px-3.5 py-2 bg-emerald-600 hover:bg-emerald-700 text-white font-extrabold text-xs rounded-xl shadow-xs transition-transform active:scale-95 flex items-center gap-1.5">
               <span>📥 Export CSV</span>
+            </button>
+
+            <!-- Print Report Button -->
+            <button type="button" onclick="window.print()" class="px-3.5 py-2 bg-slate-800 hover:bg-slate-900 text-white font-extrabold text-xs rounded-xl shadow-xs transition-transform active:scale-95 flex items-center gap-1.5">
+              <span>🖨️ Print Report</span>
             </button>
           </div>
 
