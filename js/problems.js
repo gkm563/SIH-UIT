@@ -4,8 +4,6 @@
 (() => {
   'use strict';
 
-  const STORAGE_KEY = 'hackathon-team-selections';
-
   // Domain Color Palette Mapping
   const DOMAIN_STYLES = {
     'Agriculture': 'bg-emerald-50 text-emerald-800 border-emerald-200',
@@ -49,8 +47,7 @@
     search: '',
     type: 'All',
     difficulty: 'All',
-    selectedDomains: new Set(),
-    claimedMap: loadClaimedMap()
+    selectedDomains: new Set()
   };
 
   // DOM Elements
@@ -76,38 +73,8 @@
     modalPsDesc: document.getElementById('modal-ps-desc'),
     modalPsSolution: document.getElementById('modal-ps-solution'),
     modalPsTech: document.getElementById('modal-ps-tech'),
-    modalPsBeneficiaries: document.getElementById('modal-ps-beneficiaries'),
-    modalActionWrap: document.getElementById('modal-action-wrap'),
-
-    // Claim Modal
-    claimModal: document.getElementById('select-team-modal'),
-    claimModalCloseBtn: document.getElementById('select-modal-close'),
-    claimPsIdTitle: document.getElementById('select-modal-ps-id-title'),
-    claimPsIdInput: document.getElementById('claim-ps-id'),
-    claimForm: document.getElementById('team-claim-form'),
-    claimCancelBtn: document.getElementById('btn-cancel-claim')
+    modalPsBeneficiaries: document.getElementById('modal-ps-beneficiaries')
   };
-
-  /* ---------- LocalStorage Storage Helpers ---------- */
-
-  function loadClaimedMap() {
-    try {
-      const raw = localStorage.getItem(STORAGE_KEY);
-      if (!raw) return {};
-      return JSON.parse(raw) || {};
-    } catch {
-      return {};
-    }
-  }
-
-  function saveClaim(psId, teamData) {
-    state.claimedMap[psId] = teamData;
-    try {
-      localStorage.setItem(STORAGE_KEY, JSON.stringify(state.claimedMap));
-    } catch {
-      // ignore
-    }
-  }
 
   /* ---------- Initialization ---------- */
 
@@ -148,75 +115,79 @@
     els.domainChipsContainer.innerHTML = html;
   }
 
-  /* ---------- Filter Logic & Rendering ---------- */
+  /* ---------- Grid Rendering ---------- */
 
   function filterStatements() {
     if (typeof PROBLEM_STATEMENTS === 'undefined') return [];
 
-    const searchLower = state.search.toLowerCase().trim();
-
     return PROBLEM_STATEMENTS.filter((ps) => {
-      // Type match
+      // Search
+      if (state.search) {
+        const q = state.search.toLowerCase().trim();
+        const matchId = ps.id.toLowerCase().includes(q);
+        const matchTitle = ps.title.toLowerCase().includes(q);
+        const matchDomain = ps.domain.toLowerCase().includes(q);
+        const matchDesc = ps.problemStatement.toLowerCase().includes(q);
+
+        if (!matchId && !matchTitle && !matchDomain && !matchDesc) return false;
+      }
+
+      // Type
       if (state.type !== 'All' && ps.type !== state.type) return false;
 
-      // Difficulty match
+      // Difficulty
       if (state.difficulty !== 'All' && ps.difficulty !== state.difficulty) return false;
 
-      // Domain match (multi-select)
+      // Domain
       if (state.selectedDomains.size > 0 && !state.selectedDomains.has(ps.domain)) return false;
-
-      // Search match (title, domain, ID)
-      if (searchLower) {
-        const titleMatch = ps.title.toLowerCase().includes(searchLower);
-        const domainMatch = ps.domain.toLowerCase().includes(searchLower);
-        const idMatch = ps.id.toLowerCase().includes(searchLower);
-        if (!titleMatch && !domainMatch && !idMatch) return false;
-      }
 
       return true;
     });
   }
 
   function renderGrid() {
-    const list = filterStatements();
-    const total = PROBLEM_STATEMENTS.length;
+    const filtered = filterStatements();
 
-    // Update Counter & Reset button visibility
-    els.resultsCount.textContent = `Showing ${list.length} of ${total} problem statements`;
-    const hasActiveFilters = state.search || state.type !== 'All' || state.difficulty !== 'All' || state.selectedDomains.size > 0;
-    els.resetBtn.classList.toggle('hidden', !hasActiveFilters);
+    // Results Counter Badge
+    if (els.resultsCount) {
+      els.resultsCount.textContent = `Showing ${filtered.length} of ${PROBLEM_STATEMENTS.length} Problem Statements`;
+    }
 
-    if (list.length === 0) {
-      els.grid.classList.add('hidden');
+    // Toggle Reset Filter Button Visibility
+    const isFiltered =
+      state.search !== '' || state.type !== 'All' || state.difficulty !== 'All' || state.selectedDomains.size > 0;
+    if (els.resetBtn) els.resetBtn.classList.toggle('hidden', !isFiltered);
+
+    // Empty State
+    if (filtered.length === 0) {
+      els.grid.innerHTML = '';
       els.emptyState.classList.remove('hidden');
       return;
     }
 
     els.emptyState.classList.add('hidden');
-    els.grid.classList.remove('hidden');
 
     let html = '';
-    list.forEach((ps) => {
+    filtered.forEach((ps) => {
       const domainStyle = DOMAIN_STYLES[ps.domain] || 'bg-slate-100 text-slate-700 border-slate-200';
       const diffStyle = DIFFICULTY_STYLES[ps.difficulty] || 'bg-slate-100 text-slate-700 border-slate-200';
-      const icon = TYPE_ICONS[ps.type] || '🖥️';
-      const claimed = state.claimedMap[ps.id];
+      const icon = TYPE_ICONS[ps.type] || '💡';
 
-      // Truncated summary (150 chars max)
-      const summary = ps.problemStatement.length > 140 
-        ? ps.problemStatement.slice(0, 140) + '…' 
-        : ps.problemStatement;
+      const summary =
+        ps.problemStatement.length > 140
+          ? ps.problemStatement.substring(0, 140) + '...'
+          : ps.problemStatement;
 
       html += `
-        <div class="ps-card bg-white border border-slate-200/90 rounded-2xl p-5 shadow-xs hover:shadow-md transition-all duration-200 flex flex-col justify-between cursor-pointer group" data-ps-id="${ps.id}">
+        <div class="ps-card bg-white border border-slate-200/90 rounded-2xl p-4 sm:p-5 shadow-2xs hover:shadow-md transition-all flex flex-col justify-between cursor-pointer group hover:-translate-y-1" data-ps-id="${ps.id}">
           <div>
-            <!-- Top Badges Row -->
-            <div class="flex items-center justify-between gap-2 mb-2.5 flex-wrap">
-              <div class="flex items-center gap-1.5 flex-wrap">
-                <span class="px-2 py-0.5 rounded-md text-[11px] font-black bg-blue-600 text-white shadow-2xs">${ps.id}</span>
-                <span class="px-2.5 py-0.5 rounded-full text-[10px] font-bold border ${domainStyle}">${escapeHtml(ps.domain)}</span>
-              </div>
-              <div class="flex items-center gap-1.5">
+            <!-- Top Meta Row -->
+            <div class="flex items-center justify-between gap-2 mb-3">
+              <span class="text-[11px] font-black text-blue-700 bg-blue-50 border border-blue-200 px-2.5 py-0.5 rounded-full font-mono">
+                ${ps.id}
+              </span>
+              <div class="flex items-center gap-1.5 flex-wrap justify-end">
+                <span class="px-2 py-0.5 rounded-md text-[10px] font-bold border ${domainStyle}">${escapeHtml(ps.domain)}</span>
                 <span class="px-2 py-0.5 rounded-md text-[10px] font-bold bg-slate-100 text-slate-700 border border-slate-200/80">${icon} ${ps.type}</span>
                 <span class="px-2 py-0.5 rounded-md text-[10px] font-bold border ${diffStyle}">${ps.difficulty}</span>
               </div>
@@ -233,18 +204,12 @@
             </p>
           </div>
 
-          <!-- Bottom Action / Claimed Bar -->
+          <!-- Bottom Action Bar -->
           <div class="pt-3 border-t border-slate-100 flex items-center justify-between gap-2">
-            ${claimed ? `
-              <span class="inline-flex items-center gap-1 text-[11px] font-extrabold text-emerald-800 bg-emerald-50 border border-emerald-200 px-2.5 py-1 rounded-lg">
-                <span>🔒 Claimed by <strong>${escapeHtml(claimed.teamName)}</strong></span>
-              </span>
-            ` : `
-              <span class="text-[11px] font-bold text-blue-600 group-hover:underline flex items-center gap-1">
-                <span>View Full Details &amp; Select</span>
-                <svg class="w-3.5 h-3.5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M14 5l7 7m0 0l-7 7m7-7H3"/></svg>
-              </span>
-            `}
+            <span class="text-[11px] font-extrabold text-blue-700 group-hover:underline flex items-center gap-1">
+              <span>View Full Details &amp; Ideal PPT</span>
+              <svg class="w-3.5 h-3.5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M14 5l7 7m0 0l-7 7m7-7H3"/></svg>
+            </span>
           </div>
         </div>
       `;
@@ -297,31 +262,6 @@
 
     els.modalPsBeneficiaries.textContent = ps.beneficiaries || 'General public and stakeholders.';
 
-    // Action button vs Claimed badge
-    const claimed = state.claimedMap[ps.id];
-    if (claimed) {
-      els.modalActionWrap.innerHTML = `
-        <div class="px-4 py-2 rounded-xl bg-emerald-100 border border-emerald-300 text-emerald-900 text-xs font-extrabold flex items-center gap-1.5">
-          <span>🔒 Claimed by <strong>${escapeHtml(claimed.teamName)}</strong> (${escapeHtml(claimed.leaderName)})</span>
-        </div>
-      `;
-    } else {
-      els.modalActionWrap.innerHTML = `
-        <button type="button" id="btn-select-ps" class="bg-blue-600 hover:bg-blue-700 text-white font-extrabold text-xs px-5 py-2.5 rounded-xl shadow-md transition-transform active:scale-95 flex items-center gap-1.5">
-          <span>Select This Problem Statement</span>
-          <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 7l5 5m0 0l-5 5m5-5H6"/></svg>
-        </button>
-      `;
-
-      const selectBtn = document.getElementById('btn-select-ps');
-      if (selectBtn) {
-        selectBtn.addEventListener('click', () => {
-          closeDetailModal();
-          openClaimModal(ps);
-        });
-      }
-    }
-
     els.detailModal.classList.remove('hidden');
     document.body.style.overflow = 'hidden';
   }
@@ -329,68 +269,6 @@
   function closeDetailModal() {
     els.detailModal.classList.add('hidden');
     document.body.style.overflow = '';
-  }
-
-  /* ---------- Team Claim Modal Flow ---------- */
-
-  function openClaimModal(ps) {
-    els.claimPsIdTitle.textContent = `${ps.id} — ${ps.title}`;
-    els.claimPsIdInput.value = ps.id;
-    els.claimForm.reset();
-    els.claimModal.classList.remove('hidden');
-    document.body.style.overflow = 'hidden';
-  }
-
-  function closeClaimModal() {
-    els.claimModal.classList.add('hidden');
-    document.body.style.overflow = '';
-  }
-
-  function getTeamExistingClaim(teamName, leaderEmail) {
-    const tLower = String(teamName || '').trim().toLowerCase();
-    const eLower = String(leaderEmail || '').trim().toLowerCase();
-
-    for (const [psId, data] of Object.entries(state.claimedMap)) {
-      const claimTeam = String(data.teamName || '').trim().toLowerCase();
-      const claimEmail = String(data.leaderEmail || '').trim().toLowerCase();
-
-      if ((tLower && claimTeam === tLower) || (eLower && claimEmail === eLower)) {
-        return { psId, ...data };
-      }
-    }
-    return null;
-  }
-
-  function handleClaimSubmit(e) {
-    e.preventDefault();
-    const psId = els.claimPsIdInput.value;
-    const teamName = document.getElementById('claim-teamName').value.trim();
-    const leaderName = document.getElementById('claim-leaderName').value.trim();
-    const leaderEmail = document.getElementById('claim-leaderEmail').value.trim();
-
-    if (!psId || !teamName || !leaderName || !leaderEmail) {
-      alert('Please complete all required fields.');
-      return;
-    }
-
-    // Check if team or email has ALREADY claimed another problem statement
-    const existingClaim = getTeamExistingClaim(teamName, leaderEmail);
-    if (existingClaim && existingClaim.psId !== psId) {
-      alert(`⛔ Action Blocked!\n\nYour team "${teamName}" (or email "${leaderEmail}") has ALREADY selected Problem Statement ${existingClaim.psId}.\n\nRule: Each team is allowed to select ONLY ONE Problem Statement. You cannot change or select a second problem statement!`);
-      return;
-    }
-
-    const teamData = {
-      teamName,
-      leaderName,
-      leaderEmail,
-      claimedAt: new Date().toISOString()
-    };
-
-    saveClaim(psId, teamData);
-    closeClaimModal();
-    renderGrid();
-    alert(`🎉 Success! Problem Statement ${psId} is officially claimed by Team "${teamName}".`);
   }
 
   /* ---------- Event Listeners ---------- */
@@ -464,15 +342,6 @@
     els.detailModal.addEventListener('click', (e) => {
       if (e.target === els.detailModal) closeDetailModal();
     });
-
-    els.claimModalCloseBtn.addEventListener('click', closeClaimModal);
-    els.claimCancelBtn.addEventListener('click', closeClaimModal);
-    els.claimModal.addEventListener('click', (e) => {
-      if (e.target === els.claimModal) closeClaimModal();
-    });
-
-    // Form Submit
-    els.claimForm.addEventListener('submit', handleClaimSubmit);
   }
 
   function escapeHtml(str) {

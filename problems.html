@@ -251,84 +251,30 @@
       </div>
 
       <!-- Modal Footer -->
-      <div class="p-4 border-t border-slate-200 bg-slate-50 flex flex-col sm:flex-row items-center justify-between gap-2.5">
-        <div class="flex items-center gap-2 flex-wrap">
-          <a
-            href="assets/sih-2026-guidelines.pdf"
-            download="SIH-2026-Official-Guidelines.pdf"
-            class="inline-flex items-center gap-1.5 text-xs font-bold text-blue-800 bg-blue-50 hover:bg-blue-100 border border-blue-300 px-3 py-1.5 rounded-xl transition-colors shadow-2xs"
-            title="Download official SIH 2026 Guidelines PDF"
-          >
-            <svg class="w-3.5 h-3.5 text-blue-600" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 16v1a3 3 0 003 3h10a3 3 0 003-3v-1m-4-4l-4 4m0 0l-4-4m4 4V4"/></svg>
-            <span>📄 Guidelines PDF (8.4 MB)</span>
-          </a>
-          <a
-            href="assets/SIH-2026-Idea-Presentation-Template.pptx"
-            download="SIH2026-IDEA-Presentation-Format.pptx"
-            class="inline-flex items-center gap-1.5 text-xs font-bold text-amber-800 bg-amber-50 hover:bg-amber-100 border border-amber-300 px-3 py-1.5 rounded-xl transition-colors shadow-2xs"
-            title="Download official SIH 2026 Idea Presentation PPT format"
-          >
-            <svg class="w-3.5 h-3.5 text-amber-600" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 16v1a3 3 0 003 3h10a3 3 0 003-3v-1m-4-4l-4 4m0 0l-4-4m4 4V4"/></svg>
-            <span>📊 PPT Template (936 KB)</span>
-          </a>
-        </div>
-        <div id="modal-action-wrap">
-          <!-- Rendered action button or claimed badge -->
-        </div>
+      <div class="p-4 border-t border-slate-200 bg-slate-50 flex items-center justify-between gap-2 flex-wrap" id="modal-action-wrap">
+        <a
+          href="assets/SIH-2026-Idea-Presentation-Template.pptx"
+          download="SIH2026-IDEA-Presentation-Format.pptx"
+          class="inline-flex items-center gap-1.5 text-xs font-black text-slate-950 bg-amber-400 hover:bg-amber-500 px-4 py-2 rounded-xl transition-all shadow-xs active:scale-95"
+          title="Download official SIH 2026 Idea Presentation PPT format"
+        >
+          <svg class="w-4 h-4 text-slate-950" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 16v1a3 3 0 003 3h10a3 3 0 003-3v-1m-4-4l-4 4m0 0l-4-4m4 4V4"/></svg>
+          <span>📊 Download Ideal PPT (936 KB)</span>
+        </a>
+        <a
+          href="assets/sih-2026-guidelines.pdf"
+          download="SIH2026-Official-Guidelines.pdf"
+          class="inline-flex items-center gap-1.5 text-xs font-extrabold text-white bg-blue-600 hover:bg-blue-700 px-4 py-2 rounded-xl transition-all shadow-xs active:scale-95"
+          title="Download official SIH 2026 Guidelines PDF"
+        >
+          <svg class="w-4 h-4 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 16v1a3 3 0 003 3h10a3 3 0 003-3v-1m-4-4l-4 4m0 0l-4-4m4 4V4"/></svg>
+          <span>📑 Guidelines PDF (8.4 MB)</span>
+        </a>
+      </div>
       </div>
 
     </div>
-  </div>
-
-  <!-- Team Selection Modal -->
-  <div id="select-team-modal" class="fixed inset-0 z-50 hidden bg-slate-900/60 backdrop-blur-xs flex items-center justify-center p-3 sm:p-4 overflow-y-auto" role="dialog" aria-modal="true">
-    <div class="bg-white border border-slate-200 rounded-2xl max-w-md w-full p-5 shadow-2xl animate-in fade-in zoom-in-95 duration-200">
-      
-      <div class="flex items-center justify-between mb-3 border-b border-slate-100 pb-3">
-        <div>
-          <span class="text-[10px] font-black uppercase tracking-wider text-blue-600 bg-blue-50 px-2 py-0.5 rounded-md border border-blue-200">Team Claim Form</span>
-          <h3 class="text-base font-extrabold text-slate-900 m-0 mt-1" id="select-modal-ps-id-title"></h3>
-        </div>
-        <button type="button" id="select-modal-close" class="text-slate-400 hover:text-slate-700 p-1.5 rounded-lg hover:bg-slate-100">
-          <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12"/></svg>
-        </button>
-      </div>
-
-      <form id="team-claim-form" class="space-y-3">
-        <input type="hidden" id="claim-ps-id" name="psId" />
-        
-        <div>
-          <label class="block text-xs font-bold text-slate-700 mb-1" for="claim-teamName">Team Name <span class="text-red-500">*</span></label>
-          <input type="text" id="claim-teamName" name="teamName" required placeholder="Enter team name (e.g. CodeCrafters)" class="w-full px-3 py-2 border border-slate-300 rounded-xl text-xs sm:text-sm focus:ring-2 focus:ring-blue-500 focus:outline-none" />
-        </div>
-
-        <div>
-          <label class="block text-xs font-bold text-slate-700 mb-1" for="claim-leaderName">Team Leader Name <span class="text-red-500">*</span></label>
-          <input type="text" id="claim-leaderName" name="leaderName" required placeholder="Enter leader full name" class="w-full px-3 py-2 border border-slate-300 rounded-xl text-xs sm:text-sm focus:ring-2 focus:ring-blue-500 focus:outline-none" />
-        </div>
-
-        <div>
-          <label class="block text-xs font-bold text-slate-700 mb-1" for="claim-leaderEmail">Leader Personal Email ID <span class="text-red-500">*</span></label>
-          <input type="email" id="claim-leaderEmail" name="leaderEmail" required placeholder="name@example.com" class="w-full px-3 py-2 border border-slate-300 rounded-xl text-xs sm:text-sm focus:ring-2 focus:ring-blue-500 focus:outline-none" />
-        </div>
-
-        <div>
-          <label class="block text-xs font-bold text-slate-700 mb-1" for="claim-members">Number of Team Members</label>
-          <input type="text" id="claim-members" value="6 Members (1 Leader + 5 Members)" readonly disabled class="w-full px-3 py-2 border border-slate-200 rounded-xl text-xs bg-slate-100 text-slate-600 font-semibold cursor-not-allowed" />
-        </div>
-
-        <p class="text-[11px] text-slate-500 italic bg-amber-50 p-2.5 rounded-lg border border-amber-200">
-          ⚠️ Note: This action claims the Problem Statement in your browser (localStorage).
-        </p>
-
-        <div class="flex items-center justify-end gap-2 pt-2 border-t border-slate-100">
-          <button type="button" id="btn-cancel-claim" class="px-4 py-2 rounded-xl text-xs font-bold text-slate-600 hover:bg-slate-100 transition-colors">
-            Cancel
-          </button>
-          <button type="submit" class="px-5 py-2 rounded-xl text-xs font-extrabold bg-blue-600 hover:bg-blue-700 text-white shadow-md transition-transform active:scale-95">
-            Confirm &amp; Claim PS
-          </button>
-        </div>
+  </div>        </div>
       </form>
 
     </div>
