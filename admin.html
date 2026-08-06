@@ -1,0 +1,146 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="robots" content="noindex, nofollow" />
+  <title>SIH 2026 Admin Control Panel | UIT Prayagraj</title>
+  <link rel="icon" href="assets/united-logo.png" type="image/png" />
+  <script src="https://cdn.tailwindcss.com"></script>
+  <script>
+    tailwind.config = {
+      theme: {
+        extend: {
+          colors: {
+            primary: { DEFAULT: '#1a73e8', dark: '#1557b0' }
+          }
+        }
+      }
+    };
+  </script>
+</head>
+<body class="bg-slate-900 min-h-screen text-slate-100 font-sans flex flex-col">
+  
+  <!-- Header -->
+  <header class="bg-slate-950 border-b border-slate-800 py-3.5 px-4 sticky top-0 z-50">
+    <div class="max-w-5xl mx-auto flex items-center justify-between">
+      <div class="flex items-center gap-3">
+        <img src="assets/united-logo.png" alt="UIT Logo" class="w-8 h-8 object-contain" />
+        <div>
+          <h1 class="text-sm sm:text-base font-black text-white leading-none">SIH 2026 Admin Control Panel</h1>
+          <p class="text-[10px] text-slate-400 font-medium">United Institute of Technology, Prayagraj</p>
+        </div>
+      </div>
+      <div id="admin-user-badge" class="hidden items-center gap-2">
+        <span class="text-xs font-bold text-emerald-400 bg-emerald-950 border border-emerald-800 px-2.5 py-1 rounded-full">
+          Authenticated
+        </span>
+        <button type="button" id="btn-admin-logout" class="text-xs text-slate-400 hover:text-white underline">Logout</button>
+      </div>
+    </div>
+  </header>
+
+  <!-- Login Overlay -->
+  <main class="flex-1 flex items-center justify-center p-4">
+    <div id="login-card" class="bg-slate-800/90 border border-slate-700/80 rounded-2xl p-6 max-w-sm w-full shadow-2xl backdrop-blur-md">
+      <div class="text-center mb-5">
+        <div class="w-12 h-12 bg-blue-600/20 text-blue-400 rounded-full flex items-center justify-center mx-auto mb-2 text-xl font-bold">
+          🔒
+        </div>
+        <h2 class="text-lg font-black text-white">Organising Team Login</h2>
+        <p class="text-xs text-slate-400">Enter Organising Admin PIN to manage portal</p>
+      </div>
+
+      <form id="admin-login-form" class="space-y-4">
+        <div>
+          <label for="admin-pin" class="block text-xs font-bold text-slate-300 mb-1">Admin PIN / Password</label>
+          <input
+            type="password"
+            id="admin-pin"
+            required
+            placeholder="Enter Admin PIN"
+            class="w-full px-3.5 py-2.5 bg-slate-900 border border-slate-700 rounded-xl text-sm text-white focus:outline-none focus:ring-2 focus:ring-blue-500 font-mono tracking-widest text-center"
+          />
+        </div>
+        
+        <div id="login-error" class="hidden text-xs text-red-400 bg-red-950/60 border border-red-800/80 p-2 rounded-lg text-center font-semibold">
+          Incorrect Admin PIN. Please try again.
+        </div>
+
+        <button type="submit" class="w-full py-2.5 bg-blue-600 hover:bg-blue-500 text-white font-extrabold text-xs rounded-xl shadow-lg transition-transform active:scale-95">
+          Access Control Panel
+        </button>
+      </form>
+    </div>
+
+    <!-- Admin Dashboard View -->
+    <div id="admin-dashboard" class="hidden max-w-5xl w-full mx-auto space-y-6">
+      
+      <!-- Section 1: Quick Action Toggles -->
+      <div class="bg-slate-800/80 border border-slate-700/80 rounded-2xl p-5 sm:p-6 shadow-xl">
+        <h2 class="text-sm font-black text-slate-200 uppercase tracking-wider mb-4 flex items-center gap-2">
+          <span>⚙️ Live Portal Controls</span>
+        </h2>
+
+        <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+          
+          <!-- Registration Toggle Card -->
+          <div class="bg-slate-900 border border-slate-700/80 rounded-xl p-4 flex flex-col justify-between">
+            <div>
+              <div class="flex items-center justify-between mb-2">
+                <span class="text-xs font-bold text-slate-300">Registration Status</span>
+                <span id="status-reg-badge" class="px-2.5 py-0.5 rounded-full text-[11px] font-black"></span>
+              </div>
+              <p class="text-xs text-slate-400 mb-4 leading-relaxed">
+                Controls whether students can submit registrations on the public portal (<code class="text-blue-300">index.html</code>).
+              </p>
+            </div>
+            <button type="button" id="btn-toggle-reg" class="w-full py-2.5 font-black text-xs rounded-xl transition-all shadow-md active:scale-95 flex items-center justify-center gap-1.5">
+              <!-- Rendered via JS -->
+            </button>
+          </div>
+
+          <!-- Problem Statement Visibility Toggle Card -->
+          <div class="bg-slate-900 border border-slate-700/80 rounded-xl p-4 flex flex-col justify-between">
+            <div>
+              <div class="flex items-center justify-between mb-2">
+                <span class="text-xs font-bold text-slate-300">Problem Statement Bank Navbar</span>
+                <span id="status-ps-badge" class="px-2.5 py-0.5 rounded-full text-[11px] font-black"></span>
+              </div>
+              <p class="text-xs text-slate-400 mb-4 leading-relaxed">
+                Controls whether the Problem Statement link (<code class="text-blue-300">problems.html</code>) is visible in the public navbar.
+              </p>
+            </div>
+            <button type="button" id="btn-toggle-ps" class="w-full py-2.5 font-black text-xs rounded-xl transition-all shadow-md active:scale-95 flex items-center justify-center gap-1.5">
+              <!-- Rendered via JS -->
+            </button>
+          </div>
+
+        </div>
+      </div>
+
+      <!-- Section 2: Instructions for Backend & Mail -->
+      <div class="bg-slate-800/80 border border-slate-700/80 rounded-2xl p-5 sm:p-6 shadow-xl">
+        <h2 class="text-sm font-black text-slate-200 uppercase tracking-wider mb-3 flex items-center gap-2">
+          <span>📧 Automated Email &amp; Google Sheet Settings</span>
+        </h2>
+        <div class="bg-slate-900 border border-slate-700/80 p-4 rounded-xl text-xs text-slate-300 space-y-2 leading-relaxed">
+          <p>✔️ <strong>Google Apps Script URL:</strong> <code class="text-blue-300 break-all">https://script.google.com/macros/s/AKfycbzq4KNMHY0WvdHSnY2P18iUL5GAFJBQudUgDMG6_nHw3HGpH8mAtvAXs_jDo3odosLX/exec</code></p>
+          <p>✔️ <strong>Confirmation Email Service:</strong> Enabled in Apps Script. Every submission triggers an official confirmation receipt to the team leader's email.</p>
+          <p>✔️ <strong>Problem Statement Sheet Tab:</strong> Prepared for live PS claims syncing.</p>
+        </div>
+      </div>
+
+      <!-- Section 3: Navigation Links -->
+      <div class="flex items-center justify-between gap-3 pt-2 text-xs font-bold">
+        <a href="index.html" class="text-blue-400 hover:text-blue-300 underline">← Go to Public Registration Portal</a>
+        <a href="problems.html" class="text-blue-400 hover:text-blue-300 underline">Open Problem Statement Bank →</a>
+      </div>
+
+    </div>
+  </main>
+
+  <script src="js/config.js"></script>
+  <script src="js/admin.js"></script>
+</body>
+</html>

@@ -18,5 +18,29 @@ const AppConfig = {
   REQUEST_TIMEOUT_MS: 45000,
 
   /** App metadata */
-  APP_NAME: 'SIH 2026 Internal Registration'
+  APP_NAME: 'SIH 2026 Internal Registration',
+
+  /** Default Admin PIN */
+  ADMIN_PIN: '8924059058',
+
+  /** Registration Open/Closed Toggle */
+  get isRegistrationOpen() {
+    const val = localStorage.getItem('sih2026_registration_open');
+    // Default is closed (false) since deadline 05 Aug 2026 has passed
+    return val !== null ? val === 'true' : false;
+  },
+
+  setRegistrationOpen(status) {
+    localStorage.setItem('sih2026_registration_open', String(status));
+  },
+
+  /** Problem Statement Bank Public Visibility Toggle */
+  get isPSBankPublic() {
+    const val = localStorage.getItem('sih2026_ps_public');
+    return val !== null ? val === 'true' : false;
+  },
+
+  setPSBankPublic(status) {
+    localStorage.setItem('sih2026_ps_public', String(status));
+  }
 };
