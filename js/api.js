@@ -268,7 +268,7 @@ const Api = (() => {
 
     try {
       const controller = typeof AbortController !== 'undefined' ? new AbortController() : null;
-      const timeout = setTimeout(() => controller && controller.abort(), 12000);
+      const timeout = setTimeout(() => controller && controller.abort(), 35000); // Increased to 35s to account for Google Apps Script cold starts
 
       const response = await fetch(fetchUrl, {
         method: 'GET',
@@ -295,12 +295,12 @@ const Api = (() => {
         return cached;
       }
 
-      return { success: false, message: 'Could not load teams. Please try again.', teams: [] };
+      return { success: false, message: 'Could not load teams from server. Retrying...', teams: [] };
     } catch (err) {
       if (cached && Array.isArray(cached.teams)) {
         return cached;
       }
-      return { success: false, message: 'Network error fetching registered teams.', teams: [] };
+      return { success: false, message: 'Network error fetching registered teams. Retrying...', teams: [] };
     }
   }
 

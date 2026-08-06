@@ -217,22 +217,41 @@
       showLoadingSkeleton = false; // Already showing cached teams, no need for skeleton
     }
 
+    // 2. Local Submission Recovery (If user registered on this browser)
+    if (typeof Storage !== 'undefined' && Storage.loadSubmission) {
+      const mySub = Storage.loadSubmission();
+      if (mySub && mySub.registrationId && mySub.fields && mySub.fields.teamName) {
+        const exists = allTeams.some(t => String(t.registrationId) === String(mySub.registrationId) || String(t.teamName).toLowerCase() === String(mySub.fields.teamName).toLowerCase());
+        if (!exists) {
+          const myTeam = {
+            registrationId: mySub.registrationId,
+            teamName: mySub.fields.teamName,
+            leaderName: mySub.fields.leader_fullName || mySub.fields.leader_name || 'Team Leader',
+            branch: mySub.fields.leader_branch || 'CSE',
+            year: mySub.fields.leader_year || 'Third Year',
+            submittedAt: mySub.submittedAtDisplay || 'Just Now'
+          };
+          allTeams = [myTeam, ...allTeams];
+        }
+      }
+    }
+
     if (showLoadingSkeleton && (!allTeams || allTeams.length === 0)) {
       renderLoadingState();
     }
 
     try {
       const res = await Api.getRegisteredTeams(true);
-      if (res && res.success && Array.isArray(res.teams)) {
+      if (res && res.success && Array.isArray(res.teams) && res.teams.length > 0) {
         allTeams = res.teams;
         els.teamsCountBadge.textContent = `${allTeams.length} ${allTeams.length === 1 ? 'Team' : 'Teams'}`;
         handleSearchAndCheck();
       } else if (!allTeams || allTeams.length === 0) {
-        renderErrorState(res.message || 'Could not retrieve registered teams list.');
+        renderErrorState(res.message || 'Connecting to Google Sheets database…');
       }
     } catch (err) {
       if (!allTeams || allTeams.length === 0) {
-        renderErrorState('Failed to fetch teams. Please try again.');
+        renderErrorState('Network connection busy. Retrying in a moment…');
       }
     } finally {
       isLoading = false;
