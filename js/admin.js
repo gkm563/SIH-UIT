@@ -122,6 +122,26 @@
     }
   }
 
+  function normalizeTeamData(rawTeam) {
+    if (!rawTeam) return {};
+    const f = rawTeam.fields || {};
+    return {
+      registrationId: rawTeam.registrationId || f.registrationId || 'SIH2026-REG',
+      teamName: rawTeam.teamName || f.teamName || 'Tech Team',
+      timestamp: rawTeam.timestamp || f.timestamp || '',
+      teamLeaderName: rawTeam.teamLeaderName || rawTeam.leaderName || f.leaderName || f.teamLeaderName || f.leader_name || 'Leader',
+      leaderGender: rawTeam.leaderGender || f.leaderGender || f.leader_gender || 'Male',
+      leaderBranch: rawTeam.leaderBranch || f.leaderBranch || f.leader_branch || 'CSE',
+      leaderYear: rawTeam.leaderYear || f.leaderYear || f.leader_year || '3rd Year',
+      leaderSemester: rawTeam.leaderSemester || f.leaderSemester || f.leader_sem || '6th',
+      leaderMobile: rawTeam.leaderMobile || f.leaderMobile || f.leader_phone || 'N/A',
+      leaderEmail: rawTeam.leaderEmail || f.leaderEmail || f.leader_email || 'N/A',
+      claimedPsId: rawTeam.claimedPsId || f.claimedPsId || f.claimed_ps || '',
+      claimedPsTitle: rawTeam.claimedPsTitle || f.claimedPsTitle || '',
+      teamMembers: Array.isArray(rawTeam.teamMembers) ? rawTeam.teamMembers : (Array.isArray(f.teamMembers) ? f.teamMembers : [])
+    };
+  }
+
   async function showDashboard() {
     if (els.loginCard) els.loginCard.classList.add('hidden');
     if (els.dashboard) els.dashboard.classList.remove('hidden');
@@ -129,7 +149,16 @@
       els.userBadge.classList.remove('hidden');
       els.userBadge.classList.add('flex');
     }
-    await loadLiveTeams();
+
+    // Instantly populate with local cache so zero does not show while fetching
+    const cached = Api.getLocalCachedTeams();
+    if (cached && Array.isArray(cached.teams) && cached.teams.length > 0) {
+      rawTeamsData = cached.teams.map(normalizeTeamData);
+      calculateAnalytics();
+      applyFilters();
+    }
+
+    await loadLiveTeams(true);
   }
 
   async function loadLiveTeams(forceFresh = false) {
@@ -137,23 +166,23 @@
 
     try {
       const res = await Api.getRegisteredTeams(forceFresh);
-      if (res && res.success && Array.isArray(res.teams)) {
-        rawTeamsData = res.teams;
+      if (res && res.success && Array.isArray(res.teams) && res.teams.length > 0) {
+        rawTeamsData = res.teams.map(normalizeTeamData);
       } else {
         const cached = Api.getLocalCachedTeams();
         if (cached && Array.isArray(cached.teams)) {
-          rawTeamsData = cached.teams;
+          rawTeamsData = cached.teams.map(normalizeTeamData);
         }
       }
     } catch {
       const cached = Api.getLocalCachedTeams();
       if (cached && Array.isArray(cached.teams)) {
-        rawTeamsData = cached.teams;
+        rawTeamsData = cached.teams.map(normalizeTeamData);
       }
     } finally {
       if (els.syncSpinner) els.syncSpinner.classList.remove('animate-spin');
       if (els.lastSyncBadge) {
-        els.lastSyncBadge.textContent = `Last Synced: ${new Date().toLocaleTimeString([], { hour: '2-digit', minute: '2-digit', second: '2-digit' })}`;
+        els.lastSyncBadge.textContent = `Live Synced: ${new Date().toLocaleTimeString([], { hour: '2-digit', minute: '2-digit', second: '2-digit' })}`;
       }
       calculateAnalytics();
       applyFilters();
