@@ -367,8 +367,26 @@
     rawTeamsData.forEach(team => {
       const regId = team.registrationId || 'SIH2026-REG';
       const allMembers = [
-        { role: 'Leader', name: team.teamLeaderName || '', mobile: team.leaderMobile || '', email: team.leaderEmail || '', gender: team.leaderGender || '' },
-        ...(team.teamMembers || []).map((m, idx) => ({ role: `Member #${idx + 1}`, name: m.name || '', mobile: m.mobile || '', email: m.email || '', gender: m.gender || '' }))
+        {
+          role: 'Leader',
+          name: team.teamLeaderName || '',
+          mobile: team.leaderMobile || '',
+          email: team.leaderEmail || '',
+          gender: team.leaderGender || '',
+          branch: team.leaderBranch || '',
+          year: team.leaderYear || '',
+          roll: team.universityRoll || team.rollNo || team.collegeId || ''
+        },
+        ...(team.teamMembers || []).map((m, idx) => ({
+          role: `Member #${idx + 1}`,
+          name: m.name || '',
+          mobile: m.mobile || '',
+          email: m.email || '',
+          gender: m.gender || '',
+          branch: m.branch || '',
+          year: m.year || '',
+          roll: m.universityRoll || m.rollNo || m.collegeId || ''
+        }))
       ];
 
       let femaleCount = 0;
@@ -377,31 +395,45 @@
         const g = (st.gender || '').toLowerCase();
         if (g.includes('female') || g.includes('f')) femaleCount++;
 
-        const nameKey = (st.name || '').trim().toLowerCase();
-        if (!nameKey) return;
+        const nameStr = (st.name || '').trim().toLowerCase();
+        const mobileStr = (st.mobile || '').replace(/\D/g, '');
+        const emailStr = (st.email || '').trim().toLowerCase();
+        const branchStr = (st.branch || '').trim().toLowerCase();
+        const yearStr = (st.year || '').trim().toLowerCase();
+        const rollStr = (st.roll || '').trim().toLowerCase();
 
-        if (!studentMap.has(nameKey)) {
-          studentMap.set(nameKey, []);
+        if (!nameStr) return;
+
+        // Composite multi-parameter key: Roll OR Mobile OR Email OR (Name + Branch + Year)
+        const compositeKey = rollStr 
+          ? `ROLL_${rollStr}`
+          : (mobileStr.length >= 10 ? `MOB_${mobileStr.slice(-10)}` : (emailStr ? `EMAIL_${emailStr}` : `NAME_BRANCH_${nameStr}_${branchStr}_${yearStr}`));
+
+        if (!studentMap.has(compositeKey)) {
+          studentMap.set(compositeKey, []);
         }
 
-        const occurrences = studentMap.get(nameKey);
+        const occurrences = studentMap.get(compositeKey);
         occurrences.push({
           regId,
           teamName: team.teamName || 'Tech Team',
           role: st.role,
           studentName: st.name,
+          branch: st.branch,
+          year: st.year,
           mobile: st.mobile,
-          email: st.email
+          email: st.email,
+          roll: st.roll
         });
 
         if (occurrences.length > 1) {
-          duplicateMap.set(nameKey, occurrences);
+          duplicateMap.set(compositeKey, occurrences);
           occurrences.forEach(occ => {
             if (!redFlaggedTeams.has(occ.regId)) {
               redFlaggedTeams.set(occ.regId, []);
             }
             const list = redFlaggedTeams.get(occ.regId);
-            const msg = `Duplicate Student: ${occ.studentName} (${occ.role})`;
+            const msg = `Duplicate Student: ${occ.studentName} (${occ.branch} ${occ.year} - ${occ.role})`;
             if (!list.includes(msg)) list.push(msg);
           });
         }
