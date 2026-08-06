@@ -20,30 +20,30 @@
   </script>
   <link rel="stylesheet" href="css/styles.css" />
 </head>
-<body class="bg-slate-900 min-h-screen text-slate-100 font-sans flex flex-col">
+<body class="bg-slate-50 min-h-screen text-slate-900 font-sans flex flex-col">
   
-  <!-- Glassmorphic Admin Header -->
-  <header class="bg-slate-950/95 backdrop-blur-md border-b border-slate-800 sticky top-0 z-50 py-3 px-4 sm:px-8">
+  <!-- Glassmorphic Light Admin Header -->
+  <header class="bg-white/95 backdrop-blur-md border-b border-slate-200/90 sticky top-0 z-50 py-3 px-4 sm:px-8 shadow-2xs">
     <div class="header-inner w-full max-w-full mx-auto flex items-center justify-between gap-4">
       <a href="index.html" class="flex items-center gap-3 group">
         <img src="assets/united-logo.png" alt="UIT Logo" class="w-9 h-9 object-contain group-hover:scale-105 transition-transform" />
         <div>
           <div class="flex items-center gap-2">
-            <h1 class="text-sm sm:text-base font-black text-white leading-none">SIH 2026 Advanced Admin Intelligence Portal</h1>
-            <span class="text-[9px] font-black text-blue-400 bg-blue-950 border border-blue-800 px-2 py-0.5 rounded-full">
+            <h1 class="text-sm sm:text-base font-black text-[#2A4B8D] leading-none tracking-tight">SIH 2026 Advanced Admin Portal</h1>
+            <span class="text-[9px] font-black text-blue-800 bg-blue-100 border border-blue-200 px-2 py-0.5 rounded-full">
               EXECUTIVE DASHBOARD
             </span>
           </div>
-          <p class="text-[11px] text-slate-400 font-semibold mt-0.5">United Institute of Technology, Prayagraj</p>
+          <p class="text-[11px] text-slate-500 font-semibold mt-0.5">United Institute of Technology, Prayagraj</p>
         </div>
       </a>
 
       <div id="admin-user-badge" class="hidden items-center gap-3">
-        <span class="text-xs font-bold text-emerald-400 bg-emerald-950/80 border border-emerald-800 px-3 py-1 rounded-full flex items-center gap-1.5 shadow-2xs">
-          <span class="w-2 h-2 rounded-full bg-emerald-400 animate-pulse"></span>
+        <span class="text-xs font-bold text-emerald-800 bg-emerald-100 border border-emerald-200 px-3 py-1 rounded-full flex items-center gap-1.5 shadow-2xs">
+          <span class="w-2 h-2 rounded-full bg-emerald-500 animate-pulse"></span>
           <span>Secured Admin Session</span>
         </span>
-        <button type="button" id="btn-admin-logout" class="text-xs font-bold text-slate-300 hover:text-white bg-slate-800 hover:bg-slate-700 px-3 py-1.5 rounded-xl border border-slate-700 transition-colors">
+        <button type="button" id="btn-admin-logout" class="text-xs font-bold text-slate-700 hover:text-red-700 bg-slate-100 hover:bg-red-50 px-3 py-1.5 rounded-xl border border-slate-200/90 transition-colors">
           Logout 🚪
         </button>
       </div>
@@ -52,52 +52,52 @@
 
   <!-- Login Card Overlay -->
   <main class="flex-1 flex items-center justify-center p-4">
-    <div id="login-card" class="bg-slate-800/90 border border-slate-700/80 rounded-2xl p-6 sm:p-8 max-w-md w-full shadow-2xl backdrop-blur-md">
+    <div id="login-card" class="bg-white border border-slate-200/90 rounded-3xl p-6 sm:p-8 max-w-md w-full shadow-xl">
       <div class="text-center mb-6">
-        <div class="w-14 h-14 bg-blue-600/20 text-blue-400 rounded-2xl border border-blue-500/30 flex items-center justify-center mx-auto mb-3 text-2xl font-bold">
+        <div class="w-14 h-14 bg-blue-100 text-blue-800 rounded-2xl border border-blue-200/80 flex items-center justify-center mx-auto mb-3 text-2xl font-bold">
           🔒
         </div>
-        <h2 class="text-xl font-black text-white tracking-tight">Organising Team Login</h2>
-        <p class="text-xs text-slate-400 mt-1">Enter Organising Admin PIN to access live team intelligence</p>
+        <h2 class="text-xl font-black text-slate-900 tracking-tight">Organising Team Login</h2>
+        <p class="text-xs text-slate-500 mt-1">Enter Organising Admin PIN to access live team intelligence</p>
       </div>
 
       <form id="admin-login-form" class="space-y-4">
         <div>
-          <label for="admin-pin" class="block text-xs font-bold text-slate-300 mb-1.5">Admin PIN / Access Password</label>
+          <label for="admin-pin" class="block text-xs font-bold text-slate-700 mb-1.5">Admin PIN / Access Password</label>
           <input
             type="password"
             id="admin-pin"
             required
             placeholder="Enter Admin PIN"
-            class="w-full px-4 py-3 bg-slate-900 border border-slate-700 rounded-xl text-base text-white focus:outline-none focus:ring-2 focus:ring-blue-500 font-mono tracking-widest text-center"
+            class="w-full px-4 py-3 bg-slate-50 border border-slate-300 rounded-xl text-base text-slate-900 focus:outline-none focus:ring-2 focus:ring-blue-600 font-mono tracking-widest text-center"
           />
         </div>
         
-        <div id="login-error" class="hidden text-xs text-red-400 bg-red-950/80 border border-red-800 p-2.5 rounded-xl text-center font-bold">
+        <div id="login-error" class="hidden text-xs text-red-700 bg-red-50 border border-red-200 p-2.5 rounded-xl text-center font-bold">
           Incorrect Admin PIN. Please try again.
         </div>
 
-        <button type="submit" class="w-full py-3 bg-blue-600 hover:bg-blue-500 text-white font-black text-xs sm:text-sm rounded-xl shadow-lg transition-transform active:scale-95">
+        <button type="submit" class="w-full py-3 bg-blue-600 hover:bg-blue-700 text-white font-black text-xs sm:text-sm rounded-xl shadow-md transition-transform active:scale-95">
           Unlock Executive Dashboard
         </button>
       </form>
     </div>
 
-    <!-- Executive Admin Dashboard View -->
+    <!-- Executive Admin Dashboard View (Clean Light Theme) -->
     <div id="admin-dashboard" class="hidden w-full max-w-full lg:px-8 xl:px-12 mx-auto py-6 space-y-6">
       
       <!-- Top Action Bar: Controls + Sync -->
-      <div class="bg-slate-800/90 border border-slate-700/80 rounded-2xl p-4 sm:p-6 shadow-xl flex flex-col md:flex-row items-center justify-between gap-4">
+      <div class="bg-white border border-slate-200/90 rounded-2xl p-4 sm:p-6 shadow-xs flex flex-col md:flex-row items-center justify-between gap-4">
         <div>
-          <h2 class="text-lg font-black text-white flex items-center gap-2">
+          <h2 class="text-lg font-black text-slate-900 flex items-center gap-2">
             <span>⚙️ Live Portal Status &amp; Sync Control</span>
           </h2>
-          <p class="text-xs text-slate-400 mt-0.5">Real-time status controls &amp; Google Sheets database synchronization</p>
+          <p class="text-xs text-slate-500 mt-0.5">Real-time status controls &amp; Google Sheets database synchronization</p>
         </div>
 
         <div class="flex items-center gap-3 flex-wrap w-full md:w-auto">
           <!-- Refresh Live Data Button -->
-          <button type="button" id="btn-sync-live" class="px-4 py-2.5 bg-blue-600 hover:bg-blue-500 text-white font-extrabold text-xs rounded-xl shadow-md transition-transform active:scale-95 flex items-center gap-2">
+          <button type="button" id="btn-sync-live" class="px-4 py-2.5 bg-blue-600 hover:bg-blue-700 text-white font-extrabold text-xs rounded-xl shadow-xs transition-transform active:scale-95 flex items-center gap-2">
             <svg id="sync-spinner" class="w-4 h-4 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 4v5h.582m15.356 2A8.001 8.001 0 004.582 9m0 0H9m11 11v-5h-.581m0 0a8.003 8.003 0 01-15.357-2m15.357 2H15"/></svg>
             <span>Sync Live Google Sheet</span>
           </button>
@@ -114,76 +114,88 @@
         </div>
       </div>
 
-      <!-- Executive Analytics Summary Grid -->
+      <!-- Executive Analytics Summary Grid (Clickable Cards for Deep Drill-Down) -->
       <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4">
         
         <!-- Total Teams Card -->
-        <div class="bg-gradient-to-br from-blue-950 via-slate-900 to-slate-900 border border-blue-800/70 p-5 rounded-2xl shadow-lg relative overflow-hidden">
+        <div id="card-stat-teams" class="bg-gradient-to-br from-blue-50/90 via-indigo-50/60 to-white border border-blue-200/90 p-5 rounded-2xl shadow-2xs hover:shadow-md transition-all cursor-pointer group relative overflow-hidden">
           <div class="flex items-center justify-between mb-2">
-            <span class="text-xs font-black uppercase text-blue-400 tracking-wider">Total Teams Registered</span>
-            <span class="p-2 rounded-xl bg-blue-900/50 text-blue-300 text-lg font-bold">🏆</span>
+            <span class="text-xs font-black uppercase text-blue-900 tracking-wider">Total Teams Registered</span>
+            <span class="p-2 rounded-xl bg-blue-100 text-blue-800 text-lg font-bold group-hover:scale-110 transition-transform">🏆</span>
           </div>
-          <div class="text-3xl font-black text-white" id="stat-total-teams">0</div>
-          <p class="text-[11px] text-slate-400 mt-1 font-semibold" id="stat-total-participants">Total Participants: 0 Students</p>
+          <div class="text-3xl font-black text-slate-900" id="stat-total-teams">0</div>
+          <div class="flex items-center justify-between mt-2 pt-2 border-t border-blue-100">
+            <p class="text-[11px] text-slate-600 font-semibold" id="stat-total-participants">Total: 0 Students</p>
+            <span class="text-[10px] font-black text-blue-700 group-hover:underline">Click Details 🔍</span>
+          </div>
         </div>
 
         <!-- Gender Breakdown Card -->
-        <div class="bg-gradient-to-br from-purple-950 via-slate-900 to-slate-900 border border-purple-800/70 p-5 rounded-2xl shadow-lg relative overflow-hidden">
+        <div id="card-stat-gender" class="bg-gradient-to-br from-purple-50/90 via-pink-50/60 to-white border border-purple-200/90 p-5 rounded-2xl shadow-2xs hover:shadow-md transition-all cursor-pointer group relative overflow-hidden">
           <div class="flex items-center justify-between mb-2">
-            <span class="text-xs font-black uppercase text-purple-400 tracking-wider">Gender Demographics</span>
-            <span class="p-2 rounded-xl bg-purple-900/50 text-purple-300 text-lg font-bold">👥</span>
+            <span class="text-xs font-black uppercase text-purple-900 tracking-wider">Gender Demographics</span>
+            <span class="p-2 rounded-xl bg-purple-100 text-purple-800 text-lg font-bold group-hover:scale-110 transition-transform">👥</span>
           </div>
           <div class="flex items-center gap-3">
-            <div class="text-xl font-black text-blue-300" id="stat-male-count">👨 0 Male</div>
-            <div class="text-xl font-black text-pink-300" id="stat-female-count">👩 0 Female</div>
+            <div class="text-xl font-black text-blue-700" id="stat-male-count">👨 0 Male</div>
+            <div class="text-xl font-black text-pink-700" id="stat-female-count">👩 0 Female</div>
           </div>
-          <p class="text-[11px] text-purple-200 mt-1 font-semibold" id="stat-gender-breakdown">
-            2nd Yr Male: 0 | 3rd Yr Female: 0
-          </p>
+          <div class="flex items-center justify-between mt-2 pt-2 border-t border-purple-100">
+            <p class="text-[11px] text-purple-900 font-semibold" id="stat-gender-breakdown">
+              2nd Yr Male: 0 | 3rd Yr Female: 0
+            </p>
+            <span class="text-[10px] font-black text-purple-700 group-hover:underline">Click Details 🔍</span>
+          </div>
         </div>
 
         <!-- Academic Year Breakdown Card -->
-        <div class="bg-gradient-to-br from-emerald-950 via-slate-900 to-slate-900 border border-emerald-800/70 p-5 rounded-2xl shadow-lg relative overflow-hidden">
+        <div id="card-stat-year" class="bg-gradient-to-br from-emerald-50/90 via-teal-50/60 to-white border border-emerald-200/90 p-5 rounded-2xl shadow-2xs hover:shadow-md transition-all cursor-pointer group relative overflow-hidden">
           <div class="flex items-center justify-between mb-2">
-            <span class="text-xs font-black uppercase text-emerald-400 tracking-wider">Academic Year Distribution</span>
-            <span class="p-2 rounded-xl bg-emerald-900/50 text-emerald-300 text-lg font-bold">🎓</span>
+            <span class="text-xs font-black uppercase text-emerald-900 tracking-wider">Academic Year Distribution</span>
+            <span class="p-2 rounded-xl bg-emerald-100 text-emerald-800 text-lg font-bold group-hover:scale-110 transition-transform">🎓</span>
           </div>
-          <div class="grid grid-cols-4 gap-1 text-center mt-2" id="stat-year-grid">
-            <div class="bg-slate-800/80 p-1.5 rounded-lg border border-slate-700">
-              <div class="text-[10px] font-bold text-slate-400">1st Yr</div>
-              <div class="text-sm font-black text-emerald-300" id="stat-y1">0</div>
+          <div class="grid grid-cols-4 gap-1 text-center mt-1.5" id="stat-year-grid">
+            <div class="bg-white/80 p-1.5 rounded-lg border border-emerald-200/80">
+              <div class="text-[10px] font-bold text-slate-500">1st Yr</div>
+              <div class="text-sm font-black text-emerald-800" id="stat-y1">0</div>
             </div>
-            <div class="bg-slate-800/80 p-1.5 rounded-lg border border-slate-700">
-              <div class="text-[10px] font-bold text-slate-400">2nd Yr</div>
-              <div class="text-sm font-black text-emerald-300" id="stat-y2">0</div>
+            <div class="bg-white/80 p-1.5 rounded-lg border border-emerald-200/80">
+              <div class="text-[10px] font-bold text-slate-500">2nd Yr</div>
+              <div class="text-sm font-black text-emerald-800" id="stat-y2">0</div>
             </div>
-            <div class="bg-slate-800/80 p-1.5 rounded-lg border border-slate-700">
-              <div class="text-[10px] font-bold text-slate-400">3rd Yr</div>
-              <div class="text-sm font-black text-emerald-300" id="stat-y3">0</div>
+            <div class="bg-white/80 p-1.5 rounded-lg border border-emerald-200/80">
+              <div class="text-[10px] font-bold text-slate-500">3rd Yr</div>
+              <div class="text-sm font-black text-emerald-800" id="stat-y3">0</div>
             </div>
-            <div class="bg-slate-800/80 p-1.5 rounded-lg border border-slate-700">
-              <div class="text-[10px] font-bold text-slate-400">4th Yr</div>
-              <div class="text-sm font-black text-emerald-300" id="stat-y4">0</div>
+            <div class="bg-white/80 p-1.5 rounded-lg border border-emerald-200/80">
+              <div class="text-[10px] font-bold text-slate-500">4th Yr</div>
+              <div class="text-sm font-black text-emerald-800" id="stat-y4">0</div>
             </div>
+          </div>
+          <div class="flex items-center justify-end mt-2 pt-1 border-t border-emerald-100">
+            <span class="text-[10px] font-black text-emerald-700 group-hover:underline">Click Details 🔍</span>
           </div>
         </div>
 
         <!-- Department Breakdown Card -->
-        <div class="bg-gradient-to-br from-amber-950 via-slate-900 to-slate-900 border border-amber-800/70 p-5 rounded-2xl shadow-lg relative overflow-hidden">
+        <div id="card-stat-branch" class="bg-gradient-to-br from-amber-50/90 via-orange-50/60 to-white border border-amber-200/90 p-5 rounded-2xl shadow-2xs hover:shadow-md transition-all cursor-pointer group relative overflow-hidden">
           <div class="flex items-center justify-between mb-2">
-            <span class="text-xs font-black uppercase text-amber-400 tracking-wider">Branch / Department</span>
-            <span class="p-2 rounded-xl bg-amber-900/50 text-amber-300 text-lg font-bold">💻</span>
+            <span class="text-xs font-black uppercase text-amber-900 tracking-wider">Branch / Department</span>
+            <span class="p-2 rounded-xl bg-amber-100 text-amber-800 text-lg font-bold group-hover:scale-110 transition-transform">💻</span>
           </div>
-          <div class="text-xl font-black text-amber-300" id="stat-cse-count">CSE: 0 Students</div>
-          <p class="text-[11px] text-amber-200/90 mt-1 font-semibold" id="stat-other-branches">
-            ECE: 0 | ME: 0 | Civil: 0 | EE: 0
-          </p>
+          <div class="text-xl font-black text-amber-800" id="stat-cse-count">CSE: 0 Students</div>
+          <div class="flex items-center justify-between mt-2 pt-2 border-t border-amber-100">
+            <p class="text-[11px] text-amber-900 font-semibold" id="stat-other-branches">
+              ECE: 0 | ME: 0 | Civil: 0
+            </p>
+            <span class="text-[10px] font-black text-amber-700 group-hover:underline">Click Details 🔍</span>
+          </div>
         </div>
 
       </div>
 
       <!-- Advanced Filter & Search Control Bar -->
-      <div class="bg-slate-800/90 border border-slate-700/80 rounded-2xl p-4 sm:p-5 shadow-xl space-y-4">
+      <div class="bg-white border border-slate-200/90 rounded-2xl p-4 sm:p-5 shadow-xs space-y-4">
         
         <div class="flex flex-col lg:flex-row items-center justify-between gap-3">
           
@@ -193,16 +205,16 @@
               type="text"
               id="admin-search"
               placeholder="Search Team Name, ID, Leader, Member, Phone..."
-              class="w-full pl-10 pr-4 py-2.5 bg-slate-900 border border-slate-700 rounded-xl text-xs sm:text-sm text-white placeholder-slate-500 focus:outline-none focus:ring-2 focus:ring-blue-500 font-medium"
+              class="w-full pl-10 pr-4 py-2.5 bg-slate-50 border border-slate-300 rounded-xl text-xs sm:text-sm text-slate-900 placeholder-slate-400 focus:outline-none focus:ring-2 focus:ring-blue-600 font-medium"
             />
-            <svg class="w-4 h-4 text-slate-500 absolute left-3.5 top-3" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z"/></svg>
+            <svg class="w-4 h-4 text-slate-400 absolute left-3.5 top-3" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z"/></svg>
           </div>
 
           <!-- Dropdown Filters Row -->
           <div class="flex items-center gap-2 flex-wrap w-full lg:w-auto">
             
             <!-- Year Filter -->
-            <select id="filter-year" class="px-3 py-2 bg-slate-900 border border-slate-700 rounded-xl text-xs text-white focus:outline-none focus:ring-2 focus:ring-blue-500 font-bold">
+            <select id="filter-year" class="px-3 py-2 bg-slate-50 border border-slate-300 rounded-xl text-xs text-slate-900 focus:outline-none focus:ring-2 focus:ring-blue-600 font-bold">
               <option value="ALL">All Academic Years</option>
               <option value="1st Year">1st Year Only</option>
               <option value="2nd Year">2nd Year Only</option>
@@ -211,7 +223,7 @@
             </select>
 
             <!-- Branch Filter -->
-            <select id="filter-branch" class="px-3 py-2 bg-slate-900 border border-slate-700 rounded-xl text-xs text-white focus:outline-none focus:ring-2 focus:ring-blue-500 font-bold">
+            <select id="filter-branch" class="px-3 py-2 bg-slate-50 border border-slate-300 rounded-xl text-xs text-slate-900 focus:outline-none focus:ring-2 focus:ring-blue-600 font-bold">
               <option value="ALL">All Branches</option>
               <option value="CSE">CSE (Computer Science)</option>
               <option value="ECE">ECE (Electronics)</option>
@@ -222,39 +234,39 @@
             </select>
 
             <!-- Gender Filter -->
-            <select id="filter-gender" class="px-3 py-2 bg-slate-900 border border-slate-700 rounded-xl text-xs text-white focus:outline-none focus:ring-2 focus:ring-blue-500 font-bold">
+            <select id="filter-gender" class="px-3 py-2 bg-slate-50 border border-slate-300 rounded-xl text-xs text-slate-900 focus:outline-none focus:ring-2 focus:ring-blue-600 font-bold">
               <option value="ALL">All Genders</option>
               <option value="MALE_ONLY">Male Only Teams</option>
               <option value="FEMALE_INCLUDED">Female Included Teams</option>
             </select>
 
             <!-- PS Claim Status Filter -->
-            <select id="filter-ps" class="px-3 py-2 bg-slate-900 border border-slate-700 rounded-xl text-xs text-white focus:outline-none focus:ring-2 focus:ring-blue-500 font-bold">
+            <select id="filter-ps" class="px-3 py-2 bg-slate-50 border border-slate-300 rounded-xl text-xs text-slate-900 focus:outline-none focus:ring-2 focus:ring-blue-600 font-bold">
               <option value="ALL">All PS Status</option>
               <option value="CLAIMED">PS Claimed Only</option>
               <option value="UNCLAIMED">Unclaimed Teams</option>
             </select>
 
             <!-- Export CSV Button -->
-            <button type="button" id="btn-export-csv" class="px-3.5 py-2 bg-emerald-600 hover:bg-emerald-500 text-white font-extrabold text-xs rounded-xl shadow-md transition-transform active:scale-95 flex items-center gap-1.5">
+            <button type="button" id="btn-export-csv" class="px-3.5 py-2 bg-emerald-600 hover:bg-emerald-700 text-white font-extrabold text-xs rounded-xl shadow-xs transition-transform active:scale-95 flex items-center gap-1.5">
               <span>📥 Export CSV</span>
             </button>
           </div>
 
         </div>
 
-        <div class="flex items-center justify-between text-xs text-slate-400 px-1 border-t border-slate-700/60 pt-3">
-          <span id="filtered-count-badge" class="font-black text-blue-400">Showing 0 of 0 Teams</span>
-          <span id="last-sync-badge" class="text-[11px] font-semibold text-slate-400">Last Synced: Just Now</span>
+        <div class="flex items-center justify-between text-xs text-slate-500 px-1 border-t border-slate-200/80 pt-3">
+          <span id="filtered-count-badge" class="font-black text-blue-700">Showing 0 of 0 Teams</span>
+          <span id="last-sync-badge" class="text-[11px] font-semibold text-slate-500">Last Synced: Just Now</span>
         </div>
 
       </div>
 
-      <!-- Teams Table View -->
-      <div class="bg-slate-800/90 border border-slate-700/80 rounded-2xl overflow-hidden shadow-xl">
+      <!-- Teams Table View (Interactive Rows) -->
+      <div class="bg-white border border-slate-200/90 rounded-2xl overflow-hidden shadow-xs">
         <div class="overflow-x-auto">
-          <table class="w-full text-left text-xs text-slate-200">
-            <thead class="bg-slate-900/90 text-slate-400 font-black uppercase text-[10px] tracking-wider border-b border-slate-700">
+          <table class="w-full text-left text-xs text-slate-700">
+            <thead class="bg-slate-100/90 text-slate-700 font-black uppercase text-[10px] tracking-wider border-b border-slate-200">
               <tr>
                 <th class="py-3.5 px-4">Reg ID &amp; Team Name</th>
                 <th class="py-3.5 px-4">Team Leader Info</th>
@@ -264,7 +276,7 @@
                 <th class="py-3.5 px-4 text-right">Actions</th>
               </tr>
             </thead>
-            <tbody id="teams-table-body" class="divide-y divide-slate-700/60">
+            <tbody id="teams-table-body" class="divide-y divide-slate-200/80">
               <!-- Rendered via JS -->
             </tbody>
           </table>
@@ -273,7 +285,7 @@
         <!-- Empty / Loading State -->
         <div id="admin-table-empty" class="hidden p-12 text-center">
           <div class="text-3xl mb-2">🔍</div>
-          <p class="text-sm font-bold text-slate-300">No teams matching the selected filter criteria.</p>
+          <p class="text-sm font-bold text-slate-800">No teams matching the selected filter criteria.</p>
           <p class="text-xs text-slate-500 mt-1">Try resetting search keywords or dropdown filters.</p>
         </div>
       </div>
@@ -281,31 +293,56 @@
     </div>
   </main>
 
+  <!-- Interactive Analytics Stat Breakdown Modal -->
+  <div id="stat-breakdown-modal" class="fixed inset-0 z-50 hidden bg-slate-950/70 backdrop-blur-xs flex items-center justify-center p-3 sm:p-6 overflow-y-auto" role="dialog" aria-modal="true">
+    <div class="relative max-w-3xl w-full bg-white border border-slate-200/90 rounded-3xl shadow-2xl overflow-hidden my-8" onclick="event.stopPropagation()">
+      <div class="p-5 bg-gradient-to-r from-blue-900 via-indigo-900 to-slate-900 text-white flex items-center justify-between">
+        <div>
+          <h3 id="stat-modal-title" class="text-lg font-black text-white"></h3>
+          <p id="stat-modal-subtitle" class="text-xs text-blue-200 mt-0.5"></p>
+        </div>
+        <button type="button" onclick="closeStatModal()" class="text-white/80 hover:text-white p-2 rounded-xl bg-white/10 font-bold text-xs">
+          Close ✕
+        </button>
+      </div>
+
+      <div id="stat-modal-content" class="p-5 max-h-[65vh] overflow-y-auto space-y-4">
+        <!-- Rendered via JS -->
+      </div>
+
+      <div class="p-4 bg-slate-50 border-t border-slate-200/90 flex justify-end">
+        <button type="button" onclick="closeStatModal()" class="px-5 py-2 rounded-xl text-xs font-black bg-blue-600 hover:bg-blue-700 text-white shadow-xs">
+          Done Viewing
+        </button>
+      </div>
+    </div>
+  </div>
+
   <!-- Team Roster Detail Drawer / Modal -->
-  <div id="team-roster-modal" class="fixed inset-0 z-50 hidden bg-slate-950/80 backdrop-blur-xs flex items-center justify-center p-3 sm:p-6 overflow-y-auto" role="dialog" aria-modal="true">
-    <div class="relative max-w-4xl w-full bg-slate-900 border border-slate-700 rounded-2xl shadow-2xl overflow-hidden text-slate-100 my-8" onclick="event.stopPropagation()">
+  <div id="team-roster-modal" class="fixed inset-0 z-50 hidden bg-slate-950/70 backdrop-blur-xs flex items-center justify-center p-3 sm:p-6 overflow-y-auto" role="dialog" aria-modal="true">
+    <div class="relative max-w-4xl w-full bg-white border border-slate-200/90 rounded-3xl shadow-2xl overflow-hidden my-8" onclick="event.stopPropagation()">
       
       <!-- Modal Header -->
-      <div class="p-5 bg-slate-950 border-b border-slate-800 flex items-center justify-between">
+      <div class="p-5 bg-gradient-to-r from-blue-900 via-indigo-900 to-slate-900 text-white flex items-center justify-between">
         <div>
           <div class="flex items-center gap-2">
-            <span id="modal-team-id" class="text-xs font-black bg-blue-950 text-blue-400 border border-blue-800 px-2.5 py-0.5 rounded-full"></span>
+            <span id="modal-team-id" class="text-xs font-black bg-blue-500/30 text-blue-200 border border-blue-400/40 px-2.5 py-0.5 rounded-full"></span>
             <h3 id="modal-team-name" class="text-lg sm:text-xl font-black text-white"></h3>
           </div>
-          <p id="modal-ps-claimed-tag" class="text-xs font-semibold text-emerald-400 mt-1"></p>
+          <p id="modal-ps-claimed-tag" class="text-xs font-semibold text-emerald-300 mt-1"></p>
         </div>
-        <button type="button" onclick="closeTeamRosterModal()" class="text-slate-400 hover:text-white p-2 rounded-xl bg-slate-800 hover:bg-slate-700 font-extrabold text-xs">
+        <button type="button" onclick="closeTeamRosterModal()" class="text-white/80 hover:text-white p-2 rounded-xl bg-white/10 font-extrabold text-xs">
           Close ✕
         </button>
       </div>
 
       <!-- Modal Body: Full Team Roster -->
       <div class="p-5 space-y-4 max-h-[70vh] overflow-y-auto">
-        <h4 class="text-xs font-black uppercase text-slate-400 tracking-wider">Complete 6-Member Team Roster</h4>
+        <h4 class="text-xs font-black uppercase text-slate-500 tracking-wider">Complete 6-Member Team Roster</h4>
         
-        <div class="overflow-x-auto border border-slate-800 rounded-xl">
-          <table class="w-full text-left text-xs text-slate-200">
-            <thead class="bg-slate-950 text-slate-400 font-black uppercase text-[10px]">
+        <div class="overflow-x-auto border border-slate-200/90 rounded-2xl">
+          <table class="w-full text-left text-xs text-slate-800">
+            <thead class="bg-slate-100 text-slate-700 font-black uppercase text-[10px]">
               <tr>
                 <th class="py-2.5 px-3">Role</th>
                 <th class="py-2.5 px-3">Full Name</th>
@@ -315,7 +352,7 @@
                 <th class="py-2.5 px-3">Mobile &amp; Email</th>
               </tr>
             </thead>
-            <tbody id="modal-roster-body" class="divide-y divide-slate-800 bg-slate-900/60">
+            <tbody id="modal-roster-body" class="divide-y divide-slate-200/80 bg-white">
               <!-- Rendered via JS -->
             </tbody>
           </table>
@@ -323,15 +360,17 @@
       </div>
 
       <!-- Modal Footer -->
-      <div class="p-4 bg-slate-950 border-t border-slate-800 flex justify-end">
-        <button type="button" onclick="closeTeamRosterModal()" class="px-5 py-2 rounded-xl text-xs font-black bg-slate-800 hover:bg-slate-700 text-white">
+      <div class="p-4 bg-slate-50 border-t border-slate-200/90 flex justify-end">
+        <button type="button" onclick="closeTeamRosterModal()" class="px-5 py-2 rounded-xl text-xs font-black bg-blue-600 hover:bg-blue-700 text-white shadow-xs">
           Done Viewing
         </button>
       </div>
 
     </div>
   </div>
-  <footer class="site-footer border-t border-slate-800 bg-slate-950 py-6 mt-auto w-full" role="contentinfo">
+
+  <!-- Executive 3-Column Structured Footer -->
+  <footer class="site-footer border-t border-slate-200/90 bg-white/95 backdrop-blur-md py-6 mt-auto w-full" role="contentinfo">
     <div class="w-full max-w-full px-4 sm:px-8 lg:px-12 mx-auto">
       
       <!-- Top Grid: 3 Distinct Structured Columns -->
@@ -339,55 +378,55 @@
         
         <!-- Column 1: Student Organisers -->
         <div class="space-y-2">
-          <div class="flex items-center justify-center md:justify-start gap-1.5 text-xs font-black text-slate-300 uppercase tracking-wider">
-            <svg class="w-4 h-4 text-blue-400" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 20h5v-2a3 3 0 00-5.356-1.857M17 20H7m10 0v-2c0-.656-.126-1.283-.356-1.857M7 20H2v-2a3 3 0 015.356-1.857M7 20v-2c0-.656.126-1.283.356-1.857m0 0a5.002 5.002 0 019.288 0M15 7a3 3 0 11-6 0 3 3 0 016 0zm6 3a2 2 0 11-4 0 2 2 0 014 0zM7 10a2 2 0 11-4 0 2 2 0 014 0z"/></svg>
+          <div class="flex items-center justify-center md:justify-start gap-1.5 text-xs font-black text-slate-800 uppercase tracking-wider">
+            <svg class="w-4 h-4 text-blue-600" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 20h5v-2a3 3 0 00-5.356-1.857M17 20H7m10 0v-2c0-.656-.126-1.283-.356-1.857M7 20H2v-2a3 3 0 015.356-1.857M7 20v-2c0-.656.126-1.283.356-1.857m0 0a5.002 5.002 0 019.288 0M15 7a3 3 0 11-6 0 3 3 0 016 0zm6 3a2 2 0 11-4 0 2 2 0 014 0zM7 10a2 2 0 11-4 0 2 2 0 014 0z"/></svg>
             <span>Student Organisers</span>
           </div>
           <div class="flex flex-col sm:flex-row items-center justify-center md:justify-start gap-2 text-xs">
-            <div class="bg-slate-900 border border-slate-800 px-3 py-1.5 rounded-xl flex items-center gap-1.5 shadow-2xs">
-              <span class="font-extrabold text-white">Gautam Kumar Maurya</span>
-              <a href="tel:8924059058" class="text-blue-400 hover:text-blue-300 font-extrabold underline">(8924059058)</a>
+            <div class="bg-blue-50/90 border border-blue-200/80 px-3 py-1.5 rounded-xl flex items-center gap-1.5 shadow-2xs">
+              <span class="font-extrabold text-slate-900">Gautam Kumar Maurya</span>
+              <a href="tel:8924059058" class="text-blue-700 hover:text-blue-900 font-extrabold underline">(8924059058)</a>
             </div>
-            <div class="bg-slate-900 border border-slate-800 px-3 py-1.5 rounded-xl flex items-center gap-1.5 shadow-2xs">
-              <span class="font-extrabold text-white">Harsh Srivastava</span>
-              <a href="tel:9336786889" class="text-blue-400 hover:text-blue-300 font-extrabold underline">(9336786889)</a>
+            <div class="bg-blue-50/90 border border-blue-200/80 px-3 py-1.5 rounded-xl flex items-center gap-1.5 shadow-2xs">
+              <span class="font-extrabold text-slate-900">Harsh Srivastava</span>
+              <a href="tel:9336786889" class="text-blue-700 hover:text-blue-900 font-extrabold underline">(9336786889)</a>
             </div>
           </div>
         </div>
 
         <!-- Column 2: Faculty Leadership & SPOC -->
         <div class="space-y-2">
-          <div class="flex items-center justify-center md:justify-start gap-1.5 text-xs font-black text-slate-300 uppercase tracking-wider">
-            <svg class="w-4 h-4 text-amber-400" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 21V5a2 2 0 00-2-2H7a2 2 0 00-2 2v16m14 0h2m-2 0h-5m-9 0H3m2 0h5m0 0h4m-4 0V12m4 9V12m-4 0h4"/></svg>
+          <div class="flex items-center justify-center md:justify-start gap-1.5 text-xs font-black text-slate-800 uppercase tracking-wider">
+            <svg class="w-4 h-4 text-amber-600" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 21V5a2 2 0 00-2-2H7a2 2 0 00-2 2v16m14 0h2m-2 0h-5m-9 0H3m2 0h5m0 0h4m-4 0V12m4 9V12m-4 0h4"/></svg>
             <span>Faculty Leadership &amp; SPOC</span>
           </div>
           <div class="flex flex-col sm:flex-row items-center justify-center md:justify-start gap-2 text-xs">
-            <div class="bg-slate-900 border border-slate-800 px-3 py-1.5 rounded-xl flex items-center gap-1.5 shadow-2xs">
-              <span class="text-[10px] font-black uppercase text-amber-400 bg-amber-950 px-1.5 py-0.5 rounded border border-amber-800">SPOC</span>
-              <span class="font-extrabold text-white">Dhananjay Sharma Sir</span>
-              <a href="tel:9935957744" class="text-amber-400 hover:text-amber-300 font-extrabold underline">(9935957744)</a>
+            <div class="bg-amber-50/90 border border-amber-200/80 px-3 py-1.5 rounded-xl flex items-center gap-1.5 shadow-2xs">
+              <span class="text-[10px] font-black uppercase text-amber-800 bg-amber-200/60 px-1.5 py-0.5 rounded">SPOC</span>
+              <span class="font-extrabold text-slate-900">Dhananjay Sharma Sir</span>
+              <a href="tel:9935957744" class="text-amber-900 font-extrabold underline">(9935957744)</a>
             </div>
-            <div class="bg-slate-900 border border-slate-800 px-3 py-1.5 rounded-xl flex items-center gap-1.5 shadow-2xs">
-              <span class="text-[10px] font-black uppercase text-amber-400 bg-amber-950 px-1.5 py-0.5 rounded border border-amber-800">DSW</span>
-              <span class="font-extrabold text-white">Dr. Manas Pandey Sir</span>
-              <a href="tel:8303503433" class="text-amber-400 hover:text-amber-300 font-extrabold underline">(8303503433)</a>
+            <div class="bg-amber-50/90 border border-amber-200/80 px-3 py-1.5 rounded-xl flex items-center gap-1.5 shadow-2xs">
+              <span class="text-[10px] font-black uppercase text-amber-800 bg-amber-200/60 px-1.5 py-0.5 rounded">DSW</span>
+              <span class="font-extrabold text-slate-900">Dr. Manas Pandey Sir</span>
+              <a href="tel:8303503433" class="text-amber-900 font-extrabold underline">(8303503433)</a>
             </div>
           </div>
         </div>
 
         <!-- Column 3: College & Developer Credit -->
         <div class="space-y-1.5 md:text-right">
-          <div class="text-xs font-black text-slate-200 uppercase tracking-wider">
+          <div class="text-xs font-black text-slate-800 uppercase tracking-wider">
             Smart India Hackathon 2026
           </div>
-          <div class="text-xs text-slate-400 font-medium">
+          <div class="text-xs text-slate-600 font-medium">
             United Institute of Technology (UIT), Prayagraj
           </div>
-          <div class="text-xs text-slate-400 pt-1 flex items-center justify-center md:justify-end gap-1.5">
+          <div class="text-xs text-slate-500 pt-1 flex items-center justify-center md:justify-end gap-1.5">
             <span>&copy; 2026 UIT Prayagraj</span>
             <span>•</span>
             <span>Dev with ❤️ by</span>
-            <a href="https://www.linkedin.com/in/gkm563/" target="_blank" rel="noopener noreferrer" class="text-blue-400 hover:text-blue-300 font-extrabold underline inline-flex items-center gap-0.5" title="GKM's LinkedIn Profile">
+            <a href="https://www.linkedin.com/in/gkm563/" target="_blank" rel="noopener noreferrer" class="text-blue-700 hover:text-blue-900 font-extrabold underline inline-flex items-center gap-0.5" title="GKM's LinkedIn Profile">
               <svg class="w-3.5 h-3.5 fill-current text-[#0A66C2]" viewBox="0 0 24 24"><path d="M19 3a2 2 0 0 1 2 2v14a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h14m-.5 15.5v-5.3a3.26 3.26 0 0 0-3.26-3.26c-.85 0-1.84.52-2.28 1.3v-1.11h-2.79v8.37h2.79v-4.93c0-.77.62-1.4 1.39-1.4a1.4 1.4 0 0 1 1.4 1.4v4.93h2.75M6.46 10.9v8.37H9.25V10.9H6.46M7.86 6.78a1.63 1.63 0 1 0 1.63 1.63 1.63 1.63 0 0 0-1.63-1.63Z"/></svg>
               <span>Gautam Kumar Maurya</span>
             </a>

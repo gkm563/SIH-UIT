@@ -1,6 +1,6 @@
 /**
- * SIH 2026 Advanced Admin Intelligence Portal Script
- * Real-time Analytics, Filter Engine, Team Roster Viewer & Live Sheet Synchronization
+ * SIH 2026 Advanced Admin Intelligence Portal Script (Clean Light Theme)
+ * Real-time Analytics, Interactive Stat Card Drill-Down Modals, Filter Engine, Team Roster Viewer & Live Sheet Sync
  */
 (() => {
   'use strict';
@@ -20,6 +20,12 @@
     btnToggleReg: document.getElementById('btn-toggle-reg'),
     btnTogglePs: document.getElementById('btn-toggle-ps'),
 
+    // Clickable Stat Cards
+    cardStatTeams: document.getElementById('card-stat-teams'),
+    cardStatGender: document.getElementById('card-stat-gender'),
+    cardStatYear: document.getElementById('card-stat-year'),
+    cardStatBranch: document.getElementById('card-stat-branch'),
+
     // Stat Elements
     statTotalTeams: document.getElementById('stat-total-teams'),
     statTotalParticipants: document.getElementById('stat-total-participants'),
@@ -32,6 +38,12 @@
     statY4: document.getElementById('stat-y4'),
     statCseCount: document.getElementById('stat-cse-count'),
     statOtherBranches: document.getElementById('stat-other-branches'),
+
+    // Stat Modal
+    statModal: document.getElementById('stat-breakdown-modal'),
+    statModalTitle: document.getElementById('stat-modal-title'),
+    statModalSubtitle: document.getElementById('stat-modal-subtitle'),
+    statModalContent: document.getElementById('stat-modal-content'),
 
     // Search & Filter Controls
     adminSearch: document.getElementById('admin-search'),
@@ -125,21 +137,21 @@
     // Registration Status Toggle
     const isRegOpen = AppConfig.isRegistrationOpen;
     if (isRegOpen) {
-      els.btnToggleReg.className = 'px-4 py-2.5 font-extrabold text-xs rounded-xl bg-red-600 hover:bg-red-500 text-white shadow-md transition-transform active:scale-95 flex items-center gap-1.5';
-      els.btnToggleReg.innerHTML = '<span>🚫 Close Public Registration</span>';
+      els.btnToggleReg.className = 'px-4 py-2.5 font-extrabold text-xs rounded-xl bg-red-600 hover:bg-red-700 text-white shadow-xs transition-transform active:scale-95 flex items-center gap-1.5';
+      els.btnToggleReg.innerHTML = '<span>🚫 Close Registration</span>';
     } else {
-      els.btnToggleReg.className = 'px-4 py-2.5 font-extrabold text-xs rounded-xl bg-emerald-600 hover:bg-emerald-500 text-white shadow-md transition-transform active:scale-95 flex items-center gap-1.5';
+      els.btnToggleReg.className = 'px-4 py-2.5 font-extrabold text-xs rounded-xl bg-emerald-600 hover:bg-emerald-700 text-white shadow-xs transition-transform active:scale-95 flex items-center gap-1.5';
       els.btnToggleReg.innerHTML = '<span>🟢 Re-Open Registration</span>';
     }
 
     // Problem Statement Public Visibility Toggle
     const isPsPublic = AppConfig.isPSBankPublic;
     if (isPsPublic) {
-      els.btnTogglePs.className = 'px-4 py-2.5 font-extrabold text-xs rounded-xl bg-amber-600 hover:bg-amber-500 text-white shadow-md transition-transform active:scale-95 flex items-center gap-1.5';
-      els.btnTogglePs.innerHTML = '<span>🔒 Make PS Bank Private</span>';
+      els.btnTogglePs.className = 'px-4 py-2.5 font-extrabold text-xs rounded-xl bg-amber-600 hover:bg-amber-700 text-white shadow-xs transition-transform active:scale-95 flex items-center gap-1.5';
+      els.btnTogglePs.innerHTML = '<span>🔒 Make PS Private</span>';
     } else {
-      els.btnTogglePs.className = 'px-4 py-2.5 font-extrabold text-xs rounded-xl bg-blue-600 hover:bg-blue-500 text-white shadow-md transition-transform active:scale-95 flex items-center gap-1.5';
-      els.btnTogglePs.innerHTML = '<span>🌐 Make PS Bank Public</span>';
+      els.btnTogglePs.className = 'px-4 py-2.5 font-extrabold text-xs rounded-xl bg-blue-600 hover:bg-blue-700 text-white shadow-xs transition-transform active:scale-95 flex items-center gap-1.5';
+      els.btnTogglePs.innerHTML = '<span>🌐 Make PS Public</span>';
     }
   }
 
@@ -151,7 +163,6 @@
       if (res && res.success && Array.isArray(res.teams)) {
         rawTeamsData = res.teams;
       } else {
-        // Fallback to local storage if available
         const cached = Api.getLocalCachedTeams();
         if (cached && Array.isArray(cached.teams)) {
           rawTeamsData = cached.teams;
@@ -184,12 +195,10 @@
     let branchCounts = { CSE: 0, ECE: 0, ME: 0, EE: 0, CIVIL: 0, IT: 0, OTHER: 0 };
 
     rawTeamsData.forEach(team => {
-      // Members count
       const members = Array.isArray(team.teamMembers) ? team.teamMembers : [];
       const memberCount = Math.max(members.length, 6);
       totalParticipants += memberCount;
 
-      // Extract all students (leader + members)
       const allStudents = [
         {
           name: team.teamLeaderName || '',
@@ -213,13 +222,11 @@
           if (year.includes('2nd') || year.includes('2')) maleY2++;
         }
 
-        // Year stats
         if (year.includes('1st') || year.includes('1')) y1++;
         else if (year.includes('2nd') || year.includes('2')) y2++;
         else if (year.includes('3rd') || year.includes('3')) y3++;
         else if (year.includes('4th') || year.includes('4')) y4++;
 
-        // Branch stats
         if (branch.includes('CSE') || branch.includes('COMPUTER')) branchCounts.CSE++;
         else if (branch.includes('ECE') || branch.includes('ELECTRONIC')) branchCounts.ECE++;
         else if (branch.includes('ME') || branch.includes('MECHANICAL')) branchCounts.ME++;
@@ -230,9 +237,8 @@
       });
     });
 
-    // Update DOM Stat Cards
     if (els.statTotalTeams) els.statTotalTeams.textContent = totalTeams;
-    if (els.statTotalParticipants) els.statTotalParticipants.textContent = `Total Participants: ${totalParticipants} Students`;
+    if (els.statTotalParticipants) els.statTotalParticipants.textContent = `Total: ${totalParticipants} Students`;
 
     if (els.statMaleCount) els.statMaleCount.textContent = `👨 ${totalMale} Male`;
     if (els.statFemaleCount) els.statFemaleCount.textContent = `👩 ${totalFemale} Female`;
@@ -247,7 +253,7 @@
 
     if (els.statCseCount) els.statCseCount.textContent = `CSE: ${branchCounts.CSE} Students`;
     if (els.statOtherBranches) {
-      els.statOtherBranches.textContent = `ECE: ${branchCounts.ECE} | ME: ${branchCounts.ME} | EE: ${branchCounts.EE} | Civil: ${branchCounts.CIVIL}`;
+      els.statOtherBranches.textContent = `ECE: ${branchCounts.ECE} | ME: ${branchCounts.ME} | Civil: ${branchCounts.CIVIL}`;
     }
   }
 
@@ -259,7 +265,6 @@
     const selPs = els.filterPs ? els.filterPs.value : 'ALL';
 
     filteredTeams = rawTeamsData.filter(team => {
-      // 1. Text Search Filter
       if (q) {
         const teamText = [
           team.registrationId || '',
@@ -273,7 +278,6 @@
         if (!teamText.includes(q)) return false;
       }
 
-      // Extract all members for attribute filtering
       const members = Array.isArray(team.teamMembers) ? team.teamMembers : [];
       const allStudents = [
         {
@@ -285,19 +289,16 @@
         ...members
       ];
 
-      // 2. Year Filter
       if (selYear !== 'ALL') {
         const hasYear = allStudents.some(st => (st.year || '').toLowerCase().includes(selYear.toLowerCase().replace(' only', '')));
         if (!hasYear) return false;
       }
 
-      // 3. Branch Filter
       if (selBranch !== 'ALL') {
         const hasBranch = allStudents.some(st => (st.branch || '').toUpperCase().includes(selBranch));
         if (!hasBranch) return false;
       }
 
-      // 4. Gender Filter
       if (selGender === 'MALE_ONLY') {
         const hasFemale = allStudents.some(st => (st.gender || '').toLowerCase().includes('female') || (st.gender || '').toLowerCase().includes('f'));
         if (hasFemale) return false;
@@ -306,7 +307,6 @@
         if (!hasFemale) return false;
       }
 
-      // 5. PS Claim Status Filter
       if (selPs === 'CLAIMED') {
         if (!team.claimedPsId) return false;
       } else if (selPs === 'UNCLAIMED') {
@@ -336,7 +336,7 @@
 
     filteredTeams.forEach(team => {
       const tr = document.createElement('tr');
-      tr.className = 'hover:bg-slate-800/50 transition-colors border-b border-slate-800/80';
+      tr.className = 'hover:bg-blue-50/70 transition-colors border-b border-slate-200/80 cursor-pointer group';
 
       const members = Array.isArray(team.teamMembers) ? team.teamMembers : [];
       const allStudents = [
@@ -353,52 +353,227 @@
       });
 
       const psClaimHtml = team.claimedPsId
-        ? `<div class="font-extrabold text-emerald-400 flex items-center gap-1"><span>📌 ${team.claimedPsId}</span></div>
-           <div class="text-[10px] text-slate-400 truncate max-w-[200px]" title="${team.claimedPsTitle || ''}">${team.claimedPsTitle || 'Claimed'}</div>`
-        : `<span class="text-[10px] font-bold text-slate-500 bg-slate-800 px-2 py-0.5 rounded-full border border-slate-700">Unclaimed</span>`;
+        ? `<div class="font-extrabold text-blue-800 flex items-center gap-1"><span>📌 ${team.claimedPsId}</span></div>
+           <div class="text-[10px] text-slate-500 truncate max-w-[220px]" title="${team.claimedPsTitle || ''}">${team.claimedPsTitle || 'Claimed'}</div>`
+        : `<span class="text-[10px] font-bold text-slate-500 bg-slate-100 px-2.5 py-0.5 rounded-full border border-slate-200">Unclaimed</span>`;
 
       tr.innerHTML = `
-        <td class="py-3 px-4">
-          <div class="font-mono text-[10px] font-extrabold text-blue-400">${team.registrationId || 'SIH2026-REG'}</div>
-          <div class="font-black text-white text-sm">${escapeHtml(team.teamName || 'Tech Team')}</div>
+        <td class="py-3.5 px-4">
+          <div class="font-mono text-[10px] font-extrabold text-blue-700">${team.registrationId || 'SIH2026-REG'}</div>
+          <div class="font-black text-slate-900 text-sm group-hover:text-blue-700 transition-colors">${escapeHtml(team.teamName || 'Tech Team')}</div>
         </td>
-        <td class="py-3 px-4">
-          <div class="font-extrabold text-white">${escapeHtml(team.teamLeaderName || 'Leader')}</div>
-          <div class="text-[11px] text-slate-400 font-mono">📞 ${escapeHtml(team.leaderMobile || 'N/A')}</div>
+        <td class="py-3.5 px-4">
+          <div class="font-extrabold text-slate-900">${escapeHtml(team.teamLeaderName || 'Leader')}</div>
+          <div class="text-[11px] text-slate-600 font-mono">📞 ${escapeHtml(team.leaderMobile || 'N/A')}</div>
         </td>
-        <td class="py-3 px-4 text-center">
-          <span class="inline-flex items-center gap-1 text-[11px] font-extrabold bg-slate-900 border border-slate-700 px-2.5 py-1 rounded-full">
-            <span class="text-blue-300">👨 ${maleCount}M</span>
-            <span class="text-slate-500">•</span>
-            <span class="text-pink-300">👩 ${femaleCount}F</span>
+        <td class="py-3.5 px-4 text-center">
+          <span class="inline-flex items-center gap-1 text-[11px] font-extrabold bg-slate-100 border border-slate-200/90 px-2.5 py-1 rounded-full">
+            <span class="text-blue-700">👨 ${maleCount}M</span>
+            <span class="text-slate-300">•</span>
+            <span class="text-pink-700">👩 ${femaleCount}F</span>
           </span>
         </td>
-        <td class="py-3 px-4">
-          <div class="font-bold text-amber-300">${escapeHtml(team.leaderBranch || 'CSE')}</div>
-          <div class="text-[11px] text-slate-400 font-semibold">${escapeHtml(team.leaderYear || '3rd Year')} (${escapeHtml(team.leaderSemester || '6th')} Sem)</div>
+        <td class="py-3.5 px-4">
+          <div class="font-bold text-amber-800">${escapeHtml(team.leaderBranch || 'CSE')}</div>
+          <div class="text-[11px] text-slate-600 font-semibold">${escapeHtml(team.leaderYear || '3rd Year')} (${escapeHtml(team.leaderSemester || '6th')} Sem)</div>
         </td>
-        <td class="py-3 px-4">
+        <td class="py-3.5 px-4">
           ${psClaimHtml}
         </td>
-        <td class="py-3 px-4 text-right">
-          <button type="button" class="btn-view-roster px-3 py-1.5 bg-blue-600 hover:bg-blue-500 text-white font-extrabold text-[11px] rounded-xl shadow-xs transition-transform active:scale-95" data-regid="${team.registrationId}">
+        <td class="py-3.5 px-4 text-right">
+          <button type="button" class="btn-view-roster px-3 py-1.5 bg-blue-600 hover:bg-blue-700 text-white font-extrabold text-[11px] rounded-xl shadow-2xs transition-transform active:scale-95" data-regid="${team.registrationId}">
             View Roster 🔍
           </button>
         </td>
       `;
 
+      // Allow clicking whole row to open roster
+      tr.addEventListener('click', (e) => {
+        if (!e.target.closest('button')) {
+          openTeamRosterModal(team);
+        }
+      });
+
       els.teamsTableBody.appendChild(tr);
     });
 
-    // Attach Roster Drawer Click Handlers
     document.querySelectorAll('.btn-view-roster').forEach(btn => {
       btn.addEventListener('click', (e) => {
+        e.stopPropagation();
         const regId = e.currentTarget.getAttribute('data-regid');
         const teamObj = rawTeamsData.find(t => t.registrationId === regId);
         if (teamObj) openTeamRosterModal(teamObj);
       });
     });
   }
+
+  // Deep Drill-Down Stat Breakdown Modals
+  function openStatModal(type) {
+    if (!els.statModal) return;
+
+    if (type === 'teams') {
+      els.statModalTitle.textContent = '🏆 All Registered Teams Summary';
+      els.statModalSubtitle.textContent = `Total ${rawTeamsData.length} Teams Registered across all departments`;
+      
+      let html = `<div class="space-y-3">`;
+      rawTeamsData.forEach((t, idx) => {
+        html += `
+          <div class="p-3 bg-slate-50 border border-slate-200/80 rounded-xl flex items-center justify-between hover:bg-blue-50/50 cursor-pointer" onclick="closeStatModal(); openTeamRosterModalByRegId('${t.registrationId}')">
+            <div>
+              <div class="text-xs font-black text-slate-900">#${idx + 1} ${escapeHtml(t.teamName)} (${t.registrationId})</div>
+              <div class="text-[11px] text-slate-600">Leader: ${escapeHtml(t.teamLeaderName)} | ${escapeHtml(t.leaderBranch)} (${escapeHtml(t.leaderYear)})</div>
+            </div>
+            <span class="text-xs font-bold text-blue-700 underline">View Roster →</span>
+          </div>
+        `;
+      });
+      html += `</div>`;
+      els.statModalContent.innerHTML = html;
+
+    } else if (type === 'gender') {
+      els.statModalTitle.textContent = '👥 Gender Demographics Analysis';
+      els.statModalSubtitle.textContent = 'Comprehensive Male vs Female Student Breakdown across Academic Years';
+
+      let maleCount = 0, femaleCount = 0;
+      let yMale = { '1st Year': 0, '2nd Year': 0, '3rd Year': 0, '4th Year': 0 };
+      let yFemale = { '1st Year': 0, '2nd Year': 0, '3rd Year': 0, '4th Year': 0 };
+
+      rawTeamsData.forEach(t => {
+        const members = Array.isArray(t.teamMembers) ? t.teamMembers : [];
+        const allStudents = [
+          { gender: t.leaderGender || 'Male', year: t.leaderYear || '3rd Year' },
+          ...members
+        ];
+        allStudents.forEach(st => {
+          const g = (st.gender || 'Male').toLowerCase();
+          const yr = st.year || '3rd Year';
+          if (g.includes('female') || g.includes('f')) {
+            femaleCount++;
+            if (yr.includes('1')) yFemale['1st Year']++;
+            else if (yr.includes('2')) yFemale['2nd Year']++;
+            else if (yr.includes('3')) yFemale['3rd Year']++;
+            else if (yr.includes('4')) yFemale['4th Year']++;
+          } else {
+            maleCount++;
+            if (yr.includes('1')) yMale['1st Year']++;
+            else if (yr.includes('2')) yMale['2nd Year']++;
+            else if (yr.includes('3')) yMale['3rd Year']++;
+            else if (yr.includes('4')) yMale['4th Year']++;
+          }
+        });
+      });
+
+      let html = `
+        <div class="grid grid-cols-2 gap-4 text-center mb-4">
+          <div class="bg-blue-50 p-4 rounded-2xl border border-blue-200">
+            <div class="text-2xl font-black text-blue-800">👨 ${maleCount}</div>
+            <div class="text-xs font-extrabold text-blue-900">Total Male Students</div>
+          </div>
+          <div class="bg-pink-50 p-4 rounded-2xl border border-pink-200">
+            <div class="text-2xl font-black text-pink-800">👩 ${femaleCount}</div>
+            <div class="text-xs font-extrabold text-pink-900">Total Female Students</div>
+          </div>
+        </div>
+
+        <h4 class="text-xs font-black uppercase text-slate-700 tracking-wider">Year-wise Gender Breakdown</h4>
+        <div class="border border-slate-200 rounded-xl overflow-hidden text-xs">
+          <table class="w-full text-left">
+            <thead class="bg-slate-100 text-slate-700 font-bold">
+              <tr>
+                <th class="p-2.5">Academic Year</th>
+                <th class="p-2.5 text-blue-700">Male Count</th>
+                <th class="p-2.5 text-pink-700">Female Count</th>
+                <th class="p-2.5">Total</th>
+              </tr>
+            </thead>
+            <tbody class="divide-y divide-slate-200">
+              <tr><td class="p-2.5 font-bold">1st Year</td><td class="p-2.5 font-bold text-blue-700">${yMale['1st Year']}</td><td class="p-2.5 font-bold text-pink-700">${yFemale['1st Year']}</td><td class="p-2.5 font-extrabold">${yMale['1st Year'] + yFemale['1st Year']}</td></tr>
+              <tr><td class="p-2.5 font-bold">2nd Year</td><td class="p-2.5 font-bold text-blue-700">${yMale['2nd Year']}</td><td class="p-2.5 font-bold text-pink-700">${yFemale['2nd Year']}</td><td class="p-2.5 font-extrabold">${yMale['2nd Year'] + yFemale['2nd Year']}</td></tr>
+              <tr><td class="p-2.5 font-bold">3rd Year</td><td class="p-2.5 font-bold text-blue-700">${yMale['3rd Year']}</td><td class="p-2.5 font-bold text-pink-700">${yFemale['3rd Year']}</td><td class="p-2.5 font-extrabold">${yMale['3rd Year'] + yFemale['3rd Year']}</td></tr>
+              <tr><td class="p-2.5 font-bold">4th Year</td><td class="p-2.5 font-bold text-blue-700">${yMale['4th Year']}</td><td class="p-2.5 font-bold text-pink-700">${yFemale['4th Year']}</td><td class="p-2.5 font-extrabold">${yMale['4th Year'] + yFemale['4th Year']}</td></tr>
+            </tbody>
+          </table>
+        </div>
+      `;
+      els.statModalContent.innerHTML = html;
+
+    } else if (type === 'year') {
+      els.statModalTitle.textContent = '🎓 Academic Year Distribution';
+      els.statModalSubtitle.textContent = 'Student distribution from 1st Year to 4th Year';
+
+      let yCount = { '1st Year': 0, '2nd Year': 0, '3rd Year': 0, '4th Year': 0 };
+      rawTeamsData.forEach(t => {
+        const members = Array.isArray(t.teamMembers) ? t.teamMembers : [];
+        const allStudents = [
+          { year: t.leaderYear || '3rd Year' },
+          ...members
+        ];
+        allStudents.forEach(st => {
+          const yr = st.year || '';
+          if (yr.includes('1')) yCount['1st Year']++;
+          else if (yr.includes('2')) yCount['2nd Year']++;
+          else if (yr.includes('3')) yCount['3rd Year']++;
+          else if (yr.includes('4')) yCount['4th Year']++;
+        });
+      });
+
+      let html = `
+        <div class="grid grid-cols-2 sm:grid-cols-4 gap-3 text-center mb-4">
+          <div class="bg-emerald-50 p-3 rounded-xl border border-emerald-200"><div class="text-xl font-black text-emerald-800">${yCount['1st Year']}</div><div class="text-[11px] font-bold text-emerald-900">1st Year</div></div>
+          <div class="bg-emerald-50 p-3 rounded-xl border border-emerald-200"><div class="text-xl font-black text-emerald-800">${yCount['2nd Year']}</div><div class="text-[11px] font-bold text-emerald-900">2nd Year</div></div>
+          <div class="bg-emerald-50 p-3 rounded-xl border border-emerald-200"><div class="text-xl font-black text-emerald-800">${yCount['3rd Year']}</div><div class="text-[11px] font-bold text-emerald-900">3rd Year</div></div>
+          <div class="bg-emerald-50 p-3 rounded-xl border border-emerald-200"><div class="text-xl font-black text-emerald-800">${yCount['4th Year']}</div><div class="text-[11px] font-bold text-emerald-900">4th Year</div></div>
+        </div>
+      `;
+      els.statModalContent.innerHTML = html;
+
+    } else if (type === 'branch') {
+      els.statModalTitle.textContent = '💻 Branch / Department Distribution';
+      els.statModalSubtitle.textContent = 'Student counts across CSE, ECE, ME, Civil, EE, and IT';
+
+      let branchCounts = { CSE: 0, ECE: 0, ME: 0, EE: 0, CIVIL: 0, IT: 0, OTHER: 0 };
+      rawTeamsData.forEach(t => {
+        const members = Array.isArray(t.teamMembers) ? t.teamMembers : [];
+        const allStudents = [
+          { branch: t.leaderBranch || 'CSE' },
+          ...members
+        ];
+        allStudents.forEach(st => {
+          const b = (st.branch || '').toUpperCase();
+          if (b.includes('CSE') || b.includes('COMPUTER')) branchCounts.CSE++;
+          else if (b.includes('ECE') || b.includes('ELECTRONIC')) branchCounts.ECE++;
+          else if (b.includes('ME') || b.includes('MECHANICAL')) branchCounts.ME++;
+          else if (b.includes('EE') || b.includes('ELECTRICAL')) branchCounts.EE++;
+          else if (b.includes('CIVIL')) branchCounts.CIVIL++;
+          else if (b.includes('IT') || b.includes('INFORMATION')) branchCounts.IT++;
+          else branchCounts.OTHER++;
+        });
+      });
+
+      let html = `
+        <div class="grid grid-cols-2 sm:grid-cols-3 gap-3 text-center">
+          <div class="bg-amber-50 p-3 rounded-xl border border-amber-200"><div class="text-xl font-black text-amber-800">${branchCounts.CSE}</div><div class="text-xs font-bold text-amber-900">Computer Science (CSE)</div></div>
+          <div class="bg-amber-50 p-3 rounded-xl border border-amber-200"><div class="text-xl font-black text-amber-800">${branchCounts.ECE}</div><div class="text-xs font-bold text-amber-900">Electronics (ECE)</div></div>
+          <div class="bg-amber-50 p-3 rounded-xl border border-amber-200"><div class="text-xl font-black text-amber-800">${branchCounts.ME}</div><div class="text-xs font-bold text-amber-900">Mechanical (ME)</div></div>
+          <div class="bg-amber-50 p-3 rounded-xl border border-amber-200"><div class="text-xl font-black text-amber-800">${branchCounts.EE}</div><div class="text-xs font-bold text-amber-900">Electrical (EE)</div></div>
+          <div class="bg-amber-50 p-3 rounded-xl border border-amber-200"><div class="text-xl font-black text-amber-800">${branchCounts.CIVIL}</div><div class="text-xs font-bold text-amber-900">Civil Engineering</div></div>
+          <div class="bg-amber-50 p-3 rounded-xl border border-amber-200"><div class="text-xl font-black text-amber-800">${branchCounts.IT}</div><div class="text-xs font-bold text-amber-900">Information Tech (IT)</div></div>
+        </div>
+      `;
+      els.statModalContent.innerHTML = html;
+    }
+
+    els.statModal.classList.remove('hidden');
+  }
+
+  window.closeStatModal = function() {
+    if (els.statModal) els.statModal.classList.add('hidden');
+  };
+
+  window.openTeamRosterModalByRegId = function(regId) {
+    const teamObj = rawTeamsData.find(t => t.registrationId === regId);
+    if (teamObj) openTeamRosterModal(teamObj);
+  };
 
   function openTeamRosterModal(team) {
     if (!els.rosterModal) return;
@@ -440,16 +615,16 @@
 
       rosterList.forEach(st => {
         const tr = document.createElement('tr');
-        tr.className = 'border-b border-slate-800';
+        tr.className = 'border-b border-slate-200/80';
         tr.innerHTML = `
-          <td class="py-2.5 px-3 font-extrabold text-blue-400">${st.role}</td>
-          <td class="py-2.5 px-3 font-bold text-white">${escapeHtml(st.name || 'Member')}</td>
-          <td class="py-2.5 px-3 font-semibold ${ (st.gender || '').toLowerCase().includes('female') ? 'text-pink-300' : 'text-blue-300' }">${escapeHtml(st.gender || 'Male')}</td>
-          <td class="py-2.5 px-3 font-bold text-amber-300">${escapeHtml(st.branch || 'CSE')} (${escapeHtml(st.year || '3rd Year')})</td>
-          <td class="py-2.5 px-3 text-slate-300">${escapeHtml(st.sem || '6th')}</td>
-          <td class="py-2.5 px-3 font-mono text-[11px] text-slate-300">
+          <td class="py-2.5 px-3 font-extrabold text-blue-700">${st.role}</td>
+          <td class="py-2.5 px-3 font-bold text-slate-900">${escapeHtml(st.name || 'Member')}</td>
+          <td class="py-2.5 px-3 font-semibold ${ (st.gender || '').toLowerCase().includes('female') ? 'text-pink-700' : 'text-blue-700' }">${escapeHtml(st.gender || 'Male')}</td>
+          <td class="py-2.5 px-3 font-bold text-amber-800">${escapeHtml(st.branch || 'CSE')} (${escapeHtml(st.year || '3rd Year')})</td>
+          <td class="py-2.5 px-3 text-slate-700">${escapeHtml(st.sem || '6th')}</td>
+          <td class="py-2.5 px-3 font-mono text-[11px] text-slate-700">
             <div>📞 ${escapeHtml(st.mobile || 'N/A')}</div>
-            <div class="text-slate-400">${escapeHtml(st.email || 'N/A')}</div>
+            <div class="text-slate-500">${escapeHtml(st.email || 'N/A')}</div>
           </td>
         `;
         els.modalRosterBody.appendChild(tr);
@@ -498,7 +673,6 @@
   }
 
   function bindEvents() {
-    // Login Submit
     if (els.loginForm) {
       els.loginForm.addEventListener('submit', async (e) => {
         e.preventDefault();
@@ -546,7 +720,6 @@
       }, 1000);
     }
 
-    // Logout
     if (els.logoutBtn) {
       els.logoutBtn.addEventListener('click', () => {
         setAuthed(false);
@@ -554,14 +727,18 @@
       });
     }
 
-    // Sync Live Data Button
     if (els.btnSyncLive) {
       els.btnSyncLive.addEventListener('click', () => {
         loadLiveTeams(true);
       });
     }
 
-    // Toggle Registration
+    // Bind Clickable Stat Cards
+    if (els.cardStatTeams) els.cardStatTeams.addEventListener('click', () => openStatModal('teams'));
+    if (els.cardStatGender) els.cardStatGender.addEventListener('click', () => openStatModal('gender'));
+    if (els.cardStatYear) els.cardStatYear.addEventListener('click', () => openStatModal('year'));
+    if (els.cardStatBranch) els.cardStatBranch.addEventListener('click', () => openStatModal('branch'));
+
     if (els.btnToggleReg) {
       els.btnToggleReg.addEventListener('click', () => {
         const current = AppConfig.isRegistrationOpen;
@@ -571,7 +748,6 @@
       });
     }
 
-    // Toggle PS Visibility
     if (els.btnTogglePs) {
       els.btnTogglePs.addEventListener('click', () => {
         const current = AppConfig.isPSBankPublic;
@@ -581,7 +757,6 @@
       });
     }
 
-    // Search & Dropdown Filters
     if (els.adminSearch) els.adminSearch.addEventListener('input', applyFilters);
     if (els.filterYear) els.filterYear.addEventListener('change', applyFilters);
     if (els.filterBranch) els.filterBranch.addEventListener('change', applyFilters);
