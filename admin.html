@@ -188,21 +188,24 @@
         <!-- Card 5: SIH Mandatory Female Rule Compliance Card -->
         <div class="bg-gradient-to-br from-emerald-500 to-teal-700 text-white p-4 rounded-2xl shadow-xs relative overflow-hidden">
           <div class="flex items-center justify-between mb-1">
-            <span class="text-[10px] font-black uppercase tracking-wider text-emerald-100">SIH Rule Status</span>
+            <span class="text-[10px] font-black uppercase tracking-wider text-emerald-100">SIH Female Rule</span>
             <span class="text-base font-bold">✅</span>
           </div>
           <div class="text-base font-black">100% Complied</div>
-          <p class="text-[10px] text-emerald-100 font-medium mt-1">70 / 70 Teams have Female Members</p>
+          <p class="text-[10px] text-emerald-100 font-medium mt-1">70 / 70 Teams Have Female Members</p>
         </div>
 
-        <!-- Card 6: National SIH Quota Card -->
-        <div class="bg-gradient-to-br from-blue-600 to-indigo-800 text-white p-4 rounded-2xl shadow-xs relative overflow-hidden">
+        <!-- Card 6: Integrity Audit Card (Red Flag Detector) -->
+        <div id="card-stat-audit" class="bg-gradient-to-br from-red-600 to-rose-800 text-white p-4 rounded-2xl shadow-xs cursor-pointer group relative overflow-hidden hover:shadow-md transition-all">
           <div class="flex items-center justify-between mb-1">
-            <span class="text-[10px] font-black uppercase tracking-wider text-blue-100">SIH Nomination Quota</span>
-            <span class="text-base font-bold">🏆</span>
+            <span class="text-[10px] font-black uppercase tracking-wider text-rose-100">Integrity Audit</span>
+            <span class="text-base font-bold group-hover:scale-110 transition-transform">🚩</span>
           </div>
-          <div class="text-base font-black">50 Teams Quota</div>
-          <p class="text-[10px] text-blue-100 font-medium mt-1">45 Shortlisted + 5 Waiting List</p>
+          <div class="text-base font-black" id="stat-audit-count">Checking Roster...</div>
+          <div class="flex items-center justify-between mt-1 pt-1 border-t border-rose-400/50">
+            <p class="text-[10px] text-rose-100 font-bold truncate max-w-[110px]" id="stat-duplicate-count">0 Duplicates</p>
+            <span class="text-[9px] font-black text-white underline">Audit Report 🔍</span>
+          </div>
         </div>
 
       </div>
@@ -226,6 +229,13 @@
           <!-- Dropdown Filters Row -->
           <div class="flex items-center gap-2 flex-wrap w-full lg:w-auto">
             
+            <!-- Compliance Audit Filter -->
+            <select id="filter-compliance" class="px-3 py-2 bg-red-50 text-red-900 border border-red-300 rounded-xl text-xs focus:outline-none focus:ring-2 focus:ring-red-600 font-extrabold">
+              <option value="ALL">All Audit Statuses</option>
+              <option value="RED_FLAG">🚩 Red Flagged Teams Only</option>
+              <option value="CLEAN">✅ 100% Verified Unique Only</option>
+            </select>
+
             <!-- Year Filter -->
             <select id="filter-year" class="px-3 py-2 bg-slate-50 border border-slate-300 rounded-xl text-xs text-slate-900 focus:outline-none focus:ring-2 focus:ring-blue-600 font-bold">
               <option value="ALL">All Academic Years</option>

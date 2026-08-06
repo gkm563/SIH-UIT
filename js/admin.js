@@ -25,6 +25,7 @@
     cardStatGender: document.getElementById('card-stat-gender'),
     cardStatYear: document.getElementById('card-stat-year'),
     cardStatBranch: document.getElementById('card-stat-branch'),
+    cardStatAudit: document.getElementById('card-stat-audit'),
 
     // Stat Elements
     statTotalTeams: document.getElementById('stat-total-teams'),
@@ -38,6 +39,8 @@
     statY4: document.getElementById('stat-y4'),
     statCseCount: document.getElementById('stat-cse-count'),
     statOtherBranches: document.getElementById('stat-other-branches'),
+    statAuditCount: document.getElementById('stat-audit-count'),
+    statDuplicateCount: document.getElementById('stat-duplicate-count'),
 
     // Stat Modal
     statModal: document.getElementById('stat-breakdown-modal'),
@@ -47,6 +50,7 @@
 
     // Search & Filter Controls
     adminSearch: document.getElementById('admin-search'),
+    filterCompliance: document.getElementById('filter-compliance'),
     filterYear: document.getElementById('filter-year'),
     filterBranch: document.getElementById('filter-branch'),
     filterGender: document.getElementById('filter-gender'),
@@ -331,6 +335,8 @@
       });
     });
 
+    runAuditEngine();
+
     if (els.statTotalTeams) els.statTotalTeams.textContent = totalTeams;
     if (els.statTotalParticipants) els.statTotalParticipants.textContent = `Total: ${totalParticipants} Students`;
 
@@ -351,14 +357,101 @@
     }
   }
 
+  let auditResults = { redFlaggedTeams: new Map(), duplicateMap: new Map(), totalRedFlaggedCount: 0, totalDuplicateStudentsCount: 0 };
+
+  function runAuditEngine() {
+    const studentMap = new Map();
+    const duplicateMap = new Map();
+    const redFlaggedTeams = new Map();
+
+    rawTeamsData.forEach(team => {
+      const regId = team.registrationId || 'SIH2026-REG';
+      const allMembers = [
+        { role: 'Leader', name: team.teamLeaderName || '', mobile: team.leaderMobile || '', email: team.leaderEmail || '', gender: team.leaderGender || '' },
+        ...(team.teamMembers || []).map((m, idx) => ({ role: `Member #${idx + 1}`, name: m.name || '', mobile: m.mobile || '', email: m.email || '', gender: m.gender || '' }))
+      ];
+
+      let femaleCount = 0;
+
+      allMembers.forEach(st => {
+        const g = (st.gender || '').toLowerCase();
+        if (g.includes('female') || g.includes('f')) femaleCount++;
+
+        const nameKey = (st.name || '').trim().toLowerCase();
+        if (!nameKey) return;
+
+        if (!studentMap.has(nameKey)) {
+          studentMap.set(nameKey, []);
+        }
+
+        const occurrences = studentMap.get(nameKey);
+        occurrences.push({
+          regId,
+          teamName: team.teamName || 'Tech Team',
+          role: st.role,
+          studentName: st.name,
+          mobile: st.mobile,
+          email: st.email
+        });
+
+        if (occurrences.length > 1) {
+          duplicateMap.set(nameKey, occurrences);
+          occurrences.forEach(occ => {
+            if (!redFlaggedTeams.has(occ.regId)) {
+              redFlaggedTeams.set(occ.regId, []);
+            }
+            const list = redFlaggedTeams.get(occ.regId);
+            const msg = `Duplicate Student: ${occ.studentName} (${occ.role})`;
+            if (!list.includes(msg)) list.push(msg);
+          });
+        }
+      });
+
+      if (femaleCount === 0) {
+        if (!redFlaggedTeams.has(regId)) redFlaggedTeams.set(regId, []);
+        redFlaggedTeams.get(regId).push('Missing Mandatory Female Member');
+      }
+
+      if (allMembers.length !== 6) {
+        if (!redFlaggedTeams.has(regId)) redFlaggedTeams.set(regId, []);
+        redFlaggedTeams.get(regId).push(`Invalid Team Size (${allMembers.length}/6 Members)`);
+      }
+    });
+
+    auditResults = {
+      studentMap,
+      duplicateMap,
+      redFlaggedTeams,
+      totalRedFlaggedCount: redFlaggedTeams.size,
+      totalDuplicateStudentsCount: duplicateMap.size
+    };
+
+    if (els.statAuditCount) {
+      els.statAuditCount.textContent = auditResults.totalRedFlaggedCount > 0
+        ? `🚩 ${auditResults.totalRedFlaggedCount} Red Flagged`
+        : `✅ 0 Red Flags`;
+    }
+    if (els.statDuplicateCount) {
+      els.statDuplicateCount.textContent = `${auditResults.totalDuplicateStudentsCount} Duplicate Students`;
+    }
+  }
+
   function applyFilters() {
     const q = (els.adminSearch ? els.adminSearch.value : '').toLowerCase().trim();
+    const selCompliance = els.filterCompliance ? els.filterCompliance.value : 'ALL';
     const selYear = els.filterYear ? els.filterYear.value : 'ALL';
     const selBranch = els.filterBranch ? els.filterBranch.value : 'ALL';
     const selGender = els.filterGender ? els.filterGender.value : 'ALL';
-    const selPs = els.filterPs ? els.filterPs.value : 'ALL';
 
     filteredTeams = rawTeamsData.filter(team => {
+      const regId = team.registrationId || 'SIH2026-REG';
+
+      if (selCompliance === 'RED_FLAG') {
+        if (!auditResults.redFlaggedTeams.has(regId)) return false;
+      } else if (selCompliance === 'CLEAN') {
+        if (auditResults.redFlaggedTeams.has(regId)) return false;
+      }
+
       if (q) {
         const teamText = [
           team.registrationId || '',
@@ -401,12 +494,6 @@
         if (!hasFemale) return false;
       }
 
-      if (selPs === 'CLAIMED') {
-        if (!team.claimedPsId) return false;
-      } else if (selPs === 'UNCLAIMED') {
-        if (team.claimedPsId) return false;
-      }
-
       return true;
     });
 
@@ -429,8 +516,14 @@
     if (els.adminTableEmpty) els.adminTableEmpty.classList.add('hidden');
 
     filteredTeams.forEach(team => {
+      const regId = team.registrationId || 'SIH2026-REG';
+      const isRedFlagged = auditResults.redFlaggedTeams.has(regId);
+      const flagReasons = isRedFlagged ? auditResults.redFlaggedTeams.get(regId).join(', ') : '';
+
       const tr = document.createElement('tr');
-      tr.className = 'hover:bg-blue-50/70 transition-colors border-b border-slate-200/80 cursor-pointer group';
+      tr.className = isRedFlagged
+        ? 'bg-red-50/40 hover:bg-red-100/60 transition-colors border-b border-red-200/80 cursor-pointer group'
+        : 'hover:bg-blue-50/70 transition-colors border-b border-slate-200/80 cursor-pointer group';
 
       const members = Array.isArray(team.teamMembers) ? team.teamMembers : [];
       const allStudents = [
@@ -446,10 +539,15 @@
         else maleCount++;
       });
 
+      const redFlagBadge = isRedFlagged
+        ? `<span class="inline-flex items-center gap-1 text-[10px] font-black bg-red-600 text-white px-2 py-0.5 rounded-md shadow-2xs mt-1" title="${escapeHtml(flagReasons)}">🚩 RED FLAG DETECTED</span>`
+        : ``;
+
       tr.innerHTML = `
         <td class="py-3.5 px-4">
-          <div class="font-mono text-[10px] font-extrabold text-blue-700">${team.registrationId || 'SIH2026-REG'}</div>
+          <div class="font-mono text-[10px] font-extrabold text-blue-700">${regId}</div>
           <div class="font-black text-slate-900 text-sm group-hover:text-blue-700 transition-colors">${escapeHtml(team.teamName || 'Tech Team')}</div>
+          ${redFlagBadge}
         </td>
         <td class="py-3.5 px-4">
           <div class="font-extrabold text-slate-900">${escapeHtml(team.teamLeaderName || 'Leader')}</div>
@@ -467,7 +565,7 @@
           <div class="text-[11px] text-slate-600 font-semibold">${escapeHtml(team.leaderYear || '3rd Year')} (${escapeHtml(team.leaderSemester || '6th')} Sem)</div>
         </td>
         <td class="py-3.5 px-4 text-right">
-          <button type="button" class="btn-view-roster px-3 py-1.5 bg-blue-600 hover:bg-blue-700 text-white font-extrabold text-[11px] rounded-xl shadow-2xs transition-transform active:scale-95" data-regid="${team.registrationId}">
+          <button type="button" class="btn-view-roster px-3 py-1.5 bg-blue-600 hover:bg-blue-700 text-white font-extrabold text-[11px] rounded-xl shadow-2xs transition-transform active:scale-95" data-regid="${regId}">
             View Roster 🔍
           </button>
         </td>
@@ -647,18 +745,86 @@
         </div>
       `;
       els.statModalContent.innerHTML = html;
+    } else if (type === 'audit') {
+      els.statModalTitle.textContent = '🚩 SIH 2026 Roster Integrity & Compliance Audit Report';
+      els.statModalSubtitle.textContent = `In-depth cross-team duplicate student & red-flag detection report across all ${rawTeamsData.length} teams`;
+
+      let html = `
+        <div class="grid grid-cols-1 sm:grid-cols-3 gap-3 text-center mb-4">
+          <div class="bg-red-50 p-3 rounded-xl border border-red-200">
+            <div class="text-2xl font-black text-red-800">${auditResults.totalRedFlaggedCount}</div>
+            <div class="text-xs font-extrabold text-red-900">Red Flagged Teams</div>
+          </div>
+          <div class="bg-amber-50 p-3 rounded-xl border border-amber-200">
+            <div class="text-2xl font-black text-amber-800">${auditResults.totalDuplicateStudentsCount}</div>
+            <div class="text-xs font-extrabold text-amber-900">Duplicate Students</div>
+          </div>
+          <div class="bg-emerald-50 p-3 rounded-xl border border-emerald-200">
+            <div class="text-2xl font-black text-emerald-800">${Math.round(((rawTeamsData.length - auditResults.totalRedFlaggedCount) / rawTeamsData.length) * 100)}%</div>
+            <div class="text-xs font-extrabold text-emerald-900">Unique Compliance Score</div>
+          </div>
+        </div>
+      `;
+
+      if (auditResults.duplicateMap.size === 0) {
+        html += `
+          <div class="p-6 bg-emerald-50 border border-emerald-200 rounded-2xl text-center">
+            <div class="text-3xl mb-2">🎉</div>
+            <h4 class="text-base font-black text-emerald-900">No Duplicate Students Detected!</h4>
+            <p class="text-xs text-emerald-700 mt-1">All student participants are 100% unique across all registered teams.</p>
+          </div>
+        `;
+      } else {
+        html += `
+          <h4 class="text-xs font-black uppercase text-red-800 tracking-wider mb-2">🚨 Duplicate Students Breakdown (${auditResults.duplicateMap.size} Found)</h4>
+          <div class="space-y-3">
+        `;
+
+        auditResults.duplicateMap.forEach((occurrences, studentName) => {
+          html += `
+            <div class="bg-white p-3.5 rounded-xl border border-red-200 shadow-2xs">
+              <div class="flex items-center justify-between">
+                <span class="font-extrabold text-slate-900 text-xs">👤 ${escapeHtml(studentName.toUpperCase())}</span>
+                <span class="text-[10px] font-black text-red-700 bg-red-100 px-2 py-0.5 rounded-md">Present in ${occurrences.length} Teams</span>
+              </div>
+              <div class="mt-2 space-y-1 text-xs">
+          `;
+          occurrences.forEach(occ => {
+            html += `
+              <div class="flex items-center justify-between bg-slate-50 p-2 rounded-lg border border-slate-200/80">
+                <div>
+                  <span class="font-bold text-blue-900">${escapeHtml(occ.teamName)}</span>
+                  <span class="text-[10px] text-slate-500 font-mono">(${occ.regId})</span>
+                  <span class="text-[10px] font-bold text-slate-600"> - ${occ.role}</span>
+                </div>
+                <div class="text-[10px] font-mono text-slate-700">
+                  📞 ${escapeHtml(occ.mobile)} | ✉️ ${escapeHtml(occ.email)}
+                </div>
+              </div>
+            `;
+          });
+          html += `
+              </div>
+            </div>
+          `;
+        });
+        html += `</div>`;
+      }
+
+      els.statModalContent.innerHTML = html;
     }
 
     els.statModal.classList.remove('hidden');
   }
 
-  window.closeStatModal = function() {
+  function closeStatModal() {
     if (els.statModal) els.statModal.classList.add('hidden');
-  };
+  }
 
-  window.openTeamRosterModalByRegId = function(regId) {
-    const teamObj = rawTeamsData.find(t => t.registrationId === regId);
-    if (teamObj) openTeamRosterModal(teamObj);
+  window.closeStatModal = closeStatModal;
+  window.openTeamRosterModalByRegId = (regId) => {
+    const found = rawTeamsData.find(t => t.registrationId === regId);
+    if (found) openTeamRosterModal(found);
   };
 
   function openTeamRosterModal(team) {
@@ -728,8 +894,8 @@
 
         <div class="bg-white p-3 rounded-xl border border-amber-200/90 shadow-2xs">
           <div class="text-[10px] font-black uppercase text-amber-800 tracking-wider">Team Roster Status</div>
-          <div class="text-xs font-extrabold text-slate-900 mt-0.5">👥 Total 6 Verified Members</div>
-          <div class="text-[10px] text-emerald-700 font-bold mt-0.5">1 Team Leader + 5 Team Members</div>
+          <div class="text-xs font-extrabold text-slate-900 mt-0.5">👥 Total ${rosterList.length} Verified Members</div>
+          <div class="text-[10px] text-emerald-700 font-bold mt-0.5">1 Team Leader + ${rosterList.length - 1} Team Members</div>
         </div>
       `;
     }
@@ -748,17 +914,25 @@
 
         const roleBadge = st.isLeader
           ? `<span class="inline-flex items-center gap-1 text-[11px] font-black bg-blue-100 text-blue-900 border border-blue-300 px-2.5 py-1 rounded-xl shadow-2xs">👑 LEADER</span>`
-          : `<span class="inline-flex items-center gap-1 text-[11px] font-bold bg-slate-100 text-slate-700 border border-slate-200 px-2 py-0.5 rounded-lg">${st.role}</span>`;
+          : `<span class="inline-flex items-center gap-1 text-[11px] font-semibold text-slate-600 bg-slate-100 border border-slate-200 px-2.5 py-0.5 rounded-lg">${st.role}</span>`;
 
         tr.innerHTML = `
-          <td class="py-3 px-3.5">${roleBadge}</td>
-          <td class="py-3 px-3.5 font-black text-slate-900 text-xs sm:text-sm">${escapeHtml(st.name)}</td>
-          <td class="py-3 px-3.5">${genderBadge}</td>
-          <td class="py-3 px-3.5 font-extrabold text-amber-900 text-xs">${escapeHtml(st.branch)} <span class="text-slate-500 font-semibold">(${escapeHtml(st.year)})</span></td>
-          <td class="py-3 px-3.5 font-bold text-slate-700 text-xs">${escapeHtml(st.sem)} Sem</td>
-          <td class="py-3 px-3.5 font-mono text-xs">
-            ${ st.mobile !== 'N/A' ? `<a href="tel:${st.mobile}" class="font-extrabold text-blue-700 hover:text-blue-900 underline block">📞 ${escapeHtml(st.mobile)}</a>` : '<span class="text-slate-400">📞 N/A</span>' }
-            ${ st.email !== 'N/A' ? `<a href="mailto:${st.email}" class="text-slate-600 hover:text-slate-900 underline block text-[11px] mt-0.5">✉️ ${escapeHtml(st.email)}</a>` : '<span class="text-slate-400 block text-[11px]">✉️ N/A</span>' }
+          <td class="py-3 px-4 font-extrabold text-slate-900">
+            ${roleBadge}
+          </td>
+          <td class="py-3 px-4">
+            <div class="font-extrabold text-slate-900 text-xs sm:text-sm">${escapeHtml(st.name)}</div>
+          </td>
+          <td class="py-3 px-4">
+            ${genderBadge}
+          </td>
+          <td class="py-3 px-4">
+            <div class="font-bold text-amber-800 text-xs">${escapeHtml(st.branch)}</div>
+            <div class="text-[11px] text-slate-600 font-medium">${escapeHtml(st.year)} (${escapeHtml(st.sem)} Sem)</div>
+          </td>
+          <td class="py-3 px-4 text-xs font-mono">
+            <div><a href="tel:${escapeHtml(st.mobile)}" class="text-blue-700 font-bold hover:underline">📞 ${escapeHtml(st.mobile)}</a></div>
+            <div class="text-[11px] text-slate-500"><a href="mailto:${escapeHtml(st.email)}" class="hover:underline">✉️ ${escapeHtml(st.email)}</a></div>
           </td>
         `;
         els.modalRosterBody.appendChild(tr);
@@ -768,7 +942,7 @@
     els.rosterModal.classList.remove('hidden');
   }
 
-  window.closeTeamRosterModal = function() {
+  window.closeTeamRosterModal = () => {
     if (els.rosterModal) els.rosterModal.classList.add('hidden');
   };
 
@@ -870,12 +1044,13 @@
     if (els.cardStatGender) els.cardStatGender.addEventListener('click', () => openStatModal('gender'));
     if (els.cardStatYear) els.cardStatYear.addEventListener('click', () => openStatModal('year'));
     if (els.cardStatBranch) els.cardStatBranch.addEventListener('click', () => openStatModal('branch'));
+    if (els.cardStatAudit) els.cardStatAudit.addEventListener('click', () => openStatModal('audit'));
 
     if (els.adminSearch) els.adminSearch.addEventListener('input', applyFilters);
+    if (els.filterCompliance) els.filterCompliance.addEventListener('change', applyFilters);
     if (els.filterYear) els.filterYear.addEventListener('change', applyFilters);
     if (els.filterBranch) els.filterBranch.addEventListener('change', applyFilters);
     if (els.filterGender) els.filterGender.addEventListener('change', applyFilters);
-    if (els.filterPs) els.filterPs.addEventListener('change', applyFilters);
     if (els.btnExportCsv) els.btnExportCsv.addEventListener('click', exportToCsv);
   }
 
