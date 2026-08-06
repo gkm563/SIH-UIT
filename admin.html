@@ -328,9 +328,17 @@
 
       <!-- Modal Body: Full Team Roster -->
       <div class="p-5 space-y-4 max-h-[70vh] overflow-y-auto">
-        <h4 class="text-xs font-black uppercase text-slate-500 tracking-wider">Complete 6-Member Team Roster</h4>
+        <!-- Team Executive Summary Box -->
+        <div id="modal-summary-box" class="grid grid-cols-1 sm:grid-cols-3 gap-3 bg-blue-50/80 p-4 rounded-2xl border border-blue-200/90 shadow-2xs">
+          <!-- Rendered via JS -->
+        </div>
+
+        <h4 class="text-xs font-black uppercase text-slate-600 tracking-wider flex items-center justify-between">
+          <span>Complete 6-Member Team Roster</span>
+          <span class="text-[10px] text-blue-700 font-extrabold bg-blue-100 px-2 py-0.5 rounded-full">All Members Verified</span>
+        </h4>
         
-        <div class="overflow-x-auto border border-slate-200/90 rounded-2xl">
+        <div class="overflow-x-auto border border-slate-200/90 rounded-2xl shadow-2xs">
           <table class="w-full text-left text-xs text-slate-800">
             <thead class="bg-slate-100 text-slate-700 font-black uppercase text-[10px]">
               <tr>

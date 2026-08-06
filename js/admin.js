@@ -62,6 +62,7 @@
     modalTeamId: document.getElementById('modal-team-id'),
     modalTeamName: document.getElementById('modal-team-name'),
     modalPsClaimedTag: document.getElementById('modal-ps-claimed-tag'),
+    modalSummaryBox: document.getElementById('modal-summary-box'),
     modalRosterBody: document.getElementById('modal-roster-body')
   };
 
@@ -592,45 +593,93 @@
         : `⚠️ No Problem Statement Claimed Yet`;
     }
 
+    const members = Array.isArray(team.teamMembers) ? team.teamMembers : [];
+    const rosterList = [
+      {
+        isLeader: true,
+        role: '👑 TEAM LEADER',
+        name: team.teamLeaderName || 'Team Leader',
+        gender: team.leaderGender || 'Male',
+        branch: team.leaderBranch || 'CSE',
+        year: team.leaderYear || '3rd Year',
+        sem: team.leaderSemester || '6th',
+        mobile: team.leaderMobile || 'N/A',
+        email: team.leaderEmail || 'N/A'
+      },
+      ...members.map((m, idx) => ({
+        isLeader: false,
+        role: `👤 MEMBER #${idx + 1}`,
+        name: m.name || `Member ${idx + 1}`,
+        gender: m.gender || 'Male',
+        branch: m.branch || 'CSE',
+        year: m.year || '3rd Year',
+        sem: m.sem || m.semester || '6th',
+        mobile: m.mobile || 'N/A',
+        email: m.email || 'N/A'
+      }))
+    ];
+
+    let maleCount = 0;
+    let femaleCount = 0;
+    rosterList.forEach(st => {
+      const g = (st.gender || 'Male').toLowerCase();
+      if (g.includes('female') || g.includes('f')) femaleCount++;
+      else maleCount++;
+    });
+
+    if (els.modalSummaryBox) {
+      els.modalSummaryBox.innerHTML = `
+        <div class="bg-white p-3 rounded-xl border border-blue-200/90 shadow-2xs">
+          <div class="text-[10px] font-black uppercase text-blue-800 tracking-wider">Team Leader Info</div>
+          <div class="text-xs font-black text-slate-900 mt-0.5">${escapeHtml(team.teamLeaderName || 'Leader')}</div>
+          <div class="text-[11px] text-slate-600 font-semibold mt-0.5">${escapeHtml(team.leaderBranch || 'CSE')} (${escapeHtml(team.leaderYear || '3rd Year')} - ${escapeHtml(team.leaderSemester || '6th')} Sem)</div>
+        </div>
+
+        <div class="bg-white p-3 rounded-xl border border-purple-200/90 shadow-2xs">
+          <div class="text-[10px] font-black uppercase text-purple-800 tracking-wider">Gender Breakdown</div>
+          <div class="text-xs font-black flex items-center gap-1.5 mt-0.5">
+            <span class="text-blue-700">👨 ${maleCount} Male</span>
+            <span class="text-slate-300">•</span>
+            <span class="text-pink-700 font-black">👩 ${femaleCount} Female</span>
+          </div>
+          <div class="text-[10px] ${ femaleCount > 0 ? 'text-emerald-700 font-extrabold' : 'text-amber-700 font-bold' } mt-0.5">
+            ${ femaleCount > 0 ? '✅ Mandatory SIH Female Rule Complied' : '⚠️ No Female Member Registered' }
+          </div>
+        </div>
+
+        <div class="bg-white p-3 rounded-xl border border-amber-200/90 shadow-2xs">
+          <div class="text-[10px] font-black uppercase text-amber-800 tracking-wider">Claimed Problem Statement</div>
+          <div class="text-xs font-extrabold text-slate-900 truncate mt-0.5" title="${escapeHtml(team.claimedPsTitle || '')}">${team.claimedPsId ? '📌 ' + team.claimedPsId : '⚠️ Unclaimed'}</div>
+          <div class="text-[10px] text-slate-600 truncate mt-0.5" title="${escapeHtml(team.claimedPsTitle || '')}">${escapeHtml(team.claimedPsTitle || 'No PS chosen yet')}</div>
+        </div>
+      `;
+    }
+
     if (els.modalRosterBody) {
       els.modalRosterBody.innerHTML = '';
 
-      const members = Array.isArray(team.teamMembers) ? team.teamMembers : [];
-      const rosterList = [
-        {
-          role: '👑 Team Leader',
-          name: team.teamLeaderName,
-          gender: team.leaderGender,
-          branch: team.leaderBranch,
-          year: team.leaderYear,
-          sem: team.leaderSemester,
-          mobile: team.leaderMobile,
-          email: team.leaderEmail
-        },
-        ...members.map((m, idx) => ({
-          role: `Member #${idx + 1}`,
-          name: m.name,
-          gender: m.gender,
-          branch: m.branch,
-          year: m.year,
-          sem: m.sem || m.semester,
-          mobile: m.mobile,
-          email: m.email
-        }))
-      ];
-
       rosterList.forEach(st => {
         const tr = document.createElement('tr');
-        tr.className = 'border-b border-slate-200/80';
+        tr.className = st.isLeader ? 'bg-blue-50/40 border-b border-slate-200/90' : 'hover:bg-slate-50 border-b border-slate-200/80';
+
+        const isFemale = (st.gender || '').toLowerCase().includes('female') || (st.gender || '').toLowerCase().includes('f');
+        const genderBadge = isFemale
+          ? `<span class="inline-flex items-center gap-1 text-[11px] font-extrabold bg-pink-100 text-pink-900 border border-pink-300 px-2.5 py-0.5 rounded-full shadow-2xs">👩 FEMALE</span>`
+          : `<span class="inline-flex items-center gap-1 text-[11px] font-bold bg-blue-50 text-blue-800 border border-blue-200 px-2.5 py-0.5 rounded-full">👨 MALE</span>`;
+
+        const roleBadge = st.isLeader
+          ? `<span class="inline-flex items-center gap-1 text-[11px] font-black bg-blue-100 text-blue-900 border border-blue-300 px-2.5 py-1 rounded-xl shadow-2xs">👑 LEADER</span>`
+          : `<span class="inline-flex items-center gap-1 text-[11px] font-bold bg-slate-100 text-slate-700 border border-slate-200 px-2 py-0.5 rounded-lg">${st.role}</span>`;
+
         tr.innerHTML = `
-          <td class="py-2.5 px-3 font-extrabold text-blue-700">${st.role}</td>
-          <td class="py-2.5 px-3 font-bold text-slate-900">${escapeHtml(st.name || 'Member')}</td>
-          <td class="py-2.5 px-3 font-semibold ${ (st.gender || '').toLowerCase().includes('female') ? 'text-pink-700' : 'text-blue-700' }">${escapeHtml(st.gender || 'Male')}</td>
-          <td class="py-2.5 px-3 font-bold text-amber-800">${escapeHtml(st.branch || 'CSE')} (${escapeHtml(st.year || '3rd Year')})</td>
-          <td class="py-2.5 px-3 text-slate-700">${escapeHtml(st.sem || '6th')}</td>
-          <td class="py-2.5 px-3 font-mono text-[11px] text-slate-700">
-            <div>📞 ${escapeHtml(st.mobile || 'N/A')}</div>
-            <div class="text-slate-500">${escapeHtml(st.email || 'N/A')}</div>
+          <td class="py-3 px-3.5">${roleBadge}</td>
+          <td class="py-3 px-3.5 font-black text-slate-900 text-xs sm:text-sm">${escapeHtml(st.name)}</td>
+          <td class="py-3 px-3.5">${genderBadge}</td>
+          <td class="py-3 px-3.5 font-extrabold text-amber-900 text-xs">${escapeHtml(st.branch)} <span class="text-slate-500 font-semibold">(${escapeHtml(st.year)})</span></td>
+          <td class="py-3 px-3.5 font-bold text-slate-700 text-xs">${escapeHtml(st.sem)} Sem</td>
+          <td class="py-3 px-3.5 font-mono text-xs">
+            ${ st.mobile !== 'N/A' ? `<a href="tel:${st.mobile}" class="font-extrabold text-blue-700 hover:text-blue-900 underline block">📞 ${escapeHtml(st.mobile)}</a>` : '<span class="text-slate-400">📞 N/A</span>' }
+            ${ st.email !== 'N/A' ? `<a href="mailto:${st.email}" class="text-slate-600 hover:text-slate-900 underline block text-[11px] mt-0.5">✉️ ${escapeHtml(st.email)}</a>` : '<span class="text-slate-400 block text-[11px]">✉️ N/A</span>' }
           </td>
         `;
         els.modalRosterBody.appendChild(tr);
