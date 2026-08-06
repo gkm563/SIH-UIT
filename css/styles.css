@@ -114,7 +114,8 @@ body {
 
 /* Main layout */
 .main {
-  max-width: 720px;
+  width: 100%;
+  max-width: 100%;
   margin: 0 auto;
   padding: 1.5rem 1.25rem 3rem;
 }
@@ -759,7 +760,8 @@ body {
 }
 
 .footer-inner {
-  max-width: 720px;
+  width: 100%;
+  max-width: 100%;
   margin: 0 auto;
   padding: 1.35rem 1.25rem 1.6rem;
 }
@@ -950,7 +952,8 @@ body {
 }
 
 .nav-container {
-  max-width: 760px;
+  width: 100%;
+  max-width: 100%;
   margin: 0 auto;
   display: flex;
   align-items: center;
@@ -1101,4 +1104,31 @@ body {
   .team-card {
     padding: 0.95rem 1rem 0.95rem 1.15rem;
   }
+}
+
+/* Interactive Skeleton Loader Animation & Premium Shimmer */
+@keyframes skeleton-shimmer {
+  0% {
+    background-position: -200% 0;
+  }
+  100% {
+    background-position: 200% 0;
+  }
+}
+
+.skeleton-box {
+  background: linear-gradient(90deg, #f1f5f9 25%, #e2e8f0 37%, #f1f5f9 63%);
+  background-size: 200% 100%;
+  animation: skeleton-shimmer 1.5s infinite ease-in-out;
+  border-radius: 0.5rem;
+}
+
+/* Micro-animations & Premium Card Hover Effects */
+.hover-lift {
+  transition: transform 0.25s cubic-bezier(0.4, 0, 0.2, 1), box-shadow 0.25s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.hover-lift:hover {
+  transform: translateY(-3px);
+  box-shadow: 0 12px 24px -6px rgba(15, 23, 42, 0.08), 0 4px 8px -2px rgba(15, 23, 42, 0.04);
 }
