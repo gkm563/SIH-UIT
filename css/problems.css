@@ -1,5 +1,5 @@
 /**
- * SIH 2026 Problem Statement Bank — Dedicated Stylesheet
+ * SIH 2026 Problem Statement Bank — Dedicated Mobile Responsive Stylesheet
  */
 
 /* Filter Buttons & Toggle Pills */
@@ -7,8 +7,10 @@
 .diff-btn {
   display: inline-flex;
   align-items: center;
+  justify-content: center;
   gap: 0.35rem;
-  padding: 0.4rem 0.75rem;
+  padding: 0.5rem 0.85rem;
+  min-height: 38px;
   border-radius: 9999px;
   font-size: 0.75rem;
   font-weight: 700;
@@ -18,6 +20,7 @@
   cursor: pointer;
   transition: all 0.2s cubic-bezier(0.4, 0, 0.2, 1);
   user-select: none;
+  touch-action: manipulation;
 }
 
 .type-btn:hover,
@@ -40,9 +43,10 @@
   display: inline-flex;
   align-items: center;
   gap: 0.35rem;
-  padding: 0.3rem 0.7rem;
+  padding: 0.4rem 0.8rem;
+  min-height: 36px;
   border-radius: 9999px;
-  font-size: 0.725rem;
+  font-size: 0.75rem;
   font-weight: 700;
   border-width: 1px;
   border-style: solid;
@@ -50,6 +54,7 @@
   transition: all 0.2s cubic-bezier(0.4, 0, 0.2, 1);
   white-space: nowrap;
   user-select: none;
+  touch-action: manipulation;
 }
 
 .domain-chip:hover {
@@ -67,6 +72,7 @@
 /* Problem Statement Cards */
 .ps-card {
   transition: transform 0.2s cubic-bezier(0.4, 0, 0.2, 1), box-shadow 0.2s cubic-bezier(0.4, 0, 0.2, 1), border-color 0.2s ease;
+  touch-action: manipulation;
 }
 
 .ps-card:hover {
@@ -75,13 +81,44 @@
   box-shadow: 0 8px 24px rgba(26, 115, 232, 0.12);
 }
 
-/* Custom Scrollbar for Domain Container */
+/* Touch-optimized horizontal scrolling for Domain Container */
+#domain-chips-container {
+  -webkit-overflow-scrolling: touch;
+  scrollbar-width: thin;
+}
+
 #domain-chips-container::-webkit-scrollbar {
-  height: 4px;
-  width: 4px;
+  height: 5px;
+  width: 5px;
 }
 
 #domain-chips-container::-webkit-scrollbar-thumb {
   background: #cbd5e1;
   border-radius: 9999px;
+}
+
+/* Mobile Modal Enhancements */
+@media (max-width: 640px) {
+  #ps-detail-modal > div,
+  #select-team-modal > div {
+    max-height: 94vh;
+    margin: auto;
+    width: 95%;
+    border-radius: 1.5rem;
+  }
+
+  /* Prevent auto-zoom on mobile inputs */
+  #ps-search,
+  #team-claim-form input {
+    font-size: 16px !important;
+  }
+
+  .nav-switch {
+    padding: 0.15rem;
+  }
+
+  .nav-pill {
+    padding: 0.35rem 0.6rem !important;
+    font-size: 0.7rem !important;
+  }
 }

@@ -97,20 +97,15 @@
       </p>
 
       <!-- Key Info Bar -->
-      <div class="inline-flex flex-wrap items-center justify-center gap-3 sm:gap-6 bg-white/10 backdrop-blur-md p-3 sm:px-6 sm:py-3 rounded-2xl border border-white/15 text-xs sm:text-sm font-semibold mb-6">
-        <div class="flex items-center gap-1.5 text-blue-200">
-          <svg class="w-4 h-4 text-blue-400" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M8 7V3m8 4V3m-9 8h10M5 21h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v12a2 2 0 002 2z"/></svg>
-          <span>Hackathon: March 15–16, 2026</span>
+      <div class="inline-flex flex-wrap items-center justify-center gap-2 sm:gap-6 bg-white/10 backdrop-blur-md p-3 sm:px-6 sm:py-3 rounded-2xl border border-white/15 text-xs sm:text-sm font-semibold mb-6 w-full sm:w-auto">
+        <div class="flex items-center gap-1.5 text-blue-200 bg-white/5 px-2.5 py-1 sm:p-0 rounded-lg sm:rounded-none">
+          <svg class="w-4 h-4 text-blue-400 flex-shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M8 7V3m8 4V3m-9 8h10M5 21h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v12a2 2 0 002 2z"/></svg>
+          <span>Hackathon: 21–22 August 2026</span>
         </div>
         <div class="hidden sm:inline text-white/30">•</div>
-        <div class="flex items-center gap-1.5 text-emerald-200">
-          <svg class="w-4 h-4 text-emerald-400" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17.657 16.657L13.414 20.9a1.998 1.998 0 01-2.827 0l-4.244-4.243a8 8 0 1111.314 0z"/><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 11a3 3 0 11-6 0 3 3 0 016 0z"/></svg>
-          <span>Venue: UIT Main Campus, Prayagraj</span>
-        </div>
-        <div class="hidden sm:inline text-white/30">•</div>
-        <div class="flex items-center gap-1.5 text-amber-200">
-          <svg class="w-4 h-4 text-amber-400" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 8v4l3 3m6-3a9 9 0 11-18 0 9 9 0 0118 0z"/></svg>
-          <span>PS Selection Deadline: Feb 28, 2026</span>
+        <div class="flex items-center gap-1.5 text-emerald-200 bg-white/5 px-2.5 py-1 sm:p-0 rounded-lg sm:rounded-none">
+          <svg class="w-4 h-4 text-emerald-400 flex-shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17.657 16.657L13.414 20.9a1.998 1.998 0 01-2.827 0l-4.244-4.243a8 8 0 1111.314 0z"/><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 11a3 3 0 11-6 0 3 3 0 016 0z"/></svg>
+          <span>Venue: To Be Announced Soon</span>
         </div>
       </div>
 
@@ -124,10 +119,10 @@
   </section>
 
   <!-- Main Browser Section -->
-  <main id="ps-browser" class="max-w-[1200px] mx-auto px-4 py-8 flex-1 w-full" role="main">
+  <main id="ps-browser" class="max-w-[1200px] mx-auto px-3 sm:px-4 py-6 sm:py-8 flex-1 w-full" role="main">
     
     <!-- Filter Control Bar -->
-    <div class="bg-white border border-slate-200/90 rounded-2xl p-4 sm:p-5 shadow-sm mb-6">
+    <div class="bg-white border border-slate-200/90 rounded-2xl p-3.5 sm:p-5 shadow-sm mb-6">
       
       <!-- Top Row: Search + Quick Stats -->
       <div class="flex flex-col sm:flex-row items-center justify-between gap-3 mb-4">
@@ -136,16 +131,16 @@
             type="text"
             id="ps-search"
             placeholder="Search by Title, ID (e.g. PS-01) or Domain..."
-            class="w-full pl-10 pr-4 py-2.5 bg-slate-50 border border-slate-300 rounded-xl text-xs sm:text-sm text-slate-800 placeholder-slate-400 focus:outline-none focus:ring-2 focus:ring-blue-500 focus:bg-white transition-colors"
+            class="w-full pl-10 pr-4 py-3 sm:py-2.5 bg-slate-50 border border-slate-300 rounded-xl text-sm text-slate-800 placeholder-slate-400 focus:outline-none focus:ring-2 focus:ring-blue-500 focus:bg-white transition-colors"
           />
-          <svg class="w-4 h-4 text-slate-400 absolute left-3.5 top-3" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+          <svg class="w-4 h-4 text-slate-400 absolute left-3.5 top-3.5 sm:top-3" fill="none" stroke="currentColor" viewBox="0 0 24 24">
             <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z"/>
           </svg>
         </div>
 
         <div class="flex items-center gap-3 w-full sm:w-auto justify-between sm:justify-end text-xs font-bold text-slate-600">
-          <span id="ps-results-count" class="bg-blue-50 text-blue-800 border border-blue-200 px-3 py-1.5 rounded-lg">
-            Showing 30 of 30 problem statements
+          <span id="ps-results-count" class="bg-blue-50 text-blue-800 border border-blue-200 px-3 py-1.5 rounded-lg text-xs">
+            Showing problem statements
           </span>
           <button type="button" id="ps-reset-filters" class="text-blue-600 hover:text-blue-800 underline font-semibold text-xs transition-colors hidden">
             Reset Filters
@@ -154,7 +149,7 @@
       </div>
 
       <!-- Second Row: Type & Difficulty Filters -->
-      <div class="grid grid-cols-1 sm:grid-cols-2 gap-3 mb-4">
+      <div class="grid grid-cols-1 sm:grid-cols-2 gap-4 mb-4">
         <!-- Type Filter -->
         <div>
           <label class="block text-[11px] font-bold text-slate-600 uppercase tracking-wider mb-1.5">Technology Type</label>
@@ -178,13 +173,13 @@
         </div>
       </div>
 
-      <!-- Third Row: Domain Chips -->
+      <!-- Third Row: Domain Chips (Swipeable Horizontal Scroll on Mobile) -->
       <div>
         <div class="flex items-center justify-between mb-1.5">
           <label class="block text-[11px] font-bold text-slate-600 uppercase tracking-wider">Filter by Domain</label>
-          <span class="text-[10px] text-slate-400 font-medium">Click domain chip to toggle</span>
+          <span class="text-[10px] text-slate-400 font-medium">Swipe horizontally 👈👉</span>
         </div>
-        <div class="flex items-center gap-1.5 flex-wrap max-h-36 overflow-y-auto p-1 border border-slate-100 rounded-xl bg-slate-50/50" id="domain-chips-container">
+        <div class="flex items-center gap-2 overflow-x-auto whitespace-nowrap p-2 border border-slate-200/80 rounded-xl bg-slate-50/70 max-h-48" id="domain-chips-container">
           <!-- Domain chips rendered dynamically -->
         </div>
       </div>
