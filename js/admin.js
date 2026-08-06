@@ -446,11 +446,6 @@
         else maleCount++;
       });
 
-      const psClaimHtml = team.claimedPsId
-        ? `<div class="font-extrabold text-blue-800 flex items-center gap-1"><span>📌 ${team.claimedPsId}</span></div>
-           <div class="text-[10px] text-slate-500 truncate max-w-[220px]" title="${team.claimedPsTitle || ''}">${team.claimedPsTitle || 'Claimed'}</div>`
-        : `<span class="text-[10px] font-bold text-slate-500 bg-slate-100 px-2.5 py-0.5 rounded-full border border-slate-200">Unclaimed</span>`;
-
       tr.innerHTML = `
         <td class="py-3.5 px-4">
           <div class="font-mono text-[10px] font-extrabold text-blue-700">${team.registrationId || 'SIH2026-REG'}</div>
@@ -470,9 +465,6 @@
         <td class="py-3.5 px-4">
           <div class="font-bold text-amber-800">${escapeHtml(team.leaderBranch || 'CSE')}</div>
           <div class="text-[11px] text-slate-600 font-semibold">${escapeHtml(team.leaderYear || '3rd Year')} (${escapeHtml(team.leaderSemester || '6th')} Sem)</div>
-        </td>
-        <td class="py-3.5 px-4">
-          ${psClaimHtml}
         </td>
         <td class="py-3.5 px-4 text-right">
           <button type="button" class="btn-view-roster px-3 py-1.5 bg-blue-600 hover:bg-blue-700 text-white font-extrabold text-[11px] rounded-xl shadow-2xs transition-transform active:scale-95" data-regid="${team.registrationId}">
@@ -735,9 +727,9 @@
         </div>
 
         <div class="bg-white p-3 rounded-xl border border-amber-200/90 shadow-2xs">
-          <div class="text-[10px] font-black uppercase text-amber-800 tracking-wider">Claimed Problem Statement</div>
-          <div class="text-xs font-extrabold text-slate-900 truncate mt-0.5" title="${escapeHtml(team.claimedPsTitle || '')}">${team.claimedPsId ? '📌 ' + team.claimedPsId : '⚠️ Unclaimed'}</div>
-          <div class="text-[10px] text-slate-600 truncate mt-0.5" title="${escapeHtml(team.claimedPsTitle || '')}">${escapeHtml(team.claimedPsTitle || 'No PS chosen yet')}</div>
+          <div class="text-[10px] font-black uppercase text-amber-800 tracking-wider">Team Roster Status</div>
+          <div class="text-xs font-extrabold text-slate-900 mt-0.5">👥 Total 6 Verified Members</div>
+          <div class="text-[10px] text-emerald-700 font-bold mt-0.5">1 Team Leader + 5 Team Members</div>
         </div>
       `;
     }
@@ -786,7 +778,7 @@
       return;
     }
 
-    const headers = ['Registration ID', 'Team Name', 'Leader Name', 'Leader Gender', 'Leader Branch', 'Leader Year', 'Leader Mobile', 'Leader Email', 'Claimed PS ID', 'Claimed PS Title'];
+    const headers = ['Registration ID', 'Team Name', 'Leader Name', 'Leader Gender', 'Leader Branch', 'Leader Year', 'Leader Mobile', 'Leader Email'];
     const rows = filteredTeams.map(t => [
       `"${t.registrationId || ''}"`,
       `"${(t.teamName || '').replace(/"/g, '""')}"`,
@@ -795,9 +787,7 @@
       `"${t.leaderBranch || ''}"`,
       `"${t.leaderYear || ''}"`,
       `"${t.leaderMobile || ''}"`,
-      `"${t.leaderEmail || ''}"`,
-      `"${t.claimedPsId || ''}"`,
-      `"${(t.claimedPsTitle || '').replace(/"/g, '""')}"`
+      `"${t.leaderEmail || ''}"`
     ]);
 
     const csvContent = 'data:text/csv;charset=utf-8,' + [headers.join(','), ...rows.map(e => e.join(','))].join('\n');
