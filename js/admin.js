@@ -129,30 +129,7 @@
       els.userBadge.classList.remove('hidden');
       els.userBadge.classList.add('flex');
     }
-    renderToggles();
     await loadLiveTeams();
-  }
-
-  function renderToggles() {
-    // Registration Status Toggle
-    const isRegOpen = AppConfig.isRegistrationOpen;
-    if (isRegOpen) {
-      els.btnToggleReg.className = 'px-4 py-2.5 font-extrabold text-xs rounded-xl bg-red-600 hover:bg-red-700 text-white shadow-xs transition-transform active:scale-95 flex items-center gap-1.5';
-      els.btnToggleReg.innerHTML = '<span>🚫 Close Registration</span>';
-    } else {
-      els.btnToggleReg.className = 'px-4 py-2.5 font-extrabold text-xs rounded-xl bg-emerald-600 hover:bg-emerald-700 text-white shadow-xs transition-transform active:scale-95 flex items-center gap-1.5';
-      els.btnToggleReg.innerHTML = '<span>🟢 Re-Open Registration</span>';
-    }
-
-    // Problem Statement Public Visibility Toggle
-    const isPsPublic = AppConfig.isPSBankPublic;
-    if (isPsPublic) {
-      els.btnTogglePs.className = 'px-4 py-2.5 font-extrabold text-xs rounded-xl bg-amber-600 hover:bg-amber-700 text-white shadow-xs transition-transform active:scale-95 flex items-center gap-1.5';
-      els.btnTogglePs.innerHTML = '<span>🔒 Make PS Private</span>';
-    } else {
-      els.btnTogglePs.className = 'px-4 py-2.5 font-extrabold text-xs rounded-xl bg-blue-600 hover:bg-blue-700 text-white shadow-xs transition-transform active:scale-95 flex items-center gap-1.5';
-      els.btnTogglePs.innerHTML = '<span>🌐 Make PS Public</span>';
-    }
   }
 
   async function loadLiveTeams(forceFresh = false) {
@@ -738,24 +715,6 @@
     if (els.cardStatGender) els.cardStatGender.addEventListener('click', () => openStatModal('gender'));
     if (els.cardStatYear) els.cardStatYear.addEventListener('click', () => openStatModal('year'));
     if (els.cardStatBranch) els.cardStatBranch.addEventListener('click', () => openStatModal('branch'));
-
-    if (els.btnToggleReg) {
-      els.btnToggleReg.addEventListener('click', () => {
-        const current = AppConfig.isRegistrationOpen;
-        AppConfig.setRegistrationOpen(!current);
-        renderToggles();
-        alert(`Registration status updated to: ${!current ? 'OPEN' : 'CLOSED'}.`);
-      });
-    }
-
-    if (els.btnTogglePs) {
-      els.btnTogglePs.addEventListener('click', () => {
-        const current = AppConfig.isPSBankPublic;
-        AppConfig.setPSBankPublic(!current);
-        renderToggles();
-        alert(`Problem Statement Bank public visibility updated to: ${!current ? 'PUBLIC' : 'PRIVATE'}.`);
-      });
-    }
 
     if (els.adminSearch) els.adminSearch.addEventListener('input', applyFilters);
     if (els.filterYear) els.filterYear.addEventListener('change', applyFilters);
