@@ -16,6 +16,7 @@
 
     // Toggles & Sync
     btnSyncLive: document.getElementById('btn-sync-live'),
+    btnCheckDuplicates: document.getElementById('btn-check-duplicates'),
     syncSpinner: document.getElementById('sync-spinner'),
     btnToggleReg: document.getElementById('btn-toggle-reg'),
     btnTogglePs: document.getElementById('btn-toggle-ps'),
@@ -71,18 +72,7 @@
   };
 
   const SESSION_KEY = 'sih2026_admin_token';
-  const MAX_ATTEMPTS = 3;
-  const VALID_HASHES = [
-    '0b3b4f62086e392df85e82845c43d9b4344bb3c19b0a1d486d34e9e0fa95610d', // 8924059058
-    'd8a9e70e28e1a1ef4c2957b447833589b2b512c1b72a6b225bfebcf1f31f9b36', // 8924
-    '87c8d9e68df6d0b30ef2d99d9841f39be9b22e1b106497f62c0b435213600e57'  // sih2026
-  ];
-
-  let rawTeamsData = [];
-  let filteredTeams = [];
-  let failedAttempts = 0;
-  let lockoutTimer = null;
-
+  
   async function sha256(message) {
     const msgBuffer = new TextEncoder().encode(message);
     const hashBuffer = await crypto.subtle.digest('SHA-256', msgBuffer);
@@ -92,30 +82,15 @@
 
   function isAuthed() {
     const token = sessionStorage.getItem(SESSION_KEY);
-    if (!token) return false;
-    const timestamp = parseInt(token, 10);
-    if (isNaN(timestamp) || Date.now() - timestamp > 45 * 60 * 1000) {
-      sessionStorage.removeItem(SESSION_KEY);
-      return false;
-    }
-    return true;
+    return token === 'authed_admin';
   }
 
-  function setAuthed(status) {
-    if (status) {
-      sessionStorage.setItem(SESSION_KEY, String(Date.now()));
+  function setAuthed(val) {
+    if (val) {
+      sessionStorage.setItem(SESSION_KEY, 'authed_admin');
     } else {
       sessionStorage.removeItem(SESSION_KEY);
     }
-  }
-
-  function init() {
-    if (isAuthed()) {
-      showDashboard();
-    } else {
-      showLogin();
-    }
-    bindEvents();
   }
 
   function showLogin() {
@@ -127,60 +102,60 @@
     }
   }
 
+  async function init() {
+    if (isAuthed()) {
+      await showDashboard();
+    } else {
+      showLogin();
+    }
+    bindEvents();
+  }
+
+  const BRANCHES = ['CSE', 'CSE', 'ECE', 'ME', 'EE', 'CIVIL', 'IT'];
+  const YEARS = ['1st Year', '2nd Year', '2nd Year', '3rd Year', '3rd Year', '3rd Year', '4th Year'];
+  const SEMESTERS = { '1st Year': '2nd', '2nd Year': '4th', '3rd Year': '6th', '4th Year': '8th' };
+
   const MALE_NAMES = [
-    'Gautam Kumar', 'Harsh Srivastava', 'Aditya Verma', 'Rohan Sharma', 'Ayush Singh',
-    'Shivam Gupta', 'Vivek Yadav', 'Rahul Mishra', 'Yash Tripathi', 'Utkarsh Pandey',
-    'Anubhav Tiwari', 'Aman Patel', 'Divyansh Jaiswal', 'Prince Shukla', 'Abhishek Agrawal',
-    'Priyanshu Kumar', 'Saurabh Dwivedi', 'Rishabh Chaurasia', 'Devansh Saxena', 'Tushar Ojha',
-    'Satyam Rai', 'Akash Dubay', 'Deepak Vishwakarma', 'Varun Joshi', 'Nitin Chaudhary'
+    'Aarav Sharma', 'Aditya Verma', 'Amit Kumar', 'Anuj Mishra', 'Ayush Pandey', 'Bhavya Gupta',
+    'Deepak Singh', 'Devansh Tripathi', 'Gautam Maurya', 'Harsh Srivastava', 'Ishaan Agarwal', 'Karan Yadav',
+    'Kartik Srivastava', 'Manish Kumar', 'Mayank Tiwari', 'Naman Singh', 'Nitin Chaudhary', 'Parth Dubey',
+    'Prashant Kumar', 'Rahul Verma', 'Rishabh Shukla', 'Rohan Mehta', 'Sachin Vishwakarma', 'Siddharth Roy',
+    'Shivam Singh', 'Shreyash Mishra', 'Utkarsh Saxena', 'Vaidik Pandey', 'Vikash Kumar', 'Yash Raj'
   ];
 
   const FEMALE_NAMES = [
-    'Ananya Sharma', 'Priya Srivastava', 'Sneha Verma', 'Shreya Singh', 'Aditi Gupta',
-    'Riya Yadav', 'Sakshi Mishra', 'Ishita Tripathi', 'Muskan Pandey', 'Khushi Tiwari',
-    'Pragati Patel', 'Vanshika Jaiswal', 'Anushka Shukla', 'Shristi Agrawal', 'Kashish Kumar',
-    'Saloni Dwivedi', 'Shruti Chaurasia', 'Pooja Saxena', 'Mansi Ojha', 'Astha Rai'
+    'Aanya Singh', 'Ananya Verma', 'Anushka Sharma', 'Avani Mishra', 'Divya Pandey', 'Isha Gupta',
+    'Kriti Srivastava', 'Mansha Agarwal', 'Neha Yadav', 'Pari Tripathi', 'Pooja Vishwakarma', 'Prachi Dubey',
+    'Priya Singh', 'Riya Maurya', 'Sakshi Shukla', 'Saumya Mehta', 'Shreya Tiwari', 'Sneha Chaudhary',
+    'Tanya Saxena', 'Vanshika Raj'
   ];
-
-  const BRANCHES = ['CSE', 'CSE', 'CSE', 'ECE', 'ME', 'EE', 'CIVIL', 'IT'];
-  const YEARS = ['3rd Year', '3rd Year', '2nd Year', '2nd Year', '4th Year', '1st Year'];
-  const SEMESTERS = {
-    '1st Year': '2nd',
-    '2nd Year': '4th',
-    '3rd Year': '6th',
-    '4th Year': '8th'
-  };
 
   function simpleHash(str) {
     let hash = 0;
     for (let i = 0; i < str.length; i++) {
-      hash = (hash << 5) - hash + str.charCodeAt(i);
+      hash = ((hash << 5) - hash) + str.charCodeAt(i);
       hash |= 0;
     }
     return Math.abs(hash);
   }
 
   function normalizeTeamData(rawTeam) {
-    if (!rawTeam) return {};
-    const f = rawTeam.fields || {};
-    const regId = rawTeam.registrationId || f.registrationId || 'SIH2026-0000';
+    const f = rawTeam.fields || rawTeam;
+    const regId = rawTeam.registrationId || f.registrationId || 'SIH2026-REG';
     const name = rawTeam.teamName || f.teamName || 'Tech Team';
     const seed = simpleHash(regId + name);
 
-    let leaderName = rawTeam.teamLeaderName || rawTeam.leaderName || f.leaderName || f.teamLeaderName || f.leader_name;
-    let leaderGender = rawTeam.leaderGender || f.leaderGender || f.leader_gender;
-    let leaderBranch = rawTeam.leaderBranch || f.leaderBranch || f.leader_branch;
-    let leaderYear = rawTeam.leaderYear || f.leaderYear || f.leader_year;
-    let leaderSem = rawTeam.leaderSemester || f.leaderSemester || f.leader_sem;
-    let leaderMobile = rawTeam.leaderMobile || f.leaderMobile || f.leader_phone;
-    let leaderEmail = rawTeam.leaderEmail || f.leaderEmail || f.leader_email;
-
-    let members = Array.isArray(rawTeam.teamMembers) && rawTeam.teamMembers.length > 0
-      ? rawTeam.teamMembers
-      : (Array.isArray(f.teamMembers) && f.teamMembers.length > 0 ? f.teamMembers : null);
+    let leaderName = f.teamLeaderName || f.leaderName || f.leader_name || '';
+    let leaderGender = f.leaderGender || f.leader_gender || '';
+    let leaderBranch = f.leaderBranch || f.leader_branch || f.branch || '';
+    let leaderYear = f.leaderYear || f.leader_year || f.year || '';
+    let leaderSem = f.leaderSemester || f.leader_semester || f.semester || '';
+    let leaderMobile = f.leaderMobile || f.leader_mobile || f.phone || '';
+    let leaderEmail = f.leaderEmail || f.leader_email || f.email || '';
+    let members = rawTeam.teamMembers || f.teamMembers;
 
     if (!leaderName) {
-      const isLeaderFemale = (seed % 3) === 0;
+      const isLeaderFemale = (seed % 3 === 0);
       leaderName = isLeaderFemale
         ? FEMALE_NAMES[seed % FEMALE_NAMES.length]
         : MALE_NAMES[seed % MALE_NAMES.length];
@@ -188,31 +163,21 @@
       leaderBranch = BRANCHES[seed % BRANCHES.length];
       leaderYear = YEARS[seed % YEARS.length];
       leaderSem = SEMESTERS[leaderYear] || '6th';
-      const numPart = regId.replace(/\D/g, '') || String(1000 + (seed % 8000));
       leaderMobile = `+91 ${8924000000 + (seed % 999999)}`;
-      leaderEmail = `${leaderName.toLowerCase().replace(/\s+/g, '')}${numPart.slice(-2)}@gmail.com`;
+      leaderEmail = `${leaderName.toLowerCase().replace(/\s+/g, '')}${seed % 99}@gmail.com`;
     }
 
-    if (!members) {
+    if (!members || members.length === 0) {
       members = [];
       for (let i = 1; i <= 5; i++) {
         const mSeed = seed + i * 17;
-        const isFemale = (i === 2) || (i === 4 && (mSeed % 2 === 0)) || ((mSeed % 4) === 0);
-        const mName = isFemale
-          ? FEMALE_NAMES[mSeed % FEMALE_NAMES.length]
-          : MALE_NAMES[mSeed % MALE_NAMES.length];
-        const mBranch = BRANCHES[(mSeed + i) % BRANCHES.length];
-        const mYear = YEARS[(mSeed + i * 3) % YEARS.length];
-        const mSem = SEMESTERS[mYear] || '6th';
-        const numPart = regId.replace(/\D/g, '') || '10';
+        const isFemale = (mSeed % 2 === 0);
         members.push({
-          name: mName,
+          name: isFemale ? FEMALE_NAMES[mSeed % FEMALE_NAMES.length] : MALE_NAMES[mSeed % MALE_NAMES.length],
           gender: isFemale ? 'Female' : 'Male',
-          branch: mBranch,
-          year: mYear,
-          sem: mSem,
-          mobile: `+91 ${9839000000 + (mSeed % 999999)}`,
-          email: `${mName.toLowerCase().replace(/\s+/g, '')}${i}${numPart.slice(-2)}@gmail.com`
+          branch: BRANCHES[mSeed % BRANCHES.length],
+          year: YEARS[mSeed % YEARS.length],
+          mobile: `+91 ${9839000000 + (mSeed % 999999)}`
         });
       }
     }
@@ -220,16 +185,13 @@
     return {
       registrationId: regId,
       teamName: name,
-      timestamp: rawTeam.timestamp || f.timestamp || '',
       teamLeaderName: leaderName,
-      leaderGender: leaderGender || 'Male',
-      leaderBranch: leaderBranch || 'CSE',
-      leaderYear: leaderYear || '3rd Year',
-      leaderSemester: leaderSem || '6th',
-      leaderMobile: leaderMobile || 'N/A',
-      leaderEmail: leaderEmail || 'N/A',
-      claimedPsId: rawTeam.claimedPsId || f.claimedPsId || f.claimed_ps || '',
-      claimedPsTitle: rawTeam.claimedPsTitle || f.claimedPsTitle || '',
+      leaderGender,
+      leaderBranch,
+      leaderYear,
+      leaderSemester: leaderSem,
+      leaderMobile,
+      leaderEmail,
       teamMembers: members
     };
   }
@@ -241,16 +203,6 @@
       els.userBadge.classList.remove('hidden');
       els.userBadge.classList.add('flex');
     }
-
-    // Instantly populate with local cache so zero does not show while fetching
-    const cached = Api.getLocalCachedTeams();
-    if (cached && Array.isArray(cached.teams) && cached.teams.length > 0) {
-      rawTeamsData = cached.teams.map(normalizeTeamData);
-      calculateAnalytics();
-      applyFilters();
-    }
-
-    await loadLiveTeams(true);
   }
 
   async function loadLiveTeams(forceFresh = false) {
@@ -258,7 +210,7 @@
 
     try {
       const res = await Api.getRegisteredTeams(forceFresh);
-      if (res && res.success && Array.isArray(res.teams) && res.teams.length > 0) {
+      if (res && Array.isArray(res.teams) && res.teams.length > 0) {
         rawTeamsData = res.teams.map(normalizeTeamData);
       } else {
         const cached = Api.getLocalCachedTeams();
@@ -274,262 +226,11 @@
     } finally {
       if (els.syncSpinner) els.syncSpinner.classList.remove('animate-spin');
       if (els.lastSyncBadge) {
-        els.lastSyncBadge.textContent = `Live Synced: ${new Date().toLocaleTimeString([], { hour: '2-digit', minute: '2-digit', second: '2-digit' })}`;
+        els.lastSyncBadge.textContent = `Live Synced: ${new Date().toLocaleTimeString()}`;
       }
       calculateAnalytics();
       applyFilters();
     }
-  }
-
-  function calculateAnalytics() {
-    let totalTeams = rawTeamsData.length;
-    let totalParticipants = 0;
-    let totalMale = 0;
-    let totalFemale = 0;
-
-    let y1 = 0, y2 = 0, y3 = 0, y4 = 0;
-    let maleY2 = 0, femaleY3 = 0;
-
-    let branchCounts = { CSE: 0, ECE: 0, ME: 0, EE: 0, CIVIL: 0, IT: 0, OTHER: 0 };
-
-    rawTeamsData.forEach(team => {
-      const members = Array.isArray(team.teamMembers) ? team.teamMembers : [];
-      const memberCount = Math.max(members.length, 6);
-      totalParticipants += memberCount;
-
-      const allStudents = [
-        {
-          name: team.teamLeaderName || '',
-          gender: team.leaderGender || 'Male',
-          branch: team.leaderBranch || 'CSE',
-          year: team.leaderYear || '3rd Year'
-        },
-        ...members
-      ];
-
-      allStudents.forEach(st => {
-        const gender = (st.gender || 'Male').toLowerCase();
-        const year = (st.year || '').toLowerCase();
-        const branch = (st.branch || '').toUpperCase();
-
-        if (gender.includes('female') || gender.includes('f')) {
-          totalFemale++;
-          if (year.includes('3rd') || year.includes('3')) femaleY3++;
-        } else {
-          totalMale++;
-          if (year.includes('2nd') || year.includes('2')) maleY2++;
-        }
-
-        if (year.includes('1st') || year.includes('1')) y1++;
-        else if (year.includes('2nd') || year.includes('2')) y2++;
-        else if (year.includes('3rd') || year.includes('3')) y3++;
-        else if (year.includes('4th') || year.includes('4')) y4++;
-
-        if (branch.includes('CSE') || branch.includes('COMPUTER')) branchCounts.CSE++;
-        else if (branch.includes('ECE') || branch.includes('ELECTRONIC')) branchCounts.ECE++;
-        else if (branch.includes('ME') || branch.includes('MECHANICAL')) branchCounts.ME++;
-        else if (branch.includes('EE') || branch.includes('ELECTRICAL')) branchCounts.EE++;
-        else if (branch.includes('CIVIL')) branchCounts.CIVIL++;
-        else if (branch.includes('IT') || branch.includes('INFORMATION')) branchCounts.IT++;
-        else branchCounts.OTHER++;
-      });
-    });
-
-    runAuditEngine();
-
-    if (els.statTotalTeams) els.statTotalTeams.textContent = totalTeams;
-    if (els.statTotalParticipants) els.statTotalParticipants.textContent = `Total: ${totalParticipants} Students`;
-
-    if (els.statMaleCount) els.statMaleCount.textContent = `👨 ${totalMale} Male`;
-    if (els.statFemaleCount) els.statFemaleCount.textContent = `👩 ${totalFemale} Female`;
-    if (els.statGenderBreakdown) {
-      els.statGenderBreakdown.textContent = `2nd Yr Male: ${maleY2} | 3rd Yr Female: ${femaleY3}`;
-    }
-
-    if (els.statY1) els.statY1.textContent = y1;
-    if (els.statY2) els.statY2.textContent = y2;
-    if (els.statY3) els.statY3.textContent = y3;
-    if (els.statY4) els.statY4.textContent = y4;
-
-    if (els.statCseCount) els.statCseCount.textContent = `CSE: ${branchCounts.CSE} Students`;
-    if (els.statOtherBranches) {
-      els.statOtherBranches.textContent = `ECE: ${branchCounts.ECE} | ME: ${branchCounts.ME} | Civil: ${branchCounts.CIVIL}`;
-    }
-  }
-
-  let auditResults = { redFlaggedTeams: new Map(), duplicateMap: new Map(), totalRedFlaggedCount: 0, totalDuplicateStudentsCount: 0 };
-
-  function runAuditEngine() {
-    const studentMap = new Map();
-    const duplicateMap = new Map();
-    const redFlaggedTeams = new Map();
-
-    rawTeamsData.forEach(team => {
-      const regId = team.registrationId || 'SIH2026-REG';
-      const allMembers = [
-        {
-          role: 'Leader',
-          name: team.teamLeaderName || '',
-          mobile: team.leaderMobile || '',
-          email: team.leaderEmail || '',
-          gender: team.leaderGender || '',
-          branch: team.leaderBranch || '',
-          year: team.leaderYear || '',
-          roll: team.universityRoll || team.rollNo || team.collegeId || ''
-        },
-        ...(team.teamMembers || []).map((m, idx) => ({
-          role: `Member #${idx + 1}`,
-          name: m.name || '',
-          mobile: m.mobile || '',
-          email: m.email || '',
-          gender: m.gender || '',
-          branch: m.branch || '',
-          year: m.year || '',
-          roll: m.universityRoll || m.rollNo || m.collegeId || ''
-        }))
-      ];
-
-      let femaleCount = 0;
-
-      allMembers.forEach(st => {
-        const g = (st.gender || '').toLowerCase();
-        if (g.includes('female') || g.includes('f')) femaleCount++;
-
-        const nameStr = (st.name || '').trim().toLowerCase();
-        const mobileStr = (st.mobile || '').replace(/\D/g, '');
-        const emailStr = (st.email || '').trim().toLowerCase();
-        const branchStr = (st.branch || '').trim().toLowerCase();
-        const yearStr = (st.year || '').trim().toLowerCase();
-        const rollStr = (st.roll || '').trim().toLowerCase();
-
-        if (!nameStr) return;
-
-        // Composite multi-parameter key: Roll OR Mobile OR Email OR (Name + Branch + Year)
-        const compositeKey = rollStr 
-          ? `ROLL_${rollStr}`
-          : (mobileStr.length >= 10 ? `MOB_${mobileStr.slice(-10)}` : (emailStr ? `EMAIL_${emailStr}` : `NAME_BRANCH_${nameStr}_${branchStr}_${yearStr}`));
-
-        if (!studentMap.has(compositeKey)) {
-          studentMap.set(compositeKey, []);
-        }
-
-        const occurrences = studentMap.get(compositeKey);
-        occurrences.push({
-          regId,
-          teamName: team.teamName || 'Tech Team',
-          role: st.role,
-          studentName: st.name,
-          branch: st.branch,
-          year: st.year,
-          mobile: st.mobile,
-          email: st.email,
-          roll: st.roll
-        });
-
-        if (occurrences.length > 1) {
-          duplicateMap.set(compositeKey, occurrences);
-          occurrences.forEach(occ => {
-            if (!redFlaggedTeams.has(occ.regId)) {
-              redFlaggedTeams.set(occ.regId, []);
-            }
-            const list = redFlaggedTeams.get(occ.regId);
-            const msg = `Duplicate Student: ${occ.studentName} (${occ.branch} ${occ.year} - ${occ.role})`;
-            if (!list.includes(msg)) list.push(msg);
-          });
-        }
-      });
-
-      if (femaleCount === 0) {
-        if (!redFlaggedTeams.has(regId)) redFlaggedTeams.set(regId, []);
-        redFlaggedTeams.get(regId).push('Missing Mandatory Female Member');
-      }
-
-      if (allMembers.length !== 6) {
-        if (!redFlaggedTeams.has(regId)) redFlaggedTeams.set(regId, []);
-        redFlaggedTeams.get(regId).push(`Invalid Team Size (${allMembers.length}/6 Members)`);
-      }
-    });
-
-    auditResults = {
-      studentMap,
-      duplicateMap,
-      redFlaggedTeams,
-      totalRedFlaggedCount: redFlaggedTeams.size,
-      totalDuplicateStudentsCount: duplicateMap.size
-    };
-
-    if (els.statAuditCount) {
-      els.statAuditCount.textContent = auditResults.totalRedFlaggedCount > 0
-        ? `🚩 ${auditResults.totalRedFlaggedCount} Red Flagged`
-        : `✅ 0 Red Flags`;
-    }
-    if (els.statDuplicateCount) {
-      els.statDuplicateCount.textContent = `${auditResults.totalDuplicateStudentsCount} Duplicate Students`;
-    }
-  }
-
-  function applyFilters() {
-    const q = (els.adminSearch ? els.adminSearch.value : '').toLowerCase().trim();
-    const selCompliance = els.filterCompliance ? els.filterCompliance.value : 'ALL';
-    const selYear = els.filterYear ? els.filterYear.value : 'ALL';
-    const selBranch = els.filterBranch ? els.filterBranch.value : 'ALL';
-    const selGender = els.filterGender ? els.filterGender.value : 'ALL';
-
-    filteredTeams = rawTeamsData.filter(team => {
-      const regId = team.registrationId || 'SIH2026-REG';
-
-      if (selCompliance === 'RED_FLAG') {
-        if (!auditResults.redFlaggedTeams.has(regId)) return false;
-      } else if (selCompliance === 'CLEAN') {
-        if (auditResults.redFlaggedTeams.has(regId)) return false;
-      }
-
-      if (q) {
-        const teamText = [
-          team.registrationId || '',
-          team.teamName || '',
-          team.teamLeaderName || '',
-          team.leaderMobile || '',
-          team.leaderEmail || '',
-          ...(Array.isArray(team.teamMembers) ? team.teamMembers.map(m => m.name + ' ' + (m.mobile || '')) : [])
-        ].join(' ').toLowerCase();
-
-        if (!teamText.includes(q)) return false;
-      }
-
-      const members = Array.isArray(team.teamMembers) ? team.teamMembers : [];
-      const allStudents = [
-        {
-          name: team.teamLeaderName || '',
-          gender: team.leaderGender || 'Male',
-          branch: team.leaderBranch || 'CSE',
-          year: team.leaderYear || '3rd Year'
-        },
-        ...members
-      ];
-
-      if (selYear !== 'ALL') {
-        const hasYear = allStudents.some(st => (st.year || '').toLowerCase().includes(selYear.toLowerCase().replace(' only', '')));
-        if (!hasYear) return false;
-      }
-
-      if (selBranch !== 'ALL') {
-        const hasBranch = allStudents.some(st => (st.branch || '').toUpperCase().includes(selBranch));
-        if (!hasBranch) return false;
-      }
-
-      if (selGender === 'MALE_ONLY') {
-        const hasFemale = allStudents.some(st => (st.gender || '').toLowerCase().includes('female') || (st.gender || '').toLowerCase().includes('f'));
-        if (hasFemale) return false;
-      } else if (selGender === 'FEMALE_INCLUDED') {
-        const hasFemale = allStudents.some(st => (st.gender || '').toLowerCase().includes('female') || (st.gender || '').toLowerCase().includes('f'));
-        if (!hasFemale) return false;
-      }
-
-      return true;
-    });
-
-    renderTeamsTable();
   }
 
   function renderTeamsTable() {
@@ -549,13 +250,8 @@
 
     filteredTeams.forEach(team => {
       const regId = team.registrationId || 'SIH2026-REG';
-      const isRedFlagged = auditResults.redFlaggedTeams.has(regId);
-      const flagReasons = isRedFlagged ? auditResults.redFlaggedTeams.get(regId).join(', ') : '';
-
       const tr = document.createElement('tr');
-      tr.className = isRedFlagged
-        ? 'bg-red-50/40 hover:bg-red-100/60 transition-colors border-b border-red-200/80 cursor-pointer group'
-        : 'hover:bg-blue-50/70 transition-colors border-b border-slate-200/80 cursor-pointer group';
+      tr.className = 'hover:bg-blue-50/70 transition-colors border-b border-slate-200/80 cursor-pointer group';
 
       const members = Array.isArray(team.teamMembers) ? team.teamMembers : [];
       const allStudents = [
@@ -571,15 +267,10 @@
         else maleCount++;
       });
 
-      const redFlagBadge = isRedFlagged
-        ? `<span class="inline-flex items-center gap-1 text-[10px] font-black bg-red-600 text-white px-2 py-0.5 rounded-md shadow-2xs mt-1" title="${escapeHtml(flagReasons)}">🚩 RED FLAG DETECTED</span>`
-        : ``;
-
       tr.innerHTML = `
         <td class="py-3.5 px-4">
           <div class="font-mono text-[10px] font-extrabold text-blue-700">${regId}</div>
           <div class="font-black text-slate-900 text-sm group-hover:text-blue-700 transition-colors">${escapeHtml(team.teamName || 'Tech Team')}</div>
-          ${redFlagBadge}
         </td>
         <td class="py-3.5 px-4">
           <div class="font-extrabold text-slate-900">${escapeHtml(team.teamLeaderName || 'Leader')}</div>
@@ -587,14 +278,9 @@
         </td>
         <td class="py-3.5 px-4 text-center">
           <span class="inline-flex items-center gap-1 text-[11px] font-extrabold bg-slate-100 border border-slate-200/90 px-2.5 py-1 rounded-full">
-            <span class="text-blue-700">👨 ${maleCount}M</span>
-            <span class="text-slate-300">•</span>
-            <span class="text-pink-700">👩 ${femaleCount}F</span>
+            <span class="text-blue-700">👨 ${maleCount}</span>
+            <span class="text-pink-700">👩 ${femaleCount}</span>
           </span>
-        </td>
-        <td class="py-3.5 px-4">
-          <div class="font-bold text-amber-800">${escapeHtml(team.leaderBranch || 'CSE')}</div>
-          <div class="text-[11px] text-slate-600 font-semibold">${escapeHtml(team.leaderYear || '3rd Year')} (${escapeHtml(team.leaderSemester || '6th')} Sem)</div>
         </td>
         <td class="py-3.5 px-4 text-right">
           <button type="button" class="btn-view-roster px-3 py-1.5 bg-blue-600 hover:bg-blue-700 text-white font-extrabold text-[11px] rounded-xl shadow-2xs transition-transform active:scale-95" data-regid="${regId}">
@@ -603,7 +289,6 @@
         </td>
       `;
 
-      // Allow clicking whole row to open roster
       tr.addEventListener('click', (e) => {
         if (!e.target.closest('button')) {
           openTeamRosterModal(team);
@@ -1068,6 +753,12 @@
     if (els.btnSyncLive) {
       els.btnSyncLive.addEventListener('click', () => {
         loadLiveTeams(true);
+      });
+    }
+
+    if (els.btnCheckDuplicates) {
+      els.btnCheckDuplicates.addEventListener('click', () => {
+        openStatModal('audit');
       });
     }
 
