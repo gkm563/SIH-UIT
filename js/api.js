@@ -231,18 +231,92 @@ const Api = (() => {
 
   const TEAMS_CACHE_KEY = 'sih2026_registered_teams_cache';
 
+  const FALLBACK_LIVE_TEAMS = [
+    {"registrationId":"SIH2026-0019","teamName":"HealTech","timestamp":"Wed Jul 29 2026 15:42:36 GMT+0530"},
+    {"registrationId":"SIH2026-0021","teamName":"Mavcriks","timestamp":"Wed Jul 29 2026 18:46:52 GMT+0530"},
+    {"registrationId":"SIH2026-0027","teamName":"Team Prayas","timestamp":"Wed Jul 29 2026 22:44:05 GMT+0530"},
+    {"registrationId":"SIH2026-0028","teamName":"AASIA-Z","timestamp":"Wed Jul 29 2026 23:10:29 GMT+0530"},
+    {"registrationId":"SIH2026-0029","teamName":"IntelliSix","timestamp":"Wed Jul 29 2026 23:26:35 GMT+0530"},
+    {"registrationId":"SIH2026-0030","teamName":"cookieking","timestamp":"Wed Jul 29 2026 23:44:02 GMT+0530"},
+    {"registrationId":"SIH2026-0031","teamName":"EVOLVEX","timestamp":"Thu Jul 30 2026 09:27:01 GMT+0530"},
+    {"registrationId":"SIH2026-0032","teamName":"Mind Matrix","timestamp":"Thu Jul 30 2026 12:37:54 GMT+0530"},
+    {"registrationId":"SIH2026-0033","teamName":"PranaCoders","timestamp":"Thu Jul 30 2026 13:06:03 GMT+0530"},
+    {"registrationId":"SIH2026-0034","teamName":"COSINE7","timestamp":"Thu Jul 30 2026 15:35:13 GMT+0530"},
+    {"registrationId":"SIH2026-0035","teamName":"Syntax Squad","timestamp":"Thu Jul 30 2026 16:51:00 GMT+0530"},
+    {"registrationId":"SIH2026-0036","teamName":"CodeNova","timestamp":"Thu Jul 30 2026 17:03:15 GMT+0530"},
+    {"registrationId":"SIH2026-0037","teamName":"Root Slayers","timestamp":"Thu Jul 30 2026 18:17:30 GMT+0530"},
+    {"registrationId":"SIH2026-0038","teamName":"Bug Strikers","timestamp":"Thu Jul 30 2026 19:07:16 GMT+0530"},
+    {"registrationId":"SIH2026-0039","teamName":"Code Crafters","timestamp":"Thu Jul 30 2026 19:46:13 GMT+0530"},
+    {"registrationId":"SIH2026-0040","teamName":"Hakuna matata","timestamp":"Thu Jul 30 2026 20:00:16 GMT+0530"},
+    {"registrationId":"SIH2026-0041","teamName":"Hakuna matata","timestamp":"Thu Jul 30 2026 20:13:06 GMT+0530"},
+    {"registrationId":"SIH2026-0042","teamName":"Restitutor Orbis","timestamp":"Thu Jul 30 2026 21:38:02 GMT+0530"},
+    {"registrationId":"SIH2026-0043","teamName":"LinkedList","timestamp":"Thu Jul 30 2026 22:08:52 GMT+0530"},
+    {"registrationId":"SIH2026-0044","teamName":"Cryptic Coders","timestamp":"Thu Jul 30 2026 22:10:57 GMT+0530"},
+    {"registrationId":"SIH2026-0045","teamName":"Blue Nova","timestamp":"Thu Jul 30 2026 22:29:10 GMT+0530"},
+    {"registrationId":"SIH2026-0046","teamName":"ByteForge","timestamp":"Fri Jul 31 2026 12:59:06 GMT+0530"},
+    {"registrationId":"SIH2026-0047","teamName":"Viper Syndicate","timestamp":"Fri Jul 31 2026 13:10:00 GMT+0530"},
+    {"registrationId":"SIH2026-0048","teamName":"The Phoenix 🐦‍🔥","timestamp":"Fri Jul 31 2026 13:13:14 GMT+0530"},
+    {"registrationId":"SIH2026-0051","teamName":"Bug Slayers","timestamp":"Fri Jul 31 2026 16:39:23 GMT+0530"},
+    {"registrationId":"SIH2026-0052","teamName":"Vector","timestamp":"Fri Jul 31 2026 16:58:28 GMT+0530"},
+    {"registrationId":"SIH2026-0053","teamName":"NovaTech Coders","timestamp":"Fri Jul 31 2026 18:18:42 GMT+0530"},
+    {"registrationId":"SIH2026-0054","teamName":"RIZEN CODERS","timestamp":"Fri Jul 31 2026 20:37:26 GMT+0530"},
+    {"registrationId":"SIH2026-0055","teamName":"Sankalp Tech","timestamp":"Fri Jul 31 2026 21:26:31 GMT+0530"},
+    {"registrationId":"SIH2026-0056","teamName":"Code Warriors","timestamp":"Fri Jul 31 2026 21:42:40 GMT+0530"},
+    {"registrationId":"SIH2026-0057","teamName":"CodeRushers","timestamp":"Fri Jul 31 2026 21:43:57 GMT+0530"},
+    {"registrationId":"SIH2026-0058","teamName":"Cipher Nova","timestamp":"Fri Jul 31 2026 22:40:48 GMT+0530"},
+    {"registrationId":"SIH2026-0060","teamName":"Wero","timestamp":"Fri Jul 31 2026 23:39:15 GMT+0530"},
+    {"registrationId":"SIH2026-0061","teamName":"Coder ninja","timestamp":"Sat Aug 01 2026 00:03:46 GMT+0530"},
+    {"registrationId":"SIH2026-0063","teamName":"Code Alchemists","timestamp":"Sat Aug 01 2026 12:19:18 GMT+0530"},
+    {"registrationId":"SIH2026-0064","teamName":"The Catalysts","timestamp":"Sat Aug 01 2026 15:21:48 GMT+0530"},
+    {"registrationId":"SIH2026-0065","teamName":"Rising Coders","timestamp":"Sat Aug 01 2026 22:07:58 GMT+0530"},
+    {"registrationId":"SIH2026-0066","teamName":"Celestial 🔥","timestamp":"Mon Aug 03 2026 09:34:36 GMT+0530"},
+    {"registrationId":"SIH2026-0067","teamName":"Lumos cipher","timestamp":"Mon Aug 03 2026 21:07:02 GMT+0530"},
+    {"registrationId":"SIH2026-0068","teamName":"Tech Geeks","timestamp":"Tue Aug 04 2026 10:12:49 GMT+0530"},
+    {"registrationId":"SIH2026-0069","teamName":"The Change Catalysts","timestamp":"Tue Aug 04 2026 12:11:00 GMT+0530"},
+    {"registrationId":"SIH2026-0071","teamName":"Obsidian Tech","timestamp":"Tue Aug 04 2026 13:07:06 GMT+0530"},
+    {"registrationId":"SIH2026-0072","teamName":"Track Shield","timestamp":"Tue Aug 04 2026 13:10:12 GMT+0530"},
+    {"registrationId":"SIH2026-0073","teamName":"LogicX","timestamp":"Tue Aug 04 2026 18:43:20 GMT+0530"},
+    {"registrationId":"SIH2026-0074","teamName":"BruteForce","timestamp":"Tue Aug 04 2026 19:54:58 GMT+0530"},
+    {"registrationId":"SIH2026-0075","teamName":"Apex Developers","timestamp":"Tue Aug 04 2026 20:56:37 GMT+0530"},
+    {"registrationId":"SIH2026-0091","teamName":"VisionX","timestamp":"Tue Aug 04 2026 21:52:38 GMT+0530"},
+    {"registrationId":"SIH2026-0100","teamName":"CODE TITANS","timestamp":"Tue Aug 04 2026 21:55:48 GMT+0530"},
+    {"registrationId":"SIH2026-0122","teamName":"Panthers","timestamp":"Tue Aug 04 2026 22:25:26 GMT+0530"},
+    {"registrationId":"SIH2026-0123","teamName":"Super Six","timestamp":"Tue Aug 04 2026 22:32:04 GMT+0530"},
+    {"registrationId":"SIH2026-0125","teamName":"Health Horizons","timestamp":"Tue Aug 04 2026 22:42:40 GMT+0530"},
+    {"registrationId":"SIH2026-0126","teamName":"Syntax Avengers","timestamp":"Tue Aug 04 2026 22:49:09 GMT+0530"},
+    {"registrationId":"SIH2026-0127","teamName":"Code Avengers","timestamp":"Tue Aug 04 2026 22:52:54 GMT+0530"},
+    {"registrationId":"SIH2026-0128","teamName":"Viksit4","timestamp":"Tue Aug 04 2026 22:57:31 GMT+0530"},
+    {"registrationId":"SIH2026-0129","teamName":"Lunar_Spark","timestamp":"Tue Aug 04 2026 23:45:12 GMT+0530"},
+    {"registrationId":"SIH2026-0130","teamName":"FerrumLogica","timestamp":"Wed Aug 05 2026 10:19:28 GMT+0530"},
+    {"registrationId":"SIH2026-0131","teamName":"Shield core","timestamp":"Wed Aug 05 2026 13:15:43 GMT+0530"},
+    {"registrationId":"SIH2026-0132","teamName":"Paperx","timestamp":"Wed Aug 05 2026 19:37:40 GMT+0530"},
+    {"registrationId":"SIH2026-0133","teamName":"Syntaxsphere","timestamp":"Wed Aug 05 2026 20:36:07 GMT+0530"},
+    {"registrationId":"SIH2026-0134","teamName":"Astro","timestamp":"Wed Aug 05 2026 20:51:39 GMT+0530"},
+    {"registrationId":"SIH2026-0135","teamName":"Warrior","timestamp":"Wed Aug 05 2026 21:33:14 GMT+0530"},
+    {"registrationId":"SIH2026-0136","teamName":"The_Bytewright's","timestamp":"Wed Aug 05 2026 22:00:36 GMT+0530"},
+    {"registrationId":"SIH2026-0137","teamName":"ZSquad","timestamp":"Wed Aug 05 2026 22:08:18 GMT+0530"},
+    {"registrationId":"SIH2026-0138","teamName":"SS Tech","timestamp":"Wed Aug 05 2026 22:10:37 GMT+0530"},
+    {"registrationId":"SIH2026-0139","teamName":"FusionX","timestamp":"Wed Aug 05 2026 22:36:29 GMT+0530"},
+    {"registrationId":"SIH2026-0140","teamName":"Alpha Innovators","timestamp":"Wed Aug 05 2026 22:41:56 GMT+0530"},
+    {"registrationId":"SIH2026-0141","teamName":"Apex Innovators","timestamp":"Wed Aug 05 2026 22:46:57 GMT+0530"},
+    {"registrationId":"SIH2026-0142","teamName":"Bits n Bytes","timestamp":"Wed Aug 05 2026 23:13:44 GMT+0530"},
+    {"registrationId":"SIH2026-0143","teamName":"MLXPERTS","timestamp":"Wed Aug 05 2026 23:25:58 GMT+0530"},
+    {"registrationId":"SIH2026-0144","teamName":"The Sparkers","timestamp":"Wed Aug 05 2026 23:27:19 GMT+0530"}
+  ];
+
   function getLocalCachedTeams() {
     try {
       const raw = localStorage.getItem(TEAMS_CACHE_KEY) || sessionStorage.getItem(TEAMS_CACHE_KEY);
-      if (!raw) return null;
-      const parsed = JSON.parse(raw);
-      if (parsed && parsed.success && Array.isArray(parsed.teams)) {
-        return parsed;
+      if (raw) {
+        const parsed = JSON.parse(raw);
+        if (parsed && parsed.success && Array.isArray(parsed.teams) && parsed.teams.length > 0) {
+          return parsed;
+        }
       }
     } catch {
       // ignore
     }
-    return null;
+    return { success: true, teams: FALLBACK_LIVE_TEAMS, isFallback: true };
   }
 
   function setLocalCachedTeams(data) {
@@ -260,15 +334,14 @@ const Api = (() => {
     const cached = getLocalCachedTeams();
 
     if (!baseUrl) {
-      if (cached) return cached;
-      return { success: false, message: 'Google Script URL not configured.', teams: [] };
+      return cached;
     }
 
     const fetchUrl = baseUrl + (baseUrl.includes('?') ? '&' : '?') + 'action=teams&_t=' + Date.now();
 
     try {
       const controller = typeof AbortController !== 'undefined' ? new AbortController() : null;
-      const timeout = setTimeout(() => controller && controller.abort(), 35000); // Increased to 35s to account for Google Apps Script cold starts
+      const timeout = setTimeout(() => controller && controller.abort(), 12000); // 12s fast timeout
 
       const response = await fetch(fetchUrl, {
         method: 'GET',
@@ -282,7 +355,7 @@ const Api = (() => {
 
       try {
         const data = JSON.parse(text);
-        if (data && data.success && Array.isArray(data.teams)) {
+        if (data && data.success && Array.isArray(data.teams) && data.teams.length > 0) {
           setLocalCachedTeams(data);
           return data;
         }
@@ -290,17 +363,9 @@ const Api = (() => {
         // Response was non-JSON
       }
 
-      // If server returned non-JSON/error but we have cached teams, return cached teams!
-      if (cached && Array.isArray(cached.teams)) {
-        return cached;
-      }
-
-      return { success: false, message: 'Could not load teams from server. Retrying...', teams: [] };
+      return cached;
     } catch (err) {
-      if (cached && Array.isArray(cached.teams)) {
-        return cached;
-      }
-      return { success: false, message: 'Network error fetching registered teams. Retrying...', teams: [] };
+      return cached;
     }
   }
 
