@@ -319,17 +319,21 @@ body {
 
 .sih-banner-wrap {
   width: 100%;
-  display: block;
+  display: flex;
+  justify-content: center;
+  align-items: center;
   padding: 0;
   margin-bottom: 1.5rem;
 }
 
 .sih-banner-img {
-  width: 100%;
+  width: auto;
+  max-width: 100%;
   height: auto;
-  max-height: none;
+  max-height: 360px;
   object-fit: contain;
   border-radius: 12px;
+  margin: 0 auto;
   transition: transform 0.3s ease;
 }
 
