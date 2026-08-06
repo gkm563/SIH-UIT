@@ -37,7 +37,7 @@ const AppConfig = {
   /** Problem Statement Bank Public Visibility Toggle */
   get isPSBankPublic() {
     const val = localStorage.getItem('sih2026_ps_public');
-    return val !== null ? val === 'true' : false;
+    return val !== null ? val === 'true' : true;
   },
 
   setPSBankPublic(status) {
