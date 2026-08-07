@@ -1083,11 +1083,17 @@
       });
     }
 
+    function adminLogout() {
+      setAuthed(false);
+      sessionStorage.removeItem(SESSION_KEY);
+      localStorage.removeItem(SESSION_KEY);
+      showLogin();
+      window.location.reload();
+    }
+    window.adminLogout = adminLogout;
+
     if (els.logoutBtn) {
-      els.logoutBtn.addEventListener('click', () => {
-        setAuthed(false);
-        showLogin();
-      });
+      els.logoutBtn.addEventListener('click', adminLogout);
     }
 
     if (els.btnSyncLive) {
