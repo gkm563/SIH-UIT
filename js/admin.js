@@ -607,7 +607,7 @@
           <div class="text-[11px] text-slate-600 font-mono">📞 ${escapeHtml(team.leaderMobile || 'N/A')}</div>
         </td>
         <td class="py-3.5 px-4 text-center">
-          <span class="inline-flex items-center gap-1 text-[11px] font-extrabold bg-slate-100 border border-slate-200/90 px-2.5 py-1 rounded-full shadow-2xs">
+          <span class="inline-flex items-center gap-1 text-[11px] font-extrabold bg-slate-100 border border-slate-200/90 px-2.5 py-1 rounded-full shadow-sm">
             <span class="text-blue-700">👨 ${maleCount}</span>
             <span class="text-pink-700">👩 ${femaleCount}</span>
           </span>
@@ -617,7 +617,7 @@
           <div class="text-[11px] text-slate-500 font-medium">${escapeHtml(team.leaderYear || '3rd Year')}</div>
         </td>
         <td class="py-3.5 px-4 text-right">
-          <button type="button" class="btn-view-roster px-3.5 py-1.5 bg-blue-600 hover:bg-blue-700 text-white font-extrabold text-[11px] rounded-xl shadow-2xs transition-transform active:scale-95 flex items-center gap-1 ml-auto" data-regid="${regId}">
+          <button type="button" class="btn-view-roster px-3.5 py-1.5 bg-blue-600 hover:bg-blue-700 text-white font-extrabold text-[11px] rounded-xl shadow-sm transition-transform active:scale-95 flex items-center gap-1 ml-auto" data-regid="${regId}">
             <span>View Roster</span> 🔍
           </button>
         </td>
@@ -835,7 +835,7 @@
 
         auditResults.duplicateMap.forEach((occurrences, studentName) => {
           html += `
-            <div class="bg-white p-3.5 rounded-xl border border-red-200 shadow-2xs">
+            <div class="bg-white p-3.5 rounded-xl border border-red-200 shadow-sm">
               <div class="flex items-center justify-between">
                 <span class="font-extrabold text-slate-900 text-xs">👤 ${escapeHtml(studentName.toUpperCase())}</span>
                 <span class="text-[10px] font-black text-red-700 bg-red-100 px-2 py-0.5 rounded-md">Present in ${occurrences.length} Teams</span>
@@ -922,13 +922,13 @@
 
     if (els.modalSummaryBox) {
       els.modalSummaryBox.innerHTML = `
-        <div class="bg-white p-3 rounded-xl border border-blue-200/90 shadow-2xs">
+        <div class="bg-white p-3 rounded-xl border border-blue-200/90 shadow-sm">
           <div class="text-[10px] font-black uppercase text-blue-800 tracking-wider">Team Leader Info</div>
           <div class="text-xs font-black text-slate-900 mt-0.5">${escapeHtml(team.teamLeaderName || 'Leader')}</div>
           <div class="text-[11px] text-slate-600 font-semibold mt-0.5">${escapeHtml(team.leaderBranch || 'CSE')} (${escapeHtml(team.leaderYear || '3rd Year')} - ${escapeHtml(team.leaderSemester || '6th')} Sem)</div>
         </div>
 
-        <div class="bg-white p-3 rounded-xl border border-purple-200/90 shadow-2xs">
+        <div class="bg-white p-3 rounded-xl border border-purple-200/90 shadow-sm">
           <div class="text-[10px] font-black uppercase text-purple-800 tracking-wider">Gender Breakdown</div>
           <div class="text-xs font-black flex items-center gap-1.5 mt-0.5">
             <span class="text-blue-700">👨 ${maleCount} Male</span>
@@ -940,7 +940,7 @@
           </div>
         </div>
 
-        <div class="bg-white p-3 rounded-xl border border-amber-200/90 shadow-2xs">
+        <div class="bg-white p-3 rounded-xl border border-amber-200/90 shadow-sm">
           <div class="text-[10px] font-black uppercase text-amber-800 tracking-wider">Team Roster Status</div>
           <div class="text-xs font-extrabold text-slate-900 mt-0.5">👥 Total ${rosterList.length} Verified Members</div>
           <div class="text-[10px] text-emerald-700 font-bold mt-0.5">1 Team Leader + ${rosterList.length - 1} Team Members</div>
@@ -957,11 +957,11 @@
 
         const isFemale = (st.gender || '').toLowerCase().includes('female') || (st.gender || '').toLowerCase().includes('f');
         const genderBadge = isFemale
-          ? `<span class="inline-flex items-center gap-1 text-[11px] font-extrabold bg-pink-100 text-pink-900 border border-pink-300 px-2.5 py-0.5 rounded-full shadow-2xs">👩 FEMALE</span>`
+          ? `<span class="inline-flex items-center gap-1 text-[11px] font-extrabold bg-pink-100 text-pink-900 border border-pink-300 px-2.5 py-0.5 rounded-full shadow-sm">👩 FEMALE</span>`
           : `<span class="inline-flex items-center gap-1 text-[11px] font-bold bg-blue-50 text-blue-800 border border-blue-200 px-2.5 py-0.5 rounded-full">👨 MALE</span>`;
 
         const roleBadge = st.isLeader
-          ? `<span class="inline-flex items-center gap-1 text-[11px] font-black bg-blue-100 text-blue-900 border border-blue-300 px-2.5 py-1 rounded-xl shadow-2xs">👑 LEADER</span>`
+          ? `<span class="inline-flex items-center gap-1 text-[11px] font-black bg-blue-100 text-blue-900 border border-blue-300 px-2.5 py-1 rounded-xl shadow-sm">👑 LEADER</span>`
           : `<span class="inline-flex items-center gap-1 text-[11px] font-semibold text-slate-600 bg-slate-100 border border-slate-200 px-2.5 py-0.5 rounded-lg">${st.role}</span>`;
 
         tr.innerHTML = `
