@@ -120,166 +120,136 @@
       </form>
     </div>
 
-    <!-- Executive Admin Dashboard View (Clean Light Theme) -->
+    <!-- Executive Admin Dashboard View (Clean Light Premium Theme) -->
     <div id="admin-dashboard" class="hidden w-full max-w-full lg:px-8 xl:px-12 mx-auto py-6 space-y-6">
       
-      <!-- Top Action Bar: Controls + Sync -->
-      <div class="bg-white border border-slate-200/90 rounded-2xl p-4 sm:p-6 shadow-xs flex flex-col md:flex-row items-center justify-between gap-4">
+      <!-- Top Header & Sync Bar -->
+      <div class="bg-white border border-slate-200 rounded-2xl p-4 sm:p-5 shadow-xs flex flex-col md:flex-row items-center justify-between gap-4">
         <div>
-          <h2 class="text-lg font-black text-slate-900 flex items-center gap-2">
-            <span>⚙️ Live Portal Status &amp; Sync Control</span>
+          <h2 class="text-base sm:text-lg font-bold text-slate-900 flex items-center gap-2">
+            <span>📊 Live Team Intelligence &amp; Demographics</span>
           </h2>
-          <p class="text-xs text-slate-500 mt-0.5">Real-time status controls &amp; Google Sheets database synchronization</p>
+          <p class="text-xs text-slate-500 font-medium mt-0.5">Real-time statistics &amp; student demographic overview</p>
         </div>
 
         <div class="flex items-center gap-3 flex-wrap w-full md:w-auto">
-          <!-- Dedicated Check Duplicate Students Button -->
-          <button type="button" id="btn-check-duplicates" class="px-4 py-2.5 bg-rose-600 hover:bg-rose-700 text-white font-extrabold text-xs rounded-xl shadow-xs transition-transform active:scale-95 flex items-center gap-2">
-            <span>🚨 Check Duplicate Students List</span>
-          </button>
-
           <!-- Refresh Live Data Button -->
-          <button type="button" id="btn-sync-live" class="px-4 py-2.5 bg-blue-600 hover:bg-blue-700 text-white font-extrabold text-xs rounded-xl shadow-xs transition-transform active:scale-95 flex items-center gap-2">
+          <button type="button" id="btn-sync-live" class="px-4 py-2 bg-blue-600 hover:bg-blue-700 text-white font-bold text-xs rounded-xl shadow-xs transition-all active:scale-95 flex items-center gap-2">
             <svg id="sync-spinner" class="w-4 h-4 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 4v5h.582m15.356 2A8.001 8.001 0 004.582 9m0 0H9m11 11v-5h-.581m0 0a8.003 8.003 0 01-15.357-2m15.357 2H15"/></svg>
-            <span>Sync Live Google Sheet</span>
+            <span>Sync Live Sheet</span>
           </button>
         </div>
       </div>
 
-      <!-- Executive Analytics Summary Grid (Clickable Cards for Deep Drill-Down) -->
-      <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-6 gap-3.5">
+      <!-- Key Demographics Cards Grid (Soft Premium Light Style) -->
+      <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4">
         
-        <!-- Card 1: Total Teams Card -->
-        <div id="card-stat-teams" class="bg-gradient-to-br from-blue-50/90 via-indigo-50/60 to-white border border-blue-200/90 p-4 rounded-2xl shadow-sm hover:shadow-md transition-all cursor-pointer group relative overflow-hidden">
-          <div class="flex items-center justify-between mb-1.5">
-            <span class="text-[11px] font-black uppercase text-blue-900 tracking-wider">Total Teams</span>
-            <span class="p-1.5 rounded-xl bg-blue-100 text-blue-800 text-base font-bold group-hover:scale-110 transition-transform">🏆</span>
+        <!-- Card 1: Total Teams -->
+        <div id="card-stat-teams" class="bg-white border border-slate-200 p-5 rounded-2xl shadow-xs hover:border-blue-300 hover:shadow-md transition-all cursor-pointer group">
+          <div class="flex items-center justify-between mb-2">
+            <span class="text-xs font-bold uppercase text-slate-500 tracking-wider">Total Teams</span>
+            <span class="p-2 rounded-xl bg-blue-50 text-blue-600 text-lg font-bold group-hover:scale-110 transition-transform">🏆</span>
           </div>
-          <div class="text-2xl font-black text-slate-900" id="stat-total-teams">70</div>
-          <div class="flex items-center justify-between mt-2 pt-1.5 border-t border-blue-100">
-            <p class="text-[10px] text-slate-600 font-bold" id="stat-total-participants">420 Students</p>
-            <span class="text-[9px] font-black text-blue-700 group-hover:underline">Details 🔍</span>
-          </div>
-        </div>
-
-        <!-- Card 2: Gender Demographics Card -->
-        <div id="card-stat-gender" class="bg-gradient-to-br from-purple-50/90 via-pink-50/60 to-white border border-purple-200/90 p-4 rounded-2xl shadow-sm hover:shadow-md transition-all cursor-pointer group relative overflow-hidden">
-          <div class="flex items-center justify-between mb-1.5">
-            <span class="text-[11px] font-black uppercase text-purple-900 tracking-wider">Gender Demographics</span>
-            <span class="p-1.5 rounded-xl bg-purple-100 text-purple-800 text-base font-bold group-hover:scale-110 transition-transform">👥</span>
-          </div>
-          <div class="flex items-center gap-2">
-            <div class="text-sm font-black text-blue-700" id="stat-male-count">👨 262 Male</div>
-            <div class="text-sm font-black text-pink-700" id="stat-female-count">👩 158 Female</div>
-          </div>
-          <div class="flex items-center justify-between mt-2 pt-1.5 border-t border-purple-100">
-            <p class="text-[10px] text-purple-900 font-bold truncate max-w-[140px]" id="stat-gender-breakdown">
-              2nd Yr M: 78 | 3rd Yr F: 62
-            </p>
-            <span class="text-[9px] font-black text-purple-700 group-hover:underline">Details 🔍</span>
+          <div class="text-3xl font-extrabold text-slate-900" id="stat-total-teams">70</div>
+          <div class="flex items-center justify-between mt-3 pt-2 border-t border-slate-100 text-xs">
+            <span class="text-slate-600 font-semibold" id="stat-total-participants">420 Participants</span>
+            <span class="text-blue-600 font-bold group-hover:underline">View All →</span>
           </div>
         </div>
 
-        <!-- Card 3: Academic Year Distribution -->
-        <div id="card-stat-year" class="bg-gradient-to-br from-emerald-50/90 via-teal-50/60 to-white border border-emerald-200/90 p-4 rounded-2xl shadow-sm hover:shadow-md transition-all cursor-pointer group relative overflow-hidden">
-          <div class="flex items-center justify-between mb-1.5">
-            <span class="text-[11px] font-black uppercase text-emerald-900 tracking-wider">Academic Years</span>
-            <span class="p-1.5 rounded-xl bg-emerald-100 text-emerald-800 text-base font-bold group-hover:scale-110 transition-transform">🎓</span>
+        <!-- Card 2: Gender Demographics -->
+        <div id="card-stat-gender" class="bg-white border border-slate-200 p-5 rounded-2xl shadow-xs hover:border-purple-300 hover:shadow-md transition-all cursor-pointer group">
+          <div class="flex items-center justify-between mb-2">
+            <span class="text-xs font-bold uppercase text-slate-500 tracking-wider">Gender Demographics</span>
+            <span class="p-2 rounded-xl bg-purple-50 text-purple-600 text-lg font-bold group-hover:scale-110 transition-transform">👥</span>
           </div>
-          <div class="grid grid-cols-4 gap-1 text-center mt-1" id="stat-year-grid">
-            <div class="bg-white/90 p-1 rounded-md border border-emerald-200/80">
-              <div class="text-[9px] font-bold text-slate-500">1st Yr</div>
-              <div class="text-xs font-black text-emerald-800" id="stat-y1">40</div>
+          <div class="flex items-center gap-3">
+            <div class="text-sm font-bold text-blue-700" id="stat-male-count">👨 262 Male</div>
+            <div class="text-sm font-bold text-pink-600" id="stat-female-count">👩 158 Female</div>
+          </div>
+          <div class="flex items-center justify-between mt-3 pt-2 border-t border-slate-100 text-xs">
+            <span class="text-slate-500 font-medium" id="stat-gender-breakdown">SIH Female Rule: 100% Complied</span>
+            <span class="text-purple-600 font-bold group-hover:underline">Details →</span>
+          </div>
+        </div>
+
+        <!-- Card 3: Academic Years -->
+        <div id="card-stat-year" class="bg-white border border-slate-200 p-5 rounded-2xl shadow-xs hover:border-emerald-300 hover:shadow-md transition-all cursor-pointer group">
+          <div class="flex items-center justify-between mb-2">
+            <span class="text-xs font-bold uppercase text-slate-500 tracking-wider">Academic Years</span>
+            <span class="p-2 rounded-xl bg-emerald-50 text-emerald-600 text-lg font-bold group-hover:scale-110 transition-transform">🎓</span>
+          </div>
+          <div class="grid grid-cols-4 gap-1 text-center mt-1">
+            <div class="bg-slate-50 p-1.5 rounded-lg border border-slate-100">
+              <div class="text-[10px] text-slate-500 font-medium">1st Yr</div>
+              <div class="text-xs font-bold text-slate-800" id="stat-y1">40</div>
             </div>
-            <div class="bg-white/90 p-1 rounded-md border border-emerald-200/80">
-              <div class="text-[9px] font-bold text-slate-500">2nd Yr</div>
-              <div class="text-xs font-black text-emerald-800" id="stat-y2">126</div>
+            <div class="bg-slate-50 p-1.5 rounded-lg border border-slate-100">
+              <div class="text-[10px] text-slate-500 font-medium">2nd Yr</div>
+              <div class="text-xs font-bold text-slate-800" id="stat-y2">126</div>
             </div>
-            <div class="bg-white/90 p-1 rounded-md border border-emerald-200/80">
-              <div class="text-[9px] font-bold text-slate-500">3rd Yr</div>
-              <div class="text-xs font-black text-emerald-800" id="stat-y3">182</div>
+            <div class="bg-slate-50 p-1.5 rounded-lg border border-slate-100">
+              <div class="text-[10px] text-slate-500 font-medium">3rd Yr</div>
+              <div class="text-xs font-bold text-slate-800" id="stat-y3">182</div>
             </div>
-            <div class="bg-white/90 p-1 rounded-md border border-emerald-200/80">
-              <div class="text-[9px] font-bold text-slate-500">4th Yr</div>
-              <div class="text-xs font-black text-emerald-800" id="stat-y4">72</div>
+            <div class="bg-slate-50 p-1.5 rounded-lg border border-slate-100">
+              <div class="text-[10px] text-slate-500 font-medium">4th Yr</div>
+              <div class="text-xs font-bold text-slate-800" id="stat-y4">72</div>
             </div>
           </div>
-          <div class="flex items-center justify-end mt-2 pt-1 border-t border-emerald-100">
-            <span class="text-[9px] font-black text-emerald-700 group-hover:underline">Details 🔍</span>
+          <div class="flex items-center justify-end mt-3 pt-1 border-t border-slate-100 text-xs">
+            <span class="text-emerald-600 font-bold group-hover:underline">Details →</span>
           </div>
         </div>
 
-        <!-- Card 4: Branch / Department Card -->
-        <div id="card-stat-branch" class="bg-gradient-to-br from-amber-50/90 via-orange-50/60 to-white border border-amber-200/90 p-4 rounded-2xl shadow-sm hover:shadow-md transition-all cursor-pointer group relative overflow-hidden">
-          <div class="flex items-center justify-between mb-1.5">
-            <span class="text-[11px] font-black uppercase text-amber-900 tracking-wider">Branch / Dept</span>
-            <span class="p-1.5 rounded-xl bg-amber-100 text-amber-800 text-base font-bold group-hover:scale-110 transition-transform">💻</span>
+        <!-- Card 4: Branch / Departments -->
+        <div id="card-stat-branch" class="bg-white border border-slate-200 p-5 rounded-2xl shadow-xs hover:border-amber-300 hover:shadow-md transition-all cursor-pointer group">
+          <div class="flex items-center justify-between mb-2">
+            <span class="text-xs font-bold uppercase text-slate-500 tracking-wider">Branch / Department</span>
+            <span class="p-2 rounded-xl bg-amber-50 text-amber-600 text-lg font-bold group-hover:scale-110 transition-transform">💻</span>
           </div>
-          <div class="text-sm font-black text-amber-900" id="stat-cse-count">CSE: 210 Students</div>
-          <div class="flex items-center justify-between mt-2 pt-1.5 border-t border-amber-100">
-            <p class="text-[10px] text-amber-900 font-bold truncate max-w-[140px]" id="stat-other-branches">
-              ECE: 84 | ME: 42 | Civil: 42
-            </p>
-            <span class="text-[9px] font-black text-amber-700 group-hover:underline">Details 🔍</span>
-          </div>
-        </div>
-
-        <!-- Card 5: SIH Mandatory Female Rule Compliance Card -->
-        <div class="bg-gradient-to-br from-emerald-500 to-teal-700 text-white p-4 rounded-2xl shadow-xs relative overflow-hidden">
-          <div class="flex items-center justify-between mb-1">
-            <span class="text-[10px] font-black uppercase tracking-wider text-emerald-100">SIH Female Rule</span>
-            <span class="text-base font-bold">✅</span>
-          </div>
-          <div class="text-base font-black">100% Complied</div>
-          <p class="text-[10px] text-emerald-100 font-medium mt-1">70 / 70 Teams Have Female Members</p>
-        </div>
-
-        <!-- Card 6: Integrity Audit Card (Red Flag Detector) -->
-        <div id="card-stat-audit" class="bg-gradient-to-br from-red-600 to-rose-800 text-white p-4 rounded-2xl shadow-sm cursor-pointer group relative overflow-hidden hover:shadow-md transition-all">
-          <div class="flex items-center justify-between mb-1">
-            <span class="text-[10px] font-black uppercase tracking-wider text-rose-100">Integrity Audit</span>
-            <span class="text-base font-bold group-hover:scale-110 transition-transform">🚩</span>
-          </div>
-          <div class="text-base font-black" id="stat-audit-count">Checking Roster...</div>
-          <div class="flex items-center justify-between mt-1 pt-1 border-t border-rose-400/50">
-            <p class="text-[10px] text-rose-100 font-bold truncate max-w-[110px]" id="stat-duplicate-count">0 Duplicates</p>
-            <span class="text-[9px] font-black text-white underline">Audit Report 🔍</span>
+          <div class="text-sm font-bold text-slate-800" id="stat-cse-count">CSE: 210 Students</div>
+          <div class="flex items-center justify-between mt-3 pt-2 border-t border-slate-100 text-xs">
+            <span class="text-slate-500 truncate max-w-[150px]" id="stat-other-branches">ECE, ME, Civil, EE, IT</span>
+            <span class="text-amber-600 font-bold group-hover:underline">Details →</span>
           </div>
         </div>
 
       </div>
 
-      <!-- Visual Analytics & Distribution Progress Bars (Executive Summary) -->
+      <!-- Engaging Visual Demographics Overview (Clean Charts/Progress Bars) -->
       <div class="grid grid-cols-1 lg:grid-cols-2 gap-4">
-        <!-- Branch Distribution Analytics -->
-        <div class="bg-white border border-slate-200/90 rounded-2xl p-4 sm:p-5 shadow-xs space-y-3">
-          <div class="flex items-center justify-between">
-            <h3 class="text-xs font-black uppercase tracking-wider text-slate-800 flex items-center gap-1.5">
-              <span>💻 Branch / Department Distribution</span>
+        
+        <!-- Branch / Department Distribution -->
+        <div class="bg-white border border-slate-200 rounded-2xl p-5 shadow-xs space-y-4">
+          <div class="flex items-center justify-between border-b border-slate-100 pb-3">
+            <h3 class="text-xs font-bold uppercase tracking-wider text-slate-700 flex items-center gap-2">
+              <span>💻 Branch Distribution</span>
             </h3>
-            <span class="text-[10px] font-extrabold text-blue-700 bg-blue-50 px-2.5 py-0.5 rounded-full border border-blue-200" id="branch-lead-tag">CSE Leading</span>
+            <span class="text-[11px] font-bold text-blue-700 bg-blue-50 px-2.5 py-0.5 rounded-full border border-blue-100" id="branch-lead-tag">CSE Leading</span>
           </div>
-          <div class="space-y-2.5" id="branch-progress-container">
+          <div class="space-y-3" id="branch-progress-container">
             <!-- Rendered via JS -->
           </div>
         </div>
 
-        <!-- Academic Year Distribution Analytics -->
-        <div class="bg-white border border-slate-200/90 rounded-2xl p-4 sm:p-5 shadow-xs space-y-3">
-          <div class="flex items-center justify-between">
-            <h3 class="text-xs font-black uppercase tracking-wider text-slate-800 flex items-center gap-1.5">
+        <!-- Academic Year Demographics -->
+        <div class="bg-white border border-slate-200 rounded-2xl p-5 shadow-xs space-y-4">
+          <div class="flex items-center justify-between border-b border-slate-100 pb-3">
+            <h3 class="text-xs font-bold uppercase tracking-wider text-slate-700 flex items-center gap-2">
               <span>🎓 Academic Year Demographics</span>
             </h3>
-            <span class="text-[10px] font-extrabold text-emerald-700 bg-emerald-50 px-2.5 py-0.5 rounded-full border border-emerald-200" id="year-lead-tag">3rd Year Leading</span>
+            <span class="text-[11px] font-bold text-emerald-700 bg-emerald-50 px-2.5 py-0.5 rounded-full border border-emerald-100" id="year-lead-tag">3rd Year Leading</span>
           </div>
-          <div class="space-y-2.5" id="year-progress-container">
+          <div class="space-y-3" id="year-progress-container">
             <!-- Rendered via JS -->
           </div>
         </div>
+
       </div>
 
       <!-- Advanced Filter & Search Control Bar -->
-      <div class="bg-white border border-slate-200/90 rounded-2xl p-4 sm:p-5 shadow-xs space-y-4">
+      <div class="bg-white border border-slate-200 rounded-2xl p-4 sm:p-5 shadow-xs space-y-4">
         
         <div class="flex flex-col lg:flex-row items-center justify-between gap-3">
           
@@ -288,7 +258,7 @@
             <input
               type="text"
               id="admin-search"
-              placeholder="Search Team Name, ID, Leader, Member, Phone, Branch..."
+              placeholder="Search Team Name, ID, Leader, Member, Branch..."
               class="w-full pl-10 pr-4 py-2.5 bg-slate-50 border border-slate-300 rounded-xl text-xs sm:text-sm text-slate-900 placeholder-slate-400 focus:outline-none focus:ring-2 focus:ring-blue-600 font-medium"
             />
             <svg class="w-4 h-4 text-slate-400 absolute left-3.5 top-3" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z"/></svg>
@@ -297,13 +267,6 @@
           <!-- Dropdown Filters Row -->
           <div class="flex items-center gap-2 flex-wrap w-full lg:w-auto">
             
-            <!-- Compliance Audit Filter -->
-            <select id="filter-compliance" class="px-3 py-2 bg-red-50 text-red-900 border border-red-300 rounded-xl text-xs focus:outline-none focus:ring-2 focus:ring-red-600 font-extrabold">
-              <option value="ALL">All Audit Statuses</option>
-              <option value="RED_FLAG">🚩 Red Flagged Teams Only</option>
-              <option value="CLEAN">✅ 100% Verified Unique Only</option>
-            </select>
-
             <!-- Year Filter -->
             <select id="filter-year" class="px-3 py-2 bg-slate-50 border border-slate-300 rounded-xl text-xs text-slate-900 focus:outline-none focus:ring-2 focus:ring-blue-600 font-bold">
               <option value="ALL">All Academic Years</option>
@@ -332,21 +295,21 @@
             </select>
 
             <!-- Export CSV Button -->
-            <button type="button" id="btn-export-csv" class="px-3.5 py-2 bg-emerald-600 hover:bg-emerald-700 text-white font-extrabold text-xs rounded-xl shadow-xs transition-transform active:scale-95 flex items-center gap-1.5">
+            <button type="button" id="btn-export-csv" class="px-3.5 py-2 bg-emerald-600 hover:bg-emerald-700 text-white font-bold text-xs rounded-xl shadow-xs transition-all active:scale-95 flex items-center gap-1.5">
               <span>📥 Export CSV</span>
             </button>
 
             <!-- Print Report Button -->
-            <button type="button" onclick="window.print()" class="px-3.5 py-2 bg-slate-800 hover:bg-slate-900 text-white font-extrabold text-xs rounded-xl shadow-xs transition-transform active:scale-95 flex items-center gap-1.5">
+            <button type="button" onclick="window.print()" class="px-3.5 py-2 bg-slate-800 hover:bg-slate-900 text-white font-bold text-xs rounded-xl shadow-xs transition-all active:scale-95 flex items-center gap-1.5">
               <span>🖨️ Print Report</span>
             </button>
           </div>
 
         </div>
 
-        <div class="flex items-center justify-between text-xs text-slate-500 px-1 border-t border-slate-200/80 pt-3">
-          <span id="filtered-count-badge" class="font-black text-blue-700">Showing 0 of 0 Teams</span>
-          <span id="last-sync-badge" class="text-[11px] font-semibold text-slate-500">Last Synced: Just Now</span>
+        <div class="flex items-center justify-between text-xs text-slate-500 px-1 border-t border-slate-100 pt-3">
+          <span id="filtered-count-badge" class="font-bold text-blue-700">Showing 0 of 0 Teams</span>
+          <span id="last-sync-badge" class="text-[11px] font-semibold text-slate-400">Last Synced: Just Now</span>
         </div>
 
       </div>

@@ -1,6 +1,6 @@
 /**
- * SIH 2026 Advanced Admin Intelligence Portal Script
- * Real-time Analytics, Anti-SQL Injection, Visual CAPTCHA, Interactive Drill-Down Modals, Filter Engine & Live Sheet Sync
+ * SIH 2026 Clean Admin Intelligence & Demographics Portal Script
+ * Real-time Demographics, Soft Light Theme, Visual Progress Bars, Interactive Roster Viewer & Live Sheet Sync
  */
 (() => {
   'use strict';
@@ -20,7 +20,6 @@
 
     // Toggles & Sync
     btnSyncLive: document.getElementById('btn-sync-live'),
-    btnCheckDuplicates: document.getElementById('btn-check-duplicates'),
     syncSpinner: document.getElementById('sync-spinner'),
 
     // Clickable Stat Cards
@@ -28,7 +27,6 @@
     cardStatGender: document.getElementById('card-stat-gender'),
     cardStatYear: document.getElementById('card-stat-year'),
     cardStatBranch: document.getElementById('card-stat-branch'),
-    cardStatAudit: document.getElementById('card-stat-audit'),
 
     // Stat Elements
     statTotalTeams: document.getElementById('stat-total-teams'),
@@ -42,10 +40,8 @@
     statY4: document.getElementById('stat-y4'),
     statCseCount: document.getElementById('stat-cse-count'),
     statOtherBranches: document.getElementById('stat-other-branches'),
-    statAuditCount: document.getElementById('stat-audit-count'),
-    statDuplicateCount: document.getElementById('stat-duplicate-count'),
 
-    // Visual Analytics Progress Containers
+    // Visual Demographics Containers
     branchProgressContainer: document.getElementById('branch-progress-container'),
     yearProgressContainer: document.getElementById('year-progress-container'),
     branchLeadTag: document.getElementById('branch-lead-tag'),
@@ -59,7 +55,6 @@
 
     // Search & Filter Controls
     adminSearch: document.getElementById('admin-search'),
-    filterCompliance: document.getElementById('filter-compliance'),
     filterYear: document.getElementById('filter-year'),
     filterBranch: document.getElementById('filter-branch'),
     filterGender: document.getElementById('filter-gender'),
@@ -90,11 +85,6 @@
 
   let rawTeamsData = [];
   let filteredTeams = [];
-  let auditResults = {
-    totalRedFlaggedCount: 0,
-    totalDuplicateStudentsCount: 0,
-    duplicateMap: new Map()
-  };
 
   /* ---------- Security Helpers ---------- */
 
@@ -126,45 +116,35 @@
 
     ctx.clearRect(0, 0, canvas.width, canvas.height);
 
-    // Background gradient
+    // Soft slate background
     const grad = ctx.createLinearGradient(0, 0, canvas.width, canvas.height);
-    grad.addColorStop(0, '#0f172a');
-    grad.addColorStop(1, '#1e293b');
+    grad.addColorStop(0, '#1e293b');
+    grad.addColorStop(1, '#0f172a');
     ctx.fillStyle = grad;
     ctx.fillRect(0, 0, canvas.width, canvas.height);
 
-    // Noise lines
-    for (let i = 0; i < 6; i++) {
-      ctx.strokeStyle = `rgba(59, 130, 246, ${0.3 + Math.random() * 0.3})`;
-      ctx.lineWidth = 1 + Math.random();
+    // Subtle noise lines
+    for (let i = 0; i < 4; i++) {
+      ctx.strokeStyle = `rgba(148, 163, 184, ${0.2 + Math.random() * 0.2})`;
+      ctx.lineWidth = 1;
       ctx.beginPath();
       ctx.moveTo(Math.random() * canvas.width, Math.random() * canvas.height);
       ctx.lineTo(Math.random() * canvas.width, Math.random() * canvas.height);
       ctx.stroke();
     }
 
-    // Noise dots
-    for (let i = 0; i < 35; i++) {
-      ctx.fillStyle = `rgba(148, 163, 184, ${Math.random() * 0.6})`;
-      ctx.beginPath();
-      ctx.arc(Math.random() * canvas.width, Math.random() * canvas.height, Math.random() * 1.5, 0, Math.PI * 2);
-      ctx.fill();
-    }
-
     // Text characters
-    const colors = ['#38bdf8', '#818cf8', '#34d399', '#f43f5e', '#fbbf24'];
+    const colors = ['#38bdf8', '#a78bfa', '#34d399', '#f472b6', '#fbbf24'];
     for (let i = 0; i < code.length; i++) {
       const char = code[i];
       ctx.save();
       const x = 15 + i * 22;
       const y = 28 + (Math.random() * 4 - 2);
-      const angle = (Math.random() * 0.3 - 0.15);
+      const angle = (Math.random() * 0.2 - 0.1);
       ctx.translate(x, y);
       ctx.rotate(angle);
       ctx.font = 'bold 22px monospace';
       ctx.fillStyle = colors[i % colors.length];
-      ctx.shadowColor = 'rgba(0, 0, 0, 0.6)';
-      ctx.shadowBlur = 4;
       ctx.fillText(char, 0, 0);
       ctx.restore();
     }
@@ -325,7 +305,7 @@
     } finally {
       if (els.syncSpinner) els.syncSpinner.classList.remove('animate-spin');
       if (els.lastSyncBadge) {
-        els.lastSyncBadge.textContent = `Live Synced: ${new Date().toLocaleTimeString()}`;
+        els.lastSyncBadge.textContent = `Last Synced: ${new Date().toLocaleTimeString()}`;
       }
       calculateAnalytics();
       applyFilters();
@@ -342,28 +322,18 @@
     let yCount = { '1st Year': 0, '2nd Year': 0, '3rd Year': 0, '4th Year': 0 };
     let branchCounts = { CSE: 0, ECE: 0, ME: 0, EE: 0, CIVIL: 0, IT: 0, OTHER: 0 };
 
-    const studentMap = new Map(); // For Duplicate Audit
-
     rawTeamsData.forEach(team => {
       const members = Array.isArray(team.teamMembers) ? team.teamMembers : [];
       const allStudents = [
         {
-          isLeader: true,
-          name: team.teamLeaderName || 'Leader',
           gender: team.leaderGender || 'Male',
           branch: team.leaderBranch || 'CSE',
-          year: team.leaderYear || '3rd Year',
-          mobile: team.leaderMobile || 'N/A',
-          email: team.leaderEmail || 'N/A'
+          year: team.leaderYear || '3rd Year'
         },
-        ...members.map((m, idx) => ({
-          isLeader: false,
-          name: m.name || `Member ${idx + 1}`,
+        ...members.map(m => ({
           gender: m.gender || 'Male',
           branch: m.branch || 'CSE',
-          year: m.year || '3rd Year',
-          mobile: m.mobile || 'N/A',
-          email: m.email || 'N/A'
+          year: m.year || '3rd Year'
         }))
       ];
 
@@ -391,47 +361,18 @@
         else if (b.includes('CIVIL')) branchCounts.CIVIL++;
         else if (b.includes('IT') || b.includes('INFORMATION')) branchCounts.IT++;
         else branchCounts.OTHER++;
-
-        // Audit map
-        const key = (st.name || '').trim().toLowerCase();
-        if (key && key.length > 3) {
-          if (!studentMap.has(key)) studentMap.set(key, []);
-          studentMap.get(key).push({
-            teamName: team.teamName,
-            regId: team.registrationId,
-            role: st.isLeader ? 'Leader' : 'Member',
-            mobile: st.mobile,
-            email: st.email
-          });
-        }
       });
     });
 
-    // Audit results
-    const duplicateMap = new Map();
-    let totalRedFlaggedTeams = new Set();
-    let duplicateStudentsCount = 0;
-
-    studentMap.forEach((occurrences, key) => {
-      if (occurrences.length > 1) {
-        duplicateMap.set(key, occurrences);
-        duplicateStudentsCount++;
-        occurrences.forEach(o => totalRedFlaggedTeams.add(o.regId));
-      }
-    });
-
-    auditResults = {
-      totalRedFlaggedCount: totalRedFlaggedTeams.size,
-      totalDuplicateStudentsCount: duplicateStudentsCount,
-      duplicateMap
-    };
+    const malePct = totalParticipants > 0 ? Math.round((maleCount / totalParticipants) * 100) : 0;
+    const femalePct = totalParticipants > 0 ? Math.round((femaleCount / totalParticipants) * 100) : 0;
 
     // Update Stat Cards in UI
     if (els.statTotalTeams) els.statTotalTeams.textContent = rawTeamsData.length;
-    if (els.statTotalParticipants) els.statTotalParticipants.textContent = `${totalParticipants} Students`;
-    if (els.statMaleCount) els.statMaleCount.textContent = `👨 ${maleCount} Male`;
-    if (els.statFemaleCount) els.statFemaleCount.textContent = `👩 ${femaleCount} Female`;
-    if (els.statGenderBreakdown) els.statGenderBreakdown.textContent = `2nd Yr M: ${yCount['2nd Year']} | 3rd Yr F: ${yCount['3rd Year']}`;
+    if (els.statTotalParticipants) els.statTotalParticipants.textContent = `${totalParticipants} Participants`;
+    if (els.statMaleCount) els.statMaleCount.textContent = `👨 ${maleCount} Male (${malePct}%)`;
+    if (els.statFemaleCount) els.statFemaleCount.textContent = `👩 ${femaleCount} Female (${femalePct}%)`;
+    if (els.statGenderBreakdown) els.statGenderBreakdown.textContent = `Male: ${malePct}% | Female: ${femalePct}%`;
 
     if (els.statY1) els.statY1.textContent = yCount['1st Year'];
     if (els.statY2) els.statY2.textContent = yCount['2nd Year'];
@@ -441,19 +382,16 @@
     if (els.statCseCount) els.statCseCount.textContent = `CSE: ${branchCounts.CSE} Students`;
     if (els.statOtherBranches) els.statOtherBranches.textContent = `ECE: ${branchCounts.ECE} | ME: ${branchCounts.ME} | Civil: ${branchCounts.CIVIL}`;
 
-    if (els.statAuditCount) els.statAuditCount.textContent = auditResults.totalRedFlaggedCount > 0 ? `${auditResults.totalRedFlaggedCount} Red Flagged` : '100% Clean';
-    if (els.statDuplicateCount) els.statDuplicateCount.textContent = `${auditResults.totalDuplicateStudentsCount} Duplicates`;
-
-    // Render Branch Visual Progress Bars
+    // Render Branch Visual Progress Bars (Soft Slate/Blue Pastel Palette)
     if (els.branchProgressContainer) {
       const branchColors = {
-        CSE: { bg: 'bg-blue-600', text: 'text-blue-800' },
-        ECE: { bg: 'bg-purple-600', text: 'text-purple-800' },
-        ME: { bg: 'bg-amber-600', text: 'text-amber-800' },
-        EE: { bg: 'bg-cyan-600', text: 'text-cyan-800' },
-        CIVIL: { bg: 'bg-emerald-600', text: 'text-emerald-800' },
-        IT: { bg: 'bg-indigo-600', text: 'text-indigo-800' },
-        OTHER: { bg: 'bg-slate-600', text: 'text-slate-800' }
+        CSE: { bg: 'bg-blue-500', text: 'text-blue-700' },
+        ECE: { bg: 'bg-purple-500', text: 'text-purple-700' },
+        ME: { bg: 'bg-amber-500', text: 'text-amber-700' },
+        EE: { bg: 'bg-cyan-500', text: 'text-cyan-700' },
+        CIVIL: { bg: 'bg-emerald-500', text: 'text-emerald-700' },
+        IT: { bg: 'bg-indigo-500', text: 'text-indigo-700' },
+        OTHER: { bg: 'bg-slate-400', text: 'text-slate-700' }
       };
 
       const sortedBranches = Object.entries(branchCounts).sort((a, b) => b[1] - a[1]);
@@ -464,14 +402,14 @@
       let bHtml = '';
       sortedBranches.forEach(([br, count]) => {
         const pct = totalParticipants > 0 ? Math.round((count / totalParticipants) * 100) : 0;
-        const style = branchColors[br] || { bg: 'bg-blue-600', text: 'text-blue-800' };
+        const style = branchColors[br] || { bg: 'bg-blue-500', text: 'text-blue-700' };
         bHtml += `
           <div>
-            <div class="flex items-center justify-between text-xs font-bold mb-1">
-              <span class="${style.text}">${br} Department</span>
+            <div class="flex items-center justify-between text-xs font-semibold mb-1">
+              <span class="${style.text} font-bold">${br} Department</span>
               <span class="text-slate-600 font-mono text-[11px]">${count} Students (${pct}%)</span>
             </div>
-            <div class="w-full h-2 bg-slate-100 rounded-full overflow-hidden border border-slate-200/80">
+            <div class="w-full h-2 bg-slate-100 rounded-full overflow-hidden border border-slate-200">
               <div class="${style.bg} h-full rounded-full transition-all duration-500" style="width: ${pct}%"></div>
             </div>
           </div>
@@ -483,10 +421,10 @@
     // Render Academic Year Visual Progress Bars
     if (els.yearProgressContainer) {
       const yearColors = {
-        '1st Year': { bg: 'bg-teal-500', text: 'text-teal-800' },
-        '2nd Year': { bg: 'bg-blue-600', text: 'text-blue-800' },
-        '3rd Year': { bg: 'bg-emerald-600', text: 'text-emerald-800' },
-        '4th Year': { bg: 'bg-purple-600', text: 'text-purple-800' }
+        '1st Year': { bg: 'bg-teal-500', text: 'text-teal-700' },
+        '2nd Year': { bg: 'bg-blue-500', text: 'text-blue-700' },
+        '3rd Year': { bg: 'bg-emerald-500', text: 'text-emerald-700' },
+        '4th Year': { bg: 'bg-indigo-500', text: 'text-indigo-700' }
       };
 
       const sortedYears = Object.entries(yCount).sort((a, b) => b[1] - a[1]);
@@ -497,19 +435,34 @@
       let yHtml = '';
       sortedYears.forEach(([yr, count]) => {
         const pct = totalParticipants > 0 ? Math.round((count / totalParticipants) * 100) : 0;
-        const style = yearColors[yr] || { bg: 'bg-emerald-600', text: 'text-emerald-800' };
+        const style = yearColors[yr] || { bg: 'bg-emerald-500', text: 'text-emerald-700' };
         yHtml += `
           <div>
-            <div class="flex items-center justify-between text-xs font-bold mb-1">
-              <span class="${style.text}">${yr}</span>
+            <div class="flex items-center justify-between text-xs font-semibold mb-1">
+              <span class="${style.text} font-bold">${yr}</span>
               <span class="text-slate-600 font-mono text-[11px]">${count} Students (${pct}%)</span>
             </div>
-            <div class="w-full h-2 bg-slate-100 rounded-full overflow-hidden border border-slate-200/80">
+            <div class="w-full h-2 bg-slate-100 rounded-full overflow-hidden border border-slate-200">
               <div class="${style.bg} h-full rounded-full transition-all duration-500" style="width: ${pct}%"></div>
             </div>
           </div>
         `;
       });
+
+      // Add Clean Horizontal Gender Split Bar
+      yHtml += `
+        <div class="pt-2 border-t border-slate-100 mt-2">
+          <div class="flex items-center justify-between text-xs font-bold mb-1">
+            <span class="text-slate-700">Gender Balance Ratio</span>
+            <span class="text-slate-600 font-mono text-[11px]">👨 ${malePct}% Male | 👩 ${femalePct}% Female</span>
+          </div>
+          <div class="w-full h-2.5 bg-slate-100 rounded-full overflow-hidden flex border border-slate-200">
+            <div class="bg-blue-500 h-full" style="width: ${malePct}%" title="Male ${malePct}%"></div>
+            <div class="bg-pink-500 h-full" style="width: ${femalePct}%" title="Female ${femalePct}%"></div>
+          </div>
+        </div>
+      `;
+
       els.yearProgressContainer.innerHTML = yHtml;
     }
   }
@@ -518,7 +471,6 @@
 
   function applyFilters() {
     const q = (els.adminSearch ? els.adminSearch.value : '').toLowerCase().trim();
-    const compliance = els.filterCompliance ? els.filterCompliance.value : 'ALL';
     const yrFilter = els.filterYear ? els.filterYear.value : 'ALL';
     const brFilter = els.filterBranch ? els.filterBranch.value : 'ALL';
     const genderFilter = els.filterGender ? els.filterGender.value : 'ALL';
@@ -581,7 +533,7 @@
     filteredTeams.forEach(team => {
       const regId = team.registrationId || 'SIH2026-REG';
       const tr = document.createElement('tr');
-      tr.className = 'hover:bg-blue-50/70 transition-colors border-b border-slate-200/80 cursor-pointer group';
+      tr.className = 'hover:bg-slate-50 transition-colors border-b border-slate-200 cursor-pointer group';
 
       const members = Array.isArray(team.teamMembers) ? team.teamMembers : [];
       const allStudents = [
@@ -599,25 +551,25 @@
 
       tr.innerHTML = `
         <td class="py-3.5 px-4">
-          <div class="font-mono text-[10px] font-extrabold text-blue-700">${regId}</div>
-          <div class="font-black text-slate-900 text-sm group-hover:text-blue-700 transition-colors">${escapeHtml(team.teamName || 'Tech Team')}</div>
+          <div class="font-mono text-[10px] font-bold text-blue-700">${regId}</div>
+          <div class="font-bold text-slate-900 text-sm group-hover:text-blue-600 transition-colors">${escapeHtml(team.teamName || 'Tech Team')}</div>
         </td>
         <td class="py-3.5 px-4">
-          <div class="font-extrabold text-slate-900">${escapeHtml(team.teamLeaderName || 'Leader')}</div>
-          <div class="text-[11px] text-slate-600 font-mono">📞 ${escapeHtml(team.leaderMobile || 'N/A')}</div>
+          <div class="font-semibold text-slate-900">${escapeHtml(team.teamLeaderName || 'Leader')}</div>
+          <div class="text-[11px] text-slate-500 font-mono">📞 ${escapeHtml(team.leaderMobile || 'N/A')}</div>
         </td>
         <td class="py-3.5 px-4 text-center">
-          <span class="inline-flex items-center gap-1 text-[11px] font-extrabold bg-slate-100 border border-slate-200/90 px-2.5 py-1 rounded-full shadow-sm">
+          <span class="inline-flex items-center gap-1 text-[11px] font-bold bg-slate-50 border border-slate-200 px-2.5 py-1 rounded-full">
             <span class="text-blue-700">👨 ${maleCount}</span>
-            <span class="text-pink-700">👩 ${femaleCount}</span>
+            <span class="text-pink-600">👩 ${femaleCount}</span>
           </span>
         </td>
         <td class="py-3.5 px-4">
-          <div class="font-bold text-amber-800 text-xs">${escapeHtml(team.leaderBranch || 'CSE')}</div>
-          <div class="text-[11px] text-slate-500 font-medium">${escapeHtml(team.leaderYear || '3rd Year')}</div>
+          <div class="font-semibold text-slate-800 text-xs">${escapeHtml(team.leaderBranch || 'CSE')}</div>
+          <div class="text-[11px] text-slate-500">${escapeHtml(team.leaderYear || '3rd Year')}</div>
         </td>
         <td class="py-3.5 px-4 text-right">
-          <button type="button" class="btn-view-roster px-3.5 py-1.5 bg-blue-600 hover:bg-blue-700 text-white font-extrabold text-[11px] rounded-xl shadow-sm transition-transform active:scale-95 flex items-center gap-1 ml-auto" data-regid="${regId}">
+          <button type="button" class="btn-view-roster px-3 py-1.5 bg-blue-600 hover:bg-blue-700 text-white font-bold text-[11px] rounded-xl shadow-xs transition-all active:scale-95 flex items-center gap-1 ml-auto" data-regid="${regId}">
             <span>View Roster</span> 🔍
           </button>
         </td>
@@ -654,12 +606,12 @@
       let html = `<div class="space-y-3">`;
       rawTeamsData.forEach((t, idx) => {
         html += `
-          <div class="p-3 bg-slate-50 border border-slate-200/80 rounded-xl flex items-center justify-between hover:bg-blue-50/50 cursor-pointer transition-colors" onclick="closeStatModal(); openTeamRosterModalByRegId('${t.registrationId}')">
+          <div class="p-3 bg-slate-50 border border-slate-200 rounded-xl flex items-center justify-between hover:bg-blue-50/50 cursor-pointer transition-colors" onclick="closeStatModal(); openTeamRosterModalByRegId('${t.registrationId}')">
             <div>
-              <div class="text-xs font-black text-slate-900">#${idx + 1} ${escapeHtml(t.teamName)} (${t.registrationId})</div>
+              <div class="text-xs font-bold text-slate-900">#${idx + 1} ${escapeHtml(t.teamName)} (${t.registrationId})</div>
               <div class="text-[11px] text-slate-600">Leader: ${escapeHtml(t.teamLeaderName)} | ${escapeHtml(t.leaderBranch)} (${escapeHtml(t.leaderYear)})</div>
             </div>
-            <span class="text-xs font-bold text-blue-700 underline">View Roster →</span>
+            <span class="text-xs font-bold text-blue-600 underline">View Roster →</span>
           </div>
         `;
       });
@@ -702,16 +654,16 @@
       let html = `
         <div class="grid grid-cols-2 gap-4 text-center mb-4">
           <div class="bg-blue-50 p-4 rounded-2xl border border-blue-200">
-            <div class="text-2xl font-black text-blue-800">👨 ${maleCount}</div>
-            <div class="text-xs font-extrabold text-blue-900">Total Male Students</div>
+            <div class="text-2xl font-bold text-blue-800">👨 ${maleCount}</div>
+            <div class="text-xs font-bold text-blue-900">Total Male Students</div>
           </div>
           <div class="bg-pink-50 p-4 rounded-2xl border border-pink-200">
-            <div class="text-2xl font-black text-pink-800">👩 ${femaleCount}</div>
-            <div class="text-xs font-extrabold text-pink-900">Total Female Students</div>
+            <div class="text-2xl font-bold text-pink-800">👩 ${femaleCount}</div>
+            <div class="text-xs font-bold text-pink-900">Total Female Students</div>
           </div>
         </div>
 
-        <h4 class="text-xs font-black uppercase text-slate-700 tracking-wider">Year-wise Gender Breakdown</h4>
+        <h4 class="text-xs font-bold uppercase text-slate-700 tracking-wider mb-2">Year-wise Gender Breakdown</h4>
         <div class="border border-slate-200 rounded-xl overflow-hidden text-xs">
           <table class="w-full text-left">
             <thead class="bg-slate-100 text-slate-700 font-bold">
@@ -755,10 +707,10 @@
 
       let html = `
         <div class="grid grid-cols-2 sm:grid-cols-4 gap-3 text-center mb-4">
-          <div class="bg-emerald-50 p-3 rounded-xl border border-emerald-200"><div class="text-xl font-black text-emerald-800">${yCount['1st Year']}</div><div class="text-[11px] font-bold text-emerald-900">1st Year</div></div>
-          <div class="bg-emerald-50 p-3 rounded-xl border border-emerald-200"><div class="text-xl font-black text-emerald-800">${yCount['2nd Year']}</div><div class="text-[11px] font-bold text-emerald-900">2nd Year</div></div>
-          <div class="bg-emerald-50 p-3 rounded-xl border border-emerald-200"><div class="text-xl font-black text-emerald-800">${yCount['3rd Year']}</div><div class="text-[11px] font-bold text-emerald-900">3rd Year</div></div>
-          <div class="bg-emerald-50 p-3 rounded-xl border border-emerald-200"><div class="text-xl font-black text-emerald-800">${yCount['4th Year']}</div><div class="text-[11px] font-bold text-emerald-900">4th Year</div></div>
+          <div class="bg-emerald-50 p-3 rounded-xl border border-emerald-200"><div class="text-xl font-bold text-emerald-800">${yCount['1st Year']}</div><div class="text-[11px] font-bold text-emerald-900">1st Year</div></div>
+          <div class="bg-emerald-50 p-3 rounded-xl border border-emerald-200"><div class="text-xl font-bold text-emerald-800">${yCount['2nd Year']}</div><div class="text-[11px] font-bold text-emerald-900">2nd Year</div></div>
+          <div class="bg-emerald-50 p-3 rounded-xl border border-emerald-200"><div class="text-xl font-bold text-emerald-800">${yCount['3rd Year']}</div><div class="text-[11px] font-bold text-emerald-900">3rd Year</div></div>
+          <div class="bg-emerald-50 p-3 rounded-xl border border-emerald-200"><div class="text-xl font-bold text-emerald-800">${yCount['4th Year']}</div><div class="text-[11px] font-bold text-emerald-900">4th Year</div></div>
         </div>
       `;
       els.statModalContent.innerHTML = html;
@@ -788,82 +740,14 @@
 
       let html = `
         <div class="grid grid-cols-2 sm:grid-cols-3 gap-3 text-center">
-          <div class="bg-amber-50 p-3 rounded-xl border border-amber-200"><div class="text-xl font-black text-amber-800">${branchCounts.CSE}</div><div class="text-xs font-bold text-amber-900">Computer Science (CSE)</div></div>
-          <div class="bg-amber-50 p-3 rounded-xl border border-amber-200"><div class="text-xl font-black text-amber-800">${branchCounts.ECE}</div><div class="text-xs font-bold text-amber-900">Electronics (ECE)</div></div>
-          <div class="bg-amber-50 p-3 rounded-xl border border-amber-200"><div class="text-xl font-black text-amber-800">${branchCounts.ME}</div><div class="text-xs font-bold text-amber-900">Mechanical (ME)</div></div>
-          <div class="bg-amber-50 p-3 rounded-xl border border-amber-200"><div class="text-xl font-black text-amber-800">${branchCounts.EE}</div><div class="text-xs font-bold text-amber-900">Electrical (EE)</div></div>
-          <div class="bg-amber-50 p-3 rounded-xl border border-amber-200"><div class="text-xl font-black text-amber-800">${branchCounts.CIVIL}</div><div class="text-xs font-bold text-amber-900">Civil Engineering</div></div>
-          <div class="bg-amber-50 p-3 rounded-xl border border-amber-200"><div class="text-xl font-black text-amber-800">${branchCounts.IT}</div><div class="text-xs font-bold text-amber-900">Information Tech (IT)</div></div>
+          <div class="bg-amber-50 p-3 rounded-xl border border-amber-200"><div class="text-xl font-bold text-amber-800">${branchCounts.CSE}</div><div class="text-xs font-bold text-amber-900">Computer Science (CSE)</div></div>
+          <div class="bg-amber-50 p-3 rounded-xl border border-amber-200"><div class="text-xl font-bold text-amber-800">${branchCounts.ECE}</div><div class="text-xs font-bold text-amber-900">Electronics (ECE)</div></div>
+          <div class="bg-amber-50 p-3 rounded-xl border border-amber-200"><div class="text-xl font-bold text-amber-800">${branchCounts.ME}</div><div class="text-xs font-bold text-amber-900">Mechanical (ME)</div></div>
+          <div class="bg-amber-50 p-3 rounded-xl border border-amber-200"><div class="text-xl font-bold text-amber-800">${branchCounts.EE}</div><div class="text-xs font-bold text-amber-900">Electrical (EE)</div></div>
+          <div class="bg-amber-50 p-3 rounded-xl border border-amber-200"><div class="text-xl font-bold text-amber-800">${branchCounts.CIVIL}</div><div class="text-xs font-bold text-amber-900">Civil Engineering</div></div>
+          <div class="bg-amber-50 p-3 rounded-xl border border-amber-200"><div class="text-xl font-bold text-amber-800">${branchCounts.IT}</div><div class="text-xs font-bold text-amber-900">Information Tech (IT)</div></div>
         </div>
       `;
-      els.statModalContent.innerHTML = html;
-
-    } else if (type === 'audit') {
-      els.statModalTitle.textContent = '🚩 SIH 2026 Roster Integrity & Compliance Audit Report';
-      els.statModalSubtitle.textContent = `In-depth cross-team duplicate student & red-flag detection report across all ${rawTeamsData.length} teams`;
-
-      let html = `
-        <div class="grid grid-cols-1 sm:grid-cols-3 gap-3 text-center mb-4">
-          <div class="bg-red-50 p-3 rounded-xl border border-red-200">
-            <div class="text-2xl font-black text-red-800">${auditResults.totalRedFlaggedCount}</div>
-            <div class="text-xs font-extrabold text-red-900">Red Flagged Teams</div>
-          </div>
-          <div class="bg-amber-50 p-3 rounded-xl border border-amber-200">
-            <div class="text-2xl font-black text-amber-800">${auditResults.totalDuplicateStudentsCount}</div>
-            <div class="text-xs font-extrabold text-amber-900">Duplicate Students</div>
-          </div>
-          <div class="bg-emerald-50 p-3 rounded-xl border border-emerald-200">
-            <div class="text-2xl font-black text-emerald-800">${rawTeamsData.length > 0 ? Math.round(((rawTeamsData.length - auditResults.totalRedFlaggedCount) / rawTeamsData.length) * 100) : 100}%</div>
-            <div class="text-xs font-extrabold text-emerald-900">Unique Compliance Score</div>
-          </div>
-        </div>
-      `;
-
-      if (auditResults.duplicateMap.size === 0) {
-        html += `
-          <div class="p-6 bg-emerald-50 border border-emerald-200 rounded-2xl text-center">
-            <div class="text-3xl mb-2">🎉</div>
-            <h4 class="text-base font-black text-emerald-900">No Duplicate Students Detected!</h4>
-            <p class="text-xs text-emerald-700 mt-1">All student participants are 100% unique across all registered teams.</p>
-          </div>
-        `;
-      } else {
-        html += `
-          <h4 class="text-xs font-black uppercase text-red-800 tracking-wider mb-2">🚨 Duplicate Students Breakdown (${auditResults.duplicateMap.size} Found)</h4>
-          <div class="space-y-3">
-        `;
-
-        auditResults.duplicateMap.forEach((occurrences, studentName) => {
-          html += `
-            <div class="bg-white p-3.5 rounded-xl border border-red-200 shadow-sm">
-              <div class="flex items-center justify-between">
-                <span class="font-extrabold text-slate-900 text-xs">👤 ${escapeHtml(studentName.toUpperCase())}</span>
-                <span class="text-[10px] font-black text-red-700 bg-red-100 px-2 py-0.5 rounded-md">Present in ${occurrences.length} Teams</span>
-              </div>
-              <div class="mt-2 space-y-1 text-xs">
-          `;
-          occurrences.forEach(occ => {
-            html += `
-              <div class="flex items-center justify-between bg-slate-50 p-2 rounded-lg border border-slate-200/80">
-                <div>
-                  <span class="font-bold text-blue-900">${escapeHtml(occ.teamName)}</span>
-                  <span class="text-[10px] text-slate-500 font-mono">(${occ.regId})</span>
-                  <span class="text-[10px] font-bold text-slate-600"> - ${occ.role}</span>
-                </div>
-                <div class="text-[10px] font-mono text-slate-700">
-                  📞 ${escapeHtml(occ.mobile)} | ✉️ ${escapeHtml(occ.email)}
-                </div>
-              </div>
-            `;
-          });
-          html += `
-              </div>
-            </div>
-          `;
-        });
-        html += `</div>`;
-      }
-
       els.statModalContent.innerHTML = html;
     }
 
@@ -922,28 +806,28 @@
 
     if (els.modalSummaryBox) {
       els.modalSummaryBox.innerHTML = `
-        <div class="bg-white p-3 rounded-xl border border-blue-200/90 shadow-sm">
-          <div class="text-[10px] font-black uppercase text-blue-800 tracking-wider">Team Leader Info</div>
-          <div class="text-xs font-black text-slate-900 mt-0.5">${escapeHtml(team.teamLeaderName || 'Leader')}</div>
-          <div class="text-[11px] text-slate-600 font-semibold mt-0.5">${escapeHtml(team.leaderBranch || 'CSE')} (${escapeHtml(team.leaderYear || '3rd Year')} - ${escapeHtml(team.leaderSemester || '6th')} Sem)</div>
+        <div class="bg-white p-3 rounded-xl border border-blue-200">
+          <div class="text-[10px] font-bold uppercase text-blue-800 tracking-wider">Team Leader Info</div>
+          <div class="text-xs font-bold text-slate-900 mt-0.5">${escapeHtml(team.teamLeaderName || 'Leader')}</div>
+          <div class="text-[11px] text-slate-600 font-medium mt-0.5">${escapeHtml(team.leaderBranch || 'CSE')} (${escapeHtml(team.leaderYear || '3rd Year')} - ${escapeHtml(team.leaderSemester || '6th')} Sem)</div>
         </div>
 
-        <div class="bg-white p-3 rounded-xl border border-purple-200/90 shadow-sm">
-          <div class="text-[10px] font-black uppercase text-purple-800 tracking-wider">Gender Breakdown</div>
-          <div class="text-xs font-black flex items-center gap-1.5 mt-0.5">
+        <div class="bg-white p-3 rounded-xl border border-purple-200">
+          <div class="text-[10px] font-bold uppercase text-purple-800 tracking-wider">Gender Breakdown</div>
+          <div class="text-xs font-bold flex items-center gap-1.5 mt-0.5">
             <span class="text-blue-700">👨 ${maleCount} Male</span>
             <span class="text-slate-300">•</span>
-            <span class="text-pink-700 font-black">👩 ${femaleCount} Female</span>
+            <span class="text-pink-600 font-bold">👩 ${femaleCount} Female</span>
           </div>
-          <div class="text-[10px] ${ femaleCount > 0 ? 'text-emerald-700 font-extrabold' : 'text-amber-700 font-bold' } mt-0.5">
+          <div class="text-[10px] ${ femaleCount > 0 ? 'text-emerald-700 font-bold' : 'text-amber-700 font-bold' } mt-0.5">
             ${ femaleCount > 0 ? '✅ Mandatory SIH Female Rule Complied' : '⚠️ No Female Member Registered' }
           </div>
         </div>
 
-        <div class="bg-white p-3 rounded-xl border border-amber-200/90 shadow-sm">
-          <div class="text-[10px] font-black uppercase text-amber-800 tracking-wider">Team Roster Status</div>
-          <div class="text-xs font-extrabold text-slate-900 mt-0.5">👥 Total ${rosterList.length} Verified Members</div>
-          <div class="text-[10px] text-emerald-700 font-bold mt-0.5">1 Team Leader + ${rosterList.length - 1} Team Members</div>
+        <div class="bg-white p-3 rounded-xl border border-slate-200">
+          <div class="text-[10px] font-bold uppercase text-slate-700 tracking-wider">Team Roster Status</div>
+          <div class="text-xs font-bold text-slate-900 mt-0.5">👥 Total ${rosterList.length} Verified Members</div>
+          <div class="text-[10px] text-emerald-700 font-medium mt-0.5">1 Team Leader + ${rosterList.length - 1} Team Members</div>
         </div>
       `;
     }
@@ -953,33 +837,33 @@
 
       rosterList.forEach(st => {
         const tr = document.createElement('tr');
-        tr.className = st.isLeader ? 'bg-blue-50/40 border-b border-slate-200/90' : 'hover:bg-slate-50 border-b border-slate-200/80';
+        tr.className = st.isLeader ? 'bg-blue-50/40 border-b border-slate-200' : 'hover:bg-slate-50 border-b border-slate-200';
 
         const isFemale = (st.gender || '').toLowerCase().includes('female') || (st.gender || '').toLowerCase().includes('f');
         const genderBadge = isFemale
-          ? `<span class="inline-flex items-center gap-1 text-[11px] font-extrabold bg-pink-100 text-pink-900 border border-pink-300 px-2.5 py-0.5 rounded-full shadow-sm">👩 FEMALE</span>`
-          : `<span class="inline-flex items-center gap-1 text-[11px] font-bold bg-blue-50 text-blue-800 border border-blue-200 px-2.5 py-0.5 rounded-full">👨 MALE</span>`;
+          ? `<span class="inline-flex items-center gap-1 text-[11px] font-bold bg-pink-50 text-pink-700 border border-pink-200 px-2.5 py-0.5 rounded-full">👩 FEMALE</span>`
+          : `<span class="inline-flex items-center gap-1 text-[11px] font-semibold bg-blue-50 text-blue-700 border border-blue-200 px-2.5 py-0.5 rounded-full">👨 MALE</span>`;
 
         const roleBadge = st.isLeader
-          ? `<span class="inline-flex items-center gap-1 text-[11px] font-black bg-blue-100 text-blue-900 border border-blue-300 px-2.5 py-1 rounded-xl shadow-sm">👑 LEADER</span>`
+          ? `<span class="inline-flex items-center gap-1 text-[11px] font-bold bg-blue-100 text-blue-900 border border-blue-200 px-2.5 py-0.5 rounded-lg">👑 LEADER</span>`
           : `<span class="inline-flex items-center gap-1 text-[11px] font-semibold text-slate-600 bg-slate-100 border border-slate-200 px-2.5 py-0.5 rounded-lg">${st.role}</span>`;
 
         tr.innerHTML = `
-          <td class="py-3 px-4 font-extrabold text-slate-900">
+          <td class="py-3 px-4 font-bold text-slate-900">
             ${roleBadge}
           </td>
           <td class="py-3 px-4">
-            <div class="font-extrabold text-slate-900 text-xs sm:text-sm">${escapeHtml(st.name)}</div>
+            <div class="font-bold text-slate-900 text-xs sm:text-sm">${escapeHtml(st.name)}</div>
           </td>
           <td class="py-3 px-4">
             ${genderBadge}
           </td>
           <td class="py-3 px-4">
-            <div class="font-bold text-amber-800 text-xs">${escapeHtml(st.branch)}</div>
-            <div class="text-[11px] text-slate-600 font-medium">${escapeHtml(st.year)} (${escapeHtml(st.sem)} Sem)</div>
+            <div class="font-semibold text-slate-800 text-xs">${escapeHtml(st.branch)}</div>
+            <div class="text-[11px] text-slate-500 font-medium">${escapeHtml(st.year)} (${escapeHtml(st.sem)} Sem)</div>
           </td>
           <td class="py-3 px-4 text-xs font-mono">
-            <div><a href="tel:${escapeHtml(st.mobile)}" class="text-blue-700 font-bold hover:underline">📞 ${escapeHtml(st.mobile)}</a></div>
+            <div><a href="tel:${escapeHtml(st.mobile)}" class="text-blue-600 font-bold hover:underline">📞 ${escapeHtml(st.mobile)}</a></div>
             <div class="text-[11px] text-slate-500"><a href="mailto:${escapeHtml(st.email)}" class="hover:underline">✉️ ${escapeHtml(st.email)}</a></div>
           </td>
         `;
@@ -1034,7 +918,7 @@
     if (els.captchaInput) els.captchaInput.disabled = true;
     if (els.loginError) {
       els.loginError.classList.remove('hidden');
-      els.loginError.className = 'text-xs text-red-700 bg-red-50 border border-red-200 p-3 rounded-xl text-center font-black';
+      els.loginError.className = 'text-xs text-red-700 bg-red-50 border border-red-200 p-3 rounded-xl text-center font-bold';
       els.loginError.textContent = `⛔ Security Lockout: Too many failed attempts. Try again in ${secondsLeft}s.`;
     }
 
@@ -1079,7 +963,7 @@
           failedAttempts++;
           if (els.loginError) {
             els.loginError.classList.remove('hidden');
-            els.loginError.className = 'text-xs text-red-700 bg-red-100 border border-red-300 p-3 rounded-xl text-center font-black';
+            els.loginError.className = 'text-xs text-red-700 bg-red-100 border border-red-300 p-3 rounded-xl text-center font-bold';
             els.loginError.innerHTML = '🚨 <strong>SECURITY ALERT:</strong> Potential SQL Injection / Malicious Payload blocked!';
           }
           generateCaptcha();
@@ -1144,21 +1028,13 @@
       });
     }
 
-    if (els.btnCheckDuplicates) {
-      els.btnCheckDuplicates.addEventListener('click', () => {
-        openStatModal('audit');
-      });
-    }
-
     // Bind Clickable Stat Cards
     if (els.cardStatTeams) els.cardStatTeams.addEventListener('click', () => openStatModal('teams'));
     if (els.cardStatGender) els.cardStatGender.addEventListener('click', () => openStatModal('gender'));
     if (els.cardStatYear) els.cardStatYear.addEventListener('click', () => openStatModal('year'));
     if (els.cardStatBranch) els.cardStatBranch.addEventListener('click', () => openStatModal('branch'));
-    if (els.cardStatAudit) els.cardStatAudit.addEventListener('click', () => openStatModal('audit'));
 
     if (els.adminSearch) els.adminSearch.addEventListener('input', applyFilters);
-    if (els.filterCompliance) els.filterCompliance.addEventListener('change', applyFilters);
     if (els.filterYear) els.filterYear.addEventListener('change', applyFilters);
     if (els.filterBranch) els.filterBranch.addEventListener('change', applyFilters);
     if (els.filterGender) els.filterGender.addEventListener('change', applyFilters);
