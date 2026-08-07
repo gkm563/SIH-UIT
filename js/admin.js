@@ -247,18 +247,6 @@
     return 'Male';
   }
 
-  function getMemberBranch(leaderBranch, idx, seed) {
-    if ((seed + idx * 7) % 10 < 6) return leaderBranch;
-    const relatedMap = {
-      'CSE': ['CSE (Data Science)', 'CSE (AI & ML)', 'ECE'],
-      'CSE (Data Science)': ['CSE', 'CSE (AI & ML)', 'ECE'],
-      'CSE (AI & ML)': ['CSE', 'CSE (Data Science)', 'ECE'],
-      'ECE': ['CSE', 'CSE (AI & ML)', 'CSE (Data Science)']
-    };
-    const options = relatedMap[leaderBranch] || REAL_BRANCHES;
-    return options[(seed + idx) % options.length];
-  }
-
   function normalizeTeamData(rawTeam) {
     const f = rawTeam.fields || rawTeam;
     const regId = rawTeam.registrationId || f.registrationId || 'SIH2026-REG';
@@ -301,7 +289,8 @@
         const mSeed = seed + i * 19;
         const isFemale = (mSeed % 2 === 0);
         const mName = isFemale ? FEMALE_NAMES[mSeed % FEMALE_NAMES.length] : MALE_NAMES[mSeed % MALE_NAMES.length];
-        const mBranch = getMemberBranch(leaderBranch, i, seed);
+        // Team members match the team leader's department
+        const mBranch = leaderBranch;
         const mYear = REAL_YEARS[(seed + i * 2) % REAL_YEARS.length];
         const mSem = mYear.includes('1') ? '2nd' : mYear.includes('2') ? '4th' : mYear.includes('3') ? '6th' : '8th';
         members.push({
@@ -321,7 +310,7 @@
         return {
           name: mName,
           gender: m.gender ? normalizeGender(m.gender, mSeed) : (mSeed % 2 === 0 ? 'Female' : 'Male'),
-          branch: normalizeBranch(m.branch, mSeed),
+          branch: normalizeBranch(m.branch || leaderBranch, mSeed),
           year: normalizeYear(m.year, mSeed),
           sem: (!m.sem || m.sem === 'N/A' || m.sem === 'NA') ? (m.semester || '6th') : m.sem,
           mobile: (!m.mobile || m.mobile === 'N/A' || m.mobile === 'NA') ? `+91 ${9839000000 + (mSeed % 999999)}` : m.mobile,
@@ -390,10 +379,13 @@
 
   function calculateAnalytics() {
     let totalParticipants = 0;
+    let totalTeams = rawTeamsData.length;
     let maleCount = 0;
     let femaleCount = 0;
 
     let yCount = { '1st Year': 0, '2nd Year': 0, '3rd Year': 0, '4th Year': 0 };
+    let yTeamCount = { '1st Year': 0, '2nd Year': 0, '3rd Year': 0, '4th Year': 0 };
+
     let branchCounts = {
       'CSE': 0,
       'CSE (Data Science)': 0,
@@ -401,7 +393,23 @@
       'ECE': 0
     };
 
+    let branchTeamCounts = {
+      'CSE': 0,
+      'CSE (Data Science)': 0,
+      'CSE (AI & ML)': 0,
+      'ECE': 0
+    };
+
     rawTeamsData.forEach(team => {
+      const leaderBranch = team.leaderBranch || 'CSE';
+      const leaderYear = team.leaderYear || '3rd Year';
+
+      if (branchTeamCounts[leaderBranch] !== undefined) branchTeamCounts[leaderBranch]++;
+      else branchTeamCounts['CSE']++;
+
+      if (yTeamCount[leaderYear] !== undefined) yTeamCount[leaderYear]++;
+      else yTeamCount['3rd Year']++;
+
       const members = Array.isArray(team.teamMembers) ? team.teamMembers : [];
       const allStudents = [
         {
@@ -439,7 +447,7 @@
     const femalePct = totalParticipants > 0 ? Math.round((femaleCount / totalParticipants) * 100) : 0;
 
     // Update Stat Cards in UI
-    if (els.statTotalTeams) els.statTotalTeams.textContent = rawTeamsData.length;
+    if (els.statTotalTeams) els.statTotalTeams.textContent = totalTeams;
     if (els.statTotalParticipants) els.statTotalParticipants.textContent = `${totalParticipants} Participants`;
     if (els.statMaleCount) els.statMaleCount.textContent = `👨 ${maleCount} Male (${malePct}%)`;
     if (els.statFemaleCount) els.statFemaleCount.textContent = `👩 ${femaleCount} Female (${femalePct}%)`;
@@ -450,10 +458,15 @@
     if (els.statY3) els.statY3.textContent = yCount['3rd Year'];
     if (els.statY4) els.statY4.textContent = yCount['4th Year'];
 
-    if (els.statCseCount) els.statCseCount.textContent = `4 Departments`;
-    if (els.statOtherBranches) els.statOtherBranches.textContent = `CSE: ${branchCounts['CSE']} | DS: ${branchCounts['CSE (Data Science)']} | AI: ${branchCounts['CSE (AI & ML)']} | ECE: ${branchCounts['ECE']}`;
+    const sortedBranches = Object.entries(branchTeamCounts).sort((a, b) => b[1] - a[1]);
+    if (els.statCseCount && sortedBranches.length > 0) {
+      els.statCseCount.textContent = `${sortedBranches[0][0]} Leading`;
+    }
+    if (els.statOtherBranches) {
+      els.statOtherBranches.textContent = `CSE: ${branchTeamCounts['CSE']} Teams | DS: ${branchTeamCounts['CSE (Data Science)']} | AI: ${branchTeamCounts['CSE (AI & ML)']} | ECE: ${branchTeamCounts['ECE']}`;
+    }
 
-    // Render Branch Visual Progress Bars (Soft Slate/Blue Pastel Palette)
+    // Render Branch Visual Progress Bars with BOTH Teams and Student Counts
     if (els.branchProgressContainer) {
       const branchColors = {
         'CSE': { bg: 'bg-blue-500', text: 'text-blue-700' },
@@ -462,22 +475,22 @@
         'ECE': { bg: 'bg-purple-500', text: 'text-purple-700' }
       };
 
-      const sortedBranches = Object.entries(branchCounts).sort((a, b) => b[1] - a[1]);
       if (els.branchLeadTag && sortedBranches.length > 0) {
-        els.branchLeadTag.textContent = `${sortedBranches[0][0]} Leading (${sortedBranches[0][1]} Students)`;
+        els.branchLeadTag.textContent = `${sortedBranches[0][0]} Leading (${sortedBranches[0][1]} Teams / ${branchCounts[sortedBranches[0][0]]} Students)`;
       }
 
       let bHtml = '';
-      sortedBranches.forEach(([br, count]) => {
-        const pct = totalParticipants > 0 ? Math.round((count / totalParticipants) * 100) : 0;
+      sortedBranches.forEach(([br, teamCount]) => {
+        const studentCount = branchCounts[br] || 0;
+        const pct = totalTeams > 0 ? Math.round((teamCount / totalTeams) * 100) : 0;
         const style = branchColors[br] || { bg: 'bg-blue-500', text: 'text-blue-700' };
         bHtml += `
           <div>
             <div class="flex items-center justify-between text-xs font-semibold mb-1">
               <span class="${style.text} font-bold">${br}</span>
-              <span class="text-slate-600 font-mono text-[11px]">${count} Students (${pct}%)</span>
+              <span class="text-slate-700 font-mono text-[11px] font-bold">${teamCount} Teams (${studentCount} Students) • ${pct}%</span>
             </div>
-            <div class="w-full h-2 bg-slate-100 rounded-full overflow-hidden border border-slate-200">
+            <div class="w-full h-2.5 bg-slate-100 rounded-full overflow-hidden border border-slate-200">
               <div class="${style.bg} h-full rounded-full transition-all duration-500" style="width: ${pct}%"></div>
             </div>
           </div>
@@ -495,22 +508,23 @@
         '4th Year': { bg: 'bg-indigo-500', text: 'text-indigo-700' }
       };
 
-      const sortedYears = Object.entries(yCount).sort((a, b) => b[1] - a[1]);
+      const sortedYears = Object.entries(yTeamCount).sort((a, b) => b[1] - a[1]);
       if (els.yearLeadTag && sortedYears.length > 0) {
-        els.yearLeadTag.textContent = `${sortedYears[0][0]} Leading (${sortedYears[0][1]} Students)`;
+        els.yearLeadTag.textContent = `${sortedYears[0][0]} Leading (${sortedYears[0][1]} Teams / ${yCount[sortedYears[0][0]]} Students)`;
       }
 
       let yHtml = '';
-      sortedYears.forEach(([yr, count]) => {
-        const pct = totalParticipants > 0 ? Math.round((count / totalParticipants) * 100) : 0;
+      sortedYears.forEach(([yr, teamCount]) => {
+        const studentCount = yCount[yr] || 0;
+        const pct = totalTeams > 0 ? Math.round((teamCount / totalTeams) * 100) : 0;
         const style = yearColors[yr] || { bg: 'bg-emerald-500', text: 'text-emerald-700' };
         yHtml += `
           <div>
             <div class="flex items-center justify-between text-xs font-semibold mb-1">
               <span class="${style.text} font-bold">${yr}</span>
-              <span class="text-slate-600 font-mono text-[11px]">${count} Students (${pct}%)</span>
+              <span class="text-slate-700 font-mono text-[11px] font-bold">${teamCount} Teams (${studentCount} Students) • ${pct}%</span>
             </div>
-            <div class="w-full h-2 bg-slate-100 rounded-full overflow-hidden border border-slate-200">
+            <div class="w-full h-2.5 bg-slate-100 rounded-full overflow-hidden border border-slate-200">
               <div class="${style.bg} h-full rounded-full transition-all duration-500" style="width: ${pct}%"></div>
             </div>
           </div>
@@ -778,7 +792,7 @@
 
     } else if (type === 'branch') {
       els.statModalTitle.textContent = '💻 Branch / Department Distribution';
-      els.statModalSubtitle.textContent = 'Student counts across CSE, CSE (DS), CSE (AI&ML), and ECE';
+      els.statModalSubtitle.textContent = 'Teams and student counts across CSE, CSE (DS), CSE (AI&ML), and ECE';
 
       let branchCounts = {
         'CSE': 0,
@@ -786,7 +800,17 @@
         'CSE (AI & ML)': 0,
         'ECE': 0
       };
+      let branchTeamCounts = {
+        'CSE': 0,
+        'CSE (Data Science)': 0,
+        'CSE (AI & ML)': 0,
+        'ECE': 0
+      };
+
       rawTeamsData.forEach(t => {
+        const leaderBranch = t.leaderBranch || 'CSE';
+        if (branchTeamCounts[leaderBranch] !== undefined) branchTeamCounts[leaderBranch]++;
+
         const members = Array.isArray(t.teamMembers) ? t.teamMembers : [];
         const allStudents = [
           { branch: t.leaderBranch || 'CSE' },
@@ -800,10 +824,10 @@
 
       let html = `
         <div class="grid grid-cols-2 sm:grid-cols-4 gap-3 text-center">
-          <div class="bg-amber-50 p-3 rounded-xl border border-amber-200"><div class="text-xl font-bold text-amber-800">${branchCounts['CSE']}</div><div class="text-xs font-bold text-amber-900">CSE Core</div></div>
-          <div class="bg-amber-50 p-3 rounded-xl border border-amber-200"><div class="text-xl font-bold text-amber-800">${branchCounts['CSE (Data Science)']}</div><div class="text-xs font-bold text-amber-900">CSE (Data Science)</div></div>
-          <div class="bg-amber-50 p-3 rounded-xl border border-amber-200"><div class="text-xl font-bold text-amber-800">${branchCounts['CSE (AI & ML)']}</div><div class="text-xs font-bold text-amber-900">CSE (AI & ML)</div></div>
-          <div class="bg-amber-50 p-3 rounded-xl border border-amber-200"><div class="text-xl font-bold text-amber-800">${branchCounts['ECE']}</div><div class="text-xs font-bold text-amber-900">ECE</div></div>
+          <div class="bg-blue-50 p-3 rounded-xl border border-blue-200"><div class="text-xl font-bold text-blue-800">${branchTeamCounts['CSE']} Teams</div><div class="text-[11px] text-blue-600 font-semibold">${branchCounts['CSE']} Students</div><div class="text-xs font-bold text-blue-900 mt-1">CSE Core</div></div>
+          <div class="bg-cyan-50 p-3 rounded-xl border border-cyan-200"><div class="text-xl font-bold text-cyan-800">${branchTeamCounts['CSE (Data Science)']} Teams</div><div class="text-[11px] text-cyan-600 font-semibold">${branchCounts['CSE (Data Science)']} Students</div><div class="text-xs font-bold text-cyan-900 mt-1">CSE (Data Science)</div></div>
+          <div class="bg-indigo-50 p-3 rounded-xl border border-indigo-200"><div class="text-xl font-bold text-indigo-800">${branchTeamCounts['CSE (AI & ML)']} Teams</div><div class="text-[11px] text-indigo-600 font-semibold">${branchCounts['CSE (AI & ML)']} Students</div><div class="text-xs font-bold text-indigo-900 mt-1">CSE (AI & ML)</div></div>
+          <div class="bg-purple-50 p-3 rounded-xl border border-purple-200"><div class="text-xl font-bold text-purple-800">${branchTeamCounts['ECE']} Teams</div><div class="text-[11px] text-purple-600 font-semibold">${branchCounts['ECE']} Students</div><div class="text-xs font-bold text-purple-900 mt-1">ECE</div></div>
         </div>
       `;
       els.statModalContent.innerHTML = html;
