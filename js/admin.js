@@ -1,6 +1,7 @@
 /**
  * SIH 2026 Clean Admin Intelligence & Demographics Portal Script
- * Real-time Demographics, Soft Light Theme, Visual Progress Bars, Interactive Roster Viewer & Live Sheet Sync
+ * Real Attributes (CSE, CSE DS, CSE AI&ML, ECE, EE, ME, Civil, IT | 1st, 2nd, 3rd, 4th Year | Male, Female)
+ * Ultra-Clean Light Premium Theme with Interactive Roster Drawer & Live Sheet Sync
  */
 (() => {
   'use strict';
@@ -183,78 +184,63 @@
     bindEvents();
   }
 
-  /* ---------- Data Normalization ---------- */
+  /* ---------- Real Attribute Normalizer ---------- */
 
-  const BRANCHES = ['CSE', 'CSE', 'ECE', 'ME', 'EE', 'CIVIL', 'IT'];
-  const YEARS = ['1st Year', '2nd Year', '2nd Year', '3rd Year', '3rd Year', '3rd Year', '4th Year'];
-  const SEMESTERS = { '1st Year': '2nd', '2nd Year': '4th', '3rd Year': '6th', '4th Year': '8th' };
+  function normalizeBranch(b) {
+    if (!b) return 'CSE';
+    const str = String(b).toUpperCase().trim();
+    if (str.includes('DATA') || str.includes('DS')) return 'CSE (Data Science)';
+    if (str.includes('AI') || str.includes('ML') || str.includes('INTELLIGENCE') || str.includes('MACHINE')) return 'CSE (AI & ML)';
+    if (str.includes('CSE') || str.includes('COMPUTER') || str.includes('COMP')) return 'CSE';
+    if (str.includes('ECE') || str.includes('ELECTRONIC') || str.includes('COMMUNICATION')) return 'ECE';
+    if (str.includes('EE') || str.includes('ELECTRICAL')) return 'EE';
+    if (str.includes('ME') || str.includes('MECHANICAL')) return 'ME';
+    if (str.includes('CIVIL')) return 'CIVIL';
+    if (str.includes('IT') || str.includes('INFORMATION')) return 'IT';
+    return String(b).trim() || 'Other';
+  }
 
-  const MALE_NAMES = [
-    'Aarav Sharma', 'Aditya Verma', 'Amit Kumar', 'Anuj Mishra', 'Ayush Pandey', 'Bhavya Gupta',
-    'Deepak Singh', 'Devansh Tripathi', 'Gautam Maurya', 'Harsh Srivastava', 'Ishaan Agarwal', 'Karan Yadav',
-    'Kartik Srivastava', 'Manish Kumar', 'Mayank Tiwari', 'Naman Singh', 'Nitin Chaudhary', 'Parth Dubey',
-    'Prashant Kumar', 'Rahul Verma', 'Rishabh Shukla', 'Rohan Mehta', 'Sachin Vishwakarma', 'Siddharth Roy',
-    'Shivam Singh', 'Shreyash Mishra', 'Utkarsh Saxena', 'Vaidik Pandey', 'Vikash Kumar', 'Yash Raj'
-  ];
+  function normalizeYear(y) {
+    if (!y) return '3rd Year';
+    const str = String(y).toLowerCase().trim();
+    if (str.includes('1')) return '1st Year';
+    if (str.includes('2')) return '2nd Year';
+    if (str.includes('3')) return '3rd Year';
+    if (str.includes('4')) return '4th Year';
+    return '3rd Year';
+  }
 
-  const FEMALE_NAMES = [
-    'Aanya Singh', 'Ananya Verma', 'Anushka Sharma', 'Avani Mishra', 'Divya Pandey', 'Isha Gupta',
-    'Kriti Srivastava', 'Mansha Agarwal', 'Neha Yadav', 'Pari Tripathi', 'Pooja Vishwakarma', 'Prachi Dubey',
-    'Priya Singh', 'Riya Maurya', 'Sakshi Shukla', 'Saumya Mehta', 'Shreya Tiwari', 'Sneha Chaudhary',
-    'Tanya Saxena', 'Vanshika Raj'
-  ];
-
-  function simpleHash(str) {
-    let hash = 0;
-    for (let i = 0; i < str.length; i++) {
-      hash = ((hash << 5) - hash) + str.charCodeAt(i);
-      hash |= 0;
-    }
-    return Math.abs(hash);
+  function normalizeGender(g) {
+    if (!g) return 'Male';
+    const str = String(g).toLowerCase().trim();
+    if (str.includes('female') || str === 'f') return 'Female';
+    return 'Male';
   }
 
   function normalizeTeamData(rawTeam) {
     const f = rawTeam.fields || rawTeam;
     const regId = rawTeam.registrationId || f.registrationId || 'SIH2026-REG';
-    const name = rawTeam.teamName || f.teamName || 'Tech Team';
-    const seed = simpleHash(regId + name);
+    const name = rawTeam.teamName || f.teamName || 'Registered Team';
 
-    let leaderName = f.teamLeaderName || f.leaderName || f.leader_name || '';
-    let leaderGender = f.leaderGender || f.leader_gender || '';
-    let leaderBranch = f.leaderBranch || f.leader_branch || f.branch || '';
-    let leaderYear = f.leaderYear || f.leader_year || f.year || '';
-    let leaderSem = f.leaderSemester || f.leader_semester || f.semester || '';
-    let leaderMobile = f.leaderMobile || f.leader_mobile || f.phone || '';
-    let leaderEmail = f.leaderEmail || f.leader_email || f.email || '';
-    let members = rawTeam.teamMembers || f.teamMembers;
+    const leaderName = f.teamLeaderName || f.leaderName || f.leader_name || 'Leader';
+    const leaderGender = normalizeGender(f.leaderGender || f.leader_gender);
+    const leaderBranch = normalizeBranch(f.leaderBranch || f.leader_branch || f.branch);
+    const leaderYear = normalizeYear(f.leaderYear || f.leader_year || f.year);
+    const leaderSem = f.leaderSemester || f.leader_semester || f.semester || '6th';
+    const leaderMobile = f.leaderMobile || f.leader_mobile || f.phone || 'N/A';
+    const leaderEmail = f.leaderEmail || f.leader_email || f.email || 'N/A';
 
-    if (!leaderName) {
-      const isLeaderFemale = (seed % 3 === 0);
-      leaderName = isLeaderFemale
-        ? FEMALE_NAMES[seed % FEMALE_NAMES.length]
-        : MALE_NAMES[seed % MALE_NAMES.length];
-      leaderGender = isLeaderFemale ? 'Female' : 'Male';
-      leaderBranch = BRANCHES[seed % BRANCHES.length];
-      leaderYear = YEARS[seed % YEARS.length];
-      leaderSem = SEMESTERS[leaderYear] || '6th';
-      leaderMobile = `+91 ${8924000000 + (seed % 999999)}`;
-      leaderEmail = `${leaderName.toLowerCase().replace(/\s+/g, '')}${seed % 99}@gmail.com`;
-    }
+    const members = Array.isArray(rawTeam.teamMembers || f.teamMembers) ? (rawTeam.teamMembers || f.teamMembers) : [];
 
-    if (!members || members.length === 0) {
-      members = [];
-      for (let i = 1; i <= 5; i++) {
-        const mSeed = seed + i * 17;
-        const isFemale = (mSeed % 2 === 0);
-        members.push({
-          name: isFemale ? FEMALE_NAMES[mSeed % FEMALE_NAMES.length] : MALE_NAMES[mSeed % MALE_NAMES.length],
-          gender: isFemale ? 'Female' : 'Male',
-          branch: BRANCHES[mSeed % BRANCHES.length],
-          year: YEARS[mSeed % YEARS.length],
-          mobile: `+91 ${9839000000 + (mSeed % 999999)}`
-        });
-      }
-    }
+    const normalizedMembers = members.map((m, idx) => ({
+      name: m.name || `Member ${idx + 1}`,
+      gender: normalizeGender(m.gender),
+      branch: normalizeBranch(m.branch),
+      year: normalizeYear(m.year),
+      sem: m.sem || m.semester || '6th',
+      mobile: m.mobile || 'N/A',
+      email: m.email || 'N/A'
+    }));
 
     return {
       registrationId: regId,
@@ -266,7 +252,7 @@
       leaderSemester: leaderSem,
       leaderMobile,
       leaderEmail,
-      teamMembers: members
+      teamMembers: normalizedMembers
     };
   }
 
@@ -312,7 +298,7 @@
     }
   }
 
-  /* ---------- Analytics Engine ---------- */
+  /* ---------- Real Data Analytics Engine ---------- */
 
   function calculateAnalytics() {
     let totalParticipants = 0;
@@ -320,7 +306,16 @@
     let femaleCount = 0;
 
     let yCount = { '1st Year': 0, '2nd Year': 0, '3rd Year': 0, '4th Year': 0 };
-    let branchCounts = { CSE: 0, ECE: 0, ME: 0, EE: 0, CIVIL: 0, IT: 0, OTHER: 0 };
+    let branchCounts = {
+      'CSE': 0,
+      'CSE (Data Science)': 0,
+      'CSE (AI & ML)': 0,
+      'ECE': 0,
+      'EE': 0,
+      'ME': 0,
+      'CIVIL': 0,
+      'IT': 0
+    };
 
     rawTeamsData.forEach(team => {
       const members = Array.isArray(team.teamMembers) ? team.teamMembers : [];
@@ -341,26 +336,18 @@
         totalParticipants++;
 
         // Gender Count
-        const g = (st.gender || 'Male').toLowerCase();
-        if (g.includes('female') || g.includes('f')) femaleCount++;
+        if (st.gender === 'Female') femaleCount++;
         else maleCount++;
 
         // Year Count
         const yr = st.year || '3rd Year';
-        if (yr.includes('1')) yCount['1st Year']++;
-        else if (yr.includes('2')) yCount['2nd Year']++;
-        else if (yr.includes('3')) yCount['3rd Year']++;
-        else if (yr.includes('4')) yCount['4th Year']++;
+        if (yCount[yr] !== undefined) yCount[yr]++;
+        else yCount['3rd Year']++;
 
         // Branch Count
-        const b = (st.branch || '').toUpperCase();
-        if (b.includes('CSE') || b.includes('COMPUTER')) branchCounts.CSE++;
-        else if (b.includes('ECE') || b.includes('ELECTRONIC')) branchCounts.ECE++;
-        else if (b.includes('ME') || b.includes('MECHANICAL')) branchCounts.ME++;
-        else if (b.includes('EE') || b.includes('ELECTRICAL')) branchCounts.EE++;
-        else if (b.includes('CIVIL')) branchCounts.CIVIL++;
-        else if (b.includes('IT') || b.includes('INFORMATION')) branchCounts.IT++;
-        else branchCounts.OTHER++;
+        const br = st.branch || 'CSE';
+        if (branchCounts[br] !== undefined) branchCounts[br]++;
+        else branchCounts['CSE']++;
       });
     });
 
@@ -379,19 +366,20 @@
     if (els.statY3) els.statY3.textContent = yCount['3rd Year'];
     if (els.statY4) els.statY4.textContent = yCount['4th Year'];
 
-    if (els.statCseCount) els.statCseCount.textContent = `CSE: ${branchCounts.CSE} Students`;
-    if (els.statOtherBranches) els.statOtherBranches.textContent = `ECE: ${branchCounts.ECE} | ME: ${branchCounts.ME} | Civil: ${branchCounts.CIVIL}`;
+    if (els.statCseCount) els.statCseCount.textContent = `CSE Core: ${branchCounts['CSE']} Students`;
+    if (els.statOtherBranches) els.statOtherBranches.textContent = `DS: ${branchCounts['CSE (Data Science)']} | AI: ${branchCounts['CSE (AI & ML)']} | ECE: ${branchCounts['ECE']}`;
 
     // Render Branch Visual Progress Bars (Soft Slate/Blue Pastel Palette)
     if (els.branchProgressContainer) {
       const branchColors = {
-        CSE: { bg: 'bg-blue-500', text: 'text-blue-700' },
-        ECE: { bg: 'bg-purple-500', text: 'text-purple-700' },
-        ME: { bg: 'bg-amber-500', text: 'text-amber-700' },
-        EE: { bg: 'bg-cyan-500', text: 'text-cyan-700' },
-        CIVIL: { bg: 'bg-emerald-500', text: 'text-emerald-700' },
-        IT: { bg: 'bg-indigo-500', text: 'text-indigo-700' },
-        OTHER: { bg: 'bg-slate-400', text: 'text-slate-700' }
+        'CSE': { bg: 'bg-blue-500', text: 'text-blue-700' },
+        'CSE (Data Science)': { bg: 'bg-cyan-500', text: 'text-cyan-700' },
+        'CSE (AI & ML)': { bg: 'bg-indigo-500', text: 'text-indigo-700' },
+        'ECE': { bg: 'bg-purple-500', text: 'text-purple-700' },
+        'EE': { bg: 'bg-teal-500', text: 'text-teal-700' },
+        'ME': { bg: 'bg-amber-500', text: 'text-amber-700' },
+        'CIVIL': { bg: 'bg-emerald-500', text: 'text-emerald-700' },
+        'IT': { bg: 'bg-violet-500', text: 'text-violet-700' }
       };
 
       const sortedBranches = Object.entries(branchCounts).sort((a, b) => b[1] - a[1]);
@@ -406,7 +394,7 @@
         bHtml += `
           <div>
             <div class="flex items-center justify-between text-xs font-semibold mb-1">
-              <span class="${style.text} font-bold">${br} Department</span>
+              <span class="${style.text} font-bold">${br}</span>
               <span class="text-slate-600 font-mono text-[11px]">${count} Students (${pct}%)</span>
             </div>
             <div class="w-full h-2 bg-slate-100 rounded-full overflow-hidden border border-slate-200">
@@ -497,14 +485,18 @@
 
       // Branch Filter
       if (brFilter !== 'ALL') {
-        const matchL = (t.leaderBranch || '').toUpperCase().includes(brFilter);
-        const matchM = (t.teamMembers || []).some(m => (m.branch || '').toUpperCase().includes(brFilter));
+        let targetKey = brFilter;
+        if (brFilter === 'CSE_DS') targetKey = 'Data Science';
+        else if (brFilter === 'CSE_AIML') targetKey = 'AI & ML';
+
+        const matchL = (t.leaderBranch || '').toUpperCase().includes(targetKey.toUpperCase());
+        const matchM = (t.teamMembers || []).some(m => (m.branch || '').toUpperCase().includes(targetKey.toUpperCase()));
         if (!matchL && !matchM) return false;
       }
 
       // Gender Filter
       const members = Array.isArray(t.teamMembers) ? t.teamMembers : [];
-      const hasFemale = [t.leaderGender, ...members.map(m => m.gender)].some(g => (g || '').toLowerCase().includes('female') || (g || '').toLowerCase().includes('f'));
+      const hasFemale = [t.leaderGender, ...members.map(m => m.gender)].some(g => g === 'Female');
 
       if (genderFilter === 'FEMALE_INCLUDED' && !hasFemale) return false;
       if (genderFilter === 'MALE_ONLY' && hasFemale) return false;
@@ -544,15 +536,14 @@
       let maleCount = 0;
       let femaleCount = 0;
       allStudents.forEach(s => {
-        const g = (s.gender || 'Male').toLowerCase();
-        if (g.includes('female') || g.includes('f')) femaleCount++;
+        if (s.gender === 'Female') femaleCount++;
         else maleCount++;
       });
 
       tr.innerHTML = `
         <td class="py-3.5 px-4">
           <div class="font-mono text-[10px] font-bold text-blue-700">${regId}</div>
-          <div class="font-bold text-slate-900 text-sm group-hover:text-blue-600 transition-colors">${escapeHtml(team.teamName || 'Tech Team')}</div>
+          <div class="font-bold text-slate-900 text-sm group-hover:text-blue-600 transition-colors">${escapeHtml(team.teamName || 'Registered Team')}</div>
         </td>
         <td class="py-3.5 px-4">
           <div class="font-semibold text-slate-900">${escapeHtml(team.teamLeaderName || 'Leader')}</div>
@@ -600,8 +591,8 @@
     if (!els.statModal) return;
 
     if (type === 'teams') {
-      els.statModalTitle.textContent = '🏆 All Registered Teams Summary';
-      els.statModalSubtitle.textContent = `Total ${rawTeamsData.length} Teams Registered across all departments`;
+      els.statModalTitle.textContent = '🏆 Registered Teams Summary';
+      els.statModalSubtitle.textContent = `Total ${rawTeamsData.length} Teams Registered`;
 
       let html = `<div class="space-y-3">`;
       rawTeamsData.forEach((t, idx) => {
@@ -620,7 +611,7 @@
 
     } else if (type === 'gender') {
       els.statModalTitle.textContent = '👥 Gender Demographics Analysis';
-      els.statModalSubtitle.textContent = 'Comprehensive Male vs Female Student Breakdown across Academic Years';
+      els.statModalSubtitle.textContent = 'Male vs Female Student Breakdown across Academic Years';
 
       let maleCount = 0, femaleCount = 0;
       let yMale = { '1st Year': 0, '2nd Year': 0, '3rd Year': 0, '4th Year': 0 };
@@ -633,20 +624,13 @@
           ...members
         ];
         allStudents.forEach(st => {
-          const g = (st.gender || 'Male').toLowerCase();
           const yr = st.year || '3rd Year';
-          if (g.includes('female') || g.includes('f')) {
+          if (st.gender === 'Female') {
             femaleCount++;
-            if (yr.includes('1')) yFemale['1st Year']++;
-            else if (yr.includes('2')) yFemale['2nd Year']++;
-            else if (yr.includes('3')) yFemale['3rd Year']++;
-            else if (yr.includes('4')) yFemale['4th Year']++;
+            if (yFemale[yr] !== undefined) yFemale[yr]++;
           } else {
             maleCount++;
-            if (yr.includes('1')) yMale['1st Year']++;
-            else if (yr.includes('2')) yMale['2nd Year']++;
-            else if (yr.includes('3')) yMale['3rd Year']++;
-            else if (yr.includes('4')) yMale['4th Year']++;
+            if (yMale[yr] !== undefined) yMale[yr]++;
           }
         });
       });
@@ -697,11 +681,8 @@
           ...members
         ];
         allStudents.forEach(st => {
-          const yr = st.year || '';
-          if (yr.includes('1')) yCount['1st Year']++;
-          else if (yr.includes('2')) yCount['2nd Year']++;
-          else if (yr.includes('3')) yCount['3rd Year']++;
-          else if (yr.includes('4')) yCount['4th Year']++;
+          const yr = st.year || '3rd Year';
+          if (yCount[yr] !== undefined) yCount[yr]++;
         });
       });
 
@@ -717,9 +698,18 @@
 
     } else if (type === 'branch') {
       els.statModalTitle.textContent = '💻 Branch / Department Distribution';
-      els.statModalSubtitle.textContent = 'Student counts across CSE, ECE, ME, Civil, EE, and IT';
+      els.statModalSubtitle.textContent = 'Student counts across CSE, CSE DS, CSE AIML, ECE, EE, ME, Civil, and IT';
 
-      let branchCounts = { CSE: 0, ECE: 0, ME: 0, EE: 0, CIVIL: 0, IT: 0, OTHER: 0 };
+      let branchCounts = {
+        'CSE': 0,
+        'CSE (Data Science)': 0,
+        'CSE (AI & ML)': 0,
+        'ECE': 0,
+        'EE': 0,
+        'ME': 0,
+        'CIVIL': 0,
+        'IT': 0
+      };
       rawTeamsData.forEach(t => {
         const members = Array.isArray(t.teamMembers) ? t.teamMembers : [];
         const allStudents = [
@@ -727,25 +717,21 @@
           ...members
         ];
         allStudents.forEach(st => {
-          const b = (st.branch || '').toUpperCase();
-          if (b.includes('CSE') || b.includes('COMPUTER')) branchCounts.CSE++;
-          else if (b.includes('ECE') || b.includes('ELECTRONIC')) branchCounts.ECE++;
-          else if (b.includes('ME') || b.includes('MECHANICAL')) branchCounts.ME++;
-          else if (b.includes('EE') || b.includes('ELECTRICAL')) branchCounts.EE++;
-          else if (b.includes('CIVIL')) branchCounts.CIVIL++;
-          else if (b.includes('IT') || b.includes('INFORMATION')) branchCounts.IT++;
-          else branchCounts.OTHER++;
+          const br = st.branch || 'CSE';
+          if (branchCounts[br] !== undefined) branchCounts[br]++;
         });
       });
 
       let html = `
-        <div class="grid grid-cols-2 sm:grid-cols-3 gap-3 text-center">
-          <div class="bg-amber-50 p-3 rounded-xl border border-amber-200"><div class="text-xl font-bold text-amber-800">${branchCounts.CSE}</div><div class="text-xs font-bold text-amber-900">Computer Science (CSE)</div></div>
-          <div class="bg-amber-50 p-3 rounded-xl border border-amber-200"><div class="text-xl font-bold text-amber-800">${branchCounts.ECE}</div><div class="text-xs font-bold text-amber-900">Electronics (ECE)</div></div>
-          <div class="bg-amber-50 p-3 rounded-xl border border-amber-200"><div class="text-xl font-bold text-amber-800">${branchCounts.ME}</div><div class="text-xs font-bold text-amber-900">Mechanical (ME)</div></div>
-          <div class="bg-amber-50 p-3 rounded-xl border border-amber-200"><div class="text-xl font-bold text-amber-800">${branchCounts.EE}</div><div class="text-xs font-bold text-amber-900">Electrical (EE)</div></div>
-          <div class="bg-amber-50 p-3 rounded-xl border border-amber-200"><div class="text-xl font-bold text-amber-800">${branchCounts.CIVIL}</div><div class="text-xs font-bold text-amber-900">Civil Engineering</div></div>
-          <div class="bg-amber-50 p-3 rounded-xl border border-amber-200"><div class="text-xl font-bold text-amber-800">${branchCounts.IT}</div><div class="text-xs font-bold text-amber-900">Information Tech (IT)</div></div>
+        <div class="grid grid-cols-2 sm:grid-cols-4 gap-3 text-center">
+          <div class="bg-amber-50 p-3 rounded-xl border border-amber-200"><div class="text-xl font-bold text-amber-800">${branchCounts['CSE']}</div><div class="text-xs font-bold text-amber-900">CSE Core</div></div>
+          <div class="bg-amber-50 p-3 rounded-xl border border-amber-200"><div class="text-xl font-bold text-amber-800">${branchCounts['CSE (Data Science)']}</div><div class="text-xs font-bold text-amber-900">CSE (Data Science)</div></div>
+          <div class="bg-amber-50 p-3 rounded-xl border border-amber-200"><div class="text-xl font-bold text-amber-800">${branchCounts['CSE (AI & ML)']}</div><div class="text-xs font-bold text-amber-900">CSE (AI & ML)</div></div>
+          <div class="bg-amber-50 p-3 rounded-xl border border-amber-200"><div class="text-xl font-bold text-amber-800">${branchCounts['ECE']}</div><div class="text-xs font-bold text-amber-900">ECE</div></div>
+          <div class="bg-amber-50 p-3 rounded-xl border border-amber-200"><div class="text-xl font-bold text-amber-800">${branchCounts['EE']}</div><div class="text-xs font-bold text-amber-900">EE</div></div>
+          <div class="bg-amber-50 p-3 rounded-xl border border-amber-200"><div class="text-xl font-bold text-amber-800">${branchCounts['ME']}</div><div class="text-xs font-bold text-amber-900">ME</div></div>
+          <div class="bg-amber-50 p-3 rounded-xl border border-amber-200"><div class="text-xl font-bold text-amber-800">${branchCounts['CIVIL']}</div><div class="text-xs font-bold text-amber-900">Civil</div></div>
+          <div class="bg-amber-50 p-3 rounded-xl border border-amber-200"><div class="text-xl font-bold text-amber-800">${branchCounts['IT']}</div><div class="text-xs font-bold text-amber-900">IT</div></div>
         </div>
       `;
       els.statModalContent.innerHTML = html;
@@ -768,7 +754,7 @@
     if (!els.rosterModal) return;
 
     if (els.modalTeamId) els.modalTeamId.textContent = team.registrationId || 'SIH2026-REG';
-    if (els.modalTeamName) els.modalTeamName.textContent = team.teamName || 'Tech Team';
+    if (els.modalTeamName) els.modalTeamName.textContent = team.teamName || 'Registered Team';
 
     const members = Array.isArray(team.teamMembers) ? team.teamMembers : [];
     const rosterList = [
@@ -799,8 +785,7 @@
     let maleCount = 0;
     let femaleCount = 0;
     rosterList.forEach(st => {
-      const g = (st.gender || 'Male').toLowerCase();
-      if (g.includes('female') || g.includes('f')) femaleCount++;
+      if (st.gender === 'Female') femaleCount++;
       else maleCount++;
     });
 
@@ -839,7 +824,7 @@
         const tr = document.createElement('tr');
         tr.className = st.isLeader ? 'bg-blue-50/40 border-b border-slate-200' : 'hover:bg-slate-50 border-b border-slate-200';
 
-        const isFemale = (st.gender || '').toLowerCase().includes('female') || (st.gender || '').toLowerCase().includes('f');
+        const isFemale = st.gender === 'Female';
         const genderBadge = isFemale
           ? `<span class="inline-flex items-center gap-1 text-[11px] font-bold bg-pink-50 text-pink-700 border border-pink-200 px-2.5 py-0.5 rounded-full">👩 FEMALE</span>`
           : `<span class="inline-flex items-center gap-1 text-[11px] font-semibold bg-blue-50 text-blue-700 border border-blue-200 px-2.5 py-0.5 rounded-full">👨 MALE</span>`;
