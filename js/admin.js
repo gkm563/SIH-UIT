@@ -1,6 +1,6 @@
 /**
  * SIH 2026 Clean Admin Intelligence & Demographics Portal Script
- * Real Attributes (CSE, CSE DS, CSE AI&ML, ECE, EE, ME, Civil, IT | 1st, 2nd, 3rd, 4th Year | Male, Female)
+ * Real Attributes (CSE, CSE DS, CSE AI&ML, ECE | 1st, 2nd, 3rd, 4th Year | Male, Female)
  * Ultra-Clean Light Premium Theme with Interactive Roster Drawer & Live Sheet Sync
  */
 (() => {
@@ -87,15 +87,12 @@
   let rawTeamsData = [];
   let filteredTeams = [];
 
+  // EXACT 4 BRANCHES AT UIT
   const REAL_BRANCHES = [
     'CSE',
     'CSE (Data Science)',
     'CSE (AI & ML)',
-    'ECE',
-    'EE',
-    'ME',
-    'CIVIL',
-    'IT'
+    'ECE'
   ];
 
   const REAL_YEARS = ['1st Year', '2nd Year', '2nd Year', '3rd Year', '3rd Year', '3rd Year', '4th Year'];
@@ -228,12 +225,8 @@
     const str = String(b).toUpperCase().trim();
     if (str.includes('DATA') || str.includes('DS')) return 'CSE (Data Science)';
     if (str.includes('AI') || str.includes('ML') || str.includes('INTELLIGENCE') || str.includes('MACHINE')) return 'CSE (AI & ML)';
-    if (str.includes('CSE') || str.includes('COMPUTER') || str.includes('COMP')) return 'CSE';
     if (str.includes('ECE') || str.includes('ELECTRONIC') || str.includes('COMMUNICATION')) return 'ECE';
-    if (str.includes('EE') || str.includes('ELECTRICAL')) return 'EE';
-    if (str.includes('ME') || str.includes('MECHANICAL')) return 'ME';
-    if (str.includes('CIVIL')) return 'CIVIL';
-    if (str.includes('IT') || str.includes('INFORMATION')) return 'IT';
+    if (str.includes('CSE') || str.includes('COMPUTER') || str.includes('COMP')) return 'CSE';
     return REAL_BRANCHES[seed % REAL_BRANCHES.length];
   }
 
@@ -255,17 +248,12 @@
   }
 
   function getMemberBranch(leaderBranch, idx, seed) {
-    // 60% of members share leader's discipline
     if ((seed + idx * 7) % 10 < 6) return leaderBranch;
     const relatedMap = {
-      'CSE': ['CSE (Data Science)', 'CSE (AI & ML)', 'IT', 'ECE'],
-      'CSE (Data Science)': ['CSE', 'CSE (AI & ML)', 'IT'],
-      'CSE (AI & ML)': ['CSE', 'CSE (Data Science)', 'IT'],
-      'ECE': ['EE', 'CSE', 'IT', 'ME'],
-      'EE': ['ECE', 'ME', 'CIVIL', 'CSE'],
-      'ME': ['CIVIL', 'EE', 'ECE'],
-      'CIVIL': ['ME', 'EE'],
-      'IT': ['CSE', 'CSE (Data Science)', 'CSE (AI & ML)']
+      'CSE': ['CSE (Data Science)', 'CSE (AI & ML)', 'ECE'],
+      'CSE (Data Science)': ['CSE', 'CSE (AI & ML)', 'ECE'],
+      'CSE (AI & ML)': ['CSE', 'CSE (Data Science)', 'ECE'],
+      'ECE': ['CSE', 'CSE (AI & ML)', 'CSE (Data Science)']
     };
     const options = relatedMap[leaderBranch] || REAL_BRANCHES;
     return options[(seed + idx) % options.length];
@@ -333,7 +321,7 @@
         return {
           name: mName,
           gender: m.gender ? normalizeGender(m.gender, mSeed) : (mSeed % 2 === 0 ? 'Female' : 'Male'),
-          branch: m.branch ? normalizeBranch(m.branch, mSeed) : getMemberBranch(leaderBranch, idx + 1, seed),
+          branch: normalizeBranch(m.branch, mSeed),
           year: normalizeYear(m.year, mSeed),
           sem: (!m.sem || m.sem === 'N/A' || m.sem === 'NA') ? (m.semester || '6th') : m.sem,
           mobile: (!m.mobile || m.mobile === 'N/A' || m.mobile === 'NA') ? `+91 ${9839000000 + (mSeed % 999999)}` : m.mobile,
@@ -410,11 +398,7 @@
       'CSE': 0,
       'CSE (Data Science)': 0,
       'CSE (AI & ML)': 0,
-      'ECE': 0,
-      'EE': 0,
-      'ME': 0,
-      'CIVIL': 0,
-      'IT': 0
+      'ECE': 0
     };
 
     rawTeamsData.forEach(team => {
@@ -466,7 +450,7 @@
     if (els.statY3) els.statY3.textContent = yCount['3rd Year'];
     if (els.statY4) els.statY4.textContent = yCount['4th Year'];
 
-    if (els.statCseCount) els.statCseCount.textContent = `${Object.keys(branchCounts).length} Departments`;
+    if (els.statCseCount) els.statCseCount.textContent = `4 Departments`;
     if (els.statOtherBranches) els.statOtherBranches.textContent = `CSE: ${branchCounts['CSE']} | DS: ${branchCounts['CSE (Data Science)']} | AI: ${branchCounts['CSE (AI & ML)']} | ECE: ${branchCounts['ECE']}`;
 
     // Render Branch Visual Progress Bars (Soft Slate/Blue Pastel Palette)
@@ -475,11 +459,7 @@
         'CSE': { bg: 'bg-blue-500', text: 'text-blue-700' },
         'CSE (Data Science)': { bg: 'bg-cyan-500', text: 'text-cyan-700' },
         'CSE (AI & ML)': { bg: 'bg-indigo-500', text: 'text-indigo-700' },
-        'ECE': { bg: 'bg-purple-500', text: 'text-purple-700' },
-        'EE': { bg: 'bg-teal-500', text: 'text-teal-700' },
-        'ME': { bg: 'bg-amber-500', text: 'text-amber-700' },
-        'CIVIL': { bg: 'bg-emerald-500', text: 'text-emerald-700' },
-        'IT': { bg: 'bg-violet-500', text: 'text-violet-700' }
+        'ECE': { bg: 'bg-purple-500', text: 'text-purple-700' }
       };
 
       const sortedBranches = Object.entries(branchCounts).sort((a, b) => b[1] - a[1]);
@@ -798,17 +778,13 @@
 
     } else if (type === 'branch') {
       els.statModalTitle.textContent = '💻 Branch / Department Distribution';
-      els.statModalSubtitle.textContent = 'Student counts across CSE, CSE DS, CSE AIML, ECE, EE, ME, Civil, and IT';
+      els.statModalSubtitle.textContent = 'Student counts across CSE, CSE (DS), CSE (AI&ML), and ECE';
 
       let branchCounts = {
         'CSE': 0,
         'CSE (Data Science)': 0,
         'CSE (AI & ML)': 0,
-        'ECE': 0,
-        'EE': 0,
-        'ME': 0,
-        'CIVIL': 0,
-        'IT': 0
+        'ECE': 0
       };
       rawTeamsData.forEach(t => {
         const members = Array.isArray(t.teamMembers) ? t.teamMembers : [];
@@ -828,10 +804,6 @@
           <div class="bg-amber-50 p-3 rounded-xl border border-amber-200"><div class="text-xl font-bold text-amber-800">${branchCounts['CSE (Data Science)']}</div><div class="text-xs font-bold text-amber-900">CSE (Data Science)</div></div>
           <div class="bg-amber-50 p-3 rounded-xl border border-amber-200"><div class="text-xl font-bold text-amber-800">${branchCounts['CSE (AI & ML)']}</div><div class="text-xs font-bold text-amber-900">CSE (AI & ML)</div></div>
           <div class="bg-amber-50 p-3 rounded-xl border border-amber-200"><div class="text-xl font-bold text-amber-800">${branchCounts['ECE']}</div><div class="text-xs font-bold text-amber-900">ECE</div></div>
-          <div class="bg-amber-50 p-3 rounded-xl border border-amber-200"><div class="text-xl font-bold text-amber-800">${branchCounts['EE']}</div><div class="text-xs font-bold text-amber-900">EE</div></div>
-          <div class="bg-amber-50 p-3 rounded-xl border border-amber-200"><div class="text-xl font-bold text-amber-800">${branchCounts['ME']}</div><div class="text-xs font-bold text-amber-900">ME</div></div>
-          <div class="bg-amber-50 p-3 rounded-xl border border-amber-200"><div class="text-xl font-bold text-amber-800">${branchCounts['CIVIL']}</div><div class="text-xs font-bold text-amber-900">Civil</div></div>
-          <div class="bg-amber-50 p-3 rounded-xl border border-amber-200"><div class="text-xl font-bold text-amber-800">${branchCounts['IT']}</div><div class="text-xs font-bold text-amber-900">IT</div></div>
         </div>
       `;
       els.statModalContent.innerHTML = html;
