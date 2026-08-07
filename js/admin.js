@@ -83,13 +83,9 @@
   let lockoutTimer = null;
   let currentCaptchaCode = '';
 
-  // Valid Pre-hashed SHA-256 tokens for PINs: 8924059058, 8924, sih2026, admin123, admin
+  // Valid Pre-hashed SHA-256 token for ONLY PIN: 'uitsih2026'
   const VALID_HASHES = [
-    'c785501869e54d603a11db9d5e30560312fa8cf6f562479e09d1864197e411fa',
-    '3395b0bb6d328c894220b30ef2a23351ecf33017a1a2b918f6236b2803b87968',
-    '0a8f89e1b212f7188173491950d8efb7a421b06606a54d66761502fa6277bcfd',
-    '240be518fabd2724ddb6f04eeb1da5967448d7e831c08c8fa822809f74c720a9',
-    '8c6976e5b5410415bde908bd4dee15dfb167a9c873fc4bb8a81f6f2ab448a918'
+    '2f447e9cdb623c6ae5fbaba2ceee047cd8d5c3db1e8398a4db70e7e1ff77d8d5'
   ];
 
   let rawTeamsData = [];
@@ -1106,15 +1102,11 @@
           return;
         }
 
-        // 3. PIN Authentication Check
+        // 3. PIN Authentication Check (ONLY uitsih2026)
         const hash = await sha256(enteredPin);
         const validPins = [
-          (typeof AppConfig !== 'undefined' && AppConfig.ADMIN_PIN) ? AppConfig.ADMIN_PIN : '8924059058',
-          '8924059058',
-          '8924',
-          'sih2026',
-          'admin123',
-          'admin'
+          (typeof AppConfig !== 'undefined' && AppConfig.ADMIN_PIN) ? AppConfig.ADMIN_PIN : 'uitsih2026',
+          'uitsih2026'
         ];
         const isPlainMatch = validPins.includes(enteredPin);
 

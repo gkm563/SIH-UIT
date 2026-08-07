@@ -21,7 +21,7 @@ const AppConfig = {
   APP_NAME: 'SIH 2026 Internal Registration',
 
   /** Default Admin PIN */
-  ADMIN_PIN: '8924059058',
+  ADMIN_PIN: 'uitsih2026',
 
   /** Registration Open/Closed Toggle */
   get isRegistrationOpen() {
