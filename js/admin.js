@@ -1,15 +1,19 @@
 /**
- * SIH 2026 Advanced Admin Intelligence Portal Script (Clean Light Theme)
- * Real-time Analytics, Interactive Stat Card Drill-Down Modals, Filter Engine, Team Roster Viewer & Live Sheet Sync
+ * SIH 2026 Advanced Admin Intelligence Portal Script
+ * Real-time Analytics, Anti-SQL Injection, Visual CAPTCHA, Interactive Drill-Down Modals, Filter Engine & Live Sheet Sync
  */
 (() => {
   'use strict';
 
+  // DOM Elements Registry
   const els = {
     loginCard: document.getElementById('login-card'),
     dashboard: document.getElementById('admin-dashboard'),
     loginForm: document.getElementById('admin-login-form'),
     pinInput: document.getElementById('admin-pin'),
+    captchaInput: document.getElementById('captcha-input'),
+    captchaCanvas: document.getElementById('captcha-canvas'),
+    btnRefreshCaptcha: document.getElementById('btn-refresh-captcha'),
     loginError: document.getElementById('login-error'),
     userBadge: document.getElementById('admin-user-badge'),
     logoutBtn: document.getElementById('btn-admin-logout'),
@@ -18,8 +22,6 @@
     btnSyncLive: document.getElementById('btn-sync-live'),
     btnCheckDuplicates: document.getElementById('btn-check-duplicates'),
     syncSpinner: document.getElementById('sync-spinner'),
-    btnToggleReg: document.getElementById('btn-toggle-reg'),
-    btnTogglePs: document.getElementById('btn-toggle-ps'),
 
     // Clickable Stat Cards
     cardStatTeams: document.getElementById('card-stat-teams'),
@@ -43,6 +45,12 @@
     statAuditCount: document.getElementById('stat-audit-count'),
     statDuplicateCount: document.getElementById('stat-duplicate-count'),
 
+    // Visual Analytics Progress Containers
+    branchProgressContainer: document.getElementById('branch-progress-container'),
+    yearProgressContainer: document.getElementById('year-progress-container'),
+    branchLeadTag: document.getElementById('branch-lead-tag'),
+    yearLeadTag: document.getElementById('year-lead-tag'),
+
     // Stat Modal
     statModal: document.getElementById('stat-breakdown-modal'),
     statModalTitle: document.getElementById('stat-modal-title'),
@@ -55,29 +63,115 @@
     filterYear: document.getElementById('filter-year'),
     filterBranch: document.getElementById('filter-branch'),
     filterGender: document.getElementById('filter-gender'),
-    filterPs: document.getElementById('filter-ps'),
     btnExportCsv: document.getElementById('btn-export-csv'),
     filteredCountBadge: document.getElementById('filtered-count-badge'),
     lastSyncBadge: document.getElementById('last-sync-badge'),
 
-    // Table & Modal
+    // Table & Roster Modal
     teamsTableBody: document.getElementById('teams-table-body'),
     adminTableEmpty: document.getElementById('admin-table-empty'),
     rosterModal: document.getElementById('team-roster-modal'),
     modalTeamId: document.getElementById('modal-team-id'),
     modalTeamName: document.getElementById('modal-team-name'),
-    modalPsClaimedTag: document.getElementById('modal-ps-claimed-tag'),
     modalSummaryBox: document.getElementById('modal-summary-box'),
     modalRosterBody: document.getElementById('modal-roster-body')
   };
 
   const SESSION_KEY = 'sih2026_admin_token';
-  
+  const MAX_ATTEMPTS = 5;
+  let failedAttempts = 0;
+  let lockoutTimer = null;
+  let currentCaptchaCode = '';
+
+  // Valid Pre-hashed SHA-256 tokens for PINs: 8924059058, 8924, sih2026, admin123, admin
+  const VALID_HASHES = [
+    'c785501869e54d603a11db9d5e30560312fa8cf6f562479e09d1864197e411fa',
+    '3395b0bb6d328c894220b30ef2a23351ecf33017a1a2b918f6236b2803b87968',
+    '0a8f89e1b212f7188173491950d8efb7a421b06606a54d66761502fa6277bcfd',
+    '240be518fabd2724ddb6f04eeb1da5967448d7e831c08c8fa822809f74c720a9',
+    '8c6976e5b5410415bde908bd4dee15dfb167a9c873fc4bb8a81f6f2ab448a918'
+  ];
+
+  let rawTeamsData = [];
+  let filteredTeams = [];
+  let auditResults = {
+    totalRedFlaggedCount: 0,
+    totalDuplicateStudentsCount: 0,
+    duplicateMap: new Map()
+  };
+
+  /* ---------- Security Helpers ---------- */
+
   async function sha256(message) {
     const msgBuffer = new TextEncoder().encode(message);
     const hashBuffer = await crypto.subtle.digest('SHA-256', msgBuffer);
     const hashArray = Array.from(new Uint8Array(hashBuffer));
     return hashArray.map(b => b.toString(16).padStart(2, '0')).join('');
+  }
+
+  function detectSqlInjection(str) {
+    if (!str) return false;
+    const sqlPatterns = /('|"|;|--|\/\*|\*\/|\bOR\b\s+['"\d]|\bAND\b\s+['"\d]|\bUNION\b|\bSELECT\b|\bDROP\b|\bINSERT\b|\bDELETE\b|\bUPDATE\b|<script)/i;
+    return sqlPatterns.test(str);
+  }
+
+  function generateCaptcha() {
+    const chars = '23456789ABCDEFGHJKLMNPQRSTUVWXYZ';
+    let code = '';
+    for (let i = 0; i < 5; i++) {
+      code += chars.charAt(Math.floor(Math.random() * chars.length));
+    }
+    currentCaptchaCode = code;
+
+    const canvas = document.getElementById('captcha-canvas');
+    if (!canvas) return;
+    const ctx = canvas.getContext('2d');
+    if (!ctx) return;
+
+    ctx.clearRect(0, 0, canvas.width, canvas.height);
+
+    // Background gradient
+    const grad = ctx.createLinearGradient(0, 0, canvas.width, canvas.height);
+    grad.addColorStop(0, '#0f172a');
+    grad.addColorStop(1, '#1e293b');
+    ctx.fillStyle = grad;
+    ctx.fillRect(0, 0, canvas.width, canvas.height);
+
+    // Noise lines
+    for (let i = 0; i < 6; i++) {
+      ctx.strokeStyle = `rgba(59, 130, 246, ${0.3 + Math.random() * 0.3})`;
+      ctx.lineWidth = 1 + Math.random();
+      ctx.beginPath();
+      ctx.moveTo(Math.random() * canvas.width, Math.random() * canvas.height);
+      ctx.lineTo(Math.random() * canvas.width, Math.random() * canvas.height);
+      ctx.stroke();
+    }
+
+    // Noise dots
+    for (let i = 0; i < 35; i++) {
+      ctx.fillStyle = `rgba(148, 163, 184, ${Math.random() * 0.6})`;
+      ctx.beginPath();
+      ctx.arc(Math.random() * canvas.width, Math.random() * canvas.height, Math.random() * 1.5, 0, Math.PI * 2);
+      ctx.fill();
+    }
+
+    // Text characters
+    const colors = ['#38bdf8', '#818cf8', '#34d399', '#f43f5e', '#fbbf24'];
+    for (let i = 0; i < code.length; i++) {
+      const char = code[i];
+      ctx.save();
+      const x = 15 + i * 22;
+      const y = 28 + (Math.random() * 4 - 2);
+      const angle = (Math.random() * 0.3 - 0.15);
+      ctx.translate(x, y);
+      ctx.rotate(angle);
+      ctx.font = 'bold 22px monospace';
+      ctx.fillStyle = colors[i % colors.length];
+      ctx.shadowColor = 'rgba(0, 0, 0, 0.6)';
+      ctx.shadowBlur = 4;
+      ctx.fillText(char, 0, 0);
+      ctx.restore();
+    }
   }
 
   function isAuthed() {
@@ -100,9 +194,11 @@
       els.userBadge.classList.add('hidden');
       els.userBadge.classList.remove('flex');
     }
+    generateCaptcha();
   }
 
   async function init() {
+    generateCaptcha();
     if (isAuthed()) {
       await showDashboard();
     } else {
@@ -110,6 +206,8 @@
     }
     bindEvents();
   }
+
+  /* ---------- Data Normalization ---------- */
 
   const BRANCHES = ['CSE', 'CSE', 'ECE', 'ME', 'EE', 'CIVIL', 'IT'];
   const YEARS = ['1st Year', '2nd Year', '2nd Year', '3rd Year', '3rd Year', '3rd Year', '4th Year'];
@@ -203,25 +301,30 @@
       els.userBadge.classList.remove('hidden');
       els.userBadge.classList.add('flex');
     }
+    await loadLiveTeams();
   }
 
   async function loadLiveTeams(forceFresh = false) {
     if (els.syncSpinner) els.syncSpinner.classList.add('animate-spin');
 
     try {
-      const res = await Api.getRegisteredTeams(forceFresh);
-      if (res && Array.isArray(res.teams) && res.teams.length > 0) {
-        rawTeamsData = res.teams.map(normalizeTeamData);
-      } else {
+      if (typeof Api !== 'undefined' && typeof Api.getRegisteredTeams === 'function') {
+        const res = await Api.getRegisteredTeams(forceFresh);
+        if (res && Array.isArray(res.teams) && res.teams.length > 0) {
+          rawTeamsData = res.teams.map(normalizeTeamData);
+        } else {
+          const cached = Api.getLocalCachedTeams();
+          if (cached && Array.isArray(cached.teams)) {
+            rawTeamsData = cached.teams.map(normalizeTeamData);
+          }
+        }
+      }
+    } catch {
+      if (typeof Api !== 'undefined' && typeof Api.getLocalCachedTeams === 'function') {
         const cached = Api.getLocalCachedTeams();
         if (cached && Array.isArray(cached.teams)) {
           rawTeamsData = cached.teams.map(normalizeTeamData);
         }
-      }
-    } catch {
-      const cached = Api.getLocalCachedTeams();
-      if (cached && Array.isArray(cached.teams)) {
-        rawTeamsData = cached.teams.map(normalizeTeamData);
       }
     } finally {
       if (els.syncSpinner) els.syncSpinner.classList.remove('animate-spin');
@@ -231,6 +334,237 @@
       calculateAnalytics();
       applyFilters();
     }
+  }
+
+  /* ---------- Analytics Engine ---------- */
+
+  function calculateAnalytics() {
+    let totalParticipants = 0;
+    let maleCount = 0;
+    let femaleCount = 0;
+
+    let yCount = { '1st Year': 0, '2nd Year': 0, '3rd Year': 0, '4th Year': 0 };
+    let branchCounts = { CSE: 0, ECE: 0, ME: 0, EE: 0, CIVIL: 0, IT: 0, OTHER: 0 };
+
+    const studentMap = new Map(); // For Duplicate Audit
+
+    rawTeamsData.forEach(team => {
+      const members = Array.isArray(team.teamMembers) ? team.teamMembers : [];
+      const allStudents = [
+        {
+          isLeader: true,
+          name: team.teamLeaderName || 'Leader',
+          gender: team.leaderGender || 'Male',
+          branch: team.leaderBranch || 'CSE',
+          year: team.leaderYear || '3rd Year',
+          mobile: team.leaderMobile || 'N/A',
+          email: team.leaderEmail || 'N/A'
+        },
+        ...members.map((m, idx) => ({
+          isLeader: false,
+          name: m.name || `Member ${idx + 1}`,
+          gender: m.gender || 'Male',
+          branch: m.branch || 'CSE',
+          year: m.year || '3rd Year',
+          mobile: m.mobile || 'N/A',
+          email: m.email || 'N/A'
+        }))
+      ];
+
+      allStudents.forEach(st => {
+        totalParticipants++;
+
+        // Gender Count
+        const g = (st.gender || 'Male').toLowerCase();
+        if (g.includes('female') || g.includes('f')) femaleCount++;
+        else maleCount++;
+
+        // Year Count
+        const yr = st.year || '3rd Year';
+        if (yr.includes('1')) yCount['1st Year']++;
+        else if (yr.includes('2')) yCount['2nd Year']++;
+        else if (yr.includes('3')) yCount['3rd Year']++;
+        else if (yr.includes('4')) yCount['4th Year']++;
+
+        // Branch Count
+        const b = (st.branch || '').toUpperCase();
+        if (b.includes('CSE') || b.includes('COMPUTER')) branchCounts.CSE++;
+        else if (b.includes('ECE') || b.includes('ELECTRONIC')) branchCounts.ECE++;
+        else if (b.includes('ME') || b.includes('MECHANICAL')) branchCounts.ME++;
+        else if (b.includes('EE') || b.includes('ELECTRICAL')) branchCounts.EE++;
+        else if (b.includes('CIVIL')) branchCounts.CIVIL++;
+        else if (b.includes('IT') || b.includes('INFORMATION')) branchCounts.IT++;
+        else branchCounts.OTHER++;
+
+        // Audit map
+        const key = (st.name || '').trim().toLowerCase();
+        if (key && key.length > 3) {
+          if (!studentMap.has(key)) studentMap.set(key, []);
+          studentMap.get(key).push({
+            teamName: team.teamName,
+            regId: team.registrationId,
+            role: st.isLeader ? 'Leader' : 'Member',
+            mobile: st.mobile,
+            email: st.email
+          });
+        }
+      });
+    });
+
+    // Audit results
+    const duplicateMap = new Map();
+    let totalRedFlaggedTeams = new Set();
+    let duplicateStudentsCount = 0;
+
+    studentMap.forEach((occurrences, key) => {
+      if (occurrences.length > 1) {
+        duplicateMap.set(key, occurrences);
+        duplicateStudentsCount++;
+        occurrences.forEach(o => totalRedFlaggedTeams.add(o.regId));
+      }
+    });
+
+    auditResults = {
+      totalRedFlaggedCount: totalRedFlaggedTeams.size,
+      totalDuplicateStudentsCount: duplicateStudentsCount,
+      duplicateMap
+    };
+
+    // Update Stat Cards in UI
+    if (els.statTotalTeams) els.statTotalTeams.textContent = rawTeamsData.length;
+    if (els.statTotalParticipants) els.statTotalParticipants.textContent = `${totalParticipants} Students`;
+    if (els.statMaleCount) els.statMaleCount.textContent = `👨 ${maleCount} Male`;
+    if (els.statFemaleCount) els.statFemaleCount.textContent = `👩 ${femaleCount} Female`;
+    if (els.statGenderBreakdown) els.statGenderBreakdown.textContent = `2nd Yr M: ${yCount['2nd Year']} | 3rd Yr F: ${yCount['3rd Year']}`;
+
+    if (els.statY1) els.statY1.textContent = yCount['1st Year'];
+    if (els.statY2) els.statY2.textContent = yCount['2nd Year'];
+    if (els.statY3) els.statY3.textContent = yCount['3rd Year'];
+    if (els.statY4) els.statY4.textContent = yCount['4th Year'];
+
+    if (els.statCseCount) els.statCseCount.textContent = `CSE: ${branchCounts.CSE} Students`;
+    if (els.statOtherBranches) els.statOtherBranches.textContent = `ECE: ${branchCounts.ECE} | ME: ${branchCounts.ME} | Civil: ${branchCounts.CIVIL}`;
+
+    if (els.statAuditCount) els.statAuditCount.textContent = auditResults.totalRedFlaggedCount > 0 ? `${auditResults.totalRedFlaggedCount} Red Flagged` : '100% Clean';
+    if (els.statDuplicateCount) els.statDuplicateCount.textContent = `${auditResults.totalDuplicateStudentsCount} Duplicates`;
+
+    // Render Branch Visual Progress Bars
+    if (els.branchProgressContainer) {
+      const branchColors = {
+        CSE: { bg: 'bg-blue-600', text: 'text-blue-800' },
+        ECE: { bg: 'bg-purple-600', text: 'text-purple-800' },
+        ME: { bg: 'bg-amber-600', text: 'text-amber-800' },
+        EE: { bg: 'bg-cyan-600', text: 'text-cyan-800' },
+        CIVIL: { bg: 'bg-emerald-600', text: 'text-emerald-800' },
+        IT: { bg: 'bg-indigo-600', text: 'text-indigo-800' },
+        OTHER: { bg: 'bg-slate-600', text: 'text-slate-800' }
+      };
+
+      const sortedBranches = Object.entries(branchCounts).sort((a, b) => b[1] - a[1]);
+      if (els.branchLeadTag && sortedBranches.length > 0) {
+        els.branchLeadTag.textContent = `${sortedBranches[0][0]} Leading (${sortedBranches[0][1]})`;
+      }
+
+      let bHtml = '';
+      sortedBranches.forEach(([br, count]) => {
+        const pct = totalParticipants > 0 ? Math.round((count / totalParticipants) * 100) : 0;
+        const style = branchColors[br] || { bg: 'bg-blue-600', text: 'text-blue-800' };
+        bHtml += `
+          <div>
+            <div class="flex items-center justify-between text-xs font-bold mb-1">
+              <span class="${style.text}">${br} Department</span>
+              <span class="text-slate-600 font-mono text-[11px]">${count} Students (${pct}%)</span>
+            </div>
+            <div class="w-full h-2 bg-slate-100 rounded-full overflow-hidden border border-slate-200/80">
+              <div class="${style.bg} h-full rounded-full transition-all duration-500" style="width: ${pct}%"></div>
+            </div>
+          </div>
+        `;
+      });
+      els.branchProgressContainer.innerHTML = bHtml;
+    }
+
+    // Render Academic Year Visual Progress Bars
+    if (els.yearProgressContainer) {
+      const yearColors = {
+        '1st Year': { bg: 'bg-teal-500', text: 'text-teal-800' },
+        '2nd Year': { bg: 'bg-blue-600', text: 'text-blue-800' },
+        '3rd Year': { bg: 'bg-emerald-600', text: 'text-emerald-800' },
+        '4th Year': { bg: 'bg-purple-600', text: 'text-purple-800' }
+      };
+
+      const sortedYears = Object.entries(yCount).sort((a, b) => b[1] - a[1]);
+      if (els.yearLeadTag && sortedYears.length > 0) {
+        els.yearLeadTag.textContent = `${sortedYears[0][0]} Leading (${sortedYears[0][1]})`;
+      }
+
+      let yHtml = '';
+      sortedYears.forEach(([yr, count]) => {
+        const pct = totalParticipants > 0 ? Math.round((count / totalParticipants) * 100) : 0;
+        const style = yearColors[yr] || { bg: 'bg-emerald-600', text: 'text-emerald-800' };
+        yHtml += `
+          <div>
+            <div class="flex items-center justify-between text-xs font-bold mb-1">
+              <span class="${style.text}">${yr}</span>
+              <span class="text-slate-600 font-mono text-[11px]">${count} Students (${pct}%)</span>
+            </div>
+            <div class="w-full h-2 bg-slate-100 rounded-full overflow-hidden border border-slate-200/80">
+              <div class="${style.bg} h-full rounded-full transition-all duration-500" style="width: ${pct}%"></div>
+            </div>
+          </div>
+        `;
+      });
+      els.yearProgressContainer.innerHTML = yHtml;
+    }
+  }
+
+  /* ---------- Filtering & Table Rendering ---------- */
+
+  function applyFilters() {
+    const q = (els.adminSearch ? els.adminSearch.value : '').toLowerCase().trim();
+    const compliance = els.filterCompliance ? els.filterCompliance.value : 'ALL';
+    const yrFilter = els.filterYear ? els.filterYear.value : 'ALL';
+    const brFilter = els.filterBranch ? els.filterBranch.value : 'ALL';
+    const genderFilter = els.filterGender ? els.filterGender.value : 'ALL';
+
+    filteredTeams = rawTeamsData.filter(t => {
+      // Search
+      if (q) {
+        const regMatch = (t.registrationId || '').toLowerCase().includes(q);
+        const nameMatch = (t.teamName || '').toLowerCase().includes(q);
+        const leaderMatch = (t.teamLeaderName || '').toLowerCase().includes(q);
+        const phoneMatch = (t.leaderMobile || '').toLowerCase().includes(q);
+        const branchMatch = (t.leaderBranch || '').toLowerCase().includes(q);
+        const memberMatch = (t.teamMembers || []).some(m => (m.name || '').toLowerCase().includes(q));
+
+        if (!regMatch && !nameMatch && !leaderMatch && !phoneMatch && !branchMatch && !memberMatch) return false;
+      }
+
+      // Year Filter
+      if (yrFilter !== 'ALL') {
+        const matchL = (t.leaderYear || '').includes(yrFilter.replace(' Only', ''));
+        const matchM = (t.teamMembers || []).some(m => (m.year || '').includes(yrFilter.replace(' Only', '')));
+        if (!matchL && !matchM) return false;
+      }
+
+      // Branch Filter
+      if (brFilter !== 'ALL') {
+        const matchL = (t.leaderBranch || '').toUpperCase().includes(brFilter);
+        const matchM = (t.teamMembers || []).some(m => (m.branch || '').toUpperCase().includes(brFilter));
+        if (!matchL && !matchM) return false;
+      }
+
+      // Gender Filter
+      const members = Array.isArray(t.teamMembers) ? t.teamMembers : [];
+      const hasFemale = [t.leaderGender, ...members.map(m => m.gender)].some(g => (g || '').toLowerCase().includes('female') || (g || '').toLowerCase().includes('f'));
+
+      if (genderFilter === 'FEMALE_INCLUDED' && !hasFemale) return false;
+      if (genderFilter === 'MALE_ONLY' && hasFemale) return false;
+
+      return true;
+    });
+
+    renderTeamsTable();
   }
 
   function renderTeamsTable() {
@@ -277,14 +611,18 @@
           <div class="text-[11px] text-slate-600 font-mono">📞 ${escapeHtml(team.leaderMobile || 'N/A')}</div>
         </td>
         <td class="py-3.5 px-4 text-center">
-          <span class="inline-flex items-center gap-1 text-[11px] font-extrabold bg-slate-100 border border-slate-200/90 px-2.5 py-1 rounded-full">
+          <span class="inline-flex items-center gap-1 text-[11px] font-extrabold bg-slate-100 border border-slate-200/90 px-2.5 py-1 rounded-full shadow-2xs">
             <span class="text-blue-700">👨 ${maleCount}</span>
             <span class="text-pink-700">👩 ${femaleCount}</span>
           </span>
         </td>
+        <td class="py-3.5 px-4">
+          <div class="font-bold text-amber-800 text-xs">${escapeHtml(team.leaderBranch || 'CSE')}</div>
+          <div class="text-[11px] text-slate-500 font-medium">${escapeHtml(team.leaderYear || '3rd Year')}</div>
+        </td>
         <td class="py-3.5 px-4 text-right">
-          <button type="button" class="btn-view-roster px-3 py-1.5 bg-blue-600 hover:bg-blue-700 text-white font-extrabold text-[11px] rounded-xl shadow-2xs transition-transform active:scale-95" data-regid="${regId}">
-            View Roster 🔍
+          <button type="button" class="btn-view-roster px-3.5 py-1.5 bg-blue-600 hover:bg-blue-700 text-white font-extrabold text-[11px] rounded-xl shadow-2xs transition-transform active:scale-95 flex items-center gap-1 ml-auto" data-regid="${regId}">
+            <span>View Roster</span> 🔍
           </button>
         </td>
       `;
@@ -308,18 +646,19 @@
     });
   }
 
-  // Deep Drill-Down Stat Breakdown Modals
+  /* ---------- Drill-Down Modals ---------- */
+
   function openStatModal(type) {
     if (!els.statModal) return;
 
     if (type === 'teams') {
       els.statModalTitle.textContent = '🏆 All Registered Teams Summary';
       els.statModalSubtitle.textContent = `Total ${rawTeamsData.length} Teams Registered across all departments`;
-      
+
       let html = `<div class="space-y-3">`;
       rawTeamsData.forEach((t, idx) => {
         html += `
-          <div class="p-3 bg-slate-50 border border-slate-200/80 rounded-xl flex items-center justify-between hover:bg-blue-50/50 cursor-pointer" onclick="closeStatModal(); openTeamRosterModalByRegId('${t.registrationId}')">
+          <div class="p-3 bg-slate-50 border border-slate-200/80 rounded-xl flex items-center justify-between hover:bg-blue-50/50 cursor-pointer transition-colors" onclick="closeStatModal(); openTeamRosterModalByRegId('${t.registrationId}')">
             <div>
               <div class="text-xs font-black text-slate-900">#${idx + 1} ${escapeHtml(t.teamName)} (${t.registrationId})</div>
               <div class="text-[11px] text-slate-600">Leader: ${escapeHtml(t.teamLeaderName)} | ${escapeHtml(t.leaderBranch)} (${escapeHtml(t.leaderYear)})</div>
@@ -462,6 +801,7 @@
         </div>
       `;
       els.statModalContent.innerHTML = html;
+
     } else if (type === 'audit') {
       els.statModalTitle.textContent = '🚩 SIH 2026 Roster Integrity & Compliance Audit Report';
       els.statModalSubtitle.textContent = `In-depth cross-team duplicate student & red-flag detection report across all ${rawTeamsData.length} teams`;
@@ -477,7 +817,7 @@
             <div class="text-xs font-extrabold text-amber-900">Duplicate Students</div>
           </div>
           <div class="bg-emerald-50 p-3 rounded-xl border border-emerald-200">
-            <div class="text-2xl font-black text-emerald-800">${Math.round(((rawTeamsData.length - auditResults.totalRedFlaggedCount) / rawTeamsData.length) * 100)}%</div>
+            <div class="text-2xl font-black text-emerald-800">${rawTeamsData.length > 0 ? Math.round(((rawTeamsData.length - auditResults.totalRedFlaggedCount) / rawTeamsData.length) * 100) : 100}%</div>
             <div class="text-xs font-extrabold text-emerald-900">Unique Compliance Score</div>
           </div>
         </div>
@@ -549,11 +889,6 @@
 
     if (els.modalTeamId) els.modalTeamId.textContent = team.registrationId || 'SIH2026-REG';
     if (els.modalTeamName) els.modalTeamName.textContent = team.teamName || 'Tech Team';
-    if (els.modalPsClaimedTag) {
-      els.modalPsClaimedTag.textContent = team.claimedPsId
-        ? `📌 Claimed Problem Statement: ${team.claimedPsId} — ${team.claimedPsTitle}`
-        : `⚠️ No Problem Statement Claimed Yet`;
-    }
 
     const members = Array.isArray(team.teamMembers) ? team.teamMembers : [];
     const rosterList = [
@@ -695,52 +1030,113 @@
     return String(str || '').replace(/&/g, '&amp;').replace(/</g, '&lt;').replace(/>/g, '&gt;').replace(/"/g, '&quot;');
   }
 
+  /* ---------- Event Handlers ---------- */
+
+  function triggerLockout() {
+    let secondsLeft = 60;
+    if (els.pinInput) els.pinInput.disabled = true;
+    if (els.captchaInput) els.captchaInput.disabled = true;
+    if (els.loginError) {
+      els.loginError.classList.remove('hidden');
+      els.loginError.className = 'text-xs text-red-700 bg-red-50 border border-red-200 p-3 rounded-xl text-center font-black';
+      els.loginError.textContent = `⛔ Security Lockout: Too many failed attempts. Try again in ${secondsLeft}s.`;
+    }
+
+    lockoutTimer = setInterval(() => {
+      secondsLeft--;
+      if (secondsLeft <= 0) {
+        clearInterval(lockoutTimer);
+        lockoutTimer = null;
+        failedAttempts = 0;
+        if (els.pinInput) els.pinInput.disabled = false;
+        if (els.captchaInput) els.captchaInput.disabled = false;
+        if (els.loginError) els.loginError.classList.add('hidden');
+        generateCaptcha();
+      } else {
+        if (els.loginError) els.loginError.textContent = `⛔ Security Lockout: Too many failed attempts. Try again in ${secondsLeft}s.`;
+      }
+    }, 1000);
+  }
+
   function bindEvents() {
+    // CAPTCHA Refresh
+    if (els.btnRefreshCaptcha) {
+      els.btnRefreshCaptcha.addEventListener('click', generateCaptcha);
+    }
+    if (els.captchaCanvas) {
+      els.captchaCanvas.addEventListener('click', generateCaptcha);
+    }
+
+    // Login Form Submit
     if (els.loginForm) {
       els.loginForm.addEventListener('submit', async (e) => {
         e.preventDefault();
         if (lockoutTimer) return;
 
-        const entered = els.pinInput.value.trim();
-        if (!entered) return;
+        const enteredPin = (els.pinInput ? els.pinInput.value : '').trim();
+        const enteredCaptcha = (els.captchaInput ? els.captchaInput.value : '').trim();
 
-        const hash = await sha256(entered);
-        const isPlainMatch = (entered === AppConfig.ADMIN_PIN || entered === '8924' || entered === 'sih2026');
+        if (!enteredPin) return;
+
+        // 1. SQL Injection & Malicious Script Payload Check
+        if (detectSqlInjection(enteredPin) || detectSqlInjection(enteredCaptcha)) {
+          failedAttempts++;
+          if (els.loginError) {
+            els.loginError.classList.remove('hidden');
+            els.loginError.className = 'text-xs text-red-700 bg-red-100 border border-red-300 p-3 rounded-xl text-center font-black';
+            els.loginError.innerHTML = '🚨 <strong>SECURITY ALERT:</strong> Potential SQL Injection / Malicious Payload blocked!';
+          }
+          generateCaptcha();
+          if (els.captchaInput) els.captchaInput.value = '';
+          if (failedAttempts >= MAX_ATTEMPTS) triggerLockout();
+          return;
+        }
+
+        // 2. Security CAPTCHA Validation
+        if (els.captchaInput && enteredCaptcha.toUpperCase() !== currentCaptchaCode.toUpperCase()) {
+          failedAttempts++;
+          if (els.loginError) {
+            els.loginError.classList.remove('hidden');
+            els.loginError.className = 'text-xs text-red-700 bg-red-50 border border-red-200 p-3 rounded-xl text-center font-bold';
+            els.loginError.textContent = `❌ Incorrect Security CAPTCHA code. (${MAX_ATTEMPTS - failedAttempts} attempts remaining)`;
+          }
+          generateCaptcha();
+          els.captchaInput.value = '';
+          if (failedAttempts >= MAX_ATTEMPTS) triggerLockout();
+          return;
+        }
+
+        // 3. PIN Authentication Check
+        const hash = await sha256(enteredPin);
+        const validPins = [
+          (typeof AppConfig !== 'undefined' && AppConfig.ADMIN_PIN) ? AppConfig.ADMIN_PIN : '8924059058',
+          '8924059058',
+          '8924',
+          'sih2026',
+          'admin123',
+          'admin'
+        ];
+        const isPlainMatch = validPins.includes(enteredPin);
 
         if (VALID_HASHES.includes(hash) || isPlainMatch) {
           failedAttempts = 0;
           if (els.loginError) els.loginError.classList.add('hidden');
-          els.pinInput.value = '';
+          if (els.pinInput) els.pinInput.value = '';
+          if (els.captchaInput) els.captchaInput.value = '';
           setAuthed(true);
           await showDashboard();
         } else {
           failedAttempts++;
           if (els.loginError) {
             els.loginError.classList.remove('hidden');
-            els.loginError.textContent = `Incorrect Admin PIN. (${MAX_ATTEMPTS - failedAttempts} attempts remaining)`;
+            els.loginError.className = 'text-xs text-red-700 bg-red-50 border border-red-200 p-3 rounded-xl text-center font-bold';
+            els.loginError.textContent = `🔑 Incorrect Admin PIN. (${MAX_ATTEMPTS - failedAttempts} attempts remaining)`;
           }
+          generateCaptcha();
+          if (els.captchaInput) els.captchaInput.value = '';
           if (failedAttempts >= MAX_ATTEMPTS) triggerLockout();
         }
       });
-    }
-
-    function triggerLockout() {
-      let secondsLeft = 60;
-      if (els.pinInput) els.pinInput.disabled = true;
-      if (els.loginError) els.loginError.textContent = `⛔ Locked out for ${secondsLeft}s.`;
-
-      lockoutTimer = setInterval(() => {
-        secondsLeft--;
-        if (secondsLeft <= 0) {
-          clearInterval(lockoutTimer);
-          lockoutTimer = null;
-          failedAttempts = 0;
-          if (els.pinInput) els.pinInput.disabled = false;
-          if (els.loginError) els.loginError.classList.add('hidden');
-        } else {
-          if (els.loginError) els.loginError.textContent = `⛔ Locked out for ${secondsLeft}s.`;
-        }
-      }, 1000);
     }
 
     if (els.logoutBtn) {
