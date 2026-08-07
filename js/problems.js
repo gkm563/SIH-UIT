@@ -71,8 +71,6 @@
     modalPsDiff: document.getElementById('modal-ps-diff'),
     modalPsTitle: document.getElementById('modal-ps-title'),
     modalPsDesc: document.getElementById('modal-ps-desc'),
-    modalPsSolution: document.getElementById('modal-ps-solution'),
-    modalPsTech: document.getElementById('modal-ps-tech'),
     modalPsBeneficiaries: document.getElementById('modal-ps-beneficiaries')
   };
 
@@ -242,23 +240,6 @@
     
     els.modalPsTitle.textContent = ps.title;
     els.modalPsDesc.textContent = ps.problemStatement;
-
-    // Solution Checklist
-    els.modalPsSolution.innerHTML = (ps.expectedSolution || []).map((sol) => `
-      <li class="flex items-start gap-2 bg-emerald-50/60 border border-emerald-100 p-2.5 rounded-xl">
-        <svg class="w-4 h-4 text-emerald-600 flex-shrink-0 mt-0.5" fill="currentColor" viewBox="0 0 20 20">
-          <path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clip-rule="evenodd"/>
-        </svg>
-        <span class="text-xs font-semibold text-slate-800 leading-snug">${escapeHtml(sol)}</span>
-      </li>
-    `).join('');
-
-    // Tech Stack Chips
-    els.modalPsTech.innerHTML = (ps.techStack || []).map((tech) => `
-      <span class="px-2.5 py-1 rounded-lg text-xs font-bold bg-slate-100 text-slate-700 border border-slate-200">
-        ${escapeHtml(tech)}
-      </span>
-    `).join('');
 
     els.modalPsBeneficiaries.textContent = ps.beneficiaries || 'General public and stakeholders.';
 
