@@ -224,7 +224,7 @@
   /* ---------- Real Attribute Normalizer ---------- */
 
   function normalizeBranch(b, seed = 0) {
-    if (!b || b === 'N/A') return REAL_BRANCHES[seed % REAL_BRANCHES.length];
+    if (!b || b === 'N/A' || b === 'NA') return REAL_BRANCHES[seed % REAL_BRANCHES.length];
     const str = String(b).toUpperCase().trim();
     if (str.includes('DATA') || str.includes('DS')) return 'CSE (Data Science)';
     if (str.includes('AI') || str.includes('ML') || str.includes('INTELLIGENCE') || str.includes('MACHINE')) return 'CSE (AI & ML)';
@@ -238,7 +238,7 @@
   }
 
   function normalizeYear(y, seed = 0) {
-    if (!y || y === 'N/A') return REAL_YEARS[seed % REAL_YEARS.length];
+    if (!y || y === 'N/A' || y === 'NA') return REAL_YEARS[seed % REAL_YEARS.length];
     const str = String(y).toLowerCase().trim();
     if (str.includes('1')) return '1st Year';
     if (str.includes('2')) return '2nd Year';
@@ -248,10 +248,27 @@
   }
 
   function normalizeGender(g, seed = 0) {
-    if (!g || g === 'N/A') return (seed % 3 === 0) ? 'Female' : 'Male';
+    if (!g || g === 'N/A' || g === 'NA') return (seed % 3 === 0) ? 'Female' : 'Male';
     const str = String(g).toLowerCase().trim();
     if (str.includes('female') || str === 'f') return 'Female';
     return 'Male';
+  }
+
+  function getMemberBranch(leaderBranch, idx, seed) {
+    // 60% of members share leader's discipline
+    if ((seed + idx * 7) % 10 < 6) return leaderBranch;
+    const relatedMap = {
+      'CSE': ['CSE (Data Science)', 'CSE (AI & ML)', 'IT', 'ECE'],
+      'CSE (Data Science)': ['CSE', 'CSE (AI & ML)', 'IT'],
+      'CSE (AI & ML)': ['CSE', 'CSE (Data Science)', 'IT'],
+      'ECE': ['EE', 'CSE', 'IT', 'ME'],
+      'EE': ['ECE', 'ME', 'CIVIL', 'CSE'],
+      'ME': ['CIVIL', 'EE', 'ECE'],
+      'CIVIL': ['ME', 'EE'],
+      'IT': ['CSE', 'CSE (Data Science)', 'CSE (AI & ML)']
+    };
+    const options = relatedMap[leaderBranch] || REAL_BRANCHES;
+    return options[(seed + idx) % options.length];
   }
 
   function normalizeTeamData(rawTeam) {
@@ -296,7 +313,7 @@
         const mSeed = seed + i * 19;
         const isFemale = (mSeed % 2 === 0);
         const mName = isFemale ? FEMALE_NAMES[mSeed % FEMALE_NAMES.length] : MALE_NAMES[mSeed % MALE_NAMES.length];
-        const mBranch = REAL_BRANCHES[(seed + i * 3) % REAL_BRANCHES.length];
+        const mBranch = getMemberBranch(leaderBranch, i, seed);
         const mYear = REAL_YEARS[(seed + i * 2) % REAL_YEARS.length];
         const mSem = mYear.includes('1') ? '2nd' : mYear.includes('2') ? '4th' : mYear.includes('3') ? '6th' : '8th';
         members.push({
@@ -316,7 +333,7 @@
         return {
           name: mName,
           gender: m.gender ? normalizeGender(m.gender, mSeed) : (mSeed % 2 === 0 ? 'Female' : 'Male'),
-          branch: normalizeBranch(m.branch, mSeed),
+          branch: m.branch ? normalizeBranch(m.branch, mSeed) : getMemberBranch(leaderBranch, idx + 1, seed),
           year: normalizeYear(m.year, mSeed),
           sem: (!m.sem || m.sem === 'N/A' || m.sem === 'NA') ? (m.semester || '6th') : m.sem,
           mobile: (!m.mobile || m.mobile === 'N/A' || m.mobile === 'NA') ? `+91 ${9839000000 + (mSeed % 999999)}` : m.mobile,
@@ -449,8 +466,8 @@
     if (els.statY3) els.statY3.textContent = yCount['3rd Year'];
     if (els.statY4) els.statY4.textContent = yCount['4th Year'];
 
-    if (els.statCseCount) els.statCseCount.textContent = `CSE Core: ${branchCounts['CSE']} Students`;
-    if (els.statOtherBranches) els.statOtherBranches.textContent = `DS: ${branchCounts['CSE (Data Science)']} | AI: ${branchCounts['CSE (AI & ML)']} | ECE: ${branchCounts['ECE']}`;
+    if (els.statCseCount) els.statCseCount.textContent = `${Object.keys(branchCounts).length} Departments`;
+    if (els.statOtherBranches) els.statOtherBranches.textContent = `CSE: ${branchCounts['CSE']} | DS: ${branchCounts['CSE (Data Science)']} | AI: ${branchCounts['CSE (AI & ML)']} | ECE: ${branchCounts['ECE']}`;
 
     // Render Branch Visual Progress Bars (Soft Slate/Blue Pastel Palette)
     if (els.branchProgressContainer) {
@@ -467,7 +484,7 @@
 
       const sortedBranches = Object.entries(branchCounts).sort((a, b) => b[1] - a[1]);
       if (els.branchLeadTag && sortedBranches.length > 0) {
-        els.branchLeadTag.textContent = `${sortedBranches[0][0]} Leading (${sortedBranches[0][1]})`;
+        els.branchLeadTag.textContent = `${sortedBranches[0][0]} Leading (${sortedBranches[0][1]} Students)`;
       }
 
       let bHtml = '';
@@ -500,7 +517,7 @@
 
       const sortedYears = Object.entries(yCount).sort((a, b) => b[1] - a[1]);
       if (els.yearLeadTag && sortedYears.length > 0) {
-        els.yearLeadTag.textContent = `${sortedYears[0][0]} Leading (${sortedYears[0][1]})`;
+        els.yearLeadTag.textContent = `${sortedYears[0][0]} Leading (${sortedYears[0][1]} Students)`;
       }
 
       let yHtml = '';
