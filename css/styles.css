@@ -1084,7 +1084,39 @@ body {
   box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1), 0 1px 2px rgba(0, 0, 0, 0.06);
 }
 
-@media (max-width: 640px) {
+/* =============================================
+   NAVBAR — MOBILE RESPONSIVE
+   ============================================= */
+
+/* Small phones: 360-400px — icons only, no text */
+@media (max-width: 400px) {
+  .header-inner {
+    padding: 0.35rem 0.5rem !important;
+  }
+  .nav-switch {
+    padding: 0.15rem !important;
+    gap: 1px !important;
+  }
+  .nav-pill {
+    padding: 0.35rem 0.45rem !important;
+    gap: 0 !important;
+  }
+  /* Hide text labels on tiny screens, keep icons */
+  .nav-pill span:not(.sr-only) {
+    display: none !important;
+  }
+  .nav-pill svg {
+    width: 14px !important;
+    height: 14px !important;
+  }
+  .college-logo {
+    width: 32px !important;
+    height: 32px !important;
+  }
+}
+
+/* Medium-small phones: 400-640px — compact text */
+@media (min-width: 401px) and (max-width: 640px) {
   .header-inner {
     padding: 0.4rem 0.6rem !important;
   }
@@ -1094,7 +1126,7 @@ body {
   }
   .nav-pill {
     padding: 0.3rem 0.5rem !important;
-    font-size: 0.7rem !important;
+    font-size: 0.68rem !important;
     gap: 0.2rem !important;
   }
   .nav-pill svg {

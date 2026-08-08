@@ -28,11 +28,11 @@
 <body class="bg-slate-50 text-slate-900 min-h-screen flex flex-col antialiased">
   <a class="sr-only" href="#main-content">Skip to main content</a>
 
-  <!-- Header -->
-  <header class="site-header bg-white/95 backdrop-blur-md border-b border-slate-200/80 sticky top-0 z-50 shadow-sm" role="banner">
+  <!-- Header — matches index.html exactly -->
+  <header class="site-header bg-white/95 backdrop-blur-md border-b border-gray-200/80 sticky top-0 z-50 shadow-2xs" role="banner">
     <div class="header-inner w-full max-w-full px-4 sm:px-8 lg:px-12 py-2 sm:py-2.5 flex items-center justify-between gap-2 sm:gap-4">
       
-      <!-- Brand Logo -->
+      <!-- Left: Dual Logo Brand -->
       <a href="index.html" class="flex items-center gap-2 sm:gap-3 flex-shrink-0 group transition-transform active:scale-95" title="United Institute of Technology">
         <img
           class="college-logo w-9 h-9 sm:w-11 sm:h-11 object-contain transition-transform group-hover:scale-105"
@@ -49,36 +49,38 @@
             </span>
           </div>
           <span class="text-[10px] sm:text-xs font-semibold text-slate-500 leading-tight mt-0.5 hidden sm:block">
-            Smart India Hackathon · Verification Portal
+            Smart India Hackathon · Internal Portal
           </span>
         </div>
       </a>
 
-      <!-- Navigation Switch -->
+      <!-- Right: Navigation + SIH Logo -->
       <div class="flex items-center gap-2 sm:gap-3 flex-shrink-0">
-        <nav class="nav-switch flex items-center bg-slate-100/90 p-1 rounded-full border border-slate-200/80 shadow-xs" role="navigation" aria-label="Main navigation">
-          <a href="index.html" class="nav-pill" title="Home">
+        <nav class="nav-switch flex items-center bg-slate-100/90 p-1 rounded-full border border-slate-200/80 shadow-2xs" role="navigation" aria-label="Main navigation">
+          <a href="index.html" class="nav-pill" title="Home &amp; Guidelines">
             <svg class="w-3.5 h-3.5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 12l2-2m0 0l7-7 7 7M5 10v10a1 1 0 001 1h3m10-11l2 2m-2-2v10a1 1 0 01-1 1h-3m-6 0a1 1 0 00-1-1v-4a1 1 0 011-1h2a1 1 0 011 1v4a1 1 0 001 1m-6 0h6"/></svg>
             <span class="text-xs font-bold">Home</span>
           </a>
-          <a href="verify.html" class="nav-pill active" aria-current="page" title="Data Verification">
-            <svg class="w-3.5 h-3.5 text-blue-600" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z"/></svg>
+          <a href="verify.html" class="nav-pill active" aria-current="page" title="Recheck &amp; Verify Team Data">
+            <svg class="w-3.5 h-3.5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z"/></svg>
             <span class="text-xs font-bold">Verify Team Data</span>
           </a>
-          <a href="problems.html" class="nav-pill" title="Problem Bank">
+          <a href="problems.html" class="nav-pill" title="Problem Statements Bank">
             <svg class="w-3.5 h-3.5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9.663 17h4.673M12 3v1m6.364 1.636l-.707.707M21 12h-1M4 12H3m3.343-5.657l-.707-.707m2.828 9.9a5 5 0 117.072 0l-.548.547A3.374 3.374 0 0014 18.469V19a2 2 0 11-4 0v-.531c0-.895-.356-1.754-.988-2.386l-.548-.547z"/></svg>
             <span class="text-xs font-bold">Problems</span>
           </a>
         </nav>
 
         <img
-          class="sih-header-logo h-8 sm:h-10 w-auto object-contain bg-white p-1 rounded-lg border border-slate-200/80 shadow-xs hidden sm:block"
+          class="sih-header-logo h-8 sm:h-10 w-auto object-contain bg-white p-1 rounded-lg border border-slate-200/80 shadow-2xs hidden sm:block"
           src="assets/sih-logo.png"
           alt="SIH 2026 logo"
         />
       </div>
+
     </div>
   </header>
+
 
   <main id="main-content" class="main w-full max-w-5xl mx-auto px-4 sm:px-6 py-8 flex-1 space-y-6" role="main">
     
