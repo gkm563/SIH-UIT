@@ -381,10 +381,15 @@ const Api = (() => {
                 }
               }
 
+              // Col index 59 = Column BH = Confirmation status
+              const bhVal = getVal(59).toLowerCase().trim();
+              const confirmedStatus = (bhVal === 'confirmed') ? 'Confirmed' : '';
+
               parsedTeams.push({
                 registrationId: regId,
                 teamName,
                 timestamp: getVal(0),
+                confirmedStatus,
                 teamLeaderName: leaderName,
                 leaderRollNumber: leaderRoll,
                 leaderEnrollment: leaderEnroll,
