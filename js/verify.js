@@ -138,7 +138,7 @@
       hideError();
       renderVerificationCard(matched);
     } else {
-      showError(`❌ No registered team found matching "${escapeHtml(query)}". Search is restricted to: Registration ID (e.g. SIH2026-0019), Registered Team Name, or Email ID of ANY Team Member.`);
+      showError(`❌ No registered team found matching "${escapeHtml(query)}". Search is restricted to: Registration ID (e.g. SIH2026-xxxx), Registered Team Name, or Email ID of ANY Team Member.`);
       if (els.resultsContainer) els.resultsContainer.classList.add('hidden');
     }
   }
