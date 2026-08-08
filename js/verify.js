@@ -189,48 +189,87 @@
     }
 
     let html = `
-      <div class="bg-white border border-slate-200/90 rounded-2xl p-6 sm:p-8 shadow-md space-y-6 relative">
+      <div class="bg-white border border-slate-200/90 rounded-2xl p-4 sm:p-8 shadow-md space-y-5 relative">
         
         <!-- Status Header Bar -->
-        <div class="flex flex-col sm:flex-row items-start sm:items-center justify-between gap-4 border-b border-slate-100 pb-5">
-          <div>
-            <div class="flex items-center gap-2">
-              <span class="font-mono text-xs font-black text-blue-700 bg-blue-50 border border-blue-200 px-3 py-1 rounded-lg">${regId}</span>
-              <span id="confirmation-badge" class="${isConfirmed ? 'bg-emerald-100 text-emerald-800 border-emerald-300' : isUnderReview ? 'bg-blue-100 text-blue-800 border-blue-300' : 'bg-amber-100 text-amber-800 border-amber-300'} border text-xs font-extrabold px-3 py-1 rounded-full flex items-center gap-1.5">
-                <span>${isConfirmed ? '✅ Confirmed' : isUnderReview ? '🔄 Under Review' : '🔍 Pending Verification'}</span>
+        <div class="flex flex-col gap-3 border-b border-slate-100 pb-4">
+          <div class="flex flex-wrap items-center gap-2">
+            <span class="font-mono text-xs font-black text-blue-700 bg-blue-50 border border-blue-200 px-3 py-1 rounded-lg">${regId}</span>
+            <span id="confirmation-badge" class="${isConfirmed ? 'bg-emerald-100 text-emerald-800 border-emerald-300' : isUnderReview ? 'bg-blue-100 text-blue-800 border-blue-300' : 'bg-amber-100 text-amber-800 border-amber-300'} border text-xs font-extrabold px-3 py-1 rounded-full flex items-center gap-1.5">
+              <span>${isConfirmed ? '✅ Confirmed' : isUnderReview ? '🔄 Under Review' : '🔍 Pending Verification'}</span>
+            </span>
+          </div>
+          <div class="flex flex-col sm:flex-row sm:items-center sm:justify-between gap-2">
+            <div>
+              <h2 class="text-xl sm:text-3xl font-black text-slate-900">${escapeHtml(team.teamName)}</h2>
+              <p class="text-xs font-semibold text-slate-500 mt-0.5">United Institute of Technology · SIH 2026 Internal Registration Record</p>
+            </div>
+            <div class="flex-shrink-0">
+              <span class="text-[11px] font-bold text-slate-400 uppercase tracking-wider block">Verification Status</span>
+              <span id="status-label" class="inline-flex items-center gap-1.5 text-xs font-extrabold ${isConfirmed ? 'text-emerald-700 bg-emerald-50 border-emerald-200' : isUnderReview ? 'text-blue-700 bg-blue-50 border-blue-200' : 'text-slate-700 bg-slate-100 border-slate-200'} border px-3 py-1 rounded-xl mt-1">
+                ${isConfirmed ? 'Confirmed' : isUnderReview ? 'Correction Under Review' : 'Review & Confirm Below'}
               </span>
             </div>
-            <h2 class="text-2xl sm:text-3xl font-black text-slate-900 mt-2">${escapeHtml(team.teamName)}</h2>
-            <p class="text-xs font-semibold text-slate-500 mt-0.5">United Institute of Technology · SIH 2026 Internal Registration Record</p>
-          </div>
-
-          <div class="text-right">
-            <span class="text-[11px] font-bold text-slate-400 uppercase tracking-wider block">Verification Status</span>
-            <span id="status-label" class="inline-flex items-center gap-1.5 text-xs font-extrabold ${isConfirmed ? 'text-emerald-700 bg-emerald-50 border-emerald-200' : isUnderReview ? 'text-blue-700 bg-blue-50 border-blue-200' : 'text-slate-700 bg-slate-100 border-slate-200'} border px-3 py-1 rounded-xl mt-1">
-              ${isConfirmed ? 'Confirmed' : isUnderReview ? 'Correction Under Review' : 'Review & Confirm Below'}
-            </span>
           </div>
         </div>
 
         <!-- Registered Team Name Card -->
-        <div class="p-4 bg-slate-50 border border-slate-200 rounded-xl flex items-center justify-between">
+        <div class="p-3 sm:p-4 bg-slate-50 border border-slate-200 rounded-xl flex flex-wrap items-center justify-between gap-2">
           <div>
             <div class="text-xs font-bold uppercase text-slate-500">Registered Team Name</div>
-            <div class="text-lg font-extrabold text-slate-900 mt-0.5">${escapeHtml(team.teamName)}</div>
+            <div class="text-base sm:text-lg font-extrabold text-slate-900 mt-0.5">${escapeHtml(team.teamName)}</div>
           </div>
           <div class="text-xs font-bold text-emerald-700 bg-emerald-50 border border-emerald-200 px-3 py-1 rounded-lg">
-            Registration ID: ${regId}
+            ${regId}
           </div>
         </div>
 
-        <!-- Registered Team Member Roster Table -->
+        <!-- Roster Header -->
         <div class="border border-slate-200 rounded-2xl overflow-hidden bg-white shadow-xs">
           <div class="bg-slate-100/90 px-4 py-3 border-b border-slate-200 flex items-center justify-between">
-            <span class="text-xs font-bold text-slate-800 uppercase tracking-wider">Registered Team Member Roster (${rosterList.length} Members)</span>
+            <span class="text-xs font-bold text-slate-800 uppercase tracking-wider">Team Member Roster</span>
             <span class="text-[11px] font-bold text-blue-700 bg-blue-50 px-2.5 py-0.5 rounded-full border border-blue-200">${rosterList.length} Members</span>
           </div>
 
-          <div class="overflow-x-auto">
+          <!-- MOBILE: Card layout (shown below md) -->
+          <div class="block md:hidden divide-y divide-slate-100">
+    `, rosterList.forEach(st => {
+      const isFemale = String(st.gender).toLowerCase().includes('female');
+      const roleBadge = st.isLeader
+        ? `<span class="inline-flex items-center gap-1 text-[10px] font-black bg-blue-100 text-blue-900 border border-blue-200 px-2 py-0.5 rounded">👑 LEADER</span>`
+        : `<span class="inline-flex items-center gap-1 text-[10px] font-bold text-slate-600 bg-slate-100 border border-slate-200 px-2 py-0.5 rounded">${st.role}</span>`;
+      const genderBadge = isFemale
+        ? `<span class="inline-flex items-center gap-1 text-[10px] font-bold bg-pink-50 text-pink-700 border border-pink-200 px-2 py-0.5 rounded-full">👩 Female</span>`
+        : `<span class="inline-flex items-center gap-1 text-[10px] font-semibold bg-blue-50 text-blue-700 border border-blue-200 px-2 py-0.5 rounded-full">👨 Male</span>`;
+      const emailVal = (st.email && st.email.includes('@'))
+        ? `<a href="mailto:${escapeHtml(st.email)}" class="text-blue-700 font-semibold underline break-all">${escapeHtml(st.email)}</a>`
+        : `<span class="text-slate-500">${escapeHtml(st.email)}</span>`;
+      const mobileVal = (st.mobile && st.mobile.replace(/\D/g,'').length >= 7)
+        ? `<a href="tel:${escapeHtml(st.mobile)}" class="text-blue-700 font-bold underline">${escapeHtml(st.mobile)}</a>`
+        : `<span class="text-slate-500">${escapeHtml(st.mobile)}</span>`;
+
+      html += `
+        <div class="p-4 space-y-2 ${st.isLeader ? 'bg-blue-50/40' : ''}">
+          <div class="flex items-center justify-between">
+            ${roleBadge}
+            ${genderBadge}
+          </div>
+          <div class="font-black text-slate-900 text-base">${escapeHtml(st.name)}</div>
+          <div class="grid grid-cols-2 gap-x-4 gap-y-1 text-xs text-slate-600">
+            <div><span class="font-bold text-slate-400 uppercase text-[10px] block">Branch</span>${escapeHtml(st.branch)}</div>
+            <div><span class="font-bold text-slate-400 uppercase text-[10px] block">Year / Sem</span>${escapeHtml(st.year)}</div>
+            <div class="col-span-2"><span class="font-bold text-slate-400 uppercase text-[10px] block">Email</span>${emailVal}</div>
+            <div class="col-span-2"><span class="font-bold text-slate-400 uppercase text-[10px] block">Mobile</span>${mobileVal}</div>
+          </div>
+        </div>
+      `;
+    });
+
+    html += `
+          </div>
+
+          <!-- DESKTOP: Table layout (shown md and above) -->
+          <div class="hidden md:block overflow-x-auto">
             <table class="w-full text-left text-xs">
               <thead class="bg-slate-50 border-b border-slate-200 text-slate-600 font-bold uppercase text-[10px] tracking-wider">
                 <tr>
@@ -256,12 +295,12 @@
         : `<span class="inline-flex items-center gap-1 text-[10px] font-semibold bg-blue-50 text-blue-700 border border-blue-200 px-2 py-0.5 rounded-full">👨 MALE</span>`;
 
       const emailDisplay = (st.email && st.email.includes('@'))
-        ? `<a href="mailto:${escapeHtml(st.email)}" class="hover:underline text-slate-800 font-semibold">✉️ ${escapeHtml(st.email)}</a>`
-        : `<span class="text-slate-500 font-medium">📋 ${escapeHtml(st.email)}</span>`;
+        ? `<a href="mailto:${escapeHtml(st.email)}" class="hover:underline text-slate-800 font-semibold break-all">${escapeHtml(st.email)}</a>`
+        : `<span class="text-slate-500 font-medium">${escapeHtml(st.email)}</span>`;
 
       const mobileDisplay = (st.mobile && st.mobile.replace(/\D/g, '').length >= 7)
-        ? `<a href="tel:${escapeHtml(st.mobile)}" class="hover:underline font-bold text-blue-700">📞 ${escapeHtml(st.mobile)}</a>`
-        : `<span class="text-slate-500 font-medium">📋 ${escapeHtml(st.mobile)}</span>`;
+        ? `<a href="tel:${escapeHtml(st.mobile)}" class="hover:underline font-bold text-blue-700">${escapeHtml(st.mobile)}</a>`
+        : `<span class="text-slate-500 font-medium">${escapeHtml(st.mobile)}</span>`;
 
       html += `
         <tr class="${st.isLeader ? 'bg-blue-50/30' : 'hover:bg-slate-50/60'} transition-colors">
@@ -288,7 +327,7 @@
         <div id="confirmation-action-box" class="pt-5 border-t border-slate-100">
 
           ${isConfirmed ? `
-            <!-- STATE 1: Confirmed (BH has value) -->
+            <!-- STATE 1: Confirmed -->
             <div class="flex flex-col sm:flex-row items-center justify-between gap-3">
               <div class="text-xs text-emerald-700 font-bold">All details confirmed and logged for official SIH portal submission.</div>
               <div class="flex items-center gap-2 bg-emerald-50 border border-emerald-200 px-5 py-3 rounded-xl">
@@ -296,11 +335,9 @@
               </div>
             </div>
           ` : isUnderReview ? `
-            <!-- STATE 2: Under Review (BG has data, BH is blank) -->
-            <div class="flex flex-col sm:flex-row items-center justify-between gap-3">
-              <div class="bg-blue-50 border border-blue-200 text-blue-800 px-4 py-3 rounded-xl text-xs font-bold">
-                🔄 Your correction request is <strong>Under Review</strong>. Our team will update the record shortly. Please check back later.
-              </div>
+            <!-- STATE 2: Under Review -->
+            <div class="bg-blue-50 border border-blue-200 text-blue-800 px-4 py-3 rounded-xl text-xs font-bold w-full">
+              🔄 Your correction request is <strong>Under Review</strong>. Our team will update the record shortly. Please check back later.
             </div>
           ` : `
             <!-- STATE 3: Both blank — show both action buttons -->
