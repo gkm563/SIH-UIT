@@ -1,6 +1,7 @@
 /**
  * SIH 2026 Team Registration Details Verification Portal Script
  * Live Google Sheets Roster Data — Strict Search by Registration ID, Team Name, or Member Email
+ * Direct Sheet Logging for Confirmation (Column BH) and Minor Corrections (Column BG)
  */
 (() => {
   'use strict';
@@ -149,11 +150,8 @@
     const regId = team.registrationId || 'SIH2026-REG';
     const isConfirmedKey = `sih2026_confirmed_${regId}`;
     const statusKey = `sih2026_status_${regId}`;
-    const corrKey = `sih2026_corr_${regId}`;
 
     const confirmedTime = localStorage.getItem(isConfirmedKey);
-    const statusVal = localStorage.getItem(statusKey) || (confirmedTime ? '100% Right & Accurate' : 'Pending Verification');
-    const corrData = localStorage.getItem(corrKey) ? JSON.parse(localStorage.getItem(corrKey)) : null;
 
     // Build real roster list directly from live Google Sheet data
     const rosterList = [];
@@ -222,17 +220,6 @@
             Registration ID: ${regId}
           </div>
         </div>
-
-        ${corrData ? `
-          <div class="p-4 bg-amber-50 border border-amber-200 text-amber-900 rounded-xl text-xs space-y-1">
-            <div class="font-bold text-amber-900 flex items-center gap-1.5">
-              <span>⚠️ Reported Correction Request on File:</span>
-            </div>
-            <div><strong>Incorrect Detail:</strong> ${escapeHtml(corrData.oldVal)}</div>
-            <div><strong>Requested Correction:</strong> ${escapeHtml(corrData.newVal)}</div>
-            <div class="text-[11px] text-slate-500 mt-1 font-semibold">Reported by ${escapeHtml(corrData.author)} (${escapeHtml(corrData.contact)}) on ${escapeHtml(corrData.timeStr)}</div>
-          </div>
-        ` : ''}
 
         <!-- Registered Team Member Roster Table -->
         <div class="border border-slate-200 rounded-2xl overflow-hidden bg-white shadow-xs">
@@ -356,7 +343,6 @@
       btn.className = 'bg-emerald-700 text-white cursor-default w-1/2 sm:w-auto px-6 py-2.5 font-bold text-xs rounded-xl shadow-sm transition-all flex items-center justify-center gap-1.5';
       btn.innerHTML = '<span>✅ Status: 100% Right & Accurate</span>';
     }
-    alert(`🎉 Team Status Saved as "100% Right & Accurate"!\nTimestamp: ${timeStr}`);
   };
 
   window.reportCorrection = (teamName, regId) => {
@@ -421,27 +407,29 @@
         const timeStr = new Date().toLocaleString();
         const payload = { regId, teamName, author, contact, oldVal, newVal, timeStr };
 
+        // Send directly to Google Sheet Column BG (Report)
         if (typeof Api !== 'undefined' && typeof Api.sendReport === 'function') {
           Api.sendReport(payload);
         }
 
-        localStorage.setItem(`sih2026_corr_${regId}`, JSON.stringify(payload));
-        const stored = JSON.parse(localStorage.getItem('sih2026_correction_requests') || '[]');
-        stored.push(payload);
-        localStorage.setItem('sih2026_correction_requests', JSON.stringify(stored));
-
         const statusMsg = document.getElementById('corr-status-msg');
         if (statusMsg) {
           statusMsg.className = 'text-xs text-emerald-800 bg-emerald-50 border border-emerald-200 p-3 rounded-xl font-bold text-center';
-          statusMsg.innerHTML = `✅ <strong>Correction Request Recorded!</strong><br/>Organisers Gautam &amp; Harsh have been notified.<br/><a href="https://wa.me/918924059058?text=${encodeURIComponent(`SIH 2026 Correction Request for ${teamName} (${regId}):\nIncorrect Detail: ${oldVal}\nRequested Correction: ${newVal}\nBy: ${author} (${contact})`)}" target="_blank" class="underline text-blue-700 mt-1.5 inline-block font-extrabold">Open WhatsApp Confirmation →</a>`;
+          statusMsg.innerHTML = `✅ <strong>Correction Request Submitted!</strong><br/>Your correction details have been logged in the master spreadsheet.`;
           statusMsg.classList.remove('hidden');
         }
 
         setTimeout(() => {
           window.closeCorrectionModal();
-          alert(`🎉 Correction Request Recorded for ${teamName}!\nIncorrect Detail: ${oldVal}\nRequested Correction: ${newVal}`);
-          handleLookup(regId);
-        }, 1800);
+          const oldValIn = document.getElementById('corr-old-val');
+          const newValIn = document.getElementById('corr-new-val');
+          const authorIn = document.getElementById('corr-author-name');
+          const contactIn = document.getElementById('corr-author-contact');
+          if (oldValIn) oldValIn.value = '';
+          if (newValIn) newValIn.value = '';
+          if (authorIn) authorIn.value = '';
+          if (contactIn) contactIn.value = '';
+        }, 1200);
       });
     }
 
