@@ -455,11 +455,40 @@ const Api = (() => {
     }
   }
 
+  async function sendConfirmation(regId, status = '100% Right & Accurate') {
+    const baseUrl = (AppConfig.GOOGLE_SCRIPT_URL || '').trim();
+    if (!baseUrl) return { success: false };
+
+    const fetchUrl = `${baseUrl}?action=confirm&registrationId=${encodeURIComponent(regId)}&status=${encodeURIComponent(status)}&_t=${Date.now()}`;
+    try {
+      fetch(fetchUrl, { mode: 'no-cors' }).catch(() => {});
+      return { success: true };
+    } catch {
+      return { success: false };
+    }
+  }
+
+  async function sendReport(payload) {
+    const baseUrl = (AppConfig.GOOGLE_SCRIPT_URL || '').trim();
+    if (!baseUrl) return { success: false };
+
+    const { regId, oldVal, newVal, author, contact } = payload || {};
+    const fetchUrl = `${baseUrl}?action=report&registrationId=${encodeURIComponent(regId || '')}&oldVal=${encodeURIComponent(oldVal || '')}&newVal=${encodeURIComponent(newVal || '')}&author=${encodeURIComponent(author || '')}&contact=${encodeURIComponent(contact || '')}&_t=${Date.now()}`;
+    try {
+      fetch(fetchUrl, { mode: 'no-cors' }).catch(() => {});
+      return { success: true };
+    } catch {
+      return { success: false };
+    }
+  }
+
   return {
     submitRegistration,
     getRegisteredTeams,
     getLocalCachedTeams,
     setLocalCachedTeams,
+    sendConfirmation,
+    sendReport,
     ping,
     buildPayload,
     isValidSuccess,

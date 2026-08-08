@@ -342,6 +342,10 @@
     localStorage.setItem(`sih2026_confirmed_${regId}`, timeStr);
     localStorage.setItem(`sih2026_status_${regId}`, '100% Right & Accurate');
 
+    if (typeof Api !== 'undefined' && typeof Api.sendConfirmation === 'function') {
+      Api.sendConfirmation(regId, '100% Right & Accurate');
+    }
+
     const badge = document.getElementById('confirmation-badge');
     if (badge) {
       badge.className = 'bg-emerald-100 text-emerald-800 border border-emerald-300 text-xs font-extrabold px-3 py-1 rounded-full flex items-center gap-1.5';
@@ -416,6 +420,10 @@
 
         const timeStr = new Date().toLocaleString();
         const payload = { regId, teamName, author, contact, oldVal, newVal, timeStr };
+
+        if (typeof Api !== 'undefined' && typeof Api.sendReport === 'function') {
+          Api.sendReport(payload);
+        }
 
         localStorage.setItem(`sih2026_corr_${regId}`, JSON.stringify(payload));
         const stored = JSON.parse(localStorage.getItem('sih2026_correction_requests') || '[]');
