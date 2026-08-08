@@ -283,39 +283,55 @@
           </div>
         </div>
 
-        <!-- Action Confirmation Bar -->
-        <div id="confirmation-action-box" class="pt-4 border-t border-slate-100 flex flex-col sm:flex-row items-center justify-between gap-4">
-          <div>
-            <div class="text-xs font-bold text-slate-900">Review your registered team data — Report any minor correction if needed, or confirm if all details are accurate.</div>
-            <div class="text-[11px] text-slate-500">Confirming marks your team status as "100% Right &amp; Accurate" for official SIH portal submission.</div>
-          </div>
+        <!-- Simple Action Bar -->
+        <div id="confirmation-action-box" class="pt-5 border-t border-slate-100">
 
-          <div class="flex items-center gap-3 w-full sm:w-auto">
-            <button
-              type="button"
-              id="btn-report-correction"
-              class="w-1/2 sm:w-auto px-4 py-2.5 bg-amber-50 hover:bg-amber-100 text-amber-900 border border-amber-300 font-bold text-xs rounded-xl shadow-xs transition-all active:scale-95 flex items-center justify-center gap-1.5 cursor-pointer"
-              onclick="reportCorrection('${escapeHtml(team.teamName)}', '${regId}')"
-            >
-              <span>✏️ Report Minor Correction</span>
-            </button>
+          ${confirmedTime ? `
+            <!-- Confirmed Done State -->
+            <div class="flex flex-col sm:flex-row items-center justify-between gap-3">
+              <div class="text-xs text-emerald-700 font-bold">All details confirmed and logged for official SIH portal submission.</div>
+              <div class="flex items-center gap-2 bg-emerald-50 border border-emerald-200 px-5 py-3 rounded-xl">
+                <span class="text-emerald-700 font-black text-sm">✅ Done — Details Confirmed</span>
+              </div>
+            </div>
+          ` : reportedTime ? `
+            <!-- Correction Submitted State -->
+            <div class="flex flex-col sm:flex-row items-center justify-between gap-3">
+              <div class="text-xs text-orange-700 font-bold bg-orange-50 border border-orange-200 px-4 py-2.5 rounded-xl">
+                ✅ Correction submitted. Please check your team details again after some time once our team reviews and updates the record.
+              </div>
+              <button
+                type="button"
+                id="btn-confirm-correct"
+                class="w-full sm:w-auto px-6 py-2.5 bg-emerald-600 hover:bg-emerald-700 text-white font-bold text-xs rounded-xl shadow-sm transition-all active:scale-95 cursor-pointer flex items-center justify-center gap-1.5"
+                onclick="confirmTeamData('${regId}')"
+              >
+                <span>✅ All Details Are Correct — Confirm</span>
+              </button>
+            </div>
+          ` : `
+            <!-- Default: Two clean action buttons -->
+            <div class="flex flex-col sm:flex-row items-center justify-end gap-3">
+              <button
+                type="button"
+                id="btn-report-correction"
+                class="w-full sm:w-auto px-5 py-2.5 bg-amber-50 hover:bg-amber-100 text-amber-900 border border-amber-300 font-bold text-xs rounded-xl transition-all active:scale-95 flex items-center justify-center gap-1.5 cursor-pointer"
+                onclick="reportCorrection('${escapeHtml(team.teamName)}', '${regId}')"
+              >
+                <span>✏️ Report Minor Correction</span>
+              </button>
+              <button
+                type="button"
+                id="btn-confirm-correct"
+                class="w-full sm:w-auto px-6 py-2.5 bg-emerald-600 hover:bg-emerald-700 text-white font-bold text-xs rounded-xl shadow-sm transition-all active:scale-95 cursor-pointer flex items-center justify-center gap-1.5"
+                onclick="confirmTeamData('${regId}')"
+              >
+                <span>✅ All Details Are Correct — Confirm</span>
+              </button>
+            </div>
+          `}
 
-            <button
-              type="button"
-              id="btn-confirm-correct"
-              class="${confirmedTime ? 'bg-emerald-700 text-white cursor-default' : 'bg-emerald-600 hover:bg-emerald-700 text-white active:scale-95 cursor-pointer'} w-1/2 sm:w-auto px-6 py-2.5 font-bold text-xs rounded-xl shadow-sm transition-all flex items-center justify-center gap-1.5"
-              onclick="confirmTeamData('${regId}')"
-            >
-              <span>${confirmedTime ? '✅ Status: 100% Right & Accurate' : '✅ Confirm Details Are 100% Right & Accurate'}</span>
-            </button>
-          </div>
         </div>
-
-        ${confirmedTime ? `
-          <div class="p-3 bg-emerald-50 border border-emerald-200 text-emerald-800 rounded-xl text-xs font-bold text-center">
-            🎉 Thank you! Your team details were confirmed as <strong>100% Right &amp; Accurate</strong> on ${confirmedTime}.
-          </div>
-        ` : ''}
 
       </div>
     `;
@@ -334,15 +350,29 @@
       Api.sendConfirmation(regId, '100% Right & Accurate');
     }
 
+    // Update status badge
     const badge = document.getElementById('confirmation-badge');
     if (badge) {
       badge.className = 'bg-emerald-100 text-emerald-800 border border-emerald-300 text-xs font-extrabold px-3 py-1 rounded-full flex items-center gap-1.5';
       badge.innerHTML = '<span>✅ Status: 100% Right & Accurate</span>';
     }
-    const btn = document.getElementById('btn-confirm-correct');
-    if (btn) {
-      btn.className = 'bg-emerald-700 text-white cursor-default w-1/2 sm:w-auto px-6 py-2.5 font-bold text-xs rounded-xl shadow-sm transition-all flex items-center justify-center gap-1.5';
-      btn.innerHTML = '<span>✅ Status: 100% Right & Accurate</span>';
+    const statusLabel = document.getElementById('status-label');
+    if (statusLabel) {
+      statusLabel.className = 'inline-flex items-center gap-1.5 text-xs font-extrabold text-emerald-700 bg-emerald-50 border border-emerald-200 border px-3 py-1 rounded-xl mt-1';
+      statusLabel.textContent = '100% Right & Accurate';
+    }
+
+    // Replace entire action box with Done state
+    const actionBox = document.getElementById('confirmation-action-box');
+    if (actionBox) {
+      actionBox.innerHTML = `
+        <div class="flex flex-col sm:flex-row items-center justify-between gap-3">
+          <div class="text-xs text-emerald-700 font-bold">All details confirmed and logged for official SIH portal submission.</div>
+          <div class="flex items-center gap-2 bg-emerald-50 border border-emerald-200 px-5 py-3 rounded-xl">
+            <span class="text-emerald-700 font-black text-sm">✅ Done — Details Confirmed</span>
+          </div>
+        </div>
+      `;
     }
   };
 
