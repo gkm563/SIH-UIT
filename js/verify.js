@@ -224,42 +224,42 @@
           </div>
         </div>
 
-        <!-- Roster Header -->
+        <!-- Roster -->
         <div class="border border-slate-200 rounded-2xl overflow-hidden bg-white shadow-xs">
           <div class="bg-slate-100/90 px-4 py-3 border-b border-slate-200 flex items-center justify-between">
             <span class="text-xs font-bold text-slate-800 uppercase tracking-wider">Team Member Roster</span>
             <span class="text-[11px] font-bold text-blue-700 bg-blue-50 px-2.5 py-0.5 rounded-full border border-blue-200">${rosterList.length} Members</span>
           </div>
 
-          <!-- MOBILE: Card layout (shown below md) -->
+          <!-- MOBILE: Card layout (hidden on md+) -->
           <div class="block md:hidden divide-y divide-slate-100">
-    `, rosterList.forEach(st => {
+    `;
+
+    // Mobile cards
+    rosterList.forEach(st => {
       const isFemale = String(st.gender).toLowerCase().includes('female');
-      const roleBadge = st.isLeader
+      const roleBadgeMobile = st.isLeader
         ? `<span class="inline-flex items-center gap-1 text-[10px] font-black bg-blue-100 text-blue-900 border border-blue-200 px-2 py-0.5 rounded">👑 LEADER</span>`
         : `<span class="inline-flex items-center gap-1 text-[10px] font-bold text-slate-600 bg-slate-100 border border-slate-200 px-2 py-0.5 rounded">${st.role}</span>`;
-      const genderBadge = isFemale
+      const genderBadgeMobile = isFemale
         ? `<span class="inline-flex items-center gap-1 text-[10px] font-bold bg-pink-50 text-pink-700 border border-pink-200 px-2 py-0.5 rounded-full">👩 Female</span>`
         : `<span class="inline-flex items-center gap-1 text-[10px] font-semibold bg-blue-50 text-blue-700 border border-blue-200 px-2 py-0.5 rounded-full">👨 Male</span>`;
-      const emailVal = (st.email && st.email.includes('@'))
+      const emailCard = (st.email && st.email.includes('@'))
         ? `<a href="mailto:${escapeHtml(st.email)}" class="text-blue-700 font-semibold underline break-all">${escapeHtml(st.email)}</a>`
         : `<span class="text-slate-500">${escapeHtml(st.email)}</span>`;
-      const mobileVal = (st.mobile && st.mobile.replace(/\D/g,'').length >= 7)
+      const mobileCard = (st.mobile && st.mobile.replace(/\D/g, '').length >= 7)
         ? `<a href="tel:${escapeHtml(st.mobile)}" class="text-blue-700 font-bold underline">${escapeHtml(st.mobile)}</a>`
         : `<span class="text-slate-500">${escapeHtml(st.mobile)}</span>`;
 
       html += `
         <div class="p-4 space-y-2 ${st.isLeader ? 'bg-blue-50/40' : ''}">
-          <div class="flex items-center justify-between">
-            ${roleBadge}
-            ${genderBadge}
-          </div>
+          <div class="flex items-center justify-between">${roleBadgeMobile}${genderBadgeMobile}</div>
           <div class="font-black text-slate-900 text-base">${escapeHtml(st.name)}</div>
           <div class="grid grid-cols-2 gap-x-4 gap-y-1 text-xs text-slate-600">
             <div><span class="font-bold text-slate-400 uppercase text-[10px] block">Branch</span>${escapeHtml(st.branch)}</div>
-            <div><span class="font-bold text-slate-400 uppercase text-[10px] block">Year / Sem</span>${escapeHtml(st.year)}</div>
-            <div class="col-span-2"><span class="font-bold text-slate-400 uppercase text-[10px] block">Email</span>${emailVal}</div>
-            <div class="col-span-2"><span class="font-bold text-slate-400 uppercase text-[10px] block">Mobile</span>${mobileVal}</div>
+            <div><span class="font-bold text-slate-400 uppercase text-[10px] block">Year</span>${escapeHtml(st.year)}</div>
+            <div class="col-span-2"><span class="font-bold text-slate-400 uppercase text-[10px] block">Email</span>${emailCard}</div>
+            <div class="col-span-2"><span class="font-bold text-slate-400 uppercase text-[10px] block">Mobile</span>${mobileCard}</div>
           </div>
         </div>
       `;
@@ -268,7 +268,7 @@
     html += `
           </div>
 
-          <!-- DESKTOP: Table layout (shown md and above) -->
+          <!-- DESKTOP: Table layout (hidden below md) -->
           <div class="hidden md:block overflow-x-auto">
             <table class="w-full text-left text-xs">
               <thead class="bg-slate-50 border-b border-slate-200 text-slate-600 font-bold uppercase text-[10px] tracking-wider">
