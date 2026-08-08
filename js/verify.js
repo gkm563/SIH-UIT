@@ -140,9 +140,17 @@
     if (matched) {
       hideError();
       renderVerificationCard(matched);
+      // Update URL so it can be shared/bookmarked directly
+      const shareUrl = new URL(window.location.href);
+      shareUrl.searchParams.set('id', matched.registrationId);
+      history.replaceState({ id: matched.registrationId }, '', shareUrl.toString());
     } else {
       showError(`❌ No registered team found matching "${escapeHtml(query)}". Search is restricted to: Registration ID (e.g. SIH2026-xxxx), Registered Team Name, or Email ID of ANY Team Member.`);
       if (els.resultsContainer) els.resultsContainer.classList.add('hidden');
+      // Clear ID from URL on failed search
+      const cleanUrl = new URL(window.location.href);
+      cleanUrl.searchParams.delete('id');
+      history.replaceState({}, '', cleanUrl.toString());
     }
   }
 
@@ -204,11 +212,19 @@
               <h2 class="text-xl sm:text-3xl font-black text-slate-900">${escapeHtml(team.teamName)}</h2>
               <p class="text-xs font-semibold text-slate-500 mt-0.5">United Institute of Technology · SIH 2026 Internal Registration Record</p>
             </div>
-            <div class="flex-shrink-0">
-              <span class="text-[11px] font-bold text-slate-400 uppercase tracking-wider block">Verification Status</span>
-              <span id="status-label" class="inline-flex items-center gap-1.5 text-xs font-extrabold ${isConfirmed ? 'text-emerald-700 bg-emerald-50 border-emerald-200' : isUnderReview ? 'text-blue-700 bg-blue-50 border-blue-200' : 'text-slate-700 bg-slate-100 border-slate-200'} border px-3 py-1 rounded-xl mt-1">
-                ${isConfirmed ? 'Confirmed' : isUnderReview ? 'Correction Under Review' : 'Review & Confirm Below'}
-              </span>
+            <div class="flex items-center gap-2 flex-shrink-0">
+              <button
+                onclick="copyShareLink('${regId}')"
+                id="btn-share-${regId.replace(/[^a-z0-9]/gi, '')}"
+                class="inline-flex items-center gap-1.5 text-xs font-bold text-blue-700 bg-blue-50 border border-blue-200 px-3 py-1.5 rounded-xl hover:bg-blue-100 transition-all active:scale-95 cursor-pointer"
+                title="Copy shareable link"
+              >🔗 Share Link</button>
+              <div class="flex-shrink-0 text-right">
+                <span class="text-[11px] font-bold text-slate-400 uppercase tracking-wider block">Verification Status</span>
+                <span id="status-label" class="inline-flex items-center gap-1.5 text-xs font-extrabold ${isConfirmed ? 'text-emerald-700 bg-emerald-50 border-emerald-200' : isUnderReview ? 'text-blue-700 bg-blue-50 border-blue-200' : 'text-slate-700 bg-slate-100 border-slate-200'} border px-3 py-1 rounded-xl mt-1">
+                  ${isConfirmed ? 'Confirmed' : isUnderReview ? 'Correction Under Review' : 'Review & Confirm Below'}
+                </span>
+              </div>
             </div>
           </div>
         </div>
@@ -420,7 +436,55 @@
     modal.classList.remove('hidden');
   };
 
+  // ── Share Link ──────────────────────────────────────────────────
+  window.copyShareLink = (regId) => {
+    const url = new URL(window.location.href);
+    url.searchParams.set('id', regId);
+    const shareUrl = url.toString();
+
+    // Copy to clipboard
+    if (navigator.clipboard && navigator.clipboard.writeText) {
+      navigator.clipboard.writeText(shareUrl).catch(() => fallbackCopy(shareUrl));
+    } else {
+      fallbackCopy(shareUrl);
+    }
+
+    // Show toast
+    let toast = document.getElementById('share-toast');
+    if (!toast) {
+      toast = document.createElement('div');
+      toast.id = 'share-toast';
+      toast.style.cssText = `
+        position:fixed;bottom:24px;left:50%;transform:translateX(-50%) translateY(60px);
+        background:#1e293b;color:#fff;font-size:0.75rem;font-weight:700;
+        padding:0.6rem 1.2rem;border-radius:999px;box-shadow:0 4px 20px rgba(0,0,0,0.25);
+        z-index:9999;transition:transform 0.25s cubic-bezier(.34,1.56,.64,1),opacity 0.25s;
+        opacity:0;pointer-events:none;white-space:nowrap;
+      `;
+      document.body.appendChild(toast);
+    }
+    toast.textContent = '🔗 Link copied! Share it with your team.';
+    toast.style.transform = 'translateX(-50%) translateY(0)';
+    toast.style.opacity = '1';
+    clearTimeout(toast._timer);
+    toast._timer = setTimeout(() => {
+      toast.style.transform = 'translateX(-50%) translateY(60px)';
+      toast.style.opacity = '0';
+    }, 2800);
+  };
+
+  function fallbackCopy(text) {
+    const ta = document.createElement('textarea');
+    ta.value = text;
+    ta.style.cssText = 'position:fixed;top:-9999px;left:-9999px;opacity:0';
+    document.body.appendChild(ta);
+    ta.focus(); ta.select();
+    try { document.execCommand('copy'); } catch {}
+    document.body.removeChild(ta);
+  }
+
   window.closeCorrectionModal = () => {
+
     const modal = document.getElementById('correction-modal');
     if (modal) modal.classList.add('hidden');
   };
