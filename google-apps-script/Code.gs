@@ -105,7 +105,6 @@ const HEADERS = [
  */
 function handleConfirmAction_(param) {
   var regId = String(param.registrationId || param.id || '').trim();
-  var statusMsg = String(param.status || '100% Right & Accurate').trim();
   if (regId) {
     var sheet = getOrCreateSheet_();
     var lastRow = sheet.getLastRow();
@@ -115,10 +114,8 @@ function handleConfirmAction_(param) {
         var curId = String(ids[i][0] || '').trim();
         if (curId.charAt(0) === "'") curId = curId.substring(1);
         if (curId.toLowerCase() === regId.toLowerCase() || curId.replace(/^sih2026-?/i, '') === regId.replace(/^sih2026-?/i, '')) {
-          var timeStr = new Date().toLocaleString();
-          var writeVal = '[VERIFIED] Status: ' + statusMsg + ' | Confirmed On: ' + timeStr;
-          sheet.getRange(i + 2, 60).setValue(writeVal); // Column BH (Col 60) = Confirmation
-          return jsonResponse_({ success: true, message: 'Confirmation logged in Column BH (Col 60)', row: i + 2, value: writeVal });
+          sheet.getRange(i + 2, 60).setValue('Confirmed'); // Column BH (Col 60)
+          return jsonResponse_({ success: true, message: 'Confirmed written to Column BH', row: i + 2 });
         }
       }
     }
@@ -162,7 +159,7 @@ function handleGetTeamsAction_() {
   var teams = [];
 
   if (lastRow >= 2) {
-    var rows = sheet.getRange(2, 1, lastRow - 1, Math.max(58, lastCol)).getValues();
+    var rows = sheet.getRange(2, 1, lastRow - 1, Math.max(60, lastCol)).getValues();
     for (var i = 0; i < rows.length; i++) {
       var row = rows[i];
       var regId = String(row[1] || '').trim();
@@ -173,10 +170,15 @@ function handleGetTeamsAction_() {
       if (regId.charAt(0) === "'") regId = regId.substring(1);
 
       if (tName && regId) {
+        // Col BH = index 59 (0-based) = column 60 (1-based)
+        var bhVal = String(row[59] || '').trim();
+        var isConfirmed = bhVal.toLowerCase() === 'confirmed';
+
         var teamObj = {
           registrationId: regId,
           teamName: tName,
           timestamp: timeStr,
+          confirmedStatus: isConfirmed ? 'Confirmed' : '',
           teamLeaderName: String(row[4] || '').trim(),
           leaderRollNumber: String(row[5] || '').trim(),
           leaderEnrollment: String(row[6] || '').trim(),

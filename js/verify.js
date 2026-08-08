@@ -56,6 +56,7 @@
     return {
       registrationId: regId,
       teamName: name,
+      confirmedStatus: rawTeam.confirmedStatus || '',
       teamLeaderName: leaderName,
       leaderGender,
       leaderBranch,
@@ -148,11 +149,9 @@
     if (!els.resultsContainer) return;
 
     const regId = team.registrationId || 'SIH2026-REG';
-    const isConfirmedKey = `sih2026_confirmed_${regId}`;
-    const reportedKey = `sih2026_reported_${regId}`;
 
-    const confirmedTime = localStorage.getItem(isConfirmedKey);
-    const reportedTime = localStorage.getItem(reportedKey);
+    // State comes entirely from the Google Sheet (Col BH), NOT localStorage
+    const isConfirmed = (team.confirmedStatus || '').toLowerCase() === 'confirmed';
 
     // Build real roster list directly from live Google Sheet data
     const rosterList = [];
@@ -195,8 +194,8 @@
           <div>
             <div class="flex items-center gap-2">
               <span class="font-mono text-xs font-black text-blue-700 bg-blue-50 border border-blue-200 px-3 py-1 rounded-lg">${regId}</span>
-              <span id="confirmation-badge" class="${confirmedTime ? 'bg-emerald-100 text-emerald-800 border-emerald-300' : reportedTime ? 'bg-orange-100 text-orange-800 border-orange-300' : 'bg-amber-100 text-amber-800 border-amber-300'} border text-xs font-extrabold px-3 py-1 rounded-full flex items-center gap-1.5">
-                <span>${confirmedTime ? '✅ Status: 100% Right & Accurate' : reportedTime ? '⚠️ Correction Reported' : '🔍 Verification Mode Active'}</span>
+              <span id="confirmation-badge" class="${isConfirmed ? 'bg-emerald-100 text-emerald-800 border-emerald-300' : 'bg-amber-100 text-amber-800 border-amber-300'} border text-xs font-extrabold px-3 py-1 rounded-full flex items-center gap-1.5">
+                <span>${isConfirmed ? '✅ Confirmed' : '🔍 Verification Mode Active'}</span>
               </span>
             </div>
             <h2 class="text-2xl sm:text-3xl font-black text-slate-900 mt-2">${escapeHtml(team.teamName)}</h2>
@@ -205,8 +204,8 @@
 
           <div class="text-right">
             <span class="text-[11px] font-bold text-slate-400 uppercase tracking-wider block">Verification Status</span>
-            <span id="status-label" class="inline-flex items-center gap-1.5 text-xs font-extrabold ${confirmedTime ? 'text-emerald-700 bg-emerald-50 border-emerald-200' : reportedTime ? 'text-orange-700 bg-orange-50 border-orange-200' : 'text-slate-700 bg-slate-100 border-slate-200'} border px-3 py-1 rounded-xl mt-1">
-              ${confirmedTime ? '100% Right & Accurate' : reportedTime ? 'Correction Reported — Pending Review' : 'Review & Confirm Below'}
+            <span id="status-label" class="inline-flex items-center gap-1.5 text-xs font-extrabold ${isConfirmed ? 'text-emerald-700 bg-emerald-50 border-emerald-200' : 'text-slate-700 bg-slate-100 border-slate-200'} border px-3 py-1 rounded-xl mt-1">
+              ${isConfirmed ? 'Confirmed' : 'Review & Confirm Below'}
             </span>
           </div>
         </div>
@@ -286,28 +285,13 @@
         <!-- Simple Action Bar -->
         <div id="confirmation-action-box" class="pt-5 border-t border-slate-100">
 
-          ${confirmedTime ? `
+          ${isConfirmed ? `
             <!-- Confirmed Done State -->
             <div class="flex flex-col sm:flex-row items-center justify-between gap-3">
               <div class="text-xs text-emerald-700 font-bold">All details confirmed and logged for official SIH portal submission.</div>
               <div class="flex items-center gap-2 bg-emerald-50 border border-emerald-200 px-5 py-3 rounded-xl">
                 <span class="text-emerald-700 font-black text-sm">✅ Done — Details Confirmed</span>
               </div>
-            </div>
-          ` : reportedTime ? `
-            <!-- Correction Submitted State -->
-            <div class="flex flex-col sm:flex-row items-center justify-between gap-3">
-              <div class="text-xs text-orange-700 font-bold bg-orange-50 border border-orange-200 px-4 py-2.5 rounded-xl">
-                ✅ Correction submitted. Please check your team details again after some time once our team reviews and updates the record.
-              </div>
-              <button
-                type="button"
-                id="btn-confirm-correct"
-                class="w-full sm:w-auto px-6 py-2.5 bg-emerald-600 hover:bg-emerald-700 text-white font-bold text-xs rounded-xl shadow-sm transition-all active:scale-95 cursor-pointer flex items-center justify-center gap-1.5"
-                onclick="confirmTeamData('${regId}')"
-              >
-                <span>✅ All Details Are Correct — Confirm</span>
-              </button>
             </div>
           ` : `
             <!-- Default: Two clean action buttons -->
@@ -342,24 +326,21 @@
   }
 
   window.confirmTeamData = (regId) => {
-    const timeStr = new Date().toLocaleString();
-    localStorage.setItem(`sih2026_confirmed_${regId}`, timeStr);
-    localStorage.setItem(`sih2026_status_${regId}`, '100% Right & Accurate');
-
+    // Call API — writes 'Confirmed' to Column BH in sheet
     if (typeof Api !== 'undefined' && typeof Api.sendConfirmation === 'function') {
-      Api.sendConfirmation(regId, '100% Right & Accurate');
+      Api.sendConfirmation(regId, 'Confirmed');
     }
 
     // Update status badge
     const badge = document.getElementById('confirmation-badge');
     if (badge) {
       badge.className = 'bg-emerald-100 text-emerald-800 border border-emerald-300 text-xs font-extrabold px-3 py-1 rounded-full flex items-center gap-1.5';
-      badge.innerHTML = '<span>✅ Status: 100% Right & Accurate</span>';
+      badge.innerHTML = '<span>✅ Confirmed</span>';
     }
     const statusLabel = document.getElementById('status-label');
     if (statusLabel) {
       statusLabel.className = 'inline-flex items-center gap-1.5 text-xs font-extrabold text-emerald-700 bg-emerald-50 border border-emerald-200 border px-3 py-1 rounded-xl mt-1';
-      statusLabel.textContent = '100% Right & Accurate';
+      statusLabel.textContent = 'Confirmed';
     }
 
     // Replace entire action box with Done state
@@ -442,9 +423,6 @@
         if (typeof Api !== 'undefined' && typeof Api.sendReport === 'function') {
           Api.sendReport(payload);
         }
-
-        // Save reported flag to localStorage
-        localStorage.setItem(`sih2026_reported_${regId}`, timeStr);
 
         // Update status badge live in DOM without re-rendering
         const badge = document.getElementById('confirmation-badge');
