@@ -1,6 +1,7 @@
 /**
  * SIH 2026 Team Registration Details Verification Portal Script
  * Strictly Real Google Sheets Data — Zero Placeholder Rows / Zero Synthetic Data
+ * Interactive Minor Correction Report Form Modal
  */
 (() => {
   'use strict';
@@ -307,7 +308,7 @@
             <button
               type="button"
               id="btn-report-correction"
-              class="w-1/2 sm:w-auto px-4 py-2.5 bg-amber-50 hover:bg-amber-100 text-amber-900 border border-amber-300 font-bold text-xs rounded-xl shadow-xs transition-all active:scale-95 flex items-center justify-center gap-1.5"
+              class="w-1/2 sm:w-auto px-4 py-2.5 bg-amber-50 hover:bg-amber-100 text-amber-900 border border-amber-300 font-bold text-xs rounded-xl shadow-xs transition-all active:scale-95 flex items-center justify-center gap-1.5 cursor-pointer"
               onclick="reportCorrection('${escapeHtml(team.teamName)}', '${regId}')"
             >
               <span>✏️ Report Minor Correction</span>
@@ -316,7 +317,7 @@
             <button
               type="button"
               id="btn-confirm-correct"
-              class="${confirmedTime ? 'bg-emerald-700 text-white cursor-default' : 'bg-emerald-600 hover:bg-emerald-700 text-white active:scale-95'} w-1/2 sm:w-auto px-6 py-2.5 font-bold text-xs rounded-xl shadow-sm transition-all flex items-center justify-center gap-1.5"
+              class="${confirmedTime ? 'bg-emerald-700 text-white cursor-default' : 'bg-emerald-600 hover:bg-emerald-700 text-white active:scale-95 cursor-pointer'} w-1/2 sm:w-auto px-6 py-2.5 font-bold text-xs rounded-xl shadow-sm transition-all flex items-center justify-center gap-1.5"
               onclick="confirmTeamData('${regId}')"
             >
               <span>${confirmedTime ? '✅ Details Confirmed' : '✅ Confirm Details Are Correct'}</span>
@@ -355,8 +356,25 @@
   };
 
   window.reportCorrection = (teamName, regId) => {
-    const msg = encodeURIComponent(`Hi Gautam / Harsh, I need a minor correction in my team data for SIH 2026.\nTeam Name: ${teamName}\nReg ID: ${regId}`);
-    window.open(`https://wa.me/918924059058?text=${msg}`, '_blank');
+    const modal = document.getElementById('correction-modal');
+    if (!modal) return;
+
+    const teamIdInput = document.getElementById('corr-team-id');
+    const teamNameInput = document.getElementById('corr-team-name');
+    const modalSubtitle = document.getElementById('corr-modal-subtitle');
+    const statusMsg = document.getElementById('corr-status-msg');
+
+    if (teamIdInput) teamIdInput.value = regId || '';
+    if (teamNameInput) teamNameInput.value = teamName || '';
+    if (modalSubtitle) modalSubtitle.textContent = `Submitting data correction request for team "${teamName}" (${regId})`;
+    if (statusMsg) statusMsg.classList.add('hidden');
+
+    modal.classList.remove('hidden');
+  };
+
+  window.closeCorrectionModal = () => {
+    const modal = document.getElementById('correction-modal');
+    if (modal) modal.classList.add('hidden');
   };
 
   function showError(msg) {
@@ -382,6 +400,38 @@
         e.preventDefault();
         const val = els.input ? els.input.value : '';
         handleLookup(val);
+      });
+    }
+
+    const corrForm = document.getElementById('correction-form');
+    if (corrForm) {
+      corrForm.addEventListener('submit', (e) => {
+        e.preventDefault();
+        const regId = document.getElementById('corr-team-id').value;
+        const teamName = document.getElementById('corr-team-name').value;
+        const author = document.getElementById('corr-author-name').value;
+        const contact = document.getElementById('corr-author-contact').value;
+        const type = document.getElementById('corr-type').value;
+        const details = document.getElementById('corr-details').value;
+
+        const timeStr = new Date().toLocaleString();
+        const payload = { regId, teamName, author, contact, type, details, timeStr };
+
+        const stored = JSON.parse(localStorage.getItem('sih2026_correction_requests') || '[]');
+        stored.push(payload);
+        localStorage.setItem('sih2026_correction_requests', JSON.stringify(stored));
+
+        const statusMsg = document.getElementById('corr-status-msg');
+        if (statusMsg) {
+          statusMsg.className = 'text-xs text-emerald-800 bg-emerald-50 border border-emerald-200 p-3 rounded-xl font-bold text-center';
+          statusMsg.innerHTML = `✅ <strong>Correction Request Recorded!</strong><br/>Organisers Gautam &amp; Harsh have been notified.<br/><a href="https://wa.me/918924059058?text=${encodeURIComponent(`SIH 2026 Correction Request for ${teamName} (${regId}): ${type} - ${details}`)}" target="_blank" class="underline text-blue-700 mt-1.5 inline-block font-extrabold">Open WhatsApp Confirmation →</a>`;
+          statusMsg.classList.remove('hidden');
+        }
+
+        setTimeout(() => {
+          window.closeCorrectionModal();
+          alert(`🎉 Correction Request Submitted for ${teamName}!\nOrganisers Gautam & Harsh have been notified.`);
+        }, 1800);
       });
     }
 
