@@ -153,94 +153,87 @@ function handleReportAction_(param) {
   return jsonResponse_({ success: false, message: 'Registration ID not found for report' });
 }
 
-function doGet(e) {
-  try {
-    // Action 1: Confirm Team Data -> Writes directly into Column BH (Col 60)
-    if (e && e.parameter && (e.parameter.action === 'confirm' || e.parameter.action === 'confirmData')) {
-      return handleConfirmAction_(e.parameter);
-    }
+function handleGetTeamsAction_() {
+  var sheet = getOrCreateSheet_();
+  var lastRow = sheet.getLastRow();
+  var lastCol = sheet.getLastColumn();
+  var teams = [];
 
-    // Action 2: Report Minor Correction -> Writes directly into Column BG (Col 59)
-    if (e && e.parameter && (e.parameter.action === 'report' || e.parameter.action === 'reportCorrection')) {
-      return handleReportAction_(e.parameter);
-    }
+  if (lastRow >= 2) {
+    var rows = sheet.getRange(2, 1, lastRow - 1, Math.max(58, lastCol)).getValues();
+    for (var i = 0; i < rows.length; i++) {
+      var row = rows[i];
+      var regId = String(row[1] || '').trim();
+      var tName = String(row[2] || '').trim();
+      var timeStr = String(row[0] || '').trim();
 
-    // Public showcase & verification API: GET ?action=teams (or action=getTeams / action=verify)
-    if (e && e.parameter && (e.parameter.action === 'teams' || e.parameter.action === 'getTeams' || e.parameter.action === 'verify')) {
-      const sheet = getOrCreateSheet_();
-      const lastRow = sheet.getLastRow();
-      const lastCol = sheet.getLastColumn();
-      const teams = [];
+      if (tName.charAt(0) === "'") tName = tName.substring(1);
+      if (regId.charAt(0) === "'") regId = regId.substring(1);
 
-      if (lastRow >= 2) {
-        const rows = sheet.getRange(2, 1, lastRow - 1, Math.max(58, lastCol)).getValues();
-        for (var i = 0; i < rows.length; i++) {
-          var row = rows[i];
-          var regId = String(row[1] || '').trim();
-          var tName = String(row[2] || '').trim();
-          var timeStr = String(row[0] || '').trim();
+      if (tName && regId) {
+        var teamObj = {
+          registrationId: regId,
+          teamName: tName,
+          timestamp: timeStr,
+          teamLeaderName: String(row[4] || '').trim(),
+          leaderRollNumber: String(row[5] || '').trim(),
+          leaderEnrollment: String(row[6] || '').trim(),
+          leaderBranch: String(row[7] || '').trim(),
+          leaderYear: String(row[8] || '').trim(),
+          leaderSemester: String(row[9] || '').trim(),
+          leaderGender: String(row[10] || '').trim(),
+          leaderEmail: String(row[11] || '').trim(),
+          leaderMobile: String(row[12] || '').trim(),
+          teamMembers: []
+        };
 
-          if (tName.charAt(0) === "'") tName = tName.substring(1);
-          if (regId.charAt(0) === "'") regId = regId.substring(1);
-
-          if (tName && regId) {
-            var teamObj = {
-              registrationId: regId,
-              teamName: tName,
-              timestamp: timeStr,
-              teamLeaderName: String(row[4] || '').trim(),
-              leaderRollNumber: String(row[5] || '').trim(),
-              leaderEnrollment: String(row[6] || '').trim(),
-              leaderBranch: String(row[7] || '').trim(),
-              leaderYear: String(row[8] || '').trim(),
-              leaderSemester: String(row[9] || '').trim(),
-              leaderGender: String(row[10] || '').trim(),
-              leaderEmail: String(row[11] || '').trim(),
-              leaderMobile: String(row[12] || '').trim(),
-              teamMembers: []
-            };
-
-            // Read up to 5 members from sheet columns
-            for (var m = 0; m < 5; m++) {
-              var base = 13 + (m * 9);
-              var mName = String(row[base] || '').trim();
-              if (mName) {
-                teamObj.teamMembers.push({
-                  name: mName,
-                  rollNumber: String(row[base + 1] || '').trim(),
-                  enrollment: String(row[base + 2] || '').trim(),
-                  branch: String(row[base + 3] || '').trim(),
-                  year: String(row[base + 4] || '').trim(),
-                  sem: String(row[base + 5] || '').trim(),
-                  gender: String(row[base + 6] || '').trim(),
-                  email: String(row[base + 7] || '').trim(),
-                  mobile: String(row[base + 8] || '').trim()
-                });
-              }
-            }
-
-            teams.push(teamObj);
+        // Read up to 5 members from sheet columns
+        for (var m = 0; m < 5; m++) {
+          var base = 13 + (m * 9);
+          var mName = String(row[base] || '').trim();
+          if (mName) {
+            teamObj.teamMembers.push({
+              name: mName,
+              rollNumber: String(row[base + 1] || '').trim(),
+              enrollment: String(row[base + 2] || '').trim(),
+              branch: String(row[base + 3] || '').trim(),
+              year: String(row[base + 4] || '').trim(),
+              sem: String(row[base + 5] || '').trim(),
+              gender: String(row[base + 6] || '').trim(),
+              email: String(row[base + 7] || '').trim(),
+              mobile: String(row[base + 8] || '').trim()
+            });
           }
         }
+
+        teams.push(teamObj);
       }
+    }
+  }
 
-      var resObj = {
-        success: true,
-        totalTeams: teams.length,
-        teams: teams
-      };
-      return jsonResponse_(resObj);
+  return jsonResponse_({
+    success: true,
+    totalTeams: teams.length,
+    teams: teams
+  });
+}
+
+function doGet(e) {
+  try {
+    if (e && e.parameter) {
+      var act = String(e.parameter.action || '').toLowerCase();
+      if (act === 'confirm' || act === 'confirmdata') return handleConfirmAction_(e.parameter);
+      if (act === 'report' || act === 'reportcorrection') return handleReportAction_(e.parameter);
+      if (act === 'teams' || act === 'getteams' || act === 'verify') return handleGetTeamsAction_();
+      if (act === 'submit' || e.parameter.data || e.parameter.teamName) {
+        var rawPayload = e.parameter.data || JSON.stringify(e.parameter);
+        return handleRegistration_(rawPayload);
+      }
     }
 
-    // Register via GET ?action=submit&data=... (backup path if a browser converts POST into GET on redirect)
-    if (e && e.parameter && (e.parameter.action === 'submit' || e.parameter.data || e.parameter.teamName)) {
-      var rawPayload = e.parameter.data || JSON.stringify(e.parameter);
-      return handleRegistration_(rawPayload);
-    }
-
-    const ss = getSpreadsheet_();
-    const sheet = getOrCreateSheet_();
-    const lastRow = sheet.getLastRow();
+    var ss = getSpreadsheet_();
+    var sheet = getOrCreateSheet_();
+    var lastRow = sheet.getLastRow();
     var lastId = '';
     if (lastRow >= 2) {
       lastId = String(sheet.getRange(lastRow, 2).getValue() || '');
@@ -258,10 +251,7 @@ function doGet(e) {
       lastRegistrationId: lastId
     });
   } catch (err) {
-    return jsonResponse_({
-      success: false,
-      message: 'API is reachable but sheet setup failed: ' + String(err.message || err)
-    });
+    return jsonResponse_({ success: false, error: err.toString() });
   }
 }
 
