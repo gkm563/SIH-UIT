@@ -105,29 +105,15 @@ const HEADERS = [
  */
 function doGet(e) {
   try {
-    // Public showcase API: GET ?action=teams (or action=getTeams)
-    // Returns ONLY public non-sensitive data: registrationId, teamName, timestamp
-    if (e && e.parameter && (e.parameter.action === 'teams' || e.parameter.action === 'getTeams')) {
-      // 1. Check server-side cache for ultra-fast response (~50ms)
-      try {
-        var cache = CacheService.getScriptCache();
-        var cachedJson = cache.get('teams_json_v1');
-        if (cachedJson) {
-          return ContentService
-            .createTextOutput(cachedJson)
-            .setMimeType(ContentService.MimeType.JSON);
-        }
-      } catch (cacheReadErr) {
-        // ignore cache read error
-      }
-
-      // 2. Read sheet A:D
+    // Public showcase & verification API: GET ?action=teams (or action=getTeams / action=verify)
+    if (e && e.parameter && (e.parameter.action === 'teams' || e.parameter.action === 'getTeams' || e.parameter.action === 'verify')) {
       const sheet = getOrCreateSheet_();
       const lastRow = sheet.getLastRow();
+      const lastCol = sheet.getLastColumn();
       const teams = [];
 
       if (lastRow >= 2) {
-        const rows = sheet.getRange(2, 1, lastRow - 1, 4).getValues();
+        const rows = sheet.getRange(2, 1, lastRow - 1, Math.max(58, lastCol)).getValues();
         for (var i = 0; i < rows.length; i++) {
           var row = rows[i];
           var regId = String(row[1] || '').trim();
@@ -138,11 +124,42 @@ function doGet(e) {
           if (regId.charAt(0) === "'") regId = regId.substring(1);
 
           if (tName && regId) {
-            teams.push({
+            var teamObj = {
               registrationId: regId,
               teamName: tName,
-              timestamp: timeStr
-            });
+              timestamp: timeStr,
+              teamLeaderName: String(row[4] || '').trim(),
+              leaderRollNumber: String(row[5] || '').trim(),
+              leaderEnrollment: String(row[6] || '').trim(),
+              leaderBranch: String(row[7] || '').trim(),
+              leaderYear: String(row[8] || '').trim(),
+              leaderSemester: String(row[9] || '').trim(),
+              leaderGender: String(row[10] || '').trim(),
+              leaderEmail: String(row[11] || '').trim(),
+              leaderMobile: String(row[12] || '').trim(),
+              teamMembers: []
+            };
+
+            // Read up to 5 members from sheet columns
+            for (var m = 0; m < 5; m++) {
+              var base = 13 + (m * 9);
+              var mName = String(row[base] || '').trim();
+              if (mName) {
+                teamObj.teamMembers.push({
+                  name: mName,
+                  rollNumber: String(row[base + 1] || '').trim(),
+                  enrollment: String(row[base + 2] || '').trim(),
+                  branch: String(row[base + 3] || '').trim(),
+                  year: String(row[base + 4] || '').trim(),
+                  sem: String(row[base + 5] || '').trim(),
+                  gender: String(row[base + 6] || '').trim(),
+                  email: String(row[base + 7] || '').trim(),
+                  mobile: String(row[base + 8] || '').trim()
+                });
+              }
+            }
+
+            teams.push(teamObj);
           }
         }
       }
@@ -152,17 +169,7 @@ function doGet(e) {
         totalTeams: teams.length,
         teams: teams
       };
-      var jsonStr = JSON.stringify(resObj);
-
-      try {
-        CacheService.getScriptCache().put('teams_json_v1', jsonStr, 300); // 5 min cache
-      } catch (cacheWriteErr) {
-        // ignore cache write error
-      }
-
-      return ContentService
-        .createTextOutput(jsonStr)
-        .setMimeType(ContentService.MimeType.JSON);
+      return jsonResponse_(resObj);
     }
 
     // Register via GET ?action=submit&data=... (backup path if a browser converts POST into GET on redirect)
