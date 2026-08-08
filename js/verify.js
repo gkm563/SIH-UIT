@@ -1,6 +1,7 @@
 /**
  * SIH 2026 Team Registration Details Verification Portal Script
  * Live Google Sheets Roster Data — 6-Point Official SIH Portal Submission Checklist
+ * Flexible Search by Registration ID, Team Name, or Registered Email of ANY Team Member
  */
 (() => {
   'use strict';
@@ -105,21 +106,39 @@
       return;
     }
 
-    const matched = allTeamsData.find(t => {
-      const regMatch = (t.registrationId || '').toLowerCase() === q || (t.registrationId || '').toLowerCase().includes(q);
-      const emailMatch = (t.leaderEmail || '').toLowerCase() === q;
-      const memberEmailMatch = (t.teamMembers || []).some(m => (m.email || '').toLowerCase() === q);
-      const nameMatch = (t.teamName || '').toLowerCase() === q || (t.teamName || '').toLowerCase().includes(q);
-      const leaderMatch = (t.teamLeaderName || '').toLowerCase().includes(q);
+    const cleanQ = q.replace(/^sih2026-?/i, '');
 
-      return regMatch || emailMatch || memberEmailMatch || nameMatch || leaderMatch;
+    const matched = allTeamsData.find(t => {
+      const fullRegId = (t.registrationId || '').toLowerCase();
+      const cleanRegId = fullRegId.replace(/^sih2026-?/i, '');
+
+      // 1. Match Registration ID (Exact or partial like SIH2026-0032 or 0032)
+      const regMatch = fullRegId === q || fullRegId.includes(q) || (cleanQ.length >= 3 && cleanRegId.includes(cleanQ));
+
+      // 2. Match Email ID of Leader OR ANY Team Member
+      const leaderEmailMatch = (t.leaderEmail || '').toLowerCase().trim() === q || (t.leaderEmail || '').toLowerCase().includes(q);
+      const memberEmailMatch = (t.teamMembers || []).some(m => {
+        const em = (m.email || '').toLowerCase().trim();
+        return em === q || (q.includes('@') && em.includes(q));
+      });
+
+      // 3. Match Team Name
+      const tNameLower = (t.teamName || '').toLowerCase().trim();
+      const tNameClean = tNameLower.replace(/[^a-z0-9]/g, '');
+      const qClean = q.replace(/[^a-z0-9]/g, '');
+      const nameMatch = tNameLower.includes(q) || (qClean.length >= 3 && tNameClean.includes(qClean));
+
+      // 4. Match Leader Name
+      const leaderNameMatch = (t.teamLeaderName || '').toLowerCase().includes(q);
+
+      return regMatch || leaderEmailMatch || memberEmailMatch || nameMatch || leaderNameMatch;
     });
 
     if (matched) {
       hideError();
       renderVerificationCard(matched);
     } else {
-      showError(`❌ No registered team found matching "${escapeHtml(query)}". Please verify your Registration ID (e.g. SIH2026-0019) or exact Team Name.`);
+      showError(`❌ No registered team found matching "${escapeHtml(query)}". Please verify your Registration ID (e.g. SIH2026-0019), exact Team Name, or Email ID of ANY Team Member.`);
       if (els.resultsContainer) els.resultsContainer.classList.add('hidden');
     }
   }
