@@ -149,9 +149,10 @@
 
     const regId = team.registrationId || 'SIH2026-REG';
     const isConfirmedKey = `sih2026_confirmed_${regId}`;
-    const statusKey = `sih2026_status_${regId}`;
+    const reportedKey = `sih2026_reported_${regId}`;
 
     const confirmedTime = localStorage.getItem(isConfirmedKey);
+    const reportedTime = localStorage.getItem(reportedKey);
 
     // Build real roster list directly from live Google Sheet data
     const rosterList = [];
@@ -194,8 +195,8 @@
           <div>
             <div class="flex items-center gap-2">
               <span class="font-mono text-xs font-black text-blue-700 bg-blue-50 border border-blue-200 px-3 py-1 rounded-lg">${regId}</span>
-              <span id="confirmation-badge" class="${confirmedTime ? 'bg-emerald-100 text-emerald-800 border-emerald-300' : 'bg-amber-100 text-amber-800 border-amber-300'} border text-xs font-extrabold px-3 py-1 rounded-full flex items-center gap-1.5">
-                <span>${confirmedTime ? '✅ Status: 100% Right & Accurate' : '🔍 Verification Mode Active'}</span>
+              <span id="confirmation-badge" class="${confirmedTime ? 'bg-emerald-100 text-emerald-800 border-emerald-300' : reportedTime ? 'bg-orange-100 text-orange-800 border-orange-300' : 'bg-amber-100 text-amber-800 border-amber-300'} border text-xs font-extrabold px-3 py-1 rounded-full flex items-center gap-1.5">
+                <span>${confirmedTime ? '✅ Status: 100% Right & Accurate' : reportedTime ? '⚠️ Correction Reported' : '🔍 Verification Mode Active'}</span>
               </span>
             </div>
             <h2 class="text-2xl sm:text-3xl font-black text-slate-900 mt-2">${escapeHtml(team.teamName)}</h2>
@@ -204,8 +205,8 @@
 
           <div class="text-right">
             <span class="text-[11px] font-bold text-slate-400 uppercase tracking-wider block">Verification Status</span>
-            <span class="inline-flex items-center gap-1.5 text-xs font-extrabold ${confirmedTime ? 'text-emerald-700 bg-emerald-50 border-emerald-200' : 'text-slate-700 bg-slate-100 border-slate-200'} border px-3 py-1 rounded-xl mt-1">
-              ${confirmedTime ? '100% Right & Accurate' : 'Review & Confirm Below'}
+            <span id="status-label" class="inline-flex items-center gap-1.5 text-xs font-extrabold ${confirmedTime ? 'text-emerald-700 bg-emerald-50 border-emerald-200' : reportedTime ? 'text-orange-700 bg-orange-50 border-orange-200' : 'text-slate-700 bg-slate-100 border-slate-200'} border px-3 py-1 rounded-xl mt-1">
+              ${confirmedTime ? '100% Right & Accurate' : reportedTime ? 'Correction Reported — Pending Review' : 'Review & Confirm Below'}
             </span>
           </div>
         </div>
@@ -412,10 +413,25 @@
           Api.sendReport(payload);
         }
 
+        // Save reported flag to localStorage
+        localStorage.setItem(`sih2026_reported_${regId}`, timeStr);
+
+        // Update status badge live in DOM without re-rendering
+        const badge = document.getElementById('confirmation-badge');
+        if (badge) {
+          badge.className = 'bg-orange-100 text-orange-800 border border-orange-300 text-xs font-extrabold px-3 py-1 rounded-full flex items-center gap-1.5';
+          badge.innerHTML = '<span>⚠️ Correction Reported</span>';
+        }
+        const statusLabel = document.getElementById('status-label');
+        if (statusLabel) {
+          statusLabel.className = 'inline-flex items-center gap-1.5 text-xs font-extrabold text-orange-700 bg-orange-50 border border-orange-200 border px-3 py-1 rounded-xl mt-1';
+          statusLabel.textContent = 'Correction Reported — Pending Review';
+        }
+
         const statusMsg = document.getElementById('corr-status-msg');
         if (statusMsg) {
           statusMsg.className = 'text-xs text-emerald-800 bg-emerald-50 border border-emerald-200 p-3 rounded-xl font-bold text-center';
-          statusMsg.innerHTML = `✅ <strong>Correction Request Submitted!</strong><br/>Your correction details have been logged in the master spreadsheet.`;
+          statusMsg.innerHTML = `✅ <strong>Correction Request Submitted!</strong><br/>Your correction has been logged in the master spreadsheet.`;
           statusMsg.classList.remove('hidden');
         }
 
