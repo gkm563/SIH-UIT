@@ -57,6 +57,7 @@
       registrationId: regId,
       teamName: name,
       confirmedStatus: rawTeam.confirmedStatus || '',
+      reportStatus: rawTeam.reportStatus || '',
       teamLeaderName: leaderName,
       leaderGender,
       leaderBranch,
@@ -150,8 +151,9 @@
 
     const regId = team.registrationId || 'SIH2026-REG';
 
-    // State comes entirely from the Google Sheet (Col BH), NOT localStorage
-    const isConfirmed = (team.confirmedStatus || '').toLowerCase() === 'confirmed';
+    // Priority: BH (Confirmed) > BG (Under Review) > Both blank (show buttons)
+    const isConfirmed  = (team.confirmedStatus || '').toLowerCase().includes('confirmed');
+    const isUnderReview = !isConfirmed && !!(team.reportStatus || '');
 
     // Build real roster list directly from live Google Sheet data
     const rosterList = [];
@@ -194,8 +196,8 @@
           <div>
             <div class="flex items-center gap-2">
               <span class="font-mono text-xs font-black text-blue-700 bg-blue-50 border border-blue-200 px-3 py-1 rounded-lg">${regId}</span>
-              <span id="confirmation-badge" class="${isConfirmed ? 'bg-emerald-100 text-emerald-800 border-emerald-300' : 'bg-amber-100 text-amber-800 border-amber-300'} border text-xs font-extrabold px-3 py-1 rounded-full flex items-center gap-1.5">
-                <span>${isConfirmed ? '✅ Confirmed' : '🔍 Verification Mode Active'}</span>
+              <span id="confirmation-badge" class="${isConfirmed ? 'bg-emerald-100 text-emerald-800 border-emerald-300' : isUnderReview ? 'bg-blue-100 text-blue-800 border-blue-300' : 'bg-amber-100 text-amber-800 border-amber-300'} border text-xs font-extrabold px-3 py-1 rounded-full flex items-center gap-1.5">
+                <span>${isConfirmed ? '✅ Confirmed' : isUnderReview ? '🔄 Under Review' : '🔍 Pending Verification'}</span>
               </span>
             </div>
             <h2 class="text-2xl sm:text-3xl font-black text-slate-900 mt-2">${escapeHtml(team.teamName)}</h2>
@@ -204,8 +206,8 @@
 
           <div class="text-right">
             <span class="text-[11px] font-bold text-slate-400 uppercase tracking-wider block">Verification Status</span>
-            <span id="status-label" class="inline-flex items-center gap-1.5 text-xs font-extrabold ${isConfirmed ? 'text-emerald-700 bg-emerald-50 border-emerald-200' : 'text-slate-700 bg-slate-100 border-slate-200'} border px-3 py-1 rounded-xl mt-1">
-              ${isConfirmed ? 'Confirmed' : 'Review & Confirm Below'}
+            <span id="status-label" class="inline-flex items-center gap-1.5 text-xs font-extrabold ${isConfirmed ? 'text-emerald-700 bg-emerald-50 border-emerald-200' : isUnderReview ? 'text-blue-700 bg-blue-50 border-blue-200' : 'text-slate-700 bg-slate-100 border-slate-200'} border px-3 py-1 rounded-xl mt-1">
+              ${isConfirmed ? 'Confirmed' : isUnderReview ? 'Correction Under Review' : 'Review & Confirm Below'}
             </span>
           </div>
         </div>
@@ -286,15 +288,22 @@
         <div id="confirmation-action-box" class="pt-5 border-t border-slate-100">
 
           ${isConfirmed ? `
-            <!-- Confirmed Done State -->
+            <!-- STATE 1: Confirmed (BH has value) -->
             <div class="flex flex-col sm:flex-row items-center justify-between gap-3">
               <div class="text-xs text-emerald-700 font-bold">All details confirmed and logged for official SIH portal submission.</div>
               <div class="flex items-center gap-2 bg-emerald-50 border border-emerald-200 px-5 py-3 rounded-xl">
                 <span class="text-emerald-700 font-black text-sm">✅ Done — Details Confirmed</span>
               </div>
             </div>
+          ` : isUnderReview ? `
+            <!-- STATE 2: Under Review (BG has data, BH is blank) -->
+            <div class="flex flex-col sm:flex-row items-center justify-between gap-3">
+              <div class="bg-blue-50 border border-blue-200 text-blue-800 px-4 py-3 rounded-xl text-xs font-bold">
+                🔄 Your correction request is <strong>Under Review</strong>. Our team will update the record shortly. Please check back later.
+              </div>
+            </div>
           ` : `
-            <!-- Default: Two clean action buttons -->
+            <!-- STATE 3: Both blank — show both action buttons -->
             <div class="flex flex-col sm:flex-row items-center justify-end gap-3">
               <button
                 type="button"

@@ -346,19 +346,16 @@ const Api = (() => {
         if (data && data.table && Array.isArray(data.table.rows)) {
           const parsedTeams = [];
 
-          // --- Dynamically find the Confirmation column index ---
-          // Actual sheet col BH (ID: BH) has header label "Confirmation" (0-indexed = 59)
-          // We scan cols labels to find it; fall back to fixed index 59.
-          let confirmColIdx = 59; // default: Column BH (0-indexed)
+          // --- Dynamically find BG (Report) and BH (Confirmation) column indices ---
+          // Sheet: BG = index 58 (label: Report), BH = index 59 (label: Confirmation)
+          let reportColIdx = 58;  // default: Column BG
+          let confirmColIdx = 59; // default: Column BH
           if (data.table.cols && Array.isArray(data.table.cols)) {
             for (let ci = 0; ci < data.table.cols.length; ci++) {
               const colId = (data.table.cols[ci].id || '').toUpperCase().trim();
-              const lbl = (data.table.cols[ci].label || '').toLowerCase().trim();
-              // Match by column ID (most reliable) or by label
-              if (colId === 'BH' || lbl === 'confirmation' || lbl === 'confirmed status' || lbl === 'submission status') {
-                confirmColIdx = ci;
-                break;
-              }
+              const lbl  = (data.table.cols[ci].label || '').toLowerCase().trim();
+              if (colId === 'BG' || lbl === 'report') reportColIdx = ci;
+              if (colId === 'BH' || lbl === 'confirmation' || lbl === 'confirmed status') confirmColIdx = ci;
             }
           }
 
@@ -399,16 +396,18 @@ const Api = (() => {
                 }
               }
 
-              // Read confirmation column — accept any value containing "confirmed"
-              // (handles both plain "Confirmed" and old "[VERIFIED] Status:..." values)
+              // BH: confirmed if value contains 'confirmed'
               const rawConfirm = getVal(confirmColIdx).toLowerCase();
               const confirmedStatus = rawConfirm.includes('confirmed') ? 'Confirmed' : '';
+              // BG: under review if anything is written there
+              const reportStatus = getVal(reportColIdx) ? 'UnderReview' : '';
 
               parsedTeams.push({
                 registrationId: regId,
                 teamName,
                 timestamp: getVal(0),
                 confirmedStatus,
+                reportStatus,
                 teamLeaderName: leaderName,
                 leaderRollNumber: leaderRoll,
                 leaderEnrollment: leaderEnroll,
