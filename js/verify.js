@@ -1,6 +1,6 @@
 /**
  * SIH 2026 Team Registration Details Verification Portal Script
- * Live Google Sheets Roster Data — Simple Verification & Correction Workflow
+ * Live Google Sheets Roster Data — Simple Verification & Correction Workflow (English UI)
  */
 (() => {
   'use strict';
@@ -227,8 +227,8 @@
             <div class="font-bold text-amber-900 flex items-center gap-1.5">
               <span>⚠️ Reported Correction Request on File:</span>
             </div>
-            <div><strong>Kya Galat Tha:</strong> ${escapeHtml(corrData.oldVal)}</div>
-            <div><strong>Kya Sahi Karna Hai:</strong> ${escapeHtml(corrData.newVal)}</div>
+            <div><strong>Incorrect Detail:</strong> ${escapeHtml(corrData.oldVal)}</div>
+            <div><strong>Requested Correction:</strong> ${escapeHtml(corrData.newVal)}</div>
             <div class="text-[11px] text-slate-500 mt-1 font-semibold">Reported by ${escapeHtml(corrData.author)} (${escapeHtml(corrData.contact)}) on ${escapeHtml(corrData.timeStr)}</div>
           </div>
         ` : ''}
@@ -297,8 +297,8 @@
         <!-- Action Confirmation Bar -->
         <div id="confirmation-action-box" class="pt-4 border-t border-slate-100 flex flex-col sm:flex-row items-center justify-between gap-4">
           <div>
-            <div class="text-xs font-bold text-slate-900">Registered data dekho — Kuch galat ho to report karo, sab sahi ho to confirm karo.</div>
-            <div class="text-[11px] text-slate-500">Confirming logs status as "100% Right & Accurate" for official SIH portal submission.</div>
+            <div class="text-xs font-bold text-slate-900">Review your registered team data — Report any minor correction if needed, or confirm if all details are accurate.</div>
+            <div class="text-[11px] text-slate-500">Confirming marks your team status as "100% Right &amp; Accurate" for official SIH portal submission.</div>
           </div>
 
           <div class="flex items-center gap-3 w-full sm:w-auto">
@@ -416,7 +416,6 @@
         const timeStr = new Date().toLocaleString();
         const payload = { regId, teamName, author, contact, oldVal, newVal, timeStr };
 
-        // Save in localStorage for team lookup & sheet column sync
         localStorage.setItem(`sih2026_corr_${regId}`, JSON.stringify(payload));
         const stored = JSON.parse(localStorage.getItem('sih2026_correction_requests') || '[]');
         stored.push(payload);
@@ -425,13 +424,13 @@
         const statusMsg = document.getElementById('corr-status-msg');
         if (statusMsg) {
           statusMsg.className = 'text-xs text-emerald-800 bg-emerald-50 border border-emerald-200 p-3 rounded-xl font-bold text-center';
-          statusMsg.innerHTML = `✅ <strong>Correction Request Recorded!</strong><br/>Organisers Gautam &amp; Harsh have been notified.<br/><a href="https://wa.me/918924059058?text=${encodeURIComponent(`SIH 2026 Correction Request for ${teamName} (${regId}):\nKya Galat Tha: ${oldVal}\nKya Sahi Karna Hai: ${newVal}\nBy: ${author} (${contact})`)}" target="_blank" class="underline text-blue-700 mt-1.5 inline-block font-extrabold">Open WhatsApp Confirmation →</a>`;
+          statusMsg.innerHTML = `✅ <strong>Correction Request Recorded!</strong><br/>Organisers Gautam &amp; Harsh have been notified.<br/><a href="https://wa.me/918924059058?text=${encodeURIComponent(`SIH 2026 Correction Request for ${teamName} (${regId}):\nIncorrect Detail: ${oldVal}\nRequested Correction: ${newVal}\nBy: ${author} (${contact})`)}" target="_blank" class="underline text-blue-700 mt-1.5 inline-block font-extrabold">Open WhatsApp Confirmation →</a>`;
           statusMsg.classList.remove('hidden');
         }
 
         setTimeout(() => {
           window.closeCorrectionModal();
-          alert(`🎉 Correction Request Recorded for ${teamName}!\nKya Galat Tha: ${oldVal}\nKya Sahi Karna Hai: ${newVal}`);
+          alert(`🎉 Correction Request Recorded for ${teamName}!\nIncorrect Detail: ${oldVal}\nRequested Correction: ${newVal}`);
           handleLookup(regId);
         }, 1800);
       });
