@@ -345,8 +345,26 @@ const Api = (() => {
         const data = JSON.parse(jsonString);
         if (data && data.table && Array.isArray(data.table.rows)) {
           const parsedTeams = [];
+
+          // --- Dynamically find the Confirmation column index ---
+          // Actual sheet col BH (ID: BH) has header label "Confirmation" (0-indexed = 59)
+          // We scan cols labels to find it; fall back to fixed index 59.
+          let confirmColIdx = 59; // default: Column BH (0-indexed)
+          if (data.table.cols && Array.isArray(data.table.cols)) {
+            for (let ci = 0; ci < data.table.cols.length; ci++) {
+              const colId = (data.table.cols[ci].id || '').toUpperCase().trim();
+              const lbl = (data.table.cols[ci].label || '').toLowerCase().trim();
+              // Match by column ID (most reliable) or by label
+              if (colId === 'BH' || lbl === 'confirmation' || lbl === 'confirmed status' || lbl === 'submission status') {
+                confirmColIdx = ci;
+                break;
+              }
+            }
+          }
+
           data.table.rows.forEach(r => {
             const c = r.c || [];
+            // Safe getter — returns empty string for missing/null cells
             const getVal = (idx) => (c[idx] && c[idx].v !== null && c[idx].v !== undefined) ? String(c[idx].v).trim() : '';
 
             const regId = getVal(1);
@@ -381,9 +399,10 @@ const Api = (() => {
                 }
               }
 
-              // Col index 59 = Column BH = Confirmation status
-              const bhVal = getVal(59).toLowerCase().trim();
-              const confirmedStatus = (bhVal === 'confirmed') ? 'Confirmed' : '';
+              // Read confirmation column — accept any value containing "confirmed"
+              // (handles both plain "Confirmed" and old "[VERIFIED] Status:..." values)
+              const rawConfirm = getVal(confirmColIdx).toLowerCase();
+              const confirmedStatus = rawConfirm.includes('confirmed') ? 'Confirmed' : '';
 
               parsedTeams.push({
                 registrationId: regId,
