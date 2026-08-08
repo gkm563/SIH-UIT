@@ -1,6 +1,6 @@
 /**
  * SIH 2026 Team Registration Details Verification Portal Script
- * Live Google Sheets Roster Data — 100% Real Student Names, Emails, Phones & Branches
+ * Live Google Sheets Roster Data — 6-Point Official SIH Portal Submission Checklist
  */
 (() => {
   'use strict';
@@ -169,8 +169,6 @@
       if (String(st.gender).toLowerCase().includes('female')) femaleCount++;
     });
 
-    const isFemaleRuleComplied = femaleCount > 0;
-
     let html = `
       <div class="bg-white border border-slate-200/90 rounded-2xl p-6 sm:p-8 shadow-md space-y-6 relative">
         
@@ -184,25 +182,39 @@
               </span>
             </div>
             <h2 class="text-2xl sm:text-3xl font-black text-slate-900 mt-2">${escapeHtml(team.teamName)}</h2>
-            <p class="text-xs font-semibold text-slate-500 mt-0.5">United Institute of Technology · SIH 2026 Internal Registration Record</p>
+            <p class="text-xs font-semibold text-slate-500 mt-0.5">United Institute of Technology · SIH 2026 Official Portal Data Upload Checklist</p>
           </div>
 
           <div class="text-right">
-            <span class="text-[11px] font-bold text-slate-400 uppercase tracking-wider block">Official Status</span>
+            <span class="text-[11px] font-bold text-slate-400 uppercase tracking-wider block">Official Master Status</span>
             <span class="inline-flex items-center gap-1.5 text-xs font-extrabold text-emerald-700 bg-emerald-50 border border-emerald-200 px-3 py-1 rounded-xl mt-1">
               ✅ Live Google Sheet Synced
             </span>
           </div>
         </div>
 
-        <!-- Verification Checklist Summary Card -->
+        <!-- 6/6 SIH Portal Upload Progress Banner -->
+        <div class="bg-blue-50/80 border border-blue-200 rounded-2xl p-4 flex flex-col sm:flex-row items-center justify-between gap-4">
+          <div class="flex items-center gap-3">
+            <div class="w-11 h-11 rounded-2xl bg-blue-600 text-white flex items-center justify-center font-black text-base flex-shrink-0 shadow-xs">6/6</div>
+            <div>
+              <div class="text-xs font-black text-blue-900 uppercase tracking-wider">Official SIH Portal Data Upload Checklist</div>
+              <div class="text-xs font-bold text-slate-700 mt-0.5">Please verify all 6 pre-entered items before final upload to official SIH portal.</div>
+            </div>
+          </div>
+          <button type="button" onclick="window.print()" class="w-full sm:w-auto px-4 py-2.5 bg-white hover:bg-slate-50 border border-slate-300 rounded-xl font-bold text-xs text-slate-800 shadow-xs flex items-center justify-center gap-1.5 active:scale-95 transition-all cursor-pointer">
+            <span>🖨️ Save / Print Verification PDF</span>
+          </button>
+        </div>
+
+        <!-- Verification Checklist Summary Card (Checks 1 & 2) -->
         <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
           
           <!-- Check 1: Team Name -->
           <div class="p-4 bg-slate-50 border border-slate-200 rounded-xl flex items-start gap-3">
             <span class="text-lg">1️⃣</span>
             <div>
-              <div class="text-xs font-bold uppercase text-slate-500">Registered Team Name</div>
+              <div class="text-xs font-bold uppercase text-slate-500">Check 1: Pre-Entered Team Name</div>
               <div class="text-base font-extrabold text-slate-900 mt-0.5">${escapeHtml(team.teamName)}</div>
               <div class="text-[11px] text-emerald-700 font-semibold mt-1">✅ Registration ID: ${regId}</div>
             </div>
@@ -212,12 +224,12 @@
           <div class="p-4 bg-slate-50 border border-slate-200 rounded-xl flex items-start gap-3">
             <span class="text-lg">2️⃣</span>
             <div class="flex-1">
-              <div class="text-xs font-bold uppercase text-slate-500">College Authorization Letter (NOC)</div>
+              <div class="text-xs font-bold uppercase text-slate-500">Check 2: College Authorization Letter (NOC PDF)</div>
               <div class="text-xs font-bold text-slate-900 mt-0.5">
-                ${team.nocFileUrl ? '📄 Uploaded Document Attached' : '📄 Format Verified On File with UIT Administration'}
+                ${team.nocFileUrl ? '📄 Signed Authorization PDF Attached' : '📄 Format Verified On File with UIT Administration'}
               </div>
               <div class="text-[11px] text-blue-700 font-semibold mt-1">
-                ${team.nocFileUrl ? `<a href="${escapeHtml(team.nocFileUrl)}" target="_blank" class="underline font-bold hover:text-blue-900">View Authorization PDF →</a>` : '✅ Signed College NOC Verified'}
+                ${team.nocFileUrl ? `<a href="${escapeHtml(team.nocFileUrl)}" target="_blank" class="underline font-bold hover:text-blue-900">View Authorization PDF →</a>` : '✅ Official College Authorization Format Verified'}
               </div>
             </div>
           </div>
@@ -227,8 +239,8 @@
         <!-- Checks 3-6 Roster Table (Renders All Live Real Members) -->
         <div class="border border-slate-200 rounded-2xl overflow-hidden bg-white shadow-xs">
           <div class="bg-slate-100/90 px-4 py-3 border-b border-slate-200 flex items-center justify-between">
-            <span class="text-xs font-bold text-slate-800 uppercase tracking-wider">Checks 3-6: Member Roster Details (${rosterList.length} Members)</span>
-            <span class="text-[11px] font-bold text-blue-700 bg-blue-50 px-2.5 py-0.5 rounded-full border border-blue-200">${rosterList.length} Verified Slots</span>
+            <span class="text-xs font-bold text-slate-800 uppercase tracking-wider">Checks 3-6: Pre-Entered Member Names, Genders, Emails, &amp; Mobiles</span>
+            <span class="text-[11px] font-bold text-blue-700 bg-blue-50 px-2.5 py-0.5 rounded-full border border-blue-200">${rosterList.length} Verified Member Slots</span>
           </div>
 
           <div class="overflow-x-auto">
@@ -288,7 +300,7 @@
         <!-- Action Confirmation Bar -->
         <div id="confirmation-action-box" class="pt-4 border-t border-slate-100 flex flex-col sm:flex-row items-center justify-between gap-4">
           <div>
-            <div class="text-xs font-bold text-slate-900">Are your team details correct?</div>
+            <div class="text-xs font-bold text-slate-900">Are all 6 pre-entered details correct for SIH portal upload?</div>
             <div class="text-[11px] text-slate-500">Confirming logs your team verification timestamp for final SIH portal submission.</div>
           </div>
 
@@ -308,14 +320,14 @@
               class="${confirmedTime ? 'bg-emerald-700 text-white cursor-default' : 'bg-emerald-600 hover:bg-emerald-700 text-white active:scale-95 cursor-pointer'} w-1/2 sm:w-auto px-6 py-2.5 font-bold text-xs rounded-xl shadow-sm transition-all flex items-center justify-center gap-1.5"
               onclick="confirmTeamData('${regId}')"
             >
-              <span>${confirmedTime ? '✅ Details Confirmed' : '✅ Confirm Details Are Correct'}</span>
+              <span>${confirmedTime ? '✅ Details Confirmed' : '✅ Confirm Details Are 100% Correct'}</span>
             </button>
           </div>
         </div>
 
         ${confirmedTime ? `
           <div class="p-3 bg-emerald-50 border border-emerald-200 text-emerald-800 rounded-xl text-xs font-bold text-center">
-            🎉 Thank you! Your team details were verified &amp; confirmed on ${confirmedTime}.
+            🎉 Thank you! Your 6-Point team details were verified &amp; confirmed on ${confirmedTime}. Ready for official SIH upload!
           </div>
         ` : ''}
 
@@ -340,7 +352,7 @@
       btn.className = 'bg-emerald-700 text-white cursor-default w-1/2 sm:w-auto px-6 py-2.5 font-bold text-xs rounded-xl shadow-sm transition-all flex items-center justify-center gap-1.5';
       btn.innerHTML = '<span>✅ Details Confirmed</span>';
     }
-    alert(`🎉 Team Data Verified & Confirmed Successfully!\nTimestamp: ${timeStr}`);
+    alert(`🎉 6-Point Team Data Verified & Confirmed Successfully!\nTimestamp: ${timeStr}\nReady for official SIH Portal Upload.`);
   };
 
   window.reportCorrection = (teamName, regId) => {
