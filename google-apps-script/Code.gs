@@ -116,7 +116,7 @@ function handleConfirmAction_(param) {
         if (curId.charAt(0) === "'") curId = curId.substring(1);
         if (curId.toLowerCase() === regId.toLowerCase() || curId.replace(/^sih2026-?/i, '') === regId.replace(/^sih2026-?/i, '')) {
           var timeStr = new Date().toLocaleString();
-          var writeVal = statusMsg + ' (' + timeStr + ')';
+          var writeVal = '[VERIFIED] Status: ' + statusMsg + ' | Confirmed On: ' + timeStr;
           sheet.getRange(i + 2, 60).setValue(writeVal); // Column BH (Col 60) = Confirmation
           return jsonResponse_({ success: true, message: 'Confirmation logged in Column BH (Col 60)', row: i + 2, value: writeVal });
         }
@@ -143,7 +143,9 @@ function handleReportAction_(param) {
         if (curId.charAt(0) === "'") curId = curId.substring(1);
         if (curId.toLowerCase() === regId.toLowerCase() || curId.replace(/^sih2026-?/i, '') === regId.replace(/^sih2026-?/i, '')) {
           var timeStr = new Date().toLocaleString();
-          var reportText = 'Incorrect: ' + oldVal + ' -> Correct: ' + newVal + ' (By ' + author + ' - ' + contact + ' at ' + timeStr + ')';
+          var authorInfo = author ? author : 'Team Member';
+          if (contact) authorInfo += ' (' + contact + ')';
+          var reportText = '[CORRECTION REQUEST] Incorrect Detail: "' + oldVal + '" | Requested Update: "' + newVal + '" | Submitted By: ' + authorInfo + ' | Date: ' + timeStr;
           sheet.getRange(i + 2, 59).setValue(reportText); // Column BG (Col 59) = Report
           return jsonResponse_({ success: true, message: 'Report logged in Column BG (Col 59)', row: i + 2, value: reportText });
         }
