@@ -329,7 +329,93 @@ const Api = (() => {
     }
   }
 
+  async function fetchLiveSpreadsheetData() {
+    const gvizUrl = 'https://docs.google.com/spreadsheets/d/1vbDZMAJJgZpELJpfGtdPCres5puMHxe3ac4vvLIoNbs/gviz/tq?tqx=out:json&_t=' + Date.now();
+    try {
+      const controller = typeof AbortController !== 'undefined' ? new AbortController() : null;
+      const timeout = setTimeout(() => controller && controller.abort(), 10000);
+      const response = await fetch(gvizUrl, { signal: controller ? controller.signal : undefined });
+      if (timeout) clearTimeout(timeout);
+
+      const text = await response.text();
+      const jsonStart = text.indexOf('{');
+      const jsonEnd = text.lastIndexOf('}');
+      if (jsonStart !== -1 && jsonEnd !== -1) {
+        const jsonString = text.substring(jsonStart, jsonEnd + 1);
+        const data = JSON.parse(jsonString);
+        if (data && data.table && Array.isArray(data.table.rows)) {
+          const parsedTeams = [];
+          data.table.rows.forEach(r => {
+            const c = r.c || [];
+            const getVal = (idx) => (c[idx] && c[idx].v !== null && c[idx].v !== undefined) ? String(c[idx].v).trim() : '';
+
+            const regId = getVal(1);
+            const teamName = getVal(2);
+            if (regId && teamName) {
+              const leaderName = getVal(4);
+              const leaderRoll = getVal(5);
+              const leaderEnroll = getVal(6);
+              const leaderBranch = getVal(7);
+              const leaderYear = getVal(8);
+              const leaderSem = getVal(9);
+              const leaderGender = getVal(10);
+              const leaderEmail = getVal(11);
+              const leaderMobile = getVal(12);
+
+              const teamMembers = [];
+              for (let m = 0; m < 5; m++) {
+                const base = 13 + (m * 9);
+                const mName = getVal(base);
+                if (mName) {
+                  teamMembers.push({
+                    name: mName,
+                    rollNumber: getVal(base + 1),
+                    enrollment: getVal(base + 2),
+                    branch: getVal(base + 3),
+                    year: getVal(base + 4),
+                    sem: getVal(base + 5),
+                    gender: getVal(base + 6),
+                    email: getVal(base + 7),
+                    mobile: getVal(base + 8)
+                  });
+                }
+              }
+
+              parsedTeams.push({
+                registrationId: regId,
+                teamName,
+                timestamp: getVal(0),
+                teamLeaderName: leaderName,
+                leaderRollNumber: leaderRoll,
+                leaderEnrollment: leaderEnroll,
+                leaderBranch,
+                leaderYear,
+                leaderSemester: leaderSem,
+                leaderGender,
+                leaderEmail,
+                leaderMobile,
+                teamMembers
+              });
+            }
+          });
+          if (parsedTeams.length > 0) {
+            return { success: true, teams: parsedTeams };
+          }
+        }
+      }
+    } catch (e) {
+      console.warn('Live GVIZ spreadsheet fetch failed, falling back:', e);
+    }
+    return null;
+  }
+
   async function getRegisteredTeams(forceFresh = false) {
+    const liveData = await fetchLiveSpreadsheetData();
+    if (liveData && Array.isArray(liveData.teams) && liveData.teams.length > 0) {
+      setLocalCachedTeams(liveData);
+      return liveData;
+    }
+
     const baseUrl = (AppConfig.GOOGLE_SCRIPT_URL || '').trim();
     const cached = getLocalCachedTeams();
 
@@ -341,7 +427,7 @@ const Api = (() => {
 
     try {
       const controller = typeof AbortController !== 'undefined' ? new AbortController() : null;
-      const timeout = setTimeout(() => controller && controller.abort(), 12000); // 12s fast timeout
+      const timeout = setTimeout(() => controller && controller.abort(), 12000);
 
       const response = await fetch(fetchUrl, {
         method: 'GET',
