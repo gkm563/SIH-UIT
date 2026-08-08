@@ -103,58 +103,66 @@ const HEADERS = [
  * Health check / connectivity test.
  * Also returns which spreadsheet is receiving data (so you can verify the link).
  */
+function handleConfirmAction_(param) {
+  var regId = String(param.registrationId || param.id || '').trim();
+  var statusMsg = String(param.status || '100% Right & Accurate').trim();
+  if (regId) {
+    var sheet = getOrCreateSheet_();
+    var lastRow = sheet.getLastRow();
+    if (lastRow >= 2) {
+      var ids = sheet.getRange(2, 2, lastRow - 1, 1).getValues();
+      for (var i = 0; i < ids.length; i++) {
+        var curId = String(ids[i][0] || '').trim();
+        if (curId.charAt(0) === "'") curId = curId.substring(1);
+        if (curId.toLowerCase() === regId.toLowerCase() || curId.replace(/^sih2026-?/i, '') === regId.replace(/^sih2026-?/i, '')) {
+          var timeStr = new Date().toLocaleString();
+          var writeVal = statusMsg + ' (' + timeStr + ')';
+          sheet.getRange(i + 2, 60).setValue(writeVal); // Column BH (Col 60) = Confirmation
+          return jsonResponse_({ success: true, message: 'Confirmation logged in Column BH (Col 60)', row: i + 2, value: writeVal });
+        }
+      }
+    }
+  }
+  return jsonResponse_({ success: false, message: 'Registration ID not found for confirmation' });
+}
+
+function handleReportAction_(param) {
+  var regId = String(param.registrationId || param.id || '').trim();
+  var oldVal = String(param.oldVal || param.old_val || '').trim();
+  var newVal = String(param.newVal || param.new_val || '').trim();
+  var author = String(param.author || param.name || '').trim();
+  var contact = String(param.contact || param.phone || '').trim();
+
+  if (regId) {
+    var sheet = getOrCreateSheet_();
+    var lastRow = sheet.getLastRow();
+    if (lastRow >= 2) {
+      var ids = sheet.getRange(2, 2, lastRow - 1, 1).getValues();
+      for (var i = 0; i < ids.length; i++) {
+        var curId = String(ids[i][0] || '').trim();
+        if (curId.charAt(0) === "'") curId = curId.substring(1);
+        if (curId.toLowerCase() === regId.toLowerCase() || curId.replace(/^sih2026-?/i, '') === regId.replace(/^sih2026-?/i, '')) {
+          var timeStr = new Date().toLocaleString();
+          var reportText = 'Incorrect: ' + oldVal + ' -> Correct: ' + newVal + ' (By ' + author + ' - ' + contact + ' at ' + timeStr + ')';
+          sheet.getRange(i + 2, 59).setValue(reportText); // Column BG (Col 59) = Report
+          return jsonResponse_({ success: true, message: 'Report logged in Column BG (Col 59)', row: i + 2, value: reportText });
+        }
+      }
+    }
+  }
+  return jsonResponse_({ success: false, message: 'Registration ID not found for report' });
+}
+
 function doGet(e) {
   try {
     // Action 1: Confirm Team Data -> Writes directly into Column BH (Col 60)
     if (e && e.parameter && (e.parameter.action === 'confirm' || e.parameter.action === 'confirmData')) {
-      var regId = String(e.parameter.registrationId || e.parameter.id || '').trim();
-      var statusMsg = String(e.parameter.status || '100% Right & Accurate').trim();
-      if (regId) {
-        var sheet = getOrCreateSheet_();
-        var lastRow = sheet.getLastRow();
-        if (lastRow >= 2) {
-          var ids = sheet.getRange(2, 2, lastRow - 1, 1).getValues();
-          for (var i = 0; i < ids.length; i++) {
-            var curId = String(ids[i][0] || '').trim();
-            if (curId.charAt(0) === "'") curId = curId.substring(1);
-            if (curId.toLowerCase() === regId.toLowerCase() || curId.replace(/^sih2026-?/i, '') === regId.replace(/^sih2026-?/i, '')) {
-              var timeStr = new Date().toLocaleString();
-              var writeVal = statusMsg + ' (' + timeStr + ')';
-              sheet.getRange(i + 2, 60).setValue(writeVal); // Column BH (Col 60) = Confirmation
-              return jsonResponse_({ success: true, message: 'Confirmation logged in Column BH (Col 60)', row: i + 2, value: writeVal });
-            }
-          }
-        }
-      }
-      return jsonResponse_({ success: false, message: 'Registration ID not found for confirmation' });
+      return handleConfirmAction_(e.parameter);
     }
 
     // Action 2: Report Minor Correction -> Writes directly into Column BG (Col 59)
     if (e && e.parameter && (e.parameter.action === 'report' || e.parameter.action === 'reportCorrection')) {
-      var regId = String(e.parameter.registrationId || e.parameter.id || '').trim();
-      var oldVal = String(e.parameter.oldVal || e.parameter.old_val || '').trim();
-      var newVal = String(e.parameter.newVal || e.parameter.new_val || '').trim();
-      var author = String(e.parameter.author || e.parameter.name || '').trim();
-      var contact = String(e.parameter.contact || e.parameter.phone || '').trim();
-
-      if (regId) {
-        var sheet = getOrCreateSheet_();
-        var lastRow = sheet.getLastRow();
-        if (lastRow >= 2) {
-          var ids = sheet.getRange(2, 2, lastRow - 1, 1).getValues();
-          for (var i = 0; i < ids.length; i++) {
-            var curId = String(ids[i][0] || '').trim();
-            if (curId.charAt(0) === "'") curId = curId.substring(1);
-            if (curId.toLowerCase() === regId.toLowerCase() || curId.replace(/^sih2026-?/i, '') === regId.replace(/^sih2026-?/i, '')) {
-              var timeStr = new Date().toLocaleString();
-              var reportText = 'Incorrect: ' + oldVal + ' -> Correct: ' + newVal + ' (By ' + author + ' - ' + contact + ' at ' + timeStr + ')';
-              sheet.getRange(i + 2, 59).setValue(reportText); // Column BG (Col 59) = Report
-              return jsonResponse_({ success: true, message: 'Report logged in Column BG (Col 59)', row: i + 2, value: reportText });
-            }
-          }
-        }
-      }
-      return jsonResponse_({ success: false, message: 'Registration ID not found for report' });
+      return handleReportAction_(e.parameter);
     }
 
     // Public showcase & verification API: GET ?action=teams (or action=getTeams / action=verify)
