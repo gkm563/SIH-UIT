@@ -51,14 +51,41 @@
     selectedDomains: new Set()
   };
 
-  if (typeof PortalApi !== 'undefined') {
-    PortalApi.getPSCounts().then(res => {
-      if (res.success && res.counts) {
-        psCountsMap = res.counts;
-        renderGrid();
+
+  // Fetch PS counts directly from Google Sheets public JSON API (no Apps Script needed)
+  (async () => {
+    try {
+      const SHEET_ID = '1vbDZMAJJgZpELJpfGtdPCres5puMHxe3ac4vvLIoNbs';
+      const SHEET_NAME = 'SIH 2026 Registrations';
+      const url = `https://docs.google.com/spreadsheets/d/${SHEET_ID}/gviz/tq?tqx=out:json&sheet=${encodeURIComponent(SHEET_NAME)}&range=BK2:BK1000`;
+      const res = await fetch(url);
+      const text = await res.text();
+      // Strip Google's JSONP wrapper: /*O_o*/\ngoogle.visualization.Query.setResponse({...});
+      const json = JSON.parse(text.replace(/^[^{]*/, '').replace(/\);?\s*$/, ''));
+      const rows = json?.table?.rows || [];
+      const counts = {};
+      rows.forEach(row => {
+        const val = (row?.c?.[0]?.v || '').trim().replace(/^'/, '');
+        if (!val) return;
+        // Extract PS-NN from start of string
+        const m = val.match(/^(PS-?\d+)/i);
+        if (!m) return;
+        const num = parseInt(m[1].replace(/[^0-9]/g, ''), 10);
+        const key = 'PS-' + (num < 10 ? '0' + num : num);
+        counts[key] = (counts[key] || 0) + 1;
+      });
+      psCountsMap = counts;
+      renderGrid();
+    } catch (e) {
+      // Fallback to PortalApi if direct fetch fails
+      if (typeof PortalApi !== 'undefined') {
+        PortalApi.getPSCounts().then(res => {
+          if (res.success && res.counts) { psCountsMap = res.counts; renderGrid(); }
+        }).catch(() => {});
       }
-    }).catch(() => {});
-  }
+    }
+  })();
+
 
   // DOM Elements
   const els = {
