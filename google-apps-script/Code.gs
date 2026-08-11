@@ -287,29 +287,32 @@ function handlePortalLoginAction_(param) {
 
 /* ── Portal: Select Problem Statement ── */
 function handleSelectPSAction_(param) {
-  var regId   = String(param.regId || '').trim();
+  var regId   = String(param.regId || '').trim().replace(/^'/, '');
   var psId    = String(param.psId || '').trim();
   var psTitle = String(param.psTitle || '').trim();
   var password= String(param.password || '').trim();
-  if (!regId || !psId) return jsonResponse_({ success: false, message: 'regId and psId are required.' });
+  if (!regId || !psId) return jsonResponse_({ success: false, message: 'Registration ID and Problem Statement ID are required.' });
 
   var sheet = getOrCreateSheet_();
   var idx = findTeamRow_(sheet, regId);
-  if (idx < 0) return jsonResponse_({ success: false, message: 'Team not found.' });
+  if (idx < 0) return jsonResponse_({ success: false, message: 'Team not found in records.' });
 
   var sheetRow = idx + 2;
-  // Verify password
+  // Strict password verification
   var storedPwd = String(sheet.getRange(sheetRow, COL_PASSWORD).getValue() || '').trim();
-  if (storedPwd && password !== storedPwd) return jsonResponse_({ success: false, message: 'Unauthorized.' });
+  if (!storedPwd || password !== storedPwd) return jsonResponse_({ success: false, message: 'Unauthorized. Invalid credentials.' });
 
+  // Sanitize formula injection
   var psValue = psId + (psTitle ? ' — ' + psTitle : '');
+  if (/^[=+@-]/.test(psValue)) psValue = "'" + psValue;
+
   sheet.getRange(sheetRow, COL_PS_CHOICE).setValue(psValue);
-  return jsonResponse_({ success: true, message: 'PS choice saved.', psChoice: psValue });
+  return jsonResponse_({ success: true, message: 'Problem Statement choice saved successfully.', psChoice: psValue });
 }
 
 /* ── Portal: Forgot Password — Generate & Email OTP ── */
 function handleForgotOTPAction_(param) {
-  var regId = String(param.regId || '').trim();
+  var regId = String(param.regId || '').trim().replace(/^'/, '');
   if (!regId) return jsonResponse_({ success: false, message: 'Registration ID is required.' });
 
   var sheet = getOrCreateSheet_();
@@ -330,40 +333,53 @@ function handleForgotOTPAction_(param) {
   var otp = String(Math.floor(100000 + Math.random() * 900000));
   var expiry = Date.now() + (10 * 60 * 1000); // 10 minutes
 
-  sheet.getRange(sheetRow, COL_RESET_OTP).setValue(otp);
+  sheet.getRange(sheetRow, COL_RESET_OTP).setValue("'" + otp);
   sheet.getRange(sheetRow, COL_OTP_EXPIRY).setValue(expiry);
 
-  // Send email
+  // Masked email for display
+  var parts = leaderEmail.split('@');
+  var maskedEmail = parts[0].substring(0, 2) + '***@' + parts[1];
+
+  // Send branded email
   try {
     MailApp.sendEmail({
       to: leaderEmail,
-      subject: 'SIH 2026 Portal — Password Reset OTP',
+      subject: 'SIH 2026 Portal — Password Reset OTP (' + regId + ')',
       htmlBody:
-        '<div style="font-family:Arial,sans-serif;max-width:480px;margin:0 auto;border:1px solid #e2e8f0;border-radius:12px;overflow:hidden">' +
-        '<div style="background:#1a73e8;padding:20px 24px"><h2 style="color:#fff;margin:0;font-size:18px">SIH 2026 · UIT Prayagraj</h2><p style="color:#cfe8ff;margin:4px 0 0;font-size:13px">Password Reset Request</p></div>' +
-        '<div style="padding:24px">' +
-        '<p style="margin:0 0 12px;font-size:14px">Hello <strong>' + teamName + '</strong>,</p>' +
-        '<p style="margin:0 0 16px;font-size:14px">Your password reset OTP is:</p>' +
-        '<div style="background:#f0f7ff;border:2px dashed #1a73e8;border-radius:10px;text-align:center;padding:20px;margin-bottom:16px">' +
-        '<span style="font-size:36px;font-weight:900;letter-spacing:10px;color:#1a73e8">' + otp + '</span>' +
+        '<div style="font-family:Arial,Helvetica,sans-serif;max-width:520px;margin:0 auto;background:#ffffff;border:1px solid #e2e8f0;border-radius:14px;overflow:hidden;box-shadow:0 4px 12px rgba(0,0,0,0.05);">' +
+        '<div style="background:linear-gradient(135deg,#1a73e8,#0d47a1);padding:24px 28px;text-align:center;">' +
+        '<h1 style="color:#ffffff;margin:0;font-size:20px;font-weight:800;letter-spacing:-0.5px;">United Institute of Technology</h1>' +
+        '<p style="color:#e8f0fe;margin:4px 0 0;font-size:13px;font-weight:600;">SIH 2026 Internal Registration Portal · Password Reset</p>' +
         '</div>' +
-        '<p style="font-size:12px;color:#64748b;margin:0">This OTP is valid for <strong>10 minutes</strong>. Do not share it with anyone.</p>' +
-        '<p style="font-size:12px;color:#64748b;margin:8px 0 0">If you did not request this, ignore this email.</p>' +
+        '<div style="padding:28px 28px 24px;">' +
+        '<p style="margin:0 0 14px;font-size:15px;color:#1e293b;">Hello <strong>' + teamName + '</strong> (Leader),</p>' +
+        '<p style="margin:0 0 16px;font-size:14px;color:#475569;line-height:1.5;">You requested a password reset for your team portal account (Registration ID: <strong>' + regId + '</strong>). Use the One-Time Password (OTP) below to proceed:</p>' +
+        '<div style="background:#f0f7ff;border:2px dashed #1a73e8;border-radius:12px;text-align:center;padding:20px;margin:20px 0;">' +
+        '<div style="font-size:11px;font-weight:800;color:#1a73e8;letter-spacing:1px;text-transform:uppercase;margin-bottom:6px;">Your 6-Digit Reset Code</div>' +
+        '<span style="font-size:36px;font-weight:900;letter-spacing:12px;color:#1557b0;font-family:monospace;">' + otp + '</span>' +
+        '</div>' +
+        '<div style="background:#fff8e6;border:1px solid #ffe082;border-radius:10px;padding:12px 16px;margin-bottom:20px;">' +
+        '<p style="margin:0;font-size:12px;color:#856404;line-height:1.4;">⏱️ <strong>Security Notice:</strong> This OTP is valid for <strong>10 minutes only</strong>. Never share this code with anyone, including coordinators or other team members.</p>' +
+        '</div>' +
+        '<p style="font-size:12px;color:#94a3b8;margin:0;text-align:center;">If you did not request a password reset, please ignore this email.</p>' +
+        '</div>' +
+        '<div style="background:#f8fafc;padding:16px 28px;border-top:1px solid #f1f5f9;text-align:center;">' +
+        '<p style="margin:0;font-size:11px;color:#64748b;">© 2026 United Institute of Technology, Naini, Prayagraj · Smart India Hackathon</p>' +
         '</div></div>'
     });
-    return jsonResponse_({ success: true, message: 'OTP sent to ' + leaderEmail.replace(/(.{2}).*@/, '$1***@'), maskedEmail: leaderEmail.replace(/(.{2})(.*)(@.*)/, function(_,a,b,c){return a+b.replace(/./g,'*')+c;}) });
+    return jsonResponse_({ success: true, message: 'OTP sent successfully to ' + maskedEmail, maskedEmail: maskedEmail });
   } catch (e) {
-    return jsonResponse_({ success: false, message: 'Failed to send email: ' + e.message });
+    return jsonResponse_({ success: false, message: 'Failed to send OTP email: ' + e.message });
   }
 }
 
 /* ── Portal: Reset Password (via OTP) ── */
 function handleResetPasswordAction_(param) {
-  var regId   = String(param.regId || '').trim();
+  var regId   = String(param.regId || '').trim().replace(/^'/, '');
   var otp     = String(param.otp || '').trim();
   var newPwd  = String(param.newPassword || '').trim();
-  if (!regId || !otp || !newPwd) return jsonResponse_({ success: false, message: 'regId, otp, and newPassword are required.' });
-  if (newPwd.length < 6) return jsonResponse_({ success: false, message: 'Password must be at least 6 characters.' });
+  if (!regId || !otp || !newPwd) return jsonResponse_({ success: false, message: 'Registration ID, OTP, and new password are required.' });
+  if (newPwd.length < 6) return jsonResponse_({ success: false, message: 'Password must be at least 6 characters long.' });
 
   var sheet = getOrCreateSheet_();
   var idx = findTeamRow_(sheet, regId);
@@ -373,25 +389,28 @@ function handleResetPasswordAction_(param) {
   var lastCol = Math.max(COL_OTP_EXPIRY, sheet.getLastColumn());
   var row = sheet.getRange(sheetRow, 1, 1, lastCol).getValues()[0];
 
-  var storedOtp    = String(row[COL_RESET_OTP - 1] || '').trim();
+  var storedOtp    = String(row[COL_RESET_OTP - 1] || '').trim().replace(/^'/, '');
   var storedExpiry = Number(row[COL_OTP_EXPIRY - 1] || 0);
 
-  if (storedOtp !== otp) return jsonResponse_({ success: false, message: 'Invalid OTP.' });
-  if (Date.now() > storedExpiry) return jsonResponse_({ success: false, message: 'OTP has expired. Please request a new one.' });
+  if (!storedOtp || storedOtp !== otp) return jsonResponse_({ success: false, message: 'Invalid or incorrect OTP code.' });
+  if (Date.now() > storedExpiry) return jsonResponse_({ success: false, message: 'OTP code has expired. Please request a new OTP.' });
 
-  sheet.getRange(sheetRow, COL_PASSWORD).setValue(newPwd);
+  var pwdValue = newPwd;
+  if (/^[=+@-]/.test(pwdValue)) pwdValue = "'" + pwdValue;
+
+  sheet.getRange(sheetRow, COL_PASSWORD).setValue(pwdValue);
   sheet.getRange(sheetRow, COL_RESET_OTP).setValue('');
   sheet.getRange(sheetRow, COL_OTP_EXPIRY).setValue('');
-  return jsonResponse_({ success: true, message: 'Password reset successfully.' });
+  return jsonResponse_({ success: true, message: 'Password reset successfully. You can now log in with your new password.' });
 }
 
 /* ── Portal: Change Password (from dashboard) ── */
 function handleChangePasswordAction_(param) {
-  var regId   = String(param.regId || '').trim();
+  var regId   = String(param.regId || '').trim().replace(/^'/, '');
   var oldPwd  = String(param.oldPassword || '').trim();
   var newPwd  = String(param.newPassword || '').trim();
-  if (!regId || !oldPwd || !newPwd) return jsonResponse_({ success: false, message: 'regId, oldPassword, and newPassword are required.' });
-  if (newPwd.length < 6) return jsonResponse_({ success: false, message: 'New password must be at least 6 characters.' });
+  if (!regId || !oldPwd || !newPwd) return jsonResponse_({ success: false, message: 'Registration ID, current password, and new password are required.' });
+  if (newPwd.length < 6) return jsonResponse_({ success: false, message: 'New password must be at least 6 characters long.' });
 
   var sheet = getOrCreateSheet_();
   var idx = findTeamRow_(sheet, regId);
@@ -399,27 +418,30 @@ function handleChangePasswordAction_(param) {
 
   var sheetRow = idx + 2;
   var storedPwd = String(sheet.getRange(sheetRow, COL_PASSWORD).getValue() || '').trim();
-  if (storedPwd !== oldPwd) return jsonResponse_({ success: false, message: 'Current password is incorrect.' });
+  if (!storedPwd || storedPwd !== oldPwd) return jsonResponse_({ success: false, message: 'Current password is incorrect.' });
 
-  sheet.getRange(sheetRow, COL_PASSWORD).setValue(newPwd);
-  return jsonResponse_({ success: true, message: 'Password changed successfully.' });
+  var pwdValue = newPwd;
+  if (/^[=+@-]/.test(pwdValue)) pwdValue = "'" + pwdValue;
+
+  sheet.getRange(sheetRow, COL_PASSWORD).setValue(pwdValue);
+  return jsonResponse_({ success: true, message: 'Password updated successfully in spreadsheet records.' });
 }
 
 /* ── Admin: Generate & Email Passwords for ALL Teams ── */
 function handleGeneratePasswordsAction_(param) {
   var adminKey = String(param.adminKey || '').trim();
-  if (adminKey !== 'SIH2026ADMIN') return jsonResponse_({ success: false, message: 'Unauthorized.' });
+  if (adminKey !== 'SIH2026ADMIN') return jsonResponse_({ success: false, message: 'Unauthorized admin request.' });
 
   var sheet = getOrCreateSheet_();
   var lastRow = sheet.getLastRow();
-  if (lastRow < 2) return jsonResponse_({ success: false, message: 'No teams found.' });
+  if (lastRow < 2) return jsonResponse_({ success: false, message: 'No registered teams found in sheet.' });
 
   var lastCol = Math.max(COL_OTP_EXPIRY, sheet.getLastColumn());
   var rows = sheet.getRange(2, 1, lastRow - 1, lastCol).getValues();
 
   // Ensure headers exist for new columns
   try {
-    if (!sheet.getRange(1, COL_PASSWORD).getValue()) sheet.getRange(1, COL_PASSWORD).setValue('Portal Password');
+    if (!sheet.getRange(1, COL_PASSWORD).getValue())  sheet.getRange(1, COL_PASSWORD).setValue('Portal Password');
     if (!sheet.getRange(1, COL_PS_CHOICE).getValue())  sheet.getRange(1, COL_PS_CHOICE).setValue('PS Choice');
     if (!sheet.getRange(1, COL_RESET_OTP).getValue())  sheet.getRange(1, COL_RESET_OTP).setValue('Reset OTP');
     if (!sheet.getRange(1, COL_OTP_EXPIRY).getValue()) sheet.getRange(1, COL_OTP_EXPIRY).setValue('OTP Expiry');
@@ -437,31 +459,40 @@ function handleGeneratePasswordsAction_(param) {
     var existingPwd = String(row[COL_PASSWORD - 1] || '').trim();
     var pwd = existingPwd || generatePassword_(regId, tName);
 
-    // Always write password to sheet
-    sheet.getRange(sheetRow, COL_PASSWORD).setValue(pwd);
+    // Save to sheet
+    sheet.getRange(sheetRow, COL_PASSWORD).setValue("'" + pwd);
 
     // Send email if valid email
     if (!email || !email.includes('@')) { skipped++; continue; }
     try {
       MailApp.sendEmail({
         to: email,
-        subject: 'SIH 2026 Portal — Your Login Credentials',
+        subject: '🔐 SIH 2026 Team Portal — Confidential Login Credentials (' + regId + ')',
         htmlBody:
-          '<div style="font-family:Arial,sans-serif;max-width:500px;margin:0 auto;border:1px solid #e2e8f0;border-radius:12px;overflow:hidden">' +
-          '<div style="background:linear-gradient(135deg,#1a73e8,#0d47a1);padding:24px">' +
-          '<h2 style="color:#fff;margin:0;font-size:20px">🎉 SIH 2026 Portal Access</h2>' +
-          '<p style="color:#cfe8ff;margin:6px 0 0;font-size:13px">United Institute of Technology, Prayagraj</p>' +
+          '<div style="font-family:Arial,Helvetica,sans-serif;max-width:540px;margin:0 auto;background:#ffffff;border:1px solid #e2e8f0;border-radius:14px;overflow:hidden;box-shadow:0 4px 14px rgba(0,0,0,0.06);">' +
+          '<div style="background:linear-gradient(135deg,#1a73e8,#0d47a1);padding:26px 30px;text-align:center;">' +
+          '<h1 style="color:#ffffff;margin:0;font-size:22px;font-weight:800;letter-spacing:-0.5px;">United Institute of Technology</h1>' +
+          '<p style="color:#e8f0fe;margin:6px 0 0;font-size:13px;font-weight:600;">Smart India Hackathon (SIH) 2026 · Official Team Portal</p>' +
           '</div>' +
-          '<div style="padding:24px">' +
-          '<p style="font-size:15px;margin:0 0 16px">Hello <strong>' + tName + '</strong>! Your team portal login credentials are below.</p>' +
-          '<table style="width:100%;border-collapse:collapse;background:#f8fafc;border-radius:8px;overflow:hidden;border:1px solid #e2e8f0">' +
-          '<tr><td style="padding:12px 16px;font-size:13px;color:#64748b;width:40%">Registration ID</td><td style="padding:12px 16px;font-size:14px;font-weight:700;color:#1e293b">' + regId + '</td></tr>' +
-          '<tr style="border-top:1px solid #e2e8f0"><td style="padding:12px 16px;font-size:13px;color:#64748b">Password</td><td style="padding:12px 16px;font-size:18px;font-weight:900;color:#1a73e8;letter-spacing:2px">' + pwd + '</td></tr>' +
-          '</table>' +
-          '<div style="margin:16px 0;padding:12px 16px;background:#fff3cd;border:1px solid #ffc107;border-radius:8px">' +
-          '<p style="margin:0;font-size:12px;color:#856404">⚠️ <strong>Important:</strong> You can change your password after logging in. Do not share your credentials.</p>' +
+          '<div style="padding:28px 30px 24px;">' +
+          '<p style="font-size:15px;color:#1e293b;margin:0 0 14px;">Dear <strong>' + tName + '</strong> (Team Leader),</p>' +
+          '<p style="font-size:14px;color:#475569;line-height:1.5;margin:0 0 20px;">Your official SIH 2026 Team Portal account has been activated. You can now log in to view your team roster and submit your Problem Statement selection.</p>' +
+          '<div style="background:#f8fafc;border:1px solid #cbd5e1;border-radius:12px;overflow:hidden;margin-bottom:20px;">' +
+          '<div style="background:#0f172a;color:#ffffff;padding:10px 16px;font-size:11px;font-weight:800;letter-spacing:1px;text-transform:uppercase;">Official Login Credentials</div>' +
+          '<table style="width:100%;border-collapse:collapse;">' +
+          '<tr><td style="padding:12px 16px;font-size:13px;color:#64748b;font-weight:600;width:40%;border-bottom:1px solid #e2e8f0;">Registration ID</td><td style="padding:12px 16px;font-size:14px;font-weight:800;color:#0f172a;font-family:monospace;border-bottom:1px solid #e2e8f0;">' + regId + '</td></tr>' +
+          '<tr><td style="padding:12px 16px;font-size:13px;color:#64748b;font-weight:600;">Password</td><td style="padding:12px 16px;font-size:18px;font-weight:900;color:#1a73e8;font-family:monospace;letter-spacing:2px;">' + pwd + '</td></tr>' +
+          '</table></div>' +
+          '<div style="background:#fff3cd;border:1px solid #ffe082;border-radius:10px;padding:14px 16px;margin-bottom:22px;">' +
+          '<p style="margin:0;font-size:12px;color:#856404;line-height:1.5;">🔒 <strong>CONFIDENTIAL SECURITY WARNING:</strong> These login credentials belong exclusively to your team. Do not share your password with unauthorized persons. You may change your password inside the portal after logging in.</p>' +
           '</div>' +
-          '<a href="https://sih-uit.vercel.app/portal.html" style="display:block;text-align:center;background:#1a73e8;color:#fff;text-decoration:none;padding:14px;border-radius:8px;font-weight:700;font-size:14px">🔐 Login to Portal</a>' +
+          '<div style="text-align:center;margin-bottom:20px;">' +
+          '<a href="https://sih-uit.vercel.app/portal.html" style="display:inline-block;background:linear-gradient(135deg,#1a73e8,#1557b0);color:#ffffff;text-decoration:none;padding:14px 32px;border-radius:10px;font-weight:800;font-size:14px;box-shadow:0 4px 12px rgba(26,115,232,0.3);">🔐 Access Team Portal Now</a>' +
+          '</div>' +
+          '<p style="font-size:12px;color:#94a3b8;margin:0;text-align:center;">Portal Link: <a href="https://sih-uit.vercel.app/portal.html" style="color:#1a73e8;">https://sih-uit.vercel.app/portal.html</a></p>' +
+          '</div>' +
+          '<div style="background:#f8fafc;padding:16px 30px;border-top:1px solid #f1f5f9;text-align:center;">' +
+          '<p style="margin:0;font-size:11px;color:#64748b;">© 2026 United Institute of Technology, Prayagraj · SIH 2026 Internal Portal</p>' +
           '</div></div>'
       });
       sent++;
@@ -471,8 +502,9 @@ function handleGeneratePasswordsAction_(param) {
     }
     Utilities.sleep(100); // avoid Gmail rate limits
   }
-  return jsonResponse_({ success: true, message: sent + ' passwords generated & emailed.', sent: sent, skipped: skipped, errors: errors });
+  return jsonResponse_({ success: true, message: sent + ' passwords generated & emailed successfully.', sent: sent, skipped: skipped, errors: errors });
 }
+
 
 /* ── Build team object from a row array ── */
 function buildTeamObj_(row, regId) {
