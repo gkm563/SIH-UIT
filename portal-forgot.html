@@ -107,14 +107,41 @@
           <span id="success-msg"></span>
         </div>
 
-        <!-- STEP 1: Enter Reg ID -->
+        <!-- STEP 1: Enter Reg ID & Security Challenge -->
         <div id="step-1" class="step active">
-          <h2 class="text-sm font-bold text-slate-700 mb-4">Step 1 — Enter your Registration ID</h2>
-          <div class="mb-5">
+          <h2 class="text-sm font-extrabold text-slate-800 mb-4">Step 1 — Verification &amp; Security Challenge</h2>
+          <div class="mb-4">
             <label class="block text-xs font-bold text-slate-700 mb-1.5 uppercase tracking-wide">Registration ID</label>
             <input id="forgot-regid" type="text" placeholder="SIH2026-XXXX"
               class="input-field w-full px-4 py-3 text-sm font-semibold border border-slate-200 rounded-xl bg-slate-50 focus:bg-white text-slate-900 placeholder-slate-400 transition-all" />
           </div>
+
+          <!-- Anti-Bot Math Security Challenge -->
+          <div class="mb-5 bg-blue-50/70 border border-blue-200/90 rounded-2xl p-4">
+            <div class="flex items-center justify-between gap-2 mb-2">
+              <label class="block text-xs font-black text-blue-900 uppercase tracking-wide flex items-center gap-1.5">
+                <span>🛡️ Security Verification</span>
+              </label>
+              <button type="button" id="captcha-refresh" class="text-[11px] font-extrabold text-blue-700 hover:text-blue-900 underline flex items-center gap-1">
+                <span>🔄 Refresh Puzzle</span>
+              </button>
+            </div>
+
+            <div class="flex items-center gap-3">
+              <div class="bg-white border border-blue-200/80 px-3.5 py-2.5 rounded-xl font-mono text-sm font-black text-blue-950 shadow-inner tracking-wider select-none whitespace-nowrap">
+                <span id="captcha-q">Calculate: ? + ? =</span>
+              </div>
+              <input
+                id="captcha-a"
+                type="number"
+                inputmode="numeric"
+                placeholder="Result?"
+                class="input-field flex-1 px-3.5 py-2.5 text-xs sm:text-sm font-black border border-blue-200 rounded-xl bg-white focus:border-blue-600 outline-none text-slate-900"
+              />
+            </div>
+            <p class="text-[10px] font-semibold text-slate-500 mt-2">Solve this math challenge to verify you are human and prevent bot spamming.</p>
+          </div>
+
           <button id="btn-send-otp" class="btn-primary w-full py-3.5 rounded-xl text-white font-black text-sm transition-all flex items-center justify-center gap-2">
             <span id="send-otp-text">Send OTP to Leader's Email</span>
             <svg id="send-otp-spin" class="hidden w-4 h-4 animate-spin" fill="none" viewBox="0 0 24 24"><circle class="opacity-25" cx="12" cy="12" r="10" stroke="currentColor" stroke-width="4"/><path class="opacity-75" fill="currentColor" d="M4 12a8 8 0 018-8V0C5.373 0 0 5.373 0 12h4z"/></svg>
@@ -249,6 +276,21 @@
   <script>
     let currentRegId = '';
     let verifiedOtp  = '';
+    let captchaNum1 = 0;
+    let captchaNum2 = 0;
+    let captchaAnswer = 0;
+
+    function initCaptcha() {
+      captchaNum1 = Math.floor(Math.random() * 9) + 1;
+      captchaNum2 = Math.floor(Math.random() * 9) + 1;
+      captchaAnswer = captchaNum1 + captchaNum2;
+      document.getElementById('captcha-q').textContent = `Calculate: ${captchaNum1} + ${captchaNum2} =`;
+      const input = document.getElementById('captcha-a');
+      if (input) input.value = '';
+    }
+    initCaptcha();
+
+    document.getElementById('captcha-refresh').addEventListener('click', initCaptcha);
 
     function showError(msg){ document.getElementById('error-box').classList.remove('hidden'); document.getElementById('error-msg').textContent=msg; document.getElementById('success-box').classList.add('hidden'); }
     function showSuccess(msg){ document.getElementById('success-box').classList.remove('hidden'); document.getElementById('success-msg').textContent=msg; document.getElementById('error-box').classList.add('hidden'); }
@@ -269,7 +311,15 @@
 
     document.getElementById('btn-send-otp').addEventListener('click', async()=>{
       const regId = document.getElementById('forgot-regid').value.trim();
+      const captchaVal = parseInt(document.getElementById('captcha-a').value, 10);
+
       if(!regId){ showError('Please enter your Registration ID.'); return; }
+      if(isNaN(captchaVal) || captchaVal !== captchaAnswer) {
+        showError('❌ Security Verification Failed: Math answer is incorrect. Please try again.');
+        initCaptcha();
+        return;
+      }
+
       hideAlerts();
       document.getElementById('send-otp-text').textContent='Sending...';
       document.getElementById('send-otp-spin').classList.remove('hidden');
@@ -280,9 +330,19 @@
           currentRegId=regId;
           document.getElementById('otp-hint').textContent='OTP sent to '+res.maskedEmail+'. Valid for 10 minutes.';
           goStep(2);
-        } else { showError(res.message||'Failed to send OTP.'); }
-      }catch{ showError('Connection error. Please try again.'); }
-      finally{ document.getElementById('send-otp-text').textContent='Send OTP to Leader\'s Email'; document.getElementById('send-otp-spin').classList.add('hidden'); document.getElementById('btn-send-otp').disabled=false; }
+        } else {
+          showError(res.message || 'Failed to send OTP.');
+          initCaptcha();
+        }
+      }catch{
+        showError('Connection error. Please try again.');
+        initCaptcha();
+      }
+      finally{
+        document.getElementById('send-otp-text').textContent='Send OTP to Leader\'s Email';
+        document.getElementById('send-otp-spin').classList.add('hidden');
+        document.getElementById('btn-send-otp').disabled=false;
+      }
     });
 
     document.getElementById('btn-verify-otp').addEventListener('click', ()=>{

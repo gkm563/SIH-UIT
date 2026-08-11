@@ -329,6 +329,20 @@ function handleForgotOTPAction_(param) {
     return jsonResponse_({ success: false, message: 'Team leader email not found in records.' });
   }
 
+  // ── Rate Limiting Protection (Max 1 OTP request every 60 seconds per team) ──
+  var existingExpiry = Number(row[COL_OTP_EXPIRY - 1] || 0);
+  if (existingExpiry > 0) {
+    var generatedAt = existingExpiry - (10 * 60 * 1000);
+    var timeElapsed = Date.now() - generatedAt;
+    if (timeElapsed < 60000) { // 60 seconds rate limit
+      var secondsRemaining = Math.ceil((60000 - timeElapsed) / 1000);
+      return jsonResponse_({
+        success: false,
+        message: 'Rate Limit Exceeded: An OTP was generated recently for this team. Please wait ' + secondsRemaining + ' seconds before requesting another OTP.'
+      });
+    }
+  }
+
   // Generate 6-digit OTP
   var otp = String(Math.floor(100000 + Math.random() * 900000));
   var expiry = Date.now() + (10 * 60 * 1000); // 10 minutes
