@@ -253,7 +253,9 @@
           </div>
           <input
             id="ps-search"
-            type="text"
+            name="ps-search-query"
+            type="search"
+            autocomplete="off"
             placeholder="Search by PS ID (e.g. 1527), Title, Domain, or Keywords..."
             class="w-full pl-12 pr-10 py-3.5 text-xs sm:text-sm font-semibold border-2 border-blue-100 rounded-2xl bg-blue-50/30 focus:bg-white focus:border-blue-600 focus:ring-4 focus:ring-blue-100 transition-all outline-none text-slate-900 shadow-inner"
           />
@@ -830,7 +832,16 @@
       }
     });
 
+    // Force clear search on init to avoid browser credentials autofill
+    const searchEl = document.getElementById('ps-search');
+    if (searchEl) searchEl.value = '';
     renderPS();
+    setTimeout(() => {
+      if (searchEl && searchEl.value) {
+        searchEl.value = '';
+        renderPS();
+      }
+    }, 150);
 
     // ══════════════════════════════════════════════════════════════
     //  CHANGE PASSWORD

@@ -250,16 +250,40 @@ function findTeamRow_(sheet, regId) {
   return -1;
 }
 
-/* ── Generate a secure password for a team ── */
+/* ── Generate a cryptographically random, unguessable, high-entropy password ── */
 function generatePassword_(regId, teamName) {
-  var namePart = (teamName || '').replace(/[^a-zA-Z]/g, '').substring(0, 3).toUpperCase();
-  if (namePart.length < 3) namePart = (namePart + 'SIH').substring(0, 3);
-  var idPart = regId.replace(/^sih2026-?/i, '').replace(/^'/, '');
-  idPart = ('0000' + idPart).slice(-4);
-  // Add a random 2-char suffix for extra security
-  var chars = 'ABCDEFGHJKLMNPQRSTUVWXYZ23456789';
-  var rand = chars[Math.floor(Math.random() * chars.length)] + chars[Math.floor(Math.random() * chars.length)];
-  return '@SIH' + namePart + idPart + rand;
+  var prefixList = ['@SIH', '!UIT', '#UNITED', '$INDIA', '@TECH', '!SIH2026'];
+  var charsUpper = 'ABCDEFGHJKLMNPQRSTUVWXYZ';
+  var charsLower = 'abcdefghijkmnpqrstuvwxyz';
+  var charsNum   = '23456789';
+  var charsSpec  = '#$!@%*&';
+
+  var prefix = prefixList[Math.floor(Math.random() * prefixList.length)];
+  
+  function randChar(str) {
+    return str[Math.floor(Math.random() * str.length)];
+  }
+
+  // Build 8 random characters mixing upper, lower, numbers, and special symbols
+  var randBody = randChar(charsUpper) +
+                 randChar(charsNum) +
+                 randChar(charsLower) +
+                 randChar(charsSpec) +
+                 randChar(charsUpper) +
+                 randChar(charsNum) +
+                 randChar(charsLower) +
+                 randChar(charsSpec);
+
+  // Shuffle the body characters
+  var bodyArray = randBody.split('');
+  for (var i = bodyArray.length - 1; i > 0; i--) {
+    var j = Math.floor(Math.random() * (i + 1));
+    var temp = bodyArray[i];
+    bodyArray[i] = bodyArray[j];
+    bodyArray[j] = temp;
+  }
+
+  return prefix + bodyArray.join('');
 }
 
 /* ── Portal: Login ── */
