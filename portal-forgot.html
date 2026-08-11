@@ -78,57 +78,64 @@
   </header>
 
   <main class="flex-1 flex items-center justify-center px-4 py-10 sm:py-16">
-    <div class="w-full max-w-md fade-up">
+    <div class="w-full max-w-lg fade-up">
 
       <div class="text-center mb-8">
-        <div class="inline-flex items-center justify-center w-16 h-16 bg-amber-500 rounded-2xl shadow-lg mb-4">
+        <div class="inline-flex items-center justify-center w-16 h-16 bg-gradient-to-tr from-blue-700 to-indigo-600 rounded-2xl shadow-xl shadow-blue-500/20 mb-4 ring-4 ring-blue-100">
           <svg class="w-8 h-8 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 7a2 2 0 012 2m4 0a6 6 0 01-7.743 5.743L11 17H9v2H7v2H4a1 1 0 01-1-1v-2.586a1 1 0 01.293-.707l5.964-5.964A6 6 0 1121 9z"/></svg>
         </div>
-        <h1 class="text-2xl sm:text-3xl font-black text-slate-900">Reset Password</h1>
-        <p class="text-sm text-slate-500 mt-1 font-medium">We'll send an OTP to your team leader's email</p>
+        <h1 class="text-2xl sm:text-3xl font-black text-slate-900 tracking-tight">Reset Password</h1>
+        <p class="text-xs sm:text-sm text-slate-500 mt-1 font-medium">Verify your team &amp; receive an OTP via leader's email</p>
       </div>
 
-      <!-- Stepper -->
-      <div class="flex items-center justify-center gap-2 mb-6">
-        <div id="step-dot-1" class="w-8 h-8 rounded-full bg-blue-600 text-white text-xs font-black flex items-center justify-center transition-all">1</div>
-        <div class="h-0.5 w-12 bg-slate-200" id="step-line"></div>
-        <div id="step-dot-2" class="w-8 h-8 rounded-full bg-slate-200 text-slate-500 text-xs font-black flex items-center justify-center transition-all">2</div>
-        <div class="h-0.5 w-12 bg-slate-200"></div>
-        <div id="step-dot-3" class="w-8 h-8 rounded-full bg-slate-200 text-slate-500 text-xs font-black flex items-center justify-center transition-all">3</div>
+      <!-- Stepper Progress Bar -->
+      <div class="flex items-center justify-center gap-2 sm:gap-3 mb-8">
+        <div id="step-dot-1" class="w-9 h-9 rounded-full bg-blue-600 text-white text-xs font-black flex items-center justify-center shadow-md shadow-blue-500/30 transition-all ring-4 ring-blue-100">1</div>
+        <div class="h-1 w-12 sm:w-16 bg-slate-200 rounded-full transition-all" id="step-line"></div>
+        <div id="step-dot-2" class="w-9 h-9 rounded-full bg-slate-200 text-slate-500 text-xs font-black flex items-center justify-center transition-all">2</div>
+        <div class="h-1 w-12 sm:w-16 bg-slate-200 rounded-full"></div>
+        <div id="step-dot-3" class="w-9 h-9 rounded-full bg-slate-200 text-slate-500 text-xs font-black flex items-center justify-center transition-all">3</div>
       </div>
 
-      <div class="card bg-white border border-slate-200/80 rounded-2xl p-6 sm:p-8">
+      <!-- Glassmorphic Card Container -->
+      <div class="bg-white/90 backdrop-blur-xl border border-slate-200/90 rounded-3xl p-6 sm:p-9 shadow-2xl shadow-blue-900/5">
 
-        <!-- Error -->
-        <div id="error-box" class="hidden mb-4 p-3 bg-red-50 border border-red-200 text-red-700 text-xs font-semibold rounded-xl">
+        <!-- Error & Success Alerts -->
+        <div id="error-box" class="hidden mb-5 p-4 bg-red-50/90 border border-red-200/80 text-red-700 text-xs font-bold rounded-2xl flex items-center gap-2 shadow-xs">
+          <span class="text-sm">⚠️</span>
           <span id="error-msg"></span>
         </div>
-        <div id="success-box" class="hidden mb-4 p-3 bg-emerald-50 border border-emerald-200 text-emerald-700 text-xs font-semibold rounded-xl">
+        <div id="success-box" class="hidden mb-5 p-4 bg-emerald-50/90 border border-emerald-200/80 text-emerald-700 text-xs font-bold rounded-2xl flex items-center gap-2 shadow-xs">
+          <span class="text-sm">✅</span>
           <span id="success-msg"></span>
         </div>
 
         <!-- STEP 1: Enter Reg ID & Security Challenge -->
-        <div id="step-1" class="step active">
-          <h2 class="text-sm font-extrabold text-slate-800 mb-4">Step 1 — Verification &amp; Security Challenge</h2>
-          <div class="mb-4">
-            <label class="block text-xs font-bold text-slate-700 mb-1.5 uppercase tracking-wide">Registration ID</label>
-            <input id="forgot-regid" type="text" placeholder="SIH2026-XXXX"
-              class="input-field w-full px-4 py-3 text-sm font-semibold border border-slate-200 rounded-xl bg-slate-50 focus:bg-white text-slate-900 placeholder-slate-400 transition-all" />
+        <div id="step-1" class="step active space-y-5">
+          <div>
+            <h2 class="text-sm font-black text-slate-900 uppercase tracking-wider mb-1">Step 1 — Registration &amp; Anti-Bot Verification</h2>
+            <p class="text-xs text-slate-500">Enter your Registration ID to receive an OTP.</p>
           </div>
 
-          <!-- Anti-Bot Math Security Challenge -->
-          <div class="mb-5 bg-blue-50/70 border border-blue-200/90 rounded-2xl p-4">
-            <div class="flex items-center justify-between gap-2 mb-2">
-              <label class="block text-xs font-black text-blue-900 uppercase tracking-wide flex items-center gap-1.5">
-                <span>🛡️ Security Verification</span>
+          <div>
+            <label class="block text-xs font-extrabold text-slate-700 mb-1.5 uppercase tracking-wide">Registration ID</label>
+            <input id="forgot-regid" type="text" placeholder="e.g. SIH2026-0563"
+              class="w-full px-4 py-3.5 text-xs sm:text-sm font-bold border-2 border-slate-200 rounded-2xl bg-slate-50/50 focus:bg-white focus:border-blue-600 focus:ring-4 focus:ring-blue-100 text-slate-900 placeholder-slate-400 transition-all outline-none" />
+          </div>
+
+          <!-- Anti-Bot Math Security Challenge Card -->
+          <div class="bg-gradient-to-br from-blue-50/90 via-indigo-50/50 to-slate-50/80 border border-blue-200/80 rounded-2xl p-4 sm:p-5 space-y-3 shadow-inner">
+            <div class="flex items-center justify-between gap-2">
+              <label class="block text-xs font-black text-blue-950 uppercase tracking-wide flex items-center gap-1.5">
+                <span>🛡️ Security Verification Challenge</span>
               </label>
               <button type="button" id="captcha-refresh" class="text-[11px] font-extrabold text-blue-700 hover:text-blue-900 underline flex items-center gap-1">
-                <span>🔄 Refresh Puzzle</span>
+                <span>🔄 New Test</span>
               </button>
             </div>
 
             <div class="flex items-center gap-3">
-              <div class="bg-white border border-blue-200/80 px-3.5 py-2.5 rounded-xl font-mono text-sm font-black text-blue-950 shadow-inner tracking-wider select-none whitespace-nowrap">
+              <div class="bg-white border border-blue-200/90 px-4 py-3 rounded-2xl font-mono text-sm font-black text-blue-950 shadow-inner tracking-wider select-none whitespace-nowrap">
                 <span id="captcha-q">Calculate: ? + ? =</span>
               </div>
               <input
@@ -136,55 +143,67 @@
                 type="number"
                 inputmode="numeric"
                 placeholder="Result?"
-                class="input-field flex-1 px-3.5 py-2.5 text-xs sm:text-sm font-black border border-blue-200 rounded-xl bg-white focus:border-blue-600 outline-none text-slate-900"
+                class="flex-1 px-4 py-3 text-xs sm:text-sm font-black border-2 border-blue-200 rounded-2xl bg-white focus:border-blue-600 focus:ring-4 focus:ring-blue-100 outline-none text-slate-900 shadow-xs"
               />
             </div>
-            <p class="text-[10px] font-semibold text-slate-500 mt-2">Solve this math challenge to verify you are human and prevent bot spamming.</p>
+            <p class="text-[10px] font-semibold text-slate-500 leading-normal">Solve this simple math test to prove human interaction &amp; protect against bot spam.</p>
           </div>
 
-          <button id="btn-send-otp" class="btn-primary w-full py-3.5 rounded-xl text-white font-black text-sm transition-all flex items-center justify-center gap-2">
+          <button id="btn-send-otp" class="w-full py-4 rounded-2xl bg-gradient-to-r from-blue-700 via-indigo-700 to-slate-900 text-white font-black text-xs sm:text-sm shadow-xl shadow-blue-600/20 hover:shadow-2xl hover:scale-[1.01] active:scale-95 transition-all flex items-center justify-center gap-2">
             <span id="send-otp-text">Send OTP to Leader's Email</span>
             <svg id="send-otp-spin" class="hidden w-4 h-4 animate-spin" fill="none" viewBox="0 0 24 24"><circle class="opacity-25" cx="12" cy="12" r="10" stroke="currentColor" stroke-width="4"/><path class="opacity-75" fill="currentColor" d="M4 12a8 8 0 018-8V0C5.373 0 0 5.373 0 12h4z"/></svg>
           </button>
         </div>
 
         <!-- STEP 2: Enter OTP -->
-        <div id="step-2" class="step">
-          <h2 class="text-sm font-bold text-slate-700 mb-1">Step 2 — Enter the OTP</h2>
-          <p id="otp-hint" class="text-xs text-slate-500 mb-4">Check your team leader's inbox.</p>
-          <div class="mb-5">
-            <label class="block text-xs font-bold text-slate-700 mb-1.5 uppercase tracking-wide">6-Digit OTP</label>
-            <input id="otp-input" type="text" inputmode="numeric" maxlength="6" placeholder="• • • • • •"
-              class="input-field otp-input w-full px-4 py-4 border border-slate-200 rounded-xl bg-slate-50 focus:bg-white text-slate-900 transition-all" />
+        <div id="step-2" class="step space-y-5">
+          <div>
+            <h2 class="text-sm font-black text-slate-900 uppercase tracking-wider mb-1">Step 2 — Verify 6-Digit OTP</h2>
+            <p id="otp-hint" class="text-xs font-semibold text-blue-700 bg-blue-50 border border-blue-200/80 px-3 py-2 rounded-xl">Check your team leader's email inbox.</p>
           </div>
-          <button id="btn-verify-otp" class="btn-primary w-full py-3.5 rounded-xl text-white font-black text-sm transition-all flex items-center justify-center gap-2">
-            <span id="verify-otp-text">Verify OTP</span>
+
+          <div>
+            <label class="block text-xs font-extrabold text-slate-700 mb-1.5 uppercase tracking-wide">6-Digit OTP Code</label>
+            <input id="otp-input" type="text" inputmode="numeric" maxlength="6" placeholder="• • • • • •"
+              class="otp-input w-full px-4 py-4 border-2 border-slate-200 rounded-2xl bg-slate-50/50 focus:bg-white focus:border-blue-600 focus:ring-4 focus:ring-blue-100 text-slate-900 transition-all outline-none font-mono" />
+          </div>
+
+          <button id="btn-verify-otp" class="w-full py-4 rounded-2xl bg-gradient-to-r from-blue-700 via-indigo-700 to-slate-900 text-white font-black text-xs sm:text-sm shadow-xl shadow-blue-600/20 hover:shadow-2xl hover:scale-[1.01] active:scale-95 transition-all flex items-center justify-center gap-2">
+            <span id="verify-otp-text">Verify OTP &amp; Proceed</span>
             <svg id="verify-otp-spin" class="hidden w-4 h-4 animate-spin" fill="none" viewBox="0 0 24 24"><circle class="opacity-25" cx="12" cy="12" r="10" stroke="currentColor" stroke-width="4"/><path class="opacity-75" fill="currentColor" d="M4 12a8 8 0 018-8V0C5.373 0 0 5.373 0 12h4z"/></svg>
           </button>
-          <button class="w-full mt-3 text-xs text-slate-500 hover:text-blue-700 font-semibold" onclick="goStep(1)">← Change Registration ID</button>
+          <button class="w-full text-xs text-slate-500 hover:text-blue-700 font-extrabold transition-colors py-1" onclick="goStep(1)">← Change Registration ID</button>
         </div>
 
         <!-- STEP 3: Set New Password -->
-        <div id="step-3" class="step">
-          <h2 class="text-sm font-bold text-slate-700 mb-4">Step 3 — Set New Password</h2>
-          <div class="mb-4">
-            <label class="block text-xs font-bold text-slate-700 mb-1.5 uppercase tracking-wide">New Password</label>
-            <div class="relative">
-              <input id="new-pwd" type="password" placeholder="Min. 6 characters"
-                class="input-field w-full pl-4 pr-12 py-3 text-sm font-semibold border border-slate-200 rounded-xl bg-slate-50 focus:bg-white text-slate-900 transition-all" />
-              <button type="button" onclick="togglePwd('new-pwd','eye1')" class="absolute right-3.5 top-1/2 -translate-y-1/2 text-slate-400 hover:text-slate-700 text-sm" id="eye1">👁️</button>
+        <div id="step-3" class="step space-y-5">
+          <div>
+            <h2 class="text-sm font-black text-slate-900 uppercase tracking-wider mb-1">Step 3 — Create New Password</h2>
+            <p class="text-xs text-slate-500">Your new password must be at least 6 characters long.</p>
+          </div>
+
+          <div class="space-y-4">
+            <div>
+              <label class="block text-xs font-extrabold text-slate-700 mb-1.5 uppercase tracking-wide">New Password</label>
+              <div class="relative">
+                <input id="new-pwd" type="password" placeholder="Min. 6 characters"
+                  class="w-full pl-4 pr-12 py-3.5 text-xs sm:text-sm font-bold border-2 border-slate-200 rounded-2xl bg-slate-50/50 focus:bg-white focus:border-blue-600 focus:ring-4 focus:ring-blue-100 text-slate-900 transition-all outline-none" />
+                <button type="button" onclick="togglePwd('new-pwd','eye1')" class="absolute right-3.5 top-1/2 -translate-y-1/2 text-slate-400 hover:text-slate-700 text-sm p-1" id="eye1">👁️</button>
+              </div>
+            </div>
+
+            <div>
+              <label class="block text-xs font-extrabold text-slate-700 mb-1.5 uppercase tracking-wide">Confirm New Password</label>
+              <div class="relative">
+                <input id="confirm-pwd" type="password" placeholder="Re-enter new password"
+                  class="w-full pl-4 pr-12 py-3.5 text-xs sm:text-sm font-bold border-2 border-slate-200 rounded-2xl bg-slate-50/50 focus:bg-white focus:border-blue-600 focus:ring-4 focus:ring-blue-100 text-slate-900 transition-all outline-none" />
+                <button type="button" onclick="togglePwd('confirm-pwd','eye2')" class="absolute right-3.5 top-1/2 -translate-y-1/2 text-slate-400 hover:text-slate-700 text-sm p-1" id="eye2">👁️</button>
+              </div>
             </div>
           </div>
-          <div class="mb-6">
-            <label class="block text-xs font-bold text-slate-700 mb-1.5 uppercase tracking-wide">Confirm Password</label>
-            <div class="relative">
-              <input id="confirm-pwd" type="password" placeholder="Re-enter password"
-                class="input-field w-full pl-4 pr-12 py-3 text-sm font-semibold border border-slate-200 rounded-xl bg-slate-50 focus:bg-white text-slate-900 transition-all" />
-              <button type="button" onclick="togglePwd('confirm-pwd','eye2')" class="absolute right-3.5 top-1/2 -translate-y-1/2 text-slate-400 hover:text-slate-700 text-sm" id="eye2">👁️</button>
-            </div>
-          </div>
-          <button id="btn-reset-pwd" class="btn-primary w-full py-3.5 rounded-xl text-white font-black text-sm transition-all flex items-center justify-center gap-2">
-            <span id="reset-pwd-text">Reset Password</span>
+
+          <button id="btn-reset-pwd" class="w-full py-4 rounded-2xl bg-gradient-to-r from-emerald-600 via-teal-600 to-slate-900 text-white font-black text-xs sm:text-sm shadow-xl shadow-emerald-600/20 hover:shadow-2xl hover:scale-[1.01] active:scale-95 transition-all flex items-center justify-center gap-2">
+            <span id="reset-pwd-text">🔒 Set New Password</span>
             <svg id="reset-pwd-spin" class="hidden w-4 h-4 animate-spin" fill="none" viewBox="0 0 24 24"><circle class="opacity-25" cx="12" cy="12" r="10" stroke="currentColor" stroke-width="4"/><path class="opacity-75" fill="currentColor" d="M4 12a8 8 0 018-8V0C5.373 0 0 5.373 0 12h4z"/></svg>
           </button>
         </div>
@@ -192,6 +211,7 @@
       </div>
     </div>
   </main>
+
 
   <!-- Ultra-Attractive Clean, Engaging & Mobile-Responsive Premium Footer -->
   <footer class="site-footer bg-gradient-to-b from-slate-50/70 via-white to-blue-50/30 border-t border-slate-200/90 pt-8 pb-6 mt-auto w-full" role="contentinfo">
