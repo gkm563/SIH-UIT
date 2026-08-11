@@ -1960,6 +1960,7 @@ function cleanSpamRows() {
 function onOpen() {
   var ui = SpreadsheetApp.getUi();
   ui.createMenu('🚀 SIH 2026 Admin Tools')
+    .addItem('📊 Update Live Analytics Dashboard Sheet', 'generateAnalyticsDashboardMenu')
     .addItem('🧪 Send Test Portal Credentials to GKM (SIH2026-0563)', 'sendTestEmailToGKM')
     .addItem('🔐 Generate & Email Passwords for ALL Teams', 'generatePasswordsForAllTeamsMenu')
     .addToUi();
@@ -2022,5 +2023,201 @@ function generatePasswordsForAllTeamsMenu() {
     var res = handleGeneratePasswordsAction_({ adminKey: 'SIH2026ADMIN' });
     var data = JSON.parse(res.getContent());
     ui.alert('Email Dispatch Completed', data.message || 'Operation finished.', ui.ButtonSet.OK);
+  }
+}
+
+/**
+ * Menu action: Generate & Refresh SIH Analytics Dashboard Sheet
+ */
+function generateAnalyticsDashboardMenu() {
+  var ui = SpreadsheetApp.getUi();
+  var res = updateAnalyticsDashboardSheet_();
+  ui.alert('Analytics Dashboard Updated! 📊', res, ui.ButtonSet.OK);
+}
+
+/**
+ * Generates/Updates the "SIH Analytics Dashboard" sheet tab with live data metrics:
+ * Total Teams, Total Students, Year-wise (1st, 2nd, 3rd, 4th) Male/Female breakdown,
+ * Branch/Department distribution, and Top Selected Problem Statements.
+ */
+function updateAnalyticsDashboardSheet_() {
+  try {
+    var ss = getSpreadsheet_();
+    var dashSheet = ss.getSheetByName('SIH Analytics Dashboard');
+    if (!dashSheet) {
+      dashSheet = ss.insertSheet('SIH Analytics Dashboard');
+    } else {
+      dashSheet.clearContents();
+    }
+
+    var sheet = getOrCreateSheet_();
+    var lastRow = sheet.getLastRow();
+    var lastCol = Math.max(COL_PS_CHOICE, sheet.getLastColumn());
+
+    var totalTeams = 0;
+    var totalStudents = 0;
+    var teamsWithPS = 0;
+    var teamsPendingPS = 0;
+    var totalMale = 0;
+    var totalFemale = 0;
+
+    var yearStats = {
+      '1st Year': { total: 0, male: 0, female: 0 },
+      '2nd Year': { total: 0, male: 0, female: 0 },
+      '3rd Year': { total: 0, male: 0, female: 0 },
+      '4th Year': { total: 0, male: 0, female: 0 },
+      'Other':    { total: 0, male: 0, female: 0 }
+    };
+
+    var branchStats = {};
+    var psStats = {};
+
+    function normalizeYear(yrStr) {
+      var s = String(yrStr || '').toLowerCase().trim();
+      if (s.includes('1') || s.includes('first'))  return '1st Year';
+      if (s.includes('2') || s.includes('second')) return '2nd Year';
+      if (s.includes('3') || s.includes('third'))  return '3rd Year';
+      if (s.includes('4') || s.includes('fourth')) return '4th Year';
+      return 'Other';
+    }
+
+    function processPerson(name, gender, year, branch) {
+      if (!name || String(name).trim() === '') return;
+
+      totalStudents++;
+      var g = String(gender || '').toLowerCase().trim();
+      var isFemale = g.includes('female');
+      var isMale   = g.includes('male') && !isFemale;
+
+      if (isFemale) totalFemale++;
+      else if (isMale) totalMale++;
+
+      var yrKey = normalizeYear(year);
+      yearStats[yrKey].total++;
+      if (isFemale) yearStats[yrKey].female++;
+      else if (isMale) yearStats[yrKey].male++;
+
+      var brKey = String(branch || 'Not Specified').trim();
+      if (brKey) {
+        branchStats[brKey] = (branchStats[brKey] || 0) + 1;
+      }
+    }
+
+    if (lastRow >= 2) {
+      var data = sheet.getRange(2, 1, lastRow - 1, lastCol).getValues();
+      totalTeams = data.length;
+
+      for (var i = 0; i < data.length; i++) {
+        var row = data[i];
+        var psVal = String(row[COL_PS_CHOICE - 1] || '').trim().replace(/^'/, '');
+        if (psVal) {
+          teamsWithPS++;
+          var match = /^(SIH\d+|\d+)/i.exec(psVal);
+          var psId = match ? match[1].toUpperCase() : psVal.split('—')[0].trim().toUpperCase();
+          if (!/^SIH/i.test(psId) && /^\d+$/.test(psId)) psId = 'SIH' + psId;
+          psStats[psId] = (psStats[psId] || 0) + 1;
+        } else {
+          teamsPendingPS++;
+        }
+
+        // Leader (Cols 4=Name, 7=Branch, 8=Year, 10=Gender)
+        processPerson(row[4], row[10], row[8], row[7]);
+
+        // Members 1 to 5
+        for (var m = 0; m < 5; m++) {
+          var base = 13 + (m * 9);
+          processPerson(row[base], row[base + 6], row[base + 4], row[base + 3]);
+        }
+      }
+    }
+
+    // ── Build Sheet Content Layout ──
+    var outputRows = [];
+
+    // Title Banner
+    outputRows.push(['🚀 SIH 2026 INTERNAL HACKATHON — LIVE ANALYTICS DASHBOARD', '', '', '']);
+    outputRows.push(['Updated At: ' + new Date().toLocaleString(), '', '', '']);
+    outputRows.push(['', '', '', '']);
+
+    // Section 1: Overview Summary
+    outputRows.push(['📊 OVERVIEW SUMMARY METRICS', '', '', '']);
+    outputRows.push(['Metric Name', 'Count / Value', '', '']);
+    outputRows.push(['Total Teams Registered', totalTeams, '', '']);
+    outputRows.push(['Total Participants (Leader + Members)', totalStudents, '', '']);
+    outputRows.push(['Total Male Students', totalMale, '', '']);
+    outputRows.push(['Total Female Students', totalFemale, '', '']);
+    outputRows.push(['Teams with Problem Statement Selected', teamsWithPS, '', '']);
+    outputRows.push(['Teams Pending Problem Statement Selection', teamsPendingPS, '', '']);
+    outputRows.push(['', '', '', '']);
+
+    // Section 2: Year-Wise & Gender Breakdown
+    outputRows.push(['🎓 ACADEMIC YEAR & GENDER BREAKDOWN', '', '', '']);
+    outputRows.push(['Academic Year', 'Total Students', 'Male Students', 'Female Students']);
+    outputRows.push(['1st Year (First Year)',  yearStats['1st Year'].total, yearStats['1st Year'].male, yearStats['1st Year'].female]);
+    outputRows.push(['2nd Year (Second Year)', yearStats['2nd Year'].total, yearStats['2nd Year'].male, yearStats['2nd Year'].female]);
+    outputRows.push(['3rd Year (Third Year)',  yearStats['3rd Year'].total, yearStats['3rd Year'].male, yearStats['3rd Year'].female]);
+    outputRows.push(['4th Year (Fourth Year)', yearStats['4th Year'].total, yearStats['4th Year'].male, yearStats['4th Year'].female]);
+    if (yearStats['Other'].total > 0) {
+      outputRows.push(['Other / Unspecified', yearStats['Other'].total, yearStats['Other'].male, yearStats['Other'].female]);
+    }
+    outputRows.push(['GRAND TOTAL', totalStudents, totalMale, totalFemale]);
+    outputRows.push(['', '', '', '']);
+
+    // Section 3: Branch / Department Distribution
+    outputRows.push(['🏛️ DEPARTMENT / BRANCH DISTRIBUTION', '', '', '']);
+    outputRows.push(['Department / Branch Name', 'Total Students', '', '']);
+
+    var branchList = [];
+    for (var b in branchStats) {
+      branchList.push([b, branchStats[b]]);
+    }
+    branchList.sort(function(a, b) { return b[1] - a[1]; });
+
+    for (var k = 0; k < branchList.length; k++) {
+      outputRows.push([branchList[k][0], branchList[k][1], '', '']);
+    }
+    outputRows.push(['', '', '', '']);
+
+    // Section 4: Problem Statement Selections Leaderboard
+    outputRows.push(['🔥 PROBLEM STATEMENT SELECTION LEADERBOARD', '', '', '']);
+    outputRows.push(['Rank', 'Problem Statement ID', 'Teams Selected', 'Status']);
+
+    var psList = [];
+    for (var pId in psStats) {
+      psList.push([pId, psStats[pId]]);
+    }
+    psList.sort(function(a, b) { return b[1] - a[1]; });
+
+    if (psList.length === 0) {
+      outputRows.push(['—', 'No Problem Statements selected yet', 0, 'Pending']);
+    } else {
+      for (var r = 0; r < psList.length; r++) {
+        outputRows.push([
+          r + 1,
+          psList[r][0],
+          psList[r][1],
+          psList[r][1] >= 3 ? '🔥 High Demand' : 'Selected'
+        ]);
+      }
+    }
+
+    // Write to Sheet
+    dashSheet.getRange(1, 1, outputRows.length, 4).setValues(outputRows);
+
+    // Styling
+    dashSheet.getRange(1, 1, 1, 4).setFontWeight('bold').setFontSize(13).setBackground('#0f172a').setFontColor('#ffffff');
+    dashSheet.getRange(4, 1, 1, 2).setFontWeight('bold').setBackground('#1e293b').setFontColor('#ffffff');
+    dashSheet.getRange(5, 1, 1, 4).setFontWeight('bold').setBackground('#e2e8f0');
+
+    // Freeze top rows & Auto-fit column widths
+    dashSheet.setColumnWidth(1, 320);
+    dashSheet.setColumnWidth(2, 160);
+    dashSheet.setColumnWidth(3, 160);
+    dashSheet.setColumnWidth(4, 160);
+
+    return 'SUCCESS: Dashboard updated at ' + new Date().toLocaleString();
+  } catch (err) {
+    Logger.log('Dashboard Update Error: ' + err.message);
+    return 'ERROR: ' + err.message;
   }
 }
