@@ -751,7 +751,7 @@
             return `<div class="ps-card bg-white border rounded-2xl p-4 sm:p-5 cursor-pointer transition-all hover:shadow-md flex flex-col justify-between group ${isSelected ? 'border-2 border-emerald-500 bg-emerald-50/30 shadow-md ring-2 ring-emerald-200' : 'border-slate-200/90 hover:border-blue-300'}" data-psid="${escapeHtml(p.id)}">
               <div>
                 <div class="flex items-center justify-between gap-2 mb-2">
-                  <span class="font-black text-xs font-mono text-blue-800 bg-blue-50 border border-blue-200 px-2.5 py-0.5 rounded-lg">${escapeHtml(p.id)}</span>
+                  <span class="font-black text-xs font-mono text-blue-800 bg-blue-50 border border-blue-200 px-2.5 py-0.5 rounded-lg whitespace-nowrap flex-shrink-0">${escapeHtml(p.id)}</span>
                   ${isSelected ? '<span class="text-emerald-700 text-xs font-black bg-emerald-100 border border-emerald-300 px-2 py-0.5 rounded-full flex items-center gap-1"><span>✅</span> Selected</span>' : '<span class="text-[10px] font-bold text-slate-400 opacity-0 group-hover:opacity-100 transition-opacity">Click to Select →</span>'}
                 </div>
                 <h3 class="text-xs sm:text-sm font-black text-slate-900 mb-2 leading-snug group-hover:text-blue-700 transition-colors">${escapeHtml(p.title)}</h3>

@@ -196,7 +196,7 @@
           <div>
             <!-- Top Meta Row -->
             <div class="flex items-center justify-between gap-2 mb-3">
-              <span class="text-[11px] font-black text-blue-700 bg-blue-50 border border-blue-200 px-2.5 py-0.5 rounded-full font-mono">
+              <span class="text-[11px] font-black text-blue-700 bg-blue-50 border border-blue-200 px-2.5 py-0.5 rounded-full font-mono whitespace-nowrap flex-shrink-0">
                 ${ps.id}
               </span>
               <div class="flex items-center gap-1.5 flex-wrap justify-end">
