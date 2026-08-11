@@ -469,30 +469,38 @@ function handleGeneratePasswordsAction_(param) {
         to: email,
         subject: '🔐 SIH 2026 Team Portal — Confidential Login Credentials (' + regId + ')',
         htmlBody:
-          '<div style="font-family:Arial,Helvetica,sans-serif;max-width:540px;margin:0 auto;background:#ffffff;border:1px solid #e2e8f0;border-radius:14px;overflow:hidden;box-shadow:0 4px 14px rgba(0,0,0,0.06);">' +
-          '<div style="background:linear-gradient(135deg,#1a73e8,#0d47a1);padding:26px 30px;text-align:center;">' +
-          '<h1 style="color:#ffffff;margin:0;font-size:22px;font-weight:800;letter-spacing:-0.5px;">United Institute of Technology</h1>' +
+          '<div style="font-family:Arial,Helvetica,sans-serif;max-width:580px;margin:0 auto;background:#ffffff;border:1px solid #e2e8f0;border-radius:16px;overflow:hidden;box-shadow:0 4px 20px rgba(0,0,0,0.06);">' +
+          '<div style="background:linear-gradient(135deg,#1a73e8,#0d47a1);padding:28px 32px;text-align:center;color:#ffffff;">' +
+          '<h1 style="margin:0;font-size:22px;font-weight:800;letter-spacing:-0.5px;">United Institute of Technology</h1>' +
           '<p style="color:#e8f0fe;margin:6px 0 0;font-size:13px;font-weight:600;">Smart India Hackathon (SIH) 2026 · Official Team Portal</p>' +
           '</div>' +
-          '<div style="padding:28px 30px 24px;">' +
+          '<div style="padding:30px 32px 24px;">' +
           '<p style="font-size:15px;color:#1e293b;margin:0 0 14px;">Dear <strong>' + tName + '</strong> (Team Leader),</p>' +
-          '<p style="font-size:14px;color:#475569;line-height:1.5;margin:0 0 20px;">Your official SIH 2026 Team Portal account has been activated. You can now log in to view your team roster and submit your Problem Statement selection.</p>' +
-          '<div style="background:#f8fafc;border:1px solid #cbd5e1;border-radius:12px;overflow:hidden;margin-bottom:20px;">' +
-          '<div style="background:#0f172a;color:#ffffff;padding:10px 16px;font-size:11px;font-weight:800;letter-spacing:1px;text-transform:uppercase;">Official Login Credentials</div>' +
+          '<p style="font-size:14px;color:#475569;line-height:1.6;margin:0 0 20px;">Your official SIH 2026 Team Portal account has been activated. Please use the login credentials below to log into your team dashboard and select <strong>1 Problem Statement</strong> out of 36 for the Internal Evaluation Hackathon.</p>' +
+          '<div style="background:#fff8e1;border:1px solid #ffe082;border-radius:12px;padding:14px 18px;margin-bottom:22px;">' +
+          '<p style="margin:0;font-size:13px;color:#856404;font-weight:700;line-height:1.5;">📅 <strong>Internal Hackathon Evaluation Date:</strong> 22nd August 2026 (Saturday)<br><span style="font-weight:500;font-size:12px;color:#6c757d;display:block;margin-top:4px;">Log in now, pick 1 Problem Statement, and prepare your Idea Presentation PPT for internal evaluation.</span></p>' +
+          '</div>' +
+          '<div style="background:#f8fafc;border:1px solid #cbd5e1;border-radius:14px;overflow:hidden;margin-bottom:22px;">' +
+          '<div style="background:#0f172a;color:#ffffff;padding:10px 18px;font-size:11px;font-weight:800;letter-spacing:1px;text-transform:uppercase;">Confidential Login Credentials</div>' +
           '<table style="width:100%;border-collapse:collapse;">' +
-          '<tr><td style="padding:12px 16px;font-size:13px;color:#64748b;font-weight:600;width:40%;border-bottom:1px solid #e2e8f0;">Registration ID</td><td style="padding:12px 16px;font-size:14px;font-weight:800;color:#0f172a;font-family:monospace;border-bottom:1px solid #e2e8f0;">' + regId + '</td></tr>' +
-          '<tr><td style="padding:12px 16px;font-size:13px;color:#64748b;font-weight:600;">Password</td><td style="padding:12px 16px;font-size:18px;font-weight:900;color:#1a73e8;font-family:monospace;letter-spacing:2px;">' + pwd + '</td></tr>' +
+          '<tr><td style="padding:12px 18px;font-size:13px;color:#64748b;font-weight:600;width:42%;border-bottom:1px solid #e2e8f0;">Registration ID</td><td style="padding:12px 18px;font-size:14px;font-weight:800;color:#0f172a;font-family:monospace;border-bottom:1px solid #e2e8f0;">' + regId + '</td></tr>' +
+          '<tr><td style="padding:12px 18px;font-size:13px;color:#64748b;font-weight:600;">Team Password</td><td style="padding:12px 18px;font-size:18px;font-weight:900;color:#1a73e8;font-family:monospace;letter-spacing:2px;">' + pwd + '</td></tr>' +
           '</table></div>' +
-          '<div style="background:#fff3cd;border:1px solid #ffe082;border-radius:10px;padding:14px 16px;margin-bottom:22px;">' +
-          '<p style="margin:0;font-size:12px;color:#856404;line-height:1.5;">🔒 <strong>CONFIDENTIAL SECURITY WARNING:</strong> These login credentials belong exclusively to your team. Do not share your password with unauthorized persons. You may change your password inside the portal after logging in.</p>' +
+          '<div style="background:#f1f5f9;border-left:4px solid #1a73e8;padding:12px 16px;border-radius:0 8px 8px 0;margin-bottom:24px;">' +
+          '<p style="margin:0;font-size:12px;color:#334155;line-height:1.5;">🔒 <strong>Confidentiality Notice:</strong> Do not share your login credentials with anyone outside your registered team. You can change your password anytime inside the Team Portal.</p>' +
           '</div>' +
-          '<div style="text-align:center;margin-bottom:20px;">' +
-          '<a href="https://sih-uit.vercel.app/portal.html" style="display:inline-block;background:linear-gradient(135deg,#1a73e8,#1557b0);color:#ffffff;text-decoration:none;padding:14px 32px;border-radius:10px;font-weight:800;font-size:14px;box-shadow:0 4px 12px rgba(26,115,232,0.3);">🔐 Access Team Portal Now</a>' +
+          '<div style="text-align:center;margin-bottom:24px;">' +
+          '<a href="https://sih-uit.vercel.app/portal.html" style="display:inline-block;background:linear-gradient(135deg,#1a73e8,#1557b0);color:#ffffff;text-decoration:none;padding:14px 34px;border-radius:12px;font-weight:800;font-size:14px;box-shadow:0 4px 14px rgba(26,115,232,0.35);">🔐 Click Here to Login to Team Portal</a>' +
           '</div>' +
-          '<p style="font-size:12px;color:#94a3b8;margin:0;text-align:center;">Portal Link: <a href="https://sih-uit.vercel.app/portal.html" style="color:#1a73e8;">https://sih-uit.vercel.app/portal.html</a></p>' +
+          '<div style="border-top:1px solid #e2e8f0;padding-top:20px;margin-top:20px;">' +
+          '<p style="margin:0 0 6px;font-size:13px;font-weight:700;color:#1e293b;">Best Regards,</p>' +
+          '<p style="margin:0;font-size:13px;font-weight:800;color:#1a73e8;">Gautam Maurya (GKM) &amp; Harsh Srivastava</p>' +
+          '<p style="margin:2px 0 0;font-size:12px;color:#64748b;font-weight:600;">Student Organisers · SIH 2026 Internal Portal</p>' +
+          '<p style="margin:2px 0 0;font-size:12px;color:#64748b;font-weight:500;">United Institute of Technology, Prayagraj</p>' +
           '</div>' +
-          '<div style="background:#f8fafc;padding:16px 30px;border-top:1px solid #f1f5f9;text-align:center;">' +
-          '<p style="margin:0;font-size:11px;color:#64748b;">© 2026 United Institute of Technology, Prayagraj · SIH 2026 Internal Portal</p>' +
+          '</div>' +
+          '<div style="background:#f8fafc;padding:16px 32px;border-top:1px solid #f1f5f9;text-align:center;">' +
+          '<p style="margin:0;font-size:11px;color:#94a3b8;">© 2026 United Institute of Technology, Prayagraj. All rights reserved.</p>' +
           '</div></div>'
       });
       sent++;
