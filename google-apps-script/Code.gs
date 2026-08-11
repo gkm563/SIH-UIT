@@ -463,9 +463,8 @@ function sendCredentialsEmailToTeam_(sheet, sheetRow, regId, tName, email, exist
       '<div style="text-align:center;margin-bottom:24px;">' +
       '<a href="https://sih-uit.vercel.app/portal.html" style="display:inline-block;background:linear-gradient(135deg,#1a73e8,#1557b0);color:#ffffff;text-decoration:none;padding:14px 34px;border-radius:12px;font-weight:800;font-size:14px;box-shadow:0 4px 14px rgba(26,115,232,0.35);">🔐 Click Here to Login to Team Portal</a>' +
       '</div>' +
-      '<div style="border-top:1px solid #e2e8f0;padding-top:20px;margin-top:20px;">' +
       '<p style="margin:0 0 6px;font-size:13px;font-weight:700;color:#1e293b;">Best Regards,</p>' +
-      '<p style="margin:0;font-size:13px;font-weight:800;color:#1a73e8;">Gautam Maurya (GKM)</p>' +
+      '<p style="margin:0;font-size:13px;font-weight:800;color:#1a73e8;">Gautam Kumar Maurya (GKM)</p>' +
       '<p style="margin:2px 0 0;font-size:12px;color:#64748b;font-weight:600;">Student Organiser · SIH 2026 Internal Portal</p>' +
       '<p style="margin:2px 0 0;font-size:12px;color:#64748b;font-weight:500;">United Institute of Technology, Prayagraj</p>' +
       '</div>' +
