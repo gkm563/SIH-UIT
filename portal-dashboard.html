@@ -70,10 +70,6 @@
             <svg class="w-3.5 h-3.5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 12l2-2m0 0l7-7 7 7M5 10v10a1 1 0 001 1h3m10-11l2 2m-2-2v10a1 1 0 01-1 1h-3m-6 0a1 1 0 00-1-1v-4a1 1 0 011-1h2a1 1 0 011 1v4a1 1 0 001 1m-6 0h6"/></svg>
             <span class="text-xs font-bold">Home</span>
           </a>
-          <a href="verify.html" class="nav-pill" title="Recheck &amp; Verify Team Data">
-            <svg class="w-3.5 h-3.5 text-blue-600" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z"/></svg>
-            <span class="text-xs font-bold">Verify Team Data</span>
-          </a>
           <a href="problems.html" class="nav-pill" title="Problem Statements Bank">
             <svg class="w-3.5 h-3.5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9.663 17h4.673M12 3v1m6.364 1.636l-.707.707M21 12h-1M4 12H3m3.343-5.657l-.707-.707m2.828 9.9a5 5 0 117.072 0l-.548.547A3.374 3.374 0 0014 18.469V19a2 2 0 11-4 0v-.531c0-.895-.356-1.754-.988-2.386l-.548-.547z"/></svg>
             <span class="text-xs font-bold">Problems</span>
@@ -114,7 +110,27 @@
             <p id="ps-status-text" class="text-sm font-black text-white">Not Selected Yet</p>
           </div>
         </div>
+    </div>
+
+    <!-- Internal Hackathon Alert Card (22nd August 2026) -->
+    <div class="bg-gradient-to-r from-amber-500/10 via-amber-50 to-orange-50 border border-amber-200/90 rounded-2xl p-4 sm:p-5 mb-6 flex flex-col sm:flex-row items-start sm:items-center justify-between gap-3 shadow-2xs">
+      <div class="flex items-start gap-3">
+        <div class="w-10 h-10 rounded-xl bg-amber-500 text-white flex items-center justify-center font-black text-xl flex-shrink-0 mt-0.5 shadow-xs">
+          📅
+        </div>
+        <div>
+          <div class="flex items-center gap-2 flex-wrap">
+            <span class="text-xs font-black uppercase text-amber-900 tracking-wider">Internal SIH Hackathon Evaluation</span>
+            <span class="text-[11px] font-black text-amber-900 bg-amber-200/90 border border-amber-300 px-2.5 py-0.5 rounded-full">22nd August 2026 (Saturday)</span>
+          </div>
+          <p class="text-xs font-semibold text-slate-700 mt-1 leading-relaxed">
+            Your team is required to select <strong class="text-amber-950 font-black">1 Problem Statement</strong> from the 36 active PSs below and prepare your <strong class="text-amber-950 font-black">Idea Presentation PPT</strong> for internal evaluation at United Institute of Technology.
+          </p>
+        </div>
       </div>
+      <button onclick="document.querySelector('[data-tab=\'ps\']').click()" class="flex-shrink-0 text-xs font-extrabold text-white bg-amber-600 hover:bg-amber-700 px-4 py-2.5 rounded-xl transition-all shadow-xs active:scale-95 whitespace-nowrap">
+        Select PS &amp; PPT Guide →
+      </button>
     </div>
 
     <!-- Tab Navigation -->
@@ -185,6 +201,28 @@
           <p class="text-xs font-bold text-emerald-700 uppercase tracking-wide mb-0.5">Currently Selected Problem Statement</p>
           <p id="current-ps-text" class="text-sm font-black text-emerald-900"></p>
           <p class="text-xs text-emerald-600 mt-1 font-medium">You can change your selection anytime before the deadline.</p>
+        </div>
+      </div>
+
+      <!-- Internal Evaluation & PPT Guidelines Card -->
+      <div class="card bg-gradient-to-r from-blue-50/90 via-indigo-50/70 to-white border border-blue-200/90 rounded-2xl p-5 mb-5 shadow-2xs">
+        <div class="flex items-center gap-2 mb-3">
+          <span class="inline-flex items-center justify-center w-7 h-7 bg-blue-100 rounded-lg text-sm">💡</span>
+          <h3 class="text-sm font-black text-slate-800 uppercase tracking-wide">Internal Hackathon (22nd August 2026) Guidelines</h3>
+        </div>
+        <div class="grid grid-cols-1 sm:grid-cols-3 gap-3 text-xs">
+          <div class="bg-white/80 border border-slate-200/80 p-3 rounded-xl">
+            <span class="text-[10px] font-black uppercase text-blue-700 block mb-1">Step 1: Choose 1 PS</span>
+            <p class="text-slate-600 font-semibold">Browse the 36 problem statements below and click to select the 1 problem statement your team will solve.</p>
+          </div>
+          <div class="bg-white/80 border border-slate-200/80 p-3 rounded-xl">
+            <span class="text-[10px] font-black uppercase text-blue-700 block mb-1">Step 2: Prepare Presentation</span>
+            <p class="text-slate-600 font-semibold">Create your solution PPT following the official SIH template (Problem, Proposed Solution, Tech Stack, &amp; Feasibility).</p>
+          </div>
+          <div class="bg-white/80 border border-slate-200/80 p-3 rounded-xl">
+            <span class="text-[10px] font-black uppercase text-blue-700 block mb-1">Step 3: Internal Pitch</span>
+            <p class="text-slate-600 font-semibold">Present your idea live before the faculty jury at United Institute of Technology on 22nd August 2026.</p>
+          </div>
         </div>
       </div>
 
@@ -309,8 +347,8 @@
         <!-- Quick Navigation Pills -->
         <div class="flex items-center gap-1.5 sm:gap-2 text-xs font-bold text-slate-600 flex-wrap justify-center">
           <a href="index.html" class="hover:text-blue-700 hover:bg-blue-50/80 px-3 py-1.5 rounded-xl border border-transparent hover:border-blue-200 transition-all">Home</a>
-          <a href="verify.html" class="hover:text-blue-700 hover:bg-blue-50/80 px-3 py-1.5 rounded-xl border border-transparent hover:border-blue-200 transition-all">Verify Data</a>
           <a href="problems.html" class="hover:text-blue-700 hover:bg-blue-50/80 px-3 py-1.5 rounded-xl border border-transparent hover:border-blue-200 transition-all">Problems Bank</a>
+          <a href="portal-dashboard.html" class="hover:text-blue-700 hover:bg-blue-50/80 px-3 py-1.5 rounded-xl border border-transparent hover:border-blue-200 transition-all">Team Portal</a>
         </div>
       </div>
 
