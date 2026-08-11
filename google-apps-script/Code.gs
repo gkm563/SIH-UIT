@@ -470,6 +470,12 @@ function handlePortalLoginAction_(param) {
   var storedPwd = getSheetPassword_(sheet, sheetRow);
   var inputPwd  = String(password || '').replace(/^'/, '').trim();
 
+  // Clean stored password if it has single quotes or corrupt characters
+  if (storedPwd.indexOf("'") !== -1 || storedPwd.indexOf("%") !== -1 || storedPwd.indexOf("*") !== -1) {
+    storedPwd = storedPwd.replace(/^'/, '').trim();
+    setSheetPassword_(sheet, sheetRow, storedPwd);
+  }
+
   // If password is not yet set in Column BJ (62), auto-generate & set it immediately!
   if (!storedPwd) {
     var teamName = String(row[2] || '').trim().replace(/^'/, '');
@@ -483,7 +489,7 @@ function handlePortalLoginAction_(param) {
     } catch(e) {}
   }
 
-  if (storedPwd !== inputPwd) {
+  if (storedPwd.trim().toLowerCase() !== inputPwd.trim().toLowerCase()) {
     return jsonResponse_({
       success: false,
       message: 'Incorrect password. If you forgot your password, click "Forgot Password?" below to reset it via OTP sent to leader\'s email.'
@@ -760,7 +766,13 @@ function handleGeneratePasswordsAction_(param) {
     }
 
     var sheetRow = i + 2;
-    var existingPwd = String(row[COL_PASSWORD - 1] || '').trim();
+    var rawPwd = String(row[COL_PASSWORD - 1] || '').trim();
+    var existingPwd = rawPwd.replace(/^'/, '').trim();
+
+    // If existing password contains corrupt single quotes or old special characters, force clean new password!
+    if (!existingPwd || existingPwd.indexOf("'") !== -1 || existingPwd.indexOf("%") !== -1 || existingPwd.indexOf("*") !== -1) {
+      existingPwd = generatePassword_(regId, tName);
+    }
 
     try {
       sendCredentialsEmailToTeam_(sheet, sheetRow, regId, tName, email, existingPwd);
