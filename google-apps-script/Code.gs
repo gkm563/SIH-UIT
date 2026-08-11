@@ -2012,27 +2012,7 @@ function cleanSpamRows() {
     var isSpam = false;
 
     // Detect fake email extensions or single letter emails
-    if (/\.(png|jpg|jpeg|gif|ci|ck|ok)$/i.test(leaderEmail) || leaderEmail === 'a@a.png' || leaderEmail.length < 6) {
-      isSpam = true;
-    }
-
-    // Detect fake team name "UIT" and fake leader name "UIT"
-    if (teamName === 'uit' && leaderName === 'uit') {
-      isSpam = true;
-    }
-
-    if (isSpam) {
-      sheet.deleteRow(rowIndex);
-      deletedCount++;
-    }
-  }
-
-  var msg = 'SUCCESS: Cleaned ' + deletedCount + ' spam row(s) from sheet.';
-  Logger.log(msg);
-  return msg;
-}
-
-/**
+    if (/\.(png|jpg|jpeg|gif|ci|ck|ok)$/i.test(leaderEmail) || lead/**
  * Add custom SIH 2026 Admin Menu to Google Sheet UI
  */
 function onOpen() {
@@ -2042,6 +2022,11 @@ function onOpen() {
     .addItem('🧪 Send Test Portal Credentials to GKM (SIH2026-0563)', 'sendTestEmailToGKM')
     .addItem('🔐 Generate & Email Passwords for ALL Teams', 'generatePasswordsForAllTeamsMenu')
     .addToUi();
+
+  try {
+    installDashboardAutoTrigger_();
+    updateAnalyticsDashboardSheet_();
+  } catch (e) {}
 }
 
 /**
@@ -2114,9 +2099,34 @@ function generateAnalyticsDashboardMenu() {
 }
 
 /**
- * Generates/Updates the "SIH Analytics Dashboard" sheet tab with live data metrics:
- * Total Teams, Total Students, Year-wise (1st, 2nd, 3rd, 4th) Male/Female breakdown,
- * Branch/Department distribution, and Top Selected Problem Statements.
+ * Installs a 5-minute recurring time trigger to keep the "SIH Analytics Dashboard"
+ * sheet tab updated in real-time automatically!
+ */
+function installDashboardAutoTrigger_() {
+  try {
+    var triggers = ScriptApp.getProjectTriggers();
+    var exists = false;
+    for (var i = 0; i < triggers.length; i++) {
+      if (triggers[i].getHandlerFunction() === 'updateAnalyticsDashboardSheet_') {
+        exists = true;
+        break;
+      }
+    }
+    if (!exists) {
+      ScriptApp.newTrigger('updateAnalyticsDashboardSheet_')
+        .timeBased()
+        .everyMinutes(5)
+        .create();
+    }
+  } catch (e) {
+    Logger.log('Trigger install error: ' + e.message);
+  }
+}
+
+/**
+ * Generates/Updates the "SIH Analytics Dashboard" sheet tab with executive visual design:
+ * KPI Cards, Academic Year (1st, 2nd, 3rd, 4th) Male/Female matrix, Branch distribution,
+ * and Problem Statement leaderboard. Real-time auto-refreshed!
  */
 function updateAnalyticsDashboardSheet_() {
   try {
@@ -2125,7 +2135,7 @@ function updateAnalyticsDashboardSheet_() {
     if (!dashSheet) {
       dashSheet = ss.insertSheet('SIH Analytics Dashboard');
     } else {
-      dashSheet.clearContents();
+      dashSheet.clear();
     }
 
     var sheet = getOrCreateSheet_();
@@ -2190,10 +2200,8 @@ function updateAnalyticsDashboardSheet_() {
         var psVal = String(row[COL_PS_CHOICE - 1] || '').trim().replace(/^'/, '');
         if (psVal) {
           teamsWithPS++;
-          var match = /^(SIH\d+|\d+)/i.exec(psVal);
-          var psId = match ? match[1].toUpperCase() : psVal.split('—')[0].trim().toUpperCase();
-          if (!/^SIH/i.test(psId) && /^\d+$/.test(psId)) psId = 'SIH' + psId;
-          psStats[psId] = (psStats[psId] || 0) + 1;
+          var cleanId = extractCleanPSId_(psVal);
+          if (cleanId) psStats[cleanId] = (psStats[cleanId] || 0) + 1;
         } else {
           teamsPendingPS++;
         }
@@ -2209,41 +2217,110 @@ function updateAnalyticsDashboardSheet_() {
       }
     }
 
-    // ── Build Sheet Content Layout ──
-    var outputRows = [];
+    // ── Row 1: Main Banner Header ──
+    dashSheet.getRange('A1:E1').merge()
+      .setValue('🚀 SIH 2026 INTERNAL HACKATHON — LIVE ANALYTICS DASHBOARD')
+      .setFontWeight('bold')
+      .setFontSize(14)
+      .setBackground('#0f172a')
+      .setFontColor('#ffffff')
+      .setHorizontalAlignment('center')
+      .setVerticalAlignment('middle');
+    dashSheet.setRowHeight(1, 40);
 
-    // Title Banner
-    outputRows.push(['🚀 SIH 2026 INTERNAL HACKATHON — LIVE ANALYTICS DASHBOARD', '', '', '']);
-    outputRows.push(['Updated At: ' + new Date().toLocaleString(), '', '', '']);
-    outputRows.push(['', '', '', '']);
+    // ── Row 2: Subtitle Banner ──
+    dashSheet.getRange('A2:E2').merge()
+      .setValue('⚡ Live Real-Time Data Sync · Last Refreshed: ' + new Date().toLocaleString())
+      .setFontItalic(true)
+      .setFontSize(10)
+      .setBackground('#1e293b')
+      .setFontColor('#38bdf8')
+      .setHorizontalAlignment('center')
+      .setVerticalAlignment('middle');
+    dashSheet.setRowHeight(2, 24);
 
-    // Section 1: Overview Summary
-    outputRows.push(['📊 OVERVIEW SUMMARY METRICS', '', '', '']);
-    outputRows.push(['Metric Name', 'Count / Value', '', '']);
-    outputRows.push(['Total Teams Registered', totalTeams, '', '']);
-    outputRows.push(['Total Participants (Leader + Members)', totalStudents, '', '']);
-    outputRows.push(['Total Male Students', totalMale, '', '']);
-    outputRows.push(['Total Female Students', totalFemale, '', '']);
-    outputRows.push(['Teams with Problem Statement Selected', teamsWithPS, '', '']);
-    outputRows.push(['Teams Pending Problem Statement Selection', teamsPendingPS, '', '']);
-    outputRows.push(['', '', '', '']);
+    // ── Row 4-5: Executive KPI Cards ──
+    dashSheet.getRange('A4').setValue('TOTAL TEAMS').setFontWeight('bold').setFontSize(9).setFontColor('#93c5fd').setBackground('#1e3a8a').setHorizontalAlignment('center');
+    dashSheet.getRange('A5').setValue(totalTeams).setFontWeight('bold').setFontSize(18).setFontColor('#ffffff').setBackground('#1e3a8a').setHorizontalAlignment('center');
 
-    // Section 2: Year-Wise & Gender Breakdown
-    outputRows.push(['🎓 ACADEMIC YEAR & GENDER BREAKDOWN', '', '', '']);
-    outputRows.push(['Academic Year', 'Total Students', 'Male Students', 'Female Students']);
-    outputRows.push(['1st Year (First Year)',  yearStats['1st Year'].total, yearStats['1st Year'].male, yearStats['1st Year'].female]);
-    outputRows.push(['2nd Year (Second Year)', yearStats['2nd Year'].total, yearStats['2nd Year'].male, yearStats['2nd Year'].female]);
-    outputRows.push(['3rd Year (Third Year)',  yearStats['3rd Year'].total, yearStats['3rd Year'].male, yearStats['3rd Year'].female]);
-    outputRows.push(['4th Year (Fourth Year)', yearStats['4th Year'].total, yearStats['4th Year'].male, yearStats['4th Year'].female]);
+    dashSheet.getRange('B4').setValue('TOTAL STUDENTS').setFontWeight('bold').setFontSize(9).setFontColor('#a7f3d0').setBackground('#065f46').setHorizontalAlignment('center');
+    dashSheet.getRange('B5').setValue(totalStudents).setFontWeight('bold').setFontSize(18).setFontColor('#ffffff').setBackground('#065f46').setHorizontalAlignment('center');
+
+    dashSheet.getRange('C4').setValue('MALE / FEMALE').setFontWeight('bold').setFontSize(9).setFontColor('#f0abfc').setBackground('#581c87').setHorizontalAlignment('center');
+    dashSheet.getRange('C5').setValue(totalMale + ' M  /  ' + totalFemale + ' F').setFontWeight('bold').setFontSize(14).setFontColor('#ffffff').setBackground('#581c87').setHorizontalAlignment('center');
+
+    dashSheet.getRange('D4').setValue('PS PROGRESS').setFontWeight('bold').setFontSize(9).setFontColor('#fde68a').setBackground('#78350f').setHorizontalAlignment('center');
+    dashSheet.getRange('D5').setValue(teamsWithPS + ' / ' + totalTeams).setFontWeight('bold').setFontSize(16).setFontColor('#ffffff').setBackground('#78350f').setHorizontalAlignment('center');
+
+    dashSheet.setRowHeight(4, 22);
+    dashSheet.setRowHeight(5, 34);
+
+    // ── Section 1: Academic Year & Gender Distribution ──
+    var r = 7;
+    dashSheet.getRange(r, 1, 1, 4).merge()
+      .setValue('🎓 1. ACADEMIC YEAR & GENDER DISTRIBUTION')
+      .setFontWeight('bold')
+      .setFontSize(11)
+      .setBackground('#1e1b4b')
+      .setFontColor('#ffffff')
+      .setVerticalAlignment('middle');
+    dashSheet.setRowHeight(r, 28);
+    r++;
+
+    var yrHeaders = ['Academic Year', 'Total Students', 'Male Students', 'Female Students'];
+    dashSheet.getRange(r, 1, 1, 4).setValues([yrHeaders])
+      .setFontWeight('bold')
+      .setFontSize(10)
+      .setBackground('#e0e7ff')
+      .setFontColor('#1e1b4b')
+      .setHorizontalAlignment('center');
+    dashSheet.setRowHeight(r, 24);
+    r++;
+
+    var yrRows = [
+      ['1st Year (First Year)',  yearStats['1st Year'].total, yearStats['1st Year'].male, yearStats['1st Year'].female],
+      ['2nd Year (Second Year)', yearStats['2nd Year'].total, yearStats['2nd Year'].male, yearStats['2nd Year'].female],
+      ['3rd Year (Third Year)',  yearStats['3rd Year'].total, yearStats['3rd Year'].male, yearStats['3rd Year'].female],
+      ['4th Year (Fourth Year)', yearStats['4th Year'].total, yearStats['4th Year'].male, yearStats['4th Year'].female]
+    ];
     if (yearStats['Other'].total > 0) {
-      outputRows.push(['Other / Unspecified', yearStats['Other'].total, yearStats['Other'].male, yearStats['Other'].female]);
+      yrRows.push(['Other / Unspecified', yearStats['Other'].total, yearStats['Other'].male, yearStats['Other'].female]);
     }
-    outputRows.push(['GRAND TOTAL', totalStudents, totalMale, totalFemale]);
-    outputRows.push(['', '', '', '']);
 
-    // Section 3: Branch / Department Distribution
-    outputRows.push(['🏛️ DEPARTMENT / BRANCH DISTRIBUTION', '', '', '']);
-    outputRows.push(['Department / Branch Name', 'Total Students', '', '']);
+    dashSheet.getRange(r, 1, yrRows.length, 4).setValues(yrRows).setHorizontalAlignment('center');
+    dashSheet.getRange(r, 1, yrRows.length, 1).setHorizontalAlignment('left');
+    r += yrRows.length;
+
+    // Grand Total Row
+    dashSheet.getRange(r, 1, 1, 4).setValues([['GRAND TOTAL', totalStudents, totalMale, totalFemale]])
+      .setFontWeight('bold')
+      .setBackground('#0f172a')
+      .setFontColor('#ffffff')
+      .setHorizontalAlignment('center');
+    dashSheet.getRange(r, 1).setHorizontalAlignment('left');
+    dashSheet.setRowHeight(r, 26);
+    r += 2;
+
+    // ── Section 2: Department / Branch Breakdown ──
+    dashSheet.getRange(r, 1, 1, 4).merge()
+      .setValue('🏛️ 2. DEPARTMENT / BRANCH DISTRIBUTION')
+      .setFontWeight('bold')
+      .setFontSize(11)
+      .setBackground('#134e4a')
+      .setFontColor('#ffffff')
+      .setVerticalAlignment('middle');
+    dashSheet.setRowHeight(r, 28);
+    r++;
+
+    var brHeaders = ['Department / Branch Name', 'Total Students', 'Share % of Total', 'Status'];
+    dashSheet.getRange(r, 1, 1, 4).setValues([brHeaders])
+      .setFontWeight('bold')
+      .setFontSize(10)
+      .setBackground('#ccfbf1')
+      .setFontColor('#134e4a')
+      .setHorizontalAlignment('center');
+    dashSheet.setRowHeight(r, 24);
+    r++;
 
     var branchList = [];
     for (var b in branchStats) {
@@ -2251,40 +2328,95 @@ function updateAnalyticsDashboardSheet_() {
     }
     branchList.sort(function(a, b) { return b[1] - a[1]; });
 
+    var brRows = [];
     for (var k = 0; k < branchList.length; k++) {
-      outputRows.push([branchList[k][0], branchList[k][1], '', '']);
+      var count = branchList[k][1];
+      var pct = totalStudents > 0 ? ((count / totalStudents) * 100).toFixed(1) + '%' : '0%';
+      brRows.push([
+        branchList[k][0],
+        count,
+        pct,
+        count >= 10 ? '⭐ Major Dept' : 'Active'
+      ]);
     }
-    outputRows.push(['', '', '', '']);
 
-    // Section 4: Problem Statement Selections Leaderboard
-    outputRows.push(['🔥 PROBLEM STATEMENT SELECTION LEADERBOARD', '', '', '']);
-    outputRows.push(['Rank', 'Problem Statement ID', 'Teams Selected', 'Status']);
-
-    var psList = [];
-    for (var pId in psStats) {
-      psList.push([pId, psStats[pId]]);
+    if (brRows.length > 0) {
+      dashSheet.getRange(r, 1, brRows.length, 4).setValues(brRows).setHorizontalAlignment('center');
+      dashSheet.getRange(r, 1, brRows.length, 1).setHorizontalAlignment('left');
+      r += brRows.length;
     }
-    psList.sort(function(a, b) { return b[1] - a[1]; });
+    r += 2;
 
-    if (psList.length === 0) {
-      outputRows.push(['—', 'No Problem Statements selected yet', 0, 'Pending']);
-    } else {
-      for (var r = 0; r < psList.length; r++) {
-        outputRows.push([
-          r + 1,
-          psList[r][0],
-          psList[r][1],
-          psList[r][1] >= 3 ? '🔥 High Demand' : 'Selected'
-        ]);
+    // ── Section 3: Problem Statement Selections Leaderboard ──
+    dashSheet.getRange(r, 1, 1, 5).merge()
+      .setValue('🔥 3. PROBLEM STATEMENT SELECTIONS LEADERBOARD (ALL 36 PSs)')
+      .setFontWeight('bold')
+      .setFontSize(11)
+      .setBackground('#831843')
+      .setFontColor('#ffffff')
+      .setVerticalAlignment('middle');
+    dashSheet.setRowHeight(r, 28);
+    r++;
+
+    var psHeaders = ['Rank', 'PS ID', 'Problem Statement Title', 'Domain', 'Teams Selected'];
+    dashSheet.getRange(r, 1, 1, 5).setValues([psHeaders])
+      .setFontWeight('bold')
+      .setFontSize(10)
+      .setBackground('#fce7f3')
+      .setFontColor('#831843')
+      .setHorizontalAlignment('center');
+    dashSheet.setRowHeight(r, 24);
+    r++;
+
+    var psLeaderboard = [];
+    for (var idx = 0; idx < ALL_36_PROBLEM_STATEMENTS.length; idx++) {
+      var item = ALL_36_PROBLEM_STATEMENTS[idx];
+      var pCount = psStats[item.id] || 0;
+      psLeaderboard.push([
+        item.id,
+        item.title,
+        item.domain,
+        pCount
+      ]);
+    }
+    psLeaderboard.sort(function(a, b) { return b[3] - a[3]; });
+
+    var psRows = [];
+    for (var rank = 0; rank < psLeaderboard.length; rank++) {
+      psRows.push([
+        rank + 1,
+        psLeaderboard[rank][0],
+        psLeaderboard[rank][1],
+        psLeaderboard[rank][2],
+        psLeaderboard[rank][3]
+      ]);
+    }
+
+    dashSheet.getRange(r, 1, psRows.length, 5).setValues(psRows).setHorizontalAlignment('center');
+    dashSheet.getRange(r, 2, psRows.length, 2).setHorizontalAlignment('left'); // Title & Domain
+    dashSheet.getRange(r, 4, psRows.length, 1).setHorizontalAlignment('left');
+
+    // Highlight top selected rows with amber background
+    for (var h = 0; h < psRows.length; h++) {
+      if (psRows[h][4] > 0) {
+        dashSheet.getRange(r + h, 1, 1, 5).setBackground('#fef3c7'); // Soft Amber
       }
     }
 
-    // Write to Sheet
-    dashSheet.getRange(1, 1, outputRows.length, 4).setValues(outputRows);
+    // Set Column Widths for a clean layout
+    dashSheet.setColumnWidth(1, 260); // Academic Year / Dept / Rank
+    dashSheet.setColumnWidth(2, 140); // Total / PS ID
+    dashSheet.setColumnWidth(3, 340); // Male / Title
+    dashSheet.setColumnWidth(4, 160); // Female / Domain
+    dashSheet.setColumnWidth(5, 140); // Teams Selected
 
-    // Styling
-    dashSheet.getRange(1, 1, 1, 4).setFontWeight('bold').setFontSize(13).setBackground('#0f172a').setFontColor('#ffffff');
-    dashSheet.getRange(4, 1, 1, 2).setFontWeight('bold').setBackground('#1e293b').setFontColor('#ffffff');
+    return 'SUCCESS: Real-Time Executive Analytics Dashboard generated successfully!';
+  } catch (err) {
+    Logger.log('Dashboard Error: ' + err.message);
+    return 'ERROR: ' + err.message;
+  }
+}
+d').setBackground('#1e293b').setFontColor('#ffffff');
     dashSheet.getRange(5, 1, 1, 4).setFontWeight('bold').setBackground('#e2e8f0');
 
     // Freeze top rows & Auto-fit column widths
