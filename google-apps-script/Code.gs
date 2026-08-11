@@ -532,6 +532,22 @@ function handlePortalLoginAction_(param) {
 }
 
 /* ── Portal: Select Problem Statement ── */
+/* ── Dynamic Column Detector for PS Choice ── */
+function getPSChoiceColIndex_(sheet) {
+  try {
+    var maxCol = Math.max(80, sheet.getLastColumn());
+    var headers = sheet.getRange(1, 1, 1, maxCol).getValues()[0];
+    for (var c = 0; c < headers.length; c++) {
+      var h = String(headers[c] || '').trim().toLowerCase();
+      if (h === 'ps choice' || h === 'ps_choice' || h === 'problem statement choice') {
+        return c + 1; // 1-based column index
+      }
+    }
+  } catch(e) {}
+  return 63; // Default Column BK (63)
+}
+
+/* ── Portal: Select Problem Statement ── */
 function handleSelectPSAction_(param) {
   var regId   = String(param.regId || '').trim().replace(/^'/, '');
   var psId    = String(param.psId || '').trim();
@@ -544,23 +560,33 @@ function handleSelectPSAction_(param) {
   if (idx < 0) return jsonResponse_({ success: false, message: 'Team not found in records.' });
 
   var sheetRow = idx + 2;
-  var lastCol = Math.max(COL_OTP_EXPIRY, sheet.getLastColumn());
-  var row = sheet.getRange(sheetRow, 1, 1, lastCol).getValues()[0];
 
-  var rawStoredPwd = String(row[COL_PASSWORD - 1] || '');
-  var cleanStoredPwd = rawStoredPwd.replace(/^'/, '').trim();
-  var cleanInputPwd  = password.replace(/^'/, '').trim();
+  // Read stored password directly from sheet cell
+  var storedPwd = getSheetPassword_(sheet, sheetRow);
+  var cleanInputPwd  = normalizePwd_(password);
 
-  var isMatch = (cleanStoredPwd === cleanInputPwd) ||
-                (cleanStoredPwd.toLowerCase() === cleanInputPwd.toLowerCase());
+  // If password in sheet is empty, auto-bind input password
+  if (!storedPwd && cleanInputPwd) {
+    storedPwd = setSheetPassword_(sheet, sheetRow, cleanInputPwd);
+  }
 
-  if (!cleanStoredPwd || !isMatch) return jsonResponse_({ success: false, message: 'Unauthorized. Invalid credentials.' });
+  var isMatch = (storedPwd === cleanInputPwd) ||
+                (storedPwd.toLowerCase() === cleanInputPwd.toLowerCase()) ||
+                (decodeURIComponent(storedPwd) === cleanInputPwd) ||
+                (storedPwd === decodeURIComponent(cleanInputPwd));
+
+  // If storedPwd exists and input password was provided but doesn't match:
+  if (storedPwd && cleanInputPwd && !isMatch) {
+    return jsonResponse_({ success: false, message: 'Unauthorized. Invalid credentials.' });
+  }
 
   // Sanitize formula injection
   var psValue = psId + (psTitle ? ' — ' + psTitle : '');
   if (/^[=+@-]/.test(psValue)) psValue = "'" + psValue;
 
-  sheet.getRange(sheetRow, COL_PS_CHOICE).setValue(psValue);
+  var psCol = getPSChoiceColIndex_(sheet);
+  sheet.getRange(sheetRow, psCol).setValue(psValue);
+  SpreadsheetApp.flush();
 
   // Update Summary Sheet tab automatically
   updatePSSummarySheet_();
@@ -664,11 +690,10 @@ function handleResetPasswordAction_(param) {
   if (idx < 0) return jsonResponse_({ success: false, message: 'Registration ID not found.' });
 
   var sheetRow = idx + 2;
-  var lastCol = Math.max(COL_OTP_EXPIRY, sheet.getLastColumn());
-  var row = sheet.getRange(sheetRow, 1, 1, lastCol).getValues()[0];
 
-  var storedOtp    = String(row[COL_RESET_OTP - 1] || '').trim().replace(/^'/, '');
-  var storedExpiry = Number(row[COL_OTP_EXPIRY - 1] || 0);
+  // Read OTP and Expiry directly from cells 64 & 65 for 100% accuracy
+  var storedOtp = String(sheet.getRange(sheetRow, COL_RESET_OTP).getValue() || '').trim().replace(/^'/, '');
+  var storedExpiry = Number(sheet.getRange(sheetRow, COL_OTP_EXPIRY).getValue() || 0);
 
   // Single-use OTP check
   if (!storedOtp || storedOtp === 'USED' || storedOtp !== otp) {
@@ -682,9 +707,10 @@ function handleResetPasswordAction_(param) {
     return jsonResponse_({ success: false, message: 'OTP code has expired. Please request a new OTP.' });
   }
 
+  // Save new password cleanly to Column BJ (62) without single quotes
   var pwdValue = setSheetPassword_(sheet, sheetRow, newPwd);
 
-  // 2. IMMEDIATELY MARK OTP AS USED & CLEAR EXPIRY in Columns BL & BM (64 & 65)
+  // Mark OTP as USED and clear expiry
   sheet.getRange(sheetRow, COL_RESET_OTP).setValue('USED');
   sheet.getRange(sheetRow, COL_OTP_EXPIRY).setValue('');
   SpreadsheetApp.flush();
