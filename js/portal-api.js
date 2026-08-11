@@ -9,9 +9,11 @@ const PortalApi = (() => {
     : 'https://script.google.com/macros/s/AKfycbzq4KNMHY0WvdHSnY2P18iUL5GAFJBQudUgDMG6_nHw3HGpH8mAtvAXs_jDo3odosLX/exec';
 
   async function get(params) {
-    const url = new URL(BASE_URL);
-    Object.entries(params).forEach(([k, v]) => url.searchParams.set(k, v));
-    const res = await fetch(url.toString(), { method: 'GET' });
+    const query = Object.entries(params)
+      .map(([k, v]) => `${encodeURIComponent(k)}=${encodeURIComponent(v)}`)
+      .join('&');
+    const fullUrl = BASE_URL + (BASE_URL.includes('?') ? '&' : '?') + query;
+    const res = await fetch(fullUrl, { method: 'GET' });
     if (!res.ok) throw new Error('Network error: ' + res.status);
     return res.json();
   }

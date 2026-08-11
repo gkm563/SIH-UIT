@@ -503,9 +503,11 @@ function handlePortalLoginAction_(param) {
     SpreadsheetApp.flush();
   }
 
-  // Exact comparison OR case-insensitive comparison
+  // Robust comparison: exact match OR case-insensitive OR URI-decoded match
   var isMatch = (cleanStoredPwd === cleanInputPwd) ||
-                (cleanStoredPwd.toLowerCase() === cleanInputPwd.toLowerCase());
+                (cleanStoredPwd.toLowerCase() === cleanInputPwd.toLowerCase()) ||
+                (decodeURIComponent(cleanStoredPwd) === cleanInputPwd) ||
+                (cleanStoredPwd === decodeURIComponent(cleanInputPwd));
 
   if (!isMatch) {
     return jsonResponse_({
