@@ -1263,12 +1263,20 @@ function ensureHeaders_(sheet) {
     return;
   }
 
-  // Upgrade existing sheet: add Email Status header if missing
+  // Upgrade existing sheet: add Email Status & Portal headers if missing
   var lastHeader = String(existing[HEADERS.length - 1] || '').trim();
   if (lastHeader !== 'Email Status') {
     sheet.getRange(1, HEADERS.length).setValue('Email Status');
     sheet.getRange(1, HEADERS.length).setFontWeight('bold').setBackground('#e8f0fe');
   }
+
+  // Ensure Columns 62-65 headers exist for portal management
+  try {
+    if (!sheet.getRange(1, 62).getValue()) sheet.getRange(1, 62).setValue('Portal Password').setFontWeight('bold').setBackground('#e8f0fe');
+    if (!sheet.getRange(1, 63).getValue()) sheet.getRange(1, 63).setValue('PS Choice').setFontWeight('bold').setBackground('#e8f0fe');
+    if (!sheet.getRange(1, 64).getValue()) sheet.getRange(1, 64).setValue('Reset OTP').setFontWeight('bold').setBackground('#e8f0fe');
+    if (!sheet.getRange(1, 65).getValue()) sheet.getRange(1, 65).setValue('OTP Expiry').setFontWeight('bold').setBackground('#e8f0fe');
+  } catch (e) {}
 }
 
 /**
