@@ -1989,17 +1989,13 @@ function testSubmit_() {
 
 /**
  * ADMIN UTILITY: Identify and clean up spam rows in the Google Sheet.
- * How to run:
- * 1. Open Apps Script Editor
- * 2. Select function: cleanSpamRows
- * 3. Click Run
  */
 function cleanSpamRows() {
   var sheet = getOrCreateSheet_();
   var lastRow = sheet.getLastRow();
   if (lastRow < 2) return 'No rows to clean.';
 
-  var data = sheet.getRange(2, 1, lastRow - 1, HEADERS.length).getValues();
+  var data = sheet.getRange(2, 1, lastRow - 1, Math.min(HEADERS.length, sheet.getLastColumn())).getValues();
   var deletedCount = 0;
 
   for (var i = data.length - 1; i >= 0; i--) {
@@ -2010,17 +2006,42 @@ function cleanSpamRows() {
     var teamName = String(row[2] || '').trim().toLowerCase();
 
     var isSpam = false;
+    if (/\.(png|jpg|jpeg|gif|ci|ck|ok)$/i.test(leaderEmail) || leaderEmail.length < 6 || (teamName === 'uit' && leaderName === 'uit')) {
+      isSpam = true;
+    }
 
-    // Detect fake email extensions or single letter emails
-    if (/\.(png|jpg|jpeg|gif|ci|ck|ok)$/i.test(leaderEmail) || lead/**
+    if (isSpam) {
+      sheet.deleteRow(rowIndex);
+      deletedCount++;
+    }
+  }
+
+  var msg = 'SUCCESS: Cleaned ' + deletedCount + ' spam row(s) from sheet.';
+  Logger.log(msg);
+  return msg;
+}
+
+/**
+ * Direct Apps Script Action: Generate & Email Credentials to ALL Teams right now!
+ * Select "sendCredentialsToAllTeamsNow" in Apps Script Editor dropdown -> Click Run!
+ */
+function sendCredentialsToAllTeamsNow() {
+  Logger.log('Starting mass credential email dispatch to ALL teams...');
+  var res = handleGeneratePasswordsAction_({ adminKey: 'SIH2026ADMIN' });
+  var resultText = res.getContent();
+  Logger.log('Mass Email Dispatch Result: ' + resultText);
+  return resultText;
+}
+
+/**
  * Add custom SIH 2026 Admin Menu to Google Sheet UI
  */
 function onOpen() {
   var ui = SpreadsheetApp.getUi();
   ui.createMenu('🚀 SIH 2026 Admin Tools')
-    .addItem('📊 Update Live Analytics Dashboard Sheet', 'generateAnalyticsDashboardMenu')
-    .addItem('🧪 Send Test Portal Credentials to GKM (SIH2026-0563)', 'sendTestEmailToGKM')
     .addItem('🔐 Generate & Email Passwords for ALL Teams', 'generatePasswordsForAllTeamsMenu')
+    .addItem('🧪 Send Test Portal Credentials to GKM (SIH2026-0563)', 'sendTestEmailToGKM')
+    .addItem('📊 Update Live Analytics Dashboard Sheet', 'generateAnalyticsDashboardMenu')
     .addToUi();
 
   try {
