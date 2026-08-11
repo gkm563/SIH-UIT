@@ -276,19 +276,36 @@ function generatePassword_(regId, teamName) {
   return pwd.replace(/^'/, '').trim();
 }
 
-/* ── Helper: Save Clean Password to Column BJ (62) ── */
+/* ── Dynamic Column Detector for Portal Password ── */
+function getPortalPasswordColIndex_(sheet) {
+  try {
+    var maxCol = Math.max(80, sheet.getLastColumn());
+    var headers = sheet.getRange(1, 1, 1, maxCol).getValues()[0];
+    for (var c = 0; c < headers.length; c++) {
+      var h = String(headers[c] || '').trim().toLowerCase();
+      if (h === 'portal password' || h === 'password' || h === 'portal_password') {
+        return c + 1; // 1-based column index
+      }
+    }
+  } catch(e) {}
+  return 62; // Default Column BJ (62)
+}
+
+/* ── Helper: Save Clean Password to Sheet ── */
 function setSheetPassword_(sheet, sheetRow, rawPwd) {
   var cleanPwd = String(rawPwd || '').replace(/^'/, '').trim();
-  var cell = sheet.getRange(sheetRow, COL_PASSWORD);
+  var col = getPortalPasswordColIndex_(sheet);
+  var cell = sheet.getRange(sheetRow, col);
   cell.setNumberFormat('@');
   cell.setValue(cleanPwd);
   SpreadsheetApp.flush();
   return cleanPwd;
 }
 
-/* ── Helper: Read Clean Password from Column BJ (62) ── */
+/* ── Helper: Read Clean Password from Sheet ── */
 function getSheetPassword_(sheet, sheetRow) {
-  var val = String(sheet.getRange(sheetRow, COL_PASSWORD).getValue() || '');
+  var col = getPortalPasswordColIndex_(sheet);
+  var val = String(sheet.getRange(sheetRow, col).getValue() || '');
   return val.replace(/^'/, '').trim();
 }
 
@@ -2063,15 +2080,16 @@ function cleanExistingSheetPasswords() {
   var lastRow = sheet.getLastRow();
   if (lastRow < 2) return 'No rows to clean.';
 
-  var range = sheet.getRange(2, COL_PASSWORD, lastRow - 1, 1);
+  var pwdCol = getPortalPasswordColIndex_(sheet);
+  var range = sheet.getRange(2, pwdCol, lastRow - 1, 1);
   var values = range.getValues();
   var updatedCount = 0;
 
   for (var i = 0; i < values.length; i++) {
     var raw = String(values[i][0] || '').trim();
-    if (raw.indexOf("'") === 0) {
+    if (raw.indexOf("'") === 0 || raw.startsWith("'")) {
       var cleaned = raw.replace(/^'/, '').trim();
-      var cell = sheet.getRange(i + 2, COL_PASSWORD);
+      var cell = sheet.getRange(i + 2, pwdCol);
       cell.setNumberFormat('@');
       cell.setValue(cleaned);
       updatedCount++;
