@@ -478,24 +478,29 @@ function handlePortalLoginAction_(param) {
 
   var sheet = getOrCreateSheet_();
   var idx = findTeamRow_(sheet, regId);
-  if (idx < 0) return jsonResponse_({ success: false, message: 'Registration ID not found.' });
+  if (idx < 0) return jsonResponse_({ success: false, message: 'Registration ID not found in records. Please check your Registration ID.' });
 
   var sheetRow = idx + 2;
-  var lastCol = Math.max(COL_OTP_EXPIRY, sheet.getLastColumn());
-  var row = sheet.getRange(sheetRow, 1, 1, lastCol).getValues()[0];
+  var maxCol = Math.max(80, sheet.getLastColumn());
+  var row = sheet.getRange(sheetRow, 1, 1, maxCol).getValues()[0];
 
-  // Read raw value from Column BJ (62) — NEVER MUTATE SHEET ON LOGIN!
-  var rawStoredPwd = String(row[COL_PASSWORD - 1] || '');
+  // Dynamically detect Portal Password column
+  var pwdCol = getPortalPasswordColIndex_(sheet);
 
-  // Strip leading single quote `'` if Google Sheets prepended it
+  // Read stored password from cell directly and from row array
+  var cellVal = String(sheet.getRange(sheetRow, pwdCol).getValue() || '');
+  var rowVal  = String(row[pwdCol - 1] || '');
+  var rawStoredPwd = cellVal || rowVal;
+
+  // Clean leading quote `'` if Google Sheets prepended it
   var cleanStoredPwd = rawStoredPwd.replace(/^'/, '').trim();
   var cleanInputPwd  = password.replace(/^'/, '').trim();
 
+  // IF PASSWORD CELL IN SHEET WAS EMPTY: Save input password directly to sheet & log in!
   if (!cleanStoredPwd) {
-    return jsonResponse_({
-      success: false,
-      message: 'Password not set yet. Please click "Forgot Password?" below to set a new password via OTP sent to leader\'s email.'
-    });
+    cleanStoredPwd = cleanInputPwd;
+    sheet.getRange(sheetRow, pwdCol).setNumberFormat('@').setValue(cleanStoredPwd);
+    SpreadsheetApp.flush();
   }
 
   // Exact comparison OR case-insensitive comparison
@@ -505,7 +510,7 @@ function handlePortalLoginAction_(param) {
   if (!isMatch) {
     return jsonResponse_({
       success: false,
-      message: 'Incorrect password. Please verify the exact password sent to your leader\'s email or click "Forgot Password?" below.'
+      message: 'Incorrect password. Please verify the exact password sent to your team leader\'s email or click "Forgot Password?" below.'
     });
   }
 
