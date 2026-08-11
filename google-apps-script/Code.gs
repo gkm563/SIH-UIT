@@ -252,38 +252,44 @@ function findTeamRow_(sheet, regId) {
 
 /* ── Generate a cryptographically random, unguessable, high-entropy password ── */
 function generatePassword_(regId, teamName) {
-  var prefixList = ['@SIH', '!UIT', '#UNITED', '$INDIA', '@TECH', '!SIH2026'];
+  var prefixes   = ['SIH2026', 'UIT2026', 'UNITED', 'INDIA', 'TECH'];
   var charsUpper = 'ABCDEFGHJKLMNPQRSTUVWXYZ';
   var charsLower = 'abcdefghijkmnpqrstuvwxyz';
   var charsNum   = '23456789';
-  var charsSpec  = '#$!@%*&';
+  var charsSpec  = '#!@';
 
-  var prefix = prefixList[Math.floor(Math.random() * prefixList.length)];
-  
+  var prefix = prefixes[Math.floor(Math.random() * prefixes.length)];
+  var symbol = charsSpec[Math.floor(Math.random() * charsSpec.length)];
+
   function randChar(str) {
     return str[Math.floor(Math.random() * str.length)];
   }
 
-  // Build 8 random characters mixing upper, lower, numbers, and special symbols
   var randBody = randChar(charsUpper) +
                  randChar(charsNum) +
                  randChar(charsLower) +
-                 randChar(charsSpec) +
                  randChar(charsUpper) +
                  randChar(charsNum) +
-                 randChar(charsLower) +
-                 randChar(charsSpec);
+                 randChar(charsLower);
 
-  // Shuffle the body characters
-  var bodyArray = randBody.split('');
-  for (var i = bodyArray.length - 1; i > 0; i--) {
-    var j = Math.floor(Math.random() * (i + 1));
-    var temp = bodyArray[i];
-    bodyArray[i] = bodyArray[j];
-    bodyArray[j] = temp;
-  }
+  var pwd = prefix + symbol + randBody;
+  return pwd.replace(/^'/, '').trim();
+}
 
-  return prefix + bodyArray.join('');
+/* ── Helper: Save Clean Password to Column BJ (62) ── */
+function setSheetPassword_(sheet, sheetRow, rawPwd) {
+  var cleanPwd = String(rawPwd || '').replace(/^'/, '').trim();
+  var cell = sheet.getRange(sheetRow, COL_PASSWORD);
+  cell.setNumberFormat('@');
+  cell.setValue(cleanPwd);
+  SpreadsheetApp.flush();
+  return cleanPwd;
+}
+
+/* ── Helper: Read Clean Password from Column BJ (62) ── */
+function getSheetPassword_(sheet, sheetRow) {
+  var val = String(sheet.getRange(sheetRow, COL_PASSWORD).getValue() || '');
+  return val.replace(/^'/, '').trim();
 }
 
 /* ── Portal: Login ── */
@@ -461,15 +467,14 @@ function handlePortalLoginAction_(param) {
   var lastCol = Math.max(COL_OTP_EXPIRY, sheet.getLastColumn());
   var row = sheet.getRange(sheetRow, 1, 1, lastCol).getValues()[0];
 
-  var storedPwd = String(row[COL_PASSWORD - 1] || '').replace(/^'/, '').trim();
+  var storedPwd = getSheetPassword_(sheet, sheetRow);
+  var inputPwd  = String(password || '').replace(/^'/, '').trim();
 
   // If password is not yet set in Column BJ (62), auto-generate & set it immediately!
   if (!storedPwd) {
     var teamName = String(row[2] || '').trim().replace(/^'/, '');
     var leaderEmail = String(row[11] || '').trim();
-    storedPwd = generatePassword_(regId, teamName);
-    sheet.getRange(sheetRow, COL_PASSWORD).setValue("'" + storedPwd);
-    SpreadsheetApp.flush();
+    storedPwd = setSheetPassword_(sheet, sheetRow, generatePassword_(regId, teamName));
 
     try {
       if (leaderEmail && leaderEmail.includes('@')) {
@@ -478,7 +483,7 @@ function handlePortalLoginAction_(param) {
     } catch(e) {}
   }
 
-  if (storedPwd !== password) {
+  if (storedPwd !== inputPwd) {
     return jsonResponse_({
       success: false,
       message: 'Incorrect password. If you forgot your password, click "Forgot Password?" below to reset it via OTP sent to leader\'s email.'
@@ -505,8 +510,9 @@ function handleSelectPSAction_(param) {
 
   var sheetRow = idx + 2;
   // Strict password verification
-  var storedPwd = String(sheet.getRange(sheetRow, COL_PASSWORD).getValue() || '').replace(/^'/, '').trim();
-  if (!storedPwd || password !== storedPwd) return jsonResponse_({ success: false, message: 'Unauthorized. Invalid credentials.' });
+  var storedPwd = getSheetPassword_(sheet, sheetRow);
+  var inputPwd  = String(password || '').replace(/^'/, '').trim();
+  if (!storedPwd || inputPwd !== storedPwd) return jsonResponse_({ success: false, message: 'Unauthorized. Invalid credentials.' });
 
   // Sanitize formula injection
   var psValue = psId + (psTitle ? ' — ' + psTitle : '');
@@ -634,17 +640,11 @@ function handleResetPasswordAction_(param) {
     return jsonResponse_({ success: false, message: 'OTP code has expired. Please request a new OTP.' });
   }
 
-  var pwdValue = newPwd.trim().replace(/^'/, '');
-  if (/^[=+@-]/.test(pwdValue)) pwdValue = "'" + pwdValue;
-
-  // 1. Update Password in Column BJ (62) with single quote for text format
-  sheet.getRange(sheetRow, COL_PASSWORD).setValue("'" + pwdValue);
+  var pwdValue = setSheetPassword_(sheet, sheetRow, newPwd);
 
   // 2. IMMEDIATELY MARK OTP AS USED & CLEAR EXPIRY in Columns BL & BM (64 & 65)
   sheet.getRange(sheetRow, COL_RESET_OTP).setValue('USED');
   sheet.getRange(sheetRow, COL_OTP_EXPIRY).setValue('');
-
-  // 3. Force immediate write flush to Google Sheets storage
   SpreadsheetApp.flush();
 
   return jsonResponse_({ success: true, message: 'Password reset successfully in sheet records. You can now log in with your new password.' });
@@ -653,8 +653,8 @@ function handleResetPasswordAction_(param) {
 /* ── Portal: Change Password (from dashboard - Sync to Sheet) ── */
 function handleChangePasswordAction_(param) {
   var regId   = String(param.regId || '').trim().replace(/^'/, '');
-  var oldPwd  = String(param.oldPassword || '').trim();
-  var newPwd  = String(param.newPassword || '').trim();
+  var oldPwd  = String(param.oldPassword || '').trim().replace(/^'/, '');
+  var newPwd  = String(param.newPassword || '').trim().replace(/^'/, '');
   if (!regId || !oldPwd || !newPwd) return jsonResponse_({ success: false, message: 'Registration ID, current password, and new password are required.' });
   if (newPwd.length < 6) return jsonResponse_({ success: false, message: 'New password must be at least 6 characters long.' });
 
@@ -663,20 +663,14 @@ function handleChangePasswordAction_(param) {
   if (idx < 0) return jsonResponse_({ success: false, message: 'Registration ID not found.' });
 
   var sheetRow = idx + 2;
-  var storedPwd = String(sheet.getRange(sheetRow, COL_PASSWORD).getValue() || '').replace(/^'/, '').trim();
+  var storedPwd = getSheetPassword_(sheet, sheetRow);
   if (!storedPwd || storedPwd !== oldPwd) return jsonResponse_({ success: false, message: 'Current password is incorrect.' });
 
-  var pwdValue = newPwd.trim().replace(/^'/, '');
-  if (/^[=+@-]/.test(pwdValue)) pwdValue = "'" + pwdValue;
-
-  // 1. Update Password in Column BJ (62) with single quote for text format
-  sheet.getRange(sheetRow, COL_PASSWORD).setValue("'" + pwdValue);
+  setSheetPassword_(sheet, sheetRow, newPwd);
 
   // 2. Clear any lingering OTPs
   sheet.getRange(sheetRow, COL_RESET_OTP).setValue('');
   sheet.getRange(sheetRow, COL_OTP_EXPIRY).setValue('');
-
-  // 3. Force immediate write flush to Google Sheets storage
   SpreadsheetApp.flush();
 
   return jsonResponse_({ success: true, message: 'Password updated successfully in spreadsheet records.' });
@@ -684,8 +678,7 @@ function handleChangePasswordAction_(param) {
 
 /* ── Admin: Send Credentials Email Helper ── */
 function sendCredentialsEmailToTeam_(sheet, sheetRow, regId, tName, email, existingPwd) {
-  var pwd = existingPwd || generatePassword_(regId, tName);
-  sheet.getRange(sheetRow, COL_PASSWORD).setValue("'" + pwd);
+  var pwd = setSheetPassword_(sheet, sheetRow, existingPwd || generatePassword_(regId, tName));
 
   if (!email || !email.includes('@')) {
     throw new Error('Invalid email address: ' + email);
@@ -2048,11 +2041,41 @@ function cleanSpamRows() {
 }
 
 /**
+ * ADMIN TOOL: Clean leading single quotes from all password cells in Column BJ.
+ */
+function cleanExistingSheetPasswords() {
+  var sheet = getOrCreateSheet_();
+  var lastRow = sheet.getLastRow();
+  if (lastRow < 2) return 'No rows to clean.';
+
+  var range = sheet.getRange(2, COL_PASSWORD, lastRow - 1, 1);
+  var values = range.getValues();
+  var updatedCount = 0;
+
+  for (var i = 0; i < values.length; i++) {
+    var raw = String(values[i][0] || '').trim();
+    if (raw.indexOf("'") === 0) {
+      var cleaned = raw.replace(/^'/, '').trim();
+      var cell = sheet.getRange(i + 2, COL_PASSWORD);
+      cell.setNumberFormat('@');
+      cell.setValue(cleaned);
+      updatedCount++;
+    }
+  }
+
+  SpreadsheetApp.flush();
+  var msg = 'SUCCESS: Cleaned leading quotes from ' + updatedCount + ' password cell(s).';
+  Logger.log(msg);
+  return msg;
+}
+
+/**
  * Direct Apps Script Action: Generate & Email Credentials to ALL Teams right now!
  * Select "sendCredentialsToAllTeamsNow" in Apps Script Editor dropdown -> Click Run!
  */
 function sendCredentialsToAllTeamsNow() {
   Logger.log('Starting mass credential email dispatch to ALL teams...');
+  cleanExistingSheetPasswords();
   var res = handleGeneratePasswordsAction_({ adminKey: 'SIH2026ADMIN' });
   var resultText = res.getContent();
   Logger.log('Mass Email Dispatch Result: ' + resultText);
@@ -2066,6 +2089,7 @@ function onOpen() {
   var ui = SpreadsheetApp.getUi();
   ui.createMenu('🚀 SIH 2026 Admin Tools')
     .addItem('🔐 Generate & Email Passwords for ALL Teams', 'generatePasswordsForAllTeamsMenu')
+    .addItem('🧹 Clean Leading Single Quotes from Sheet Passwords', 'cleanExistingSheetPasswords')
     .addItem('🧪 Send Test Portal Credentials to GKM (SIH2026-0563)', 'sendTestEmailToGKM')
     .addItem('📊 Update Live Analytics Dashboard Sheet', 'generateAnalyticsDashboardMenu')
     .addToUi();
