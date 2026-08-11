@@ -2252,7 +2252,7 @@ function updateAnalyticsDashboardSheet_() {
     // ── Row 2: Subtitle Banner ──
     dashSheet.getRange('A2:E2').merge()
       .setValue('⚡ Live Real-Time Data Sync · Last Refreshed: ' + new Date().toLocaleString())
-      .setFontItalic(true)
+      .setFontStyle('italic')
       .setFontSize(10)
       .setBackground('#1e293b')
       .setFontColor('#38bdf8')
