@@ -467,32 +467,28 @@ function handlePortalLoginAction_(param) {
   var lastCol = Math.max(COL_OTP_EXPIRY, sheet.getLastColumn());
   var row = sheet.getRange(sheetRow, 1, 1, lastCol).getValues()[0];
 
-  var storedPwd = getSheetPassword_(sheet, sheetRow);
-  var inputPwd  = String(password || '').replace(/^'/, '').trim();
+  // Read raw value from Column BJ (62) — NEVER MUTATE SHEET ON LOGIN!
+  var rawStoredPwd = String(row[COL_PASSWORD - 1] || '');
 
-  // Clean stored password if it has single quotes or corrupt characters
-  if (storedPwd.indexOf("'") !== -1 || storedPwd.indexOf("%") !== -1 || storedPwd.indexOf("*") !== -1) {
-    storedPwd = storedPwd.replace(/^'/, '').trim();
-    setSheetPassword_(sheet, sheetRow, storedPwd);
-  }
+  // Strip leading single quote `'` if Google Sheets prepended it
+  var cleanStoredPwd = rawStoredPwd.replace(/^'/, '').trim();
+  var cleanInputPwd  = password.replace(/^'/, '').trim();
 
-  // If password is not yet set in Column BJ (62), auto-generate & set it immediately!
-  if (!storedPwd) {
-    var teamName = String(row[2] || '').trim().replace(/^'/, '');
-    var leaderEmail = String(row[11] || '').trim();
-    storedPwd = setSheetPassword_(sheet, sheetRow, generatePassword_(regId, teamName));
-
-    try {
-      if (leaderEmail && leaderEmail.includes('@')) {
-        sendCredentialsEmailToTeam_(sheet, sheetRow, regId, teamName, leaderEmail, storedPwd);
-      }
-    } catch(e) {}
-  }
-
-  if (storedPwd.trim().toLowerCase() !== inputPwd.trim().toLowerCase()) {
+  if (!cleanStoredPwd) {
     return jsonResponse_({
       success: false,
-      message: 'Incorrect password. If you forgot your password, click "Forgot Password?" below to reset it via OTP sent to leader\'s email.'
+      message: 'Password not set yet. Please click "Forgot Password?" below to set a new password via OTP sent to leader\'s email.'
+    });
+  }
+
+  // Exact comparison OR case-insensitive comparison
+  var isMatch = (cleanStoredPwd === cleanInputPwd) ||
+                (cleanStoredPwd.toLowerCase() === cleanInputPwd.toLowerCase());
+
+  if (!isMatch) {
+    return jsonResponse_({
+      success: false,
+      message: 'Incorrect password. Please verify the exact password sent to your leader\'s email or click "Forgot Password?" below.'
     });
   }
 
@@ -515,10 +511,17 @@ function handleSelectPSAction_(param) {
   if (idx < 0) return jsonResponse_({ success: false, message: 'Team not found in records.' });
 
   var sheetRow = idx + 2;
-  // Strict password verification
-  var storedPwd = getSheetPassword_(sheet, sheetRow);
-  var inputPwd  = String(password || '').replace(/^'/, '').trim();
-  if (!storedPwd || inputPwd !== storedPwd) return jsonResponse_({ success: false, message: 'Unauthorized. Invalid credentials.' });
+  var lastCol = Math.max(COL_OTP_EXPIRY, sheet.getLastColumn());
+  var row = sheet.getRange(sheetRow, 1, 1, lastCol).getValues()[0];
+
+  var rawStoredPwd = String(row[COL_PASSWORD - 1] || '');
+  var cleanStoredPwd = rawStoredPwd.replace(/^'/, '').trim();
+  var cleanInputPwd  = password.replace(/^'/, '').trim();
+
+  var isMatch = (cleanStoredPwd === cleanInputPwd) ||
+                (cleanStoredPwd.toLowerCase() === cleanInputPwd.toLowerCase());
+
+  if (!cleanStoredPwd || !isMatch) return jsonResponse_({ success: false, message: 'Unauthorized. Invalid credentials.' });
 
   // Sanitize formula injection
   var psValue = psId + (psTitle ? ' — ' + psTitle : '');
