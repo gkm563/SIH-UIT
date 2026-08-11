@@ -143,17 +143,22 @@
       </button>
     </div>
 
-    <!-- Tab Navigation -->
-    <div class="flex gap-0 border-b border-slate-200 mb-6 overflow-x-auto">
-      <button class="tab-btn active px-4 sm:px-6 py-3 text-xs sm:text-sm font-semibold text-slate-600 whitespace-nowrap flex items-center gap-1.5" data-tab="details">
-        <span>👥</span> Team Details
-      </button>
-      <button class="tab-btn px-4 sm:px-6 py-3 text-xs sm:text-sm font-semibold text-slate-600 whitespace-nowrap flex items-center gap-1.5" data-tab="ps">
-        <span>🎯</span> Select Problem Statement
-      </button>
-      <button class="tab-btn px-4 sm:px-6 py-3 text-xs sm:text-sm font-semibold text-slate-600 whitespace-nowrap flex items-center gap-1.5" data-tab="settings">
-        <span>⚙️</span> Settings
-      </button>
+    <!-- Tab Navigation (Apple Segmented Control Style) -->
+    <div class="mb-7 overflow-x-auto pb-1">
+      <div class="tab-container max-w-full">
+        <button class="tab-btn active" data-tab="details">
+          <span class="text-base">👥</span>
+          <span>Team Details</span>
+        </button>
+        <button class="tab-btn" data-tab="ps">
+          <span class="text-base">🎯</span>
+          <span>Select Problem Statement</span>
+        </button>
+        <button class="tab-btn" data-tab="settings">
+          <span class="text-base">⚙️</span>
+          <span>Settings &amp; Security</span>
+        </button>
+      </div>
     </div>
 
     <!-- ═══ TAB 1: TEAM DETAILS ═══ -->
@@ -352,49 +357,85 @@
       </div>
     </div>
 
-    <!-- ═══ TAB 3: SETTINGS ═══ -->
+    <!-- ═══ TAB 3: SETTINGS & SECURITY ═══ -->
     <div id="tab-settings" class="tab-pane">
-      <div class="max-w-md">
-        <div class="card bg-white border border-slate-200/80 rounded-2xl p-6 mb-5 fade-up">
-          <div class="flex items-center gap-2 mb-5">
-            <span class="inline-flex items-center justify-center w-7 h-7 bg-amber-100 rounded-lg text-sm">🔑</span>
-            <h2 class="text-sm font-black text-slate-800">Change Password</h2>
+      <div class="grid grid-cols-1 md:grid-cols-2 gap-6 max-w-4xl">
+        
+        <!-- Password Security Card -->
+        <div class="card bg-white border border-slate-200/90 rounded-3xl p-6 sm:p-7 shadow-md">
+          <div class="flex items-center gap-3 mb-6 pb-4 border-b border-slate-100">
+            <div class="w-10 h-10 rounded-2xl bg-amber-500/10 border border-amber-300/40 text-amber-700 flex items-center justify-center text-lg font-black">
+              🔑
+            </div>
+            <div>
+              <h2 class="text-base font-black text-slate-900 leading-tight">Password &amp; Security</h2>
+              <p class="text-xs text-slate-500 font-medium">Update your confidential team login password</p>
+            </div>
           </div>
 
-          <div id="pwd-error" class="hidden mb-4 p-3 bg-red-50 border border-red-200 text-red-700 text-xs font-semibold rounded-xl"></div>
-          <div id="pwd-success" class="hidden mb-4 p-3 bg-emerald-50 border border-emerald-200 text-emerald-700 text-xs font-semibold rounded-xl"></div>
+          <div id="pwd-error" class="hidden mb-4 p-3.5 bg-red-50 border border-red-200 text-red-700 text-xs font-bold rounded-2xl"></div>
+          <div id="pwd-success" class="hidden mb-4 p-3.5 bg-emerald-50 border border-emerald-200 text-emerald-700 text-xs font-bold rounded-2xl"></div>
 
-          <div class="mb-4">
-            <label class="block text-xs font-bold text-slate-700 mb-1.5 uppercase tracking-wide">Current Password</label>
-            <input id="old-pwd" type="password" placeholder="Enter current password"
-              class="input-field w-full px-4 py-2.5 text-sm font-semibold border border-slate-200 rounded-xl bg-slate-50 focus:bg-white transition-all" />
+          <div class="space-y-4 mb-6">
+            <div>
+              <label class="block text-xs font-extrabold text-slate-700 mb-1.5 uppercase tracking-wide">Current Password</label>
+              <input id="old-pwd" type="password" placeholder="Enter current password"
+                class="input-field w-full px-4 py-3 text-xs sm:text-sm font-semibold border-2 border-slate-200/80 rounded-2xl bg-slate-50/50 focus:bg-white focus:border-blue-600 focus:ring-4 focus:ring-blue-100 transition-all outline-none" />
+            </div>
+
+            <div>
+              <label class="block text-xs font-extrabold text-slate-700 mb-1.5 uppercase tracking-wide">New Password</label>
+              <input id="new-pwd-s" type="password" placeholder="Min. 6 characters"
+                class="input-field w-full px-4 py-3 text-xs sm:text-sm font-semibold border-2 border-slate-200/80 rounded-2xl bg-slate-50/50 focus:bg-white focus:border-blue-600 focus:ring-4 focus:ring-blue-100 transition-all outline-none" />
+            </div>
+
+            <div>
+              <label class="block text-xs font-extrabold text-slate-700 mb-1.5 uppercase tracking-wide">Confirm New Password</label>
+              <input id="conf-pwd-s" type="password" placeholder="Re-enter new password"
+                class="input-field w-full px-4 py-3 text-xs sm:text-sm font-semibold border-2 border-slate-200/80 rounded-2xl bg-slate-50/50 focus:bg-white focus:border-blue-600 focus:ring-4 focus:ring-blue-100 transition-all outline-none" />
+            </div>
           </div>
-          <div class="mb-4">
-            <label class="block text-xs font-bold text-slate-700 mb-1.5 uppercase tracking-wide">New Password</label>
-            <input id="new-pwd-s" type="password" placeholder="Min. 6 characters"
-              class="input-field w-full px-4 py-2.5 text-sm font-semibold border border-slate-200 rounded-xl bg-slate-50 focus:bg-white transition-all" />
-          </div>
-          <div class="mb-6">
-            <label class="block text-xs font-bold text-slate-700 mb-1.5 uppercase tracking-wide">Confirm New Password</label>
-            <input id="conf-pwd-s" type="password" placeholder="Re-enter new password"
-              class="input-field w-full px-4 py-2.5 text-sm font-semibold border border-slate-200 rounded-xl bg-slate-50 focus:bg-white transition-all" />
-          </div>
-          <button id="btn-change-pwd" class="btn-primary w-full py-3 rounded-xl text-white font-black text-sm transition-all flex items-center justify-center gap-2">
-            <span id="change-pwd-text">Update Password</span>
+
+          <button id="btn-change-pwd" class="btn-primary w-full py-3.5 rounded-2xl text-white font-black text-xs sm:text-sm shadow-md hover:shadow-lg transition-all flex items-center justify-center gap-2">
+            <span id="change-pwd-text">🔒 Update Team Password</span>
             <svg id="change-pwd-spin" class="hidden w-4 h-4 animate-spin" fill="none" viewBox="0 0 24 24"><circle class="opacity-25" cx="12" cy="12" r="10" stroke="currentColor" stroke-width="4"/><path class="opacity-75" fill="currentColor" d="M4 12a8 8 0 018-8V0C5.373 0 0 5.373 0 12h4z"/></svg>
           </button>
         </div>
 
-        <!-- Session info -->
-        <div class="card bg-slate-50 border border-slate-200 rounded-2xl p-4">
-          <h3 class="text-xs font-bold text-slate-700 uppercase tracking-wide mb-3">Session Info</h3>
-          <div class="space-y-1.5 text-xs text-slate-600">
-            <div class="flex justify-between"><span class="font-semibold text-slate-500">Team</span><span id="info-team" class="font-bold text-slate-800"></span></div>
-            <div class="flex justify-between"><span class="font-semibold text-slate-500">Reg ID</span><span id="info-regid" class="font-mono font-bold text-blue-700"></span></div>
-            <div class="flex justify-between"><span class="font-semibold text-slate-500">Logged in at</span><span id="info-login-at" class="font-semibold text-slate-700"></span></div>
+        <!-- Session Overview & Security Info -->
+        <div class="space-y-5">
+          <div class="card bg-gradient-to-br from-slate-900 via-indigo-950 to-blue-950 text-white border border-slate-800 rounded-3xl p-6 sm:p-7 shadow-md relative overflow-hidden">
+            <div class="flex items-center gap-3 mb-5 pb-3 border-b border-white/10">
+              <span class="w-2.5 h-2.5 bg-emerald-400 rounded-full animate-ping"></span>
+              <h3 class="text-xs font-black uppercase tracking-wider text-blue-200">Active Security Session</h3>
+            </div>
+
+            <div class="space-y-3 text-xs">
+              <div class="flex justify-between items-center bg-white/5 p-3.5 rounded-2xl border border-white/10">
+                <span class="text-slate-400 font-semibold">Registered Team</span>
+                <span id="info-team" class="font-black text-white text-sm"></span>
+              </div>
+
+              <div class="flex justify-between items-center bg-white/5 p-3.5 rounded-2xl border border-white/10">
+                <span class="text-slate-400 font-semibold">Registration ID</span>
+                <span id="info-regid" class="font-mono font-black text-blue-300"></span>
+              </div>
+
+              <div class="flex justify-between items-center bg-white/5 p-3.5 rounded-2xl border border-white/10">
+                <span class="text-slate-400 font-semibold">Session Login</span>
+                <span id="info-login-at" class="font-semibold text-slate-300"></span>
+              </div>
+            </div>
+
+            <div class="mt-6 pt-4 border-t border-white/10">
+              <button id="btn-logout-2" class="w-full text-xs font-extrabold text-red-300 bg-red-500/10 hover:bg-red-500/20 border border-red-500/30 py-3 rounded-2xl transition-all flex items-center justify-center gap-2">
+                <span>🚪</span>
+                <span>Logout Active Session</span>
+              </button>
+            </div>
           </div>
-          <button id="btn-logout-2" class="mt-4 w-full text-xs font-bold text-red-600 hover:bg-red-50 border border-red-200 py-2 rounded-xl transition-all">🚪 Logout</button>
         </div>
+
       </div>
     </div>
 
@@ -561,9 +602,9 @@
     // ── Render Leader Detail ─────────────────────────────────────────
     function infoItem(label, value) {
       const clean = escapeHtml(value);
-      return `<div class="bg-slate-50 border border-slate-200 rounded-xl p-3">
-        <div class="text-[10px] font-bold uppercase text-slate-400 tracking-wide mb-1">${escapeHtml(label)}</div>
-        <div class="text-xs font-bold text-slate-900 break-words">${clean || '—'}</div>
+      return `<div class="bg-gradient-to-br from-white to-slate-50 border border-slate-200/80 rounded-2xl p-3.5 shadow-2xs hover:shadow-md hover:-translate-y-0.5 transition-all">
+        <div class="text-[10px] font-black uppercase text-blue-700 tracking-wider mb-1">${escapeHtml(label)}</div>
+        <div class="text-xs sm:text-sm font-extrabold text-slate-900 break-words">${clean || '—'}</div>
       </div>`;
     }
 

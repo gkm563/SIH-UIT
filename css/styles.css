@@ -1191,3 +1191,69 @@ body {
     text-rendering: optimizeSpeed;
   }
 }
+
+/* Premium Segmented Glass Tab Bar System (Apple macOS / Google Cloud Style) */
+.tab-container {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.35rem;
+  background: rgba(241, 245, 249, 0.85);
+  backdrop-filter: blur(16px);
+  -webkit-backdrop-filter: blur(16px);
+  padding: 0.35rem;
+  border-radius: 1.25rem;
+  border: 1px solid rgba(226, 232, 240, 0.9);
+  box-shadow: inset 0 1px 2px rgba(0, 0, 0, 0.04);
+}
+
+.tab-btn {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+  padding: 0.65rem 1.25rem;
+  border-radius: 1rem;
+  font-size: 0.8125rem;
+  font-weight: 700;
+  color: #64748b;
+  background: transparent;
+  border: 1px solid transparent;
+  cursor: pointer;
+  transition: all 0.22s cubic-bezier(0.16, 1, 0.3, 1);
+  white-space: nowrap;
+  user-select: none;
+}
+
+.tab-btn:hover {
+  color: #0f172a;
+  background: rgba(255, 255, 255, 0.7);
+}
+
+.tab-btn.active {
+  color: #1d4ed8;
+  font-weight: 900;
+  background: #ffffff;
+  border-color: rgba(219, 234, 254, 0.9);
+  box-shadow: 0 4px 12px -2px rgba(29, 78, 216, 0.12), 0 2px 4px -1px rgba(0, 0, 0, 0.04);
+  transform: translateY(-1px) scale(1.02);
+}
+
+/* Tab Pane Smooth Fade Transition */
+.tab-pane {
+  display: none;
+}
+
+.tab-pane.active {
+  display: block;
+  animation: tabFadeIn 0.3s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+}
+
+@keyframes tabFadeIn {
+  from {
+    opacity: 0;
+    transform: translateY(6px) scale(0.995);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0) scale(1);
+  }
+}
