@@ -394,12 +394,16 @@ function getPSCountsMap_() {
   }
 
   if (lastRow >= 2) {
-    var data = sheet.getRange(2, 1, lastRow - 1, Math.max(COL_PS_CHOICE, sheet.getLastColumn())).getValues();
+    // Dynamically find the PS Choice column
+    var psCol = getPSChoiceColIndex_(sheet);
+    var fetchCols = Math.max(psCol, sheet.getLastColumn());
+    var data = sheet.getRange(2, 1, lastRow - 1, fetchCols).getValues();
     for (var i = 0; i < data.length; i++) {
       var row = data[i];
       var regId = String(row[1] || '').trim().replace(/^'/, '');
       var tName = String(row[2] || '').trim().replace(/^'/, '');
-      var psVal = String(row[COL_PS_CHOICE - 1] || '').trim().replace(/^'/, '');
+      // Read from dynamically detected column (0-based)
+      var psVal = String(row[psCol - 1] || '').trim().replace(/^'/, '');
 
       if (psVal) {
         var cleanId = extractCleanPSId_(psVal);
