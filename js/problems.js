@@ -43,12 +43,22 @@
   };
 
   // State
+  let psCountsMap = {};
   const state = {
     search: '',
     type: 'All',
     difficulty: 'All',
     selectedDomains: new Set()
   };
+
+  if (typeof PortalApi !== 'undefined') {
+    PortalApi.getPSCounts().then(res => {
+      if (res.success && res.counts) {
+        psCountsMap = res.counts;
+        renderGrid();
+      }
+    }).catch(() => {});
+  }
 
   // DOM Elements
   const els = {
@@ -176,6 +186,11 @@
           ? ps.problemStatement.substring(0, 140) + '...'
           : ps.problemStatement;
 
+      const count = (psCountsMap && psCountsMap[ps.id.toUpperCase()]) || 0;
+      const countBadge = count > 0
+        ? `<span class="px-2 py-0.5 rounded-md text-[10px] font-black bg-amber-100 text-amber-950 border border-amber-300 flex items-center gap-1 shadow-2xs">🔥 ${count} Team${count > 1 ? 's' : ''}</span>`
+        : `<span class="px-2 py-0.5 rounded-md text-[10px] font-bold bg-slate-50 text-slate-500 border border-slate-200">👥 0 Teams</span>`;
+
       html += `
         <div class="ps-card bg-white border border-slate-200/90 rounded-2xl p-4 sm:p-5 shadow-2xs hover:shadow-md transition-all flex flex-col justify-between cursor-pointer group hover:-translate-y-1" data-ps-id="${ps.id}">
           <div>
@@ -185,6 +200,7 @@
                 ${ps.id}
               </span>
               <div class="flex items-center gap-1.5 flex-wrap justify-end">
+                ${countBadge}
                 <span class="px-2 py-0.5 rounded-md text-[10px] font-bold border ${domainStyle}">${escapeHtml(ps.domain)}</span>
                 <span class="px-2 py-0.5 rounded-md text-[10px] font-bold bg-slate-100 text-slate-700 border border-slate-200/80">${icon} ${ps.type}</span>
                 <span class="px-2 py-0.5 rounded-md text-[10px] font-bold border ${diffStyle}">${ps.difficulty}</span>

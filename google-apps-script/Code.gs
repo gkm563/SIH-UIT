@@ -287,6 +287,89 @@ function generatePassword_(regId, teamName) {
 }
 
 /* ── Portal: Login ── */
+/* ── Get PS Selection Counts Map & Team Selections ── */
+function getPSCountsMap_() {
+  var sheet = getOrCreateSheet_();
+  var lastRow = sheet.getLastRow();
+  var counts = {};
+  var teamSelections = {};
+
+  if (lastRow >= 2) {
+    var data = sheet.getRange(2, 1, lastRow - 1, Math.max(COL_PS_CHOICE, sheet.getLastColumn())).getValues();
+    for (var i = 0; i < data.length; i++) {
+      var row = data[i];
+      var regId = String(row[1] || '').trim().replace(/^'/, '');
+      var tName = String(row[2] || '').trim().replace(/^'/, '');
+      var psVal = String(row[COL_PS_CHOICE - 1] || '').trim().replace(/^'/, '');
+
+      if (psVal) {
+        var match = /^(SIH\d+|\d+)/i.exec(psVal);
+        var psId = match ? match[1].toUpperCase() : psVal.split('—')[0].trim().toUpperCase();
+        if (!/^SIH/i.test(psId) && /^\d+$/.test(psId)) psId = 'SIH' + psId;
+
+        counts[psId] = (counts[psId] || 0) + 1;
+        if (!teamSelections[psId]) teamSelections[psId] = [];
+        teamSelections[psId].push(regId + ' (' + tName + ')');
+      }
+    }
+  }
+  return { counts: counts, teamSelections: teamSelections };
+}
+
+/* ── API Action: Fetch PS Counts ── */
+function handleGetPSCountsAction_() {
+  var psMapData = getPSCountsMap_();
+  return jsonResponse_({ success: true, counts: psMapData.counts });
+}
+
+/* ── Auto-Maintain "PS Selection Summary" Sheet Tab ── */
+function updatePSSummarySheet_() {
+  try {
+    var ss = getSpreadsheet_();
+    var summarySheet = ss.getSheetByName('PS Selection Summary');
+    if (!summarySheet) {
+      summarySheet = ss.insertSheet('PS Selection Summary');
+    } else {
+      summarySheet.clearContents();
+    }
+
+    var psMapData = getPSCountsMap_();
+    var countsMap = psMapData.counts;
+    var teamSelections = psMapData.teamSelections;
+
+    var summaryHeaders = [
+      'PS ID',
+      'Total Teams Selected',
+      'Selected Teams List'
+    ];
+
+    summarySheet.getRange(1, 1, 1, summaryHeaders.length)
+      .setValues([summaryHeaders])
+      .setFontWeight('bold')
+      .setBackground('#1a73e8')
+      .setFontColor('#ffffff');
+
+    var rows = [];
+    for (var k in countsMap) {
+      rows.push([
+        k,
+        countsMap[k],
+        (teamSelections[k] || []).join(', ')
+      ]);
+    }
+
+    rows.sort(function(a, b) { return b[1] - a[1]; }); // Sort by count descending
+
+    if (rows.length > 0) {
+      summarySheet.getRange(2, 1, rows.length, summaryHeaders.length).setValues(rows);
+    }
+    summarySheet.setFrozenRows(1);
+  } catch (e) {
+    Logger.log('Error updating PS Summary sheet: ' + e.message);
+  }
+}
+
+/* ── Portal: Login ── */
 function handlePortalLoginAction_(param) {
   var regId = String(param.regId || param.registrationId || '').trim().replace(/^'/, '');
   var password = String(param.password || '').trim();
@@ -304,9 +387,10 @@ function handlePortalLoginAction_(param) {
   if (!storedPwd) return jsonResponse_({ success: false, message: 'Password not yet set. Contact the organiser.' });
   if (storedPwd !== password) return jsonResponse_({ success: false, message: 'Incorrect password.' });
 
-  // Return full team data
+  // Return full team data & current PS counts
   var teamObj = buildTeamObj_(row, regId);
-  return jsonResponse_({ success: true, team: teamObj });
+  var psMapData = getPSCountsMap_();
+  return jsonResponse_({ success: true, team: teamObj, psCounts: psMapData.counts });
 }
 
 /* ── Portal: Select Problem Statement ── */
@@ -331,7 +415,17 @@ function handleSelectPSAction_(param) {
   if (/^[=+@-]/.test(psValue)) psValue = "'" + psValue;
 
   sheet.getRange(sheetRow, COL_PS_CHOICE).setValue(psValue);
-  return jsonResponse_({ success: true, message: 'Problem Statement choice saved successfully.', psChoice: psValue });
+
+  // Update Summary Sheet tab automatically
+  updatePSSummarySheet_();
+
+  var psMapData = getPSCountsMap_();
+  return jsonResponse_({
+    success: true,
+    message: 'Problem Statement choice saved successfully.',
+    psChoice: psValue,
+    counts: psMapData.counts
+  });
 }
 
 /* ── Portal: Forgot Password — Generate & Email OTP ── */
@@ -637,6 +731,7 @@ function doGet(e) {
       if (act === 'resetpwd')      return handleResetPasswordAction_(e.parameter);
       if (act === 'changepwd')     return handleChangePasswordAction_(e.parameter);
       if (act === 'genpasswords')  return handleGeneratePasswordsAction_(e.parameter);
+      if (act === 'pscounts' || act === 'getpscounts') return handleGetPSCountsAction_();
       if (act === 'submit' || e.parameter.data || e.parameter.teamName) {
         var rawPayload = e.parameter.data || JSON.stringify(e.parameter);
         return handleRegistration_(rawPayload);

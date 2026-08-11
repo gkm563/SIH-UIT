@@ -32,6 +32,9 @@ const PortalApi = (() => {
     changePassword: (regId, oldPassword, newPassword) =>
       get({ action: 'changepwd', regId, oldPassword, newPassword }),
 
+    getPSCounts: () =>
+      get({ action: 'pscounts' }),
+
     generatePasswords: (adminKey) =>
       get({ action: 'genpasswords', adminKey })
   };
