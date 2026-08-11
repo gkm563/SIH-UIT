@@ -287,12 +287,78 @@ function generatePassword_(regId, teamName) {
 }
 
 /* ── Portal: Login ── */
+/* ── Official SIH 2026 Master List of 36 Problem Statements ── */
+var ALL_36_PROBLEM_STATEMENTS = [
+  { id: 'PS-01', title: 'AI-Based Crop Disease & Pest Detection', domain: 'Agriculture' },
+  { id: 'PS-02', title: 'Smart Irrigation & Soil Health Monitor', domain: 'Agriculture' },
+  { id: 'PS-03', title: 'AI Symptom Checker & Teleconsultation Queue for Rural Clinics', domain: 'Healthcare' },
+  { id: 'PS-04', title: 'Smart ICU Vital Monitor & Early Warning System', domain: 'Healthcare' },
+  { id: 'PS-05', title: 'AI Personalized Learning Assistant for Multi-Grade Classrooms', domain: 'Education' },
+  { id: 'PS-06', title: 'Smart Lab & Attendance Automation System', domain: 'Education' },
+  { id: 'PS-07', title: 'SOS & Real-Time Companion Tracking App for Women', domain: 'Women Safety' },
+  { id: 'PS-08', title: 'AI Workplace Harassment Incident Reporting & Audit Portal', domain: 'Women Safety' },
+  { id: 'PS-09', title: 'Early Flood Warning & Evacuation Route Optimizer', domain: 'Disaster Management' },
+  { id: 'PS-10', title: 'Post-Disaster Victim Search & Relief Distribution App', domain: 'Disaster Management' },
+  { id: 'PS-11', title: 'Smart Adaptive Traffic Light Controller', domain: 'Smart City' },
+  { id: 'PS-12', title: 'IoT Municipal Waste Bin & Collection Route Optimizer', domain: 'Smart City' },
+  { id: 'PS-13', title: 'Public Transport Vehicle Tracking & Crowd Estimator', domain: 'Transportation' },
+  { id: 'PS-14', title: 'Smart EV Charging Station Finder & Slot Booking', domain: 'Transportation' },
+  { id: 'PS-15', title: 'AI Waste Segregation Classifier for Material Recovery', domain: 'Waste Management' },
+  { id: 'PS-16', title: 'E-Waste Pickup & Recycling Credits Marketplace', domain: 'Waste Management' },
+  { id: 'PS-17', title: 'Smart Water Meter & Leakage Detector for Apartments', domain: 'Water Resources' },
+  { id: 'PS-18', title: 'Rainwater Harvesting Feasibility & Quality Calculator', domain: 'Water Resources' },
+  { id: 'PS-19', title: 'Rooftop Solar Output Estimator & Net-Metering Portal', domain: 'Renewable Energy' },
+  { id: 'PS-20', title: 'Microgrid Energy Trading & Load Balancer', domain: 'Renewable Energy' },
+  { id: 'PS-21', title: 'Micro-Loan & Credit Scoring App for Street Vendors', domain: 'Financial Inclusion' },
+  { id: 'PS-22', title: 'AI Financial Literacy & Budget Planner in Vernaculars', domain: 'Financial Inclusion' },
+  { id: 'PS-23', title: 'Farm-to-Buyer Direct Marketplace & Price Predictor', domain: 'AgriTech / MSME' },
+  { id: 'PS-24', title: 'MSME Inventory & Cash-Flow Management Dashboard', domain: 'AgriTech / MSME' },
+  { id: 'PS-25', title: 'Phishing & Fake Govt Scheme Site Classifier', domain: 'Cybersecurity' },
+  { id: 'PS-26', title: 'Student Digital Footprint & Data Privacy Shield', domain: 'Cybersecurity' },
+  { id: 'PS-27', title: 'Voice-Guided Navigation & Obstacle Alert for Visually Impaired', domain: 'Assistive Tech' },
+  { id: 'PS-28', title: 'Real-Time Indian Sign Language (ISL) Translator', domain: 'Assistive Tech' },
+  { id: 'PS-29', title: 'AR Heritage Site Guide & Cultural Audio Tour App', domain: 'Tourism & Culture' },
+  { id: 'PS-30', title: 'Local Artisan Marketplace with Authenticity Verification', domain: 'Tourism & Culture' },
+  { id: 'PS-31', title: 'Public Grievance Redressal Portal with AI Categorizer', domain: 'Governance' },
+  { id: 'PS-32', title: 'Blockchain Certificate Verification & Anti-Forgery Portal', domain: 'Governance' },
+  { id: 'PS-33', title: 'Industrial Air & Water Pollution Monitoring Dashboard', domain: 'Environment' },
+  { id: 'PS-34', title: 'Bio-Medical Waste Segregation & QR Tracking', domain: 'Waste Management' },
+  { id: 'PS-35', title: 'AI Solar PV Panel Defect & Dust Diagnostics', domain: 'Renewable Energy' },
+  { id: 'PS-36', title: 'Smart EV Charging & Microgrid Load Balancer', domain: 'Renewable Energy' }
+];
+
+/* ── Extract and normalize PS ID from any string format ── */
+function extractCleanPSId_(psVal) {
+  if (!psVal) return '';
+  var str = String(psVal).trim();
+  // Match PS-01 to PS-36
+  var mPs = /^(PS-?\d+)/i.exec(str);
+  if (mPs) {
+    var num = parseInt(mPs[1].replace(/[^0-9]/g, ''), 10);
+    return 'PS-' + (num < 10 ? '0' + num : num);
+  }
+  // Match SIH1527 pattern
+  var mSih = /^(SIH\d+|\d{4})/i.exec(str);
+  if (mSih) {
+    var val = mSih[1].toUpperCase();
+    return /^SIH/i.test(val) ? val : 'SIH' + val;
+  }
+  return str.split('—')[0].trim().toUpperCase();
+}
+
 /* ── Get PS Selection Counts Map & Team Selections ── */
 function getPSCountsMap_() {
   var sheet = getOrCreateSheet_();
   var lastRow = sheet.getLastRow();
   var counts = {};
   var teamSelections = {};
+
+  // Initialize all 36 Problem Statements with 0
+  for (var k = 0; k < ALL_36_PROBLEM_STATEMENTS.length; k++) {
+    var pId = ALL_36_PROBLEM_STATEMENTS[k].id;
+    counts[pId] = 0;
+    teamSelections[pId] = [];
+  }
 
   if (lastRow >= 2) {
     var data = sheet.getRange(2, 1, lastRow - 1, Math.max(COL_PS_CHOICE, sheet.getLastColumn())).getValues();
@@ -303,13 +369,12 @@ function getPSCountsMap_() {
       var psVal = String(row[COL_PS_CHOICE - 1] || '').trim().replace(/^'/, '');
 
       if (psVal) {
-        var match = /^(SIH\d+|\d+)/i.exec(psVal);
-        var psId = match ? match[1].toUpperCase() : psVal.split('—')[0].trim().toUpperCase();
-        if (!/^SIH/i.test(psId) && /^\d+$/.test(psId)) psId = 'SIH' + psId;
-
-        counts[psId] = (counts[psId] || 0) + 1;
-        if (!teamSelections[psId]) teamSelections[psId] = [];
-        teamSelections[psId].push(regId + ' (' + tName + ')');
+        var cleanId = extractCleanPSId_(psVal);
+        if (cleanId) {
+          counts[cleanId] = (counts[cleanId] || 0) + 1;
+          if (!teamSelections[cleanId]) teamSelections[cleanId] = [];
+          teamSelections[cleanId].push(regId + ' (' + tName + ')');
+        }
       }
     }
   }
@@ -339,6 +404,8 @@ function updatePSSummarySheet_() {
 
     var summaryHeaders = [
       'PS ID',
+      'Problem Statement Title',
+      'Domain',
       'Total Teams Selected',
       'Selected Teams List'
     ];
@@ -350,20 +417,31 @@ function updatePSSummarySheet_() {
       .setFontColor('#ffffff');
 
     var rows = [];
-    for (var k in countsMap) {
+    for (var k = 0; k < ALL_36_PROBLEM_STATEMENTS.length; k++) {
+      var psObj = ALL_36_PROBLEM_STATEMENTS[k];
+      var count = countsMap[psObj.id] || 0;
+      var teamsList = (teamSelections[psObj.id] || []).join(', ');
+
       rows.push([
-        k,
-        countsMap[k],
-        (teamSelections[k] || []).join(', ')
+        psObj.id,
+        psObj.title,
+        psObj.domain,
+        count,
+        teamsList || 'None'
       ]);
     }
 
-    rows.sort(function(a, b) { return b[1] - a[1]; }); // Sort by count descending
+    rows.sort(function(a, b) { return b[3] - a[3]; }); // Sort by count descending
 
     if (rows.length > 0) {
       summarySheet.getRange(2, 1, rows.length, summaryHeaders.length).setValues(rows);
     }
     summarySheet.setFrozenRows(1);
+    summarySheet.setColumnWidth(1, 100);
+    summarySheet.setColumnWidth(2, 340);
+    summarySheet.setColumnWidth(3, 160);
+    summarySheet.setColumnWidth(4, 160);
+    summarySheet.setColumnWidth(5, 380);
   } catch (e) {
     Logger.log('Error updating PS Summary sheet: ' + e.message);
   }
