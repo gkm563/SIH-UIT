@@ -373,7 +373,7 @@ function handleForgotOTPAction_(param) {
   }
 }
 
-/* ── Portal: Reset Password (via OTP) ── */
+/* ── Portal: Reset Password (via OTP - Strict Single-Use Protection) ── */
 function handleResetPasswordAction_(param) {
   var regId   = String(param.regId || '').trim().replace(/^'/, '');
   var otp     = String(param.otp || '').trim();
@@ -392,19 +392,32 @@ function handleResetPasswordAction_(param) {
   var storedOtp    = String(row[COL_RESET_OTP - 1] || '').trim().replace(/^'/, '');
   var storedExpiry = Number(row[COL_OTP_EXPIRY - 1] || 0);
 
-  if (!storedOtp || storedOtp !== otp) return jsonResponse_({ success: false, message: 'Invalid or incorrect OTP code.' });
-  if (Date.now() > storedExpiry) return jsonResponse_({ success: false, message: 'OTP code has expired. Please request a new OTP.' });
+  // Single-use OTP check
+  if (!storedOtp || storedOtp === 'USED' || storedOtp !== otp) {
+    return jsonResponse_({ success: false, message: 'Invalid or already used OTP. Please request a new OTP.' });
+  }
+
+  // OTP expiry check (10 minutes)
+  if (Date.now() > storedExpiry) {
+    sheet.getRange(sheetRow, COL_RESET_OTP).setValue('EXPIRED');
+    sheet.getRange(sheetRow, COL_OTP_EXPIRY).setValue('');
+    return jsonResponse_({ success: false, message: 'OTP code has expired. Please request a new OTP.' });
+  }
 
   var pwdValue = newPwd;
   if (/^[=+@-]/.test(pwdValue)) pwdValue = "'" + pwdValue;
 
-  sheet.getRange(sheetRow, COL_PASSWORD).setValue(pwdValue);
-  sheet.getRange(sheetRow, COL_RESET_OTP).setValue('');
+  // 1. Update Password in Column BJ (62) with single quote for text format
+  sheet.getRange(sheetRow, COL_PASSWORD).setValue("'" + pwdValue);
+
+  // 2. IMMEDIATELY MARK OTP AS USED & CLEAR EXPIRY in Columns BL & BM (64 & 65)
+  sheet.getRange(sheetRow, COL_RESET_OTP).setValue('USED');
   sheet.getRange(sheetRow, COL_OTP_EXPIRY).setValue('');
-  return jsonResponse_({ success: true, message: 'Password reset successfully. You can now log in with your new password.' });
+
+  return jsonResponse_({ success: true, message: 'Password reset successfully in sheet records. You can now log in with your new password.' });
 }
 
-/* ── Portal: Change Password (from dashboard) ── */
+/* ── Portal: Change Password (from dashboard - Sync to Sheet) ── */
 function handleChangePasswordAction_(param) {
   var regId   = String(param.regId || '').trim().replace(/^'/, '');
   var oldPwd  = String(param.oldPassword || '').trim();
@@ -423,7 +436,13 @@ function handleChangePasswordAction_(param) {
   var pwdValue = newPwd;
   if (/^[=+@-]/.test(pwdValue)) pwdValue = "'" + pwdValue;
 
-  sheet.getRange(sheetRow, COL_PASSWORD).setValue(pwdValue);
+  // 1. Update Password in Column BJ (62) with single quote for text format
+  sheet.getRange(sheetRow, COL_PASSWORD).setValue("'" + pwdValue);
+
+  // 2. Clear any lingering OTPs
+  sheet.getRange(sheetRow, COL_RESET_OTP).setValue('');
+  sheet.getRange(sheetRow, COL_OTP_EXPIRY).setValue('');
+
   return jsonResponse_({ success: true, message: 'Password updated successfully in spreadsheet records.' });
 }
 
