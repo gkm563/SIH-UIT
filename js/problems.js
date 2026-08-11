@@ -252,53 +252,80 @@
     document.body.style.overflow = '';
   }
 
+  /* ---------- Debounce Helper ---------- */
+  function debounce(fn, wait = 120) {
+    let timeout;
+    return function (...args) {
+      clearTimeout(timeout);
+      timeout = setTimeout(() => fn.apply(this, args), wait);
+    };
+  }
+
   /* ---------- Event Listeners ---------- */
 
   function bindEvents() {
-    // Search input
-    els.search.addEventListener('input', (e) => {
-      state.search = e.target.value;
-      renderGrid();
-    });
+    // Search input debounced for fast desktop typing
+    if (els.search) {
+      els.search.addEventListener('input', debounce((e) => {
+        state.search = e.target.value;
+        renderGrid();
+      }, 120));
+    }
 
     // Type filter buttons
-    els.typeGroup.querySelectorAll('.type-btn').forEach((btn) => {
-      btn.addEventListener('click', () => {
-        els.typeGroup.querySelectorAll('.type-btn').forEach((b) => b.classList.remove('active'));
-        btn.classList.add('active');
-        state.type = btn.dataset.type;
-        renderGrid();
+    if (els.typeGroup) {
+      els.typeGroup.querySelectorAll('.type-btn').forEach((btn) => {
+        btn.addEventListener('click', () => {
+          els.typeGroup.querySelectorAll('.type-btn').forEach((b) => b.classList.remove('active'));
+          btn.classList.add('active');
+          state.type = btn.dataset.type;
+          renderGrid();
+        });
       });
-    });
+    }
 
     // Difficulty filter buttons
-    els.difficultyGroup.querySelectorAll('.diff-btn').forEach((btn) => {
-      btn.addEventListener('click', () => {
-        els.difficultyGroup.querySelectorAll('.diff-btn').forEach((b) => b.classList.remove('active'));
-        btn.classList.add('active');
-        state.difficulty = btn.dataset.diff;
-        renderGrid();
+    if (els.difficultyGroup) {
+      els.difficultyGroup.querySelectorAll('.diff-btn').forEach((btn) => {
+        btn.addEventListener('click', () => {
+          els.difficultyGroup.querySelectorAll('.diff-btn').forEach((b) => b.classList.remove('active'));
+          btn.classList.add('active');
+          state.difficulty = btn.dataset.diff;
+          renderGrid();
+        });
       });
-    });
+    }
 
     // Domain chips delegation
-    els.domainChipsContainer.addEventListener('click', (e) => {
-      const chip = e.target.closest('.domain-chip');
-      if (!chip) return;
-      const domain = chip.dataset.domain;
+    if (els.domainChipsContainer) {
+      els.domainChipsContainer.addEventListener('click', (e) => {
+        const chip = e.target.closest('.domain-chip');
+        if (!chip) return;
+        const domain = chip.dataset.domain;
 
-      if (domain === 'ALL') {
-        state.selectedDomains.clear();
-      } else {
-        if (state.selectedDomains.has(domain)) {
-          state.selectedDomains.delete(domain);
+        if (domain === 'ALL') {
+          state.selectedDomains.clear();
         } else {
-          state.selectedDomains.add(domain);
+          if (state.selectedDomains.has(domain)) {
+            state.selectedDomains.delete(domain);
+          } else {
+            state.selectedDomains.add(domain);
+          }
         }
-      }
-      renderDomainChips();
-      renderGrid();
-    });
+        renderDomainChips();
+        renderGrid();
+      });
+    }
+
+    // Delegation on PS Grid for Card clicks
+    if (els.grid) {
+      els.grid.addEventListener('click', (e) => {
+        const card = e.target.closest('.ps-card');
+        if (card && card.dataset.psId) {
+          openDetailModal(card.dataset.psId);
+        }
+      });
+    }
 
     // Reset filters
     const resetAll = () => {
@@ -306,17 +333,21 @@
       state.type = 'All';
       state.difficulty = 'All';
       state.selectedDomains.clear();
-      els.search.value = '';
+      if (els.search) els.search.value = '';
 
-      els.typeGroup.querySelectorAll('.type-btn').forEach((b) => b.classList.toggle('active', b.dataset.type === 'All'));
-      els.difficultyGroup.querySelectorAll('.diff-btn').forEach((b) => b.classList.toggle('active', b.dataset.diff === 'All'));
+      if (els.typeGroup) {
+        els.typeGroup.querySelectorAll('.type-btn').forEach((b) => b.classList.toggle('active', b.dataset.type === 'All'));
+      }
+      if (els.difficultyGroup) {
+        els.difficultyGroup.querySelectorAll('.diff-btn').forEach((b) => b.classList.toggle('active', b.dataset.diff === 'All'));
+      }
 
       renderDomainChips();
       renderGrid();
     };
 
-    els.resetBtn.addEventListener('click', resetAll);
-    els.clearEmptyBtn.addEventListener('click', resetAll);
+    if (els.resetBtn) els.resetBtn.addEventListener('click', resetAll);
+    if (els.clearEmptyBtn) els.clearEmptyBtn.addEventListener('click', resetAll);
 
     // Modal Close
     els.modalCloseBtn.addEventListener('click', closeDetailModal);

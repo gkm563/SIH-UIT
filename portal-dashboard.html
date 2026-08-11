@@ -606,8 +606,19 @@
       }
     });
 
-    ['ps-search','ps-domain','ps-difficulty','ps-type'].forEach(id =>
-      document.getElementById(id).addEventListener('input', renderPS));
+    // Debounced search for instant desktop typing response
+    function debouncePS(fn, wait = 120) {
+      let timeout;
+      return function (...args) {
+        clearTimeout(timeout);
+        timeout = setTimeout(() => fn.apply(this, args), wait);
+      };
+    }
+
+    const debouncedRenderPS = debouncePS(renderPS, 120);
+    document.getElementById('ps-search').addEventListener('input', debouncedRenderPS);
+    ['ps-domain','ps-difficulty','ps-type'].forEach(id =>
+      document.getElementById(id).addEventListener('change', renderPS));
 
     document.getElementById('ps-clear').addEventListener('click', () => {
       document.getElementById('ps-search').value = '';

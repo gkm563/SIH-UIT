@@ -1180,3 +1180,14 @@ body {
   content-visibility: auto;
   contain-intrinsic-size: 1px 160px;
 }
+
+/* Desktop Rendering & Scroll Performance */
+@media (min-width: 1024px) {
+  .site-header {
+    transform: translate3d(0, 0, 0);
+    will-change: transform;
+  }
+  html {
+    text-rendering: optimizeSpeed;
+  }
+}
