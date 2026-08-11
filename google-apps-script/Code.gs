@@ -2437,18 +2437,4 @@ function updateAnalyticsDashboardSheet_() {
     return 'ERROR: ' + err.message;
   }
 }
-d').setBackground('#1e293b').setFontColor('#ffffff');
-    dashSheet.getRange(5, 1, 1, 4).setFontWeight('bold').setBackground('#e2e8f0');
 
-    // Freeze top rows & Auto-fit column widths
-    dashSheet.setColumnWidth(1, 320);
-    dashSheet.setColumnWidth(2, 160);
-    dashSheet.setColumnWidth(3, 160);
-    dashSheet.setColumnWidth(4, 160);
-
-    return 'SUCCESS: Dashboard updated at ' + new Date().toLocaleString();
-  } catch (err) {
-    Logger.log('Dashboard Update Error: ' + err.message);
-    return 'ERROR: ' + err.message;
-  }
-}
