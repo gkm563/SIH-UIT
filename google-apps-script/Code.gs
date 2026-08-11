@@ -2078,6 +2078,43 @@ function cleanSpamRows() {
 }
 
 /**
+ * TEST TOOL: Select "testTeamLoginDirectly" in Apps Script Editor dropdown -> Click Run!
+ * This tests password comparison directly on your sheet.
+ */
+function testTeamLoginDirectly() {
+  var testRegId = 'SIH2026-0563'; // Change to any team ID
+  var testPwd   = '!UIT2W$f*4wA'; // Change to password sent in email
+
+  var sheet = getOrCreateSheet_();
+  var idx = findTeamRow_(sheet, testRegId);
+  Logger.log('=== TESTING LOGIN FOR: ' + testRegId + ' ===');
+  Logger.log('Row Index in Sheet: ' + (idx >= 0 ? (idx + 2) : 'NOT FOUND'));
+
+  if (idx < 0) {
+    Logger.log('ERROR: Registration ID ' + testRegId + ' not found in sheet!');
+    return;
+  }
+
+  var sheetRow = idx + 2;
+  var pwdCol = getPortalPasswordColIndex_(sheet);
+  var cellValue = sheet.getRange(sheetRow, pwdCol).getValue();
+
+  Logger.log('Cell Value from Sheet (Column ' + pwdCol + '): "' + cellValue + '"');
+  Logger.log('Input Password from Test: "' + testPwd + '"');
+
+  var cleanSheetPwd = String(cellValue || '').replace(/^'/, '').trim();
+  var cleanInputPwd = String(testPwd || '').replace(/^'/, '').trim();
+
+  Logger.log('Cleaned Sheet Pwd : "' + cleanSheetPwd + '"');
+  Logger.log('Cleaned Input Pwd : "' + cleanInputPwd + '"');
+  Logger.log('Exact Match?       : ' + (cleanSheetPwd === cleanInputPwd));
+  Logger.log('Case-Insensitive?  : ' + (cleanSheetPwd.toLowerCase() === cleanInputPwd.toLowerCase()));
+
+  var res = handlePortalLoginAction_({ regId: testRegId, password: testPwd });
+  Logger.log('Web App Login Result: ' + res.getContent());
+}
+
+/**
  * ADMIN TOOL: Clean leading single quotes from all password cells in Column BJ.
  */
 function cleanExistingSheetPasswords() {
@@ -2092,8 +2129,8 @@ function cleanExistingSheetPasswords() {
 
   for (var i = 0; i < values.length; i++) {
     var raw = String(values[i][0] || '').trim();
-    if (raw.indexOf("'") === 0 || raw.startsWith("'")) {
-      var cleaned = raw.replace(/^'/, '').trim();
+    var cleaned = raw.replace(/^'/, '').trim();
+    if (cleaned !== raw || raw.indexOf("'") === 0) {
       var cell = sheet.getRange(i + 2, pwdCol);
       cell.setNumberFormat('@');
       cell.setValue(cleaned);
