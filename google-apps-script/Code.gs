@@ -462,8 +462,28 @@ function handlePortalLoginAction_(param) {
   var row = sheet.getRange(sheetRow, 1, 1, lastCol).getValues()[0];
 
   var storedPwd = String(row[COL_PASSWORD - 1] || '').replace(/^'/, '').trim();
-  if (!storedPwd) return jsonResponse_({ success: false, message: 'Password not yet set. Contact the organiser.' });
-  if (storedPwd !== password) return jsonResponse_({ success: false, message: 'Incorrect password.' });
+
+  // If password is not yet set in Column BJ (62), auto-generate & set it immediately!
+  if (!storedPwd) {
+    var teamName = String(row[2] || '').trim().replace(/^'/, '');
+    var leaderEmail = String(row[11] || '').trim();
+    storedPwd = generatePassword_(regId, teamName);
+    sheet.getRange(sheetRow, COL_PASSWORD).setValue("'" + storedPwd);
+    SpreadsheetApp.flush();
+
+    try {
+      if (leaderEmail && leaderEmail.includes('@')) {
+        sendCredentialsEmailToTeam_(sheet, sheetRow, regId, teamName, leaderEmail, storedPwd);
+      }
+    } catch(e) {}
+  }
+
+  if (storedPwd !== password) {
+    return jsonResponse_({
+      success: false,
+      message: 'Incorrect password. If you forgot your password, click "Forgot Password?" below to reset it via OTP sent to leader\'s email.'
+    });
+  }
 
   // Return full team data & current PS counts
   var teamObj = buildTeamObj_(row, regId);
