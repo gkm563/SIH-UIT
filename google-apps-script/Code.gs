@@ -222,13 +222,311 @@ function handleGetTeamsAction_() {
   });
 }
 
+
+// ═══════════════════════════════════════════════════════════
+//  PORTAL COLUMN INDICES (1-based for getRange, 0-based for row[])
+//  BJ = 62 → row[61] = Portal Password
+//  BK = 63 → row[62] = PS Choice
+//  BL = 64 → row[63] = Reset OTP
+//  BM = 65 → row[64] = OTP Expiry (epoch ms)
+// ═══════════════════════════════════════════════════════════
+var COL_PASSWORD   = 62;
+var COL_PS_CHOICE  = 63;
+var COL_RESET_OTP  = 64;
+var COL_OTP_EXPIRY = 65;
+
+/* ── Find row index (0-based among data rows) for a regId ── */
+function findTeamRow_(sheet, regId) {
+  var lastRow = sheet.getLastRow();
+  if (lastRow < 2) return -1;
+  var ids = sheet.getRange(2, 2, lastRow - 1, 1).getValues();
+  for (var i = 0; i < ids.length; i++) {
+    var cur = String(ids[i][0] || '').trim().replace(/^'/, '');
+    if (cur.toLowerCase() === regId.toLowerCase() ||
+        cur.replace(/^sih2026-?/i, '') === regId.replace(/^sih2026-?/i, '')) {
+      return i; // 0-based → actual sheet row = i+2
+    }
+  }
+  return -1;
+}
+
+/* ── Generate a secure password for a team ── */
+function generatePassword_(regId, teamName) {
+  var namePart = (teamName || '').replace(/[^a-zA-Z]/g, '').substring(0, 3).toUpperCase();
+  if (namePart.length < 3) namePart = (namePart + 'SIH').substring(0, 3);
+  var idPart = regId.replace(/^sih2026-?/i, '').replace(/^'/, '');
+  idPart = ('0000' + idPart).slice(-4);
+  // Add a random 2-char suffix for extra security
+  var chars = 'ABCDEFGHJKLMNPQRSTUVWXYZ23456789';
+  var rand = chars[Math.floor(Math.random() * chars.length)] + chars[Math.floor(Math.random() * chars.length)];
+  return '@SIH' + namePart + idPart + rand;
+}
+
+/* ── Portal: Login ── */
+function handlePortalLoginAction_(param) {
+  var regId = String(param.regId || param.registrationId || '').trim().replace(/^'/, '');
+  var password = String(param.password || '').trim();
+  if (!regId || !password) return jsonResponse_({ success: false, message: 'Registration ID and password are required.' });
+
+  var sheet = getOrCreateSheet_();
+  var idx = findTeamRow_(sheet, regId);
+  if (idx < 0) return jsonResponse_({ success: false, message: 'Registration ID not found.' });
+
+  var sheetRow = idx + 2;
+  var lastCol = Math.max(COL_OTP_EXPIRY, sheet.getLastColumn());
+  var row = sheet.getRange(sheetRow, 1, 1, lastCol).getValues()[0];
+
+  var storedPwd = String(row[COL_PASSWORD - 1] || '').trim();
+  if (!storedPwd) return jsonResponse_({ success: false, message: 'Password not yet set. Contact the organiser.' });
+  if (storedPwd !== password) return jsonResponse_({ success: false, message: 'Incorrect password.' });
+
+  // Return full team data
+  var teamObj = buildTeamObj_(row, regId);
+  return jsonResponse_({ success: true, team: teamObj });
+}
+
+/* ── Portal: Select Problem Statement ── */
+function handleSelectPSAction_(param) {
+  var regId   = String(param.regId || '').trim();
+  var psId    = String(param.psId || '').trim();
+  var psTitle = String(param.psTitle || '').trim();
+  var password= String(param.password || '').trim();
+  if (!regId || !psId) return jsonResponse_({ success: false, message: 'regId and psId are required.' });
+
+  var sheet = getOrCreateSheet_();
+  var idx = findTeamRow_(sheet, regId);
+  if (idx < 0) return jsonResponse_({ success: false, message: 'Team not found.' });
+
+  var sheetRow = idx + 2;
+  // Verify password
+  var storedPwd = String(sheet.getRange(sheetRow, COL_PASSWORD).getValue() || '').trim();
+  if (storedPwd && password !== storedPwd) return jsonResponse_({ success: false, message: 'Unauthorized.' });
+
+  var psValue = psId + (psTitle ? ' — ' + psTitle : '');
+  sheet.getRange(sheetRow, COL_PS_CHOICE).setValue(psValue);
+  return jsonResponse_({ success: true, message: 'PS choice saved.', psChoice: psValue });
+}
+
+/* ── Portal: Forgot Password — Generate & Email OTP ── */
+function handleForgotOTPAction_(param) {
+  var regId = String(param.regId || '').trim();
+  if (!regId) return jsonResponse_({ success: false, message: 'Registration ID is required.' });
+
+  var sheet = getOrCreateSheet_();
+  var idx = findTeamRow_(sheet, regId);
+  if (idx < 0) return jsonResponse_({ success: false, message: 'Registration ID not found.' });
+
+  var sheetRow = idx + 2;
+  var lastCol = Math.max(COL_OTP_EXPIRY, sheet.getLastColumn());
+  var row = sheet.getRange(sheetRow, 1, 1, lastCol).getValues()[0];
+
+  var leaderEmail = String(row[11] || '').trim();
+  var teamName    = String(row[2]  || '').trim().replace(/^'/, '');
+  if (!leaderEmail || !leaderEmail.includes('@')) {
+    return jsonResponse_({ success: false, message: 'Team leader email not found in records.' });
+  }
+
+  // Generate 6-digit OTP
+  var otp = String(Math.floor(100000 + Math.random() * 900000));
+  var expiry = Date.now() + (10 * 60 * 1000); // 10 minutes
+
+  sheet.getRange(sheetRow, COL_RESET_OTP).setValue(otp);
+  sheet.getRange(sheetRow, COL_OTP_EXPIRY).setValue(expiry);
+
+  // Send email
+  try {
+    MailApp.sendEmail({
+      to: leaderEmail,
+      subject: 'SIH 2026 Portal — Password Reset OTP',
+      htmlBody:
+        '<div style="font-family:Arial,sans-serif;max-width:480px;margin:0 auto;border:1px solid #e2e8f0;border-radius:12px;overflow:hidden">' +
+        '<div style="background:#1a73e8;padding:20px 24px"><h2 style="color:#fff;margin:0;font-size:18px">SIH 2026 · UIT Prayagraj</h2><p style="color:#cfe8ff;margin:4px 0 0;font-size:13px">Password Reset Request</p></div>' +
+        '<div style="padding:24px">' +
+        '<p style="margin:0 0 12px;font-size:14px">Hello <strong>' + teamName + '</strong>,</p>' +
+        '<p style="margin:0 0 16px;font-size:14px">Your password reset OTP is:</p>' +
+        '<div style="background:#f0f7ff;border:2px dashed #1a73e8;border-radius:10px;text-align:center;padding:20px;margin-bottom:16px">' +
+        '<span style="font-size:36px;font-weight:900;letter-spacing:10px;color:#1a73e8">' + otp + '</span>' +
+        '</div>' +
+        '<p style="font-size:12px;color:#64748b;margin:0">This OTP is valid for <strong>10 minutes</strong>. Do not share it with anyone.</p>' +
+        '<p style="font-size:12px;color:#64748b;margin:8px 0 0">If you did not request this, ignore this email.</p>' +
+        '</div></div>'
+    });
+    return jsonResponse_({ success: true, message: 'OTP sent to ' + leaderEmail.replace(/(.{2}).*@/, '$1***@'), maskedEmail: leaderEmail.replace(/(.{2})(.*)(@.*)/, function(_,a,b,c){return a+b.replace(/./g,'*')+c;}) });
+  } catch (e) {
+    return jsonResponse_({ success: false, message: 'Failed to send email: ' + e.message });
+  }
+}
+
+/* ── Portal: Reset Password (via OTP) ── */
+function handleResetPasswordAction_(param) {
+  var regId   = String(param.regId || '').trim();
+  var otp     = String(param.otp || '').trim();
+  var newPwd  = String(param.newPassword || '').trim();
+  if (!regId || !otp || !newPwd) return jsonResponse_({ success: false, message: 'regId, otp, and newPassword are required.' });
+  if (newPwd.length < 6) return jsonResponse_({ success: false, message: 'Password must be at least 6 characters.' });
+
+  var sheet = getOrCreateSheet_();
+  var idx = findTeamRow_(sheet, regId);
+  if (idx < 0) return jsonResponse_({ success: false, message: 'Registration ID not found.' });
+
+  var sheetRow = idx + 2;
+  var lastCol = Math.max(COL_OTP_EXPIRY, sheet.getLastColumn());
+  var row = sheet.getRange(sheetRow, 1, 1, lastCol).getValues()[0];
+
+  var storedOtp    = String(row[COL_RESET_OTP - 1] || '').trim();
+  var storedExpiry = Number(row[COL_OTP_EXPIRY - 1] || 0);
+
+  if (storedOtp !== otp) return jsonResponse_({ success: false, message: 'Invalid OTP.' });
+  if (Date.now() > storedExpiry) return jsonResponse_({ success: false, message: 'OTP has expired. Please request a new one.' });
+
+  sheet.getRange(sheetRow, COL_PASSWORD).setValue(newPwd);
+  sheet.getRange(sheetRow, COL_RESET_OTP).setValue('');
+  sheet.getRange(sheetRow, COL_OTP_EXPIRY).setValue('');
+  return jsonResponse_({ success: true, message: 'Password reset successfully.' });
+}
+
+/* ── Portal: Change Password (from dashboard) ── */
+function handleChangePasswordAction_(param) {
+  var regId   = String(param.regId || '').trim();
+  var oldPwd  = String(param.oldPassword || '').trim();
+  var newPwd  = String(param.newPassword || '').trim();
+  if (!regId || !oldPwd || !newPwd) return jsonResponse_({ success: false, message: 'regId, oldPassword, and newPassword are required.' });
+  if (newPwd.length < 6) return jsonResponse_({ success: false, message: 'New password must be at least 6 characters.' });
+
+  var sheet = getOrCreateSheet_();
+  var idx = findTeamRow_(sheet, regId);
+  if (idx < 0) return jsonResponse_({ success: false, message: 'Registration ID not found.' });
+
+  var sheetRow = idx + 2;
+  var storedPwd = String(sheet.getRange(sheetRow, COL_PASSWORD).getValue() || '').trim();
+  if (storedPwd !== oldPwd) return jsonResponse_({ success: false, message: 'Current password is incorrect.' });
+
+  sheet.getRange(sheetRow, COL_PASSWORD).setValue(newPwd);
+  return jsonResponse_({ success: true, message: 'Password changed successfully.' });
+}
+
+/* ── Admin: Generate & Email Passwords for ALL Teams ── */
+function handleGeneratePasswordsAction_(param) {
+  var adminKey = String(param.adminKey || '').trim();
+  if (adminKey !== 'SIH2026ADMIN') return jsonResponse_({ success: false, message: 'Unauthorized.' });
+
+  var sheet = getOrCreateSheet_();
+  var lastRow = sheet.getLastRow();
+  if (lastRow < 2) return jsonResponse_({ success: false, message: 'No teams found.' });
+
+  var lastCol = Math.max(COL_OTP_EXPIRY, sheet.getLastColumn());
+  var rows = sheet.getRange(2, 1, lastRow - 1, lastCol).getValues();
+
+  // Ensure headers exist for new columns
+  try {
+    if (!sheet.getRange(1, COL_PASSWORD).getValue()) sheet.getRange(1, COL_PASSWORD).setValue('Portal Password');
+    if (!sheet.getRange(1, COL_PS_CHOICE).getValue())  sheet.getRange(1, COL_PS_CHOICE).setValue('PS Choice');
+    if (!sheet.getRange(1, COL_RESET_OTP).getValue())  sheet.getRange(1, COL_RESET_OTP).setValue('Reset OTP');
+    if (!sheet.getRange(1, COL_OTP_EXPIRY).getValue()) sheet.getRange(1, COL_OTP_EXPIRY).setValue('OTP Expiry');
+  } catch(e) {}
+
+  var sent = 0, skipped = 0, errors = [];
+  for (var i = 0; i < rows.length; i++) {
+    var row = rows[i];
+    var regId  = String(row[1] || '').trim().replace(/^'/, '');
+    var tName  = String(row[2] || '').trim().replace(/^'/, '');
+    var email  = String(row[11] || '').trim();
+    if (!regId || !tName) { skipped++; continue; }
+
+    var sheetRow = i + 2;
+    var existingPwd = String(row[COL_PASSWORD - 1] || '').trim();
+    var pwd = existingPwd || generatePassword_(regId, tName);
+
+    // Always write password to sheet
+    sheet.getRange(sheetRow, COL_PASSWORD).setValue(pwd);
+
+    // Send email if valid email
+    if (!email || !email.includes('@')) { skipped++; continue; }
+    try {
+      MailApp.sendEmail({
+        to: email,
+        subject: 'SIH 2026 Portal — Your Login Credentials',
+        htmlBody:
+          '<div style="font-family:Arial,sans-serif;max-width:500px;margin:0 auto;border:1px solid #e2e8f0;border-radius:12px;overflow:hidden">' +
+          '<div style="background:linear-gradient(135deg,#1a73e8,#0d47a1);padding:24px">' +
+          '<h2 style="color:#fff;margin:0;font-size:20px">🎉 SIH 2026 Portal Access</h2>' +
+          '<p style="color:#cfe8ff;margin:6px 0 0;font-size:13px">United Institute of Technology, Prayagraj</p>' +
+          '</div>' +
+          '<div style="padding:24px">' +
+          '<p style="font-size:15px;margin:0 0 16px">Hello <strong>' + tName + '</strong>! Your team portal login credentials are below.</p>' +
+          '<table style="width:100%;border-collapse:collapse;background:#f8fafc;border-radius:8px;overflow:hidden;border:1px solid #e2e8f0">' +
+          '<tr><td style="padding:12px 16px;font-size:13px;color:#64748b;width:40%">Registration ID</td><td style="padding:12px 16px;font-size:14px;font-weight:700;color:#1e293b">' + regId + '</td></tr>' +
+          '<tr style="border-top:1px solid #e2e8f0"><td style="padding:12px 16px;font-size:13px;color:#64748b">Password</td><td style="padding:12px 16px;font-size:18px;font-weight:900;color:#1a73e8;letter-spacing:2px">' + pwd + '</td></tr>' +
+          '</table>' +
+          '<div style="margin:16px 0;padding:12px 16px;background:#fff3cd;border:1px solid #ffc107;border-radius:8px">' +
+          '<p style="margin:0;font-size:12px;color:#856404">⚠️ <strong>Important:</strong> You can change your password after logging in. Do not share your credentials.</p>' +
+          '</div>' +
+          '<a href="https://sih-uit.vercel.app/portal.html" style="display:block;text-align:center;background:#1a73e8;color:#fff;text-decoration:none;padding:14px;border-radius:8px;font-weight:700;font-size:14px">🔐 Login to Portal</a>' +
+          '</div></div>'
+      });
+      sent++;
+    } catch (e) {
+      errors.push(regId + ': ' + e.message);
+      skipped++;
+    }
+    Utilities.sleep(100); // avoid Gmail rate limits
+  }
+  return jsonResponse_({ success: true, message: sent + ' passwords generated & emailed.', sent: sent, skipped: skipped, errors: errors });
+}
+
+/* ── Build team object from a row array ── */
+function buildTeamObj_(row, regId) {
+  var psChoice = String(row[COL_PS_CHOICE - 1] || '').trim();
+  var teamObj = {
+    registrationId: regId,
+    teamName: String(row[2] || '').trim().replace(/^'/, ''),
+    totalMembers: String(row[3] || '').trim(),
+    teamLeaderName: String(row[4] || '').trim(),
+    leaderRollNumber: String(row[5] || '').trim(),
+    leaderEnrollment: String(row[6] || '').trim(),
+    leaderBranch: String(row[7] || '').trim(),
+    leaderYear: String(row[8] || '').trim(),
+    leaderSemester: String(row[9] || '').trim(),
+    leaderGender: String(row[10] || '').trim(),
+    leaderEmail: String(row[11] || '').trim(),
+    leaderMobile: String(row[12] || '').trim(),
+    psChoice: psChoice,
+    confirmedStatus: String(row[59] || '').toLowerCase().includes('confirmed') ? 'Confirmed' : '',
+    teamMembers: []
+  };
+  for (var m = 0; m < 5; m++) {
+    var base = 13 + (m * 9);
+    var mName = String(row[base] || '').trim();
+    if (mName) {
+      teamObj.teamMembers.push({
+        name: mName,
+        rollNumber: String(row[base+1]||'').trim(),
+        enrollment: String(row[base+2]||'').trim(),
+        branch: String(row[base+3]||'').trim(),
+        year: String(row[base+4]||'').trim(),
+        sem: String(row[base+5]||'').trim(),
+        gender: String(row[base+6]||'').trim(),
+        email: String(row[base+7]||'').trim(),
+        mobile: String(row[base+8]||'').trim()
+      });
+    }
+  }
+  return teamObj;
+}
+
 function doGet(e) {
   try {
     if (e && e.parameter) {
       var act = String(e.parameter.action || '').toLowerCase();
-      if (act === 'confirm' || act === 'confirmdata') return handleConfirmAction_(e.parameter);
+      if (act === 'confirm' || act === 'confirmdata')     return handleConfirmAction_(e.parameter);
       if (act === 'report' || act === 'reportcorrection') return handleReportAction_(e.parameter);
       if (act === 'teams' || act === 'getteams' || act === 'verify') return handleGetTeamsAction_();
+      if (act === 'login')         return handlePortalLoginAction_(e.parameter);
+      if (act === 'selectps')      return handleSelectPSAction_(e.parameter);
+      if (act === 'forgototp')     return handleForgotOTPAction_(e.parameter);
+      if (act === 'resetpwd')      return handleResetPasswordAction_(e.parameter);
+      if (act === 'changepwd')     return handleChangePasswordAction_(e.parameter);
+      if (act === 'genpasswords')  return handleGeneratePasswordsAction_(e.parameter);
       if (act === 'submit' || e.parameter.data || e.parameter.teamName) {
         var rawPayload = e.parameter.data || JSON.stringify(e.parameter);
         return handleRegistration_(rawPayload);
@@ -258,6 +556,7 @@ function doGet(e) {
     return jsonResponse_({ success: false, error: err.toString() });
   }
 }
+
 
 /**
  * Accept registration JSON and append a new row.

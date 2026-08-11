@@ -1,0 +1,541 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Team Dashboard | SIH 2026 Portal</title>
+  <meta name="description" content="SIH 2026 Team Dashboard — View your team details and select your Problem Statement." />
+  <link rel="icon" href="assets/united-logo.png" type="image/png" />
+  <script src="https://cdn.tailwindcss.com"></script>
+  <script>tailwind.config={theme:{extend:{colors:{primary:{DEFAULT:'#1a73e8',dark:'#1557b0',light:'#e8f0fe'},united:{DEFAULT:'#2A4B8D'}}}}}</script>
+  <link rel="stylesheet" href="css/styles.css" />
+  <style>
+    @import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&display=swap');
+    body{font-family:'Inter',sans-serif;}
+    .card{box-shadow:0 2px 12px rgba(0,0,0,0.06);}
+    .ps-card{border:2px solid transparent;transition:all .2s;}
+    .ps-card:hover{border-color:#1a73e8;background:#f0f7ff;transform:translateY(-1px);}
+    .ps-card.selected{border-color:#1a73e8;background:#eff6ff;box-shadow:0 0 0 3px rgba(26,115,232,0.15);}
+    .input-field:focus{outline:none;box-shadow:0 0 0 3px rgba(26,115,232,0.15);}
+    .btn-primary{background:linear-gradient(135deg,#1a73e8,#1557b0);}
+    .btn-primary:hover{background:linear-gradient(135deg,#1557b0,#0d3b8e);transform:translateY(-1px);box-shadow:0 6px 20px rgba(26,115,232,0.3);}
+    .btn-primary:active{transform:translateY(0);}
+    @keyframes fadeUp{from{opacity:0;transform:translateY(16px)}to{opacity:1;transform:translateY(0)}}
+    .fade-up{animation:fadeUp 0.4s ease forwards;}
+    .tab-btn{border-bottom:3px solid transparent;transition:all .2s;}
+    .tab-btn.active{border-color:#1a73e8;color:#1a73e8;font-weight:800;}
+    .tab-pane{display:none;}.tab-pane.active{display:block;}
+    .diff-beginner{background:#dcfce7;color:#166534;}
+    .diff-intermediate{background:#fef9c3;color:#854d0e;}
+    .diff-advanced{background:#fce7f3;color:#9d174d;}
+    .type-software{background:#dbeafe;color:#1e40af;}
+    .type-hardware{background:#fff7ed;color:#9a3412;}
+    .type-hybrid{background:#f3e8ff;color:#6b21a8;}
+    ::-webkit-scrollbar{width:4px;height:4px}::-webkit-scrollbar-track{background:#f1f5f9}::-webkit-scrollbar-thumb{background:#cbd5e1;border-radius:4px}
+    @media(max-width:640px){.member-table td,th{padding:8px 10px!important;font-size:11px!important;}}
+  </style>
+</head>
+<body class="bg-slate-50 min-h-screen flex flex-col antialiased">
+
+  <!-- Navbar -->
+  <header class="bg-white/95 backdrop-blur-md border-b border-gray-200/80 sticky top-0 z-50 shadow-sm">
+    <div class="w-full max-w-full px-4 sm:px-8 lg:px-12 py-2.5 flex items-center justify-between gap-3">
+      <!-- Brand -->
+      <div class="flex items-center gap-2 sm:gap-3">
+        <img class="w-9 h-9 sm:w-10 sm:h-10 object-contain" src="assets/united-logo.png" alt="UIT Logo"/>
+        <div>
+          <div class="flex items-center gap-1.5">
+            <span class="text-xs sm:text-sm font-black text-[#2A4B8D]">UIT Prayagraj</span>
+            <span class="text-[9px] font-extrabold text-blue-700 bg-blue-50 border border-blue-200/80 px-1.5 py-0.5 rounded-full">SIH 2026</span>
+          </div>
+          <span class="text-[10px] font-semibold text-slate-400 hidden sm:block">Team Portal</span>
+        </div>
+      </div>
+      <!-- Right: Team name + logout -->
+      <div class="flex items-center gap-2 sm:gap-3">
+        <div class="hidden sm:flex items-center gap-2 bg-blue-50 border border-blue-200 px-3 py-1.5 rounded-xl">
+          <span class="w-2 h-2 bg-emerald-500 rounded-full animate-pulse"></span>
+          <span id="nav-team-name" class="text-xs font-bold text-blue-800 truncate max-w-[150px]"></span>
+        </div>
+        <button id="btn-logout" class="text-xs font-bold text-slate-600 hover:text-red-600 border border-slate-200 hover:border-red-200 px-3 py-1.5 rounded-xl transition-all flex items-center gap-1.5">
+          <svg class="w-3.5 h-3.5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 16l4-4m0 0l-4-4m4 4H7m6 4v1a3 3 0 01-3 3H6a3 3 0 01-3-3V7a3 3 0 013-3h4a3 3 0 013 3v1"/></svg>
+          Logout
+        </button>
+      </div>
+    </div>
+  </header>
+
+  <main class="flex-1 w-full max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 py-6 pb-16">
+
+    <!-- Welcome Banner -->
+    <div class="bg-gradient-to-r from-blue-900 via-indigo-900 to-slate-900 text-white rounded-2xl p-5 sm:p-7 mb-6 relative overflow-hidden fade-up">
+      <div class="absolute -right-8 -top-8 w-40 h-40 bg-blue-500/10 rounded-full blur-2xl pointer-events-none"></div>
+      <div class="flex flex-col sm:flex-row sm:items-center justify-between gap-4 relative z-10">
+        <div>
+          <p class="text-blue-300 text-xs font-bold uppercase tracking-wider mb-1">Welcome back 👋</p>
+          <h1 id="welcome-team" class="text-xl sm:text-2xl font-black">Loading...</h1>
+          <p class="text-slate-400 text-xs mt-1 font-medium">Registration ID: <span id="welcome-regid" class="text-blue-300 font-black"></span></p>
+        </div>
+        <div class="flex-shrink-0">
+          <div id="ps-status-banner" class="bg-white/10 border border-white/20 rounded-xl px-4 py-3 text-center">
+            <p class="text-[10px] text-slate-400 uppercase font-bold mb-1">Problem Statement</p>
+            <p id="ps-status-text" class="text-sm font-black text-white">Not Selected Yet</p>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Tab Navigation -->
+    <div class="flex gap-0 border-b border-slate-200 mb-6 overflow-x-auto">
+      <button class="tab-btn active px-4 sm:px-6 py-3 text-xs sm:text-sm font-semibold text-slate-600 whitespace-nowrap flex items-center gap-1.5" data-tab="details">
+        <span>👥</span> Team Details
+      </button>
+      <button class="tab-btn px-4 sm:px-6 py-3 text-xs sm:text-sm font-semibold text-slate-600 whitespace-nowrap flex items-center gap-1.5" data-tab="ps">
+        <span>🎯</span> Select Problem Statement
+      </button>
+      <button class="tab-btn px-4 sm:px-6 py-3 text-xs sm:text-sm font-semibold text-slate-600 whitespace-nowrap flex items-center gap-1.5" data-tab="settings">
+        <span>⚙️</span> Settings
+      </button>
+    </div>
+
+    <!-- ═══ TAB 1: TEAM DETAILS ═══ -->
+    <div id="tab-details" class="tab-pane active">
+
+      <!-- Leader Card -->
+      <div class="card bg-white border border-slate-200/80 rounded-2xl p-5 sm:p-6 mb-5 fade-up">
+        <div class="flex items-center gap-2 mb-4">
+          <span class="inline-flex items-center justify-center w-7 h-7 bg-blue-100 rounded-lg text-sm">👑</span>
+          <h2 class="text-sm font-black text-slate-800 uppercase tracking-wide">Team Leader</h2>
+        </div>
+        <div class="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-4 gap-3" id="leader-grid"></div>
+      </div>
+
+      <!-- Members Table -->
+      <div class="card bg-white border border-slate-200/80 rounded-2xl overflow-hidden mb-5 fade-up">
+        <div class="px-5 sm:px-6 py-4 border-b border-slate-100 flex items-center justify-between">
+          <div class="flex items-center gap-2">
+            <span class="inline-flex items-center justify-center w-7 h-7 bg-slate-100 rounded-lg text-sm">👥</span>
+            <h2 class="text-sm font-black text-slate-800 uppercase tracking-wide">Team Members</h2>
+          </div>
+          <span id="member-count" class="text-[11px] font-bold text-blue-700 bg-blue-50 border border-blue-200 px-2.5 py-0.5 rounded-full"></span>
+        </div>
+
+        <!-- Desktop table -->
+        <div class="hidden md:block overflow-x-auto">
+          <table class="w-full text-xs member-table">
+            <thead class="bg-slate-50 border-b border-slate-200 text-slate-500 font-bold uppercase text-[10px] tracking-wider">
+              <tr>
+                <th class="py-3 px-4">#</th>
+                <th class="py-3 px-4">Name</th>
+                <th class="py-3 px-4">Roll No.</th>
+                <th class="py-3 px-4">Enrollment</th>
+                <th class="py-3 px-4">Branch / Year</th>
+                <th class="py-3 px-4">Gender</th>
+                <th class="py-3 px-4">Email</th>
+                <th class="py-3 px-4">WhatsApp</th>
+              </tr>
+            </thead>
+            <tbody id="members-tbody" class="divide-y divide-slate-100"></tbody>
+          </table>
+        </div>
+        <!-- Mobile cards -->
+        <div class="block md:hidden divide-y divide-slate-100" id="members-mobile"></div>
+      </div>
+    </div>
+
+    <!-- ═══ TAB 2: PROBLEM STATEMENT SELECTION ═══ -->
+    <div id="tab-ps" class="tab-pane">
+
+      <!-- Current selection -->
+      <div id="current-ps-box" class="hidden card bg-emerald-50 border border-emerald-200 rounded-2xl p-4 sm:p-5 mb-5 flex items-start gap-3">
+        <span class="text-2xl">✅</span>
+        <div>
+          <p class="text-xs font-bold text-emerald-700 uppercase tracking-wide mb-0.5">Currently Selected Problem Statement</p>
+          <p id="current-ps-text" class="text-sm font-black text-emerald-900"></p>
+          <p class="text-xs text-emerald-600 mt-1 font-medium">You can change your selection anytime before the deadline.</p>
+        </div>
+      </div>
+
+      <!-- Filters -->
+      <div class="card bg-white border border-slate-200/80 rounded-2xl p-4 sm:p-5 mb-5">
+        <div class="flex flex-wrap gap-3 items-end">
+          <div class="flex-1 min-w-[160px]">
+            <label class="block text-[10px] font-bold uppercase text-slate-500 mb-1.5 tracking-wide">Search</label>
+            <input id="ps-search" type="text" placeholder="Search by title, PS ID, domain…"
+              class="input-field w-full px-3 py-2 text-xs font-semibold border border-slate-200 rounded-xl bg-slate-50 focus:bg-white transition-all" />
+          </div>
+          <div>
+            <label class="block text-[10px] font-bold uppercase text-slate-500 mb-1.5 tracking-wide">Domain</label>
+            <select id="ps-domain" class="input-field px-3 py-2 text-xs font-semibold border border-slate-200 rounded-xl bg-slate-50 focus:bg-white transition-all">
+              <option value="">All Domains</option>
+            </select>
+          </div>
+          <div>
+            <label class="block text-[10px] font-bold uppercase text-slate-500 mb-1.5 tracking-wide">Difficulty</label>
+            <select id="ps-difficulty" class="input-field px-3 py-2 text-xs font-semibold border border-slate-200 rounded-xl bg-slate-50 focus:bg-white transition-all">
+              <option value="">All Levels</option>
+              <option value="Beginner">Beginner</option>
+              <option value="Intermediate">Intermediate</option>
+              <option value="Advanced">Advanced</option>
+            </select>
+          </div>
+          <div>
+            <label class="block text-[10px] font-bold uppercase text-slate-500 mb-1.5 tracking-wide">Type</label>
+            <select id="ps-type" class="input-field px-3 py-2 text-xs font-semibold border border-slate-200 rounded-xl bg-slate-50 focus:bg-white transition-all">
+              <option value="">All Types</option>
+              <option value="Software">🖥️ Software</option>
+              <option value="Hardware">⚙️ Hardware</option>
+              <option value="Hybrid">🔀 Hybrid</option>
+            </select>
+          </div>
+          <button id="ps-clear" class="text-xs font-bold text-slate-500 hover:text-blue-700 px-3 py-2 border border-slate-200 hover:border-blue-300 rounded-xl transition-all">Clear</button>
+        </div>
+        <p id="ps-count" class="text-[10px] font-semibold text-slate-400 mt-3"></p>
+      </div>
+
+      <!-- PS Grid -->
+      <div id="ps-grid" class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-3 mb-5"></div>
+
+      <!-- Confirm Button -->
+      <div id="ps-confirm-bar" class="hidden sticky bottom-4 bg-white border border-blue-200 rounded-2xl p-4 shadow-xl flex flex-col sm:flex-row items-center justify-between gap-3">
+        <div>
+          <p class="text-xs font-bold text-slate-700">Selected: <span id="confirm-ps-label" class="text-blue-700"></span></p>
+          <p class="text-[10px] text-slate-500 mt-0.5">Click Confirm to save your PS choice to the sheet.</p>
+        </div>
+        <button id="btn-confirm-ps" class="btn-primary w-full sm:w-auto px-6 py-2.5 rounded-xl text-white font-black text-xs transition-all flex items-center gap-2">
+          <span id="confirm-ps-text">✅ Confirm PS Selection</span>
+          <svg id="confirm-ps-spin" class="hidden w-4 h-4 animate-spin" fill="none" viewBox="0 0 24 24"><circle class="opacity-25" cx="12" cy="12" r="10" stroke="currentColor" stroke-width="4"/><path class="opacity-75" fill="currentColor" d="M4 12a8 8 0 018-8V0C5.373 0 0 5.373 0 12h4z"/></svg>
+        </button>
+      </div>
+    </div>
+
+    <!-- ═══ TAB 3: SETTINGS ═══ -->
+    <div id="tab-settings" class="tab-pane">
+      <div class="max-w-md">
+        <div class="card bg-white border border-slate-200/80 rounded-2xl p-6 mb-5 fade-up">
+          <div class="flex items-center gap-2 mb-5">
+            <span class="inline-flex items-center justify-center w-7 h-7 bg-amber-100 rounded-lg text-sm">🔑</span>
+            <h2 class="text-sm font-black text-slate-800">Change Password</h2>
+          </div>
+
+          <div id="pwd-error" class="hidden mb-4 p-3 bg-red-50 border border-red-200 text-red-700 text-xs font-semibold rounded-xl"></div>
+          <div id="pwd-success" class="hidden mb-4 p-3 bg-emerald-50 border border-emerald-200 text-emerald-700 text-xs font-semibold rounded-xl"></div>
+
+          <div class="mb-4">
+            <label class="block text-xs font-bold text-slate-700 mb-1.5 uppercase tracking-wide">Current Password</label>
+            <input id="old-pwd" type="password" placeholder="Enter current password"
+              class="input-field w-full px-4 py-2.5 text-sm font-semibold border border-slate-200 rounded-xl bg-slate-50 focus:bg-white transition-all" />
+          </div>
+          <div class="mb-4">
+            <label class="block text-xs font-bold text-slate-700 mb-1.5 uppercase tracking-wide">New Password</label>
+            <input id="new-pwd-s" type="password" placeholder="Min. 6 characters"
+              class="input-field w-full px-4 py-2.5 text-sm font-semibold border border-slate-200 rounded-xl bg-slate-50 focus:bg-white transition-all" />
+          </div>
+          <div class="mb-6">
+            <label class="block text-xs font-bold text-slate-700 mb-1.5 uppercase tracking-wide">Confirm New Password</label>
+            <input id="conf-pwd-s" type="password" placeholder="Re-enter new password"
+              class="input-field w-full px-4 py-2.5 text-sm font-semibold border border-slate-200 rounded-xl bg-slate-50 focus:bg-white transition-all" />
+          </div>
+          <button id="btn-change-pwd" class="btn-primary w-full py-3 rounded-xl text-white font-black text-sm transition-all flex items-center justify-center gap-2">
+            <span id="change-pwd-text">Update Password</span>
+            <svg id="change-pwd-spin" class="hidden w-4 h-4 animate-spin" fill="none" viewBox="0 0 24 24"><circle class="opacity-25" cx="12" cy="12" r="10" stroke="currentColor" stroke-width="4"/><path class="opacity-75" fill="currentColor" d="M4 12a8 8 0 018-8V0C5.373 0 0 5.373 0 12h4z"/></svg>
+          </button>
+        </div>
+
+        <!-- Session info -->
+        <div class="card bg-slate-50 border border-slate-200 rounded-2xl p-4">
+          <h3 class="text-xs font-bold text-slate-700 uppercase tracking-wide mb-3">Session Info</h3>
+          <div class="space-y-1.5 text-xs text-slate-600">
+            <div class="flex justify-between"><span class="font-semibold text-slate-500">Team</span><span id="info-team" class="font-bold text-slate-800"></span></div>
+            <div class="flex justify-between"><span class="font-semibold text-slate-500">Reg ID</span><span id="info-regid" class="font-mono font-bold text-blue-700"></span></div>
+            <div class="flex justify-between"><span class="font-semibold text-slate-500">Logged in at</span><span id="info-login-at" class="font-semibold text-slate-700"></span></div>
+          </div>
+          <button id="btn-logout-2" class="mt-4 w-full text-xs font-bold text-red-600 hover:bg-red-50 border border-red-200 py-2 rounded-xl transition-all">🚪 Logout</button>
+        </div>
+      </div>
+    </div>
+
+  </main>
+
+  <!-- Toast -->
+  <div id="toast" class="fixed bottom-6 left-1/2 -translate-x-1/2 translate-y-16 opacity-0 bg-slate-900 text-white text-xs font-bold px-5 py-2.5 rounded-full shadow-2xl z-[9999] transition-all duration-300 pointer-events-none whitespace-nowrap"></div>
+
+  <script src="js/config.js"></script>
+  <script src="js/portal-api.js"></script>
+  <script src="js/portal-auth.js"></script>
+  <script src="js/data/problem-statements.js"></script>
+  <script>
+  (() => {
+    'use strict';
+
+    // ── Auth Guard ──────────────────────────────────────────────────
+    const session = PortalAuth.requireAuth();
+    if (!session) return;
+    const { team, password, regId } = session;
+
+    // ── Toast ───────────────────────────────────────────────────────
+    let toastTimer;
+    function showToast(msg, type = 'default') {
+      const t = document.getElementById('toast');
+      t.textContent = msg;
+      t.style.background = type === 'error' ? '#dc2626' : type === 'success' ? '#059669' : '#1e293b';
+      t.style.transform = 'translateX(-50%) translateY(0)';
+      t.style.opacity = '1';
+      clearTimeout(toastTimer);
+      toastTimer = setTimeout(() => { t.style.transform = 'translateX(-50%) translateY(64px)'; t.style.opacity = '0'; }, 2800);
+    }
+
+    // ── Populate Header ─────────────────────────────────────────────
+    document.getElementById('nav-team-name').textContent = team.teamName;
+    document.getElementById('welcome-team').textContent  = team.teamName;
+    document.getElementById('welcome-regid').textContent = team.registrationId;
+    document.getElementById('info-team').textContent     = team.teamName;
+    document.getElementById('info-regid').textContent    = team.registrationId;
+    document.getElementById('info-login-at').textContent = new Date(session.loginAt).toLocaleTimeString();
+
+    // ── PS Status in banner ─────────────────────────────────────────
+    function updatePSBanner(ps) {
+      const box = document.getElementById('ps-status-banner');
+      const txt = document.getElementById('ps-status-text');
+      if (ps) {
+        box.style.background = 'rgba(5,150,105,0.15)';
+        box.style.borderColor = 'rgba(5,150,105,0.4)';
+        txt.textContent = ps.split('—')[0].trim();
+        txt.style.fontSize = '0.75rem';
+      } else {
+        txt.textContent = 'Not Selected Yet';
+      }
+    }
+    updatePSBanner(team.psChoice || '');
+
+    // ── Tab Switching ───────────────────────────────────────────────
+    document.querySelectorAll('.tab-btn').forEach(btn => {
+      btn.addEventListener('click', () => {
+        document.querySelectorAll('.tab-btn').forEach(b => b.classList.remove('active'));
+        document.querySelectorAll('.tab-pane').forEach(p => p.classList.remove('active'));
+        btn.classList.add('active');
+        document.getElementById('tab-' + btn.dataset.tab).classList.add('active');
+      });
+    });
+
+    // ── Logout ──────────────────────────────────────────────────────
+    ['btn-logout','btn-logout-2'].forEach(id => {
+      const el = document.getElementById(id);
+      if (el) el.addEventListener('click', () => { PortalAuth.clear(); window.location.href = 'portal.html'; });
+    });
+
+    // ── Render Leader Detail ─────────────────────────────────────────
+    function infoItem(label, value) {
+      if (!value || value === 'undefined') value = '—';
+      return `<div class="bg-slate-50 border border-slate-200 rounded-xl p-3">
+        <div class="text-[10px] font-bold uppercase text-slate-400 tracking-wide mb-1">${label}</div>
+        <div class="text-xs font-bold text-slate-900 break-words">${value}</div>
+      </div>`;
+    }
+
+    document.getElementById('leader-grid').innerHTML = [
+      infoItem('Full Name', team.teamLeaderName),
+      infoItem('Roll Number', team.leaderRollNumber),
+      infoItem('Enrollment No.', team.leaderEnrollment),
+      infoItem('Branch', team.leaderBranch),
+      infoItem('Year', team.leaderYear),
+      infoItem('Semester', team.leaderSemester),
+      infoItem('Gender', team.leaderGender),
+      infoItem('Email', team.leaderEmail),
+      infoItem('WhatsApp', team.leaderMobile),
+    ].join('');
+
+    // ── Render Members Table ─────────────────────────────────────────
+    const members = team.teamMembers || [];
+    document.getElementById('member-count').textContent = members.length + ' Member' + (members.length !== 1 ? 's' : '');
+
+    const tbody   = document.getElementById('members-tbody');
+    const mbobile = document.getElementById('members-mobile');
+
+    if (members.length === 0) {
+      tbody.innerHTML = `<tr><td colspan="8" class="py-8 text-center text-sm text-slate-400 font-semibold">No additional members registered.</td></tr>`;
+      mbobile.innerHTML = `<div class="p-6 text-center text-sm text-slate-400">No additional members registered.</div>`;
+    } else {
+      tbody.innerHTML = members.map((m, i) => `
+        <tr class="${i % 2 === 0 ? 'bg-white' : 'bg-slate-50/50'} hover:bg-blue-50/30 transition-colors">
+          <td class="py-3 px-4 font-black text-slate-400 text-[11px]">${i + 1}</td>
+          <td class="py-3 px-4 font-bold text-slate-900">${m.name || '—'}</td>
+          <td class="py-3 px-4 font-mono text-slate-700">${m.rollNumber || '—'}</td>
+          <td class="py-3 px-4 font-mono text-slate-700">${m.enrollment || '—'}</td>
+          <td class="py-3 px-4"><div class="font-bold text-slate-800">${m.branch || '—'}</div><div class="text-[10px] text-slate-500">${m.year || ''} ${m.sem || ''}</div></td>
+          <td class="py-3 px-4">${m.gender && m.gender.toLowerCase().includes('female') ? '<span class="inline-block bg-pink-50 text-pink-700 text-[10px] font-bold px-2 py-0.5 rounded-full border border-pink-200">👩 Female</span>' : '<span class="inline-block bg-blue-50 text-blue-700 text-[10px] font-bold px-2 py-0.5 rounded-full border border-blue-200">👨 Male</span>'}</td>
+          <td class="py-3 px-4 text-slate-700">${m.email ? `<a href="mailto:${m.email}" class="hover:underline text-blue-700">${m.email}</a>` : '—'}</td>
+          <td class="py-3 px-4 text-slate-700">${m.mobile ? `<a href="tel:${m.mobile}" class="hover:underline font-bold text-blue-700">${m.mobile}</a>` : '—'}</td>
+        </tr>`).join('');
+
+      mbobile.innerHTML = members.map((m, i) => `
+        <div class="p-4 space-y-2 ${i % 2 === 0 ? '' : 'bg-slate-50/50'}">
+          <div class="flex items-center justify-between">
+            <span class="text-xs font-black text-slate-800">${i + 1}. ${m.name || '—'}</span>
+            ${m.gender && m.gender.toLowerCase().includes('female') ? '<span class="text-[10px] font-bold bg-pink-50 text-pink-700 border border-pink-200 px-2 py-0.5 rounded-full">👩 F</span>' : '<span class="text-[10px] font-bold bg-blue-50 text-blue-700 border border-blue-200 px-2 py-0.5 rounded-full">👨 M</span>'}
+          </div>
+          <div class="grid grid-cols-2 gap-2 text-xs text-slate-600">
+            <div><span class="text-[10px] font-bold text-slate-400 uppercase block">Roll No</span>${m.rollNumber||'—'}</div>
+            <div><span class="text-[10px] font-bold text-slate-400 uppercase block">Branch / Year</span>${m.branch||'—'} ${m.year||''}</div>
+            <div class="col-span-2"><span class="text-[10px] font-bold text-slate-400 uppercase block">Email</span>${m.email?`<a href="mailto:${m.email}" class="text-blue-700 underline break-all">${m.email}</a>`:'—'}</div>
+            <div class="col-span-2"><span class="text-[10px] font-bold text-slate-400 uppercase block">WhatsApp</span>${m.mobile?`<a href="tel:${m.mobile}" class="text-blue-700 font-bold">${m.mobile}</a>`:'—'}</div>
+          </div>
+        </div>`).join('');
+    }
+
+    // ══════════════════════════════════════════════════════════════
+    //  PROBLEM STATEMENT SELECTION
+    // ══════════════════════════════════════════════════════════════
+    const PS_DATA = typeof PROBLEM_STATEMENTS !== 'undefined' ? PROBLEM_STATEMENTS : [];
+    let selectedPS = null;
+
+    // Populate domain dropdown
+    const domains = [...new Set(PS_DATA.map(p => p.domain))].sort();
+    const domainSel = document.getElementById('ps-domain');
+    domains.forEach(d => { const o = document.createElement('option'); o.value = d; o.textContent = d; domainSel.appendChild(o); });
+
+    // Current selection
+    function updateCurrentPS(choice) {
+      const box = document.getElementById('current-ps-box');
+      const txt = document.getElementById('current-ps-text');
+      if (choice) { box.classList.remove('hidden'); txt.textContent = choice; }
+      else box.classList.add('hidden');
+      updatePSBanner(choice);
+    }
+    updateCurrentPS(team.psChoice || '');
+
+    function renderPS() {
+      const search = document.getElementById('ps-search').value.trim().toLowerCase();
+      const domain = document.getElementById('ps-domain').value;
+      const diff   = document.getElementById('ps-difficulty').value;
+      const type   = document.getElementById('ps-type').value;
+
+      const filtered = PS_DATA.filter(p => {
+        if (domain && p.domain !== domain) return false;
+        if (diff   && p.difficulty !== diff) return false;
+        if (type   && p.type !== type) return false;
+        if (search && !p.title.toLowerCase().includes(search) && !p.id.toLowerCase().includes(search) && !p.domain.toLowerCase().includes(search)) return false;
+        return true;
+      });
+
+      document.getElementById('ps-count').textContent = filtered.length + ' of ' + PS_DATA.length + ' problem statements shown';
+
+      const diffClass = { Beginner:'diff-beginner', Intermediate:'diff-intermediate', Advanced:'diff-advanced' };
+      const typeClass = { Software:'type-software', Hardware:'type-hardware', Hybrid:'type-hybrid' };
+      const typeIcon  = { Software:'🖥️', Hardware:'⚙️', Hybrid:'🔀' };
+
+      document.getElementById('ps-grid').innerHTML = filtered.length === 0
+        ? '<div class="col-span-full text-center py-12 text-slate-400 text-sm font-semibold">No problem statements match your filters.</div>'
+        : filtered.map(p => {
+            const isSelected = selectedPS && selectedPS.id === p.id;
+            return `<div class="ps-card bg-white border border-slate-200 rounded-2xl p-4 cursor-pointer ${isSelected ? 'selected' : ''}" data-psid="${p.id}" onclick="selectPS('${p.id}','${p.title.replace(/'/g,"\\'")}')">
+              <div class="flex items-start justify-between gap-2 mb-2">
+                <span class="font-black text-[11px] font-mono text-blue-700 bg-blue-50 border border-blue-200 px-2 py-0.5 rounded-md">${p.id}</span>
+                ${isSelected ? '<span class="text-emerald-600 text-xs font-black">✅ Selected</span>' : ''}
+              </div>
+              <h3 class="text-xs font-black text-slate-900 mb-3 leading-tight">${p.title}</h3>
+              <div class="flex flex-wrap gap-1.5">
+                <span class="text-[10px] font-bold px-2 py-0.5 rounded-full border border-slate-200 bg-slate-50 text-slate-700">${p.domain}</span>
+                <span class="text-[10px] font-bold px-2 py-0.5 rounded-full ${diffClass[p.difficulty]||'bg-slate-100 text-slate-700'}">${p.difficulty}</span>
+                <span class="text-[10px] font-bold px-2 py-0.5 rounded-full ${typeClass[p.type]||'bg-slate-100 text-slate-700'}">${typeIcon[p.type]||''} ${p.type}</span>
+              </div>
+            </div>`;
+          }).join('');
+    }
+
+    window.selectPS = (psId, psTitle) => {
+      selectedPS = { id: psId, title: psTitle };
+      const bar = document.getElementById('ps-confirm-bar');
+      bar.classList.remove('hidden');
+      document.getElementById('confirm-ps-label').textContent = psId + ' — ' + psTitle;
+      renderPS();
+      bar.scrollIntoView({ behavior: 'smooth', block: 'nearest' });
+    };
+
+    ['ps-search','ps-domain','ps-difficulty','ps-type'].forEach(id =>
+      document.getElementById(id).addEventListener('input', renderPS));
+
+    document.getElementById('ps-clear').addEventListener('click', () => {
+      document.getElementById('ps-search').value = '';
+      document.getElementById('ps-domain').value = '';
+      document.getElementById('ps-difficulty').value = '';
+      document.getElementById('ps-type').value = '';
+      renderPS();
+    });
+
+    document.getElementById('btn-confirm-ps').addEventListener('click', async () => {
+      if (!selectedPS) return;
+      document.getElementById('confirm-ps-text').textContent = 'Saving...';
+      document.getElementById('confirm-ps-spin').classList.remove('hidden');
+      document.getElementById('btn-confirm-ps').disabled = true;
+      try {
+        const res = await PortalApi.selectPS(team.registrationId, password, selectedPS.id, selectedPS.title);
+        if (res.success) {
+          team.psChoice = res.psChoice;
+          PortalAuth.updateTeam(team);
+          updateCurrentPS(res.psChoice);
+          showToast('✅ Problem Statement saved successfully!', 'success');
+          document.getElementById('ps-confirm-bar').classList.add('hidden');
+          selectedPS = null;
+          renderPS();
+        } else {
+          showToast('❌ ' + (res.message || 'Failed to save'), 'error');
+        }
+      } catch {
+        showToast('❌ Connection error. Try again.', 'error');
+      } finally {
+        document.getElementById('confirm-ps-text').textContent = '✅ Confirm PS Selection';
+        document.getElementById('confirm-ps-spin').classList.add('hidden');
+        document.getElementById('btn-confirm-ps').disabled = false;
+      }
+    });
+
+    renderPS();
+
+    // ══════════════════════════════════════════════════════════════
+    //  CHANGE PASSWORD
+    // ══════════════════════════════════════════════════════════════
+    document.getElementById('btn-change-pwd').addEventListener('click', async () => {
+      const oldPwd = document.getElementById('old-pwd').value;
+      const newPwd = document.getElementById('new-pwd-s').value;
+      const conPwd = document.getElementById('conf-pwd-s').value;
+      const errEl  = document.getElementById('pwd-error');
+      const sucEl  = document.getElementById('pwd-success');
+      errEl.classList.add('hidden'); sucEl.classList.add('hidden');
+
+      if (!oldPwd || !newPwd || !conPwd) { errEl.textContent = 'All fields are required.'; errEl.classList.remove('hidden'); return; }
+      if (newPwd.length < 6)             { errEl.textContent = 'New password must be at least 6 characters.'; errEl.classList.remove('hidden'); return; }
+      if (newPwd !== conPwd)             { errEl.textContent = 'New passwords do not match.'; errEl.classList.remove('hidden'); return; }
+
+      document.getElementById('change-pwd-text').textContent = 'Updating...';
+      document.getElementById('change-pwd-spin').classList.remove('hidden');
+      document.getElementById('btn-change-pwd').disabled = true;
+
+      try {
+        const res = await PortalApi.changePassword(team.registrationId, oldPwd, newPwd);
+        if (res.success) {
+          PortalAuth.save(team, newPwd); // update session password
+          sucEl.textContent = '✅ Password changed! You will need the new password next time you log in.';
+          sucEl.classList.remove('hidden');
+          document.getElementById('old-pwd').value = '';
+          document.getElementById('new-pwd-s').value = '';
+          document.getElementById('conf-pwd-s').value = '';
+          showToast('✅ Password updated successfully!', 'success');
+        } else {
+          errEl.textContent = res.message || 'Failed to change password.';
+          errEl.classList.remove('hidden');
+        }
+      } catch {
+        errEl.textContent = 'Connection error. Please try again.';
+        errEl.classList.remove('hidden');
+      } finally {
+        document.getElementById('change-pwd-text').textContent = 'Update Password';
+        document.getElementById('change-pwd-spin').classList.add('hidden');
+        document.getElementById('btn-change-pwd').disabled = false;
+      }
+    });
+
+  })();
+  </script>
+</body>
+</html>

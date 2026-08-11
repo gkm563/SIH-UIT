@@ -1,0 +1,196 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Team Portal Login | SIH 2026 — UIT Prayagraj</title>
+  <meta name="description" content="SIH 2026 Team Portal — Login with your Registration ID and password to access your dashboard and select a Problem Statement." />
+  <link rel="icon" href="assets/united-logo.png" type="image/png" />
+  <script src="https://cdn.tailwindcss.com"></script>
+  <script>
+    tailwind.config = {
+      theme: { extend: { colors: {
+        primary: { DEFAULT: '#1a73e8', dark: '#1557b0', light: '#e8f0fe' },
+        united: { DEFAULT: '#2A4B8D', red: '#D63333' }
+      }}}
+    };
+  </script>
+  <link rel="stylesheet" href="css/styles.css" />
+  <style>
+    @import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&display=swap');
+    body { font-family: 'Inter', sans-serif; }
+    .login-card { box-shadow: 0 20px 60px -10px rgba(26,115,232,0.12), 0 4px 20px -4px rgba(0,0,0,0.08); }
+    .input-field:focus { outline: none; box-shadow: 0 0 0 3px rgba(26,115,232,0.15); }
+    .btn-primary { background: linear-gradient(135deg, #1a73e8, #1557b0); }
+    .btn-primary:hover { background: linear-gradient(135deg, #1557b0, #0d3b8e); transform: translateY(-1px); box-shadow: 0 6px 20px rgba(26,115,232,0.35); }
+    .btn-primary:active { transform: translateY(0); }
+    @keyframes fadeUp { from { opacity:0; transform:translateY(20px); } to { opacity:1; transform:translateY(0); } }
+    .fade-up { animation: fadeUp 0.5s ease forwards; }
+    .shake { animation: shake 0.4s ease; }
+    @keyframes shake { 0%,100%{transform:translateX(0)} 25%{transform:translateX(-6px)} 75%{transform:translateX(6px)} }
+  </style>
+</head>
+<body class="bg-gradient-to-br from-slate-50 via-blue-50/40 to-indigo-50/30 min-h-screen flex flex-col">
+
+  <!-- Header -->
+  <header class="site-header bg-white/95 backdrop-blur-md border-b border-gray-200/80 sticky top-0 z-50 shadow-sm">
+    <div class="header-inner w-full max-w-full px-4 sm:px-8 lg:px-12 py-2 sm:py-2.5 flex items-center justify-between gap-2">
+      <a href="index.html" class="flex items-center gap-2 sm:gap-3 flex-shrink-0 group">
+        <img class="w-9 h-9 sm:w-11 sm:h-11 object-contain" src="assets/united-logo.png" alt="UIT Logo" />
+        <div class="flex flex-col justify-center min-w-0">
+          <div class="flex items-center gap-1.5 flex-wrap">
+            <span class="text-xs sm:text-base font-black text-[#2A4B8D] leading-none">UIT <span class="hidden xs:inline">Prayagraj</span></span>
+            <span class="text-[9px] sm:text-[10px] font-extrabold text-blue-700 bg-blue-50 border border-blue-200/80 px-1.5 py-0.5 rounded-full leading-none">SIH 2026</span>
+          </div>
+          <span class="text-[10px] font-semibold text-slate-500 leading-tight mt-0.5 hidden sm:block">Smart India Hackathon · Team Portal</span>
+        </div>
+      </a>
+      <div class="flex items-center gap-2">
+        <a href="index.html" class="text-xs font-semibold text-slate-600 hover:text-blue-700 transition-colors px-3 py-1.5">← Back to Home</a>
+        <img class="h-8 sm:h-10 w-auto object-contain bg-white p-1 rounded-lg border border-slate-200/80 hidden sm:block" src="assets/sih-logo.png" alt="SIH 2026" />
+      </div>
+    </div>
+  </header>
+
+  <!-- Main -->
+  <main class="flex-1 flex items-center justify-center px-4 py-10 sm:py-16">
+    <div class="w-full max-w-md fade-up">
+
+      <!-- Logo Area -->
+      <div class="text-center mb-8">
+        <div class="inline-flex items-center justify-center w-16 h-16 bg-blue-600 rounded-2xl shadow-lg mb-4">
+          <svg class="w-8 h-8 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 15v2m-6 4h12a2 2 0 002-2v-6a2 2 0 00-2-2H6a2 2 0 00-2 2v6a2 2 0 002 2zm10-10V7a4 4 0 00-8 0v4h8z"/></svg>
+        </div>
+        <h1 class="text-2xl sm:text-3xl font-black text-slate-900">Team Portal</h1>
+        <p class="text-sm text-slate-500 mt-1 font-medium">SIH 2026 — United Institute of Technology</p>
+      </div>
+
+      <!-- Login Card -->
+      <div class="login-card bg-white border border-slate-200/80 rounded-2xl p-6 sm:p-8">
+        <h2 class="text-base font-bold text-slate-700 mb-6 flex items-center gap-2">
+          <span class="w-6 h-6 bg-blue-50 border border-blue-200 rounded-lg flex items-center justify-center text-blue-700 text-xs">🔐</span>
+          Sign in to your team account
+        </h2>
+
+        <!-- Error Box -->
+        <div id="login-error" class="hidden mb-4 p-3 bg-red-50 border border-red-200 text-red-700 text-xs font-semibold rounded-xl flex items-start gap-2">
+          <span class="text-base leading-none">⚠️</span>
+          <span id="login-error-msg"></span>
+        </div>
+
+        <form id="login-form" autocomplete="on" novalidate>
+          <!-- Registration ID -->
+          <div class="mb-4">
+            <label for="reg-id" class="block text-xs font-bold text-slate-700 mb-1.5 uppercase tracking-wide">Registration ID</label>
+            <div class="relative">
+              <span class="absolute left-3.5 top-1/2 -translate-y-1/2 text-slate-400 text-sm">🪪</span>
+              <input
+                id="reg-id"
+                name="regId"
+                type="text"
+                autocomplete="username"
+                placeholder="SIH2026-XXXX"
+                class="input-field w-full pl-9 pr-4 py-3 text-sm font-semibold border border-slate-200 rounded-xl transition-all bg-slate-50 focus:bg-white text-slate-900 placeholder-slate-400"
+                required
+              />
+            </div>
+          </div>
+
+          <!-- Password -->
+          <div class="mb-6">
+            <label for="password" class="block text-xs font-bold text-slate-700 mb-1.5 uppercase tracking-wide">Password</label>
+            <div class="relative">
+              <span class="absolute left-3.5 top-1/2 -translate-y-1/2 text-slate-400 text-sm">🔑</span>
+              <input
+                id="password"
+                name="password"
+                type="password"
+                autocomplete="current-password"
+                placeholder="Enter your password"
+                class="input-field w-full pl-9 pr-12 py-3 text-sm font-semibold border border-slate-200 rounded-xl transition-all bg-slate-50 focus:bg-white text-slate-900 placeholder-slate-400"
+                required
+              />
+              <button type="button" id="toggle-pwd" class="absolute right-3.5 top-1/2 -translate-y-1/2 text-slate-400 hover:text-slate-700 transition-colors text-sm" aria-label="Toggle password">👁️</button>
+            </div>
+            <div class="flex justify-end mt-2">
+              <a href="portal-forgot.html" class="text-xs font-semibold text-blue-600 hover:text-blue-800 hover:underline">Forgot password?</a>
+            </div>
+          </div>
+
+          <button id="btn-login" type="submit" class="btn-primary w-full py-3.5 rounded-xl text-white font-black text-sm transition-all duration-200 flex items-center justify-center gap-2">
+            <span id="btn-login-text">Login to Dashboard</span>
+            <svg id="btn-login-spinner" class="hidden w-4 h-4 animate-spin" fill="none" viewBox="0 0 24 24"><circle class="opacity-25" cx="12" cy="12" r="10" stroke="currentColor" stroke-width="4"/><path class="opacity-75" fill="currentColor" d="M4 12a8 8 0 018-8V0C5.373 0 0 5.373 0 12h4z"/></svg>
+          </button>
+        </form>
+
+        <p class="text-center text-xs text-slate-500 mt-5">
+          Your credentials were sent to your <strong>team leader's email</strong>.<br/>
+          Contact <span class="font-semibold text-blue-700">SIH coordinators</span> if you haven't received them.
+        </p>
+      </div>
+
+      <!-- Footer note -->
+      <p class="text-center text-xs text-slate-400 mt-6 font-medium">
+        © 2026 United Institute of Technology, Prayagraj · SIH 2026 Internal Portal
+      </p>
+    </div>
+  </main>
+
+  <script src="js/config.js"></script>
+  <script src="js/portal-api.js"></script>
+  <script src="js/portal-auth.js"></script>
+  <script>
+    // If already logged in, go to dashboard
+    if (PortalAuth.get()) window.location.href = 'portal-dashboard.html';
+
+    const form    = document.getElementById('login-form');
+    const errBox  = document.getElementById('login-error');
+    const errMsg  = document.getElementById('login-error-msg');
+    const btnText = document.getElementById('btn-login-text');
+    const spinner = document.getElementById('btn-login-spinner');
+    const togglePwd = document.getElementById('toggle-pwd');
+    const pwdInput  = document.getElementById('password');
+
+    togglePwd.addEventListener('click', () => {
+      pwdInput.type = pwdInput.type === 'password' ? 'text' : 'password';
+      togglePwd.textContent = pwdInput.type === 'password' ? '👁️' : '🙈';
+    });
+
+    function showError(msg) {
+      errMsg.textContent = msg;
+      errBox.classList.remove('hidden');
+      form.classList.add('shake');
+      setTimeout(() => form.classList.remove('shake'), 400);
+    }
+
+    function setLoading(on) {
+      btnText.textContent = on ? 'Signing in...' : 'Login to Dashboard';
+      spinner.classList.toggle('hidden', !on);
+      document.getElementById('btn-login').disabled = on;
+    }
+
+    form.addEventListener('submit', async (e) => {
+      e.preventDefault();
+      errBox.classList.add('hidden');
+      const regId = document.getElementById('reg-id').value.trim();
+      const pwd   = document.getElementById('password').value.trim();
+      if (!regId || !pwd) { showError('Please enter both Registration ID and password.'); return; }
+
+      setLoading(true);
+      try {
+        const res = await PortalApi.login(regId, pwd);
+        if (res.success) {
+          PortalAuth.save(res.team, pwd);
+          window.location.href = 'portal-dashboard.html';
+        } else {
+          showError(res.message || 'Login failed. Please check your credentials.');
+        }
+      } catch {
+        showError('Connection error. Please try again in a moment.');
+      } finally {
+        setLoading(false);
+      }
+    });
+  </script>
+</body>
+</html>
