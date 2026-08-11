@@ -1257,3 +1257,44 @@ body {
     transform: translateY(0) scale(1);
   }
 }
+
+/* Responsive Mobile & Tablet Adjustments for Tab Bar & Grid Containers */
+@media (max-width: 639px) {
+  .tab-container {
+    width: 100%;
+    overflow-x: auto;
+    -webkit-overflow-scrolling: touch;
+    scrollbar-width: none;
+    padding: 0.25rem;
+    border-radius: 1.25rem;
+    justify-content: flex-start;
+  }
+  .tab-container::-webkit-scrollbar {
+    display: none;
+  }
+  .tab-btn {
+    padding: 0.55rem 0.85rem;
+    font-size: 0.75rem;
+    flex-shrink: 0;
+  }
+}
+
+/* Tablet / Medium Screens: 640px to 1023px */
+@media (min-width: 640px) and (max-width: 1023px) {
+  .tab-container {
+    max-width: 100%;
+  }
+  .tab-btn {
+    padding: 0.6rem 1.1rem;
+    font-size: 0.8rem;
+  }
+}
+
+/* Ultra-Wide Desktop Screens: > 1440px */
+@media (min-width: 1441px) {
+  .main, .site-footer > div {
+    max-width: 1400px;
+    margin-left: auto;
+    margin-right: auto;
+  }
+}
