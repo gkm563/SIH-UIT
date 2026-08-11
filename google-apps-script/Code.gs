@@ -291,9 +291,19 @@ function getPortalPasswordColIndex_(sheet) {
   return 62; // Default Column BJ (62)
 }
 
+/* ── Helper: Normalize Password string cleanly ── */
+function normalizePwd_(str) {
+  if (!str) return '';
+  var s = String(str).trim();
+  while (s.indexOf("'") === 0 || s.indexOf("\\") === 0) {
+    s = s.substring(1).trim();
+  }
+  return s;
+}
+
 /* ── Helper: Save Clean Password to Sheet ── */
 function setSheetPassword_(sheet, sheetRow, rawPwd) {
-  var cleanPwd = String(rawPwd || '').replace(/^'/, '').trim();
+  var cleanPwd = normalizePwd_(rawPwd);
   var col = getPortalPasswordColIndex_(sheet);
   var cell = sheet.getRange(sheetRow, col);
   cell.setNumberFormat('@');
@@ -306,7 +316,7 @@ function setSheetPassword_(sheet, sheetRow, rawPwd) {
 function getSheetPassword_(sheet, sheetRow) {
   var col = getPortalPasswordColIndex_(sheet);
   var val = String(sheet.getRange(sheetRow, col).getValue() || '');
-  return val.replace(/^'/, '').trim();
+  return normalizePwd_(val);
 }
 
 /* ── Portal: Login ── */
@@ -493,14 +503,13 @@ function handlePortalLoginAction_(param) {
   var rawStoredPwd = cellVal || rowVal;
 
   // Clean leading quote `'` if Google Sheets prepended it
-  var cleanStoredPwd = rawStoredPwd.replace(/^'/, '').trim();
-  var cleanInputPwd  = password.replace(/^'/, '').trim();
+  var cleanStoredPwd = normalizePwd_(rawStoredPwd);
+  var cleanInputPwd  = normalizePwd_(password);
 
   // IF PASSWORD CELL IN SHEET WAS EMPTY: Save input password directly to sheet & log in!
   if (!cleanStoredPwd) {
     cleanStoredPwd = cleanInputPwd;
-    sheet.getRange(sheetRow, pwdCol).setNumberFormat('@').setValue(cleanStoredPwd);
-    SpreadsheetApp.flush();
+    setSheetPassword_(sheet, sheetRow, cleanStoredPwd);
   }
 
   // Robust comparison: exact match OR case-insensitive OR URI-decoded match
