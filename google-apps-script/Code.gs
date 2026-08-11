@@ -461,7 +461,7 @@ function handlePortalLoginAction_(param) {
   var lastCol = Math.max(COL_OTP_EXPIRY, sheet.getLastColumn());
   var row = sheet.getRange(sheetRow, 1, 1, lastCol).getValues()[0];
 
-  var storedPwd = String(row[COL_PASSWORD - 1] || '').trim();
+  var storedPwd = String(row[COL_PASSWORD - 1] || '').replace(/^'/, '').trim();
   if (!storedPwd) return jsonResponse_({ success: false, message: 'Password not yet set. Contact the organiser.' });
   if (storedPwd !== password) return jsonResponse_({ success: false, message: 'Incorrect password.' });
 
@@ -485,7 +485,7 @@ function handleSelectPSAction_(param) {
 
   var sheetRow = idx + 2;
   // Strict password verification
-  var storedPwd = String(sheet.getRange(sheetRow, COL_PASSWORD).getValue() || '').trim();
+  var storedPwd = String(sheet.getRange(sheetRow, COL_PASSWORD).getValue() || '').replace(/^'/, '').trim();
   if (!storedPwd || password !== storedPwd) return jsonResponse_({ success: false, message: 'Unauthorized. Invalid credentials.' });
 
   // Sanitize formula injection
@@ -614,7 +614,7 @@ function handleResetPasswordAction_(param) {
     return jsonResponse_({ success: false, message: 'OTP code has expired. Please request a new OTP.' });
   }
 
-  var pwdValue = newPwd;
+  var pwdValue = newPwd.trim().replace(/^'/, '');
   if (/^[=+@-]/.test(pwdValue)) pwdValue = "'" + pwdValue;
 
   // 1. Update Password in Column BJ (62) with single quote for text format
@@ -623,6 +623,9 @@ function handleResetPasswordAction_(param) {
   // 2. IMMEDIATELY MARK OTP AS USED & CLEAR EXPIRY in Columns BL & BM (64 & 65)
   sheet.getRange(sheetRow, COL_RESET_OTP).setValue('USED');
   sheet.getRange(sheetRow, COL_OTP_EXPIRY).setValue('');
+
+  // 3. Force immediate write flush to Google Sheets storage
+  SpreadsheetApp.flush();
 
   return jsonResponse_({ success: true, message: 'Password reset successfully in sheet records. You can now log in with your new password.' });
 }
@@ -640,10 +643,10 @@ function handleChangePasswordAction_(param) {
   if (idx < 0) return jsonResponse_({ success: false, message: 'Registration ID not found.' });
 
   var sheetRow = idx + 2;
-  var storedPwd = String(sheet.getRange(sheetRow, COL_PASSWORD).getValue() || '').trim();
+  var storedPwd = String(sheet.getRange(sheetRow, COL_PASSWORD).getValue() || '').replace(/^'/, '').trim();
   if (!storedPwd || storedPwd !== oldPwd) return jsonResponse_({ success: false, message: 'Current password is incorrect.' });
 
-  var pwdValue = newPwd;
+  var pwdValue = newPwd.trim().replace(/^'/, '');
   if (/^[=+@-]/.test(pwdValue)) pwdValue = "'" + pwdValue;
 
   // 1. Update Password in Column BJ (62) with single quote for text format
@@ -652,6 +655,9 @@ function handleChangePasswordAction_(param) {
   // 2. Clear any lingering OTPs
   sheet.getRange(sheetRow, COL_RESET_OTP).setValue('');
   sheet.getRange(sheetRow, COL_OTP_EXPIRY).setValue('');
+
+  // 3. Force immediate write flush to Google Sheets storage
+  SpreadsheetApp.flush();
 
   return jsonResponse_({ success: true, message: 'Password updated successfully in spreadsheet records.' });
 }
