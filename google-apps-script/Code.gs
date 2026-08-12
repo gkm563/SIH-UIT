@@ -433,7 +433,7 @@ function getPSCountsMap_() {
   var counts = {};
   var teamSelections = {};
 
-  // Initialize all 36 Problem Statements with 0
+  // Initialize all 37 Problem Statements with 0
   for (var k = 0; k < ALL_36_PROBLEM_STATEMENTS.length; k++) {
     var pId = ALL_36_PROBLEM_STATEMENTS[k].id;
     counts[pId] = 0;
@@ -449,15 +449,17 @@ function getPSCountsMap_() {
       var row = data[i];
       var regId = String(row[1] || '').trim().replace(/^'/, '');
       var tName = String(row[2] || '').trim().replace(/^'/, '');
+      var lName = String(row[4] || '').trim().replace(/^'/, '');
       // Read from dynamically detected column (0-based)
-      var psVal = String(row[psCol - 1] || '').trim().replace(/^'/, '');
+      var psVal = String(row[psCol - 1] || row[COL_PS_CHOICE - 1] || '').trim().replace(/^'/, '');
 
       if (psVal) {
         var cleanId = extractCleanPSId_(psVal);
         if (cleanId) {
           counts[cleanId] = (counts[cleanId] || 0) + 1;
           if (!teamSelections[cleanId]) teamSelections[cleanId] = [];
-          teamSelections[cleanId].push(regId + ' (' + tName + ')');
+          var displayTeamInfo = regId + ' — ' + tName + (lName ? ' (Leader: ' + lName + ')' : '');
+          teamSelections[cleanId].push(displayTeamInfo);
         }
       }
     }
@@ -491,20 +493,23 @@ function updatePSSummarySheet_() {
       'Problem Statement Title',
       'Domain',
       'Total Teams Selected',
-      'Selected Teams List'
+      'Selected Teams List (Registration ID & Leader Name)'
     ];
 
     summarySheet.getRange(1, 1, 1, summaryHeaders.length)
       .setValues([summaryHeaders])
       .setFontWeight('bold')
-      .setBackground('#1a73e8')
-      .setFontColor('#ffffff');
+      .setBackground('#0f172a')
+      .setFontColor('#ffffff')
+      .setHorizontalAlignment('center');
+    summarySheet.getRange(1, 2).setHorizontalAlignment('left');
+    summarySheet.getRange(1, 5).setHorizontalAlignment('left');
 
     var rows = [];
     for (var k = 0; k < ALL_36_PROBLEM_STATEMENTS.length; k++) {
       var psObj = ALL_36_PROBLEM_STATEMENTS[k];
       var count = countsMap[psObj.id] || 0;
-      var teamsList = (teamSelections[psObj.id] || []).join(', ');
+      var teamsList = (teamSelections[psObj.id] || []).join(' | ');
 
       rows.push([
         psObj.id,
@@ -519,13 +524,22 @@ function updatePSSummarySheet_() {
 
     if (rows.length > 0) {
       summarySheet.getRange(2, 1, rows.length, summaryHeaders.length).setValues(rows);
+      summarySheet.getRange(2, 1, rows.length, 1).setHorizontalAlignment('center').setFontWeight('bold');
+      summarySheet.getRange(2, 4, rows.length, 1).setHorizontalAlignment('center').setFontWeight('bold');
+
+      // Highlight selected rows with soft green background
+      for (var rIdx = 0; rIdx < rows.length; rIdx++) {
+        if (rows[rIdx][3] > 0) {
+          summarySheet.getRange(rIdx + 2, 1, 1, summaryHeaders.length).setBackground('#e6f4ea');
+        }
+      }
     }
     summarySheet.setFrozenRows(1);
-    summarySheet.setColumnWidth(1, 100);
-    summarySheet.setColumnWidth(2, 340);
-    summarySheet.setColumnWidth(3, 160);
-    summarySheet.setColumnWidth(4, 160);
-    summarySheet.setColumnWidth(5, 380);
+    summarySheet.setColumnWidth(1, 110);
+    summarySheet.setColumnWidth(2, 380);
+    summarySheet.setColumnWidth(3, 180);
+    summarySheet.setColumnWidth(4, 180);
+    summarySheet.setColumnWidth(5, 450);
   } catch (e) {
     Logger.log('Error updating PS Summary sheet: ' + e.message);
   }
@@ -901,8 +915,9 @@ function handleGeneratePasswordsAction_(param) {
 
 
 /* ── Build team object from a row array ── */
-function buildTeamObj_(row, regId) {
-  var psChoice = String(row[COL_PS_CHOICE - 1] || '').trim();
+function buildTeamObj_(row, regId, sheet) {
+  var psCol = sheet ? getPSChoiceColIndex_(sheet) : COL_PS_CHOICE;
+  var psChoice = String(row[psCol - 1] || row[COL_PS_CHOICE - 1] || '').trim().replace(/^'/, '');
   var teamObj = {
     registrationId: regId,
     teamName: String(row[2] || '').trim().replace(/^'/, ''),
@@ -2426,12 +2441,14 @@ function updateAnalyticsDashboardSheet_() {
     }
 
     if (lastRow >= 2) {
-      var data = sheet.getRange(2, 1, lastRow - 1, lastCol).getValues();
+      var psCol = getPSChoiceColIndex_(sheet);
+      var fetchCols = Math.max(psCol, lastCol);
+      var data = sheet.getRange(2, 1, lastRow - 1, fetchCols).getValues();
       totalTeams = data.length;
 
       for (var i = 0; i < data.length; i++) {
         var row = data[i];
-        var psVal = String(row[COL_PS_CHOICE - 1] || '').trim().replace(/^'/, '');
+        var psVal = String(row[psCol - 1] || row[COL_PS_CHOICE - 1] || '').trim().replace(/^'/, '');
         if (psVal) {
           teamsWithPS++;
           var cleanId = extractCleanPSId_(psVal);
