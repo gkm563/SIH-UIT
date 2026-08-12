@@ -715,8 +715,8 @@
 
       const filtered = PS_DATA.filter(p => {
         if (domain && p.domain !== domain) return false;
-        if (diff   && p.difficulty !== diff) return false;
-        if (type   && p.type !== type) return false;
+        if (diff   && p.difficulty !== diff && p.difficulty !== 'All Levels') return false;
+        if (type   && p.type !== type && !p.type.includes(type)) return false;
 
         if (search) {
           const idClean = p.id.toLowerCase().replace(/[^a-z0-9]/g, '');

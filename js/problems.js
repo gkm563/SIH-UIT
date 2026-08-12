@@ -171,10 +171,10 @@
       }
 
       // Type
-      if (state.type !== 'All' && ps.type !== state.type) return false;
+      if (state.type !== 'All' && ps.type !== state.type && !ps.type.includes(state.type)) return false;
 
       // Difficulty
-      if (state.difficulty !== 'All' && ps.difficulty !== state.difficulty) return false;
+      if (state.difficulty !== 'All' && ps.difficulty !== state.difficulty && ps.difficulty !== 'All Levels') return false;
 
       // Domain
       if (state.selectedDomains.size > 0 && !state.selectedDomains.has(ps.domain)) return false;
