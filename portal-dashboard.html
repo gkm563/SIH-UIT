@@ -752,7 +752,7 @@
             const cardClasses = isSelected
               ? 'border-2 border-emerald-500 bg-emerald-50/30 shadow-md ring-2 ring-emerald-200'
               : isNewPs37
-              ? 'border-2 border-purple-400 bg-gradient-to-br from-purple-50/40 via-white to-pink-50/30 shadow-md hover:border-purple-600 ring-1 ring-purple-200'
+              ? 'border-2 border-emerald-400 bg-gradient-to-br from-emerald-50/40 via-white to-teal-50/20 shadow-xs hover:border-emerald-600 ring-1 ring-emerald-200'
               : 'border-slate-200/90 hover:border-blue-300 bg-white';
 
             return `<div class="ps-card rounded-2xl p-4 sm:p-5 cursor-pointer transition-all hover:shadow-md flex flex-col justify-between group ${cardClasses}" data-psid="${escapeHtml(p.id)}">
@@ -760,7 +760,7 @@
                 <div class="flex items-center justify-between gap-2 mb-2">
                   <div class="flex items-center gap-1.5 flex-wrap">
                     <span class="font-black text-xs font-mono text-blue-800 bg-blue-50 border border-blue-200 px-2.5 py-0.5 rounded-lg whitespace-nowrap flex-shrink-0">${escapeHtml(p.id)}</span>
-                    ${isNewPs37 ? '<span class="text-[10px] font-black bg-gradient-to-r from-purple-600 via-pink-600 to-amber-500 text-white px-2 py-0.5 rounded-md shadow-2xs animate-pulse">🔥 NEW &amp; HIGH DEMAND</span>' : ''}
+                    ${isNewPs37 ? '<span class="text-[10px] font-black bg-emerald-700 text-white px-2 py-0.5 rounded-md shadow-2xs">💡 HIGH DEMAND</span>' : ''}
                   </div>
                   ${isSelected ? '<span class="text-emerald-700 text-xs font-black bg-emerald-100 border border-emerald-300 px-2 py-0.5 rounded-full flex items-center gap-1"><span>✅</span> Selected</span>' : '<span class="text-[10px] font-bold text-slate-400 opacity-0 group-hover:opacity-100 transition-opacity">Click to Select →</span>'}
                 </div>

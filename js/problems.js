@@ -223,16 +223,16 @@
 
       const isNewPs37 = ps.id === 'PS-37';
       const cardBorder = isNewPs37
-        ? 'bg-gradient-to-br from-purple-50/50 via-white to-pink-50/30 border-2 border-purple-400 shadow-md hover:border-purple-600 ring-2 ring-purple-200/50'
+        ? 'bg-gradient-to-br from-emerald-50/60 via-white to-teal-50/40 border-2 border-emerald-400 shadow-xs hover:border-emerald-600 ring-2 ring-emerald-200/50'
         : 'bg-white border border-slate-200/90 shadow-2xs hover:shadow-md';
 
       const newBadge = isNewPs37
-        ? `<span class="px-2 py-0.5 rounded-md text-[10px] font-black bg-gradient-to-r from-purple-600 via-pink-600 to-amber-500 text-white shadow-xs animate-pulse">🔥 NEW &amp; HIGH DEMAND</span>`
+        ? `<span class="px-2 py-0.5 rounded-md text-[10px] font-black bg-emerald-700 text-white shadow-2xs">💡 HIGH DEMAND</span>`
         : '';
 
       html += `
         <div class="ps-card ${cardBorder} rounded-2xl p-4 sm:p-5 transition-all flex flex-col justify-between cursor-pointer group hover:-translate-y-1 relative overflow-hidden" data-ps-id="${ps.id}">
-          ${isNewPs37 ? '<div class="absolute -right-8 -top-8 w-24 h-24 bg-purple-500/10 rounded-full blur-xl pointer-events-none"></div>' : ''}
+          ${isNewPs37 ? '<div class="absolute -right-8 -top-8 w-24 h-24 bg-emerald-500/10 rounded-full blur-xl pointer-events-none"></div>' : ''}
           <div>
             <!-- Top Meta Row -->
             <div class="flex items-center justify-between gap-2 mb-3">
@@ -251,7 +251,7 @@
             </div>
 
             <!-- Title -->
-            <h3 class="text-sm sm:text-base font-extrabold ${isNewPs37 ? 'text-purple-950 group-hover:text-purple-700' : 'text-slate-900 group-hover:text-blue-600'} transition-colors leading-snug mb-2 flex items-center gap-1.5">
+            <h3 class="text-sm sm:text-base font-extrabold ${isNewPs37 ? 'text-emerald-950 group-hover:text-emerald-700' : 'text-slate-900 group-hover:text-blue-600'} transition-colors leading-snug mb-2 flex items-center gap-1.5">
               ${escapeHtml(ps.title)}
             </h3>
 
