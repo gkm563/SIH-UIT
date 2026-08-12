@@ -22,6 +22,51 @@
 // Bound spreadsheet — all registrations are written here
 const SPREADSHEET_ID = '1vbDZMAJJgZpELJpfGtdPCres5puMHxe3ac4vvLIoNbs';
 
+/* =============================================================================
+ * TOP-LEVEL PUBLIC EXECUTABLE FUNCTIONS (Visible in Apps Script Top Dropdown)
+ * ============================================================================= */
+
+/**
+ * ⚡ RUN THIS FUNCTION TO REFRESH & ADD PS-37 OPEN INNOVATION IN YOUR SPREADSHEET!
+ * Select 'SETUP_ADD_PS37_OPEN_INNOVATION' in the top dropdown and click 'Run'.
+ */
+function SETUP_ADD_PS37_OPEN_INNOVATION() {
+  updatePSSummarySheet_();
+  generateAnalyticsDashboard();
+  try {
+    SpreadsheetApp.getActiveSpreadsheet()?.toast('✅ PS-37 Open Innovation updated in PS Selection Summary tab!', 'SIH 2026 Admin', 5);
+  } catch(e) {}
+  Logger.log('SUCCESS: Updated PS Selection Summary tab with all 37 Problem Statements.');
+}
+
+/**
+ * Public function to refresh the PS Selection Summary sheet tab
+ */
+function REFRESH_PS_SUMMARY_SHEET() {
+  updatePSSummarySheet_();
+}
+
+/**
+ * Public function to generate/refresh Executive Analytics Dashboard
+ */
+function GENERATE_ANALYTICS_DASHBOARD() {
+  return generateAnalyticsDashboard();
+}
+
+/**
+ * Creates custom "🚀 SIH 2026 Admin" menu in Google Sheets menu bar automatically
+ */
+function onOpen() {
+  try {
+    var ui = SpreadsheetApp.getUi();
+    ui.createMenu('🚀 SIH 2026 Admin')
+      .addItem('⚡ Update PS-37 & Refresh Summary Sheet', 'SETUP_ADD_PS37_OPEN_INNOVATION')
+      .addItem('📊 Refresh PS Selection Summary', 'REFRESH_PS_SUMMARY_SHEET')
+      .addItem('📈 Generate Live Analytics Dashboard', 'GENERATE_ANALYTICS_DASHBOARD')
+      .addToUi();
+  } catch (e) {}
+}
+
 const SHEET_NAME = 'Registrations';
 const REG_ID_PREFIX = 'SIH2026-';
 const MAX_MEMBERS = 5; // Member 1 … Member 5 (leader is separate)
