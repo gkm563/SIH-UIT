@@ -604,7 +604,14 @@ function getPSChoiceColIndex_(sheet) {
     var headers = sheet.getRange(1, 1, 1, maxCol).getValues()[0];
     for (var c = 0; c < headers.length; c++) {
       var h = String(headers[c] || '').trim().toLowerCase();
-      if (h === 'ps choice' || h === 'ps_choice' || h === 'problem statement choice') {
+      if (
+        h === 'ps choice' ||
+        h === 'ps_choice' ||
+        h === 'problem statement choice' ||
+        h.indexOf('ps choice') !== -1 ||
+        h.indexOf('problem statement') !== -1 ||
+        h.indexOf('ps select') !== -1
+      ) {
         return c + 1; // 1-based column index
       }
     }
