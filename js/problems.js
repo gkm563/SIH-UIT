@@ -120,6 +120,27 @@
     renderDomainChips();
     bindEvents();
     renderGrid();
+    handleDeepLink();
+  }
+
+  function handleDeepLink() {
+    const hash = window.location.hash ? window.location.hash.replace('#', '').trim().toUpperCase() : '';
+    const params = new URLSearchParams(window.location.search);
+    const psParam = params.get('ps') ? params.get('ps').trim().toUpperCase() : '';
+    const targetId = psParam || hash;
+
+    if (targetId) {
+      const psMatch = typeof PROBLEM_STATEMENTS !== 'undefined' ? PROBLEM_STATEMENTS.find(p => p.id.toUpperCase() === targetId || p.id.toUpperCase().replace('-', '') === targetId.replace('-', '')) : null;
+      if (psMatch) {
+        setTimeout(() => {
+          const card = document.querySelector(`[data-ps-id="${psMatch.id}"]`);
+          if (card) {
+            card.scrollIntoView({ behavior: 'smooth', block: 'center' });
+          }
+          openDetailModal(psMatch.id);
+        }, 350);
+      }
+    }
   }
 
   function getDomains() {
