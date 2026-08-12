@@ -134,7 +134,7 @@
             <span class="text-[11px] font-black text-blue-900 bg-blue-100 border border-blue-200 px-2.5 py-0.5 rounded-full">22nd August 2026 (Saturday)</span>
           </div>
           <p class="text-xs font-medium text-slate-700 leading-relaxed">
-            Select <strong class="text-blue-950 font-black">1 Problem Statement</strong> from the 36 available PSs and prepare your <strong class="text-blue-950 font-black">Idea Presentation PPT</strong> for internal evaluation at United Institute of Technology.
+            Select <strong class="text-blue-950 font-black">1 Problem Statement</strong> from the 37 available PSs (including Open Innovation) and prepare your <strong class="text-blue-950 font-black">Idea Presentation PPT</strong> for internal evaluation at United Institute of Technology.
           </p>
         </div>
       </div>
@@ -228,7 +228,7 @@
         <div class="grid grid-cols-1 sm:grid-cols-3 gap-3 text-xs">
           <div class="bg-white/80 border border-slate-200/80 p-3 rounded-xl">
             <span class="text-[10px] font-black uppercase text-blue-700 block mb-1">Step 1: Choose 1 PS</span>
-            <p class="text-slate-600 font-semibold">Browse the 36 problem statements below and click to select the 1 problem statement your team will solve.</p>
+            <p class="text-slate-600 font-semibold">Browse the 37 problem statements below (including PS-37 Open Innovation) and click to select the 1 problem statement your team will solve.</p>
           </div>
           <div class="bg-white/80 border border-slate-200/80 p-3 rounded-xl">
             <span class="text-[10px] font-black uppercase text-blue-700 block mb-1">Step 2: Prepare Presentation</span>
@@ -274,7 +274,7 @@
           <div class="flex items-center gap-2 flex-wrap flex-1">
             
             <select id="ps-domain" class="px-3 py-2 text-xs font-bold border border-slate-200 rounded-xl bg-slate-50 hover:bg-white focus:border-blue-600 transition-all cursor-pointer">
-              <option value="">🌐 All Domains (36 PSs)</option>
+              <option value="">🌐 All Domains (37 PSs)</option>
             </select>
 
             <select id="ps-type" class="px-3 py-2 text-xs font-bold border border-slate-200 rounded-xl bg-slate-50 hover:bg-white focus:border-blue-600 transition-all cursor-pointer">
@@ -298,7 +298,7 @@
 
           <div class="text-xs font-black text-blue-900 bg-blue-50 border border-blue-200 px-3 py-1.5 rounded-full flex items-center gap-1.5 whitespace-nowrap">
             <span class="w-2 h-2 bg-blue-600 rounded-full animate-ping"></span>
-            <span id="ps-count">Showing 36 of 36 PSs</span>
+            <span id="ps-count">Showing 37 of 37 PSs</span>
           </div>
         </div>
       </div>
@@ -735,26 +735,36 @@
 
       document.getElementById('ps-count').textContent = `Showing ${filtered.length} of ${PS_DATA.length} PSs`;
 
-      const diffClass = { Beginner:'bg-emerald-50 text-emerald-700 border-emerald-200', Intermediate:'bg-amber-50 text-amber-800 border-amber-200', Advanced:'bg-purple-50 text-purple-700 border-purple-200' };
-      const typeClass = { Software:'bg-blue-50 text-blue-800 border-blue-200', Hardware:'bg-orange-50 text-orange-800 border-orange-200', Hybrid:'bg-indigo-50 text-indigo-800 border-indigo-200' };
-      const typeIcon  = { Software:'🖥️', Hardware:'⚙️', Hybrid:'🔀' };
+      const diffClass = { Beginner:'bg-emerald-50 text-emerald-700 border-emerald-200', Intermediate:'bg-amber-50 text-amber-800 border-amber-200', Advanced:'bg-purple-50 text-purple-700 border-purple-200', 'All Levels':'bg-teal-50 text-teal-800 border-teal-200' };
+      const typeClass = { Software:'bg-blue-50 text-blue-800 border-blue-200', Hardware:'bg-orange-50 text-orange-800 border-orange-200', Hybrid:'bg-indigo-50 text-indigo-800 border-indigo-200', 'Software / Hardware / Hybrid':'bg-purple-50 text-purple-800 border-purple-200' };
+      const typeIcon  = { Software:'🖥️', Hardware:'⚙️', Hybrid:'🔀', 'Software / Hardware / Hybrid':'⚡' };
 
       document.getElementById('ps-grid').innerHTML = filtered.length === 0
         ? '<div class="col-span-full text-center py-12 bg-white border border-slate-200 rounded-3xl p-6 shadow-2xs"><p class="text-slate-400 text-sm font-bold">No problem statements match your search query.</p><button onclick="document.getElementById(\'ps-clear\').click()" class="mt-3 text-xs font-black text-blue-700 underline">Reset all filters</button></div>'
         : filtered.map(p => {
             const isSelected = selectedPS ? selectedPS.id === p.id : (team.psChoice && team.psChoice.includes(p.id));
+            const isNewPs37 = p.id === 'PS-37';
             const count = (window.psCountsMap && window.psCountsMap[p.id.toUpperCase()]) || 0;
             const countBadge = count > 0
               ? `<span class="text-[10px] font-black bg-amber-100 text-amber-950 border border-amber-300 px-2 py-0.5 rounded-md flex items-center gap-1 shadow-2xs">🔥 ${count} Team${count > 1 ? 's' : ''} Selected</span>`
               : `<span class="text-[10px] font-bold bg-slate-50 text-slate-500 border border-slate-200 px-2 py-0.5 rounded-md">👥 0 Teams</span>`;
 
-            return `<div class="ps-card bg-white border rounded-2xl p-4 sm:p-5 cursor-pointer transition-all hover:shadow-md flex flex-col justify-between group ${isSelected ? 'border-2 border-emerald-500 bg-emerald-50/30 shadow-md ring-2 ring-emerald-200' : 'border-slate-200/90 hover:border-blue-300'}" data-psid="${escapeHtml(p.id)}">
+            const cardClasses = isSelected
+              ? 'border-2 border-emerald-500 bg-emerald-50/30 shadow-md ring-2 ring-emerald-200'
+              : isNewPs37
+              ? 'border-2 border-purple-400 bg-gradient-to-br from-purple-50/40 via-white to-pink-50/30 shadow-md hover:border-purple-600 ring-1 ring-purple-200'
+              : 'border-slate-200/90 hover:border-blue-300 bg-white';
+
+            return `<div class="ps-card rounded-2xl p-4 sm:p-5 cursor-pointer transition-all hover:shadow-md flex flex-col justify-between group ${cardClasses}" data-psid="${escapeHtml(p.id)}">
               <div>
                 <div class="flex items-center justify-between gap-2 mb-2">
-                  <span class="font-black text-xs font-mono text-blue-800 bg-blue-50 border border-blue-200 px-2.5 py-0.5 rounded-lg whitespace-nowrap flex-shrink-0">${escapeHtml(p.id)}</span>
+                  <div class="flex items-center gap-1.5 flex-wrap">
+                    <span class="font-black text-xs font-mono text-blue-800 bg-blue-50 border border-blue-200 px-2.5 py-0.5 rounded-lg whitespace-nowrap flex-shrink-0">${escapeHtml(p.id)}</span>
+                    ${isNewPs37 ? '<span class="text-[10px] font-black bg-gradient-to-r from-purple-600 via-pink-600 to-amber-500 text-white px-2 py-0.5 rounded-md shadow-2xs animate-pulse">🔥 NEW &amp; HIGH DEMAND</span>' : ''}
+                  </div>
                   ${isSelected ? '<span class="text-emerald-700 text-xs font-black bg-emerald-100 border border-emerald-300 px-2 py-0.5 rounded-full flex items-center gap-1"><span>✅</span> Selected</span>' : '<span class="text-[10px] font-bold text-slate-400 opacity-0 group-hover:opacity-100 transition-opacity">Click to Select →</span>'}
                 </div>
-                <h3 class="text-xs sm:text-sm font-black text-slate-900 mb-2 leading-snug group-hover:text-blue-700 transition-colors">${escapeHtml(p.title)}</h3>
+                <h3 class="text-xs sm:text-sm font-black ${isNewPs37 ? 'text-purple-950 group-hover:text-purple-700' : 'text-slate-900 group-hover:text-blue-700'} mb-2 leading-snug transition-colors">${escapeHtml(p.title)}</h3>
                 <p class="text-[11px] text-slate-600 leading-relaxed line-clamp-3 mb-3 font-normal">${escapeHtml(p.problemStatement || '')}</p>
               </div>
               <div class="pt-3 border-t border-slate-100 flex flex-wrap items-center justify-between gap-1.5">

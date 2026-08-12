@@ -1,5 +1,5 @@
 /**
- * Official SIH 2026 Problem Statement Bank (30 Problem Statements)
+ * Official SIH 2026 Problem Statement Bank (37 Problem Statements - Includes Open Innovation)
  */
 const PROBLEM_STATEMENTS = [
   {
@@ -574,6 +574,22 @@ const PROBLEM_STATEMENTS = [
     ],
     techStack: ['ESP32', 'Modbus / CAN Bus protocol', 'PWM Current Controller', 'Node.js / MQTT'],
     beneficiaries: 'EV charging station operators, DISCOMs, renewable microgrid developers, EV owners.'
+  },
+  {
+    id: 'PS-37',
+    title: 'Open Innovation',
+    domain: 'Open Innovation',
+    type: 'Software / Hardware / Hybrid',
+    difficulty: 'All Levels',
+    problemStatement: 'Added due to overwhelming demand from students and participants, Open Innovation allows teams to innovate, design, and build solutions for any real-world problem statement outside the predefined list. Solve pressing challenges in any domain using software, hardware, or hybrid approaches.',
+    expectedSolution: [
+      'Identify a high-impact real-world problem and clearly state its domain significance',
+      'Develop a functional working prototype or proof-of-concept (Software, Hardware, or Hybrid)',
+      'Demonstrate practical scalability, target audience impact, and execution feasibility',
+      'Provide comprehensive technical architecture, user flow, and implementation roadmap'
+    ],
+    techStack: ['Open Stack (AI/ML, Web, Mobile, IoT, Cloud, Hardware, Blockchain, etc.)'],
+    beneficiaries: 'General Public, Industry, Local Communities & Custom Target Audience.'
   }
 ];
 

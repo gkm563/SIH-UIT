@@ -320,7 +320,7 @@ function getSheetPassword_(sheet, sheetRow) {
 }
 
 /* ── Portal: Login ── */
-/* ── Official SIH 2026 Master List of 36 Problem Statements ── */
+/* ── Official SIH 2026 Master List of 37 Problem Statements ── */
 var ALL_36_PROBLEM_STATEMENTS = [
   { id: 'PS-01', title: 'AI-Based Crop Disease & Pest Detection', domain: 'Agriculture' },
   { id: 'PS-02', title: 'Smart Irrigation & Soil Health Monitor', domain: 'Agriculture' },
@@ -357,8 +357,10 @@ var ALL_36_PROBLEM_STATEMENTS = [
   { id: 'PS-33', title: 'Industrial Air & Water Pollution Monitoring Dashboard', domain: 'Environment' },
   { id: 'PS-34', title: 'Bio-Medical Waste Segregation & QR Tracking', domain: 'Waste Management' },
   { id: 'PS-35', title: 'AI Solar PV Panel Defect & Dust Diagnostics', domain: 'Renewable Energy' },
-  { id: 'PS-36', title: 'Smart EV Charging & Microgrid Load Balancer', domain: 'Renewable Energy' }
+  { id: 'PS-36', title: 'Smart EV Charging & Microgrid Load Balancer', domain: 'Renewable Energy' },
+  { id: 'PS-37', title: 'Open Innovation', domain: 'Open Innovation' }
 ];
+var ALL_37_PROBLEM_STATEMENTS = ALL_36_PROBLEM_STATEMENTS;
 
 /* ── Extract and normalize PS ID from any string format ── */
 function extractCleanPSId_(psVal) {
@@ -767,7 +769,7 @@ function sendCredentialsEmailToTeam_(sheet, sheetRow, regId, tName, email, exist
       '</div>' +
       '<div style="padding:30px 32px 24px;">' +
       '<p style="font-size:15px;color:#1e293b;margin:0 0 14px;">Dear <strong>' + tName + '</strong> (Team Leader),</p>' +
-      '<p style="font-size:14px;color:#475569;line-height:1.6;margin:0 0 20px;">Your official SIH 2026 Team Portal account has been activated. Please use the login credentials below to log into your team dashboard and select <strong>1 Problem Statement</strong> out of 36 for the Internal Evaluation Hackathon.</p>' +
+      '<p style="font-size:14px;color:#475569;line-height:1.6;margin:0 0 20px;">Your official SIH 2026 Team Portal account has been activated. Please use the login credentials below to log into your team dashboard and select <strong>1 Problem Statement</strong> out of 37 for the Internal Evaluation Hackathon.</p>' +
       '<div style="background:#fff8e1;border:1px solid #ffe082;border-radius:12px;padding:14px 18px;margin-bottom:22px;">' +
       '<p style="margin:0;font-size:13px;color:#856404;font-weight:700;line-height:1.5;">📅 <strong>Internal Hackathon Evaluation Date:</strong> 22nd August 2026 (Saturday)<br><span style="font-weight:500;font-size:12px;color:#6c757d;display:block;margin-top:4px;">Log in now, pick 1 Problem Statement, and prepare your Idea Presentation PPT for internal evaluation.</span></p>' +
       '</div>' +
@@ -2536,7 +2538,7 @@ function updateAnalyticsDashboardSheet_() {
 
     // ── Section 3: Problem Statement Selections Leaderboard ──
     dashSheet.getRange(r, 1, 1, 5).merge()
-      .setValue('🔥 3. PROBLEM STATEMENT SELECTIONS LEADERBOARD (ALL 36 PSs)')
+      .setValue('🔥 3. PROBLEM STATEMENT SELECTIONS LEADERBOARD (ALL 37 PSs)')
       .setFontWeight('bold')
       .setFontSize(11)
       .setBackground('#831843')

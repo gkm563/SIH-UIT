@@ -27,19 +27,22 @@
     'Sports': 'bg-red-50 text-red-800 border-red-200',
     'Blockchain / GovTech': 'bg-slate-100 text-slate-800 border-slate-300',
     'AI/ML': 'bg-blue-100 text-blue-900 border-blue-300',
-    'Robotics': 'bg-stone-100 text-stone-900 border-stone-300'
+    'Robotics': 'bg-stone-100 text-stone-900 border-stone-300',
+    'Open Innovation': 'bg-gradient-to-r from-purple-100 to-pink-100 text-purple-900 border-purple-300 font-extrabold shadow-2xs'
   };
 
   const DIFFICULTY_STYLES = {
     'Beginner': 'bg-emerald-50 text-emerald-700 border-emerald-200',
     'Intermediate': 'bg-amber-50 text-amber-800 border-amber-200',
-    'Advanced': 'bg-purple-50 text-purple-700 border-purple-200'
+    'Advanced': 'bg-purple-50 text-purple-700 border-purple-200',
+    'All Levels': 'bg-teal-50 text-teal-800 border-teal-200'
   };
 
   const TYPE_ICONS = {
     'Software': '🖥️',
     'Hardware': '⚙️',
-    'Hybrid': '🔀'
+    'Hybrid': '🔀',
+    'Software / Hardware / Hybrid': '⚡'
   };
 
   // State
@@ -218,14 +221,27 @@
         ? `<span class="px-2 py-0.5 rounded-md text-[10px] font-black bg-amber-100 text-amber-950 border border-amber-300 flex items-center gap-1 shadow-2xs">🔥 ${count} Team${count > 1 ? 's' : ''}</span>`
         : `<span class="px-2 py-0.5 rounded-md text-[10px] font-bold bg-slate-50 text-slate-500 border border-slate-200">👥 0 Teams</span>`;
 
+      const isNewPs37 = ps.id === 'PS-37';
+      const cardBorder = isNewPs37
+        ? 'bg-gradient-to-br from-purple-50/50 via-white to-pink-50/30 border-2 border-purple-400 shadow-md hover:border-purple-600 ring-2 ring-purple-200/50'
+        : 'bg-white border border-slate-200/90 shadow-2xs hover:shadow-md';
+
+      const newBadge = isNewPs37
+        ? `<span class="px-2 py-0.5 rounded-md text-[10px] font-black bg-gradient-to-r from-purple-600 via-pink-600 to-amber-500 text-white shadow-xs animate-pulse">🔥 NEW &amp; HIGH DEMAND</span>`
+        : '';
+
       html += `
-        <div class="ps-card bg-white border border-slate-200/90 rounded-2xl p-4 sm:p-5 shadow-2xs hover:shadow-md transition-all flex flex-col justify-between cursor-pointer group hover:-translate-y-1" data-ps-id="${ps.id}">
+        <div class="ps-card ${cardBorder} rounded-2xl p-4 sm:p-5 transition-all flex flex-col justify-between cursor-pointer group hover:-translate-y-1 relative overflow-hidden" data-ps-id="${ps.id}">
+          ${isNewPs37 ? '<div class="absolute -right-8 -top-8 w-24 h-24 bg-purple-500/10 rounded-full blur-xl pointer-events-none"></div>' : ''}
           <div>
             <!-- Top Meta Row -->
             <div class="flex items-center justify-between gap-2 mb-3">
-              <span class="text-[11px] font-black text-blue-700 bg-blue-50 border border-blue-200 px-2.5 py-0.5 rounded-full font-mono whitespace-nowrap flex-shrink-0">
-                ${ps.id}
-              </span>
+              <div class="flex items-center gap-1.5 flex-wrap">
+                <span class="text-[11px] font-black text-blue-700 bg-blue-50 border border-blue-200 px-2.5 py-0.5 rounded-full font-mono whitespace-nowrap flex-shrink-0">
+                  ${ps.id}
+                </span>
+                ${newBadge}
+              </div>
               <div class="flex items-center gap-1.5 flex-wrap justify-end">
                 ${countBadge}
                 <span class="px-2 py-0.5 rounded-md text-[10px] font-bold border ${domainStyle}">${escapeHtml(ps.domain)}</span>
@@ -235,7 +251,7 @@
             </div>
 
             <!-- Title -->
-            <h3 class="text-sm sm:text-base font-extrabold text-slate-900 group-hover:text-blue-600 transition-colors leading-snug mb-2">
+            <h3 class="text-sm sm:text-base font-extrabold ${isNewPs37 ? 'text-purple-950 group-hover:text-purple-700' : 'text-slate-900 group-hover:text-blue-600'} transition-colors leading-snug mb-2 flex items-center gap-1.5">
               ${escapeHtml(ps.title)}
             </h3>
 
@@ -247,7 +263,7 @@
 
           <!-- Bottom Action Bar -->
           <div class="pt-3 border-t border-slate-100 flex items-center justify-between gap-2">
-            <span class="text-[11px] font-extrabold text-blue-700 group-hover:underline flex items-center gap-1">
+            <span class="text-[11px] font-extrabold ${isNewPs37 ? 'text-purple-700 group-hover:underline' : 'text-blue-700 group-hover:underline'} flex items-center gap-1">
               <span>View Full Details &amp; Ideal PPT</span>
               <svg class="w-3.5 h-3.5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M14 5l7 7m0 0l-7 7m7-7H3"/></svg>
             </span>

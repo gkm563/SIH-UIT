@@ -93,7 +93,7 @@
         Smart India Hackathon 2026 — Problem Statements
       </h1>
       <p class="text-xs sm:text-sm text-slate-600 max-w-2xl mx-auto mb-5 font-medium">
-        Browse 36 real-world problem statements, filter by domain &amp; difficulty, and download the official SIH 2026 Ideal PPT template for your team!
+        Browse 37 real-world problem statements (including Open Innovation), filter by domain &amp; difficulty, and download the official SIH 2026 Ideal PPT template for your team!
       </p>
 
       <!-- Key Info Bar -->
@@ -109,11 +109,26 @@
         </div>
       </div>
 
-      <div>
+      <div class="mt-4">
         <a href="#ps-browser" class="inline-flex items-center gap-2 bg-blue-600 hover:bg-blue-700 text-white font-extrabold text-xs sm:text-sm px-6 py-3 rounded-full shadow-md transition-transform active:scale-95">
           <span>Browse Problem Statements</span>
           <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"/></svg>
         </a>
+      </div>
+
+      <!-- High Demand Announcement Badge -->
+      <div class="mt-6 max-w-xl mx-auto bg-gradient-to-r from-purple-900 via-indigo-900 to-pink-900 text-white p-4 rounded-2xl shadow-lg border border-purple-400/30 flex items-center justify-between gap-3 text-left">
+        <div class="flex items-center gap-3">
+          <span class="text-2xl">🔥</span>
+          <div>
+            <div class="text-[10px] font-black uppercase text-amber-300 tracking-wider">High Demand Update</div>
+            <div class="text-xs sm:text-sm font-black text-white">PS-37: Open Innovation Added!</div>
+            <div class="text-[11px] text-purple-200 font-medium">Create your own custom solution in any domain.</div>
+          </div>
+        </div>
+        <button onclick="document.querySelector('[data-ps-id=\'PS-37\']')?.scrollIntoView({behavior:\'smooth\'})" class="px-3.5 py-1.5 bg-gradient-to-r from-pink-500 to-purple-600 text-white text-xs font-black rounded-xl shadow-xs whitespace-nowrap hover:scale-105 transition-transform">
+          Jump to PS-37 ↓
+        </button>
       </div>
     </div>
   </section>
@@ -341,6 +356,67 @@
 
     </div>
   </footer>
+
+  <!-- High Demand PS-37 Announcement Modal for First-Time Visitors -->
+  <div id="ps37-announcement-modal" class="fixed inset-0 z-[100] flex items-center justify-center p-4 bg-slate-900/70 backdrop-blur-md hidden transition-all duration-300">
+    <div class="bg-white border-2 border-purple-500/30 rounded-3xl p-6 sm:p-8 max-w-lg w-full shadow-2xl relative overflow-hidden animate-fade-in">
+      <div class="absolute -right-12 -top-12 w-40 h-40 bg-purple-500/20 rounded-full blur-3xl pointer-events-none"></div>
+      <div class="absolute -left-12 -bottom-12 w-40 h-40 bg-pink-500/20 rounded-full blur-3xl pointer-events-none"></div>
+
+      <div class="inline-flex items-center gap-2 px-3 py-1 bg-gradient-to-r from-purple-600 via-pink-600 to-amber-500 text-white rounded-full text-xs font-black mb-3 shadow-md">
+        <span>🔥 HIGH DEMAND UPDATE</span>
+      </div>
+
+      <h3 class="text-xl sm:text-2xl font-black text-slate-900 tracking-tight mb-2">
+        PS-37: Open Innovation Added! 🎉
+      </h3>
+
+      <p class="text-xs sm:text-sm text-slate-600 font-medium leading-relaxed mb-4">
+        As per high demand from students &amp; participants, we have officially introduced <strong class="text-purple-700 font-bold">PS-37: Open Innovation</strong>! You can now solve and build solutions for <strong>any real-world problem statement</strong> in software, hardware, or hybrid domains.
+      </p>
+
+      <div class="bg-gradient-to-r from-purple-50 via-pink-50 to-amber-50 border border-purple-200/80 rounded-2xl p-4 mb-6">
+        <div class="flex items-center gap-2 text-xs font-black text-purple-900 mb-1">
+          <span>💡 What is Open Innovation?</span>
+        </div>
+        <p class="text-[11px] sm:text-xs text-purple-950 font-semibold leading-relaxed">
+          Select your own problem statement, design your custom prototype, and pitch directly in the SIH 2026 Internal Evaluation Hackathon!
+        </p>
+      </div>
+
+      <div class="flex items-center justify-end gap-3">
+        <button id="close-ps37-modal" type="button" class="w-full sm:w-auto px-6 py-3 bg-gradient-to-r from-purple-600 to-pink-600 hover:from-purple-700 hover:to-pink-700 text-white font-black text-xs sm:text-sm rounded-xl shadow-md transition-transform active:scale-95">
+          View PS-37 Details →
+        </button>
+      </div>
+    </div>
+  </div>
+
+  <script>
+    document.addEventListener('DOMContentLoaded', () => {
+      const modal = document.getElementById('ps37-announcement-modal');
+      const closeBtn = document.getElementById('close-ps37-modal');
+      if (modal && !localStorage.getItem('sih_ps37_seen_v1')) {
+        setTimeout(() => {
+          modal.classList.remove('hidden');
+        }, 600);
+      }
+      if (closeBtn && modal) {
+        closeBtn.addEventListener('click', () => {
+          localStorage.setItem('sih_ps37_seen_v1', '1');
+          modal.classList.add('hidden');
+          const card = document.querySelector('[data-ps-id="PS-37"]');
+          if (card) card.scrollIntoView({ behavior: 'smooth' });
+        });
+        modal.addEventListener('click', (e) => {
+          if (e.target === modal) {
+            localStorage.setItem('sih_ps37_seen_v1', '1');
+            modal.classList.add('hidden');
+          }
+        });
+      }
+    });
+  </script>
 
   <script src="js/data/problem-statements.js" defer></script>
   <script src="js/problems.js" defer></script>
