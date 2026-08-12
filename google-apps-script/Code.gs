@@ -403,7 +403,7 @@ var ALL_36_PROBLEM_STATEMENTS = [
   { id: 'PS-34', title: 'Bio-Medical Waste Segregation & QR Tracking', domain: 'Waste Management' },
   { id: 'PS-35', title: 'AI Solar PV Panel Defect & Dust Diagnostics', domain: 'Renewable Energy' },
   { id: 'PS-36', title: 'Smart EV Charging & Microgrid Load Balancer', domain: 'Renewable Energy' },
-  { id: 'PS-37', title: 'Open Innovation', domain: 'Open Innovation' }
+  { id: 'PS-37', title: 'Open Innovation — Real-World Problem Solution Track', domain: 'Open Innovation' }
 ];
 var ALL_37_PROBLEM_STATEMENTS = ALL_36_PROBLEM_STATEMENTS;
 

@@ -577,19 +577,19 @@ const PROBLEM_STATEMENTS = [
   },
   {
     id: 'PS-37',
-    title: 'Open Innovation',
+    title: 'Open Innovation — Real-World Problem Solution Track',
     domain: 'Open Innovation',
     type: 'Software / Hardware / Hybrid',
     difficulty: 'All Levels',
-    problemStatement: 'Added due to overwhelming demand from students and participants, Open Innovation allows teams to innovate, design, and build solutions for any real-world problem statement outside the predefined list. Solve pressing challenges in any domain using software, hardware, or hybrid approaches.',
+    problemStatement: 'Due to overwhelming demand from student innovators and project teams, the Open Innovation track enables participants to identify, articulate, and solve pressing real-world challenges outside the predefined SIH problem statement bank. Teams are empowered to propose and build cutting-edge solutions across any domain—including Healthcare, Smart Cities, Agriculture, FinTech, EdTech, Cybersecurity, Clean Energy, and Social Impact—using software, hardware, or hybrid working prototypes.',
     expectedSolution: [
-      'Identify a high-impact real-world problem and clearly state its domain significance',
-      'Develop a functional working prototype or proof-of-concept (Software, Hardware, or Hybrid)',
-      'Demonstrate practical scalability, target audience impact, and execution feasibility',
-      'Provide comprehensive technical architecture, user flow, and implementation roadmap'
+      'Identify a high-impact real-world problem with a clear domain significance and target user analysis.',
+      'Develop a functional working prototype or proof-of-concept (Software Platform, IoT Device, or Hybrid System).',
+      'Demonstrate practical scalability, system architecture, data workflows, and execution feasibility.',
+      'Provide a comprehensive technical implementation roadmap and cost-effectiveness model.'
     ],
-    techStack: ['Open Stack (AI/ML, Web, Mobile, IoT, Cloud, Hardware, Blockchain, etc.)'],
-    beneficiaries: 'General Public, Industry, Local Communities & Custom Target Audience.'
+    techStack: ['Open Stack (AI/ML, Web, Mobile, IoT, Embedded Systems, Cloud, Blockchain, etc.)'],
+    beneficiaries: 'General Public, Industry Sectors, Rural & Urban Communities, Public Governance, and Domain-Specific Stakeholders.'
   }
 ];
 
