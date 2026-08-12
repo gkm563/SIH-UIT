@@ -71,14 +71,44 @@
 
 /* Problem Statement Cards */
 .ps-card {
-  transition: transform 0.2s cubic-bezier(0.4, 0, 0.2, 1), box-shadow 0.2s cubic-bezier(0.4, 0, 0.2, 1), border-color 0.2s ease;
+  transition: transform 0.25s cubic-bezier(0.16, 1, 0.3, 1), box-shadow 0.25s cubic-bezier(0.16, 1, 0.3, 1), border-color 0.2s ease;
   touch-action: manipulation;
 }
 
 .ps-card:hover {
-  transform: translateY(-3px);
-  border-color: #93c5fd;
-  box-shadow: 0 8px 24px rgba(26, 115, 232, 0.12);
+  transform: translateY(-4px);
+  box-shadow: 0 12px 30px -4px rgba(16, 185, 129, 0.12), 0 4px 12px -2px rgba(0, 0, 0, 0.04);
+}
+
+/* Featured / High Demand Open Innovation Card Highlight */
+.ps-card-featured {
+  border: 2px solid #34d399 !important;
+  background: linear-gradient(135deg, rgba(236, 253, 245, 0.8) 0%, rgba(255, 255, 255, 1) 50%, rgba(240, 253, 250, 0.6) 100%) !important;
+  box-shadow: 0 4px 20px -2px rgba(16, 185, 129, 0.15);
+}
+
+.ps-card-featured:hover {
+  transform: translateY(-5px);
+  border-color: #059669 !important;
+  box-shadow: 0 16px 36px -6px rgba(16, 185, 129, 0.22);
+}
+
+@keyframes pulseGlow {
+  0%, 100% { opacity: 1; transform: scale(1); }
+  50% { opacity: 0.85; transform: scale(1.02); }
+}
+
+.animate-pulse-glow {
+  animation: pulseGlow 2.5s ease-in-out infinite;
+}
+
+@keyframes modalScale {
+  from { opacity: 0; transform: scale(0.95) translateY(10px); }
+  to { opacity: 1; transform: scale(1) translateY(0); }
+}
+
+.animate-modal-scale {
+  animation: modalScale 0.35s cubic-bezier(0.16, 1, 0.3, 1) forwards;
 }
 
 /* Touch-optimized horizontal scrolling for Domain Container */
@@ -100,7 +130,8 @@
 /* Mobile Modal Enhancements */
 @media (max-width: 640px) {
   #ps-detail-modal > div,
-  #select-team-modal > div {
+  #select-team-modal > div,
+  #ps37-announcement-modal > div {
     max-height: 94vh;
     margin: auto;
     width: 95%;

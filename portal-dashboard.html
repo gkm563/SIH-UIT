@@ -752,7 +752,7 @@
             const cardClasses = isSelected
               ? 'border-2 border-emerald-500 bg-emerald-50/30 shadow-md ring-2 ring-emerald-200'
               : isNewPs37
-              ? 'border-2 border-emerald-400 bg-gradient-to-br from-emerald-50/40 via-white to-teal-50/20 shadow-xs hover:border-emerald-600 ring-1 ring-emerald-200'
+              ? 'ps-card-featured'
               : 'border-slate-200/90 hover:border-blue-300 bg-white';
 
             return `<div class="ps-card rounded-2xl p-4 sm:p-5 cursor-pointer transition-all hover:shadow-md flex flex-col justify-between group ${cardClasses}" data-psid="${escapeHtml(p.id)}">

@@ -223,8 +223,8 @@
 
       const isNewPs37 = ps.id === 'PS-37';
       const cardBorder = isNewPs37
-        ? 'bg-gradient-to-br from-emerald-50/60 via-white to-teal-50/40 border-2 border-emerald-400 shadow-xs hover:border-emerald-600 ring-2 ring-emerald-200/50'
-        : 'bg-white border border-slate-200/90 shadow-2xs hover:shadow-md';
+        ? 'ps-card-featured rounded-2xl'
+        : 'bg-white border border-slate-200/90 shadow-2xs hover:shadow-md rounded-2xl';
 
       const newBadge = isNewPs37
         ? `<span class="px-2 py-0.5 rounded-md text-[10px] font-black bg-emerald-700 text-white shadow-2xs">💡 HIGH DEMAND</span>`
