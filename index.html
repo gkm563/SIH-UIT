@@ -179,67 +179,52 @@
       </div>
 
       <!-- ══════════════════════════════════════════════════════════════════ -->
-      <!-- MIDDLE ROW: Roadmap Infographic (Left) + Stacked Cards (Right) -->
+      <!-- MIDDLE ROW: PS-37 Open Innovation Card & Important Note Card -->
       <!-- ══════════════════════════════════════════════════════════════════ -->
-      <div class="grid grid-cols-1 lg:grid-cols-12 gap-6 mb-8">
+      <div class="grid grid-cols-1 md:grid-cols-2 gap-6 mb-8">
         
-        <!-- Left: Official Timeline Roadmap Card -->
-        <div class="lg:col-span-7 bg-white p-5 sm:p-6 rounded-3xl border border-slate-200/90 shadow-sm hover:shadow-md transition-shadow group cursor-pointer flex flex-col justify-between" onclick="openRoadmapLightbox()">
-          <div>
-            <div class="flex items-center justify-between mb-4">
-              <span class="text-xs font-black text-blue-900 bg-blue-50 border border-blue-200/80 px-3 py-1 rounded-full flex items-center gap-1.5">
-                <span>🗺️ SIH 2026 Official Process &amp; Timeline Roadmap</span>
-              </span>
-              <span class="text-xs font-bold text-slate-500 group-hover:text-blue-600 flex items-center gap-1 transition-colors">
-                <span>View Full Roadmap →</span>
-              </span>
+        <!-- PS-37 Open Innovation Highlight Card -->
+        <div class="bg-gradient-to-r from-emerald-50/80 via-teal-50/60 to-emerald-50/40 text-slate-900 rounded-3xl p-6 border border-emerald-200/90 shadow-2xs flex flex-col justify-between">
+          <div class="flex items-start gap-3.5">
+            <div class="w-11 h-11 rounded-2xl bg-emerald-100 text-emerald-800 border border-emerald-300 flex items-center justify-center font-black text-2xl flex-shrink-0">
+              💡
             </div>
-            <img
-              src="assets/sih-roadmap.png"
-              alt="Smart India Hackathon 2026 Process & Timeline Roadmap Infographic"
-              class="sih-banner-img max-h-[300px] w-auto max-w-full mx-auto object-contain rounded-xl border border-slate-200/90 shadow-2xs group-hover:scale-[1.008] transition-transform duration-200"
-            />
+            <div>
+              <div class="flex items-center gap-2 flex-wrap mb-1.5">
+                <span class="text-[11px] font-black uppercase text-emerald-800 bg-emerald-100 border border-emerald-300 px-2.5 py-0.5 rounded-full">High Demand Addition</span>
+                <span class="text-[11px] font-extrabold text-teal-900 bg-white border border-teal-200 px-2.5 py-0.5 rounded-full">PS-37 Open Innovation</span>
+              </div>
+              <h3 class="text-lg font-black text-slate-900">PS-37: Open Innovation</h3>
+              <p class="text-xs text-slate-600 font-medium mt-1 leading-relaxed">
+                Open Innovation (PS-37) is Now Available! Build custom solutions for any real-world problem statement across Software, Hardware, or Hybrid domains. 🎉
+              </p>
+            </div>
+          </div>
+          <div class="mt-5 text-right">
+            <a href="problems.html#PS-37" class="inline-flex items-center gap-1.5 px-5 py-2.5 bg-emerald-600 hover:bg-emerald-700 text-white font-extrabold text-xs sm:text-sm rounded-xl shadow-2xs transition-all active:scale-95">
+              <span>View PS-37 Details →</span>
+            </a>
           </div>
         </div>
 
-        <!-- Right: 2 Stacked Highlight Cards -->
-        <div class="lg:col-span-5 flex flex-col gap-5">
-          
-          <!-- Top Card: PS-37 Open Innovation Highlight Card -->
-          <div class="bg-gradient-to-r from-emerald-50/80 via-teal-50/60 to-emerald-50/40 text-slate-900 rounded-3xl p-5 border border-emerald-200/90 shadow-2xs flex flex-col justify-between">
-            <div class="flex items-start gap-3.5">
-              <div class="w-10 h-10 rounded-2xl bg-emerald-100 text-emerald-800 border border-emerald-300 flex items-center justify-center font-black text-xl flex-shrink-0">
-                💡
-              </div>
-              <div>
-                <div class="flex items-center gap-2 flex-wrap mb-1">
-                  <span class="text-[10px] font-black uppercase text-emerald-800 bg-emerald-100 border border-emerald-300 px-2 py-0.5 rounded-full">High Demand Addition</span>
-                  <span class="text-[10px] font-extrabold text-teal-900 bg-white border border-teal-200 px-2 py-0.5 rounded-full">PS-37 Open Innovation</span>
-                </div>
-                <h3 class="text-base font-black text-slate-900">PS-37: Open Innovation</h3>
-                <p class="text-xs text-slate-600 font-medium mt-0.5">Open Innovation (PS-37) is Now Available! 🎉</p>
-              </div>
-            </div>
-            <div class="mt-4 text-right">
-              <a href="problems.html#PS-37" class="inline-flex items-center gap-1.5 px-4 py-2 bg-emerald-600 hover:bg-emerald-700 text-white font-extrabold text-xs rounded-xl shadow-2xs transition-all active:scale-95">
-                <span>View PS-37 Details →</span>
-              </a>
-            </div>
-          </div>
-
-          <!-- Bottom Card: Important Note Card -->
-          <div class="bg-amber-50/80 border border-amber-200/90 rounded-3xl p-5 shadow-2xs flex items-start gap-3.5">
-            <div class="w-10 h-10 rounded-2xl bg-amber-100 text-amber-800 border border-amber-300 flex items-center justify-center font-black text-xl flex-shrink-0">
+        <!-- Important Note Card -->
+        <div class="bg-amber-50/80 border border-amber-200/90 rounded-3xl p-6 shadow-2xs flex flex-col justify-between">
+          <div class="flex items-start gap-3.5">
+            <div class="w-11 h-11 rounded-2xl bg-amber-100 text-amber-800 border border-amber-300 flex items-center justify-center font-black text-2xl flex-shrink-0">
               ⚠️
             </div>
             <div>
-              <h4 class="text-xs font-black text-amber-950 uppercase tracking-wide mb-1">Important Note</h4>
-              <p class="text-xs text-amber-900 font-semibold leading-relaxed">
+              <h4 class="text-xs font-black text-amber-950 uppercase tracking-wide mb-1">Important Rule &amp; Presentation Requirement</h4>
+              <p class="text-xs sm:text-sm text-amber-900 font-semibold leading-relaxed">
                 Every team must prepare its presentation strictly according to the official PPT format provided by the organizing committee.
               </p>
             </div>
           </div>
-
+          <div class="mt-5 text-right">
+            <a href="assets/SIH-2026-Idea-Presentation-Template.pptx" download class="inline-flex items-center gap-1.5 px-4 py-2.5 bg-amber-400 hover:bg-amber-500 text-slate-950 font-extrabold text-xs sm:text-sm rounded-xl shadow-2xs transition-all active:scale-95">
+              <span>📥 Download Official PPT Template</span>
+            </a>
+          </div>
         </div>
 
       </div>
