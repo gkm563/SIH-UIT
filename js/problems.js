@@ -51,8 +51,10 @@
     search: '',
     type: 'All',
     difficulty: 'All',
-    selectedDomains: new Set()
+    selectedDomains: new Set(),
+    sortBy: 'default'   // 'default' | 'popular' | 'least' | 'zero'
   };
+
 
 
   // Fetch PS counts directly from Google Sheets public JSON API (no Apps Script needed)
@@ -101,6 +103,7 @@
     domainChipsContainer: document.getElementById('domain-chips-container'),
     typeGroup: document.getElementById('type-filter-group'),
     difficultyGroup: document.getElementById('difficulty-filter-group'),
+    sortGroup: document.getElementById('sort-filter-group'),
     
     // Detail Modal
     detailModal: document.getElementById('ps-detail-modal'),
@@ -179,7 +182,7 @@
   function filterStatements() {
     if (typeof PROBLEM_STATEMENTS === 'undefined') return [];
 
-    return PROBLEM_STATEMENTS.filter((ps) => {
+    let results = PROBLEM_STATEMENTS.filter((ps) => {
       // Search
       if (state.search) {
         const q = state.search.toLowerCase().trim();
@@ -200,9 +203,34 @@
       // Domain
       if (state.selectedDomains.size > 0 && !state.selectedDomains.has(ps.domain)) return false;
 
+      // Zero-teams filter
+      if (state.sortBy === 'zero') {
+        const c = (psCountsMap && psCountsMap[ps.id.toUpperCase()]) || 0;
+        if (c > 0) return false;
+      }
+
       return true;
     });
+
+    // Apply sort
+    if (state.sortBy === 'popular') {
+      results = results.slice().sort((a, b) => {
+        const ca = (psCountsMap && psCountsMap[a.id.toUpperCase()]) || 0;
+        const cb = (psCountsMap && psCountsMap[b.id.toUpperCase()]) || 0;
+        return cb - ca; // descending: highest first
+      });
+    } else if (state.sortBy === 'least') {
+      results = results.slice().sort((a, b) => {
+        const ca = (psCountsMap && psCountsMap[a.id.toUpperCase()]) || 0;
+        const cb = (psCountsMap && psCountsMap[b.id.toUpperCase()]) || 0;
+        return ca - cb; // ascending: lowest first
+      });
+    }
+    // 'default' and 'zero' keep original order
+
+    return results;
   }
+
 
   function renderGrid() {
     const filtered = filterStatements();
@@ -214,7 +242,7 @@
 
     // Toggle Reset Filter Button Visibility
     const isFiltered =
-      state.search !== '' || state.type !== 'All' || state.difficulty !== 'All' || state.selectedDomains.size > 0;
+      state.search !== '' || state.type !== 'All' || state.difficulty !== 'All' || state.selectedDomains.size > 0 || state.sortBy !== 'default';
     if (els.resetBtn) els.resetBtn.classList.toggle('hidden', !isFiltered);
 
     // Empty State
@@ -407,12 +435,25 @@
       });
     }
 
+    // Sort filter buttons
+    if (els.sortGroup) {
+      els.sortGroup.querySelectorAll('.sort-btn').forEach((btn) => {
+        btn.addEventListener('click', () => {
+          els.sortGroup.querySelectorAll('.sort-btn').forEach((b) => b.classList.remove('active'));
+          btn.classList.add('active');
+          state.sortBy = btn.dataset.sort;
+          renderGrid();
+        });
+      });
+    }
+
     // Reset filters
     const resetAll = () => {
       state.search = '';
       state.type = 'All';
       state.difficulty = 'All';
       state.selectedDomains.clear();
+      state.sortBy = 'default';
       if (els.search) els.search.value = '';
 
       if (els.typeGroup) {
@@ -420,6 +461,9 @@
       }
       if (els.difficultyGroup) {
         els.difficultyGroup.querySelectorAll('.diff-btn').forEach((b) => b.classList.toggle('active', b.dataset.diff === 'All'));
+      }
+      if (els.sortGroup) {
+        els.sortGroup.querySelectorAll('.sort-btn').forEach((b) => b.classList.toggle('active', b.dataset.sort === 'default'));
       }
 
       renderDomainChips();

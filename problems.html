@@ -177,6 +177,25 @@
         </div>
       </div>
 
+      <!-- Sort By Row: Most Popular filter -->
+      <div class="mb-4 pb-4 border-b border-slate-100">
+        <label class="block text-[11px] font-bold text-slate-600 uppercase tracking-wider mb-1.5">Sort By</label>
+        <div class="flex items-center gap-2 flex-wrap" id="sort-filter-group">
+          <button type="button" class="sort-btn active" data-sort="default">
+            📋 Default Order
+          </button>
+          <button type="button" class="sort-btn" data-sort="popular">
+            🔥 Most Popular <span id="sort-popular-hint" class="text-[9px] opacity-70 ml-0.5">(by teams)</span>
+          </button>
+          <button type="button" class="sort-btn" data-sort="least">
+            🌱 Least Chosen <span class="text-[9px] opacity-70 ml-0.5">(hidden gems)</span>
+          </button>
+          <button type="button" class="sort-btn" data-sort="zero">
+            🆓 0 Teams Taken
+          </button>
+        </div>
+      </div>
+
       <!-- Third Row: Domain Chips (Swipeable Horizontal Scroll on Mobile) -->
       <div>
         <div class="flex items-center justify-between mb-1.5">
