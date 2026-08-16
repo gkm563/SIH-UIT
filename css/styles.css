@@ -14,6 +14,68 @@
   --font: "Google Sans", "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
 }
 
+/* Floating Air Animations & Glass Chips */
+@keyframes floatAir {
+  0% { transform: translateY(0px) rotate(0deg); }
+  50% { transform: translateY(-8px) rotate(1deg); }
+  100% { transform: translateY(0px) rotate(0deg); }
+}
+
+@keyframes floatAirReverse {
+  0% { transform: translateY(0px) rotate(0deg); }
+  50% { transform: translateY(8px) rotate(-1deg); }
+  100% { transform: translateY(0px) rotate(0deg); }
+}
+
+@keyframes pulseGlowSlow {
+  0%, 100% { opacity: 0.4; transform: scale(1); }
+  50% { opacity: 0.8; transform: scale(1.08); }
+}
+
+.animate-float {
+  animation: floatAir 5s ease-in-out infinite;
+}
+
+.animate-float-reverse {
+  animation: floatAirReverse 6s ease-in-out infinite;
+}
+
+.animate-glow-pulse {
+  animation: pulseGlowSlow 4s ease-in-out infinite;
+}
+
+/* Glass Chip & Pill styling */
+.glass-chip {
+  background: rgba(255, 255, 255, 0.7);
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+  border: 1px solid rgba(255, 255, 255, 0.6);
+  box-shadow: 0 4px 20px -2px rgba(31, 38, 135, 0.08), inset 0 0 0 1px rgba(255, 255, 255, 0.5);
+  transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.glass-chip:hover {
+  background: rgba(255, 255, 255, 0.9);
+  transform: translateY(-3px) scale(1.02);
+  box-shadow: 0 8px 30px -4px rgba(31, 38, 135, 0.15), inset 0 0 0 1px rgba(255, 255, 255, 0.8);
+}
+
+.glass-chip-dark {
+  background: rgba(15, 23, 42, 0.65);
+  backdrop-filter: blur(16px);
+  -webkit-backdrop-filter: blur(16px);
+  border: 1px solid rgba(255, 255, 255, 0.15);
+  box-shadow: 0 8px 32px 0 rgba(0, 0, 0, 0.37);
+  transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.glass-chip-dark:hover {
+  background: rgba(15, 23, 42, 0.85);
+  border-color: rgba(129, 140, 248, 0.4);
+  transform: translateY(-3px);
+  box-shadow: 0 12px 40px 0 rgba(99, 102, 241, 0.25);
+}
+
 *,
 *::before,
 *::after {

@@ -88,28 +88,36 @@
     <!-- Instructions (shown first) -->
     <section id="instructions-view" class="instructions-card" aria-labelledby="instructions-title">
       <!-- ══════════════════════════════════════════════════════════════════ -->
-      <!-- TOP HERO ROW: Announcement Left Column + Countdown Timer Right Card -->
+      <!-- TOP HERO ROW: Floating Glass Announcement + Live Countdown Timer -->
       <!-- ══════════════════════════════════════════════════════════════════ -->
-      <div class="grid grid-cols-1 lg:grid-cols-12 gap-6 mb-8 items-stretch">
+      <div class="grid grid-cols-1 lg:grid-cols-12 gap-6 mb-8 items-stretch relative">
         
-        <!-- Left Hero Column: Official Announcement -->
-        <div class="lg:col-span-7 bg-white rounded-3xl p-6 sm:p-8 border border-slate-200/90 shadow-sm flex flex-col justify-between relative overflow-hidden">
-          <div>
-            <div class="inline-flex items-center gap-2 px-3 py-1 bg-blue-50 text-blue-800 border border-blue-200/80 rounded-full text-xs font-black mb-4">
+        <!-- Left Hero Column: Official Announcement with Floating Glass Chips -->
+        <div class="lg:col-span-7 bg-gradient-to-br from-white via-indigo-50/30 to-blue-50/40 rounded-3xl p-6 sm:p-8 border border-slate-200/90 shadow-md flex flex-col justify-between relative overflow-hidden group">
+          
+          <!-- Floating Ambient Glow Orbs -->
+          <div class="absolute -right-16 -top-16 w-48 h-48 bg-blue-400/15 rounded-full blur-3xl pointer-events-none animate-glow-pulse"></div>
+          <div class="absolute -left-16 -bottom-16 w-48 h-48 bg-indigo-400/15 rounded-full blur-3xl pointer-events-none animate-glow-pulse" style="animation-delay: 2s;"></div>
+
+          <div class="relative z-10">
+            <!-- Floating Glass Chip Tag -->
+            <div class="inline-flex items-center gap-2 px-3.5 py-1.5 glass-chip text-blue-900 rounded-full text-xs font-black mb-4 animate-float">
+              <span class="w-2 h-2 rounded-full bg-blue-600 animate-ping"></span>
               <span>📢 OFFICIAL ANNOUNCEMENT</span>
             </div>
             
             <h1 class="text-2xl sm:text-4xl font-black text-slate-900 tracking-tight leading-snug mb-3">
               SIH 2026 College-Level <br class="hidden sm:inline" />
-              <span class="text-indigo-600">Internal Hackathon Presentation</span>
+              <span class="text-transparent bg-clip-text bg-gradient-to-r from-indigo-600 via-blue-600 to-indigo-800">Internal Hackathon Presentation</span>
             </h1>
 
-            <div class="flex items-center gap-3 text-xs sm:text-sm font-bold text-slate-600 mb-4 flex-wrap">
-              <span class="flex items-center gap-1.5 text-slate-800 bg-slate-100 px-3 py-1 rounded-xl">
+            <!-- Floating Metadata Glass Badges Row -->
+            <div class="flex items-center gap-3 text-xs sm:text-sm font-bold text-slate-700 mb-4 flex-wrap">
+              <span class="glass-chip px-3.5 py-1.5 rounded-xl flex items-center gap-1.5 text-slate-900">
                 <span>📅 22 August 2026 (Saturday)</span>
               </span>
               <span class="text-slate-300">|</span>
-              <span class="flex items-center gap-1.5 text-slate-800 bg-slate-100 px-3 py-1 rounded-xl">
+              <span class="glass-chip px-3.5 py-1.5 rounded-xl flex items-center gap-1.5 text-slate-900">
                 <span>📍 Venue: To be Announced</span>
               </span>
             </div>
@@ -119,58 +127,59 @@
             </p>
           </div>
 
-          <div class="flex items-center gap-3 flex-wrap">
-            <a href="problems.html" class="inline-flex items-center gap-2 px-5 py-2.5 bg-blue-600 hover:bg-blue-700 text-white font-extrabold text-xs sm:text-sm rounded-xl shadow-xs transition-all active:scale-95">
+          <div class="relative z-10 flex items-center gap-3 flex-wrap">
+            <a href="problems.html" class="inline-flex items-center gap-2 px-6 py-3 bg-gradient-to-r from-blue-600 to-indigo-600 hover:from-blue-700 hover:to-indigo-700 text-white font-extrabold text-xs sm:text-sm rounded-2xl shadow-md hover:shadow-lg transition-all active:scale-95 group">
               <span>View Guidelines</span>
+              <svg class="w-4 h-4 group-hover:translate-x-1 transition-transform" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M14 5l7 7m0 0l-7 7m7-7H3"/></svg>
             </a>
-            <a href="assets/SIH-2026-Idea-Presentation-Template.pptx" download class="inline-flex items-center gap-2 px-5 py-2.5 bg-white hover:bg-slate-50 text-slate-800 border border-slate-300 font-extrabold text-xs sm:text-sm rounded-xl shadow-2xs transition-all active:scale-95">
+            <a href="assets/SIH-2026-Idea-Presentation-Template.pptx" download class="inline-flex items-center gap-2 px-5 py-3 glass-chip text-slate-900 font-extrabold text-xs sm:text-sm rounded-2xl shadow-xs hover:shadow-md transition-all active:scale-95">
               <span>📥 Download PPT Template</span>
             </a>
           </div>
         </div>
 
-        <!-- Right Hero Column: Live Countdown Card (Ultra-Sleek Glassmorphic Dark-Glow Redesign) -->
-        <div class="lg:col-span-5 bg-gradient-to-br from-slate-900 via-indigo-950 to-slate-950 text-white border-2 border-indigo-500/30 rounded-3xl p-5 sm:p-7 shadow-2xl flex flex-col justify-between text-center relative overflow-hidden group hover:border-indigo-400/60 transition-all duration-300">
+        <!-- Right Hero Column: Live Countdown Card (Floating Glassmorphic Glow Redesign) -->
+        <div class="lg:col-span-5 bg-gradient-to-br from-slate-900 via-indigo-950 to-slate-950 text-white border-2 border-indigo-500/40 rounded-3xl p-6 sm:p-7 shadow-2xl flex flex-col justify-between text-center relative overflow-hidden group hover:border-indigo-400/80 transition-all duration-300">
           
-          <!-- Background Glow Effects -->
-          <div class="absolute -right-12 -top-12 w-40 h-40 bg-indigo-500/20 rounded-full blur-3xl pointer-events-none"></div>
-          <div class="absolute -left-12 -bottom-12 w-40 h-40 bg-purple-500/20 rounded-full blur-3xl pointer-events-none"></div>
+          <!-- Background Floating Glow Orbs -->
+          <div class="absolute -right-12 -top-12 w-44 h-44 bg-indigo-500/25 rounded-full blur-3xl pointer-events-none animate-float"></div>
+          <div class="absolute -left-12 -bottom-12 w-44 h-44 bg-purple-500/25 rounded-full blur-3xl pointer-events-none animate-float-reverse"></div>
 
           <div class="relative z-10">
-            <!-- Header Pill Tag -->
-            <div class="inline-flex items-center gap-2 px-3.5 py-1.5 bg-indigo-500/20 text-indigo-300 border border-indigo-400/30 rounded-full text-xs font-black uppercase tracking-wider mb-5">
-              <span class="w-2 h-2 rounded-full bg-amber-400 animate-ping"></span>
-              <svg class="w-3.5 h-3.5 text-amber-400 animate-spin" style="animation-duration: 4s;" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 8v4l3 3m6-3a9 9 0 11-18 0 9 9 0 0118 0z"/></svg>
+            <!-- Floating Header Pill Tag -->
+            <div class="inline-flex items-center gap-2 px-4 py-1.5 glass-chip-dark text-indigo-300 rounded-full text-xs font-black uppercase tracking-wider mb-5 animate-float">
+              <span class="w-2.5 h-2.5 rounded-full bg-amber-400 animate-ping"></span>
+              <svg class="w-4 h-4 text-amber-400 animate-spin" style="animation-duration: 4s;" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 8v4l3 3m6-3a9 9 0 11-18 0 9 9 0 0118 0z"/></svg>
               <span>Presentation Starts In</span>
             </div>
 
-            <!-- Responsive Digit Boxes Grid -->
+            <!-- Responsive Floating Digit Boxes Grid -->
             <div class="grid grid-cols-4 gap-1.5 sm:gap-3 mb-5 max-w-md mx-auto">
               <!-- Days -->
-              <div class="bg-white/10 backdrop-blur-md border border-white/15 rounded-2xl p-2.5 sm:p-4 text-center shadow-inner hover:bg-white/15 transition-all">
+              <div class="glass-chip-dark rounded-2xl p-2.5 sm:p-4 text-center shadow-lg hover:scale-105 transition-all duration-200">
                 <div id="cd-days" class="text-2xl sm:text-4xl font-black font-mono text-transparent bg-clip-text bg-gradient-to-b from-amber-300 to-amber-400 drop-shadow-xs">06</div>
                 <div class="text-[9px] sm:text-[11px] font-extrabold uppercase text-slate-300 tracking-wider mt-1">Days</div>
               </div>
               <!-- Hours -->
-              <div class="bg-white/10 backdrop-blur-md border border-white/15 rounded-2xl p-2.5 sm:p-4 text-center shadow-inner hover:bg-white/15 transition-all">
+              <div class="glass-chip-dark rounded-2xl p-2.5 sm:p-4 text-center shadow-lg hover:scale-105 transition-all duration-200">
                 <div id="cd-hours" class="text-2xl sm:text-4xl font-black font-mono text-white drop-shadow-xs">00</div>
                 <div class="text-[9px] sm:text-[11px] font-extrabold uppercase text-slate-300 tracking-wider mt-1">Hours</div>
               </div>
               <!-- Minutes -->
-              <div class="bg-white/10 backdrop-blur-md border border-white/15 rounded-2xl p-2.5 sm:p-4 text-center shadow-inner hover:bg-white/15 transition-all">
+              <div class="glass-chip-dark rounded-2xl p-2.5 sm:p-4 text-center shadow-lg hover:scale-105 transition-all duration-200">
                 <div id="cd-mins" class="text-2xl sm:text-4xl font-black font-mono text-white drop-shadow-xs">00</div>
                 <div class="text-[9px] sm:text-[11px] font-extrabold uppercase text-slate-300 tracking-wider mt-1">Mins</div>
               </div>
               <!-- Seconds -->
-              <div class="bg-white/10 backdrop-blur-md border border-white/15 rounded-2xl p-2.5 sm:p-4 text-center shadow-inner hover:bg-white/15 transition-all">
+              <div class="glass-chip-dark rounded-2xl p-2.5 sm:p-4 text-center shadow-lg hover:scale-105 transition-all duration-200">
                 <div id="cd-secs" class="text-2xl sm:text-4xl font-black font-mono text-transparent bg-clip-text bg-gradient-to-b from-emerald-300 to-emerald-400 drop-shadow-xs">00</div>
                 <div class="text-[9px] sm:text-[11px] font-extrabold uppercase text-slate-300 tracking-wider mt-1">Secs</div>
               </div>
             </div>
           </div>
 
-          <!-- Bottom Confirmed Date Badge -->
-          <div class="relative z-10 bg-amber-400/15 border border-amber-400/30 rounded-2xl py-2 px-3.5 text-xs font-black text-amber-300 inline-flex items-center justify-center gap-1.5 mx-auto">
+          <!-- Floating Bottom Confirmed Date Badge -->
+          <div class="relative z-10 glass-chip-dark border-amber-400/40 rounded-2xl py-2 px-4 text-xs font-black text-amber-300 inline-flex items-center justify-center gap-1.5 mx-auto">
             <span>📅 Confirmed Date: 22 August 2026 (Saturday)</span>
           </div>
 
@@ -179,261 +188,48 @@
       </div>
 
       <!-- ══════════════════════════════════════════════════════════════════ -->
-      <!-- MIDDLE ROW: Important Presentation Rule Card -->
+      <!-- QUICK ACTION GLASS CARDS (3 Columns Floating Grid) -->
       <!-- ══════════════════════════════════════════════════════════════════ -->
-      <div class="mb-8">
-        <div class="bg-amber-50/80 border border-amber-200/90 rounded-3xl p-6 shadow-2xs flex flex-col sm:flex-row items-start sm:items-center justify-between gap-4">
-          <div class="flex items-start gap-3.5">
-            <div class="w-11 h-11 rounded-2xl bg-amber-100 text-amber-800 border border-amber-300 flex items-center justify-center font-black text-2xl flex-shrink-0">
-              ⚠️
-            </div>
-            <div>
-              <h4 class="text-xs font-black text-amber-950 uppercase tracking-wide mb-1">Important Rule &amp; Presentation Requirement</h4>
-              <p class="text-xs sm:text-sm text-amber-900 font-semibold leading-relaxed">
-                Every team must prepare its presentation strictly according to the official PPT format provided by the organizing committee.
-              </p>
-            </div>
-          </div>
-          <a href="assets/SIH-2026-Idea-Presentation-Template.pptx" download class="flex-shrink-0 inline-flex items-center gap-1.5 px-5 py-2.5 bg-amber-400 hover:bg-amber-500 text-slate-950 font-extrabold text-xs sm:text-sm rounded-xl shadow-2xs transition-all active:scale-95 whitespace-nowrap">
-            <span>📥 Download Official PPT Template</span>
-          </a>
-        </div>
-      </div>
-
-      <!-- ══════════════════════════════════════════════════════════════════ -->
-      <!-- BOTTOM QUICK ACTION CARDS (3 Columns Grid) -->
-      <!-- ══════════════════════════════════════════════════════════════════ -->
-      <div class="grid grid-cols-1 sm:grid-cols-3 gap-4 mb-8">
+      <div class="grid grid-cols-1 sm:grid-cols-3 gap-5 mb-8">
         
-        <a href="problems.html" class="bg-white hover:bg-blue-50/60 border border-slate-200/90 p-4 rounded-2xl transition-all shadow-2xs hover:shadow-md flex items-center justify-between group">
-          <div class="flex items-center gap-3">
-            <div class="w-10 h-10 rounded-xl bg-blue-50 text-blue-700 flex items-center justify-center text-lg font-black border border-blue-200/80">
+        <a href="problems.html" class="glass-chip p-5 rounded-3xl flex items-center justify-between group hover:-translate-y-1.5 transition-all duration-300">
+          <div class="flex items-center gap-3.5">
+            <div class="w-12 h-12 rounded-2xl bg-blue-100/80 text-blue-700 flex items-center justify-center text-xl font-black border border-blue-200/80 animate-float">
               🖥️
             </div>
             <div>
               <h4 class="text-xs sm:text-sm font-black text-slate-900 group-hover:text-blue-700 transition-colors">Browse 37 Problem Statements</h4>
-              <p class="text-[10px] text-slate-500 font-medium">Explore real-world problem statements</p>
+              <p class="text-[10px] sm:text-xs text-slate-500 font-medium mt-0.5">Explore real-world problem statements</p>
             </div>
           </div>
-          <span class="text-slate-400 group-hover:text-blue-600 transition-colors">→</span>
+          <span class="w-8 h-8 rounded-full bg-blue-50 text-blue-600 flex items-center justify-center font-bold text-sm group-hover:bg-blue-600 group-hover:text-white transition-all">→</span>
         </a>
 
-        <a href="assets/SIH-2026-Idea-Presentation-Template.pptx" download class="bg-white hover:bg-amber-50/60 border border-slate-200/90 p-4 rounded-2xl transition-all shadow-2xs hover:shadow-md flex items-center justify-between group">
-          <div class="flex items-center gap-3">
-            <div class="w-10 h-10 rounded-xl bg-amber-50 text-amber-700 flex items-center justify-center text-lg font-black border border-amber-200/80">
+        <a href="assets/SIH-2026-Idea-Presentation-Template.pptx" download class="glass-chip p-5 rounded-3xl flex items-center justify-between group hover:-translate-y-1.5 transition-all duration-300">
+          <div class="flex items-center gap-3.5">
+            <div class="w-12 h-12 rounded-2xl bg-amber-100/80 text-amber-700 flex items-center justify-center text-xl font-black border border-amber-200/80 animate-float" style="animation-delay: 1.5s;">
               📥
             </div>
             <div>
               <h4 class="text-xs sm:text-sm font-black text-slate-900 group-hover:text-amber-700 transition-colors">Download PPT Template</h4>
-              <p class="text-[10px] text-slate-500 font-medium">Get the official presentation format</p>
+              <p class="text-[10px] sm:text-xs text-slate-500 font-medium mt-0.5">Get official presentation format</p>
             </div>
           </div>
-          <span class="text-slate-400 group-hover:text-amber-600 transition-colors">→</span>
+          <span class="w-8 h-8 rounded-full bg-amber-50 text-amber-600 flex items-center justify-center font-bold text-sm group-hover:bg-amber-500 group-hover:text-white transition-all">→</span>
         </a>
 
-        <a href="assets/sih-2026-guidelines.pdf" download class="bg-white hover:bg-emerald-50/60 border border-slate-200/90 p-4 rounded-2xl transition-all shadow-2xs hover:shadow-md flex items-center justify-between group">
-          <div class="flex items-center gap-3">
-            <div class="w-10 h-10 rounded-xl bg-emerald-50 text-emerald-700 flex items-center justify-center text-lg font-black border border-emerald-200/80">
+        <a href="assets/sih-2026-guidelines.pdf" download class="glass-chip p-5 rounded-3xl flex items-center justify-between group hover:-translate-y-1.5 transition-all duration-300">
+          <div class="flex items-center gap-3.5">
+            <div class="w-12 h-12 rounded-2xl bg-emerald-100/80 text-emerald-700 flex items-center justify-center text-xl font-black border border-emerald-200/80 animate-float" style="animation-delay: 3s;">
               🛡️
             </div>
             <div>
               <h4 class="text-xs sm:text-sm font-black text-slate-900 group-hover:text-emerald-700 transition-colors">Process Guidelines</h4>
-              <p class="text-[10px] text-slate-500 font-medium">Download rules &amp; guidelines PDF</p>
+              <p class="text-[10px] sm:text-xs text-slate-500 font-medium mt-0.5">Download rules &amp; guidelines PDF</p>
             </div>
           </div>
-          <span class="text-slate-400 group-hover:text-emerald-600 transition-colors">→</span>
+          <span class="w-8 h-8 rounded-full bg-emerald-50 text-emerald-600 flex items-center justify-center font-bold text-sm group-hover:bg-emerald-600 group-hover:text-white transition-all">→</span>
         </a>
-
-      </div>
-
-      <!-- Official Downloads & Guidelines Presentation Section (Clean Light Theme) -->
-      <div class="mt-8 bg-gradient-to-br from-slate-50 via-white to-blue-50/40 text-slate-900 rounded-3xl p-5 sm:p-8 shadow-lg border border-slate-200/90 relative overflow-hidden">
-        
-        <div class="relative z-10 text-center max-w-3xl mx-auto mb-6">
-          <span class="inline-flex items-center gap-1.5 px-3 py-1 bg-blue-100 text-blue-800 border border-blue-200/80 rounded-full text-xs font-black uppercase tracking-wider mb-2">
-            📥 Official SIH 2026 Downloads &amp; Guidelines
-          </span>
-          <h2 class="text-xl sm:text-3xl font-black text-slate-900 tracking-tight mb-2">
-            SIH 2026 Process Guidelines &amp; Idea Presentation Template
-          </h2>
-          <p class="text-xs sm:text-sm text-slate-600 font-medium leading-relaxed">
-            Download the official SIH 2026 Guidelines PDF &amp; standard Idea Presentation PPT format for your internal hackathon submission.
-          </p>
-        </div>
-
-        <!-- Download Action Buttons Row -->
-        <div class="grid grid-cols-1 sm:grid-cols-2 gap-4 max-w-2xl mx-auto mb-8">
-          <a
-            href="assets/sih-2026-guidelines.pdf"
-            download="SIH-2026-Official-Guidelines.pdf"
-            class="flex items-center justify-between p-4 bg-gradient-to-r from-blue-600 to-indigo-600 hover:from-blue-700 hover:to-indigo-700 text-white rounded-2xl shadow-md border border-blue-500/30 transition-transform active:scale-98 group"
-          >
-            <div class="flex items-center gap-3">
-              <div class="w-10 h-10 bg-white/20 rounded-xl flex items-center justify-center text-xl font-bold">
-                📄
-              </div>
-              <div class="text-left">
-                <h4 class="text-xs sm:text-sm font-black text-white group-hover:underline">SIH 2026 Guidelines PDF</h4>
-                <p class="text-[10px] sm:text-xs text-blue-100 font-medium">Official Process &amp; Rules (8.4 MB)</p>
-              </div>
-            </div>
-            <span class="text-xs font-black bg-white/20 px-3 py-1.5 rounded-xl border border-white/30 flex items-center gap-1">
-              <span>Download</span>
-              <svg class="w-3.5 h-3.5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 16v1a3 3 0 003 3h10a3 3 0 003-3v-1m-4-4l-4 4m0 0l-4-4m4 4V4"/></svg>
-            </span>
-          </a>
-
-          <a
-            href="assets/SIH-2026-Idea-Presentation-Template.pptx"
-            download="SIH2026-IDEA-Presentation-Format.pptx"
-            class="flex items-center justify-between p-4 bg-gradient-to-r from-amber-500 to-orange-500 hover:from-amber-600 hover:to-orange-600 text-white rounded-2xl shadow-md border border-amber-400/30 transition-transform active:scale-98 group"
-          >
-            <div class="flex items-center gap-3">
-              <div class="w-10 h-10 bg-white/20 rounded-xl flex items-center justify-center text-xl font-bold">
-                📊
-              </div>
-              <div class="text-left">
-                <h4 class="text-xs sm:text-sm font-black text-white group-hover:underline">Idea Presentation PPT Format</h4>
-                <p class="text-[10px] sm:text-xs text-amber-100 font-medium">Mandatory PPT Template (936 KB)</p>
-              </div>
-            </div>
-            <span class="text-xs font-black bg-white/20 px-3 py-1.5 rounded-xl border border-white/30 flex items-center gap-1">
-              <span>Download</span>
-              <svg class="w-3.5 h-3.5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 16v1a3 3 0 003 3h10a3 3 0 003-3v-1m-4-4l-4 4m0 0l-4-4m4 4V4"/></svg>
-            </span>
-          </a>
-        </div>
-
-        <!-- Live Hackathon Status Tracker & Guidelines Hub -->
-        <div class="space-y-4 text-left max-w-4xl mx-auto mt-6">
-          <div class="text-center mb-4">
-            <div class="inline-flex items-center gap-2 px-3.5 py-1 bg-blue-100 text-blue-900 border border-blue-200/90 rounded-full text-xs font-black mb-1">
-              <span>📊 Live Hackathon Progress &amp; Timeline Status</span>
-            </div>
-            <h3 class="text-base sm:text-xl font-black text-slate-900">
-              SIH 2026 Process Status: What's Completed &amp; What's Next
-            </h3>
-          </div>
-
-          <!-- Status Cards Grid -->
-          <div class="space-y-3">
-
-            <!-- STEP 1: COMPLETED -->
-            <div class="bg-emerald-50/90 border-2 border-emerald-300/90 rounded-2xl p-4 sm:p-5 shadow-xs relative overflow-hidden">
-              <div class="flex items-start justify-between gap-3">
-                <div class="flex items-center gap-2.5">
-                  <span class="w-8 h-8 rounded-full bg-emerald-600 text-white font-black flex items-center justify-center text-sm shadow-xs flex-shrink-0">
-                    ✓
-                  </span>
-                  <div>
-                    <div class="flex items-center gap-2 flex-wrap">
-                      <span class="text-[10px] font-black uppercase text-emerald-900 bg-emerald-200/90 border border-emerald-400 px-2 py-0.5 rounded-md">
-                        ✅ COMPLETED
-                      </span>
-                      <span class="text-[11px] font-bold text-emerald-900">Deadline: 05 August 2026</span>
-                    </div>
-                    <h4 class="text-sm sm:text-base font-extrabold text-slate-900 mt-1">
-                      Phase 1: Student Team Registrations &amp; Roster Verification
-                    </h4>
-                  </div>
-                </div>
-                <span class="text-xs font-black text-emerald-800 bg-emerald-100 px-3 py-1 rounded-full border border-emerald-300 hidden sm:inline-block">
-                  70 Teams Registered
-                </span>
-              </div>
-              <p class="text-xs text-slate-700 mt-2.5 leading-relaxed pl-10">
-                • <strong>Status:</strong> Registration is officially closed! All 70 teams (420 students) have been registered and verified with compulsory female member compliance.
-              </p>
-            </div>
-
-            <!-- STEP 2: IN PROGRESS -->
-            <div class="bg-amber-50/90 border-2 border-amber-400/90 rounded-2xl p-4 sm:p-5 shadow-sm relative overflow-hidden">
-              <div class="flex items-start justify-between gap-3">
-                <div class="flex items-center gap-2.5">
-                  <span class="w-8 h-8 rounded-full bg-amber-500 text-slate-950 font-black flex items-center justify-center text-sm shadow-xs flex-shrink-0">
-                    ⚡
-                  </span>
-                  <div>
-                    <div class="flex items-center gap-2 flex-wrap">
-                      <span class="text-[10px] font-black uppercase text-amber-950 bg-amber-200 border border-amber-400 px-2 py-0.5 rounded-md">
-                        ⚡ IN PROGRESS
-                      </span>
-                      <span class="text-[11px] font-bold text-amber-900">Active Phase Now</span>
-                    </div>
-                    <h4 class="text-sm sm:text-base font-extrabold text-slate-900 mt-1">
-                      Phase 2: Problem Selection &amp; Ideal PPT Preparation
-                    </h4>
-                  </div>
-                </div>
-                <a href="assets/SIH-2026-Idea-Presentation-Template.pptx" download class="text-xs font-black text-slate-950 bg-amber-400 hover:bg-amber-500 px-3.5 py-1.5 rounded-xl border border-amber-500 shadow-2xs transition-transform active:scale-95 hidden sm:inline-flex items-center gap-1">
-                  <span>📊 Download PPT</span>
-                </a>
-              </div>
-              <p class="text-xs text-slate-800 mt-2.5 leading-relaxed pl-10">
-                • <strong>What to do now:</strong> Browse 37 official SIH problem statements (including Open Innovation), download the official <a href="assets/SIH-2026-Idea-Presentation-Template.pptx" download class="text-blue-700 font-extrabold underline">SIH Ideal PPT Template (936 KB)</a>, structure your solution slides, and build your working prototype!
-              </p>
-            </div>
-
-            <!-- STEP 3: UPCOMING -->
-            <div class="bg-white border-2 border-blue-200/90 rounded-2xl p-4 sm:p-5 shadow-xs relative overflow-hidden">
-              <div class="flex items-start justify-between gap-3">
-                <div class="flex items-center gap-2.5">
-                  <span class="w-8 h-8 rounded-full bg-blue-100 text-blue-800 font-black flex items-center justify-center text-sm border border-blue-300 flex-shrink-0">
-                    3
-                  </span>
-                  <div>
-                    <div class="flex items-center gap-2 flex-wrap">
-                      <span class="text-[10px] font-black uppercase text-blue-800 bg-blue-50 border border-blue-300 px-2 py-0.5 rounded-md">
-                        📌 UPCOMING
-                      </span>
-                      <span class="text-[11px] font-bold text-blue-900">22 August 2026 (Confirmed Presentation Date)</span>
-                    </div>
-                    <h4 class="text-sm sm:text-base font-extrabold text-slate-900 mt-1">
-                      Phase 3: Internal Hackathon Live Jury Presentation
-                    </h4>
-                  </div>
-                </div>
-                <span class="text-xs font-bold text-slate-600 bg-slate-100 px-3 py-1 rounded-full border border-slate-200 hidden sm:inline-block">
-                  Full Day Hackathon
-                </span>
-              </div>
-              <p class="text-xs text-slate-700 mt-2.5 leading-relaxed pl-10">
-                • <strong>Event Day:</strong> All 70 teams will demonstrate their presentation and prototype live before the expert jury panel at United Institute of Technology, Prayagraj.
-              </p>
-            </div>
-
-            <!-- STEP 4: FINAL NOMINATION -->
-            <div class="bg-white border-2 border-purple-200/90 rounded-2xl p-4 sm:p-5 shadow-xs relative overflow-hidden">
-              <div class="flex items-start justify-between gap-3">
-                <div class="flex items-center gap-2.5">
-                  <span class="w-8 h-8 rounded-full bg-purple-100 text-purple-800 font-black flex items-center justify-center text-sm border border-purple-300 flex-shrink-0">
-                    4
-                  </span>
-                  <div>
-                    <div class="flex items-center gap-2 flex-wrap">
-                      <span class="text-[10px] font-black uppercase text-purple-800 bg-purple-50 border border-purple-300 px-2 py-0.5 rounded-md">
-                        🏆 FINAL STEP
-                      </span>
-                      <span class="text-[11px] font-bold text-purple-900">Post Evaluation</span>
-                    </div>
-                    <h4 class="text-sm sm:text-base font-extrabold text-slate-900 mt-1">
-                      Phase 4: Top 50 Team Nominations on Govt SIH Portal (<code class="text-purple-700 font-mono">sih.gov.in</code>)
-                    </h4>
-                  </div>
-                </div>
-                <span class="text-xs font-bold text-purple-800 bg-purple-50 px-3 py-1 rounded-full border border-purple-200 hidden sm:inline-block">
-                  45 Shortlisted + 5 Waiting
-                </span>
-              </div>
-              <p class="text-xs text-slate-700 mt-2.5 leading-relaxed pl-10">
-                • <strong>National Submission:</strong> Top 50 evaluated teams will be officially nominated on the Government SIH portal with college authorization letters for the Grand Finale!
-              </p>
-            </div>
-
-          </div>
-
-
-        </div>
 
       </div>
 
