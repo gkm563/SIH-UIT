@@ -50,9 +50,8 @@
   const state = {
     search: '',
     type: 'All',
-    difficulty: 'All',
     selectedDomains: new Set(),
-    sortBy: 'default'   // 'default' | 'popular' | 'least' | 'zero'
+    sortBy: 'default'
   };
 
 
@@ -102,7 +101,6 @@
     clearEmptyBtn: document.getElementById('btn-clear-empty'),
     domainChipsContainer: document.getElementById('domain-chips-container'),
     typeGroup: document.getElementById('type-filter-group'),
-    difficultyGroup: document.getElementById('difficulty-filter-group'),
     sortGroup: document.getElementById('sort-filter-group'),
     
     // Detail Modal
@@ -197,9 +195,6 @@
       // Type
       if (state.type !== 'All' && ps.type !== state.type && !ps.type.includes(state.type)) return false;
 
-      // Difficulty
-      if (state.difficulty !== 'All' && ps.difficulty !== state.difficulty && ps.difficulty !== 'All Levels') return false;
-
       // Domain
       if (state.selectedDomains.size > 0 && !state.selectedDomains.has(ps.domain)) return false;
 
@@ -242,7 +237,7 @@
 
     // Toggle Reset Filter Button Visibility
     const isFiltered =
-      state.search !== '' || state.type !== 'All' || state.difficulty !== 'All' || state.selectedDomains.size > 0 || state.sortBy !== 'default';
+      state.search !== '' || state.type !== 'All' || state.selectedDomains.size > 0 || state.sortBy !== 'default';
     if (els.resetBtn) els.resetBtn.classList.toggle('hidden', !isFiltered);
 
     // Empty State
@@ -392,18 +387,6 @@
       });
     }
 
-    // Difficulty filter buttons
-    if (els.difficultyGroup) {
-      els.difficultyGroup.querySelectorAll('.diff-btn').forEach((btn) => {
-        btn.addEventListener('click', () => {
-          els.difficultyGroup.querySelectorAll('.diff-btn').forEach((b) => b.classList.remove('active'));
-          btn.classList.add('active');
-          state.difficulty = btn.dataset.diff;
-          renderGrid();
-        });
-      });
-    }
-
     // Domain chips delegation
     if (els.domainChipsContainer) {
       els.domainChipsContainer.addEventListener('click', (e) => {
@@ -451,16 +434,12 @@
     const resetAll = () => {
       state.search = '';
       state.type = 'All';
-      state.difficulty = 'All';
       state.selectedDomains.clear();
       state.sortBy = 'default';
       if (els.search) els.search.value = '';
 
       if (els.typeGroup) {
         els.typeGroup.querySelectorAll('.type-btn').forEach((b) => b.classList.toggle('active', b.dataset.type === 'All'));
-      }
-      if (els.difficultyGroup) {
-        els.difficultyGroup.querySelectorAll('.diff-btn').forEach((b) => b.classList.toggle('active', b.dataset.diff === 'All'));
       }
       if (els.sortGroup) {
         els.sortGroup.querySelectorAll('.sort-btn').forEach((b) => b.classList.toggle('active', b.dataset.sort === 'default'));
