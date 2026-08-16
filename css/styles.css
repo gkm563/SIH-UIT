@@ -4,14 +4,15 @@
   --primary-light: #e8f0fe;
   --danger: #d93025;
   --success: #188038;
-  --text: #202124;
-  --text-muted: #5f6368;
-  --border: #dadce0;
-  --bg: #f8f9fa;
+  --text: #0f172a;
+  --text-muted: #475569;
+  --border: #e2e8f0;
+  --bg: #f8fafc;
   --card: #ffffff;
   --shadow: 0 1px 2px 0 rgba(60, 64, 67, 0.3), 0 1px 3px 1px rgba(60, 64, 67, 0.15);
-  --radius: 12px;
-  --font: "Google Sans", "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
+  --radius: 16px;
+  --font: "Outfit", "Space Grotesk", "Inter", "Segoe UI", system-ui, sans-serif;
+  --font-display: "Space Grotesk", "Outfit", "Inter", system-ui, sans-serif;
 }
 
 /* Floating Air Animations & Glass Chips */
@@ -1360,3 +1361,367 @@ body {
     margin-right: auto;
   }
 }
+
+/* ═══════════════════════════════════════════════════════════
+   PREMIUM FONT APPLICATION: Space Grotesk + Outfit throughout
+═══════════════════════════════════════════════════════════ */
+html, body {
+  font-family: "Outfit", "Space Grotesk", "Inter", system-ui, sans-serif;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  text-rendering: optimizeLegibility;
+}
+
+h1, h2, h3, h4, h5, h6 {
+  font-family: "Space Grotesk", "Outfit", "Inter", system-ui, sans-serif;
+  letter-spacing: -0.02em;
+}
+
+.site-header, .site-footer, .nav-pill, .btn {
+  font-family: "Outfit", "Space Grotesk", "Inter", system-ui, sans-serif;
+}
+
+/* ═══════════════════════════════════════════════════════════
+   COMPREHENSIVE MOBILE FIRST RESPONSIVE SYSTEM
+   Breakpoints:
+   xs  : < 375px  (very small phones)
+   sm  : < 480px  (small phones)
+   md  : < 640px  (regular phones)
+   lg  : < 768px  (large phones / small tablets)
+═══════════════════════════════════════════════════════════ */
+
+/* ── Base: apply on ALL screens, override upward ── */
+* {
+  box-sizing: border-box;
+}
+
+img, video, iframe {
+  max-width: 100%;
+  height: auto;
+}
+
+/* ── Navigation: fully responsive ── */
+.nav-switch {
+  overflow-x: auto;
+  -webkit-overflow-scrolling: touch;
+  scrollbar-width: none;
+  flex-shrink: 0;
+}
+
+.nav-switch::-webkit-scrollbar {
+  display: none;
+}
+
+/* ── Header: tight on phones ── */
+@media (max-width: 480px) {
+  .header-inner {
+    padding: 0.6rem 1rem;
+    gap: 0.5rem;
+  }
+
+  .college-logo {
+    width: 32px !important;
+    height: 32px !important;
+  }
+
+  .nav-pill span {
+    display: none; /* show only icons on very small phones */
+  }
+
+  .nav-pill {
+    padding: 0.45rem 0.65rem;
+    min-width: 36px;
+    justify-content: center;
+  }
+}
+
+@media (max-width: 375px) {
+  .header-inner {
+    padding: 0.5rem 0.75rem;
+  }
+}
+
+/* ── Main container: proper padding on phones ── */
+@media (max-width: 640px) {
+  .main {
+    padding: 1rem 0.875rem 4rem;
+  }
+}
+
+@media (max-width: 480px) {
+  .main {
+    padding: 0.75rem 0.75rem 3.5rem;
+  }
+}
+
+/* ── Hero Section: mobile stack ── */
+@media (max-width: 1024px) {
+  /* Hero grid stacks to single column */
+  .hero-grid-12 {
+    grid-template-columns: 1fr !important;
+  }
+}
+
+/* Glass chips on mobile: ensure they scale */
+@media (max-width: 640px) {
+  .glass-chip {
+    backdrop-filter: blur(8px);
+    -webkit-backdrop-filter: blur(8px);
+  }
+
+  .glass-chip-dark {
+    backdrop-filter: blur(10px);
+    -webkit-backdrop-filter: blur(10px);
+  }
+}
+
+/* ── Countdown card: compact on phones ── */
+@media (max-width: 480px) {
+  /* Countdown digit boxes */
+  #cd-days, #cd-hours, #cd-mins, #cd-secs {
+    font-size: 1.75rem !important;
+  }
+
+  /* Shrink gap on countdown grid */
+  .countdown-grid {
+    gap: 0.5rem !important;
+  }
+}
+
+@media (max-width: 360px) {
+  #cd-days, #cd-hours, #cd-mins, #cd-secs {
+    font-size: 1.35rem !important;
+  }
+}
+
+/* ── Quick action cards: stretch full width on mobile ── */
+@media (max-width: 640px) {
+  .quick-cards-grid {
+    grid-template-columns: 1fr !important;
+    gap: 0.75rem !important;
+  }
+}
+
+/* ── Instructions card: phone-safe padding ── */
+@media (max-width: 640px) {
+  .instructions-card {
+    padding: 1rem 0.875rem 1.25rem;
+    border-radius: 16px;
+  }
+
+  .instructions-card h2 {
+    font-size: 1.1rem;
+    line-height: 1.35;
+  }
+
+  .instructions-card h3 {
+    font-size: 0.95rem;
+  }
+}
+
+/* ── Form card: phone padding ── */
+@media (max-width: 640px) {
+  .form-card-header {
+    padding: 1rem 0.875rem 0.875rem;
+  }
+
+  .form-card-body,
+  .form-section {
+    padding: 1rem 0.875rem;
+  }
+
+  .form-card h2 {
+    font-size: 1.1rem;
+  }
+
+  .form-nav {
+    padding: 0.875rem;
+    gap: 0.75rem;
+  }
+
+  .btn {
+    padding: 0.75rem 1.25rem;
+    font-size: 0.875rem;
+    min-height: 44px; /* touch-friendly */
+  }
+
+  .btn-primary, .btn-secondary, .btn-ghost {
+    width: 100%;
+    justify-content: center;
+  }
+
+  .nav-right {
+    width: 100%;
+  }
+}
+
+/* ── Progress bar: phone-safe ── */
+@media (max-width: 640px) {
+  .progress-wrap {
+    padding: 0.75rem 0.875rem;
+    top: 56px; /* match compact header height */
+    border-radius: 12px;
+  }
+
+  .progress-label {
+    font-size: 0.8rem;
+  }
+}
+
+/* ── Footer: full stack on mobile ── */
+@media (max-width: 640px) {
+  .site-footer > div {
+    padding-left: 1rem !important;
+    padding-right: 1rem !important;
+  }
+
+  /* Footer nav pills: wrap & smaller */
+  .site-footer nav a {
+    font-size: 0.75rem;
+    padding: 0.4rem 0.75rem;
+  }
+
+  /* Footer contact cards: single column */
+  .site-footer .grid-cols-2 {
+    grid-template-columns: 1fr !important;
+  }
+
+  /* Bottom line: stack */
+  .site-footer .flex-row {
+    flex-direction: column !important;
+    text-align: center;
+    gap: 0.25rem;
+  }
+}
+
+/* ── Confirmation card: phone ── */
+@media (max-width: 640px) {
+  .confirmation-card {
+    padding: 1.25rem 1rem;
+  }
+
+  .confirmation h2 {
+    font-size: 1.25rem;
+  }
+
+  .meta-box {
+    font-size: 0.8rem;
+  }
+
+  .meta-row dt, .meta-row dd {
+    padding: 0.5rem 0.75rem;
+  }
+
+  .confirmation-actions {
+    flex-direction: column;
+    gap: 0.75rem;
+  }
+
+  .confirmation-actions .btn {
+    width: 100%;
+    text-align: center;
+  }
+}
+
+/* ── Modals: full-screen on phone ── */
+@media (max-width: 640px) {
+  #ps37-announcement-modal > div,
+  #roadmap-lightbox > div {
+    margin: 0.75rem;
+    padding: 1.25rem 1rem;
+    border-radius: 20px;
+  }
+
+  #ps37-announcement-modal h3 {
+    font-size: 1.2rem;
+  }
+}
+
+/* ── Loading overlay ── */
+@media (max-width: 640px) {
+  .loading-text {
+    font-size: 0.9rem;
+  }
+}
+
+/* ── Touch target minimum: 44px for all interactive ── */
+@media (hover: none) and (pointer: coarse) {
+  a, button, [role="button"], input, select, textarea {
+    min-height: 44px;
+  }
+
+  .nav-pill {
+    min-height: 40px;
+  }
+
+  .glass-chip, .glass-chip-dark {
+    cursor: default; /* remove pointer flicker on touch */
+  }
+}
+
+/* ── Prevent horizontal scroll globally ── */
+html, body {
+  overflow-x: hidden;
+  width: 100%;
+}
+
+/* ── Text scaling: fluid responsive font sizes ── */
+@media (max-width: 480px) {
+  h1 { font-size: clamp(1.35rem, 5vw, 2rem); }
+  h2 { font-size: clamp(1.1rem, 4.5vw, 1.5rem); }
+  h3 { font-size: clamp(0.95rem, 4vw, 1.2rem); }
+  p, li { font-size: clamp(0.8rem, 3.5vw, 0.95rem); }
+}
+
+/* ── Field labels & inputs: readable on phone ── */
+@media (max-width: 640px) {
+  .field-label {
+    font-size: 0.8rem;
+    margin-bottom: 0.35rem;
+  }
+
+  .field-input,
+  .field-select,
+  .field-textarea {
+    font-size: 1rem; /* prevents iOS zoom on focus */
+    padding: 0.75rem 0.875rem;
+    border-radius: 12px;
+  }
+}
+
+/* ── Section headings in form ── */
+@media (max-width: 480px) {
+  .section-title {
+    font-size: 1rem;
+  }
+
+  .section-subtitle {
+    font-size: 0.8rem;
+  }
+}
+
+/* ── WhatsApp callout in confirmation: phone ── */
+@media (max-width: 480px) {
+  .whatsapp-callout {
+    padding: 1rem;
+    border-radius: 14px;
+  }
+
+  .whatsapp-callout h3 {
+    font-size: 0.95rem;
+  }
+}
+
+/* ── Scrollbar: thin on mobile ── */
+@media (max-width: 640px) {
+  ::-webkit-scrollbar {
+    width: 3px;
+    height: 3px;
+  }
+
+  ::-webkit-scrollbar-thumb {
+    background: rgba(100, 116, 139, 0.3);
+    border-radius: 99px;
+  }
+}
+
