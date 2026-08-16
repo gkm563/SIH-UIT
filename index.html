@@ -26,6 +26,7 @@
     };
   </script>
   <link rel="stylesheet" href="css/styles.css" />
+  <script src="js/countdown.js" defer></script>
 </head>
 <body>
   <a class="sr-only" href="#main-content">Skip to main content</a>
@@ -138,6 +139,97 @@
         </div>
       </div>
 
+      <!-- Live 22 August Hackathon Countdown Timer -->
+      <div class="bg-gradient-to-r from-slate-900 via-indigo-950 to-slate-900 text-white rounded-3xl p-6 sm:p-8 shadow-2xl mb-8 border border-amber-400/40 relative overflow-hidden text-center">
+        <div class="absolute -right-12 -top-12 w-48 h-48 bg-amber-500/10 rounded-full blur-3xl pointer-events-none"></div>
+        <div class="absolute -left-12 -bottom-12 w-48 h-48 bg-indigo-500/10 rounded-full blur-3xl pointer-events-none"></div>
+
+        <div class="inline-flex items-center gap-2 px-3.5 py-1 bg-amber-400/20 text-amber-300 border border-amber-400/30 rounded-full text-xs font-black mb-3">
+          <span class="w-2 h-2 rounded-full bg-amber-400 animate-ping"></span>
+          <span>⚡ CONFIRMED EVALUATION DATE: 22 AUGUST 2026 (SATURDAY)</span>
+        </div>
+
+        <h3 class="text-xl sm:text-3xl font-black text-white tracking-tight mb-2">
+          College-Level Internal Hackathon Presentation Countdown
+        </h3>
+        <p class="text-xs sm:text-sm text-slate-300 max-w-xl mx-auto mb-6 font-medium">
+          Prepare your solution, working prototype, software demo, and official PPT template. Presentation starts on 22 August 2026!
+        </p>
+
+        <!-- Countdown Timer Digit Boxes -->
+        <div class="flex items-center justify-center gap-2 sm:gap-4 max-w-lg mx-auto">
+          <div class="bg-white/10 backdrop-blur-md border border-white/20 rounded-2xl p-3 sm:p-4 min-w-[70px] sm:min-w-[95px] shadow-inner">
+            <div id="cd-days" class="text-2xl sm:text-4xl font-black text-amber-400 font-mono">06</div>
+            <div class="text-[10px] sm:text-xs font-bold uppercase text-slate-300 tracking-wider mt-1">Days</div>
+          </div>
+          <div class="text-xl sm:text-3xl font-black text-amber-400/80 mb-4">:</div>
+          <div class="bg-white/10 backdrop-blur-md border border-white/20 rounded-2xl p-3 sm:p-4 min-w-[70px] sm:min-w-[95px] shadow-inner">
+            <div id="cd-hours" class="text-2xl sm:text-4xl font-black text-white font-mono">00</div>
+            <div class="text-[10px] sm:text-xs font-bold uppercase text-slate-300 tracking-wider mt-1">Hours</div>
+          </div>
+          <div class="text-xl sm:text-3xl font-black text-amber-400/80 mb-4">:</div>
+          <div class="bg-white/10 backdrop-blur-md border border-white/20 rounded-2xl p-3 sm:p-4 min-w-[70px] sm:min-w-[95px] shadow-inner">
+            <div id="cd-mins" class="text-2xl sm:text-4xl font-black text-white font-mono">00</div>
+            <div class="text-[10px] sm:text-xs font-bold uppercase text-slate-300 tracking-wider mt-1">Mins</div>
+          </div>
+          <div class="text-xl sm:text-3xl font-black text-amber-400/80 mb-4">:</div>
+          <div class="bg-white/10 backdrop-blur-md border border-white/20 rounded-2xl p-3 sm:p-4 min-w-[70px] sm:min-w-[95px] shadow-inner">
+            <div id="cd-secs" class="text-2xl sm:text-4xl font-black text-amber-300 font-mono">00</div>
+            <div class="text-[10px] sm:text-xs font-bold uppercase text-slate-300 tracking-wider mt-1">Secs</div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Official Internal Hackathon Presentation Announcement Card -->
+      <div class="bg-white text-slate-900 rounded-3xl p-6 sm:p-8 shadow-xl mb-8 border-2 border-emerald-400/80 relative overflow-hidden">
+        <div class="flex items-center gap-3 mb-4 flex-wrap">
+          <span class="w-10 h-10 rounded-2xl bg-emerald-600 text-white flex items-center justify-center font-black text-xl shadow-xs">📢</span>
+          <div>
+            <span class="text-[11px] font-black uppercase text-emerald-800 bg-emerald-100 border border-emerald-300 px-2.5 py-0.5 rounded-full">Official Presentation Notice</span>
+            <h3 class="text-lg sm:text-2xl font-black text-slate-900">College-Level Internal Hackathon Presentation — 22 August 2026</h3>
+          </div>
+        </div>
+
+        <p class="text-xs sm:text-sm text-slate-700 font-medium leading-relaxed mb-4">
+          This is to inform all participating teams that the <strong>College-Level Internal Hackathon Presentation</strong> will be conducted on <strong class="text-emerald-800 font-black">22 August 2026 (Saturday)</strong>.
+        </p>
+
+        <div class="bg-emerald-50/80 border border-emerald-200/90 rounded-2xl p-4 sm:p-5 mb-5 space-y-2">
+          <h4 class="text-xs sm:text-sm font-black text-emerald-950 uppercase tracking-wide">Required Deliverables &amp; Demonstration On Hackathon Day:</h4>
+          <ul class="grid grid-cols-1 sm:grid-cols-2 gap-2 text-xs sm:text-sm font-semibold text-slate-800">
+            <li class="flex items-center gap-2"><span class="text-emerald-600 font-bold">✅</span> Proposed Idea / Solution</li>
+            <li class="flex items-center gap-2"><span class="text-emerald-600 font-bold">✅</span> Prototype / Working Model</li>
+            <li class="flex items-center gap-2"><span class="text-emerald-600 font-bold">✅</span> Software Demo, Video, or Proof of Concept</li>
+            <li class="flex items-center gap-2"><span class="text-emerald-600 font-bold">✅</span> Any other relevant developed work</li>
+          </ul>
+        </div>
+
+        <div class="bg-amber-50 border border-amber-300 rounded-2xl p-4 mb-5 flex items-start gap-3">
+          <span class="text-xl">📌</span>
+          <div class="text-xs sm:text-sm text-amber-950 font-bold leading-relaxed">
+            <strong>Important Rule:</strong> Every team must prepare its presentation strictly according to the official PPT format/template provided by the organizing committee.
+          </div>
+        </div>
+
+        <p class="text-xs sm:text-sm text-slate-600 font-medium leading-relaxed mb-5">
+          Detailed information regarding reporting time, presentation schedule, room/venue allocation, and other arrangements will be shared with you shortly.
+        </p>
+
+        <div class="flex flex-col sm:flex-row items-center justify-between gap-4 bg-slate-50 p-4 rounded-2xl border border-slate-200">
+          <div class="text-xs font-bold text-slate-700">
+            ⏳ <strong>Only 6 days to go!</strong> Finalize your Problem Statement, divide team tasks &amp; start development immediately.
+          </div>
+          <div class="flex items-center gap-2.5 w-full sm:w-auto">
+            <a href="problems.html" class="w-full sm:w-auto inline-flex items-center justify-center gap-1.5 px-5 py-2.5 bg-emerald-600 hover:bg-emerald-700 text-white font-extrabold text-xs sm:text-sm rounded-xl shadow-xs transition-all active:scale-95">
+              <span>Browse 37 Problem Statements →</span>
+            </a>
+            <a href="assets/SIH-2026-Idea-Presentation-Template.pptx" download class="w-full sm:w-auto inline-flex items-center justify-center gap-1.5 px-5 py-2.5 bg-amber-400 hover:bg-amber-500 text-slate-950 font-extrabold text-xs sm:text-sm rounded-xl shadow-xs transition-all active:scale-95">
+              <span>📥 Download PPT Template</span>
+            </a>
+          </div>
+        </div>
+      </div>
+
       <!-- Next Steps & Action Plan Hub (Clean Light Theme) -->
       <div id="next-steps-card" class="bg-gradient-to-br from-blue-50/90 via-indigo-50/60 to-white text-slate-900 rounded-3xl p-5 sm:p-8 shadow-md text-center mb-8 border border-blue-200/90 relative overflow-hidden">
         
@@ -152,10 +244,10 @@
         <!-- Event Badges Row -->
         <div class="flex items-center justify-center gap-2 sm:gap-3 flex-wrap my-4">
           <div class="inline-flex items-center gap-1.5 bg-emerald-100 text-emerald-950 border border-emerald-300/90 px-4 py-2 rounded-2xl text-xs sm:text-sm font-extrabold shadow-2xs">
-            <span>📅 Tentative Event Date: 22 August 2026, Saturday (Full Day)</span>
+            <span>📅 Confirmed Presentation Date: 22 August 2026, Saturday (Full Day)</span>
           </div>
           <div class="inline-flex items-center gap-1.5 bg-amber-100 text-amber-950 border border-amber-300/90 px-4 py-2 rounded-2xl text-xs sm:text-sm font-extrabold shadow-2xs">
-            <span>📍 Venue: To Be Announced Soon</span>
+            <span>📍 Venue: Allocation Schedule Sharing Shortly</span>
           </div>
           <div class="inline-flex items-center gap-1.5 bg-purple-100 text-purple-950 border border-purple-300/90 px-4 py-2 rounded-2xl text-xs sm:text-sm font-extrabold shadow-2xs">
             <span>🏆 Quota: Top 50 Teams (45 Shortlisted + 5 Waiting)</span>
@@ -184,7 +276,7 @@
             <div class="w-8 h-8 rounded-xl bg-emerald-100 text-emerald-800 font-black flex items-center justify-center text-sm mb-2">
               3
             </div>
-            <h4 class="text-xs sm:text-sm font-black text-slate-900">Present on 22 Aug (Tentative)</h4>
+            <h4 class="text-xs sm:text-sm font-black text-slate-900">Present on 22 August (Confirmed)</h4>
             <p class="text-[11px] text-slate-600 mt-1 leading-snug">Demonstrate your working prototype &amp; presentation live before the expert jury panel.</p>
           </div>
 
@@ -347,7 +439,7 @@
                       <span class="text-[10px] font-black uppercase text-blue-800 bg-blue-50 border border-blue-300 px-2 py-0.5 rounded-md">
                         📌 UPCOMING
                       </span>
-                      <span class="text-[11px] font-bold text-blue-900">22 August 2026 (Tentative Date)</span>
+                      <span class="text-[11px] font-bold text-blue-900">22 August 2026 (Confirmed Presentation Date)</span>
                     </div>
                     <h4 class="text-sm sm:text-base font-extrabold text-slate-900 mt-1">
                       Phase 3: Internal Hackathon Live Jury Presentation

@@ -34,6 +34,7 @@
     ::-webkit-scrollbar{width:4px;height:4px}::-webkit-scrollbar-track{background:#f1f5f9}::-webkit-scrollbar-thumb{background:#cbd5e1;border-radius:4px}
     @media(max-width:640px){.member-table td,th{padding:8px 10px!important;font-size:11px!important;}}
   </style>
+  <script src="js/countdown.js" defer></script>
 </head>
 <body class="bg-slate-50 min-h-screen flex flex-col antialiased">
 
@@ -122,23 +123,24 @@
       </div>
     </div>
 
-    <!-- Internal Hackathon Alert Card (Sleek Clean Royal Blue Accent) -->
-    <div class="bg-gradient-to-r from-blue-50/90 via-indigo-50/70 to-slate-50 border border-blue-200/90 rounded-2xl p-5 mb-6 flex flex-col sm:flex-row items-start sm:items-center justify-between gap-4 shadow-sm hover:shadow-md transition-shadow">
+    <!-- Internal Hackathon Alert Card (Sleek Clean Royal Blue & Emerald Accent) -->
+    <div class="bg-gradient-to-r from-emerald-50/90 via-teal-50/70 to-slate-50 border-2 border-emerald-300 rounded-2xl p-5 mb-6 flex flex-col md:flex-row items-start md:items-center justify-between gap-4 shadow-sm hover:shadow-md transition-shadow">
       <div class="flex items-start gap-3.5">
-        <div class="w-10 h-10 rounded-2xl bg-blue-700 text-white flex items-center justify-center font-black text-xl flex-shrink-0 mt-0.5 shadow-xs">
+        <div class="w-10 h-10 rounded-2xl bg-emerald-700 text-white flex items-center justify-center font-black text-xl flex-shrink-0 mt-0.5 shadow-xs">
           📅
         </div>
         <div>
           <div class="flex items-center gap-2 flex-wrap mb-1">
-            <span class="text-xs font-black uppercase text-blue-900 tracking-wider">Internal SIH Hackathon Evaluation</span>
-            <span class="text-[11px] font-black text-blue-900 bg-blue-100 border border-blue-200 px-2.5 py-0.5 rounded-full">22nd August 2026 (Saturday)</span>
+            <span class="text-xs font-black uppercase text-emerald-900 tracking-wider">Internal SIH Hackathon Presentation</span>
+            <span class="text-[11px] font-black text-emerald-950 bg-emerald-100 border border-emerald-300 px-2.5 py-0.5 rounded-full">⚡ Confirmed Date: 22nd August 2026 (Saturday)</span>
+            <span class="text-[11px] font-mono font-black text-slate-900 bg-amber-100 border border-amber-300 px-2.5 py-0.5 rounded-full">⏳ <span class="cd-days-val">06</span>d <span class="cd-hours-val">00</span>h <span class="cd-mins-val">00</span>m <span class="cd-secs-val">00</span>s left</span>
           </div>
           <p class="text-xs font-medium text-slate-700 leading-relaxed">
-            Select <strong class="text-blue-950 font-black">1 Problem Statement</strong> from the 37 available PSs (including Open Innovation) and prepare your <strong class="text-blue-950 font-black">Idea Presentation PPT</strong> for internal evaluation at United Institute of Technology.
+            Every team must present &amp; demonstrate their selected Problem Statement (out of 37 including PS-37 Open Innovation) with their <strong class="text-slate-900 font-black">Proposed Solution, Working Prototype / Model, Software Demo/Video</strong>, using the <strong class="text-emerald-900 font-black">Official PPT Template</strong>.
           </p>
         </div>
       </div>
-      <button onclick="document.querySelector('[data-tab=\'ps\']').click()" class="flex-shrink-0 text-xs font-extrabold text-white bg-blue-700 hover:bg-blue-800 px-4 py-2.5 rounded-xl transition-all shadow-xs active:scale-95 whitespace-nowrap">
+      <button onclick="document.querySelector('[data-tab=\'ps\']').click()" class="flex-shrink-0 text-xs font-extrabold text-white bg-emerald-700 hover:bg-emerald-800 px-4 py-2.5 rounded-xl transition-all shadow-xs active:scale-95 whitespace-nowrap">
         Select PS &amp; PPT Guide →
       </button>
     </div>
@@ -223,7 +225,7 @@
       <div class="card bg-gradient-to-r from-blue-50/90 via-indigo-50/70 to-white border border-blue-200/90 rounded-2xl p-5 mb-5 shadow-2xs">
         <div class="flex items-center gap-2 mb-3">
           <span class="inline-flex items-center justify-center w-7 h-7 bg-blue-100 rounded-lg text-sm">💡</span>
-          <h3 class="text-sm font-black text-slate-800 uppercase tracking-wide">Internal Hackathon (22nd August 2026) Guidelines</h3>
+          <h3 class="text-sm font-black text-slate-800 uppercase tracking-wide">Internal Hackathon Presentation (22 August 2026 — Confirmed Date) Guidelines</h3>
         </div>
         <div class="grid grid-cols-1 sm:grid-cols-3 gap-3 text-xs">
           <div class="bg-white/80 border border-slate-200/80 p-3 rounded-xl">
