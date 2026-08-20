@@ -1923,3 +1923,287 @@ img {
   background: rgba(255,255,255,0.6);
   color: #0f172a;
 }
+
+/* -----------------------------------------------------------
+   MOBILE + LAPTOP RESPONSIVE — FULL SITE PASS (Aug 2026)
+   Covers: index hero, phase cards, countdown, quick cards,
+           problems page, portal, verify, footer
+----------------------------------------------------------- */
+
+/* --- 1. HERO GRID: stack on tablet & below --------------- */
+@media (max-width: 1023px) {
+  .grid.grid-cols-1.lg\:grid-cols-12 {
+    grid-template-columns: 1fr !important;
+  }
+}
+
+/* --- 2. COUNTDOWN CARD: full-width on mobile --------------- */
+@media (max-width: 640px) {
+  #countdown-card {
+    padding: 1.25rem 1rem !important;
+    border-radius: 20px !important;
+  }
+
+  /* Phase pre — digit boxes */
+  #phase-pre .grid-cols-4 {
+    gap: 0.5rem !important;
+  }
+
+  #cd-days, #cd-hours, #cd-mins, #cd-secs {
+    font-size: 1.6rem !important;
+  }
+
+  /* Phase live — text scaling */
+  #phase-live > div:nth-child(2) {
+    font-size: 1.6rem !important;
+    line-height: 1.2 !important;
+  }
+
+  /* Phase done — text scaling */
+  #phase-done > div:nth-child(2) {
+    font-size: 1.25rem !important;
+    line-height: 1.3 !important;
+  }
+
+  /* Phase done — result box full width */
+  #phase-done .glass-chip-dark.rounded-2xl {
+    max-width: 100% !important;
+  }
+}
+
+/* --- 3. LEFT HERO CARD: padding on mobile --------------- */
+@media (max-width: 640px) {
+  .lg\:col-span-7 {
+    padding: 1.25rem 1rem !important;
+    border-radius: 20px !important;
+  }
+
+  /* Heading size */
+  .lg\:col-span-7 h1 {
+    font-size: 1.45rem !important;
+    line-height: 1.25 !important;
+  }
+
+  /* Metadata badges — stack vertically */
+  .lg\:col-span-7 .flex.items-center.gap-3.flex-wrap {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 0.5rem !important;
+  }
+
+  /* hide separator */
+  .lg\:col-span-7 .text-slate-300 {
+    display: none;
+  }
+
+  /* CTA buttons full width */
+  .lg\:col-span-7 .flex.items-center.gap-3.flex-wrap a {
+    width: 100%;
+    justify-content: center;
+  }
+}
+
+/* --- 4. QUICK ACTION CARDS: mobile friendly --------------- */
+@media (max-width: 480px) {
+  .grid.grid-cols-1.sm\:grid-cols-3 > a {
+    padding: 1rem !important;
+  }
+
+  .grid.grid-cols-1.sm\:grid-cols-3 h4 {
+    font-size: 0.8rem !important;
+  }
+
+  .grid.grid-cols-1.sm\:grid-cols-3 p {
+    font-size: 0.7rem !important;
+  }
+}
+
+/* --- 5. GLASS CHIP DARK: reduce blur on low-end phones --- */
+@media (max-width: 480px) {
+  .glass-chip-dark {
+    backdrop-filter: blur(8px) !important;
+    -webkit-backdrop-filter: blur(8px) !important;
+  }
+  .glass-chip {
+    backdrop-filter: blur(6px) !important;
+    -webkit-backdrop-filter: blur(6px) !important;
+  }
+}
+
+/* --- 6. PROBLEMS PAGE HERO: mobile ----------------------- */
+@media (max-width: 640px) {
+  #ps-browser {
+    padding-left: 0.75rem !important;
+    padding-right: 0.75rem !important;
+    padding-top: 1rem !important;
+  }
+
+  /* Filter control bar */
+  .bg-white.border.border-slate-200\/90.rounded-2xl {
+    padding: 0.875rem !important;
+    border-radius: 16px !important;
+  }
+
+  /* Type buttons: wrap & smaller */
+  #type-filter-group {
+    gap: 0.4rem !important;
+  }
+  .type-btn {
+    padding: 0.4rem 0.7rem !important;
+    font-size: 0.7rem !important;
+    min-height: 34px !important;
+  }
+
+  /* Sort buttons: smaller */
+  .sort-btn {
+    padding: 0.4rem 0.65rem !important;
+    font-size: 0.68rem !important;
+    min-height: 34px !important;
+  }
+
+  /* PS grid: 1 col, tight gaps */
+  #ps-grid {
+    grid-template-columns: 1fr !important;
+    gap: 0.75rem !important;
+  }
+}
+
+/* --- 7. PROBLEMS PAGE: card badge wrapping on mobile ------ */
+@media (max-width: 480px) {
+  .ps-card .flex.items-center.justify-between.gap-2.mb-3 {
+    flex-wrap: wrap;
+    gap: 0.4rem;
+  }
+  .ps-card h3 {
+    font-size: 0.82rem !important;
+  }
+  .ps-card p {
+    font-size: 0.72rem !important;
+  }
+}
+
+/* --- 8. PROBLEMS HERO PILLS: full-width stack on mobile --- */
+@media (max-width: 640px) {
+  .flex.flex-col.sm\:flex-row.items-center.justify-center.gap-2.sm\:gap-3.mb-6 > div {
+    width: 100% !important;
+    justify-content: center !important;
+  }
+}
+
+/* --- 9. PORTAL LOGIN CARD: truly mobile-safe ------------- */
+@media (max-width: 640px) {
+  .login-card {
+    width: calc(100% - 1.5rem) !important;
+    margin: 0.75rem auto !important;
+    border-radius: 20px !important;
+    padding: 1.5rem 1.125rem !important;
+  }
+  .input-field {
+    font-size: 1rem !important;
+    padding: 0.8rem 1rem !important;
+    border-radius: 12px !important;
+  }
+  .btn-primary {
+    padding: 0.875rem 1.25rem !important;
+    font-size: 0.875rem !important;
+    border-radius: 12px !important;
+  }
+}
+
+/* --- 10. VERIFY PAGE: hero banner mobile ----------------- */
+@media (max-width: 640px) {
+  #main-content .bg-gradient-to-r.from-blue-900 {
+    padding: 1.25rem 1rem !important;
+    border-radius: 16px !important;
+  }
+
+  #main-content .bg-gradient-to-r.from-blue-900 .flex.items-center.gap-4 {
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+    gap: 0.875rem;
+  }
+
+  #main-content .bg-gradient-to-r.from-blue-900 img {
+    height: 3.5rem !important;
+  }
+
+  #verify-input {
+    font-size: 1rem !important;
+    padding: 0.875rem 0.875rem 0.875rem 2.5rem !important;
+  }
+
+  #btn-verify-submit {
+    width: 100%;
+  }
+}
+
+/* --- 11. FOOTER: guaranteed stack on mobile --------------- */
+@media (max-width: 640px) {
+  .site-footer > div {
+    padding: 1.5rem 1rem 1rem !important;
+  }
+
+  .site-footer .grid.grid-cols-1.md\:grid-cols-2 {
+    grid-template-columns: 1fr !important;
+    gap: 0.75rem !important;
+  }
+
+  .site-footer .flex.flex-col.md\:flex-row {
+    flex-direction: column !important;
+    align-items: center !important;
+    text-align: center !important;
+    gap: 0.75rem !important;
+  }
+
+  .site-footer nav {
+    flex-wrap: wrap !important;
+    justify-content: center !important;
+    gap: 0.35rem !important;
+  }
+}
+
+/* --- 12. HEADER: phone shrink ---------------------------- */
+@media (max-width: 375px) {
+  .header-inner {
+    padding: 0.5rem 0.75rem !important;
+    gap: 0.4rem !important;
+  }
+  .college-logo {
+    width: 28px !important;
+    height: 28px !important;
+  }
+  .nav-switch {
+    max-width: calc(100vw - 140px);
+  }
+}
+
+/* --- 13. GLOBAL: no horizontal overflow anywhere ---------- */
+*, *::before, *::after {
+  max-width: 100vw;
+}
+
+section, main, header, footer, div {
+  min-width: 0;
+}
+
+/* --- 14. LAPTOP SPECIFIC: better max-width on large screens */
+@media (min-width: 1024px) and (max-width: 1280px) {
+  #countdown-card {
+    min-height: 280px;
+  }
+
+  #cd-days, #cd-hours, #cd-mins, #cd-secs {
+    font-size: 2rem !important;
+  }
+}
+
+/* --- 15. COUNTDOWN DIGIT LAYOUT SHIFT PREVENTION ---------- */
+#cd-days, #cd-hours, #cd-mins, #cd-secs {
+  display: inline-block;
+  min-width: 2ch;
+  text-align: center;
+  font-variant-numeric: tabular-nums;
+  line-height: 1;
+}
+
