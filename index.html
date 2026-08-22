@@ -93,6 +93,85 @@
     <!-- Instructions (shown first) -->
     <section id="instructions-view" class="instructions-card" aria-labelledby="instructions-title">
       <!-- ══════════════════════════════════════════════════════════════════ -->
+      <!-- 🔔 SHORTLISTED TEAM NOTICE BANNER -->
+      <!-- ══════════════════════════════════════════════════════════════════ -->
+      <div class="mb-6 rounded-3xl overflow-hidden border-2 border-emerald-400/60 shadow-xl bg-gradient-to-br from-emerald-950 via-slate-900 to-indigo-950 text-white relative">
+        <!-- Ambient orbs -->
+        <div class="absolute -right-16 -top-16 w-56 h-56 bg-emerald-500/15 rounded-full blur-3xl pointer-events-none"></div>
+        <div class="absolute -left-16 -bottom-16 w-56 h-56 bg-blue-500/15 rounded-full blur-3xl pointer-events-none"></div>
+
+        <div class="relative z-10 p-5 sm:p-7">
+          <!-- Top label -->
+          <div class="flex items-center gap-2 mb-4 flex-wrap">
+            <span class="inline-flex items-center gap-1.5 bg-emerald-500/25 border border-emerald-400/50 text-emerald-300 text-[10px] sm:text-xs font-black uppercase tracking-widest px-3 py-1.5 rounded-full">
+              <span class="w-2 h-2 rounded-full bg-emerald-400 animate-ping"></span>
+              🏆 SHORTLISTED TEAMS — ACTION REQUIRED
+            </span>
+            <span class="inline-flex items-center gap-1.5 bg-amber-500/20 border border-amber-400/40 text-amber-300 text-[10px] sm:text-xs font-bold px-3 py-1 rounded-full">
+              ⚡ Important Notice
+            </span>
+          </div>
+
+          <!-- Content grid -->
+          <div class="grid grid-cols-1 sm:grid-cols-3 gap-4">
+
+            <!-- Step 1 -->
+            <div class="bg-white/5 border border-white/10 rounded-2xl p-4 space-y-2">
+              <div class="flex items-center gap-2">
+                <span class="w-7 h-7 rounded-full bg-emerald-500/30 border border-emerald-400/50 text-emerald-300 text-sm font-black flex items-center justify-center flex-shrink-0">1</span>
+                <span class="text-xs font-black text-white uppercase tracking-wide">Visit SIH Portal</span>
+              </div>
+              <p class="text-[11px] sm:text-xs text-slate-300 leading-relaxed font-medium">
+                Go to the official SIH 2026 Problem Statements page and <strong class="text-white">choose any 2 PS</strong> of your choice for the national round.
+              </p>
+              <a href="https://www.sih.gov.in/sih2026PS" target="_blank" rel="noopener noreferrer"
+                class="inline-flex items-center gap-1.5 mt-1 px-3 py-1.5 bg-emerald-500/25 hover:bg-emerald-500/40 border border-emerald-400/50 text-emerald-300 text-[11px] font-black rounded-xl transition-all active:scale-95">
+                🔗 sih.gov.in/sih2026PS
+                <svg class="w-3 h-3" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2.5" d="M10 6H6a2 2 0 00-2 2v10a2 2 0 002 2h10a2 2 0 002-2v-4M14 4h6m0 0v6m0-6L10 14"/></svg>
+              </a>
+            </div>
+
+            <!-- Step 2 -->
+            <div class="bg-white/5 border border-white/10 rounded-2xl p-4 space-y-2">
+              <div class="flex items-center gap-2">
+                <span class="w-7 h-7 rounded-full bg-blue-500/30 border border-blue-400/50 text-blue-300 text-sm font-black flex items-center justify-center flex-shrink-0">2</span>
+                <span class="text-xs font-black text-white uppercase tracking-wide">Await Your Credentials</span>
+              </div>
+              <p class="text-[11px] sm:text-xs text-slate-300 leading-relaxed font-medium">
+                <strong class="text-white">Team Leader</strong> will receive SIH portal <strong class="text-white">login credentials</strong> directly from SIH on their registered email/mobile.
+              </p>
+              <div class="inline-flex items-center gap-1.5 mt-1 px-3 py-1.5 bg-blue-500/20 border border-blue-400/40 text-blue-300 text-[11px] font-bold rounded-xl">
+                📧 Check Registered Email
+              </div>
+            </div>
+
+            <!-- Step 3 -->
+            <div class="bg-white/5 border border-white/10 rounded-2xl p-4 space-y-2">
+              <div class="flex items-center gap-2">
+                <span class="w-7 h-7 rounded-full bg-amber-500/30 border border-amber-400/50 text-amber-300 text-sm font-black flex items-center justify-center flex-shrink-0">3</span>
+                <span class="text-xs font-black text-white uppercase tracking-wide">Team Upload</span>
+              </div>
+              <p class="text-[11px] sm:text-xs text-slate-300 leading-relaxed font-medium">
+                All <strong class="text-white">45 shortlisted + 5 waitlisted</strong> team details will be uploaded by UIT to the official SIH portal shortly.
+              </p>
+              <div class="inline-flex items-center gap-1.5 mt-1 px-3 py-1.5 bg-amber-500/20 border border-amber-400/40 text-amber-300 text-[11px] font-bold rounded-xl">
+                ⏳ Update In Progress
+              </div>
+            </div>
+
+          </div>
+
+          <!-- Bottom note -->
+          <div class="mt-4 flex items-start gap-2 bg-white/5 border border-white/10 rounded-2xl px-4 py-3 text-[11px] sm:text-xs text-slate-300 font-medium">
+            <span class="text-amber-400 text-base flex-shrink-0">⚠️</span>
+            <span>
+              <strong class="text-white">Waitlisted teams</strong> — please stay alert. You may be promoted if a shortlisted team withdraws. Your data is also being submitted to SIH. Any queries: contact organisers via WhatsApp.
+            </span>
+          </div>
+        </div>
+      </div>
+
+      <!-- ══════════════════════════════════════════════════════════════════ -->
       <!-- TOP HERO ROW: Floating Glass Announcement + Live Countdown Timer -->
       <!-- ══════════════════════════════════════════════════════════════════ -->
       <div class="grid grid-cols-1 lg:grid-cols-12 gap-6 mb-8 items-stretch relative">
