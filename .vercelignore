@@ -1,0 +1,3 @@
+# Exclude large original images - only deploy compressed gallery versions
+assets/SIH Day Images/
+Official Documents/
