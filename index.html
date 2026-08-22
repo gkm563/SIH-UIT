@@ -85,81 +85,199 @@
     <!-- Instructions (shown first) -->
     <section id="instructions-view" class="instructions-card" aria-labelledby="instructions-title">
       <!-- ══════════════════════════════════════════════════════════════════ -->
-      <!-- 🔔 SHORTLISTED TEAM NOTICE BANNER -->
+      <!-- 🔔 SHORTLISTED & NOMINATED TEAMS — OFFICIAL SIH 2026 GUIDELINES -->
       <!-- ══════════════════════════════════════════════════════════════════ -->
-      <div class="mb-6 rounded-3xl overflow-hidden border-2 border-emerald-400/60 shadow-xl bg-gradient-to-br from-emerald-950 via-slate-900 to-indigo-950 text-white relative">
-        <!-- Ambient orbs -->
-        <div class="absolute -right-16 -top-16 w-56 h-56 bg-emerald-500/15 rounded-full blur-3xl pointer-events-none"></div>
-        <div class="absolute -left-16 -bottom-16 w-56 h-56 bg-blue-500/15 rounded-full blur-3xl pointer-events-none"></div>
+      <div class="mb-8 rounded-3xl overflow-hidden border-2 border-emerald-400/60 shadow-2xl bg-gradient-to-br from-slate-950 via-indigo-950 to-slate-900 text-white relative">
+        <!-- Ambient decorative glow orbs -->
+        <div class="absolute -right-20 -top-20 w-64 h-64 bg-emerald-500/15 rounded-full blur-3xl pointer-events-none"></div>
+        <div class="absolute -left-20 -bottom-20 w-64 h-64 bg-blue-500/15 rounded-full blur-3xl pointer-events-none"></div>
+        <div class="absolute right-1/3 bottom-10 w-48 h-48 bg-purple-500/10 rounded-full blur-3xl pointer-events-none"></div>
 
-        <div class="relative z-10 p-5 sm:p-7">
-          <!-- Top label -->
-          <div class="flex items-center gap-2 mb-4 flex-wrap">
-            <span class="inline-flex items-center gap-1.5 bg-emerald-500/25 border border-emerald-400/50 text-emerald-300 text-[10px] sm:text-xs font-black uppercase tracking-widest px-3 py-1.5 rounded-full">
-              <span class="w-2 h-2 rounded-full bg-emerald-400 animate-ping"></span>
-              🏆 SHORTLISTED TEAMS — ACTION REQUIRED
-            </span>
-            <span class="inline-flex items-center gap-1.5 bg-amber-500/20 border border-amber-400/40 text-amber-300 text-[10px] sm:text-xs font-bold px-3 py-1 rounded-full">
-              ⚡ Important Notice
-            </span>
+        <div class="relative z-10 p-5 sm:p-8">
+          <!-- Top Header Badges -->
+          <div class="flex items-center justify-between gap-3 mb-4 flex-wrap border-b border-white/10 pb-4">
+            <div class="flex items-center gap-2 flex-wrap">
+              <span class="inline-flex items-center gap-1.5 bg-emerald-500/25 border border-emerald-400/50 text-emerald-300 text-xs sm:text-sm font-black uppercase tracking-wider px-3.5 py-1.5 rounded-full">
+                <span class="w-2.5 h-2.5 rounded-full bg-emerald-400 animate-ping"></span>
+                🏆 TOP 50 NOMINATED TEAMS (45 SHORTLISTED + 5 WAITLISTED)
+              </span>
+              <span class="inline-flex items-center gap-1.5 bg-amber-500/20 border border-amber-400/40 text-amber-300 text-xs font-bold px-3 py-1 rounded-full">
+                ⚡ Action Required for Team Leaders
+              </span>
+            </div>
+            <a href="https://www.sih.gov.in/sih2026PS" target="_blank" rel="noopener noreferrer"
+               class="inline-flex items-center gap-2 px-4 py-2 bg-gradient-to-r from-emerald-500 to-teal-600 hover:from-emerald-600 hover:to-teal-700 text-white text-xs sm:text-sm font-black rounded-xl shadow-md hover:shadow-lg transition-all active:scale-95">
+              <span>View SIH 2026 PS (sih.gov.in)</span>
+              <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2.5" d="M10 6H6a2 2 0 00-2 2v10a2 2 0 002 2h10a2 2 0 002-2v-4M14 4h6m0 0v6m0-6L10 14"/></svg>
+            </a>
           </div>
 
-          <!-- Content grid -->
-          <div class="grid grid-cols-1 sm:grid-cols-3 gap-4">
+          <div class="mb-6">
+            <h2 class="text-xl sm:text-2xl font-black text-white tracking-tight mb-2">
+              SIH 2026 National Round — Important Submission &amp; Portal Instructions
+            </h2>
+            <p class="text-xs sm:text-sm text-slate-300 font-medium leading-relaxed max-w-4xl">
+              Internal College-Level Hackathon has concluded. UIT is nominating the top 50 teams (45 shortlisted + 5 waitlisted) to the central Smart India Hackathon portal. Please review the mandatory instructions and checklist below.
+            </p>
+          </div>
 
-            <!-- Step 1 -->
-            <div class="bg-white/5 border border-white/10 rounded-2xl p-4 space-y-2">
-              <div class="flex items-center gap-2">
-                <span class="w-7 h-7 rounded-full bg-emerald-500/30 border border-emerald-400/50 text-emerald-300 text-sm font-black flex items-center justify-center flex-shrink-0">1</span>
-                <span class="text-xs font-black text-white uppercase tracking-wide">Visit SIH Portal</span>
+          <!-- 3 Critical Rule Alert Cards -->
+          <div class="grid grid-cols-1 md:grid-cols-3 gap-4 mb-6">
+            <!-- Alert 1: 500 Ideas Limit / PS Freeze Rule -->
+            <div class="bg-red-950/40 border border-red-500/40 rounded-2xl p-4 relative overflow-hidden">
+              <div class="flex items-center gap-2 text-red-300 font-black text-xs uppercase tracking-wide mb-2">
+                <span class="text-base">⏳</span>
+                <span>500 Ideas Quota / PS Freeze Rule</span>
               </div>
-              <p class="text-[11px] sm:text-xs text-slate-300 leading-relaxed font-medium">
-                Go to the official SIH 2026 Problem Statements page and <strong class="text-white">choose any 2 PS</strong> of your choice for the national round.
+              <p class="text-xs text-slate-200 leading-relaxed font-medium">
+                Idea submission counter starts from <strong>August 2026</strong>. Only <strong class="text-amber-300">500 ideas</strong> can be submitted nationwide for a particular PS. Once 500 ideas are reached, that <strong>PS will freeze</strong> and no more submissions will be accepted.
               </p>
-              <a href="https://www.sih.gov.in/sih2026PS" target="_blank" rel="noopener noreferrer"
-                class="inline-flex items-center gap-1.5 mt-1 px-3 py-1.5 bg-emerald-500/25 hover:bg-emerald-500/40 border border-emerald-400/50 text-emerald-300 text-[11px] font-black rounded-xl transition-all active:scale-95">
-                🔗 sih.gov.in/sih2026PS
-                <svg class="w-3 h-3" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2.5" d="M10 6H6a2 2 0 00-2 2v10a2 2 0 002 2h10a2 2 0 002-2v-4M14 4h6m0 0v6m0-6L10 14"/></svg>
-              </a>
-            </div>
-
-            <!-- Step 2 -->
-            <div class="bg-white/5 border border-white/10 rounded-2xl p-4 space-y-2">
-              <div class="flex items-center gap-2">
-                <span class="w-7 h-7 rounded-full bg-blue-500/30 border border-blue-400/50 text-blue-300 text-sm font-black flex items-center justify-center flex-shrink-0">2</span>
-                <span class="text-xs font-black text-white uppercase tracking-wide">Await Your Credentials</span>
-              </div>
-              <p class="text-[11px] sm:text-xs text-slate-300 leading-relaxed font-medium">
-                <strong class="text-white">Team Leader</strong> will receive SIH portal <strong class="text-white">login credentials</strong> directly from SIH on their registered email/mobile.
-              </p>
-              <div class="inline-flex items-center gap-1.5 mt-1 px-3 py-1.5 bg-blue-500/20 border border-blue-400/40 text-blue-300 text-[11px] font-bold rounded-xl">
-                📧 Check Registered Email
-              </div>
-            </div>
-
-            <!-- Step 3 -->
-            <div class="bg-white/5 border border-white/10 rounded-2xl p-4 space-y-2">
-              <div class="flex items-center gap-2">
-                <span class="w-7 h-7 rounded-full bg-amber-500/30 border border-amber-400/50 text-amber-300 text-sm font-black flex items-center justify-center flex-shrink-0">3</span>
-                <span class="text-xs font-black text-white uppercase tracking-wide">Team Upload</span>
-              </div>
-              <p class="text-[11px] sm:text-xs text-slate-300 leading-relaxed font-medium">
-                All <strong class="text-white">45 shortlisted + 5 waitlisted</strong> team details will be uploaded by UIT to the official SIH portal shortly.
-              </p>
-              <div class="inline-flex items-center gap-1.5 mt-1 px-3 py-1.5 bg-amber-500/20 border border-amber-400/40 text-amber-300 text-[11px] font-bold rounded-xl">
-                ⏳ Update In Progress
+              <div class="mt-2.5 text-[11px] text-red-300/90 font-bold flex items-center gap-1">
+                <span>📊 Live ideas submitted &amp; left counter is visible opposite each PS on sih.gov.in</span>
               </div>
             </div>
 
+            <!-- Alert 2: Max 2 PS per Team -->
+            <div class="bg-indigo-950/50 border border-indigo-400/40 rounded-2xl p-4 relative overflow-hidden">
+              <div class="flex items-center gap-2 text-indigo-300 font-black text-xs uppercase tracking-wide mb-2">
+                <span class="text-base">🎯</span>
+                <span>Max 2 Problem Statements</span>
+              </div>
+              <p class="text-xs text-slate-200 leading-relaxed font-medium">
+                One team can submit ideas against a <strong class="text-amber-300">maximum of 2 Problem Statements only</strong> (or Student Innovation Category). There is no bar for Software/Hardware categories — choose as per convenience.
+              </p>
+              <div class="mt-2.5 text-[11px] text-indigo-300/90 font-bold flex items-center gap-1">
+                <span>💡 Total Institute Quota: Maximum 50 Teams (45 Shortlisted + 5 Waitlisted)</span>
+              </div>
+            </div>
+
+            <!-- Alert 3: SPOC Registration & Login Credentials -->
+            <div class="bg-emerald-950/40 border border-emerald-500/40 rounded-2xl p-4 relative overflow-hidden">
+              <div class="flex items-center gap-2 text-emerald-300 font-black text-xs uppercase tracking-wide mb-2">
+                <span class="text-base">🔑</span>
+                <span>SPOC Registration &amp; Login Credentials</span>
+              </div>
+              <p class="text-xs text-slate-200 leading-relaxed font-medium">
+                <strong>Students cannot register directly.</strong> College SPOC handles nominations. The <strong class="text-amber-300">Nominated Team Leader</strong> will receive portal login credentials directly from SIH on their registered Email / Mobile.
+              </p>
+              <div class="mt-2.5 text-[11px] text-emerald-300/90 font-bold flex items-center gap-1">
+                <span>📧 Check registered Email &amp; SMS regularly for credentials</span>
+              </div>
+            </div>
           </div>
 
-          <!-- Bottom note -->
-          <div class="mt-4 flex items-start gap-2 bg-white/5 border border-white/10 rounded-2xl px-4 py-3 text-[11px] sm:text-xs text-slate-300 font-medium">
-            <span class="text-amber-400 text-base flex-shrink-0">⚠️</span>
-            <span>
-              <strong class="text-white">Waitlisted teams</strong> — please stay alert. You may be promoted if a shortlisted team withdraws. Your data is also being submitted to SIH. Any queries: contact organisers via WhatsApp.
-            </span>
+          <!-- 10-Point Verification & Submission Checklist -->
+          <div class="bg-white/5 border border-white/10 rounded-2xl p-4 sm:p-6 mb-4">
+            <div class="flex items-center justify-between gap-3 mb-4 flex-wrap">
+              <div class="flex items-center gap-2">
+                <span class="w-8 h-8 rounded-xl bg-blue-500/20 border border-blue-400/40 text-blue-300 text-sm font-black flex items-center justify-center">📋</span>
+                <div>
+                  <h3 class="text-sm sm:text-base font-black text-white">
+                    10-Point Checklist: Details Team Leader Must Verify &amp; Submit on SIH Portal
+                  </h3>
+                  <p class="text-[11px] text-slate-400 font-medium">
+                    Once login credentials are received, the team leader must log in on the official SIH portal and complete/verify the following:
+                  </p>
+                </div>
+              </div>
+            </div>
+
+            <div class="grid grid-cols-1 sm:grid-cols-2 gap-2.5 text-xs">
+              <div class="flex items-start gap-2.5 bg-slate-900/60 border border-white/5 rounded-xl p-3">
+                <span class="w-5 h-5 rounded-md bg-emerald-500/20 text-emerald-300 font-black text-xs flex items-center justify-center flex-shrink-0 mt-0.5">1</span>
+                <div>
+                  <strong class="text-white">Verify Team Name</strong>
+                  <p class="text-[11px] text-slate-400 mt-0.5">Check the pre-entered team name matches your registration.</p>
+                </div>
+              </div>
+
+              <div class="flex items-start gap-2.5 bg-slate-900/60 border border-white/5 rounded-xl p-3">
+                <span class="w-5 h-5 rounded-md bg-emerald-500/20 text-emerald-300 font-black text-xs flex items-center justify-center flex-shrink-0 mt-0.5">2</span>
+                <div>
+                  <strong class="text-white">College Authorization Letter (PDF)</strong>
+                  <p class="text-[11px] text-slate-400 mt-0.5">Verify pre-entered letter in the official SIH format.</p>
+                </div>
+              </div>
+
+              <div class="flex items-start gap-2.5 bg-slate-900/60 border border-white/5 rounded-xl p-3">
+                <span class="w-5 h-5 rounded-md bg-emerald-500/20 text-emerald-300 font-black text-xs flex items-center justify-center flex-shrink-0 mt-0.5">3</span>
+                <div>
+                  <strong class="text-white">Names of Leader &amp; 5 Members</strong>
+                  <p class="text-[11px] text-slate-400 mt-0.5">Verify spelling &amp; exact names of all 6 team members.</p>
+                </div>
+              </div>
+
+              <div class="flex items-start gap-2.5 bg-slate-900/60 border border-white/5 rounded-xl p-3">
+                <span class="w-5 h-5 rounded-md bg-emerald-500/20 text-emerald-300 font-black text-xs flex items-center justify-center flex-shrink-0 mt-0.5">4</span>
+                <div>
+                  <strong class="text-white">Gender of Leader &amp; 5 Members</strong>
+                  <p class="text-[11px] text-slate-400 mt-0.5">Ensure at least one female member is verified as per SIH rule.</p>
+                </div>
+              </div>
+
+              <div class="flex items-start gap-2.5 bg-slate-900/60 border border-white/5 rounded-xl p-3">
+                <span class="w-5 h-5 rounded-md bg-emerald-500/20 text-emerald-300 font-black text-xs flex items-center justify-center flex-shrink-0 mt-0.5">5</span>
+                <div>
+                  <strong class="text-white">Email IDs of All 6 Members</strong>
+                  <p class="text-[11px] text-slate-400 mt-0.5">Verify active email addresses of all members and leader.</p>
+                </div>
+              </div>
+
+              <div class="flex items-start gap-2.5 bg-slate-900/60 border border-white/5 rounded-xl p-3">
+                <span class="w-5 h-5 rounded-md bg-emerald-500/20 text-emerald-300 font-black text-xs flex items-center justify-center flex-shrink-0 mt-0.5">6</span>
+                <div>
+                  <strong class="text-white">Mobile Numbers of All 6 Members</strong>
+                  <p class="text-[11px] text-slate-400 mt-0.5">Verify active WhatsApp/SMS mobile numbers.</p>
+                </div>
+              </div>
+
+              <div class="flex items-start gap-2.5 bg-slate-900/60 border border-white/5 rounded-xl p-3">
+                <span class="w-5 h-5 rounded-md bg-indigo-500/20 text-indigo-300 font-black text-xs flex items-center justify-center flex-shrink-0 mt-0.5">7</span>
+                <div>
+                  <strong class="text-white">Chosen PS / Student Innovation Category</strong>
+                  <p class="text-[11px] text-slate-400 mt-0.5">Select up to 2 Problem Statements from sih.gov.in.</p>
+                </div>
+              </div>
+
+              <div class="flex items-start gap-2.5 bg-slate-900/60 border border-white/5 rounded-xl p-3">
+                <span class="w-5 h-5 rounded-md bg-indigo-500/20 text-indigo-300 font-black text-xs flex items-center justify-center flex-shrink-0 mt-0.5">8</span>
+                <div>
+                  <strong class="text-white">Idea Title</strong>
+                  <p class="text-[11px] text-slate-400 mt-0.5">Enter a clear, professional, and concise title for your solution.</p>
+                </div>
+              </div>
+
+              <div class="flex items-start gap-2.5 bg-slate-900/60 border border-white/5 rounded-xl p-3">
+                <span class="w-5 h-5 rounded-md bg-indigo-500/20 text-indigo-300 font-black text-xs flex items-center justify-center flex-shrink-0 mt-0.5">9</span>
+                <div>
+                  <strong class="text-white">Idea Description</strong>
+                  <p class="text-[11px] text-slate-400 mt-0.5">Provide detailed methodology, tech stack, novelty &amp; feasibility.</p>
+                </div>
+              </div>
+
+              <div class="flex items-start gap-2.5 bg-slate-900/60 border border-white/5 rounded-xl p-3">
+                <span class="w-5 h-5 rounded-md bg-indigo-500/20 text-indigo-300 font-black text-xs flex items-center justify-center flex-shrink-0 mt-0.5">10</span>
+                <div>
+                  <strong class="text-white">Idea Presentation (PDF)</strong>
+                  <p class="text-[11px] text-slate-400 mt-0.5">Upload solution PPT strictly converted to PDF format.</p>
+                </div>
+              </div>
+            </div>
           </div>
+
+          <!-- Bottom status info -->
+          <div class="flex items-start gap-2.5 bg-white/5 border border-white/10 rounded-2xl px-4 py-3 text-xs text-slate-300 font-medium">
+            <span class="text-amber-400 text-base flex-shrink-0 mt-0.5">⚠️</span>
+            <div class="space-y-1">
+              <p>
+                <strong class="text-white">Waitlisted Teams:</strong> Please keep your idea description, presentation, and team details ready. If any shortlisted team withdraws or fails to submit, waitlisted teams will be promoted in order of merit.
+              </p>
+              <p class="text-[11px] text-slate-400">
+                Official updates &amp; announcements will continue to be shared through official UIT WhatsApp groups.
+              </p>
+            </div>
+          </div>
+
         </div>
       </div>
 
@@ -312,17 +430,17 @@
       <!-- ══════════════════════════════════════════════════════════════════ -->
       <div class="grid grid-cols-1 sm:grid-cols-3 gap-5 mb-8">
         
-        <a href="problems.html" class="glass-chip p-5 rounded-3xl flex items-center justify-between group hover:-translate-y-1.5 transition-all duration-300">
+        <a href="https://www.sih.gov.in/sih2026PS" target="_blank" rel="noopener noreferrer" class="glass-chip p-5 rounded-3xl flex items-center justify-between group hover:-translate-y-1.5 transition-all duration-300">
           <div class="flex items-center gap-3.5">
             <div class="w-12 h-12 rounded-2xl bg-blue-100/80 text-blue-700 flex items-center justify-center text-xl font-black border border-blue-200/80 animate-float">
-              🖥️
+              🌐
             </div>
             <div>
-              <h4 class="text-xs sm:text-sm font-black text-slate-900 group-hover:text-blue-700 transition-colors">Browse 37 Problem Statements</h4>
-              <p class="text-[10px] sm:text-xs text-slate-500 font-medium mt-0.5">Explore real-world problem statements</p>
+              <h4 class="text-xs sm:text-sm font-black text-slate-900 group-hover:text-blue-700 transition-colors">Official SIH 2026 PS</h4>
+              <p class="text-[10px] sm:text-xs text-slate-500 font-medium mt-0.5">Explore &amp; select 2 problem statements</p>
             </div>
           </div>
-          <span class="w-8 h-8 rounded-full bg-blue-50 text-blue-600 flex items-center justify-center font-bold text-sm group-hover:bg-blue-600 group-hover:text-white transition-all">→</span>
+          <span class="w-8 h-8 rounded-full bg-blue-50 text-blue-600 flex items-center justify-center font-bold text-sm group-hover:bg-blue-600 group-hover:text-white transition-all">↗</span>
         </a>
 
         <a href="assets/SIH-2026-Idea-Presentation-Template.pptx" download class="glass-chip p-5 rounded-3xl flex items-center justify-between group hover:-translate-y-1.5 transition-all duration-300">
@@ -332,20 +450,20 @@
             </div>
             <div>
               <h4 class="text-xs sm:text-sm font-black text-slate-900 group-hover:text-amber-700 transition-colors">Download PPT Template</h4>
-              <p class="text-[10px] sm:text-xs text-slate-500 font-medium mt-0.5">Get official presentation format</p>
+              <p class="text-[10px] sm:text-xs text-slate-500 font-medium mt-0.5">Official presentation template</p>
             </div>
           </div>
-          <span class="w-8 h-8 rounded-full bg-amber-50 text-amber-600 flex items-center justify-center font-bold text-sm group-hover:bg-amber-500 group-hover:text-white transition-all">→</span>
+          <span class="w-8 h-8 rounded-full bg-amber-50 text-amber-600 flex items-center justify-center font-bold text-sm group-hover:bg-amber-500 group-hover:text-white transition-all">↓</span>
         </a>
 
-        <a href="assets/sih-2026-guidelines.pdf" download class="glass-chip p-5 rounded-3xl flex items-center justify-between group hover:-translate-y-1.5 transition-all duration-300">
+        <a href="gallery.html" class="glass-chip p-5 rounded-3xl flex items-center justify-between group hover:-translate-y-1.5 transition-all duration-300">
           <div class="flex items-center gap-3.5">
             <div class="w-12 h-12 rounded-2xl bg-emerald-100/80 text-emerald-700 flex items-center justify-center text-xl font-black border border-emerald-200/80 animate-float" style="animation-delay: 3s;">
-              🛡️
+              📸
             </div>
             <div>
-              <h4 class="text-xs sm:text-sm font-black text-slate-900 group-hover:text-emerald-700 transition-colors">Process Guidelines</h4>
-              <p class="text-[10px] sm:text-xs text-slate-500 font-medium mt-0.5">Download rules &amp; guidelines PDF</p>
+              <h4 class="text-xs sm:text-sm font-black text-slate-900 group-hover:text-emerald-700 transition-colors">Hackathon Photo Gallery</h4>
+              <p class="text-[10px] sm:text-xs text-slate-500 font-medium mt-0.5">Captured moments (38 photos)</p>
             </div>
           </div>
           <span class="w-8 h-8 rounded-full bg-emerald-50 text-emerald-600 flex items-center justify-center font-bold text-sm group-hover:bg-emerald-600 group-hover:text-white transition-all">→</span>
