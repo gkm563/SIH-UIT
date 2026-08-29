@@ -61,9 +61,47 @@ body {
   100% { box-shadow: 0 0 0 0 rgba(37, 99, 235, 0); }
 }
 
-@keyframes slideDown {
-  from { opacity: 0; transform: translateY(-10px); }
-  to { opacity: 1; transform: translateY(0); }
+/* ── Skeleton Loading Shimmer Keyframes ── */
+@keyframes skeletonShimmer {
+  0% { background-position: -200% 0; }
+  100% { background-position: 200% 0; }
+}
+
+/* ── Skeleton Utility Classes ── */
+.skeleton {
+  background: linear-gradient(
+    90deg,
+    #e2e8f0 0%,
+    #f8fafc 35%,
+    #e2e8f0 50%,
+    #f8fafc 65%,
+    #e2e8f0 100%
+  );
+  background-size: 250% 100%;
+  animation: skeletonShimmer 2s ease-in-out infinite;
+  position: relative;
+  overflow: hidden;
+}
+
+.skeleton-image-wrapper {
+  position: relative;
+  overflow: hidden;
+  background: linear-gradient(
+    90deg,
+    #e2e8f0 0%,
+    #f1f5f9 35%,
+    #e2e8f0 50%,
+    #f1f5f9 65%,
+    #e2e8f0 100%
+  );
+  background-size: 250% 100%;
+  animation: skeletonShimmer 2s ease-in-out infinite;
+  border-radius: inherit;
+}
+
+.skeleton-loaded {
+  animation: none !important;
+  background: none !important;
 }
 
 /* ── Utility Animation Classes ── */

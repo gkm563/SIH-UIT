@@ -82,6 +82,7 @@
       cursor: zoom-in;
       position: relative;
       background: #f1f5f9;
+      min-height: 200px;
       transition: transform 0.25s cubic-bezier(0.16, 1, 0.3, 1),
                   box-shadow 0.25s cubic-bezier(0.16, 1, 0.3, 1);
     }
@@ -95,13 +96,15 @@
       height: auto;
       display: block;
       border-radius: 16px;
-      transition: opacity 0.4s ease, transform 0.4s ease;
+      opacity: 0;
+      transition: opacity 0.5s ease-in-out, transform 0.4s ease;
     }
-    .masonry-item:hover img {
+    .masonry-item img.loaded {
+      opacity: 1;
+    }
+    .masonry-item:hover img.loaded {
       transform: scale(1.02);
     }
-    .masonry-item img.loading { opacity: 0; }
-    .masonry-item img.loaded  { opacity: 1; }
 
     /* Lightbox Modal */
     #lightbox {
@@ -115,13 +118,20 @@
     #lightbox.open {
       opacity: 1; pointer-events: auto;
     }
+    #lb-img-wrap {
+      position: relative;
+      max-width: 92vw; max-height: 88vh;
+      display: flex; align-items: center; justify-content: center;
+      border-radius: 16px;
+      overflow: hidden;
+    }
     #lb-img {
       max-width: 92vw; max-height: 88vh;
       object-fit: contain;
       border-radius: 16px;
       box-shadow: 0 25px 60px rgba(0, 0, 0, 0.6);
       transform: scale(0.96);
-      transition: transform 0.25s ease;
+      transition: transform 0.25s ease, opacity 0.3s ease;
     }
     #lightbox.open #lb-img {
       transform: scale(1);
@@ -273,19 +283,21 @@
       </div>
     </section>
 
-    <!-- Masonry Grid Container -->
+    <!-- Masonry Grid Container with Skeleton Shimmer Placeholders -->
     <section aria-label="Photo Gallery Grid">
       <div class="masonry" id="masonry-container">
-        <!-- Dynamically injected photos -->
+        <!-- Dynamically injected photos with skeleton wrapper -->
       </div>
     </section>
 
   </main>
 
-  <!-- ── Lightbox Modal ── -->
+  <!-- ── Lightbox Modal with Skeleton Support ── -->
   <div id="lightbox" role="dialog" aria-modal="true" aria-label="Image Preview Lightbox">
     <button class="lb-arrow" id="lb-prev" aria-label="Previous Photo (←)">‹</button>
-    <img id="lb-img" src="" alt="Enlarged Hackathon Photo" />
+    <div id="lb-img-wrap" class="skeleton-image-wrapper">
+      <img id="lb-img" src="" alt="Enlarged Hackathon Photo" />
+    </div>
     <button class="lb-arrow" id="lb-next" aria-label="Next Photo (→)">›</button>
     <button id="lb-close" aria-label="Close Lightbox (Esc)">✕</button>
     <div id="lb-counter">1 / 38</div>
@@ -312,7 +324,7 @@
     </div>
   </footer>
 
-  <!-- ── Gallery Lightbox Script ── -->
+  <!-- ── Gallery Lightbox & Skeleton Loader Script ── -->
   <script>
   (() => {
     'use strict';
@@ -336,26 +348,29 @@
     const container = document.getElementById('masonry-container');
     const lightbox = document.getElementById('lightbox');
     const lbImg = document.getElementById('lb-img');
+    const lbImgWrap = document.getElementById('lb-img-wrap');
     const lbCounter = document.getElementById('lb-counter');
     const lbPrev = document.getElementById('lb-prev');
     const lbNext = document.getElementById('lb-next');
     const lbClose = document.getElementById('lb-close');
 
-    // Build masonry items
+    // Build masonry items with skeleton placeholders
     IMAGES.forEach((filename, idx) => {
       const item = document.createElement('div');
-      item.className = 'masonry-item';
+      item.className = 'masonry-item skeleton-image-wrapper';
       item.setAttribute('role', 'button');
       item.setAttribute('tabindex', '0');
       item.setAttribute('aria-label', 'Photo ' + (idx + 1) + ' of ' + IMAGES.length);
 
       const img = document.createElement('img');
-      img.className = 'loading';
       img.dataset.src = BASE + filename;
       img.alt = 'Smart India Hackathon 2026 Moment ' + (idx + 1);
       img.loading = 'lazy';
 
-      img.onload = () => img.classList.replace('loading', 'loaded');
+      img.onload = () => {
+        img.classList.add('loaded');
+        item.classList.add('skeleton-loaded');
+      };
 
       item.appendChild(img);
       item.addEventListener('click', () => openLightbox(idx));
@@ -404,7 +419,18 @@
     }
 
     function updateLightbox() {
-      lbImg.src = BASE + IMAGES[currentIdx];
+      if (lbImgWrap) lbImgWrap.classList.remove('skeleton-loaded');
+      lbImg.style.opacity = '0';
+      
+      const newSrc = BASE + IMAGES[currentIdx];
+      const tempImg = new Image();
+      tempImg.onload = () => {
+        lbImg.src = newSrc;
+        lbImg.style.opacity = '1';
+        if (lbImgWrap) lbImgWrap.classList.add('skeleton-loaded');
+      };
+      tempImg.src = newSrc;
+      
       lbCounter.textContent = (currentIdx + 1) + ' / ' + IMAGES.length;
     }
 
@@ -423,7 +449,7 @@
     lbClose.addEventListener('click', closeLightbox);
 
     lightbox.addEventListener('click', (e) => {
-      if (e.target === lightbox || e.target === lbImg) closeLightbox();
+      if (e.target === lightbox || e.target === lbImgWrap) closeLightbox();
     });
 
     // Keyboard navigation
