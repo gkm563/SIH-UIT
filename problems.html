@@ -25,7 +25,7 @@
 <body class="bg-slate-50 text-slate-900 font-sans antialiased min-h-screen flex flex-col selection:bg-blue-600 selection:text-white overflow-x-hidden">
 
   <!-- ── Main Sticky Navigation Header ── -->
-  <header class="bg-white/90 backdrop-blur-xl border-b border-slate-200/80 sticky top-0 z-50 transition-all duration-200 shadow-xs" role="banner">
+  <header class="bg-white/90 backdrop-blur-xl border-b border-slate-200/80 sticky top-0 z-50 transition-all duration-200 shadow-xs site-header" role="banner">
     <div class="max-w-7xl mx-auto px-3 sm:px-6 lg:px-8 py-2.5 sm:py-3 flex items-center justify-between gap-2 sm:gap-3">
       
       <!-- Institutional Logo & Branding -->
@@ -38,44 +38,42 @@
           />
         </div>
         <div class="flex flex-col justify-center min-w-0">
-          <div class="flex items-center gap-1.5 flex-wrap">
-            <span class="text-sm sm:text-base font-black text-[#1e3a8a] leading-none tracking-tight">
-              UIT <span class="text-blue-600">Prayagraj</span>
-            </span>
-            <span class="text-[9px] sm:text-[10px] font-black text-amber-800 bg-amber-50 border border-amber-200/90 px-1.5 py-0.5 rounded-full leading-none">
-              ARCHIVE · 2026
-            </span>
-          </div>
-          <span class="text-[10px] sm:text-[11px] font-semibold text-slate-500 leading-tight mt-0.5 truncate max-w-[170px] sm:max-w-none">
-            Smart India Hackathon · Event Archive
+          <span class="text-xs sm:text-sm font-black tracking-tight text-slate-900 leading-tight group-hover:text-blue-700 transition-colors truncate">
+            SIH 2026 UIT
+          </span>
+          <span class="text-[10px] text-slate-500 font-semibold uppercase tracking-wider hidden sm:block truncate">
+            Event Archive · Prayagraj
           </span>
         </div>
       </a>
 
-      <!-- Desktop Navigation Menu -->
-      <nav class="hidden xl:flex items-center gap-1 bg-slate-100/90 p-1.5 rounded-full border border-slate-200/80 shadow-inner text-xs font-bold text-slate-600" role="navigation" aria-label="Main Navigation">
-        <a href="index.html" class="px-3 py-1.5 rounded-full transition-all hover:text-blue-700">Home</a>
-        <a href="results.html" class="px-3 py-1.5 rounded-full transition-all hover:text-blue-700">Results (45+5)</a>
-        <a href="judges.html" class="px-3 py-1.5 rounded-full transition-all hover:text-blue-700">Judges</a>
-        <a href="index.html#team" class="px-3 py-1.5 rounded-full transition-all hover:text-blue-700">Organising Team</a>
-        <a href="gallery.html" class="px-3 py-1.5 rounded-full transition-all hover:text-emerald-700">Gallery 📸</a>
-        <a href="report.html" class="px-3 py-1.5 rounded-full transition-all hover:text-blue-700">Event Report 📄</a>
+      <!-- Desktop Navigation Links -->
+      <nav class="hidden lg:flex items-center gap-1 xl:gap-1.5 text-xs font-bold text-slate-700" aria-label="Main Navigation">
+        <a href="index.html" class="px-3 py-1.5 rounded-full transition-all hover:text-blue-700 hover:bg-slate-100">Home</a>
+        <a href="results.html" class="px-3 py-1.5 rounded-full transition-all hover:text-blue-700 hover:bg-slate-100">Results (45+5)</a>
+        <a href="judges.html" class="px-3 py-1.5 rounded-full transition-all hover:text-blue-700 hover:bg-slate-100">Judges</a>
+        <a href="team.html" class="px-3 py-1.5 rounded-full transition-all hover:text-blue-700 hover:bg-slate-100">Organising Team</a>
+        <a href="gallery.html" class="px-3 py-1.5 rounded-full transition-all hover:text-blue-700 hover:bg-slate-100">Gallery 📸</a>
+        <a href="report.html" class="px-3 py-1.5 rounded-full transition-all hover:text-blue-700 hover:bg-slate-100">Event Report 📄</a>
       </nav>
 
-      <!-- Right Action & Mobile Trigger -->
+      <!-- Right Action: Verify Certificate & Mobile Menu Toggle -->
       <div class="flex items-center gap-2 flex-shrink-0">
         <a
           href="verify.html"
-          class="inline-flex items-center gap-1.5 px-3.5 py-2 bg-gradient-to-r from-emerald-600 to-teal-700 hover:from-emerald-700 hover:to-teal-800 text-white text-xs font-black rounded-xl shadow-xs hover:shadow-md transition-all active:scale-95"
+          class="hidden sm:inline-flex items-center gap-1.5 text-xs font-bold bg-emerald-600 hover:bg-emerald-700 text-white px-3.5 py-1.5 rounded-xl shadow-xs transition-all hover:shadow-md"
         >
-          <span>✓ Verify Certificate</span>
+          <svg class="w-3.5 h-3.5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z"/></svg>
+          <span>Verify Certificate</span>
         </a>
-        
+
+        <!-- Mobile Hamburger Button -->
         <button
           id="mobile-menu-btn"
           type="button"
-          class="xl:hidden p-2 rounded-xl bg-slate-100 hover:bg-slate-200 text-slate-700 active:scale-90 transition-all border border-slate-200/80"
-          aria-label="Toggle Navigation Menu"
+          class="lg:hidden p-2 rounded-xl text-slate-700 hover:text-blue-700 hover:bg-slate-100 border border-slate-200/80 transition-colors"
+          aria-label="Toggle navigation menu"
+          aria-expanded="false"
         >
           <svg id="menu-icon-open" class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16"/></svg>
           <svg id="menu-icon-close" class="w-5 h-5 hidden" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12"/></svg>
@@ -84,34 +82,21 @@
 
     </div>
 
-    <!-- Mobile Dropdown Menu -->
-    <div id="mobile-menu" class="hidden xl:hidden border-t border-slate-200 bg-white/95 backdrop-blur-xl px-4 py-4 space-y-2 shadow-xl">
+    <!-- Mobile Dropdown Navigation Drawer -->
+    <div id="mobile-menu" class="hidden lg:hidden border-t border-slate-200/80 bg-white/95 backdrop-blur-xl px-4 py-4 space-y-2 shadow-xl">
       <div class="grid grid-cols-2 gap-2 text-xs font-bold">
-        <a href="index.html" class="mobile-nav-link flex items-center gap-2 p-2.5 rounded-xl bg-slate-50 text-slate-800 active:bg-blue-50 active:text-blue-700 border border-slate-200/80">
-          <span>🏠 Home</span>
-        </a>
-        <a href="results.html" class="mobile-nav-link flex items-center gap-2 p-2.5 rounded-xl bg-slate-50 text-slate-800 active:bg-blue-50 active:text-blue-700 border border-slate-200/80">
-          <span>🏆 Results (45+5)</span>
-        </a>
-        <a href="judges.html" class="mobile-nav-link flex items-center gap-2 p-2.5 rounded-xl bg-slate-50 text-slate-800 active:bg-blue-50 active:text-blue-700 border border-slate-200/80">
-          <span>⚖️ Judging Panel (8)</span>
-        </a>
-        <a href="index.html#team" class="mobile-nav-link flex items-center gap-2 p-2.5 rounded-xl bg-slate-50 text-slate-800 active:bg-blue-50 active:text-blue-700 border border-slate-200/80">
-          <span>🏛️ Organising Team</span>
-        </a>
-        <a href="gallery.html" class="mobile-nav-link flex items-center gap-2 p-2.5 rounded-xl bg-emerald-50 text-emerald-900 border border-emerald-200/80 font-black">
-          <span>📸 Gallery (38 Photos)</span>
-        </a>
-        <a href="report.html" class="mobile-nav-link flex items-center gap-2 p-2.5 rounded-xl bg-blue-50 text-blue-900 border border-blue-200/80 font-black col-span-2">
-          <span>📄 Full Event Report &amp; Archive</span>
+        <a href="index.html" class="mobile-nav-link p-2.5 rounded-xl bg-slate-50 text-slate-800 hover:bg-blue-50 border border-slate-200/80">🏠 Home</a>
+        <a href="results.html" class="mobile-nav-link p-2.5 rounded-xl bg-slate-50 text-slate-800 hover:bg-blue-50 border border-slate-200/80">🏆 Results (45+5)</a>
+        <a href="judges.html" class="mobile-nav-link p-2.5 rounded-xl bg-slate-50 text-slate-800 hover:bg-blue-50 border border-slate-200/80">⚖️ Judges</a>
+        <a href="team.html" class="mobile-nav-link p-2.5 rounded-xl bg-slate-50 text-slate-800 hover:bg-blue-50 border border-slate-200/80">👥 Organising Team</a>
+        <a href="gallery.html" class="mobile-nav-link p-2.5 rounded-xl bg-slate-50 text-slate-800 hover:bg-blue-50 border border-slate-200/80">📸 Gallery</a>
+        <a href="report.html" class="mobile-nav-link p-2.5 rounded-xl bg-slate-50 text-slate-800 hover:bg-blue-50 border border-slate-200/80">📄 Event Report</a>
+      </div>
+      <div class="pt-2 border-t border-slate-100">
+        <a href="verify.html" class="w-full flex items-center justify-center gap-1.5 p-2.5 rounded-xl bg-emerald-600 text-white text-xs font-bold text-center shadow-xs">
+          <span>✓ Verify Certificate</span>
         </a>
       </div>
-      <a
-        href="verify.html"
-        class="w-full flex items-center justify-center gap-2 py-3 bg-gradient-to-r from-emerald-600 to-teal-700 text-white font-black text-xs rounded-xl shadow-xs active:scale-95 transition-all mt-2"
-      >
-        <span>✓ Verify Certificate / Team Record</span>
-      </a>
     </div>
   </header>
 
@@ -289,6 +274,8 @@
     });
   });
   </script>
+
+  
 
   
 

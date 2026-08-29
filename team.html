@@ -1,0 +1,584 @@
+<!DOCTYPE html>
+<html lang="en" class="scroll-smooth">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=5.0, viewport-fit=cover" />
+  <title>Organising Leadership & Committee | SIH 2026 UIT Prayagraj</title>
+  <meta name="description" content="Meet the institutional leaders, faculty coordinators, lead student coordinators, and 8-hour operations volunteers behind the Smart India Hackathon 2026 at United Institute of Technology, Prayagraj." />
+  <link rel="icon" href="assets/united-logo.png" type="image/png" />
+  <script src="https://cdn.tailwindcss.com"></script>
+  <script>
+    tailwind.config = {
+      theme: {
+        extend: {
+          fontFamily: {
+            sans: ['Outfit', 'Plus Jakarta Sans', 'system-ui', 'sans-serif'],
+            display: ['Space Grotesk', 'Outfit', 'sans-serif'],
+          }
+        }
+      }
+    };
+  </script>
+  <link rel="stylesheet" href="css/styles.css" />
+</head>
+<body class="bg-slate-50 text-slate-900 font-sans antialiased min-h-screen flex flex-col selection:bg-blue-600 selection:text-white overflow-x-hidden">
+
+
+  <!-- ── Main Sticky Navigation Header ── -->
+  <header class="bg-white/90 backdrop-blur-xl border-b border-slate-200/80 sticky top-0 z-50 transition-all duration-200 shadow-xs site-header" role="banner">
+    <div class="max-w-7xl mx-auto px-3 sm:px-6 lg:px-8 py-2.5 sm:py-3 flex items-center justify-between gap-2 sm:gap-3">
+      
+      <!-- Institutional Logo & Branding -->
+      <a href="index.html" class="flex items-center gap-2 sm:gap-3 group flex-shrink-0" title="United Institute of Technology — SIH 2026 Archive">
+        <div class="p-1 sm:p-1.5 rounded-2xl bg-white border border-slate-200/80 group-hover:border-blue-300 transition-colors shadow-sm">
+          <img
+            class="w-8 h-8 sm:w-10 sm:h-10 object-contain transition-transform group-hover:scale-105"
+            src="assets/united-logo.png"
+            alt="United Institute of Technology Logo"
+          />
+        </div>
+        <div class="flex flex-col justify-center min-w-0">
+          <span class="text-xs sm:text-sm font-black tracking-tight text-slate-900 leading-tight group-hover:text-blue-700 transition-colors truncate">
+            SIH 2026 UIT
+          </span>
+          <span class="text-[10px] text-slate-500 font-semibold uppercase tracking-wider hidden sm:block truncate">
+            Event Archive · Prayagraj
+          </span>
+        </div>
+      </a>
+
+      <!-- Desktop Navigation Links -->
+      <nav class="hidden lg:flex items-center gap-1 xl:gap-1.5 text-xs font-bold text-slate-700" aria-label="Main Navigation">
+        <a href="index.html" class="px-3 py-1.5 rounded-full transition-all hover:text-blue-700 hover:bg-slate-100">Home</a>
+        <a href="results.html" class="px-3 py-1.5 rounded-full transition-all hover:text-blue-700 hover:bg-slate-100">Results (45+5)</a>
+        <a href="judges.html" class="px-3 py-1.5 rounded-full transition-all hover:text-blue-700 hover:bg-slate-100">Judges</a>
+        <a href="team.html" class="px-3 py-1.5 rounded-full transition-all bg-blue-600 text-white shadow-xs">Organising Team</a>
+        <a href="gallery.html" class="px-3 py-1.5 rounded-full transition-all hover:text-blue-700 hover:bg-slate-100">Gallery 📸</a>
+        <a href="report.html" class="px-3 py-1.5 rounded-full transition-all hover:text-blue-700 hover:bg-slate-100">Event Report 📄</a>
+      </nav>
+
+      <!-- Right Action: Verify Certificate & Mobile Menu Toggle -->
+      <div class="flex items-center gap-2 flex-shrink-0">
+        <a
+          href="verify.html"
+          class="hidden sm:inline-flex items-center gap-1.5 text-xs font-bold bg-emerald-600 hover:bg-emerald-700 text-white px-3.5 py-1.5 rounded-xl shadow-xs transition-all hover:shadow-md"
+        >
+          <svg class="w-3.5 h-3.5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z"/></svg>
+          <span>Verify Certificate</span>
+        </a>
+
+        <!-- Mobile Hamburger Button -->
+        <button
+          id="mobile-menu-btn"
+          type="button"
+          class="lg:hidden p-2 rounded-xl text-slate-700 hover:text-blue-700 hover:bg-slate-100 border border-slate-200/80 transition-colors"
+          aria-label="Toggle navigation menu"
+          aria-expanded="false"
+        >
+          <svg id="menu-icon-open" class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16"/></svg>
+          <svg id="menu-icon-close" class="w-5 h-5 hidden" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12"/></svg>
+        </button>
+      </div>
+
+    </div>
+
+    <!-- Mobile Dropdown Navigation Drawer -->
+    <div id="mobile-menu" class="hidden lg:hidden border-t border-slate-200/80 bg-white/95 backdrop-blur-xl px-4 py-4 space-y-2 shadow-xl">
+      <div class="grid grid-cols-2 gap-2 text-xs font-bold">
+        <a href="index.html" class="mobile-nav-link p-2.5 rounded-xl bg-slate-50 text-slate-800 hover:bg-blue-50 border border-slate-200/80">🏠 Home</a>
+        <a href="results.html" class="mobile-nav-link p-2.5 rounded-xl bg-slate-50 text-slate-800 hover:bg-blue-50 border border-slate-200/80">🏆 Results (45+5)</a>
+        <a href="judges.html" class="mobile-nav-link p-2.5 rounded-xl bg-slate-50 text-slate-800 hover:bg-blue-50 border border-slate-200/80">⚖️ Judges</a>
+        <a href="team.html" class="mobile-nav-link p-2.5 rounded-xl bg-blue-600 text-white border border-slate-200/80">👥 Organising Team</a>
+        <a href="gallery.html" class="mobile-nav-link p-2.5 rounded-xl bg-slate-50 text-slate-800 hover:bg-blue-50 border border-slate-200/80">📸 Gallery</a>
+        <a href="report.html" class="mobile-nav-link p-2.5 rounded-xl bg-slate-50 text-slate-800 hover:bg-blue-50 border border-slate-200/80">📄 Event Report</a>
+      </div>
+      <div class="pt-2 border-t border-slate-100">
+        <a href="verify.html" class="w-full flex items-center justify-center gap-1.5 p-2.5 rounded-xl bg-emerald-600 text-white text-xs font-bold text-center shadow-xs">
+          <span>✓ Verify Certificate</span>
+        </a>
+      </div>
+    </div>
+  </header>
+  
+
+  <main class="flex-1 w-full max-w-7xl mx-auto px-3.5 sm:px-6 lg:px-8 py-6 sm:py-10 space-y-12 sm:space-y-16">
+    
+    <!-- ── Hero Section Banner ── -->
+    <div class="glass-card-pro rounded-3xl p-6 sm:p-10 bg-gradient-to-br from-slate-950 via-blue-950 to-indigo-950 text-white space-y-5 shadow-2xl border border-blue-900/60 relative overflow-hidden text-center sm:text-left">
+      <div class="absolute -right-20 -top-20 w-80 h-80 bg-blue-600/15 rounded-full blur-3xl pointer-events-none"></div>
+      
+      <div class="relative z-10 space-y-4 max-w-4xl">
+        <div class="inline-flex items-center gap-2 px-4 py-1.5 bg-gradient-to-r from-blue-400 to-indigo-400 text-slate-950 text-xs font-black uppercase tracking-wider rounded-full shadow-xs">
+          <span>🏛️ THE PILLARS OF SIH 2026 · LEADERSHIP &amp; OPERATIONS</span>
+        </div>
+        
+        <h1 class="text-3xl sm:text-5xl font-black tracking-tight leading-tight">
+          Organising Leadership &amp; Execution Committee
+        </h1>
+        
+        <p class="text-xs sm:text-base text-slate-200 font-medium leading-relaxed">
+          The visionary institutional patrons, faculty coordinators, student leadership, and dedicated operations crew who planned and executed the Smart India Hackathon 2026 Conclave at <strong>United Institute of Technology, Prayagraj</strong> on 22 August 2026.
+        </p>
+
+        <div class="pt-2 flex items-center gap-2.5 text-xs font-bold text-slate-300 flex-wrap justify-center sm:justify-start">
+          <span class="bg-white/10 border border-white/15 px-3 py-1.5 rounded-xl">🏛️ 5 Institutional Patrons &amp; Faculty Mentors</span>
+          <span class="bg-white/10 border border-white/15 px-3 py-1.5 rounded-xl">🚀 Lead Student Coordinators</span>
+          <span class="bg-white/10 border border-white/15 px-3 py-1.5 rounded-xl">⭐ 8 Core Operations Volunteers</span>
+        </div>
+      </div>
+    </div>
+
+    <!-- ── Featured Group Portraits ── -->
+    <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+      
+      <div class="glass-card-pro rounded-3xl p-4 sm:p-5 overflow-hidden group border-2 border-blue-200/60 hover:border-blue-500 transition-all duration-500 shadow-md hover:shadow-2xl">
+        <div class="relative w-full aspect-[16/10] rounded-2xl overflow-hidden bg-slate-950 shadow-inner">
+          <img
+            src="assets/organizing-team-stage.jpg"
+            alt="Full Organizing Committee and Student Volunteers on Stage with Faculty and GKM"
+            class="w-full h-full object-cover group-hover:scale-108 transition-transform duration-700 ease-out"
+          />
+          <div class="absolute inset-0 bg-gradient-to-t from-slate-950/90 via-slate-950/30 to-transparent flex flex-col justify-end p-4 sm:p-6">
+            <span class="inline-flex items-center gap-1.5 bg-blue-600 text-white text-[10px] sm:text-xs font-black uppercase tracking-wider px-3 py-1 rounded-full w-max mb-1.5 shadow-md">
+              🏛️ Main Conclave Stage
+            </span>
+            <h4 class="text-white text-base sm:text-lg font-black leading-tight">
+              Full Organizing Committee &amp; Student Volunteers
+            </h4>
+            <p class="text-slate-300 text-xs font-medium mt-1">
+              Faculty Mentor Gaurav Sir, Gautam Kumar Maurya (GKM), Harsh Srivastava, coordinators &amp; volunteers on UIT auditorium stage.
+            </p>
+          </div>
+        </div>
+      </div>
+
+      <div class="glass-card-pro rounded-3xl p-4 sm:p-5 overflow-hidden group border-2 border-indigo-200/60 hover:border-indigo-500 transition-all duration-500 shadow-md hover:shadow-2xl">
+        <div class="relative w-full aspect-[16/10] rounded-2xl overflow-hidden bg-slate-950 shadow-inner">
+          <img
+            src="assets/organizing-team-1.jpg"
+            alt="Inauguration Session and Steering Team with Faculty and Gautam Kumar Maurya"
+            class="w-full h-full object-cover group-hover:scale-108 transition-transform duration-700 ease-out"
+          />
+          <div class="absolute inset-0 bg-gradient-to-t from-slate-950/90 via-slate-950/30 to-transparent flex flex-col justify-end p-4 sm:p-6">
+            <span class="inline-flex items-center gap-1.5 bg-indigo-600 text-white text-[10px] sm:text-xs font-black uppercase tracking-wider px-3 py-1 rounded-full w-max mb-1.5 shadow-md">
+              ⚡ Inauguration Session
+            </span>
+            <h4 class="text-white text-base sm:text-lg font-black leading-tight">
+              Core Steering &amp; Inauguration Leadership
+            </h4>
+            <p class="text-slate-300 text-xs font-medium mt-1">
+              The core leadership team during the official Smart India Hackathon 2026 Internal Conclave inauguration.
+            </p>
+          </div>
+        </div>
+      </div>
+
+    </div>
+
+    <!-- ── 1. Faculty Guidance & Institutional Patrons (5-Column Grid) ── -->
+    <section class="space-y-6">
+      <div class="flex items-center gap-2">
+        <span class="w-8 h-8 rounded-xl bg-blue-100 text-blue-800 font-black text-sm flex items-center justify-center">🏛️</span>
+        <h2 class="text-xl sm:text-2xl font-black text-slate-900 tracking-tight">
+          Faculty Guidance &amp; Institutional Patrons
+        </h2>
+      </div>
+
+      <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-5 gap-4">
+        
+        <!-- Faculty 1: Prof. Sanjay Srivastava -->
+        <article class="glass-card-pro rounded-3xl p-4 flex flex-col justify-between border-2 border-slate-200/80 hover:border-slate-800 transition-all duration-300 group hover:-translate-y-1">
+          <div class="space-y-3">
+            <div class="relative w-full aspect-[4/3] rounded-2xl overflow-hidden bg-slate-900 border border-slate-200/90 shadow-xs">
+              <img
+                src="assets/principal-sir.jpg"
+                alt="Prof. Sanjay Srivastava"
+                class="w-full h-full object-cover object-top group-hover:scale-105 transition-transform duration-300"
+              />
+              <span class="absolute top-2 right-2 text-[9px] font-black uppercase tracking-wider bg-slate-900 text-white px-2 py-0.5 rounded-full shadow-xs">
+                Patron
+              </span>
+            </div>
+            <div>
+              <h3 class="text-sm sm:text-base font-black text-slate-900 group-hover:text-blue-700 transition-colors leading-snug">
+                Prof. Sanjay Srivastava
+              </h3>
+              <p class="text-xs font-bold text-blue-700 mt-0.5">Principal</p>
+              <p class="text-[11px] text-slate-500 font-medium">United Institute of Technology</p>
+            </div>
+          </div>
+          <div class="mt-3 pt-2.5 border-t border-slate-100 text-[10px] text-slate-400 font-bold">
+            Institutional Patron
+          </div>
+        </article>
+
+        <!-- Faculty 2: Dr. Dhananjay Kumar Sharma -->
+        <article class="glass-card-pro rounded-3xl p-4 flex flex-col justify-between border-2 border-blue-200/80 hover:border-blue-600 transition-all duration-300 group hover:-translate-y-1 bg-gradient-to-b from-blue-50/20 to-white">
+          <div class="space-y-3">
+            <div class="relative w-full aspect-[4/3] rounded-2xl overflow-hidden bg-slate-900 border border-blue-200 shadow-xs">
+              <img
+                src="assets/dhananjay-sir.jpg"
+                alt="Dr. Dhananjay Kumar Sharma"
+                class="w-full h-full object-cover object-top group-hover:scale-105 transition-transform duration-300"
+              />
+              <span class="absolute top-2 right-2 text-[9px] font-black uppercase tracking-wider bg-blue-600 text-white px-2 py-0.5 rounded-full shadow-xs">
+                SPOC
+              </span>
+            </div>
+            <div>
+              <h3 class="text-sm sm:text-base font-black text-slate-900 group-hover:text-blue-700 transition-colors leading-snug">
+                Dr. Dhananjay Kumar Sharma
+              </h3>
+              <p class="text-xs font-bold text-blue-700 mt-0.5 leading-tight">HOD, CSE (AIML &amp; DS)</p>
+              <p class="text-[11px] text-slate-500 font-medium">Institute SPOC — SIH 2026</p>
+            </div>
+          </div>
+          <div class="mt-3 pt-2.5 border-t border-slate-100 text-[10px] text-blue-700 font-bold">
+            Institute SPOC
+          </div>
+        </article>
+
+        <!-- Faculty 3: Dr. Manas Pandey -->
+        <article class="glass-card-pro rounded-3xl p-4 flex flex-col justify-between border-2 border-amber-200/80 hover:border-amber-600 transition-all duration-300 group hover:-translate-y-1 bg-gradient-to-b from-amber-50/20 to-white">
+          <div class="space-y-3">
+            <div class="relative w-full aspect-[4/3] rounded-2xl overflow-hidden bg-slate-900 border border-amber-200 shadow-xs">
+              <img
+                src="assets/manas-sir.jpg"
+                alt="Dr. Manas Pandey"
+                class="w-full h-full object-cover object-top group-hover:scale-105 transition-transform duration-300"
+              />
+              <span class="absolute top-2 right-2 text-[9px] font-black uppercase tracking-wider bg-amber-600 text-white px-2 py-0.5 rounded-full shadow-xs">
+                DSW
+              </span>
+            </div>
+            <div>
+              <h3 class="text-sm sm:text-base font-black text-slate-900 group-hover:text-amber-800 transition-colors leading-snug">
+                Dr. Manas Pandey
+              </h3>
+              <p class="text-xs font-bold text-amber-800 mt-0.5 leading-tight">Dean, Student Welfare (DSW)</p>
+              <p class="text-[11px] text-slate-500 font-medium">United Institute of Technology</p>
+            </div>
+          </div>
+          <div class="mt-3 pt-2.5 border-t border-slate-100 text-[10px] text-amber-700 font-bold">
+            Faculty Patron
+          </div>
+        </article>
+
+        <!-- Faculty 4: Mr. Gaurav Narain Singh -->
+        <article class="glass-card-pro rounded-3xl p-4 flex flex-col justify-between border-2 border-teal-200/80 hover:border-teal-600 transition-all duration-300 group hover:-translate-y-1 bg-gradient-to-b from-teal-50/20 to-white">
+          <div class="space-y-3">
+            <div class="relative w-full aspect-[4/3] rounded-2xl overflow-hidden bg-slate-900 border border-teal-200 shadow-xs">
+              <img
+                src="assets/gaurav-sir.jpg"
+                alt="Mr. Gaurav Narain Singh"
+                class="w-full h-full object-cover object-top group-hover:scale-105 transition-transform duration-300"
+              />
+              <span class="absolute top-2 right-2 text-[9px] font-black uppercase tracking-wider bg-teal-600 text-white px-2 py-0.5 rounded-full shadow-xs">
+                Coordinator
+              </span>
+            </div>
+            <div>
+              <h3 class="text-sm sm:text-base font-black text-slate-900 group-hover:text-teal-800 transition-colors leading-snug">
+                Mr. Gaurav Narain Singh
+              </h3>
+              <p class="text-xs font-bold text-teal-800 mt-0.5 leading-tight">Assistant Professor</p>
+              <p class="text-[11px] text-slate-500 font-medium">CSE (AIML &amp; DS), UIT</p>
+            </div>
+          </div>
+          <div class="mt-3 pt-2.5 border-t border-slate-100 text-[10px] text-teal-700 font-bold">
+            Faculty Coordinator
+          </div>
+        </article>
+
+        <!-- Faculty 5: Mr. Kushagra Dwivedi -->
+        <article class="glass-card-pro rounded-3xl p-4 flex flex-col justify-between border-2 border-indigo-200/80 hover:border-indigo-600 transition-all duration-300 group hover:-translate-y-1 bg-gradient-to-b from-indigo-50/20 to-white">
+          <div class="space-y-3">
+            <div class="relative w-full aspect-[4/3] rounded-2xl overflow-hidden bg-slate-900 border border-indigo-200 shadow-xs">
+              <img
+                src="assets/kushagra-sir.jpg"
+                alt="Mr. Kushagra Dwivedi"
+                class="w-full h-full object-cover object-top group-hover:scale-105 transition-transform duration-300"
+              />
+              <span class="absolute top-2 right-2 text-[9px] font-black uppercase tracking-wider bg-indigo-600 text-white px-2 py-0.5 rounded-full shadow-xs">
+                Coordinator
+              </span>
+            </div>
+            <div>
+              <h3 class="text-sm sm:text-base font-black text-slate-900 group-hover:text-indigo-800 transition-colors leading-snug">
+                Mr. Kushagra Dwivedi
+              </h3>
+              <p class="text-xs font-bold text-indigo-800 mt-0.5 leading-tight">Assistant Professor</p>
+              <p class="text-[11px] text-slate-500 font-medium">CSE, UIT</p>
+            </div>
+          </div>
+          <div class="mt-3 pt-2.5 border-t border-slate-100 text-[10px] text-indigo-700 font-bold">
+            Faculty Coordinator
+          </div>
+        </article>
+
+      </div>
+    </section>
+
+    <!-- ── 2. Student Leadership & Execution Leads ── -->
+    <section class="space-y-6">
+      <div class="flex items-center gap-2">
+        <span class="w-8 h-8 rounded-xl bg-blue-600 text-white font-black text-sm flex items-center justify-center">🚀</span>
+        <h2 class="text-xl sm:text-2xl font-black text-slate-900 tracking-tight">
+          Student Coordination &amp; Execution Leads
+        </h2>
+      </div>
+
+      <div class="grid grid-cols-1 lg:grid-cols-2 gap-6">
+        
+        <!-- Student Lead 1: Gautam Kumar Maurya (GKM) -->
+        <article class="glass-card-pro rounded-3xl p-6 sm:p-8 border-2 border-blue-400 bg-gradient-to-br from-white via-blue-50/40 to-indigo-50/50 shadow-xl hover:shadow-2xl transition-all duration-300 hover:-translate-y-1.5">
+          <div class="flex flex-col sm:flex-row items-center sm:items-start gap-6">
+            <div class="relative w-32 sm:w-36 aspect-square rounded-3xl overflow-hidden bg-slate-900 border-2 border-blue-300 shadow-lg flex-shrink-0 group">
+              <img
+                src="assets/gautam.jpg"
+                alt="Gautam Kumar Maurya (GKM)"
+                class="w-full h-full object-cover object-top group-hover:scale-108 transition-transform duration-500"
+              />
+            </div>
+            <div class="space-y-3 text-center sm:text-left flex-1">
+              <div class="flex items-center justify-center sm:justify-between gap-2 flex-wrap">
+                <span class="text-[10px] font-black uppercase tracking-wider bg-blue-600 text-white px-3 py-1 rounded-full shadow-xs">
+                  Lead Student Coordinator
+                </span>
+                <a
+                  href="https://www.linkedin.com/in/gkm563/"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  class="inline-flex items-center gap-1.5 text-xs font-black text-blue-700 hover:text-blue-900 bg-blue-100/80 hover:bg-blue-200/80 px-3 py-1 rounded-full transition-all"
+                >
+                  <span>LinkedIn Profile</span>
+                  <svg class="w-3 h-3 text-[#0077b5]" fill="currentColor" viewBox="0 0 24 24"><path d="M19 3a2 2 0 0 1 2 2v14a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h14m-.5 15.5v-5.3a3.26 3.26 0 0 0-3.26-3.26c-.85 0-1.84.52-2.28 1.3v-1.11h-2.79v8.37h2.79v-4.93c0-.77.62-1.4 1.39-1.4a1.4 1.4 0 0 1 1.4 1.4v4.93h2.75M6.88 8.56a1.68 1.68 0 0 0 1.68-1.68c0-.93-.75-1.69-1.68-1.69a1.69 1.69 0 0 0-1.69 1.69c0 .93.76 1.68 1.69 1.68m1.39 9.94v-8.37H5.5v8.37h2.77z"/></svg>
+                </a>
+              </div>
+              <div>
+                <h3 class="text-xl sm:text-2xl font-black text-slate-900">
+                  Gautam Kumar Maurya
+                </h3>
+                <p class="text-xs sm:text-sm font-bold text-blue-700 mt-0.5">Head, Developers Club, UIT</p>
+                <p class="text-xs font-semibold text-slate-600">Lead Student Coordinator — SIH 2026 Internal Hackathon</p>
+              </div>
+              <p class="text-xs sm:text-sm text-slate-700 leading-relaxed font-medium pt-1">
+                Coordinated student-side planning, registration and team verification, participant communication, Problem Statement coordination, team queries, volunteer coordination and on-ground execution of the Internal Hackathon.
+              </p>
+            </div>
+          </div>
+        </article>
+
+        <!-- Student Lead 2: Harsh Srivastava -->
+        <article class="glass-card-pro rounded-3xl p-6 sm:p-8 border-2 border-emerald-400 bg-gradient-to-br from-white via-emerald-50/40 to-teal-50/50 shadow-xl hover:shadow-2xl transition-all duration-300 hover:-translate-y-1.5">
+          <div class="flex flex-col sm:flex-row items-center sm:items-start gap-6">
+            <div class="w-32 sm:w-36 aspect-square rounded-3xl overflow-hidden bg-gradient-to-br from-emerald-600 to-teal-800 flex items-center justify-center text-white border-2 border-emerald-300 shadow-lg flex-shrink-0">
+              <div class="text-center">
+                <div class="text-3xl font-black">HS</div>
+                <div class="text-[10px] font-bold uppercase tracking-wider mt-1 opacity-80">Logistics Lead</div>
+              </div>
+            </div>
+            <div class="space-y-3 text-center sm:text-left flex-1">
+              <div class="flex items-center justify-center sm:justify-between gap-2 flex-wrap">
+                <span class="text-[10px] font-black uppercase tracking-wider bg-emerald-600 text-white px-3 py-1 rounded-full shadow-xs">
+                  Operations &amp; Logistics Lead
+                </span>
+                <span class="text-xs font-bold text-emerald-900 bg-emerald-100 px-3 py-1 rounded-full">UIT Student</span>
+              </div>
+              <div>
+                <h3 class="text-xl sm:text-2xl font-black text-slate-900">
+                  Harsh Srivastava
+                </h3>
+                <p class="text-xs sm:text-sm font-bold text-emerald-800 mt-0.5">Student Coordinator — Operations &amp; Logistics</p>
+                <p class="text-xs font-semibold text-slate-600">SIH 2026 Internal Hackathon</p>
+              </div>
+              <p class="text-xs sm:text-sm text-slate-700 leading-relaxed font-medium pt-1">
+                Coordinated venue logistics, registration verification desks, audio-visual technical setups, evaluation hall allocations, and volunteer rosters on conclave day.
+              </p>
+            </div>
+          </div>
+        </article>
+
+      </div>
+    </section>
+
+    <!-- ── 3. Student Volunteers Showcase ── -->
+    <section class="space-y-6 border-t border-slate-200/90 pt-6">
+      <div class="flex flex-col sm:flex-row items-start sm:items-end justify-between gap-2">
+        <div>
+          <div class="inline-flex items-center gap-2 px-4 py-1 bg-amber-100 text-amber-950 border border-amber-300 text-xs font-black uppercase tracking-wider rounded-full mb-2">
+            <span>⭐ Dedicated 8-Hour Conclave Operations Crew · 22 August 2026</span>
+          </div>
+          <h2 class="text-2xl sm:text-3xl font-black text-slate-900 tracking-tight">
+            Student Volunteers
+          </h2>
+        </div>
+        <span class="text-xs font-black bg-amber-100 text-amber-900 border border-amber-300 px-4 py-1.5 rounded-full flex-shrink-0">
+          8 Core Members
+        </span>
+      </div>
+
+      <div class="grid grid-cols-2 sm:grid-cols-4 lg:grid-cols-8 gap-3 sm:gap-5">
+        
+        <!-- 1. Abhinav Tiwari -->
+        <article class="glass-card-pro rounded-3xl p-3.5 sm:p-4 text-center group border-2 border-slate-200/80 hover:border-blue-500 transition-all duration-300 shadow-sm hover:shadow-xl hover:-translate-y-1">
+          <div class="w-full aspect-square rounded-2xl overflow-hidden bg-slate-900 mb-2.5 border border-slate-200/90 shadow-xs">
+            <img src="assets/abhinav.jpg" alt="Abhinav Tiwari" class="w-full h-full object-cover object-top group-hover:scale-110 transition-transform duration-500" />
+          </div>
+          <h4 class="text-xs sm:text-sm font-black text-slate-900 group-hover:text-blue-700 transition-colors leading-tight">
+            Abhinav Tiwari
+          </h4>
+        </article>
+
+        <!-- 2. Amit Dubey -->
+        <article class="glass-card-pro rounded-3xl p-3.5 sm:p-4 text-center group border-2 border-slate-200/80 hover:border-emerald-500 transition-all duration-300 shadow-sm hover:shadow-xl hover:-translate-y-1">
+          <div class="w-full aspect-square rounded-2xl overflow-hidden bg-slate-900 mb-2.5 border border-slate-200/90 shadow-xs">
+            <img src="assets/amit.jpg" alt="Amit Dubey" class="w-full h-full object-cover object-top group-hover:scale-110 transition-transform duration-500" />
+          </div>
+          <h4 class="text-xs sm:text-sm font-black text-slate-900 group-hover:text-emerald-700 transition-colors leading-tight">
+            Amit Dubey
+          </h4>
+        </article>
+
+        <!-- 3. Prabhat Pandey -->
+        <article class="glass-card-pro rounded-3xl p-3.5 sm:p-4 text-center group border-2 border-slate-200/80 hover:border-indigo-500 transition-all duration-300 shadow-sm hover:shadow-xl hover:-translate-y-1">
+          <div class="w-full aspect-square rounded-2xl overflow-hidden bg-slate-900 mb-2.5 border border-slate-200/90 shadow-xs">
+            <img src="assets/prabhat.jpg" alt="Prabhat Pandey" class="w-full h-full object-cover object-top group-hover:scale-110 transition-transform duration-500" />
+          </div>
+          <h4 class="text-xs sm:text-sm font-black text-slate-900 group-hover:text-indigo-700 transition-colors leading-tight">
+            Prabhat Pandey
+          </h4>
+        </article>
+
+        <!-- 4. Abhi -->
+        <article class="glass-card-pro rounded-3xl p-3.5 sm:p-4 text-center group border-2 border-slate-200/80 hover:border-amber-500 transition-all duration-300 shadow-sm hover:shadow-xl hover:-translate-y-1">
+          <div class="w-full aspect-square rounded-2xl overflow-hidden bg-slate-900 mb-2.5 border border-slate-200/90 shadow-xs">
+            <img src="assets/abhi.jpg" alt="Abhi" class="w-full h-full object-cover object-top group-hover:scale-110 transition-transform duration-500" />
+          </div>
+          <h4 class="text-xs sm:text-sm font-black text-slate-900 group-hover:text-amber-800 transition-colors leading-tight">
+            Abhi
+          </h4>
+        </article>
+
+        <!-- 5. Praveen -->
+        <article class="glass-card-pro rounded-3xl p-3.5 sm:p-4 text-center group border-2 border-slate-200/80 hover:border-purple-500 transition-all duration-300 shadow-sm hover:shadow-xl hover:-translate-y-1">
+          <div class="w-full aspect-square rounded-2xl overflow-hidden bg-slate-900 mb-2.5 border border-slate-200/90 shadow-xs">
+            <img src="assets/praveen.jpg" alt="Praveen" class="w-full h-full object-cover object-top group-hover:scale-110 transition-transform duration-500" />
+          </div>
+          <h4 class="text-xs sm:text-sm font-black text-slate-900 group-hover:text-purple-700 transition-colors leading-tight">
+            Praveen
+          </h4>
+        </article>
+
+        <!-- 6. Ayush Singh -->
+        <article class="glass-card-pro rounded-3xl p-3.5 sm:p-4 text-center group border-2 border-slate-200/80 hover:border-teal-500 transition-all duration-300 shadow-sm hover:shadow-xl hover:-translate-y-1">
+          <div class="w-full aspect-square rounded-2xl overflow-hidden bg-gradient-to-br from-teal-600 to-blue-900 mb-2.5 border border-slate-200/90 shadow-xs flex items-center justify-center text-white">
+            <span class="font-black text-xl">AS</span>
+          </div>
+          <h4 class="text-xs sm:text-sm font-black text-slate-900 group-hover:text-teal-700 transition-colors leading-tight">
+            Ayush Singh
+          </h4>
+        </article>
+
+        <!-- 7. Rohit Pal -->
+        <article class="glass-card-pro rounded-3xl p-3.5 sm:p-4 text-center group border-2 border-slate-200/80 hover:border-orange-500 transition-all duration-300 shadow-sm hover:shadow-xl hover:-translate-y-1">
+          <div class="w-full aspect-square rounded-2xl overflow-hidden bg-slate-900 mb-2.5 border border-slate-200/90 shadow-xs">
+            <img src="assets/rohit.jpg" alt="Rohit Pal" class="w-full h-full object-cover object-top group-hover:scale-110 transition-transform duration-500" />
+          </div>
+          <h4 class="text-xs sm:text-sm font-black text-slate-900 group-hover:text-orange-700 transition-colors leading-tight">
+            Rohit Pal
+          </h4>
+        </article>
+
+        <!-- 8. Yash Singh -->
+        <article class="glass-card-pro rounded-3xl p-3.5 sm:p-4 text-center group border-2 border-slate-200/80 hover:border-violet-500 transition-all duration-300 shadow-sm hover:shadow-xl hover:-translate-y-1">
+          <div class="w-full aspect-square rounded-2xl overflow-hidden bg-gradient-to-br from-violet-600 to-indigo-950 mb-2.5 border border-slate-200/90 shadow-xs flex items-center justify-center text-white">
+            <span class="font-black text-xl">YS</span>
+          </div>
+          <h4 class="text-xs sm:text-sm font-black text-slate-900 group-hover:text-violet-700 transition-colors leading-tight">
+            Yash Singh
+          </h4>
+        </article>
+
+      </div>
+    </section>
+
+  </main>
+
+
+  <!-- Minimal Clean Institutional Footer -->
+  <footer class="mt-auto border-t border-slate-200/80 bg-white/80 backdrop-blur-md py-6 text-xs text-slate-500 text-center space-y-2">
+    <div class="max-w-7xl mx-auto px-4 flex flex-col sm:flex-row items-center justify-between gap-3">
+      <p>© 2026 Smart India Hackathon · United Institute of Technology, Prayagraj</p>
+      <div class="flex items-center gap-2">
+        <span>Crafted with ❤️ by</span>
+        <a href="https://www.linkedin.com/in/gkm563/" target="_blank" rel="noopener noreferrer" class="font-bold text-blue-700 hover:underline">
+          GKM
+        </a>
+      </div>
+    </div>
+  </footer>
+  
+
+
+  <!-- ── Mobile Menu & Floating Nav Script ── -->
+  <script>
+  (() => {
+    function initNav() {
+      const mobileBtn = document.getElementById('mobile-menu-btn');
+      const mobileMenu = document.getElementById('mobile-menu');
+      const iconOpen = document.getElementById('menu-icon-open');
+      const iconClose = document.getElementById('menu-icon-close');
+
+      if (mobileBtn && mobileMenu) {
+        mobileBtn.onclick = (e) => {
+          e.stopPropagation();
+          const isHidden = mobileMenu.classList.contains('hidden');
+          if (isHidden) {
+            mobileMenu.classList.remove('hidden');
+            if (iconOpen) iconOpen.classList.add('hidden');
+            if (iconClose) iconClose.classList.remove('hidden');
+            mobileBtn.setAttribute('aria-expanded', 'true');
+          } else {
+            mobileMenu.classList.add('hidden');
+            if (iconOpen) iconOpen.classList.remove('hidden');
+            if (iconClose) iconClose.classList.add('hidden');
+            mobileBtn.setAttribute('aria-expanded', 'false');
+          }
+        };
+
+        document.addEventListener('click', (e) => {
+          if (!mobileMenu.contains(e.target) && !mobileBtn.contains(e.target)) {
+            mobileMenu.classList.add('hidden');
+            if (iconOpen) iconOpen.classList.remove('hidden');
+            if (iconClose) iconClose.classList.add('hidden');
+            mobileBtn.setAttribute('aria-expanded', 'false');
+          }
+        });
+      }
+
+      // Floating header on scroll
+      const header = document.querySelector('header');
+      if (header) {
+        header.classList.add('site-header');
+        const handleScroll = () => {
+          if (window.scrollY > 25) {
+            header.classList.add('is-scrolled');
+          } else {
+            header.classList.remove('is-scrolled');
+          }
+        };
+        window.addEventListener('scroll', handleScroll, { passive: true });
+        handleScroll();
+      }
+    }
+
+    if (document.readyState === 'loading') {
+      document.addEventListener('DOMContentLoaded', initNav);
+    } else {
+      initNav();
+    }
+  })();
+  </script>
+</body>
+</html>
