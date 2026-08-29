@@ -325,14 +325,30 @@
 
   
 
-  <!-- ── Mobile Menu & Floating Nav Script ── -->
+  
+
+  <!-- ── Bulletproof Sticky Navbar & Mobile Menu Script ── -->
   <script>
   (() => {
-    function initNav() {
+    function initStickyNav() {
+      const header = document.querySelector('header');
       const mobileBtn = document.getElementById('mobile-menu-btn');
       const mobileMenu = document.getElementById('mobile-menu');
       const iconOpen = document.getElementById('menu-icon-open');
       const iconClose = document.getElementById('menu-icon-close');
+
+      if (header) {
+        header.classList.add('site-header');
+        const handleScroll = () => {
+          if (window.pageYOffset > 10 || document.documentElement.scrollTop > 10) {
+            header.classList.add('is-scrolled');
+          } else {
+            header.classList.remove('is-scrolled');
+          }
+        };
+        window.addEventListener('scroll', handleScroll, { passive: true });
+        handleScroll();
+      }
 
       if (mobileBtn && mobileMenu) {
         mobileBtn.onclick = (e) => {
@@ -360,27 +376,12 @@
           }
         });
       }
-
-      // Floating header on scroll
-      const header = document.querySelector('header');
-      if (header) {
-        header.classList.add('site-header');
-        const handleScroll = () => {
-          if (window.scrollY > 25) {
-            header.classList.add('is-scrolled');
-          } else {
-            header.classList.remove('is-scrolled');
-          }
-        };
-        window.addEventListener('scroll', handleScroll, { passive: true });
-        handleScroll();
-      }
     }
 
     if (document.readyState === 'loading') {
-      document.addEventListener('DOMContentLoaded', initNav);
+      document.addEventListener('DOMContentLoaded', initStickyNav);
     } else {
-      initNav();
+      initStickyNav();
     }
   })();
   </script>

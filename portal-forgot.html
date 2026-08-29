@@ -370,5 +370,64 @@
     }
   })();
   </script>
+
+  <!-- ── Bulletproof Sticky Navbar & Mobile Menu Script ── -->
+  <script>
+  (() => {
+    function initStickyNav() {
+      const header = document.querySelector('header');
+      const mobileBtn = document.getElementById('mobile-menu-btn');
+      const mobileMenu = document.getElementById('mobile-menu');
+      const iconOpen = document.getElementById('menu-icon-open');
+      const iconClose = document.getElementById('menu-icon-close');
+
+      if (header) {
+        header.classList.add('site-header');
+        const handleScroll = () => {
+          if (window.pageYOffset > 10 || document.documentElement.scrollTop > 10) {
+            header.classList.add('is-scrolled');
+          } else {
+            header.classList.remove('is-scrolled');
+          }
+        };
+        window.addEventListener('scroll', handleScroll, { passive: true });
+        handleScroll();
+      }
+
+      if (mobileBtn && mobileMenu) {
+        mobileBtn.onclick = (e) => {
+          e.stopPropagation();
+          const isHidden = mobileMenu.classList.contains('hidden');
+          if (isHidden) {
+            mobileMenu.classList.remove('hidden');
+            if (iconOpen) iconOpen.classList.add('hidden');
+            if (iconClose) iconClose.classList.remove('hidden');
+            mobileBtn.setAttribute('aria-expanded', 'true');
+          } else {
+            mobileMenu.classList.add('hidden');
+            if (iconOpen) iconOpen.classList.remove('hidden');
+            if (iconClose) iconClose.classList.add('hidden');
+            mobileBtn.setAttribute('aria-expanded', 'false');
+          }
+        };
+
+        document.addEventListener('click', (e) => {
+          if (!mobileMenu.contains(e.target) && !mobileBtn.contains(e.target)) {
+            mobileMenu.classList.add('hidden');
+            if (iconOpen) iconOpen.classList.remove('hidden');
+            if (iconClose) iconClose.classList.add('hidden');
+            mobileBtn.setAttribute('aria-expanded', 'false');
+          }
+        });
+      }
+    }
+
+    if (document.readyState === 'loading') {
+      document.addEventListener('DOMContentLoaded', initStickyNav);
+    } else {
+      initStickyNav();
+    }
+  })();
+  </script>
 </body>
 </html>
