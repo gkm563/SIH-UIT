@@ -2,7 +2,7 @@
 <html lang="en" class="scroll-smooth">
 <head>
   <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=5.0" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=5.0, viewport-fit=cover" />
 
   <!-- ── Primary SEO Meta Tags ── -->
   <title>Smart India Hackathon (SIH) 2026 | Internal Hackathon Portal — United Institute of Technology, Prayagraj</title>
@@ -57,8 +57,8 @@
           },
           boxShadow: {
             'glow': '0 0 25px -5px rgba(37, 99, 235, 0.25)',
-            'card': '0 10px 30px -5px rgba(15, 23, 42, 0.06)',
-            'card-hover': '0 20px 40px -10px rgba(15, 23, 42, 0.12)',
+            'card': '0 10px 30px -5px rgba(15, 23, 42, 0.05)',
+            'card-hover': '0 20px 40px -10px rgba(15, 23, 42, 0.10)',
           }
         }
       }
@@ -121,19 +121,19 @@
 <body class="bg-slate-50 text-slate-900 font-sans antialiased min-h-screen flex flex-col selection:bg-blue-600 selection:text-white">
 
   <!-- ── Top Announcement Ticker Bar ── -->
-  <aside class="bg-gradient-to-r from-blue-900 via-indigo-900 to-slate-950 text-white text-[11px] sm:text-xs py-2 px-4 sticky top-0 z-[60] border-b border-blue-800/40 shadow-sm" aria-label="Official Announcement Ticker">
-    <div class="max-w-7xl mx-auto flex items-center justify-between gap-3 flex-wrap">
+  <aside class="bg-gradient-to-r from-blue-900 via-indigo-900 to-slate-950 text-white text-[11px] sm:text-xs py-2 px-3 sm:px-4 sticky top-0 z-[60] border-b border-blue-800/40 shadow-xs" aria-label="Official Announcement Ticker">
+    <div class="max-w-7xl mx-auto flex items-center justify-between gap-2.5 flex-wrap">
       <div class="flex items-center gap-2 min-w-0">
-        <span class="inline-flex items-center gap-1.5 bg-emerald-500/20 text-emerald-300 border border-emerald-400/40 px-2 py-0.5 rounded-full font-extrabold uppercase tracking-wider text-[10px]">
+        <span class="inline-flex items-center gap-1.5 bg-emerald-500/20 text-emerald-300 border border-emerald-400/40 px-2 py-0.5 rounded-full font-extrabold uppercase tracking-wider text-[9px] sm:text-[10px] flex-shrink-0">
           <span class="w-1.5 h-1.5 rounded-full bg-emerald-400 animate-ping"></span>
           Evaluation Done
         </span>
-        <span class="font-medium text-slate-200 truncate">
-          🏆 <strong>SIH 2026 Internal Hackathon Completed</strong> — Top 50 Nominations (45 Shortlisted + 5 Waitlisted) in progress for Central SIH Portal.
+        <span class="font-medium text-slate-200 truncate text-[11px] sm:text-xs">
+          🏆 <strong>SIH 2026 Internal Hackathon Completed</strong> — Top 50 Nominations in progress.
         </span>
       </div>
-      <div class="flex items-center gap-3 text-slate-300 flex-shrink-0 text-[11px]">
-        <span class="hidden md:inline text-slate-400">Organized by <strong class="text-white">Gautam Kumar Maurya</strong></span>
+      <div class="flex items-center gap-3 text-slate-300 flex-shrink-0 text-[11px] ml-auto">
+        <span class="hidden md:inline text-slate-400">Lead Organizer: <strong class="text-white">Gautam Kumar Maurya</strong></span>
         <span class="hidden md:inline text-slate-600">|</span>
         <a href="https://www.sih.gov.in/sih2026PS" target="_blank" rel="noopener noreferrer" class="text-blue-300 hover:text-white font-bold flex items-center gap-1 transition-colors">
           <span>sih.gov.in/sih2026PS</span>
@@ -147,10 +147,10 @@
   <header class="bg-white/95 backdrop-blur-md border-b border-slate-200/90 sticky top-[33px] sm:top-[35px] z-50 transition-all duration-200 shadow-xs" role="banner">
     <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-2.5 sm:py-3 flex items-center justify-between gap-3">
       
-      <!-- Left: Institutional Branding (Dual Logo + Text) -->
+      <!-- Left: Institutional Branding -->
       <a href="index.html" class="flex items-center gap-2.5 sm:gap-3.5 group flex-shrink-0" title="United Institute of Technology — SIH 2026 Portal">
         <img
-          class="w-10 h-10 sm:w-11 sm:h-11 object-contain transition-transform group-hover:scale-105"
+          class="w-9 h-9 sm:w-11 sm:h-11 object-contain transition-transform group-hover:scale-105"
           src="assets/united-logo.png"
           alt="United Institute of Technology Logo"
         />
@@ -159,34 +159,34 @@
             <span class="text-sm sm:text-base font-black text-[#2A4B8D] leading-none tracking-tight">
               UIT <span class="text-blue-600">Prayagraj</span>
             </span>
-            <span class="text-[9px] sm:text-[10px] font-extrabold text-blue-700 bg-blue-50 border border-blue-200/90 px-2 py-0.5 rounded-full leading-none">
+            <span class="text-[9px] sm:text-[10px] font-extrabold text-blue-700 bg-blue-50 border border-blue-200/90 px-1.5 sm:px-2 py-0.5 rounded-full leading-none">
               SIH 2026
             </span>
           </div>
-          <span class="text-[10px] sm:text-xs font-semibold text-slate-500 leading-tight mt-0.5 truncate">
-            Smart India Hackathon · Internal College Portal
+          <span class="text-[10px] sm:text-xs font-semibold text-slate-500 leading-tight mt-0.5 truncate max-w-[200px] sm:max-w-none">
+            Smart India Hackathon · Internal Portal
           </span>
         </div>
       </a>
 
-      <!-- Center & Right: Desktop Navigation Menu -->
+      <!-- Center: Desktop Navigation Menu -->
       <nav class="hidden lg:flex items-center gap-1 bg-slate-100/90 p-1.5 rounded-full border border-slate-200/90 shadow-2xs" role="navigation" aria-label="Main Navigation">
         <a href="#hero" class="px-3.5 py-1.5 text-xs font-extrabold text-blue-700 bg-white rounded-full shadow-2xs transition-all">Home</a>
+        <a href="#team" class="px-3.5 py-1.5 text-xs font-bold text-slate-600 hover:text-blue-700 rounded-full transition-colors">Leadership Team</a>
         <a href="#process" class="px-3.5 py-1.5 text-xs font-bold text-slate-600 hover:text-blue-700 rounded-full transition-colors">Top 50 Process</a>
         <a href="#rules" class="px-3.5 py-1.5 text-xs font-bold text-slate-600 hover:text-blue-700 rounded-full transition-colors">SIH Rules</a>
         <a href="#checklist" class="px-3.5 py-1.5 text-xs font-bold text-slate-600 hover:text-blue-700 rounded-full transition-colors">10-Point Checklist</a>
-        <a href="#team" class="px-3.5 py-1.5 text-xs font-bold text-slate-600 hover:text-blue-700 rounded-full transition-colors">Organizing Team</a>
         <a href="gallery.html" class="px-3.5 py-1.5 text-xs font-extrabold text-emerald-700 hover:text-emerald-800 bg-emerald-50/70 border border-emerald-200/80 rounded-full transition-all flex items-center gap-1.5">
           <span>📸 Gallery</span>
           <span class="bg-emerald-600 text-white text-[9px] px-1.5 py-0.2 rounded-full font-black">38</span>
         </a>
       </nav>
 
-      <!-- Action Button & SIH Central Badge -->
+      <!-- Right: Mobile Hamburger & Fast Action Buttons -->
       <div class="flex items-center gap-2 sm:gap-3 flex-shrink-0">
         <a
           href="gallery.html"
-          class="lg:hidden inline-flex items-center gap-1.5 px-3 py-1.5 bg-emerald-50 border border-emerald-200 text-emerald-800 text-xs font-extrabold rounded-full active:scale-95 transition-all shadow-2xs"
+          class="inline-flex items-center gap-1.5 px-3 py-1.5 bg-emerald-50 hover:bg-emerald-100/80 border border-emerald-200 text-emerald-800 text-xs font-extrabold rounded-full active:scale-95 transition-all shadow-2xs"
           title="Captured Moments Photo Gallery"
         >
           <span>📸 Gallery</span>
@@ -196,18 +196,57 @@
           href="https://www.sih.gov.in/sih2026PS"
           target="_blank"
           rel="noopener noreferrer"
-          class="hidden sm:inline-flex items-center gap-2 px-4 py-2 bg-gradient-to-r from-blue-600 to-indigo-600 hover:from-blue-700 hover:to-indigo-700 text-white text-xs font-black rounded-xl shadow-sm hover:shadow-md transition-all active:scale-95"
+          class="hidden sm:inline-flex items-center gap-2 px-3.5 sm:px-4 py-2 bg-gradient-to-r from-blue-600 to-indigo-600 hover:from-blue-700 hover:to-indigo-700 text-white text-xs font-black rounded-xl shadow-xs hover:shadow-md transition-all active:scale-95"
         >
-          <span>SIH Official Portal</span>
+          <span>SIH Official</span>
           <svg class="w-3.5 h-3.5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2.5" d="M10 6H6a2 2 0 00-2 2v10a2 2 0 002 2h10a2 2 0 002-2v-4M14 4h6m0 0v6m0-6L10 14"/></svg>
         </a>
-        <img
-          class="h-8 sm:h-9 w-auto object-contain bg-white p-1 rounded-lg border border-slate-200 hidden md:block"
-          src="assets/sih-logo.png"
-          alt="Smart India Hackathon 2026 Logo"
-        />
+        
+        <!-- Mobile Menu Hamburger Button -->
+        <button
+          id="mobile-menu-btn"
+          type="button"
+          class="lg:hidden p-2 rounded-xl bg-slate-100 hover:bg-slate-200 text-slate-700 active:scale-90 transition-all border border-slate-200/80"
+          aria-label="Toggle Mobile Navigation Menu"
+          aria-expanded="false"
+        >
+          <svg id="menu-icon-open" class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16"/></svg>
+          <svg id="menu-icon-close" class="w-5 h-5 hidden" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12"/></svg>
+        </button>
       </div>
 
+    </div>
+
+    <!-- Mobile Dropdown Navigation Menu Drawer -->
+    <div id="mobile-menu" class="hidden lg:hidden border-t border-slate-200 bg-white/95 backdrop-blur-xl px-4 py-4 space-y-2 shadow-lg">
+      <div class="grid grid-cols-2 gap-2 text-xs font-bold">
+        <a href="#hero" class="mobile-nav-link flex items-center gap-2 p-2.5 rounded-xl bg-slate-50 text-slate-800 active:bg-blue-50 active:text-blue-700 border border-slate-200/80">
+          <span>🏠 Home</span>
+        </a>
+        <a href="#team" class="mobile-nav-link flex items-center gap-2 p-2.5 rounded-xl bg-slate-50 text-slate-800 active:bg-blue-50 active:text-blue-700 border border-slate-200/80">
+          <span>👥 Organizing Team</span>
+        </a>
+        <a href="#process" class="mobile-nav-link flex items-center gap-2 p-2.5 rounded-xl bg-slate-50 text-slate-800 active:bg-blue-50 active:text-blue-700 border border-slate-200/80">
+          <span>🚀 Top 50 Process</span>
+        </a>
+        <a href="#rules" class="mobile-nav-link flex items-center gap-2 p-2.5 rounded-xl bg-slate-50 text-slate-800 active:bg-blue-50 active:text-blue-700 border border-slate-200/80">
+          <span>⚠️ SIH Rules</span>
+        </a>
+        <a href="#checklist" class="mobile-nav-link flex items-center gap-2 p-2.5 rounded-xl bg-slate-50 text-slate-800 active:bg-blue-50 active:text-blue-700 border border-slate-200/80">
+          <span>📋 10-Pt Checklist</span>
+        </a>
+        <a href="gallery.html" class="mobile-nav-link flex items-center gap-2 p-2.5 rounded-xl bg-emerald-50 text-emerald-900 border border-emerald-200/90 font-black">
+          <span>📸 38 Photos Gallery</span>
+        </a>
+      </div>
+      <a
+        href="https://www.sih.gov.in/sih2026PS"
+        target="_blank"
+        rel="noopener noreferrer"
+        class="w-full flex items-center justify-center gap-2 py-3 bg-gradient-to-r from-blue-600 to-indigo-600 text-white font-black text-xs rounded-xl shadow-xs active:scale-95 transition-all mt-2"
+      >
+        <span>Explore SIH 2026 PS (sih.gov.in) ↗</span>
+      </a>
     </div>
   </header>
 
@@ -217,82 +256,82 @@
     <!-- ══════════════════════════════════════════════════════════════════ -->
     <!-- 1. HERO SECTION: High-Impact Branded College Portal Banner -->
     <!-- ══════════════════════════════════════════════════════════════════ -->
-    <section id="hero" class="relative rounded-3xl border border-slate-200/90 shadow-lg bg-gradient-to-br from-white via-blue-50/30 to-indigo-50/40 p-6 sm:p-10 lg:p-12 overflow-hidden" aria-labelledby="hero-title">
-      <!-- Ambient decorative glow orbs -->
-      <div class="absolute -right-24 -top-24 w-80 h-80 bg-blue-400/15 rounded-full blur-3xl pointer-events-none"></div>
-      <div class="absolute -left-24 -bottom-24 w-80 h-80 bg-indigo-400/15 rounded-full blur-3xl pointer-events-none"></div>
+    <section id="hero" class="relative rounded-3xl border border-slate-200/90 shadow-card bg-gradient-to-br from-white via-blue-50/30 to-indigo-50/40 p-5 sm:p-10 lg:p-12 overflow-hidden" aria-labelledby="hero-title">
+      <!-- Ambient decorative glow orbs with subtle animation -->
+      <div class="absolute -right-24 -top-24 w-80 h-80 bg-blue-400/15 rounded-full blur-3xl pointer-events-none animate-glow-pulse"></div>
+      <div class="absolute -left-24 -bottom-24 w-80 h-80 bg-indigo-400/15 rounded-full blur-3xl pointer-events-none animate-glow-pulse" style="animation-delay: 2.5s;"></div>
 
       <div class="relative z-10 max-w-4xl mx-auto text-center space-y-6">
         
-        <!-- Top Floating Badges -->
+        <!-- Top Floating Glass Chips (Staggered Animation) -->
         <div class="flex items-center justify-center gap-2 sm:gap-3 flex-wrap">
-          <span class="inline-flex items-center gap-2 bg-blue-50 border border-blue-200 text-blue-800 text-xs font-black uppercase tracking-wider px-3.5 py-1.5 rounded-full shadow-2xs">
+          <span class="glass-chip inline-flex items-center gap-2 bg-blue-50/90 border border-blue-200 text-blue-800 text-[11px] sm:text-xs font-black uppercase tracking-wider px-3.5 py-1.5 rounded-full animate-float">
             <span class="w-2 h-2 rounded-full bg-blue-600 animate-ping"></span>
             Smart India Hackathon 2026
           </span>
-          <span class="inline-flex items-center gap-1.5 bg-indigo-50 border border-indigo-200 text-indigo-800 text-xs font-black px-3.5 py-1.5 rounded-full shadow-2xs">
+          <span class="glass-chip inline-flex items-center gap-1.5 bg-indigo-50/90 border border-indigo-200 text-indigo-800 text-[11px] sm:text-xs font-black px-3.5 py-1.5 rounded-full animate-float-reverse">
             ⚡ Organized by Gautam Kumar Maurya (GKM)
           </span>
-          <span class="inline-flex items-center gap-1.5 bg-emerald-50 border border-emerald-200 text-emerald-800 text-xs font-bold px-3 py-1.5 rounded-full shadow-2xs">
+          <span class="glass-chip inline-flex items-center gap-1.5 bg-emerald-50/90 border border-emerald-200 text-emerald-800 text-[11px] sm:text-xs font-bold px-3.5 py-1.5 rounded-full animate-float" style="animation-delay: 1.5s;">
             🏛️ United Institute of Technology, Prayagraj
           </span>
         </div>
 
-        <!-- Main Title -->
+        <!-- Main Title with Shimmer Gradient -->
         <div class="space-y-3">
-          <h1 id="hero-title" class="text-3xl sm:text-5xl lg:text-6xl font-black text-slate-900 tracking-tight leading-[1.15]">
+          <h1 id="hero-title" class="text-2xl sm:text-5xl lg:text-6xl font-black text-slate-900 tracking-tight leading-[1.15]">
             Innovate. Build. <br class="hidden sm:inline" />
-            <span class="text-transparent bg-clip-text bg-gradient-to-r from-blue-700 via-indigo-600 to-blue-800">
+            <span class="shimmer-gradient">
               Represent UIT at SIH 2026.
             </span>
           </h1>
-          <p class="text-sm sm:text-base lg:text-lg text-slate-600 font-medium max-w-2xl mx-auto leading-relaxed">
+          <p class="text-xs sm:text-base lg:text-lg text-slate-600 font-medium max-w-2xl mx-auto leading-relaxed">
             The internal college evaluations for <strong>Smart India Hackathon 2026</strong> have successfully concluded. <strong>50 Nominated Teams (45 Shortlisted + 5 Waitlisted)</strong> are being officially submitted to the Ministry of Education Central Portal.
           </p>
         </div>
 
-        <!-- Metric Highlight Cards Grid -->
-        <div class="grid grid-cols-2 sm:grid-cols-4 gap-3 sm:gap-4 pt-2 text-left">
-          <div class="bg-white/90 backdrop-blur-xs border border-blue-100 rounded-2xl p-3.5 sm:p-4 shadow-2xs">
+        <!-- Metric Highlight Cards Grid (Mobile 2x2 Grid) -->
+        <div class="grid grid-cols-2 sm:grid-cols-4 gap-2.5 sm:gap-4 pt-1 text-left">
+          <div class="glass-chip bg-white/90 border border-blue-100 rounded-2xl p-3 sm:p-4 shadow-2xs">
             <div class="text-2xl sm:text-3xl font-black font-display text-blue-700">50</div>
             <div class="text-[11px] sm:text-xs font-bold text-slate-900 mt-0.5">Top Nominated Teams</div>
-            <div class="text-[10px] text-slate-500 font-medium">45 Shortlisted + 5 Waiting</div>
+            <div class="text-[9px] sm:text-[10px] text-slate-500 font-medium">45 Shortlisted + 5 Waiting</div>
           </div>
-          <div class="bg-white/90 backdrop-blur-xs border border-indigo-100 rounded-2xl p-3.5 sm:p-4 shadow-2xs">
+          <div class="glass-chip bg-white/90 border border-indigo-100 rounded-2xl p-3 sm:p-4 shadow-2xs">
             <div class="text-2xl sm:text-3xl font-black font-display text-indigo-700">37+</div>
             <div class="text-[11px] sm:text-xs font-bold text-slate-900 mt-0.5">Problem Statements</div>
-            <div class="text-[10px] text-slate-500 font-medium">Software, Hardware, Hybrid</div>
+            <div class="text-[9px] sm:text-[10px] text-slate-500 font-medium">Software, Hardware &amp; Open</div>
           </div>
-          <div class="bg-white/90 backdrop-blur-xs border border-emerald-100 rounded-2xl p-3.5 sm:p-4 shadow-2xs">
+          <div class="glass-chip bg-white/90 border border-emerald-100 rounded-2xl p-3 sm:p-4 shadow-2xs">
             <div class="text-2xl sm:text-3xl font-black font-display text-emerald-700">38+</div>
             <div class="text-[11px] sm:text-xs font-bold text-slate-900 mt-0.5">Captured Moments</div>
-            <div class="text-[10px] text-slate-500 font-medium">DSLR High-Res Gallery</div>
+            <div class="text-[9px] sm:text-[10px] text-slate-500 font-medium">DSLR High-Res Gallery</div>
           </div>
-          <div class="bg-white/90 backdrop-blur-xs border border-amber-100 rounded-2xl p-3.5 sm:p-4 shadow-2xs">
+          <div class="glass-chip bg-white/90 border border-amber-100 rounded-2xl p-3 sm:p-4 shadow-2xs">
             <div class="text-2xl sm:text-3xl font-black font-display text-amber-700">100%</div>
             <div class="text-[11px] sm:text-xs font-bold text-slate-900 mt-0.5">Evaluation Complete</div>
-            <div class="text-[10px] text-slate-500 font-medium">Jury Assessment Done</div>
+            <div class="text-[9px] sm:text-[10px] text-slate-500 font-medium">Jury Assessment Done</div>
           </div>
         </div>
 
-        <!-- Primary CTA Buttons -->
-        <div class="flex items-center justify-center gap-3 sm:gap-4 pt-2 flex-wrap">
+        <!-- Primary Action Buttons -->
+        <div class="flex items-center justify-center gap-2.5 sm:gap-4 pt-2 flex-wrap">
           <a
             href="#process"
-            class="inline-flex items-center gap-2 px-6 sm:px-8 py-3.5 bg-gradient-to-r from-blue-600 to-indigo-600 hover:from-blue-700 hover:to-indigo-700 text-white font-extrabold text-xs sm:text-sm rounded-2xl shadow-md hover:shadow-lg transition-all active:scale-95"
+            class="w-full sm:w-auto inline-flex items-center justify-center gap-2 px-6 sm:px-8 py-3.5 bg-gradient-to-r from-blue-600 to-indigo-600 hover:from-blue-700 hover:to-indigo-700 text-white font-extrabold text-xs sm:text-sm rounded-2xl shadow-md hover:shadow-lg transition-all active:scale-95"
           >
             <span>🚀 View Top 50 Process &amp; Guidelines</span>
             <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2.5" d="M19 9l-7 7-7-7"/></svg>
           </a>
           <a
             href="gallery.html"
-            class="inline-flex items-center gap-2 px-6 sm:px-7 py-3.5 bg-white border border-slate-200 text-slate-800 hover:text-blue-700 hover:border-blue-300 font-extrabold text-xs sm:text-sm rounded-2xl shadow-xs hover:shadow-md transition-all active:scale-95"
+            class="w-full sm:w-auto inline-flex items-center justify-center gap-2 px-6 sm:px-7 py-3.5 bg-white border border-slate-200 text-slate-800 hover:text-blue-700 hover:border-blue-300 font-extrabold text-xs sm:text-sm rounded-2xl shadow-2xs hover:shadow-md transition-all active:scale-95"
           >
             <span>📸 View Hackathon Gallery (38 Photos)</span>
           </a>
           <a
             href="#team"
-            class="inline-flex items-center gap-2 px-5 py-3.5 bg-slate-100 hover:bg-slate-200 text-slate-700 font-extrabold text-xs sm:text-sm rounded-2xl transition-all active:scale-95"
+            class="w-full sm:w-auto inline-flex items-center justify-center gap-2 px-5 py-3.5 bg-slate-100 hover:bg-slate-200 text-slate-700 font-extrabold text-xs sm:text-sm rounded-2xl transition-all active:scale-95"
           >
             <span>👥 Organizing Team</span>
           </a>
@@ -319,11 +358,11 @@
         </div>
       </div>
 
-      <!-- Executive Profile Cards Grid -->
-      <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-5">
+      <!-- Executive Profile Cards Grid (Responsive 1 Col Mobile -> 2 Col Tablet -> 4 Col Desktop) -->
+      <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4 sm:gap-5">
         
         <!-- Member 1: Dr. Manas Pandey (DSW) -->
-        <article class="bg-white rounded-3xl border border-slate-200/90 shadow-card hover:shadow-card-hover hover:-translate-y-1 transition-all duration-300 p-6 flex flex-col justify-between group">
+        <article class="card-interactive bg-white rounded-3xl border border-slate-200/90 shadow-card p-5 sm:p-6 flex flex-col justify-between group">
           <div class="space-y-4">
             <div class="flex items-center justify-between">
               <div class="w-14 h-14 rounded-2xl bg-gradient-to-br from-amber-500 to-amber-700 text-white flex items-center justify-center text-xl font-black shadow-md">
@@ -353,7 +392,7 @@
         </article>
 
         <!-- Member 2: Dhananjay Sir (SPOC) -->
-        <article class="bg-white rounded-3xl border border-slate-200/90 shadow-card hover:shadow-card-hover hover:-translate-y-1 transition-all duration-300 p-6 flex flex-col justify-between group">
+        <article class="card-interactive bg-white rounded-3xl border border-slate-200/90 shadow-card p-5 sm:p-6 flex flex-col justify-between group">
           <div class="space-y-4">
             <div class="flex items-center justify-between">
               <div class="w-14 h-14 rounded-2xl bg-gradient-to-br from-blue-600 to-indigo-800 text-white flex items-center justify-center text-xl font-black shadow-md">
@@ -383,14 +422,14 @@
         </article>
 
         <!-- Member 3: Gautam Kumar Maurya (GKM) - Lead Organizer & Developer -->
-        <article class="bg-gradient-to-br from-white via-blue-50/40 to-indigo-50/50 rounded-3xl border-2 border-blue-300/80 shadow-card hover:shadow-card-hover hover:-translate-y-1 transition-all duration-300 p-6 flex flex-col justify-between group relative overflow-hidden">
+        <article class="card-interactive bg-gradient-to-br from-white via-blue-50/40 to-indigo-50/50 rounded-3xl border-2 border-blue-300/90 shadow-card p-5 sm:p-6 flex flex-col justify-between group relative overflow-hidden">
           <div class="absolute -right-8 -top-8 w-24 h-24 bg-blue-500/10 rounded-full blur-xl pointer-events-none"></div>
           <div class="space-y-4 relative z-10">
             <div class="flex items-center justify-between">
               <div class="w-14 h-14 rounded-2xl bg-gradient-to-br from-blue-700 via-indigo-600 to-indigo-900 text-white flex items-center justify-center text-xl font-black shadow-md ring-4 ring-blue-100">
                 GK
               </div>
-              <span class="text-[10px] font-black uppercase tracking-wider bg-blue-600 text-white px-2.5 py-1 rounded-full shadow-2xs">
+              <span class="text-[10px] font-black uppercase tracking-wider bg-blue-600 text-white px-2.5 py-1 rounded-full shadow-2xs animate-badge-pulse">
                 🚀 Lead Organizer
               </span>
             </div>
@@ -416,7 +455,7 @@
         </article>
 
         <!-- Member 4: Harsh Srivastava - Student Coordinator -->
-        <article class="bg-white rounded-3xl border border-slate-200/90 shadow-card hover:shadow-card-hover hover:-translate-y-1 transition-all duration-300 p-6 flex flex-col justify-between group">
+        <article class="card-interactive bg-white rounded-3xl border border-slate-200/90 shadow-card p-5 sm:p-6 flex flex-col justify-between group">
           <div class="space-y-4">
             <div class="flex items-center justify-between">
               <div class="w-14 h-14 rounded-2xl bg-gradient-to-br from-emerald-600 to-teal-800 text-white flex items-center justify-center text-xl font-black shadow-md">
@@ -451,17 +490,17 @@
     <!-- ══════════════════════════════════════════════════════════════════ -->
     <!-- 3. TOP 50 NOMINATION PROCESS & STEP-BY-STEP WORKFLOW -->
     <!-- ══════════════════════════════════════════════════════════════════ -->
-    <section id="process" class="rounded-3xl border border-slate-200/90 shadow-lg bg-gradient-to-br from-white via-blue-50/20 to-indigo-50/30 p-6 sm:p-8 lg:p-10 relative overflow-hidden" aria-labelledby="process-heading">
+    <section id="process" class="rounded-3xl border border-slate-200/90 shadow-card bg-gradient-to-br from-white via-blue-50/20 to-indigo-50/30 p-5 sm:p-8 lg:p-10 relative overflow-hidden" aria-labelledby="process-heading">
       <div class="relative z-10 space-y-6">
         
         <!-- Top Status Pill -->
         <div class="flex items-center justify-between gap-3 flex-wrap border-b border-slate-200/80 pb-4">
           <div class="flex items-center gap-2 flex-wrap">
-            <span class="inline-flex items-center gap-2 bg-blue-50 border border-blue-200 text-blue-800 text-xs font-black uppercase tracking-wide px-3.5 py-1.5 rounded-full shadow-2xs">
+            <span class="glass-chip inline-flex items-center gap-2 bg-blue-50/90 border border-blue-200 text-blue-800 text-xs font-black uppercase tracking-wide px-3.5 py-1.5 rounded-full">
               <span class="w-2 h-2 rounded-full bg-blue-600 animate-ping"></span>
               🏆 Top 50 Selection &amp; Nomination Workflow
             </span>
-            <span class="inline-flex items-center gap-1.5 bg-amber-50 border border-amber-200 text-amber-800 text-xs font-bold px-3 py-1.5 rounded-full shadow-2xs">
+            <span class="glass-chip inline-flex items-center gap-1.5 bg-amber-50/90 border border-amber-200 text-amber-800 text-xs font-bold px-3 py-1.5 rounded-full">
               ⚡ Action for Team Leaders
             </span>
           </div>
@@ -487,9 +526,9 @@
         </div>
 
         <!-- Status Card: Top 50 List Announcement -->
-        <div class="bg-gradient-to-r from-blue-50 via-indigo-50/70 to-blue-50 border-2 border-blue-200 rounded-2xl p-5 sm:p-6 shadow-xs">
-          <div class="flex items-start gap-4">
-            <span class="w-11 h-11 rounded-2xl bg-blue-600 text-white flex items-center justify-center text-xl font-black flex-shrink-0 shadow-xs">📋</span>
+        <div class="bg-gradient-to-r from-blue-50 via-indigo-50/70 to-blue-50 border-2 border-blue-200 rounded-2xl p-4 sm:p-6 shadow-2xs">
+          <div class="flex items-start gap-3.5 sm:gap-4">
+            <span class="w-10 h-10 sm:w-11 sm:h-11 rounded-2xl bg-blue-600 text-white flex items-center justify-center text-lg sm:text-xl font-black flex-shrink-0 shadow-xs">📋</span>
             <div class="space-y-1">
               <div class="flex items-center gap-2 flex-wrap">
                 <h3 class="text-sm sm:text-base font-black text-blue-950">Official Top 50 Selection List Announcement — Coming Soon</h3>
@@ -505,10 +544,10 @@
           </div>
         </div>
 
-        <!-- 4-Step Interactive Visual Workflow Cards -->
-        <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4 pt-2">
+        <!-- 4-Step Visual Workflow Cards Grid -->
+        <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-3.5 sm:gap-4 pt-1">
           
-          <div class="bg-white rounded-2xl p-5 border border-slate-200/80 shadow-2xs flex flex-col justify-between">
+          <div class="card-interactive bg-white rounded-2xl p-4 sm:p-5 border border-slate-200/80 shadow-2xs flex flex-col justify-between">
             <div>
               <div class="flex items-center justify-between mb-3">
                 <span class="w-8 h-8 rounded-xl bg-blue-50 border border-blue-200 text-blue-700 font-black text-xs flex items-center justify-center">1</span>
@@ -524,7 +563,7 @@
             </div>
           </div>
 
-          <div class="bg-white rounded-2xl p-5 border border-slate-200/80 shadow-2xs flex flex-col justify-between">
+          <div class="card-interactive bg-white rounded-2xl p-4 sm:p-5 border border-slate-200/80 shadow-2xs flex flex-col justify-between">
             <div>
               <div class="flex items-center justify-between mb-3">
                 <span class="w-8 h-8 rounded-xl bg-indigo-50 border border-indigo-200 text-indigo-700 font-black text-xs flex items-center justify-center">2</span>
@@ -540,7 +579,7 @@
             </div>
           </div>
 
-          <div class="bg-white rounded-2xl p-5 border border-slate-200/80 shadow-2xs flex flex-col justify-between">
+          <div class="card-interactive bg-white rounded-2xl p-4 sm:p-5 border border-slate-200/80 shadow-2xs flex flex-col justify-between">
             <div>
               <div class="flex items-center justify-between mb-3">
                 <span class="w-8 h-8 rounded-xl bg-teal-50 border border-teal-200 text-teal-700 font-black text-xs flex items-center justify-center">3</span>
@@ -556,7 +595,7 @@
             </div>
           </div>
 
-          <div class="bg-white rounded-2xl p-5 border border-slate-200/80 shadow-2xs flex flex-col justify-between">
+          <div class="card-interactive bg-white rounded-2xl p-4 sm:p-5 border border-slate-200/80 shadow-2xs flex flex-col justify-between">
             <div>
               <div class="flex items-center justify-between mb-3">
                 <span class="w-8 h-8 rounded-xl bg-rose-50 border border-rose-200 text-rose-700 font-black text-xs flex items-center justify-center">4</span>
@@ -590,10 +629,10 @@
         </p>
       </div>
 
-      <div class="grid grid-cols-1 md:grid-cols-3 gap-5">
+      <div class="grid grid-cols-1 md:grid-cols-3 gap-4 sm:gap-5">
         
         <!-- Rule 1: 500 Ideas Limit -->
-        <div class="bg-white rounded-3xl p-6 border border-rose-200/90 shadow-card flex flex-col justify-between">
+        <div class="card-interactive bg-white rounded-3xl p-5 sm:p-6 border border-rose-200/90 shadow-card flex flex-col justify-between">
           <div class="space-y-3">
             <div class="flex items-center gap-2.5 text-rose-700 font-black text-xs uppercase tracking-wide">
               <span class="w-8 h-8 rounded-xl bg-rose-50 border border-rose-200 text-rose-600 flex items-center justify-center text-base">⏳</span>
@@ -609,7 +648,7 @@
         </div>
 
         <!-- Rule 2: Max 2 PS per Team -->
-        <div class="bg-white rounded-3xl p-6 border border-blue-200/90 shadow-card flex flex-col justify-between">
+        <div class="card-interactive bg-white rounded-3xl p-5 sm:p-6 border border-blue-200/90 shadow-card flex flex-col justify-between">
           <div class="space-y-3">
             <div class="flex items-center gap-2.5 text-blue-700 font-black text-xs uppercase tracking-wide">
               <span class="w-8 h-8 rounded-xl bg-blue-50 border border-blue-200 text-blue-600 flex items-center justify-center text-base">🎯</span>
@@ -625,7 +664,7 @@
         </div>
 
         <!-- Rule 3: SPOC Nomination Only -->
-        <div class="bg-white rounded-3xl p-6 border border-emerald-200/90 shadow-card flex flex-col justify-between">
+        <div class="card-interactive bg-white rounded-3xl p-5 sm:p-6 border border-emerald-200/90 shadow-card flex flex-col justify-between">
           <div class="space-y-3">
             <div class="flex items-center gap-2.5 text-emerald-700 font-black text-xs uppercase tracking-wide">
               <span class="w-8 h-8 rounded-xl bg-emerald-50 border border-emerald-200 text-emerald-600 flex items-center justify-center text-base">🔑</span>
@@ -646,7 +685,7 @@
     <!-- ══════════════════════════════════════════════════════════════════ -->
     <!-- 5. INTERACTIVE 10-POINT TEAM LEADER VERIFICATION CHECKLIST -->
     <!-- ══════════════════════════════════════════════════════════════════ -->
-    <section id="checklist" class="bg-white rounded-3xl border border-slate-200/90 shadow-card p-6 sm:p-8 lg:p-10 space-y-6" aria-labelledby="checklist-heading">
+    <section id="checklist" class="bg-white rounded-3xl border border-slate-200/90 shadow-card p-5 sm:p-8 lg:p-10 space-y-6" aria-labelledby="checklist-heading">
       <div class="flex flex-col sm:flex-row items-start sm:items-center justify-between gap-3 border-b border-slate-100 pb-4">
         <div class="flex items-center gap-3">
           <span class="w-10 h-10 rounded-2xl bg-blue-50 border border-blue-200 text-blue-700 text-lg font-black flex items-center justify-center flex-shrink-0 shadow-2xs">📋</span>
@@ -659,12 +698,17 @@
             </p>
           </div>
         </div>
+        
+        <!-- Live Checklist Progress Badge -->
+        <div class="inline-flex items-center gap-2 bg-blue-50 border border-blue-200 px-3.5 py-1.5 rounded-full text-xs font-black text-blue-700 flex-shrink-0 shadow-2xs">
+          <span id="checklist-counter">0 / 10 Verified</span>
+        </div>
       </div>
 
       <!-- Checklist Grid -->
-      <div class="grid grid-cols-1 sm:grid-cols-2 gap-3.5 text-xs" id="interactive-checklist">
+      <div class="grid grid-cols-1 sm:grid-cols-2 gap-3 sm:gap-3.5 text-xs" id="interactive-checklist">
         
-        <label class="flex items-start gap-3.5 bg-slate-50/80 border border-slate-200/80 rounded-2xl p-4 hover:bg-blue-50/40 hover:border-blue-200 transition-all cursor-pointer select-none">
+        <label class="flex items-start gap-3.5 bg-slate-50/80 border border-slate-200/80 rounded-2xl p-3.5 sm:p-4 hover:bg-blue-50/40 hover:border-blue-200 transition-all cursor-pointer select-none">
           <input type="checkbox" class="w-4 h-4 mt-0.5 text-blue-600 rounded-md border-slate-300 focus:ring-blue-500 flex-shrink-0" />
           <div>
             <div class="font-bold text-slate-900 text-xs sm:text-sm">1. Verify Pre-Entered Team Name</div>
@@ -672,7 +716,7 @@
           </div>
         </label>
 
-        <label class="flex items-start gap-3.5 bg-slate-50/80 border border-slate-200/80 rounded-2xl p-4 hover:bg-blue-50/40 hover:border-blue-200 transition-all cursor-pointer select-none">
+        <label class="flex items-start gap-3.5 bg-slate-50/80 border border-slate-200/80 rounded-2xl p-3.5 sm:p-4 hover:bg-blue-50/40 hover:border-blue-200 transition-all cursor-pointer select-none">
           <input type="checkbox" class="w-4 h-4 mt-0.5 text-blue-600 rounded-md border-slate-300 focus:ring-blue-500 flex-shrink-0" />
           <div>
             <div class="font-bold text-slate-900 text-xs sm:text-sm">2. College Authorization Letter (PDF)</div>
@@ -680,7 +724,7 @@
           </div>
         </label>
 
-        <label class="flex items-start gap-3.5 bg-slate-50/80 border border-slate-200/80 rounded-2xl p-4 hover:bg-blue-50/40 hover:border-blue-200 transition-all cursor-pointer select-none">
+        <label class="flex items-start gap-3.5 bg-slate-50/80 border border-slate-200/80 rounded-2xl p-3.5 sm:p-4 hover:bg-blue-50/40 hover:border-blue-200 transition-all cursor-pointer select-none">
           <input type="checkbox" class="w-4 h-4 mt-0.5 text-blue-600 rounded-md border-slate-300 focus:ring-blue-500 flex-shrink-0" />
           <div>
             <div class="font-bold text-slate-900 text-xs sm:text-sm">3. Names of Leader &amp; 5 Members</div>
@@ -688,7 +732,7 @@
           </div>
         </label>
 
-        <label class="flex items-start gap-3.5 bg-slate-50/80 border border-slate-200/80 rounded-2xl p-4 hover:bg-blue-50/40 hover:border-blue-200 transition-all cursor-pointer select-none">
+        <label class="flex items-start gap-3.5 bg-slate-50/80 border border-slate-200/80 rounded-2xl p-3.5 sm:p-4 hover:bg-blue-50/40 hover:border-blue-200 transition-all cursor-pointer select-none">
           <input type="checkbox" class="w-4 h-4 mt-0.5 text-blue-600 rounded-md border-slate-300 focus:ring-blue-500 flex-shrink-0" />
           <div>
             <div class="font-bold text-slate-900 text-xs sm:text-sm">4. Gender of Leader &amp; 5 Members</div>
@@ -696,7 +740,7 @@
           </div>
         </label>
 
-        <label class="flex items-start gap-3.5 bg-slate-50/80 border border-slate-200/80 rounded-2xl p-4 hover:bg-blue-50/40 hover:border-blue-200 transition-all cursor-pointer select-none">
+        <label class="flex items-start gap-3.5 bg-slate-50/80 border border-slate-200/80 rounded-2xl p-3.5 sm:p-4 hover:bg-blue-50/40 hover:border-blue-200 transition-all cursor-pointer select-none">
           <input type="checkbox" class="w-4 h-4 mt-0.5 text-blue-600 rounded-md border-slate-300 focus:ring-blue-500 flex-shrink-0" />
           <div>
             <div class="font-bold text-slate-900 text-xs sm:text-sm">5. Email IDs of All 6 Members</div>
@@ -704,7 +748,7 @@
           </div>
         </label>
 
-        <label class="flex items-start gap-3.5 bg-slate-50/80 border border-slate-200/80 rounded-2xl p-4 hover:bg-blue-50/40 hover:border-blue-200 transition-all cursor-pointer select-none">
+        <label class="flex items-start gap-3.5 bg-slate-50/80 border border-slate-200/80 rounded-2xl p-3.5 sm:p-4 hover:bg-blue-50/40 hover:border-blue-200 transition-all cursor-pointer select-none">
           <input type="checkbox" class="w-4 h-4 mt-0.5 text-blue-600 rounded-md border-slate-300 focus:ring-blue-500 flex-shrink-0" />
           <div>
             <div class="font-bold text-slate-900 text-xs sm:text-sm">6. Mobile Numbers of All 6 Members</div>
@@ -712,7 +756,7 @@
           </div>
         </label>
 
-        <label class="flex items-start gap-3.5 bg-slate-50/80 border border-slate-200/80 rounded-2xl p-4 hover:bg-indigo-50/40 hover:border-indigo-200 transition-all cursor-pointer select-none">
+        <label class="flex items-start gap-3.5 bg-slate-50/80 border border-slate-200/80 rounded-2xl p-3.5 sm:p-4 hover:bg-indigo-50/40 hover:border-indigo-200 transition-all cursor-pointer select-none">
           <input type="checkbox" class="w-4 h-4 mt-0.5 text-indigo-600 rounded-md border-slate-300 focus:ring-indigo-500 flex-shrink-0" />
           <div>
             <div class="font-bold text-slate-900 text-xs sm:text-sm">7. Chosen PS / Student Innovation Track</div>
@@ -720,7 +764,7 @@
           </div>
         </label>
 
-        <label class="flex items-start gap-3.5 bg-slate-50/80 border border-slate-200/80 rounded-2xl p-4 hover:bg-indigo-50/40 hover:border-indigo-200 transition-all cursor-pointer select-none">
+        <label class="flex items-start gap-3.5 bg-slate-50/80 border border-slate-200/80 rounded-2xl p-3.5 sm:p-4 hover:bg-indigo-50/40 hover:border-indigo-200 transition-all cursor-pointer select-none">
           <input type="checkbox" class="w-4 h-4 mt-0.5 text-indigo-600 rounded-md border-slate-300 focus:ring-indigo-500 flex-shrink-0" />
           <div>
             <div class="font-bold text-slate-900 text-xs sm:text-sm">8. Idea Title</div>
@@ -728,7 +772,7 @@
           </div>
         </label>
 
-        <label class="flex items-start gap-3.5 bg-slate-50/80 border border-slate-200/80 rounded-2xl p-4 hover:bg-indigo-50/40 hover:border-indigo-200 transition-all cursor-pointer select-none">
+        <label class="flex items-start gap-3.5 bg-slate-50/80 border border-slate-200/80 rounded-2xl p-3.5 sm:p-4 hover:bg-indigo-50/40 hover:border-indigo-200 transition-all cursor-pointer select-none">
           <input type="checkbox" class="w-4 h-4 mt-0.5 text-indigo-600 rounded-md border-slate-300 focus:ring-indigo-500 flex-shrink-0" />
           <div>
             <div class="font-bold text-slate-900 text-xs sm:text-sm">9. Idea Description</div>
@@ -736,7 +780,7 @@
           </div>
         </label>
 
-        <label class="flex items-start gap-3.5 bg-slate-50/80 border border-slate-200/80 rounded-2xl p-4 hover:bg-indigo-50/40 hover:border-indigo-200 transition-all cursor-pointer select-none">
+        <label class="flex items-start gap-3.5 bg-slate-50/80 border border-slate-200/80 rounded-2xl p-3.5 sm:p-4 hover:bg-indigo-50/40 hover:border-indigo-200 transition-all cursor-pointer select-none">
           <input type="checkbox" class="w-4 h-4 mt-0.5 text-indigo-600 rounded-md border-slate-300 focus:ring-indigo-500 flex-shrink-0" />
           <div>
             <div class="font-bold text-slate-900 text-xs sm:text-sm">10. Idea Presentation (PDF Format)</div>
@@ -785,7 +829,7 @@
         </a>
       </div>
 
-      <!-- 6 Featured Image Cards Grid -->
+      <!-- 6 Featured Image Cards Grid (2 Col Mobile -> 3 Col Tablet -> 6 Col Desktop) -->
       <div class="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-6 gap-3 sm:gap-4">
         
         <a href="gallery.html" class="group relative rounded-2xl overflow-hidden shadow-2xs hover:shadow-card-hover hover:-translate-y-1 transition-all duration-200 bg-slate-200 aspect-[4/3]">
@@ -836,20 +880,20 @@
     <!-- ══════════════════════════════════════════════════════════════════ -->
     <!-- 7. QUICK RESOURCE TILES (Official Links) -->
     <!-- ══════════════════════════════════════════════════════════════════ -->
-    <section class="grid grid-cols-1 sm:grid-cols-2 gap-5" aria-label="Official SIH Resources">
+    <section class="grid grid-cols-1 sm:grid-cols-2 gap-4 sm:gap-5" aria-label="Official SIH Resources">
       
       <a
         href="https://www.sih.gov.in/sih2026PS"
         target="_blank"
         rel="noopener noreferrer"
-        class="bg-white rounded-3xl border border-slate-200/90 shadow-card hover:shadow-card-hover p-6 sm:p-7 flex items-center justify-between group hover:-translate-y-1 transition-all duration-300"
+        class="card-interactive bg-white rounded-3xl border border-slate-200/90 shadow-card p-5 sm:p-7 flex items-center justify-between group"
       >
         <div class="flex items-center gap-4">
-          <div class="w-14 h-14 rounded-2xl bg-blue-50 border border-blue-200 text-blue-700 flex items-center justify-center text-2xl flex-shrink-0 group-hover:bg-blue-600 group-hover:text-white transition-colors shadow-2xs">
+          <div class="w-12 h-12 sm:w-14 sm:h-14 rounded-2xl bg-blue-50 border border-blue-200 text-blue-700 flex items-center justify-center text-xl sm:text-2xl flex-shrink-0 group-hover:bg-blue-600 group-hover:text-white transition-colors shadow-2xs">
             🌐
           </div>
           <div>
-            <h3 class="text-base font-black text-slate-900 group-hover:text-blue-700 transition-colors">
+            <h3 class="text-sm sm:text-base font-black text-slate-900 group-hover:text-blue-700 transition-colors">
               Official SIH 2026 Problem Statements
             </h3>
             <p class="text-xs text-slate-500 font-medium mt-0.5">
@@ -857,19 +901,19 @@
             </p>
           </div>
         </div>
-        <span class="w-9 h-9 rounded-full bg-blue-50 text-blue-600 flex items-center justify-center font-black text-base group-hover:bg-blue-600 group-hover:text-white transition-all flex-shrink-0">↗</span>
+        <span class="w-8 h-8 sm:w-9 sm:h-9 rounded-full bg-blue-50 text-blue-600 flex items-center justify-center font-black text-sm sm:text-base group-hover:bg-blue-600 group-hover:text-white transition-all flex-shrink-0">↗</span>
       </a>
 
       <a
         href="gallery.html"
-        class="bg-white rounded-3xl border border-slate-200/90 shadow-card hover:shadow-card-hover p-6 sm:p-7 flex items-center justify-between group hover:-translate-y-1 transition-all duration-300"
+        class="card-interactive bg-white rounded-3xl border border-slate-200/90 shadow-card p-5 sm:p-7 flex items-center justify-between group"
       >
         <div class="flex items-center gap-4">
-          <div class="w-14 h-14 rounded-2xl bg-emerald-50 border border-emerald-200 text-emerald-700 flex items-center justify-center text-2xl flex-shrink-0 group-hover:bg-emerald-600 group-hover:text-white transition-colors shadow-2xs">
+          <div class="w-12 h-12 sm:w-14 sm:h-14 rounded-2xl bg-emerald-50 border border-emerald-200 text-emerald-700 flex items-center justify-center text-xl sm:text-2xl flex-shrink-0 group-hover:bg-emerald-600 group-hover:text-white transition-colors shadow-2xs">
             📸
           </div>
           <div>
-            <h3 class="text-base font-black text-slate-900 group-hover:text-emerald-700 transition-colors">
+            <h3 class="text-sm sm:text-base font-black text-slate-900 group-hover:text-emerald-700 transition-colors">
               Full Hackathon Photo Gallery
             </h3>
             <p class="text-xs text-slate-500 font-medium mt-0.5">
@@ -877,7 +921,7 @@
             </p>
           </div>
         </div>
-        <span class="w-9 h-9 rounded-full bg-emerald-50 text-emerald-600 flex items-center justify-center font-black text-base group-hover:bg-emerald-600 group-hover:text-white transition-all flex-shrink-0">→</span>
+        <span class="w-8 h-8 sm:w-9 sm:h-9 rounded-full bg-emerald-50 text-emerald-600 flex items-center justify-center font-black text-sm sm:text-base group-hover:bg-emerald-600 group-hover:text-white transition-all flex-shrink-0">→</span>
       </a>
 
     </section>
@@ -904,9 +948,9 @@
 
         <nav class="flex items-center gap-2 text-xs font-bold text-slate-600 flex-wrap justify-center" aria-label="Footer Navigation">
           <a href="#hero" class="hover:text-blue-700 px-3 py-1.5 rounded-xl hover:bg-blue-50/80 transition-colors">Home</a>
+          <a href="#team" class="hover:text-blue-700 px-3 py-1.5 rounded-xl hover:bg-blue-50/80 transition-colors">Leadership Team</a>
           <a href="#process" class="hover:text-blue-700 px-3 py-1.5 rounded-xl hover:bg-blue-50/80 transition-colors">Top 50 Process</a>
           <a href="#rules" class="hover:text-blue-700 px-3 py-1.5 rounded-xl hover:bg-blue-50/80 transition-colors">SIH Rules</a>
-          <a href="#team" class="hover:text-blue-700 px-3 py-1.5 rounded-xl hover:bg-blue-50/80 transition-colors">Leadership Team</a>
           <a href="gallery.html" class="text-emerald-700 font-extrabold px-3 py-1.5 rounded-xl hover:bg-emerald-50 transition-colors">Gallery (38 Photos)</a>
         </nav>
       </div>
@@ -915,17 +959,17 @@
       <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
         
         <!-- Student Lead Organizers Contact -->
-        <div class="bg-white border border-blue-100 p-5 rounded-2xl space-y-3 shadow-2xs">
+        <div class="bg-white border border-blue-100 p-4 sm:p-5 rounded-2xl space-y-3 shadow-2xs">
           <div class="flex items-center gap-2 text-xs font-black text-blue-900 uppercase tracking-wider">
             <span class="w-6 h-6 rounded-lg bg-blue-100 text-blue-700 flex items-center justify-center text-xs">🚀</span>
             <span>Student Lead &amp; Organizing Team</span>
           </div>
           <div class="grid grid-cols-1 sm:grid-cols-2 gap-2.5 text-xs">
-            <a href="tel:8924059058" class="bg-blue-50/70 border border-blue-200/80 px-3.5 py-2.5 rounded-xl flex items-center justify-between gap-1.5 text-slate-900 font-extrabold hover:bg-blue-100/80 transition-all">
+            <a href="tel:8924059058" class="bg-blue-50/70 border border-blue-200/80 px-3.5 py-2.5 rounded-xl flex items-center justify-between gap-1.5 text-slate-900 font-extrabold hover:bg-blue-100/80 transition-all active:scale-95">
               <span>Gautam Kumar Maurya (GKM)</span>
               <span class="text-blue-700 font-mono text-[11px] underline">8924059058</span>
             </a>
-            <a href="tel:9336786889" class="bg-blue-50/70 border border-blue-200/80 px-3.5 py-2.5 rounded-xl flex items-center justify-between gap-1.5 text-slate-900 font-extrabold hover:bg-blue-100/80 transition-all">
+            <a href="tel:9336786889" class="bg-blue-50/70 border border-blue-200/80 px-3.5 py-2.5 rounded-xl flex items-center justify-between gap-1.5 text-slate-900 font-extrabold hover:bg-blue-100/80 transition-all active:scale-95">
               <span>Harsh Srivastava</span>
               <span class="text-blue-700 font-mono text-[11px] underline">9336786889</span>
             </a>
@@ -933,20 +977,20 @@
         </div>
 
         <!-- Faculty Leadership & SPOC Contact -->
-        <div class="bg-white border border-amber-100 p-5 rounded-2xl space-y-3 shadow-2xs">
+        <div class="bg-white border border-amber-100 p-4 sm:p-5 rounded-2xl space-y-3 shadow-2xs">
           <div class="flex items-center gap-2 text-xs font-black text-amber-900 uppercase tracking-wider">
             <span class="w-6 h-6 rounded-lg bg-amber-100 text-amber-800 flex items-center justify-center text-xs">🏛️</span>
             <span>Faculty Leadership &amp; SPOC Office</span>
           </div>
           <div class="grid grid-cols-1 sm:grid-cols-2 gap-2.5 text-xs">
-            <a href="tel:9935957744" class="bg-amber-50/70 border border-amber-200/80 px-3.5 py-2.5 rounded-xl flex items-center justify-between gap-1.5 text-slate-900 font-extrabold hover:bg-amber-100/80 transition-all">
+            <a href="tel:9935957744" class="bg-amber-50/70 border border-amber-200/80 px-3.5 py-2.5 rounded-xl flex items-center justify-between gap-1.5 text-slate-900 font-extrabold hover:bg-amber-100/80 transition-all active:scale-95">
               <span class="flex items-center gap-1.5 min-w-0">
                 <span class="text-[9px] font-black uppercase text-amber-800 bg-amber-200/90 px-1.5 py-0.5 rounded">SPOC</span>
                 <span class="truncate">Dhananjay Sir</span>
               </span>
               <span class="text-amber-900 font-mono text-[11px] underline flex-shrink-0">9935957744</span>
             </a>
-            <a href="tel:8303503433" class="bg-amber-50/70 border border-amber-200/80 px-3.5 py-2.5 rounded-xl flex items-center justify-between gap-1.5 text-slate-900 font-extrabold hover:bg-amber-100/80 transition-all">
+            <a href="tel:8303503433" class="bg-amber-50/70 border border-amber-200/80 px-3.5 py-2.5 rounded-xl flex items-center justify-between gap-1.5 text-slate-900 font-extrabold hover:bg-amber-100/80 transition-all active:scale-95">
               <span class="flex items-center gap-1.5 min-w-0">
                 <span class="text-[9px] font-black uppercase text-amber-800 bg-amber-200/90 px-1.5 py-0.5 rounded">DSW</span>
                 <span class="truncate">Dr. Manas Sir</span>
@@ -972,7 +1016,7 @@
             class="text-blue-700 hover:text-blue-900 font-black flex items-center gap-1 transition-colors"
           >
             <span>Gautam Kumar Maurya (GKM)</span>
-            <svg class="w-3 h-3" fill="currentColor" viewBox="0 0 24 24"><path d="M19 3a2 2 0 0 1 2 2v14a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h14m-.5 15.5v-5.3a3.26 3.26 0 0 0-3.26-3.26c-.85 0-1.84.52-2.28 1.3v-1.11h-2.79v8.37h2.79v-4.93c0-.77.62-1.4 1.39-1.4a1.4 1.4 0 0 1 1.4 1.4v4.93h2.75M6.88 8.56a1.68 1.68 0 0 0 1.68-1.68c0-.93-.75-1.69-1.68-1.69a1.69 1.69 0 0 0-1.69 1.69c0 .93.76 1.68 1.69 1.68m1.39 9.94v-8.37H5.5v8.37h2.77z"/></svg>
+            <svg class="w-3.5 h-3.5" fill="currentColor" viewBox="0 0 24 24"><path d="M19 3a2 2 0 0 1 2 2v14a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h14m-.5 15.5v-5.3a3.26 3.26 0 0 0-3.26-3.26c-.85 0-1.84.52-2.28 1.3v-1.11h-2.79v8.37h2.79v-4.93c0-.77.62-1.4 1.39-1.4a1.4 1.4 0 0 1 1.4 1.4v4.93h2.75M6.88 8.56a1.68 1.68 0 0 0 1.68-1.68c0-.93-.75-1.69-1.68-1.69a1.69 1.69 0 0 0-1.69 1.69c0 .93.76 1.68 1.69 1.68m1.39 9.94v-8.37H5.5v8.37h2.77z"/></svg>
           </a>
         </div>
       </div>
@@ -980,27 +1024,84 @@
     </div>
   </footer>
 
-  <!-- ── Interactive Client Script for Checklist & Analytics ── -->
+  <!-- ── Interactive Client Script for Mobile Menu & Checklist ── -->
   <script>
   document.addEventListener('DOMContentLoaded', () => {
-    // Persistent Checklist State using LocalStorage
+    // Mobile Drawer Navigation Toggle
+    const mobileBtn = document.getElementById('mobile-menu-btn');
+    const mobileMenu = document.getElementById('mobile-menu');
+    const iconOpen = document.getElementById('menu-icon-open');
+    const iconClose = document.getElementById('menu-icon-close');
+
+    if (mobileBtn && mobileMenu) {
+      mobileBtn.addEventListener('click', () => {
+        const isHidden = mobileMenu.classList.contains('hidden');
+        if (isHidden) {
+          mobileMenu.classList.remove('hidden');
+          iconOpen.classList.add('hidden');
+          iconClose.classList.remove('hidden');
+          mobileBtn.setAttribute('aria-expanded', 'true');
+        } else {
+          mobileMenu.classList.add('hidden');
+          iconOpen.classList.remove('hidden');
+          iconClose.classList.add('hidden');
+          mobileBtn.setAttribute('aria-expanded', 'false');
+        }
+      });
+
+      // Close mobile menu on clicking any navigation anchor
+      document.querySelectorAll('.mobile-nav-link').forEach(link => {
+        link.addEventListener('click', () => {
+          mobileMenu.classList.add('hidden');
+          iconOpen.classList.remove('hidden');
+          iconClose.classList.add('hidden');
+          mobileBtn.setAttribute('aria-expanded', 'false');
+        });
+      });
+    }
+
+    // Persistent Checklist State & Dynamic Counter
     const checkboxes = document.querySelectorAll('#interactive-checklist input[type="checkbox"]');
+    const counterEl = document.getElementById('checklist-counter');
+
+    function updateChecklistProgress() {
+      let checkedCount = 0;
+      checkboxes.forEach((cb, idx) => {
+        const key = 'sih2026_checklist_item_' + idx;
+        if (cb.checked) {
+          checkedCount++;
+          cb.closest('label').classList.add('bg-blue-50/70', 'border-blue-300');
+        } else {
+          cb.closest('label').classList.remove('bg-blue-50/70', 'border-blue-300');
+        }
+      });
+      if (counterEl) {
+        counterEl.textContent = checkedCount + ' / ' + checkboxes.length + ' Verified';
+        if (checkedCount === checkboxes.length) {
+          counterEl.classList.replace('text-blue-700', 'text-emerald-700');
+          counterEl.textContent = '🎉 All 10 Items Verified & Ready!';
+        } else {
+          counterEl.classList.replace('text-emerald-700', 'text-blue-700');
+        }
+      }
+    }
+
     checkboxes.forEach((cb, idx) => {
       const key = 'sih2026_checklist_item_' + idx;
       if (localStorage.getItem(key) === '1') {
         cb.checked = true;
-        cb.closest('label').classList.add('bg-blue-50/70', 'border-blue-300');
       }
       cb.addEventListener('change', () => {
         if (cb.checked) {
           localStorage.setItem(key, '1');
-          cb.closest('label').classList.add('bg-blue-50/70', 'border-blue-300');
         } else {
           localStorage.removeItem(key);
-          cb.closest('label').classList.remove('bg-blue-50/70', 'border-blue-300');
         }
+        updateChecklistProgress();
       });
     });
+
+    updateChecklistProgress();
   });
   </script>
 
