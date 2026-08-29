@@ -64,8 +64,8 @@
 <body class="bg-slate-50 text-slate-900 font-sans antialiased min-h-screen flex flex-col selection:bg-blue-600 selection:text-white overflow-x-hidden">
 
   <!-- ── Main Sticky Navigation Header ── -->
-  <header class="bg-white/90 backdrop-blur-xl border-b border-slate-200/80 sticky top-0 z-50 transition-all duration-200 shadow-xs site-header" role="banner">
-    <div class="max-w-7xl mx-auto px-3 sm:px-6 lg:px-8 py-2.5 sm:py-3 flex items-center justify-between gap-2 sm:gap-3">
+  <header class="site-header" role="banner">
+    <div class="nav-container px-3 sm:px-6 lg:px-8 py-2.5 sm:py-3 flex items-center justify-between gap-2 sm:gap-3">
       
       <!-- Institutional Logo & Branding -->
       <a href="index.html" class="flex items-center gap-2 sm:gap-3 group flex-shrink-0" title="United Institute of Technology — SIH 2026 Archive">
@@ -122,7 +122,7 @@
     </div>
 
     <!-- Mobile Dropdown Navigation Drawer -->
-    <div id="mobile-menu" class="hidden lg:hidden border-t border-slate-200/80 bg-white/95 backdrop-blur-xl px-4 py-4 space-y-2 shadow-xl">
+    <div id="mobile-menu" class="hidden lg:hidden border-t border-slate-200/80 bg-white/95 backdrop-blur-xl px-4 py-4 space-y-2 shadow-xl max-w-7xl mx-auto rounded-b-2xl pointer-events-auto">
       <div class="grid grid-cols-2 gap-2 text-xs font-bold">
         <a href="index.html" class="mobile-nav-link p-2.5 rounded-xl bg-blue-600 text-white border border-slate-200/80">🏠 Home</a>
         <a href="results.html" class="mobile-nav-link p-2.5 rounded-xl bg-slate-50 text-slate-800 hover:bg-blue-50 border border-slate-200/80">🏆 Results (45+5)</a>
@@ -1198,10 +1198,12 @@
 
   
 
-  <!-- ── Bulletproof Sticky Navbar & Mobile Menu Script ── -->
+  
+
+  <!-- ── Active Floating Navbar on Scroll Script ── -->
   <script>
   (() => {
-    function initStickyNav() {
+    function initFloatingNav() {
       const header = document.querySelector('header');
       const mobileBtn = document.getElementById('mobile-menu-btn');
       const mobileMenu = document.getElementById('mobile-menu');
@@ -1211,13 +1213,15 @@
       if (header) {
         header.classList.add('site-header');
         const handleScroll = () => {
-          if (window.pageYOffset > 10 || document.documentElement.scrollTop > 10) {
+          const scrollPos = window.pageYOffset || document.documentElement.scrollTop || window.scrollY || 0;
+          if (scrollPos > 15) {
             header.classList.add('is-scrolled');
           } else {
             header.classList.remove('is-scrolled');
           }
         };
         window.addEventListener('scroll', handleScroll, { passive: true });
+        window.addEventListener('resize', handleScroll, { passive: true });
         handleScroll();
       }
 
@@ -1250,9 +1254,9 @@
     }
 
     if (document.readyState === 'loading') {
-      document.addEventListener('DOMContentLoaded', initStickyNav);
+      document.addEventListener('DOMContentLoaded', initFloatingNav);
     } else {
-      initStickyNav();
+      initFloatingNav();
     }
   })();
   </script>
