@@ -1,284 +1,204 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" class="scroll-smooth">
 <head>
   <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <meta name="description" content="SIH 2026 Internal Hackathon Problem Statement Bank — United Institute of Technology, Prayagraj" />
-  <meta name="robots" content="noindex, nofollow" />
-  <meta name="theme-color" content="#1a73e8" />
-  <title>Problem Statement Bank | SIH 2026 UIT Prayagraj</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=5.0, viewport-fit=cover" />
+  <title>Problem Statements Archive (37 PS) | SIH 2026 UIT Prayagraj</title>
+  <meta name="description" content="Official repository of 37 Problem Statements made available to participating teams for the SIH 2026 College-Level Internal Hackathon at United Institute of Technology, Prayagraj." />
   <link rel="icon" href="assets/united-logo.png" type="image/png" />
-    <link rel="preconnect" href="https://fonts.googleapis.com" />
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-  <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@300;400;500;600;700&family=Inter:wght@400;500;600;700;800;900&family=Outfit:wght@400;500;600;700;800;900&display=swap" rel="stylesheet" />
-  <link rel="preconnect" href="https://script.google.com" crossorigin />
-  <link rel="preconnect" href="https://cdn.tailwindcss.com" crossorigin />
-  <link rel="dns-prefetch" href="https://script.google.com" />
   <script src="https://cdn.tailwindcss.com"></script>
   <script>
     tailwind.config = {
       theme: {
         extend: {
-          colors: {
-            primary: { DEFAULT: '#1a73e8', dark: '#1557b0', light: '#e8f0fe' },
-            united: { DEFAULT: '#2A4B8D', red: '#D63333' }
+          fontFamily: {
+            sans: ['Outfit', 'Plus Jakarta Sans', 'system-ui', 'sans-serif'],
+            display: ['Space Grotesk', 'Outfit', 'sans-serif'],
           }
         }
       }
     };
   </script>
   <link rel="stylesheet" href="css/styles.css" />
-  <link rel="stylesheet" href="css/problems.css" />
-  <script src="js/countdown.js" defer></script>
+  <script src="js/data/problem-statements.js"></script>
 </head>
-<body class="bg-slate-50 min-h-screen flex flex-col font-sans">
-  <a class="sr-only" href="#ps-browser">Skip to Problem Statements</a>
+<body class="bg-slate-50 text-slate-900 font-sans antialiased min-h-screen flex flex-col selection:bg-blue-600 selection:text-white overflow-x-hidden">
 
-  <!-- Ultra-Sleek Glassmorphic Header -->
-  <header class="site-header bg-white/95 backdrop-blur-md border-b border-gray-200/80 sticky top-0 z-50 shadow-2xs" role="banner">
-    <div class="header-inner w-full max-w-full px-4 sm:px-8 lg:px-12 py-2 sm:py-2.5 flex items-center justify-between gap-2 sm:gap-4">
+  <!-- ── Top Permanent Archive Notice Banner ── -->
+  <aside class="bg-gradient-to-r from-slate-950 via-blue-950 to-indigo-950 text-white text-[11px] sm:text-xs py-2 px-3 sm:px-4 sticky top-0 z-[60] border-b border-blue-900/40 shadow-xs" aria-label="Official Event Archive Notice">
+    <div class="max-w-7xl mx-auto flex items-center justify-between gap-2.5 flex-wrap">
+      <div class="flex items-center gap-2 min-w-0">
+        <span class="inline-flex items-center gap-1.5 bg-amber-500/20 text-amber-300 border border-amber-400/40 px-2.5 py-0.5 rounded-full font-black uppercase tracking-wider text-[9px] sm:text-[10px] flex-shrink-0">
+          🏛️ OFFICIAL EVENT ARCHIVE
+        </span>
+        <span class="font-medium text-slate-200 truncate text-[11px] sm:text-xs">
+          <strong>SIH UIT 2026 Concluded on 22 August 2026</strong> · Permanent Institutional Record
+        </span>
+      </div>
+      <div class="flex items-center gap-3 text-slate-300 flex-shrink-0 text-[11px] ml-auto">
+        <span class="hidden md:inline text-slate-400">United Institute of Technology, Prayagraj</span>
+        <span class="hidden md:inline text-slate-600">|</span>
+        <a href="verify.html" class="text-emerald-300 hover:text-white font-bold flex items-center gap-1 transition-colors">
+          <span>✓ Verify Certificate</span>
+        </a>
+      </div>
+    </div>
+  </aside>
+
+  <!-- ── Main Sticky Navigation Header ── -->
+  <header class="bg-white/90 backdrop-blur-xl border-b border-slate-200/80 sticky top-[33px] sm:top-[35px] z-50 transition-all duration-200 shadow-xs" role="banner">
+    <div class="max-w-7xl mx-auto px-3 sm:px-6 lg:px-8 py-2.5 sm:py-3 flex items-center justify-between gap-2 sm:gap-3">
       
-      <!-- Left: Brand -->
-      <a href="index.html" class="flex items-center gap-2 sm:gap-3 flex-shrink-0 group transition-transform active:scale-95" title="United Institute of Technology">
-        <img
-          class="college-logo w-9 h-9 sm:w-11 sm:h-11 object-contain transition-transform group-hover:scale-105"
-          src="assets/united-logo.png"
-          alt="United Group of Institutions logo"
-        />
+      <!-- Institutional Logo & Branding -->
+      <a href="index.html" class="flex items-center gap-2 sm:gap-3 group flex-shrink-0" title="United Institute of Technology — SIH 2026 Archive">
+        <div class="p-1 sm:p-1.5 rounded-2xl bg-white border border-slate-200/80 group-hover:border-blue-300 transition-colors shadow-sm">
+          <img
+            class="w-8 h-8 sm:w-10 sm:h-10 object-contain transition-transform group-hover:scale-105"
+            src="assets/united-logo.png"
+            alt="United Institute of Technology Logo"
+          />
+        </div>
         <div class="flex flex-col justify-center min-w-0">
           <div class="flex items-center gap-1.5 flex-wrap">
-            <span class="text-xs sm:text-base font-black text-[#2A4B8D] leading-none tracking-tight">
-              UIT <span class="font-bold text-[#2A4B8D]/90">Prayagraj</span>
+            <span class="text-sm sm:text-base font-black text-[#1e3a8a] leading-none tracking-tight">
+              UIT <span class="text-blue-600">Prayagraj</span>
             </span>
-            <span class="text-[9px] sm:text-[10px] font-extrabold text-blue-700 bg-blue-50 border border-blue-200/80 px-1.5 py-0.5 rounded-full leading-none">
-              SIH 2026
+            <span class="text-[9px] sm:text-[10px] font-black text-amber-800 bg-amber-50 border border-amber-200/90 px-1.5 py-0.5 rounded-full leading-none">
+              ARCHIVE · 2026
             </span>
           </div>
-          <span class="text-[10px] sm:text-xs font-semibold text-slate-500 leading-tight mt-0.5">
-            Smart India Hackathon · Problem Bank
+          <span class="text-[10px] sm:text-[11px] font-semibold text-slate-500 leading-tight mt-0.5 truncate max-w-[170px] sm:max-w-none">
+            Smart India Hackathon · Event Archive
           </span>
         </div>
       </a>
 
-      <!-- Right: Navigation -->
-      <div class="flex items-center gap-2 sm:gap-3 flex-shrink-0">
-        <nav class="nav-switch flex items-center bg-slate-100/90 p-1 rounded-full border border-slate-200/80 shadow-2xs">
-          <a href="index.html" class="nav-pill" title="Home &amp; Guidelines">
-            <svg class="w-3.5 h-3.5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 12l2-2m0 0l7-7 7 7M5 10v10a1 1 0 001 1h3m10-11l2 2m-2-2v10a1 1 0 01-1 1h-3m-6 0a1 1 0 00-1-1v-4a1 1 0 011-1h2a1 1 0 011 1v4a1 1 0 001 1m-6 0h6"/></svg>
-            <span class="text-xs font-bold">Home</span>
-          </a>
-          <a href="problems.html" class="nav-pill active" aria-current="page" title="Problem Statements Bank">
-            <svg class="w-3.5 h-3.5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9.663 17h4.673M12 3v1m6.364 1.636l-.707.707M21 12h-1M4 12H3m3.343-5.657l-.707-.707m2.828 9.9a5 5 0 117.072 0l-.548.547A3.374 3.374 0 0014 18.469V19a2 2 0 11-4 0v-.531c0-.895-.356-1.754-.988-2.386l-.548-.547z"/></svg>
-            <span class="text-xs font-bold">Problems</span>
-          </a>
-          <a href="gallery.html" class="nav-pill" title="Hackathon Day Gallery"><svg class="w-3.5 h-3.5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 16l4.586-4.586a2 2 0 012.828 0L16 16m-2-2l1.586-1.586a2 2 0 012.828 0L20 14m-6-6h.01M6 20h12a2 2 0 002-2V6a2 2 0 00-2-2H6a2 2 0 00-2 2v12a2 2 0 002 2z"/></svg><span class="text-xs font-bold">Gallery</span></a>
-        </nav>
+      <!-- Desktop Navigation Menu -->
+      <nav class="hidden xl:flex items-center gap-1 bg-slate-100/90 p-1.5 rounded-full border border-slate-200/80 shadow-inner text-xs font-bold text-slate-600" role="navigation" aria-label="Main Navigation">
+        <a href="index.html" class="px-3 py-1.5 rounded-full transition-all hover:text-blue-700">Home</a>
+        <a href="index.html#journey" class="px-3 py-1.5 rounded-full transition-all hover:text-blue-700">Journey</a>
+        <a href="problems.html" class="px-3 py-1.5 rounded-full transition-all text-blue-700 bg-white shadow-sm font-extrabold">Problems (37)</a>
+        <a href="teams.html" class="px-3 py-1.5 rounded-full transition-all hover:text-blue-700">Teams (57)</a>
+        <a href="results.html" class="px-3 py-1.5 rounded-full transition-all hover:text-blue-700">Results (45+5)</a>
+        <a href="judges.html" class="px-3 py-1.5 rounded-full transition-all hover:text-blue-700">Judges</a>
+        <a href="index.html#team" class="px-3 py-1.5 rounded-full transition-all hover:text-blue-700">Organising Team</a>
+        <a href="gallery.html" class="px-3 py-1.5 rounded-full transition-all hover:text-emerald-700">Gallery 📸</a>
+        <a href="report.html" class="px-3 py-1.5 rounded-full transition-all hover:text-blue-700">Event Report 📄</a>
+      </nav>
 
-        <img
-          class="sih-header-logo h-8 sm:h-10 w-auto object-contain bg-white p-1 rounded-lg border border-slate-200/80 shadow-2xs hidden sm:block"
-          src="assets/sih-logo.png"
-          alt="SIH 2026 logo"
-        />
+      <!-- Right Action & Mobile Trigger -->
+      <div class="flex items-center gap-2 flex-shrink-0">
+        <a
+          href="verify.html"
+          class="inline-flex items-center gap-1.5 px-3.5 py-2 bg-gradient-to-r from-emerald-600 to-teal-700 hover:from-emerald-700 hover:to-teal-800 text-white text-xs font-black rounded-xl shadow-xs hover:shadow-md transition-all active:scale-95"
+        >
+          <span>✓ Verify Certificate</span>
+        </a>
+        
+        <button
+          id="mobile-menu-btn"
+          type="button"
+          class="xl:hidden p-2 rounded-xl bg-slate-100 hover:bg-slate-200 text-slate-700 active:scale-90 transition-all border border-slate-200/80"
+          aria-label="Toggle Navigation Menu"
+        >
+          <svg id="menu-icon-open" class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16"/></svg>
+          <svg id="menu-icon-close" class="w-5 h-5 hidden" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12"/></svg>
+        </button>
       </div>
 
+    </div>
+
+    <!-- Mobile Dropdown Menu -->
+    <div id="mobile-menu" class="hidden xl:hidden border-t border-slate-200 bg-white/95 backdrop-blur-xl px-4 py-4 space-y-2 shadow-xl">
+      <div class="grid grid-cols-2 gap-2 text-xs font-bold">
+        <a href="index.html" class="mobile-nav-link flex items-center gap-2 p-2.5 rounded-xl bg-slate-50 text-slate-800 active:bg-blue-50 active:text-blue-700 border border-slate-200/80">
+          <span>🏠 Home</span>
+        </a>
+        <a href="index.html#journey" class="mobile-nav-link flex items-center gap-2 p-2.5 rounded-xl bg-slate-50 text-slate-800 active:bg-blue-50 active:text-blue-700 border border-slate-200/80">
+          <span>⚡ The Journey</span>
+        </a>
+        <a href="problems.html" class="mobile-nav-link flex items-center gap-2 p-2.5 rounded-xl bg-slate-50 text-slate-800 active:bg-blue-50 active:text-blue-700 border border-slate-200/80">
+          <span>🎯 Problem Statements (37)</span>
+        </a>
+        <a href="teams.html" class="mobile-nav-link flex items-center gap-2 p-2.5 rounded-xl bg-slate-50 text-slate-800 active:bg-blue-50 active:text-blue-700 border border-slate-200/80">
+          <span>👥 Teams (57 Presented)</span>
+        </a>
+        <a href="results.html" class="mobile-nav-link flex items-center gap-2 p-2.5 rounded-xl bg-slate-50 text-slate-800 active:bg-blue-50 active:text-blue-700 border border-slate-200/80">
+          <span>🏆 Results (45+5)</span>
+        </a>
+        <a href="judges.html" class="mobile-nav-link flex items-center gap-2 p-2.5 rounded-xl bg-slate-50 text-slate-800 active:bg-blue-50 active:text-blue-700 border border-slate-200/80">
+          <span>⚖️ Judging Panel (8)</span>
+        </a>
+        <a href="index.html#team" class="mobile-nav-link flex items-center gap-2 p-2.5 rounded-xl bg-slate-50 text-slate-800 active:bg-blue-50 active:text-blue-700 border border-slate-200/80">
+          <span>🏛️ Organising Team</span>
+        </a>
+        <a href="gallery.html" class="mobile-nav-link flex items-center gap-2 p-2.5 rounded-xl bg-emerald-50 text-emerald-900 border border-emerald-200/80 font-black">
+          <span>📸 Gallery (38 Photos)</span>
+        </a>
+        <a href="report.html" class="mobile-nav-link flex items-center gap-2 p-2.5 rounded-xl bg-blue-50 text-blue-900 border border-blue-200/80 font-black col-span-2">
+          <span>📄 Full Event Report &amp; Archive</span>
+        </a>
+      </div>
+      <a
+        href="verify.html"
+        class="w-full flex items-center justify-center gap-2 py-3 bg-gradient-to-r from-emerald-600 to-teal-700 text-white font-black text-xs rounded-xl shadow-xs active:scale-95 transition-all mt-2"
+      >
+        <span>✓ Verify Certificate / Team Record</span>
+      </a>
     </div>
   </header>
 
-  <!-- Hero Section (Clean Light Theme) -->
-  <section class="bg-gradient-to-br from-blue-50/90 via-indigo-50/60 to-white text-slate-900 py-8 sm:py-10 px-4 border-b border-slate-200/90 shadow-2xs relative overflow-hidden">
-    <div class="w-full max-w-full lg:px-12 xl:px-16 mx-auto text-center relative z-10">
-      <div class="inline-flex items-center gap-2 px-3.5 py-1 bg-blue-100 text-blue-900 border border-blue-200/80 rounded-full text-xs font-black mb-3">
-        <span>💡 Official SIH 2026 Problem Statement Bank</span>
-      </div>
-      <h1 class="text-2xl sm:text-4xl font-black tracking-tight mb-2 text-slate-900">
-        Smart India Hackathon 2026 — Problem Statements
-      </h1>
-      <p class="text-xs sm:text-sm text-slate-600 max-w-2xl mx-auto mb-5 font-medium">
-        Browse 37 real-world problem statements (including Open Innovation), filter by domain &amp; difficulty, and download the official SIH 2026 Ideal PPT template for your team!
-      </p>
-
-      <!-- Key Info Bar with Live Countdown -->
-      <div class="flex flex-col sm:flex-row items-center justify-center gap-2 sm:gap-3 mb-6 w-full flex-wrap">
-        <!-- Date Pill -->
-        <div class="flex items-center gap-2 bg-white border border-emerald-200 text-emerald-950 px-4 py-2.5 rounded-2xl shadow-xs text-xs sm:text-sm font-semibold w-full sm:w-auto justify-center">
-          <svg class="w-4 h-4 text-emerald-600 flex-shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M8 7V3m8 4V3m-9 8h10M5 21h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v12a2 2 0 002 2z"/></svg>
-          <span class="font-extrabold">22 August 2026, Saturday</span>
-          <span class="text-emerald-600 font-black text-[10px] bg-emerald-100 border border-emerald-300 px-1.5 py-0.5 rounded-md uppercase tracking-wide">Confirmed</span>
-        </div>
-
-        <!-- Countdown Pill -->
-        <div class="flex items-center gap-2.5 bg-amber-50 border border-amber-200 px-4 py-2.5 rounded-2xl shadow-xs w-full sm:w-auto justify-center">
-          <span class="text-[11px] font-black text-amber-800 uppercase tracking-wide flex-shrink-0">⏳ Starts In</span>
-          <span class="font-mono font-black text-sm sm:text-base text-slate-950 tracking-tight">
-            <span id="cd-days">06</span>d 
-            <span id="cd-hours">00</span>h 
-            <span id="cd-mins">00</span>m 
-            <span id="cd-secs">00</span>s
-          </span>
-        </div>
-      </div>
-
-      <div class="mt-4">
-        <a href="#ps-browser" class="inline-flex items-center gap-2 bg-blue-600 hover:bg-blue-700 text-white font-extrabold text-xs sm:text-sm px-6 py-3 rounded-full shadow-md transition-transform active:scale-95">
-          <span>Browse Problem Statements</span>
-          <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"/></svg>
-        </a>
-      </div>
-
-
-    </div>
-  </section>
-
-  <!-- Main Browser Section -->
-  <main id="ps-browser" class="w-full max-w-full lg:px-12 xl:px-16 mx-auto px-4 sm:px-8 py-6 sm:py-8 flex-1" role="main">
+  <main class="flex-1 w-full max-w-7xl mx-auto px-3.5 sm:px-6 lg:px-8 py-6 sm:py-10 space-y-8">
     
-    <!-- Filter Control Bar -->
-    <div class="bg-white border border-slate-200/90 rounded-2xl p-3.5 sm:p-5 shadow-sm mb-6">
+    <!-- Header Banner -->
+    <div class="glass-card-pro rounded-3xl p-5 sm:p-8 bg-gradient-to-r from-blue-50/50 via-white to-indigo-50/40 border border-slate-200/90 text-center sm:text-left flex flex-col sm:flex-row items-center justify-between gap-4">
+      <div class="space-y-2 max-w-3xl">
+        <div class="inline-flex items-center gap-2 px-3 py-1 bg-amber-100 text-amber-900 border border-amber-300 text-xs font-black uppercase tracking-wider rounded-full">
+          <span>ARCHIVED — SIH 2026</span>
+        </div>
+        <h1 class="text-2xl sm:text-4xl font-black text-slate-900 tracking-tight">
+          Problem Statements Repository
+        </h1>
+        <p class="text-xs sm:text-sm text-slate-600 font-medium leading-relaxed">
+          <strong>37 Problem Statements</strong> were made available to participating teams for the SIH 2026 College-Level Internal Hackathon at UIT Prayagraj (PS01 → PS36 + PS37 Open Innovation).
+        </p>
+      </div>
+      <div class="flex flex-col sm:items-end gap-2 flex-shrink-0 text-center sm:text-right">
+        <span class="text-2xl sm:text-3xl font-black font-display text-blue-700">37 PS</span>
+        <span class="text-[11px] text-slate-500 font-medium">Software, Hardware &amp; Open</span>
+      </div>
+    </div>
+
+    <!-- Search & Domain Filter Bar -->
+    <div class="glass-card-pro rounded-2xl p-3 sm:p-4 flex flex-col sm:flex-row items-center justify-between gap-3">
+      <div class="relative w-full sm:w-80">
+        <input
+          id="ps-search-input"
+          type="text"
+          placeholder="Search by title, keyword, ID (e.g. PS-01)..."
+          class="w-full pl-9 pr-4 py-2 bg-slate-100/90 border border-slate-200 rounded-xl text-xs font-medium text-slate-800 focus:outline-none focus:ring-2 focus:ring-blue-500"
+        />
+        <svg class="w-4 h-4 text-slate-400 absolute left-3 top-2.5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z"/></svg>
+      </div>
       
-      <!-- Top Row: Search + Quick Stats -->
-      <div class="flex flex-col sm:flex-row items-center justify-between gap-3 mb-4">
-        <div class="relative w-full sm:max-w-md">
-          <input
-            type="text"
-            id="ps-search"
-            placeholder="Search by Title, ID (e.g. PS-01) or Domain..."
-            class="w-full pl-10 pr-4 py-3 sm:py-2.5 bg-slate-50 border border-slate-300 rounded-xl text-sm text-slate-800 placeholder-slate-400 focus:outline-none focus:ring-2 focus:ring-blue-500 focus:bg-white transition-colors"
-          />
-          <svg class="w-4 h-4 text-slate-400 absolute left-3.5 top-3.5 sm:top-3" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z"/>
-          </svg>
-        </div>
-
-        <div class="flex items-center gap-3 w-full sm:w-auto justify-between sm:justify-end text-xs font-bold text-slate-600">
-          <span id="ps-results-count" class="bg-blue-50 text-blue-800 border border-blue-200 px-3 py-1.5 rounded-lg text-xs">
-            Showing problem statements
-          </span>
-          <button type="button" id="ps-reset-filters" class="text-blue-600 hover:text-blue-800 underline font-semibold text-xs transition-colors hidden">
-            Reset Filters
-          </button>
-        </div>
+      <div class="flex items-center gap-1.5 flex-wrap w-full sm:w-auto text-xs font-bold" id="domain-filters">
+        <button data-domain="all" class="ps-filter-btn px-3 py-1.5 rounded-xl bg-blue-600 text-white shadow-xs">All (37)</button>
+        <button data-domain="Agriculture" class="ps-filter-btn px-3 py-1.5 rounded-xl bg-slate-100 text-slate-700 hover:bg-slate-200">Agriculture</button>
+        <button data-domain="Healthcare" class="ps-filter-btn px-3 py-1.5 rounded-xl bg-slate-100 text-slate-700 hover:bg-slate-200">Healthcare</button>
+        <button data-domain="Smart Education" class="ps-filter-btn px-3 py-1.5 rounded-xl bg-slate-100 text-slate-700 hover:bg-slate-200">Education</button>
+        <button data-domain="Smart Automation" class="ps-filter-btn px-3 py-1.5 rounded-xl bg-slate-100 text-slate-700 hover:bg-slate-200">Automation</button>
+        <button data-domain="Open Innovation" class="ps-filter-btn px-3 py-1.5 rounded-xl bg-slate-100 text-slate-700 hover:bg-slate-200">Open Innovation</button>
       </div>
-
-      <!-- Second Row: Type Filter only -->
-      <div class="mb-4">
-        <label class="block text-[11px] font-bold text-slate-600 uppercase tracking-wider mb-1.5">Technology Type</label>
-        <div class="flex items-center gap-1.5 flex-wrap" id="type-filter-group">
-          <button type="button" class="type-btn active" data-type="All">All Types</button>
-          <button type="button" class="type-btn" data-type="Software">🖥️ Software</button>
-          <button type="button" class="type-btn" data-type="Hardware">⚙️ Hardware</button>
-          <button type="button" class="type-btn" data-type="Hybrid">🔀 Hybrid</button>
-        </div>
-      </div>
-
-      <!-- Sort By Row: Most Popular filter -->
-      <div class="mb-4 pb-4 border-b border-slate-100">
-        <label class="block text-[11px] font-bold text-slate-600 uppercase tracking-wider mb-1.5">Sort By</label>
-        <div class="flex items-center gap-2 flex-wrap" id="sort-filter-group">
-          <button type="button" class="sort-btn active" data-sort="default">
-            📋 Default Order
-          </button>
-          <button type="button" class="sort-btn" data-sort="popular">
-            🔥 Most Popular <span id="sort-popular-hint" class="text-[9px] opacity-70 ml-0.5">(by teams)</span>
-          </button>
-          <button type="button" class="sort-btn" data-sort="least">
-            🌱 Least Chosen <span class="text-[9px] opacity-70 ml-0.5">(hidden gems)</span>
-          </button>
-          <button type="button" class="sort-btn" data-sort="zero">
-            🆓 0 Teams Taken
-          </button>
-        </div>
-      </div>
-
-      <!-- Third Row: Domain Chips (Swipeable Horizontal Scroll on Mobile) -->
-      <div>
-        <div class="flex items-center justify-between mb-1.5">
-          <label class="block text-[11px] font-bold text-slate-600 uppercase tracking-wider">Filter by Domain</label>
-          <span class="text-[10px] text-slate-400 font-medium">Swipe horizontally 👈👉</span>
-        </div>
-        <div class="flex items-center gap-2 overflow-x-auto whitespace-nowrap p-2 border border-slate-200/80 rounded-xl bg-slate-50/70 max-h-48" id="domain-chips-container">
-          <!-- Domain chips rendered dynamically -->
-        </div>
-      </div>
-
     </div>
 
-    <!-- Grid of Problem Statement Cards -->
-    <div id="ps-grid" class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-5">
-      <!-- Dynamic Problem Statement Cards -->
-    </div>
-
-    <!-- Empty State Message -->
-    <div id="ps-empty-state" class="hidden text-center py-16 px-4 bg-white border border-slate-200/80 rounded-2xl shadow-xs">
-      <div class="w-16 h-16 bg-slate-100 text-slate-400 rounded-full flex items-center justify-center mx-auto mb-3 text-2xl">🔍</div>
-      <h3 class="text-base font-bold text-slate-800 mb-1">No Problem Statements Found</h3>
-      <p class="text-xs text-slate-500 max-w-sm mx-auto mb-4">No problem statements match your selected filter criteria. Try clearing search or domain filters.</p>
-      <button type="button" id="btn-clear-empty" class="inline-flex items-center gap-1.5 bg-blue-600 text-white font-bold text-xs px-4 py-2 rounded-xl hover:bg-blue-700 transition-colors">
-        Clear All Filters
-      </button>
+    <!-- PS Grid Container -->
+    <div id="ps-grid" class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4">
+      <!-- Injected by client script -->
     </div>
 
   </main>
 
-  <!-- Problem Statement Detail Modal -->
-  <div id="ps-detail-modal" class="fixed inset-0 z-50 hidden bg-slate-900/60 backdrop-blur-xs flex items-center justify-center p-3 sm:p-4 overflow-y-auto" role="dialog" aria-modal="true">
-    <div class="bg-white border border-slate-200 rounded-2xl max-w-2xl w-full max-h-[90vh] flex flex-col shadow-2xl overflow-hidden animate-in fade-in zoom-in-95 duration-200">
-      
-      <!-- Modal Header -->
-      <div class="px-5 py-4 border-b border-slate-200 flex items-start justify-between gap-3 bg-slate-50">
-        <div class="flex-1 min-w-0">
-          <div class="flex items-center gap-2 flex-wrap mb-1">
-            <span id="modal-ps-id" class="px-2.5 py-0.5 rounded-md text-xs font-black bg-blue-600 text-white whitespace-nowrap flex-shrink-0"></span>
-            <span id="modal-ps-domain" class="px-2.5 py-0.5 rounded-full text-xs font-bold border"></span>
-            <span id="modal-ps-type" class="px-2 py-0.5 rounded-md text-xs font-bold bg-slate-200 text-slate-700"></span>
-            <span id="modal-ps-diff" class="px-2 py-0.5 rounded-md text-xs font-bold border"></span>
-          </div>
-          <h2 id="modal-ps-title" class="text-base sm:text-lg font-extrabold text-slate-900 leading-snug"></h2>
-        </div>
-        <button type="button" id="modal-close-btn" class="text-slate-400 hover:text-slate-700 p-1.5 rounded-lg hover:bg-slate-200/60 transition-colors" title="Close dialog">
-          <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12"/></svg>
-        </button>
-      </div>
-
-      <!-- Modal Body -->
-      <div class="p-5 overflow-y-auto space-y-4 text-xs sm:text-sm text-slate-700 flex-1">
-        <div>
-          <h4 class="text-xs font-bold uppercase tracking-wider text-slate-500 mb-1">Problem Statement</h4>
-          <p id="modal-ps-desc" class="text-slate-800 leading-relaxed font-medium bg-slate-50 p-3 rounded-xl border border-slate-200/80"></p>
-        </div>
-
-        <div>
-          <h4 class="text-xs font-bold uppercase tracking-wider text-slate-500 mb-1">Beneficiaries</h4>
-          <p id="modal-ps-beneficiaries" class="text-slate-800 font-semibold"></p>
-        </div>
-      </div>
-
-      <!-- Modal Footer -->
-      <div class="p-4 border-t border-slate-200 bg-slate-50 flex items-center justify-between gap-2 flex-wrap" id="modal-action-wrap">
-        <a
-          href="assets/SIH-2026-Idea-Presentation-Template.pptx"
-          download="SIH2026-IDEA-Presentation-Format.pptx"
-          class="inline-flex items-center gap-1.5 text-xs font-black text-slate-950 bg-amber-400 hover:bg-amber-500 px-4 py-2 rounded-xl transition-all shadow-xs active:scale-95"
-          title="Download official SIH 2026 Idea Presentation PPT format"
-        >
-          <svg class="w-4 h-4 text-slate-950" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 16v1a3 3 0 003 3h10a3 3 0 003-3v-1m-4-4l-4 4m0 0l-4-4m4 4V4"/></svg>
-          <span>📊 Download Ideal PPT (936 KB)</span>
-        </a>
-        <a
-          href="assets/sih-2026-guidelines.pdf"
-          download="SIH2026-Official-Guidelines.pdf"
-          class="inline-flex items-center gap-1.5 text-xs font-extrabold text-white bg-blue-600 hover:bg-blue-700 px-4 py-2 rounded-xl transition-all shadow-xs active:scale-95"
-          title="Download official SIH 2026 Guidelines PDF"
-        >
-          <svg class="w-4 h-4 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 16v1a3 3 0 003 3h10a3 3 0 003-3v-1m-4-4l-4 4m0 0l-4-4m4 4V4"/></svg>
-          <span>📑 Guidelines PDF (8.4 MB)</span>
-        </a>
-      </div>
-      </div>
-
-    </div>
-  </div>        </div>
-  <!-- Ultra-Attractive Clean, Engaging & Mobile-Responsive Premium Footer -->
-    <!-- ── Rich Institutional Footer ── -->
+  <!-- ── Rich Institutional Archive Footer ── -->
   <footer class="bg-gradient-to-b from-slate-50 via-white to-blue-50/50 border-t border-slate-200/90 pt-10 pb-8 mt-auto w-full" role="contentinfo">
     <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 space-y-6">
       
@@ -291,17 +211,20 @@
           <div class="flex flex-col items-center sm:items-start">
             <div class="flex items-center gap-2 flex-wrap justify-center sm:justify-start">
               <span class="text-base font-black text-[#1e3a8a] leading-none">United Institute of Technology</span>
-              <span class="text-[10px] font-extrabold text-blue-700 bg-blue-50 border border-blue-200 px-2.5 py-0.5 rounded-full">SIH 2026</span>
+              <span class="text-[10px] font-black text-amber-800 bg-amber-50 border border-amber-200 px-2 py-0.5 rounded-full">EVENT ARCHIVE</span>
             </div>
-            <p class="text-xs font-medium text-slate-500 mt-1">Smart India Hackathon 2026 · Internal Conclave Archive · Naini, Prayagraj, UP</p>
+            <p class="text-xs font-medium text-slate-500 mt-1">Smart India Hackathon 2026 · College-Level Internal Hackathon Archive · Naini, Prayagraj, UP</p>
           </div>
         </div>
 
         <nav class="flex items-center gap-2 text-xs font-bold text-slate-600 flex-wrap justify-center" aria-label="Footer Navigation">
-          <a href="index.html#hero" class="hover:text-blue-700 px-3 py-1.5 rounded-xl hover:bg-blue-50/80 transition-colors">Home</a>
-          <a href="index.html#journey" class="hover:text-blue-700 px-3 py-1.5 rounded-xl hover:bg-blue-50/80 transition-colors">The Journey</a>
-          <a href="index.html#process" class="hover:text-blue-700 px-3 py-1.5 rounded-xl hover:bg-blue-50/80 transition-colors">Top 50 Guidelines</a>
-          <a href="gallery.html" class="text-emerald-800 font-extrabold px-3 py-1.5 rounded-xl hover:bg-emerald-50 transition-colors">38 Photos 📸</a>
+          <a href="index.html" class="hover:text-blue-700 px-2.5 py-1.5 rounded-xl hover:bg-blue-50/80 transition-colors">Home</a>
+          <a href="problems.html" class="hover:text-blue-700 px-2.5 py-1.5 rounded-xl hover:bg-blue-50/80 transition-colors">Problems</a>
+          <a href="teams.html" class="hover:text-blue-700 px-2.5 py-1.5 rounded-xl hover:bg-blue-50/80 transition-colors">Teams</a>
+          <a href="results.html" class="hover:text-blue-700 px-2.5 py-1.5 rounded-xl hover:bg-blue-50/80 transition-colors">Results</a>
+          <a href="judges.html" class="hover:text-blue-700 px-2.5 py-1.5 rounded-xl hover:bg-blue-50/80 transition-colors">Judges</a>
+          <a href="gallery.html" class="hover:text-emerald-700 px-2.5 py-1.5 rounded-xl hover:bg-emerald-50 transition-colors">Gallery</a>
+          <a href="report.html" class="hover:text-blue-700 px-2.5 py-1.5 rounded-xl hover:bg-blue-50/80 transition-colors">Report</a>
         </nav>
       </div>
 
@@ -312,7 +235,7 @@
             &copy; 2026 <strong>Smart India Hackathon (SIH) · UIT Prayagraj</strong>
           </p>
           <p class="text-[11px] text-slate-500">
-            Powered by <strong>United Institute of Technology (UIT)</strong> &amp; <strong>SIH Organizing Committee</strong>
+            Official Institutional Event Archive · Powered by <strong>United Institute of Technology (UIT)</strong>
           </p>
         </div>
         
@@ -333,65 +256,101 @@
     </div>
   </footer>
 
-  <!-- High Demand PS-37 Announcement Modal for First-Time Visitors (Clean Emerald Theme) -->
-  <div id="ps37-announcement-modal" class="fixed inset-0 z-[100] flex items-center justify-center p-4 bg-slate-900/40 backdrop-blur-sm hidden transition-all duration-300">
-    <div class="bg-white border border-slate-200 rounded-3xl p-6 sm:p-8 max-w-lg w-full shadow-2xl relative overflow-hidden">
-      <div class="inline-flex items-center gap-2 px-3 py-1 bg-emerald-100 text-emerald-900 border border-emerald-300/80 rounded-full text-xs font-black mb-3">
-        <span>💡 HIGH DEMAND ADDITION</span>
-      </div>
-
-      <h3 class="text-xl sm:text-2xl font-black text-slate-900 tracking-tight mb-2">
-        PS-37: Open Innovation Added! 🎉
-      </h3>
-
-      <p class="text-xs sm:text-sm text-slate-600 font-medium leading-relaxed mb-4">
-        As per high demand from students &amp; participants, we have officially introduced <strong class="text-emerald-800 font-extrabold">PS-37: Open Innovation</strong>! You can now solve and build solutions for <strong>any real-world problem statement</strong> in software, hardware, or hybrid domains.
-      </p>
-
-      <div class="bg-emerald-50/80 border border-emerald-200/90 rounded-2xl p-4 mb-6">
-        <div class="flex items-center gap-2 text-xs font-black text-emerald-900 mb-1">
-          <span>💡 What is Open Innovation?</span>
-        </div>
-        <p class="text-[11px] sm:text-xs text-slate-700 font-semibold leading-relaxed">
-          Select your own problem statement, design your custom prototype, and pitch directly in the SIH 2026 Internal Evaluation Hackathon!
-        </p>
-      </div>
-
-      <div class="flex items-center justify-end gap-3">
-        <button id="close-ps37-modal" type="button" class="w-full sm:w-auto px-6 py-3 bg-emerald-600 hover:bg-emerald-700 text-white font-black text-xs sm:text-sm rounded-xl shadow-xs transition-transform active:scale-95">
-          View PS-37 Details →
-        </button>
-      </div>
-    </div>
-  </div>
-
+  <!-- ── Interactive Client Script for Mobile Menu ── -->
   <script>
-    document.addEventListener('DOMContentLoaded', () => {
-      const modal = document.getElementById('ps37-announcement-modal');
-      const closeBtn = document.getElementById('close-ps37-modal');
-      if (modal && !localStorage.getItem('sih_ps37_seen_v1')) {
-        setTimeout(() => {
-          modal.classList.remove('hidden');
-        }, 600);
-      }
-      if (closeBtn && modal) {
-        closeBtn.addEventListener('click', () => {
-          localStorage.setItem('sih_ps37_seen_v1', '1');
-          modal.classList.add('hidden');
-          const card = document.querySelector('[data-ps-id="PS-37"]');
-          if (card) card.scrollIntoView({ behavior: 'smooth' });
+  document.addEventListener('DOMContentLoaded', () => {
+    const mobileBtn = document.getElementById('mobile-menu-btn');
+    const mobileMenu = document.getElementById('mobile-menu');
+    const iconOpen = document.getElementById('menu-icon-open');
+    const iconClose = document.getElementById('menu-icon-close');
+
+    if (mobileBtn && mobileMenu) {
+      mobileBtn.addEventListener('click', () => {
+        const isHidden = mobileMenu.classList.contains('hidden');
+        if (isHidden) {
+          mobileMenu.classList.remove('hidden');
+          iconOpen.classList.add('hidden');
+          iconClose.classList.remove('hidden');
+          mobileBtn.setAttribute('aria-expanded', 'true');
+        } else {
+          mobileMenu.classList.add('hidden');
+          iconOpen.classList.remove('hidden');
+          iconClose.classList.add('hidden');
+          mobileBtn.setAttribute('aria-expanded', 'false');
+        }
+      });
+
+      document.querySelectorAll('.mobile-nav-link').forEach(link => {
+        link.addEventListener('click', () => {
+          mobileMenu.classList.add('hidden');
+          iconOpen.classList.remove('hidden');
+          iconClose.classList.add('hidden');
+          mobileBtn.setAttribute('aria-expanded', 'false');
         });
-        modal.addEventListener('click', (e) => {
-          if (e.target === modal) {
-            localStorage.setItem('sih_ps37_seen_v1', '1');
-            modal.classList.add('hidden');
-          }
-        });
-      }
-    });
+      });
+    }
+  });
   </script>
 
-  <script src="js/data/problem-statements.js" defer></script>
-  <script src="js/problems.js" defer></script>
+  <script>
+  document.addEventListener('DOMContentLoaded', () => {
+    const grid = document.getElementById('ps-grid');
+    const searchInput = document.getElementById('ps-search-input');
+    const filterBtns = document.querySelectorAll('.ps-filter-btn');
+
+    let currentDomain = 'all';
+
+    function renderPS(items) {
+      if (!items || items.length === 0) {
+        grid.innerHTML = '<div class="col-span-full text-center py-12 glass-card-pro rounded-3xl text-slate-500 font-bold text-sm">No problem statements matched your search.</div>';
+        return;
+      }
+      grid.innerHTML = items.map(ps => `
+        <article class="glass-card-pro rounded-3xl p-5 flex flex-col justify-between group">
+          <div class="space-y-3">
+            <div class="flex items-center justify-between">
+              <span class="text-xs font-black text-blue-700 bg-blue-50 border border-blue-200 px-2.5 py-0.5 rounded-md">${ps.id}</span>
+              <span class="text-[10px] font-extrabold uppercase px-2 py-0.5 rounded-md ${ps.type === 'Hardware' ? 'bg-amber-50 text-amber-800 border border-amber-200' : 'bg-indigo-50 text-indigo-800 border border-indigo-200'}">${ps.type || 'Software'}</span>
+            </div>
+            <div>
+              <h3 class="text-sm font-bold text-slate-900 group-hover:text-blue-700 transition-colors leading-snug">${ps.title}</h3>
+              <p class="text-[11px] font-extrabold text-slate-500 mt-1">Domain: ${ps.domain}</p>
+            </div>
+            <p class="text-xs text-slate-600 font-medium line-clamp-3 leading-relaxed">${ps.problemStatement}</p>
+          </div>
+          <div class="mt-4 pt-3 border-t border-slate-100 flex items-center justify-between text-[11px]">
+            <span class="font-bold text-slate-400">Archived Record</span>
+            <span class="text-blue-700 font-bold">${ps.difficulty || 'All Tracks'}</span>
+          </div>
+        </article>
+      `).join('');
+    }
+
+    function filterAndRender() {
+      const q = searchInput.value.toLowerCase().trim();
+      const filtered = PROBLEM_STATEMENTS.filter(ps => {
+        const matchesDomain = (currentDomain === 'all' || ps.domain === currentDomain || (currentDomain === 'Open Innovation' && ps.id === 'PS-37'));
+        const matchesQuery = (!q || ps.id.toLowerCase().includes(q) || ps.title.toLowerCase().includes(q) || ps.domain.toLowerCase().includes(q) || ps.problemStatement.toLowerCase().includes(q));
+        return matchesDomain && matchesQuery;
+      });
+      renderPS(filtered);
+    }
+
+    if (typeof PROBLEM_STATEMENTS !== 'undefined') {
+      renderPS(PROBLEM_STATEMENTS);
+    }
+
+    searchInput.addEventListener('input', filterAndRender);
+
+    filterBtns.forEach(btn => {
+      btn.addEventListener('click', () => {
+        filterBtns.forEach(b => b.className = 'ps-filter-btn px-3 py-1.5 rounded-xl bg-slate-100 text-slate-700 hover:bg-slate-200');
+        btn.className = 'ps-filter-btn px-3 py-1.5 rounded-xl bg-blue-600 text-white shadow-xs';
+        currentDomain = btn.getAttribute('data-domain');
+        filterAndRender();
+      });
+    });
+  });
+  </script>
 </body>
 </html>

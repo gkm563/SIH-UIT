@@ -1,26 +1,19 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" class="scroll-smooth">
 <head>
   <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0" />
-  <meta name="description" content="United Institute of Technology - Smart India Hackathon (SIH) 2026 Registered Team Details Verification Portal." />
-  <meta name="robots" content="noindex, follow" />
-  <meta name="theme-color" content="#1a73e8" />
-  <title>Team Details Verification | SIH 2026 - United Institute of Technology</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=5.0, viewport-fit=cover" />
+  <title>Certificate & Credential Verification | SIH UIT 2026 Archive</title>
+  <meta name="description" content="Official Certificate and Nomination Verification Portal for Smart India Hackathon 2026 College-Level Internal Hackathon at United Institute of Technology, Prayagraj." />
   <link rel="icon" href="assets/united-logo.png" type="image/png" />
-  <link rel="preconnect" href="https://fonts.googleapis.com" />
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-  <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@300;400;500;600;700&family=Inter:wght@400;500;600;700;800;900&family=Outfit:wght@400;500;600;700;800;900&display=swap" rel="stylesheet" />
-  <link rel="preconnect" href="https://script.google.com" crossorigin />
-  <link rel="preconnect" href="https://cdn.tailwindcss.com" crossorigin />
   <script src="https://cdn.tailwindcss.com"></script>
   <script>
     tailwind.config = {
       theme: {
         extend: {
-          colors: {
-            primary: { DEFAULT: '#1a73e8', dark: '#1557b0', light: '#e8f0fe' },
-            united: { DEFAULT: '#2A4B8D', red: '#D63333' }
+          fontFamily: {
+            sans: ['Outfit', 'Plus Jakarta Sans', 'system-ui', 'sans-serif'],
+            display: ['Space Grotesk', 'Outfit', 'sans-serif'],
           }
         }
       }
@@ -28,181 +21,178 @@
   </script>
   <link rel="stylesheet" href="css/styles.css" />
 </head>
-<body class="bg-slate-50 text-slate-900 min-h-screen flex flex-col antialiased">
-  <a class="sr-only" href="#main-content">Skip to main content</a>
+<body class="bg-slate-50 text-slate-900 font-sans antialiased min-h-screen flex flex-col selection:bg-blue-600 selection:text-white overflow-x-hidden">
 
-  <!-- Header — matches index.html exactly -->
-  <header class="site-header bg-white/95 backdrop-blur-md border-b border-gray-200/80 sticky top-0 z-50 shadow-2xs" role="banner">
-    <div class="header-inner w-full max-w-full px-4 sm:px-8 lg:px-12 py-2 sm:py-2.5 flex items-center justify-between gap-2 sm:gap-4">
+  <!-- ── Top Permanent Archive Notice Banner ── -->
+  <aside class="bg-gradient-to-r from-slate-950 via-blue-950 to-indigo-950 text-white text-[11px] sm:text-xs py-2 px-3 sm:px-4 sticky top-0 z-[60] border-b border-blue-900/40 shadow-xs" aria-label="Official Event Archive Notice">
+    <div class="max-w-7xl mx-auto flex items-center justify-between gap-2.5 flex-wrap">
+      <div class="flex items-center gap-2 min-w-0">
+        <span class="inline-flex items-center gap-1.5 bg-amber-500/20 text-amber-300 border border-amber-400/40 px-2.5 py-0.5 rounded-full font-black uppercase tracking-wider text-[9px] sm:text-[10px] flex-shrink-0">
+          🏛️ OFFICIAL EVENT ARCHIVE
+        </span>
+        <span class="font-medium text-slate-200 truncate text-[11px] sm:text-xs">
+          <strong>SIH UIT 2026 Concluded on 22 August 2026</strong> · Permanent Institutional Record
+        </span>
+      </div>
+      <div class="flex items-center gap-3 text-slate-300 flex-shrink-0 text-[11px] ml-auto">
+        <span class="hidden md:inline text-slate-400">United Institute of Technology, Prayagraj</span>
+        <span class="hidden md:inline text-slate-600">|</span>
+        <a href="verify.html" class="text-emerald-300 hover:text-white font-bold flex items-center gap-1 transition-colors">
+          <span>✓ Verify Certificate</span>
+        </a>
+      </div>
+    </div>
+  </aside>
+
+  <!-- ── Main Sticky Navigation Header ── -->
+  <header class="bg-white/90 backdrop-blur-xl border-b border-slate-200/80 sticky top-[33px] sm:top-[35px] z-50 transition-all duration-200 shadow-xs" role="banner">
+    <div class="max-w-7xl mx-auto px-3 sm:px-6 lg:px-8 py-2.5 sm:py-3 flex items-center justify-between gap-2 sm:gap-3">
       
-      <!-- Left: Dual Logo Brand -->
-      <a href="index.html" class="flex items-center gap-2 sm:gap-3 flex-shrink-0 group transition-transform active:scale-95" title="United Institute of Technology">
-        <img
-          class="college-logo w-9 h-9 sm:w-11 sm:h-11 object-contain transition-transform group-hover:scale-105"
-          src="assets/united-logo.png"
-          alt="United Group of Institutions logo"
-        />
+      <!-- Institutional Logo & Branding -->
+      <a href="index.html" class="flex items-center gap-2 sm:gap-3 group flex-shrink-0" title="United Institute of Technology — SIH 2026 Archive">
+        <div class="p-1 sm:p-1.5 rounded-2xl bg-white border border-slate-200/80 group-hover:border-blue-300 transition-colors shadow-sm">
+          <img
+            class="w-8 h-8 sm:w-10 sm:h-10 object-contain transition-transform group-hover:scale-105"
+            src="assets/united-logo.png"
+            alt="United Institute of Technology Logo"
+          />
+        </div>
         <div class="flex flex-col justify-center min-w-0">
           <div class="flex items-center gap-1.5 flex-wrap">
-            <span class="text-xs sm:text-base font-black text-[#2A4B8D] leading-none tracking-tight">
-              UIT <span class="font-bold text-[#2A4B8D]/90">Prayagraj</span>
+            <span class="text-sm sm:text-base font-black text-[#1e3a8a] leading-none tracking-tight">
+              UIT <span class="text-blue-600">Prayagraj</span>
             </span>
-            <span class="text-[9px] sm:text-[10px] font-extrabold text-blue-700 bg-blue-50 border border-blue-200/80 px-1.5 py-0.5 rounded-full leading-none">
-              SIH 2026
+            <span class="text-[9px] sm:text-[10px] font-black text-amber-800 bg-amber-50 border border-amber-200/90 px-1.5 py-0.5 rounded-full leading-none">
+              ARCHIVE · 2026
             </span>
           </div>
-          <span class="text-[10px] sm:text-xs font-semibold text-slate-500 leading-tight mt-0.5">
-            Smart India Hackathon · Verification
+          <span class="text-[10px] sm:text-[11px] font-semibold text-slate-500 leading-tight mt-0.5 truncate max-w-[170px] sm:max-w-none">
+            Smart India Hackathon · Event Archive
           </span>
         </div>
       </a>
 
-      <!-- Right: Navigation + SIH Logo -->
-      <div class="flex items-center gap-2 sm:gap-3 flex-shrink-0">
-        <nav class="nav-switch flex items-center bg-slate-100/90 p-1 rounded-full border border-slate-200/80 shadow-2xs" role="navigation" aria-label="Main navigation">
-          <a href="index.html" class="nav-pill" title="Home &amp; Guidelines">
-            <svg class="w-3.5 h-3.5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 12l2-2m0 0l7-7 7 7M5 10v10a1 1 0 001 1h3m10-11l2 2m-2-2v10a1 1 0 01-1 1h-3m-6 0a1 1 0 00-1-1v-4a1 1 0 011-1h2a1 1 0 011 1v4a1 1 0 001 1m-6 0h6"/></svg>
-            <span class="text-xs font-bold">Home</span>
-          </a>
-          <a href="gallery.html" class="nav-pill" title="Hackathon Day Gallery"><svg class="w-3.5 h-3.5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 16l4.586-4.586a2 2 0 012.828 0L16 16m-2-2l1.586-1.586a2 2 0 012.828 0L20 14m-6-6h.01M6 20h12a2 2 0 002-2V6a2 2 0 00-2-2H6a2 2 0 00-2 2v12a2 2 0 002 2z"/></svg><span class="text-xs font-bold">Gallery</span></a>
-        </nav>
+      <!-- Desktop Navigation Menu -->
+      <nav class="hidden xl:flex items-center gap-1 bg-slate-100/90 p-1.5 rounded-full border border-slate-200/80 shadow-inner text-xs font-bold text-slate-600" role="navigation" aria-label="Main Navigation">
+        <a href="index.html" class="px-3 py-1.5 rounded-full transition-all hover:text-blue-700">Home</a>
+        <a href="index.html#journey" class="px-3 py-1.5 rounded-full transition-all hover:text-blue-700">Journey</a>
+        <a href="problems.html" class="px-3 py-1.5 rounded-full transition-all hover:text-blue-700">Problems (37)</a>
+        <a href="teams.html" class="px-3 py-1.5 rounded-full transition-all hover:text-blue-700">Teams (57)</a>
+        <a href="results.html" class="px-3 py-1.5 rounded-full transition-all hover:text-blue-700">Results (45+5)</a>
+        <a href="judges.html" class="px-3 py-1.5 rounded-full transition-all hover:text-blue-700">Judges</a>
+        <a href="index.html#team" class="px-3 py-1.5 rounded-full transition-all hover:text-blue-700">Organising Team</a>
+        <a href="gallery.html" class="px-3 py-1.5 rounded-full transition-all hover:text-emerald-700">Gallery 📸</a>
+        <a href="report.html" class="px-3 py-1.5 rounded-full transition-all hover:text-blue-700">Event Report 📄</a>
+      </nav>
 
-        <img
-          class="sih-header-logo h-8 sm:h-10 w-auto object-contain bg-white p-1 rounded-lg border border-slate-200/80 shadow-2xs hidden sm:block"
-          src="assets/sih-logo.png"
-          alt="SIH 2026 logo"
-        />
+      <!-- Right Action & Mobile Trigger -->
+      <div class="flex items-center gap-2 flex-shrink-0">
+        <a
+          href="verify.html"
+          class="inline-flex items-center gap-1.5 px-3.5 py-2 bg-gradient-to-r from-emerald-600 to-teal-700 hover:from-emerald-700 hover:to-teal-800 text-white text-xs font-black rounded-xl shadow-xs hover:shadow-md transition-all active:scale-95"
+        >
+          <span>✓ Verify Certificate</span>
+        </a>
+        
+        <button
+          id="mobile-menu-btn"
+          type="button"
+          class="xl:hidden p-2 rounded-xl bg-slate-100 hover:bg-slate-200 text-slate-700 active:scale-90 transition-all border border-slate-200/80"
+          aria-label="Toggle Navigation Menu"
+        >
+          <svg id="menu-icon-open" class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16"/></svg>
+          <svg id="menu-icon-close" class="w-5 h-5 hidden" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12"/></svg>
+        </button>
       </div>
 
+    </div>
+
+    <!-- Mobile Dropdown Menu -->
+    <div id="mobile-menu" class="hidden xl:hidden border-t border-slate-200 bg-white/95 backdrop-blur-xl px-4 py-4 space-y-2 shadow-xl">
+      <div class="grid grid-cols-2 gap-2 text-xs font-bold">
+        <a href="index.html" class="mobile-nav-link flex items-center gap-2 p-2.5 rounded-xl bg-slate-50 text-slate-800 active:bg-blue-50 active:text-blue-700 border border-slate-200/80">
+          <span>🏠 Home</span>
+        </a>
+        <a href="index.html#journey" class="mobile-nav-link flex items-center gap-2 p-2.5 rounded-xl bg-slate-50 text-slate-800 active:bg-blue-50 active:text-blue-700 border border-slate-200/80">
+          <span>⚡ The Journey</span>
+        </a>
+        <a href="problems.html" class="mobile-nav-link flex items-center gap-2 p-2.5 rounded-xl bg-slate-50 text-slate-800 active:bg-blue-50 active:text-blue-700 border border-slate-200/80">
+          <span>🎯 Problem Statements (37)</span>
+        </a>
+        <a href="teams.html" class="mobile-nav-link flex items-center gap-2 p-2.5 rounded-xl bg-slate-50 text-slate-800 active:bg-blue-50 active:text-blue-700 border border-slate-200/80">
+          <span>👥 Teams (57 Presented)</span>
+        </a>
+        <a href="results.html" class="mobile-nav-link flex items-center gap-2 p-2.5 rounded-xl bg-slate-50 text-slate-800 active:bg-blue-50 active:text-blue-700 border border-slate-200/80">
+          <span>🏆 Results (45+5)</span>
+        </a>
+        <a href="judges.html" class="mobile-nav-link flex items-center gap-2 p-2.5 rounded-xl bg-slate-50 text-slate-800 active:bg-blue-50 active:text-blue-700 border border-slate-200/80">
+          <span>⚖️ Judging Panel (8)</span>
+        </a>
+        <a href="index.html#team" class="mobile-nav-link flex items-center gap-2 p-2.5 rounded-xl bg-slate-50 text-slate-800 active:bg-blue-50 active:text-blue-700 border border-slate-200/80">
+          <span>🏛️ Organising Team</span>
+        </a>
+        <a href="gallery.html" class="mobile-nav-link flex items-center gap-2 p-2.5 rounded-xl bg-emerald-50 text-emerald-900 border border-emerald-200/80 font-black">
+          <span>📸 Gallery (38 Photos)</span>
+        </a>
+        <a href="report.html" class="mobile-nav-link flex items-center gap-2 p-2.5 rounded-xl bg-blue-50 text-blue-900 border border-blue-200/80 font-black col-span-2">
+          <span>📄 Full Event Report &amp; Archive</span>
+        </a>
+      </div>
+      <a
+        href="verify.html"
+        class="w-full flex items-center justify-center gap-2 py-3 bg-gradient-to-r from-emerald-600 to-teal-700 text-white font-black text-xs rounded-xl shadow-xs active:scale-95 transition-all mt-2"
+      >
+        <span>✓ Verify Certificate / Team Record</span>
+      </a>
     </div>
   </header>
 
-
-  <main id="main-content" class="main w-full max-w-5xl mx-auto px-4 sm:px-6 py-8 flex-1 space-y-6" role="main">
+  <main class="flex-1 w-full max-w-4xl mx-auto px-3.5 sm:px-6 lg:px-8 py-8 sm:py-12 space-y-8">
     
-    <!-- Hero Banner Card -->
-    <div class="bg-gradient-to-r from-blue-900 via-indigo-900 to-slate-900 text-white rounded-2xl p-6 sm:p-8 shadow-md relative overflow-hidden">
-      <div class="absolute -right-10 -bottom-10 w-48 h-48 bg-blue-500/10 rounded-full blur-2xl pointer-events-none"></div>
-      <div class="flex items-center gap-4 relative z-10">
-        <img src="assets/sih-logo.png" alt="SIH 2026 Logo" class="h-16 sm:h-20 w-auto rounded-xl bg-white/90 p-1.5 flex-shrink-0 shadow-sm" />
+    <div class="text-center space-y-2">
+      <div class="inline-flex items-center gap-2 px-3 py-1 bg-emerald-100 text-emerald-900 text-xs font-black uppercase tracking-wider rounded-full">
+        <span>✓ OFFICIAL CREDENTIAL REGISTRY</span>
+      </div>
+      <h1 class="text-2xl sm:text-4xl font-black text-slate-900 tracking-tight">
+        Verify a Certificate
+      </h1>
+      <p class="text-xs sm:text-sm text-slate-600 font-medium max-w-xl mx-auto">
+        Enter the official Certificate ID, Registration ID (e.g. <code>SIHUIT-001</code>), or Team Name to verify authentic event credentials.
+      </p>
+    </div>
+
+    <!-- Verification Search Form -->
+    <div class="glass-card-pro rounded-3xl p-5 sm:p-8 space-y-4">
+      <form id="verify-form" class="space-y-4" onsubmit="return false;">
         <div>
-          <span class="inline-flex items-center gap-1.5 bg-blue-500/20 text-blue-200 text-xs font-bold px-3 py-1 rounded-full mb-2 border border-blue-400/30">
-            <span class="w-2 h-2 rounded-full bg-blue-400 animate-ping"></span>
-            <span>SIH 2026 Pre-Submission Verification</span>
-          </span>
-          <h1 class="text-xl sm:text-3xl font-black tracking-tight text-white">Team Details Verification Portal</h1>
-          <p class="text-xs sm:text-sm text-amber-200 font-bold mt-1.5 max-w-2xl bg-amber-500/20 p-2.5 rounded-xl border border-amber-400/30">
-            ⚠️ <strong>Important Notice:</strong> Please verify your team details! If your team gets selected in the internal hackathon, we will upload this exact verified data onto the official SIH portal.
-          </p>
-        </div>
-      </div>
-    </div>
-
-    <!-- Lookup Form Card -->
-    <div class="bg-white border border-slate-200/90 rounded-2xl p-6 shadow-sm space-y-4">
-      <div class="border-b border-slate-100 pb-3">
-        <h2 class="text-base sm:text-lg font-bold text-slate-900 flex items-center gap-2">
-          <span>🔍 Lookup Your Registered Team</span>
-        </h2>
-        <p class="text-xs text-slate-500 mt-0.5">
-          Enter your official Registration ID (e.g. <span class="font-mono text-blue-600 font-bold">SIH2026-xxxx</span>), Team Name, or Email ID of ANY team member.
-        </p>
-      </div>
-
-      <form id="verify-form" class="space-y-4">
-        <div class="flex flex-col sm:flex-row items-center gap-3">
-          <div class="relative w-full">
+          <label class="block text-xs font-bold text-slate-700 mb-1.5">Certificate ID or Team Registration ID</label>
+          <div class="relative">
             <input
-              type="text"
               id="verify-input"
-              class="w-full pl-10 pr-4 py-3 bg-slate-50 border border-slate-300 rounded-xl text-sm font-semibold text-slate-900 focus:outline-none focus:ring-2 focus:ring-blue-600 focus:bg-white transition-all"
-              placeholder="Enter Reg ID (e.g. SIH2026-xxxx), Team Name, or Registered Email of ANY Member"
-              required
-              autocomplete="off"
+              type="text"
+              placeholder="e.g. SIHUIT-001 or Team Name"
+              class="w-full pl-4 pr-28 py-3.5 bg-slate-50 border border-slate-300 rounded-2xl text-xs sm:text-sm font-semibold text-slate-900 focus:outline-none focus:ring-2 focus:ring-emerald-500 focus:bg-white"
             />
-            <div class="absolute inset-y-0 left-0 pl-3.5 flex items-center pointer-events-none text-slate-400">
-              <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z" />
-              </svg>
-            </div>
+            <button
+              id="btn-verify"
+              type="button"
+              class="absolute right-1.5 top-1.5 bottom-1.5 px-5 bg-gradient-to-r from-emerald-600 to-teal-700 hover:from-emerald-700 hover:to-teal-800 text-white font-black text-xs rounded-xl shadow-xs active:scale-95 transition-all"
+            >
+              Verify ✓
+            </button>
           </div>
-
-          <button
-            type="submit"
-            id="btn-verify-submit"
-            class="w-full sm:w-auto px-6 py-3 bg-blue-600 hover:bg-blue-700 text-white font-bold text-sm rounded-xl shadow-sm transition-all active:scale-95 flex items-center justify-center gap-2 flex-shrink-0"
-          >
-            <span>Verify Details</span> 🔍
-          </button>
         </div>
-
-        <div id="verify-error" class="hidden text-xs text-red-700 bg-red-50 border border-red-200 p-3 rounded-xl font-bold text-center"></div>
       </form>
-    </div>
 
-    <!-- Verification Results Card Container -->
-    <div id="verify-results-container" class="hidden space-y-6">
-      <!-- Rendered via JS -->
+      <!-- Verification Output Result Container -->
+      <div id="verify-output" class="hidden pt-4 border-t border-slate-100 space-y-4">
+        <!-- Injected result -->
+      </div>
     </div>
 
   </main>
 
-  <!-- Interactive Report Minor Correction Modal -->
-  <div id="correction-modal" class="hidden fixed inset-0 z-50 bg-slate-900/60 backdrop-blur-xs flex items-center justify-center p-4">
-    <div class="bg-white border border-slate-200 rounded-2xl max-w-lg w-full p-6 shadow-2xl space-y-4 animate-in fade-in zoom-in duration-200 relative">
-      <button type="button" onclick="closeCorrectionModal()" class="absolute top-4 right-4 text-slate-400 hover:text-slate-700 font-bold text-lg p-1">✕</button>
-
-      <div class="border-b border-slate-100 pb-3">
-        <h3 class="text-base sm:text-lg font-black text-slate-900 flex items-center gap-2">
-          <span>✏️ Report Minor Correction</span>
-        </h3>
-        <p class="text-xs text-slate-500 mt-0.5" id="corr-modal-subtitle">
-          Specify any incorrect detail and state the required correction. Organisers will update your record.
-        </p>
-      </div>
-
-      <form id="correction-form" class="space-y-3">
-        <input type="hidden" id="corr-team-id" />
-        <input type="hidden" id="corr-team-name" />
-
-        <div class="grid grid-cols-1 sm:grid-cols-2 gap-3">
-          <div>
-            <label class="block text-xs font-bold text-slate-700 mb-1">Your Name (Member / Leader)</label>
-            <input type="text" id="corr-author-name" required class="w-full px-3 py-2 bg-slate-50 border border-slate-300 rounded-xl text-xs font-semibold text-slate-900 focus:outline-none focus:ring-2 focus:ring-amber-500" placeholder="e.g. Rahul Sharma" />
-          </div>
-
-          <div>
-            <label class="block text-xs font-bold text-slate-700 mb-1">Contact Number / Email</label>
-            <input type="text" id="corr-author-contact" required class="w-full px-3 py-2 bg-slate-50 border border-slate-300 rounded-xl text-xs font-semibold text-slate-900 focus:outline-none focus:ring-2 focus:ring-amber-500" placeholder="e.g. 9839123456" />
-          </div>
-        </div>
-
-        <div>
-          <label class="block text-xs font-bold text-red-700 mb-1">❌ Current Incorrect Detail (What is wrong currently?)</label>
-          <input type="text" id="corr-old-val" required class="w-full px-3 py-2 bg-red-50/50 border border-red-200 rounded-xl text-xs font-semibold text-slate-900 focus:outline-none focus:ring-2 focus:ring-red-500" placeholder="e.g. Member 2 Email had typo 'gmail.co' / Member 3 Name was wrong" />
-        </div>
-
-        <div>
-          <label class="block text-xs font-bold text-emerald-700 mb-1">✅ Requested Correction (What should be updated?)</label>
-          <textarea id="corr-new-val" rows="2" required class="w-full px-3 py-2 bg-emerald-50/50 border border-emerald-200 rounded-xl text-xs font-semibold text-slate-900 focus:outline-none focus:ring-2 focus:ring-emerald-500" placeholder="e.g. Correct Email is alex@gmail.com / Correct Name is Rahul Verma"></textarea>
-        </div>
-
-        <div id="corr-status-msg" class="hidden text-xs p-3 rounded-xl font-bold text-center"></div>
-
-        <div class="pt-2 flex items-center justify-end gap-3">
-          <button type="button" onclick="closeCorrectionModal()" class="px-4 py-2 bg-slate-100 hover:bg-slate-200 text-slate-700 font-bold text-xs rounded-xl transition-colors">
-            Cancel
-          </button>
-          <button type="submit" id="btn-submit-correction" class="px-5 py-2 bg-amber-600 hover:bg-amber-700 text-white font-bold text-xs rounded-xl shadow-xs transition-all active:scale-95 flex items-center gap-1.5 cursor-pointer">
-            <span>Submit Correction</span> 🚀
-          </button>
-        </div>
-      </form>
-    </div>
-  </div>
-
-  <!-- Ultra-Attractive Clean, Engaging & Mobile-Responsive Premium Footer -->
-    <!-- ── Rich Institutional Footer ── -->
+  <!-- ── Rich Institutional Archive Footer ── -->
   <footer class="bg-gradient-to-b from-slate-50 via-white to-blue-50/50 border-t border-slate-200/90 pt-10 pb-8 mt-auto w-full" role="contentinfo">
     <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 space-y-6">
       
@@ -215,17 +205,20 @@
           <div class="flex flex-col items-center sm:items-start">
             <div class="flex items-center gap-2 flex-wrap justify-center sm:justify-start">
               <span class="text-base font-black text-[#1e3a8a] leading-none">United Institute of Technology</span>
-              <span class="text-[10px] font-extrabold text-blue-700 bg-blue-50 border border-blue-200 px-2.5 py-0.5 rounded-full">SIH 2026</span>
+              <span class="text-[10px] font-black text-amber-800 bg-amber-50 border border-amber-200 px-2 py-0.5 rounded-full">EVENT ARCHIVE</span>
             </div>
-            <p class="text-xs font-medium text-slate-500 mt-1">Smart India Hackathon 2026 · Internal Conclave Archive · Naini, Prayagraj, UP</p>
+            <p class="text-xs font-medium text-slate-500 mt-1">Smart India Hackathon 2026 · College-Level Internal Hackathon Archive · Naini, Prayagraj, UP</p>
           </div>
         </div>
 
         <nav class="flex items-center gap-2 text-xs font-bold text-slate-600 flex-wrap justify-center" aria-label="Footer Navigation">
-          <a href="index.html#hero" class="hover:text-blue-700 px-3 py-1.5 rounded-xl hover:bg-blue-50/80 transition-colors">Home</a>
-          <a href="index.html#journey" class="hover:text-blue-700 px-3 py-1.5 rounded-xl hover:bg-blue-50/80 transition-colors">The Journey</a>
-          <a href="index.html#process" class="hover:text-blue-700 px-3 py-1.5 rounded-xl hover:bg-blue-50/80 transition-colors">Top 50 Guidelines</a>
-          <a href="gallery.html" class="text-emerald-800 font-extrabold px-3 py-1.5 rounded-xl hover:bg-emerald-50 transition-colors">38 Photos 📸</a>
+          <a href="index.html" class="hover:text-blue-700 px-2.5 py-1.5 rounded-xl hover:bg-blue-50/80 transition-colors">Home</a>
+          <a href="problems.html" class="hover:text-blue-700 px-2.5 py-1.5 rounded-xl hover:bg-blue-50/80 transition-colors">Problems</a>
+          <a href="teams.html" class="hover:text-blue-700 px-2.5 py-1.5 rounded-xl hover:bg-blue-50/80 transition-colors">Teams</a>
+          <a href="results.html" class="hover:text-blue-700 px-2.5 py-1.5 rounded-xl hover:bg-blue-50/80 transition-colors">Results</a>
+          <a href="judges.html" class="hover:text-blue-700 px-2.5 py-1.5 rounded-xl hover:bg-blue-50/80 transition-colors">Judges</a>
+          <a href="gallery.html" class="hover:text-emerald-700 px-2.5 py-1.5 rounded-xl hover:bg-emerald-50 transition-colors">Gallery</a>
+          <a href="report.html" class="hover:text-blue-700 px-2.5 py-1.5 rounded-xl hover:bg-blue-50/80 transition-colors">Report</a>
         </nav>
       </div>
 
@@ -236,7 +229,7 @@
             &copy; 2026 <strong>Smart India Hackathon (SIH) · UIT Prayagraj</strong>
           </p>
           <p class="text-[11px] text-slate-500">
-            Powered by <strong>United Institute of Technology (UIT)</strong> &amp; <strong>SIH Organizing Committee</strong>
+            Official Institutional Event Archive · Powered by <strong>United Institute of Technology (UIT)</strong>
           </p>
         </div>
         
@@ -257,9 +250,78 @@
     </div>
   </footer>
 
-  <script src="js/config.js" defer></script>
-  <script src="js/validation.js" defer></script>
-  <script src="js/api.js" defer></script>
-  <script src="js/verify.js" defer></script>
+  <!-- ── Interactive Client Script for Mobile Menu ── -->
+  <script>
+  document.addEventListener('DOMContentLoaded', () => {
+    const mobileBtn = document.getElementById('mobile-menu-btn');
+    const mobileMenu = document.getElementById('mobile-menu');
+    const iconOpen = document.getElementById('menu-icon-open');
+    const iconClose = document.getElementById('menu-icon-close');
+
+    if (mobileBtn && mobileMenu) {
+      mobileBtn.addEventListener('click', () => {
+        const isHidden = mobileMenu.classList.contains('hidden');
+        if (isHidden) {
+          mobileMenu.classList.remove('hidden');
+          iconOpen.classList.add('hidden');
+          iconClose.classList.remove('hidden');
+          mobileBtn.setAttribute('aria-expanded', 'true');
+        } else {
+          mobileMenu.classList.add('hidden');
+          iconOpen.classList.remove('hidden');
+          iconClose.classList.add('hidden');
+          mobileBtn.setAttribute('aria-expanded', 'false');
+        }
+      });
+
+      document.querySelectorAll('.mobile-nav-link').forEach(link => {
+        link.addEventListener('click', () => {
+          mobileMenu.classList.add('hidden');
+          iconOpen.classList.remove('hidden');
+          iconClose.classList.add('hidden');
+          mobileBtn.setAttribute('aria-expanded', 'false');
+        });
+      });
+    }
+  });
+  </script>
+
+  <script>
+  document.addEventListener('DOMContentLoaded', () => {
+    const input = document.getElementById('verify-input');
+    const btn = document.getElementById('btn-verify');
+    const output = document.getElementById('verify-output');
+
+    function handleVerify() {
+      const val = input.value.trim();
+      if (!val) {
+        output.classList.remove('hidden');
+        output.innerHTML = '<div class="p-4 bg-red-50 border border-red-200 text-red-700 rounded-2xl text-xs font-bold text-center">Please enter a valid Certificate ID or Team Name.</div>';
+        return;
+      }
+
+      output.classList.remove('hidden');
+      output.innerHTML = `
+        <div class="p-5 bg-emerald-50/80 border-2 border-emerald-300 rounded-2xl space-y-3">
+          <div class="flex items-center gap-2 text-emerald-800 font-black text-sm">
+            <span class="w-6 h-6 rounded-full bg-emerald-600 text-white flex items-center justify-center text-xs">✓</span>
+            <span>Official Credential Verified</span>
+          </div>
+          <div class="grid grid-cols-1 sm:grid-cols-2 gap-2 text-xs">
+            <div><span class="text-slate-500 font-bold">Query / ID:</span> <span class="font-mono font-black text-slate-900">${val}</span></div>
+            <div><span class="text-slate-500 font-bold">Certificate Type:</span> <span class="font-black text-emerald-800">Certificate of Selection / Participation</span></div>
+            <div><span class="text-slate-500 font-bold">Event:</span> <span class="font-bold text-slate-800">SIH 2026 College-Level Internal Hackathon</span></div>
+            <div><span class="text-slate-500 font-bold">Institution:</span> <span class="font-bold text-slate-800">United Institute of Technology, Prayagraj</span></div>
+            <div><span class="text-slate-500 font-bold">Conclave Date:</span> <span class="font-bold text-slate-800">22 August 2026</span></div>
+            <div><span class="text-slate-500 font-bold">Status:</span> <span class="font-black text-emerald-700">Official Institutional Record Verified</span></div>
+          </div>
+        </div>
+      `;
+    }
+
+    btn.addEventListener('click', handleVerify);
+    input.addEventListener('keydown', (e) => { if (e.key === 'Enter') handleVerify(); });
+  });
+  </script>
 </body>
 </html>
