@@ -3,8 +3,8 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=5.0, viewport-fit=cover" />
-  <title>Comprehensive Event Report | Smart India Hackathon 2026 — UIT Prayagraj</title>
-  <meta name="description" content="Official Comprehensive Event Report and Institutional Documentation of the Smart India Hackathon 2026 College-Level Internal Hackathon conducted at United Institute of Technology, Prayagraj on 22 August 2026." />
+  <title>Official Conclave Report | Smart India Hackathon 2026 — UIT Prayagraj</title>
+  <meta name="description" content="Official Institutional Documentation and Comprehensive Event Report of the Smart India Hackathon 2026 College-Level Internal Hackathon conducted at United Institute of Technology, Prayagraj on 22 August 2026." />
   <link rel="icon" href="assets/united-logo.png" type="image/png" />
   <script src="https://cdn.tailwindcss.com"></script>
   <script>
@@ -20,11 +20,18 @@
     };
   </script>
   <link rel="stylesheet" href="css/styles.css" />
+  <style>
+    @media print {
+      header, footer, .no-print { display: none !important; }
+      body { background: white !important; color: black !important; font-size: 12pt; }
+      .glass-card-pro { border: 1px solid #cbd5e1 !important; box-shadow: none !important; backdrop-filter: none !important; background: white !important; }
+    }
+  </style>
 </head>
 <body class="bg-slate-50 text-slate-900 font-sans antialiased min-h-screen flex flex-col selection:bg-blue-600 selection:text-white overflow-x-hidden">
 
   <!-- ── Main Sticky Navigation Header ── -->
-  <header class="bg-white/90 backdrop-blur-xl border-b border-slate-200/80 sticky top-0 z-50 transition-all duration-200 shadow-xs site-header" role="banner">
+  <header class="bg-white/90 backdrop-blur-xl border-b border-slate-200/80 sticky top-0 z-50 transition-all duration-200 shadow-xs" role="banner">
     <div class="max-w-7xl mx-auto px-3 sm:px-6 lg:px-8 py-2.5 sm:py-3 flex items-center justify-between gap-2 sm:gap-3">
       
       <!-- Institutional Logo & Branding -->
@@ -114,28 +121,53 @@
     </div>
   </header>
 
-  <main class="flex-1 w-full max-w-5xl mx-auto px-3.5 sm:px-6 lg:px-8 py-8 sm:py-12 space-y-12">
+  <main class="flex-1 w-full max-w-5xl mx-auto px-3.5 sm:px-6 lg:px-8 py-6 sm:py-10 space-y-10">
     
-    <!-- ── Report Master Header Banner ── -->
-    <header class="glass-card-pro rounded-3xl p-6 sm:p-10 bg-gradient-to-r from-slate-950 via-blue-950 to-indigo-950 text-white space-y-5 shadow-2xl border border-blue-900/50 relative overflow-hidden site-header">
+    <!-- ── Print / Share Action Bar ── -->
+    <div class="flex items-center justify-between gap-3 no-print">
+      <a href="index.html" class="inline-flex items-center gap-1.5 text-xs font-black text-slate-600 hover:text-blue-700 transition-colors">
+        <span>← Back to Overview</span>
+      </a>
+      <div class="flex items-center gap-2">
+        <button onclick="window.print()" class="inline-flex items-center gap-2 px-4 py-2 bg-slate-900 hover:bg-slate-800 text-white text-xs font-black rounded-xl shadow-xs transition-all">
+          <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 17h2a2 2 0 002-2v-4a2 2 0 00-2-2H5a2 2 0 00-2 2v4a2 2 0 002 2h2m2 4h6a2 2 0 002-2v-4a2 2 0 00-2-2H9a2 2 0 00-2 2v4a2 2 0 002 2zm8-12V5a2 2 0 00-2-2H9a2 2 0 00-2 2v4h10z"/></svg>
+          <span>Print / Save as PDF</span>
+        </button>
+      </div>
+    </div>
+
+    <!-- ── Master Letterhead Banner ── -->
+    <header class="glass-card-pro rounded-3xl p-6 sm:p-10 bg-gradient-to-br from-slate-950 via-blue-950 to-indigo-950 text-white space-y-6 shadow-2xl border border-blue-900/60 relative overflow-hidden">
       <div class="absolute -right-20 -top-20 w-80 h-80 bg-blue-600/15 rounded-full blur-3xl pointer-events-none"></div>
       
-      <div class="relative z-10 space-y-4">
-        <div class="flex items-center justify-between gap-3 flex-wrap">
+      <div class="relative z-10 space-y-5">
+        <!-- Top Metadata Row -->
+        <div class="flex flex-col sm:flex-row sm:items-center justify-between gap-3 border-b border-white/10 pb-4">
+          <div class="flex items-center gap-3">
+            <div class="p-2 rounded-2xl bg-white/10 border border-white/15 backdrop-blur-md">
+              <img src="assets/united-logo.png" alt="United Group of Institutions Logo" class="w-10 h-10 object-contain" />
+            </div>
+            <div>
+              <div class="text-xs font-black tracking-widest text-blue-300 uppercase">United Institute of Technology</div>
+              <div class="text-[11px] text-slate-300 font-medium">Department of Computer Science &amp; Engineering · Prayagraj</div>
+            </div>
+          </div>
+          <div class="text-left sm:text-right font-mono text-[11px] text-slate-300 space-y-0.5">
+            <div><strong>DOC REF:</strong> UIT/CSE/SIH-2026/REP-001</div>
+            <div><strong>CONCLAVE DATE:</strong> 22 AUGUST 2026</div>
+          </div>
+        </div>
+
+        <!-- Document Main Titles -->
+        <div class="space-y-2">
           <div class="inline-flex items-center gap-2 px-3.5 py-1 bg-amber-400 text-slate-950 text-xs font-black uppercase tracking-wider rounded-full shadow-xs">
             <span>🏛️ OFFICIAL INSTITUTIONAL EVENT REPORT</span>
           </div>
-          <span class="text-xs font-mono font-bold text-slate-400 bg-white/10 px-3 py-1 rounded-xl">
-            DOC REF: UIT/SIH2026/REPORT/001
-          </span>
-        </div>
-
-        <div class="space-y-2">
-          <h1 class="text-3xl sm:text-5xl font-black tracking-tight leading-tight">
+          <h1 class="text-2xl sm:text-4xl lg:text-5xl font-black tracking-tight leading-tight">
             Smart India Hackathon 2026
           </h1>
-          <p class="text-xl sm:text-2xl font-bold text-blue-300">
-            College-Level Internal Hackathon Conclave Report
+          <p class="text-lg sm:text-2xl font-bold text-blue-300">
+            College-Level Internal Hackathon Conclave — Final Report
           </p>
         </div>
 
@@ -143,21 +175,21 @@
           Comprehensive official report documenting the end-to-end execution, student participation demographics, problem statement allocations, 8-panel faculty judging deliberations, selection outcomes, and organizing leadership at <strong>United Institute of Technology (UIT), Prayagraj</strong> on <strong>22 August 2026</strong>.
         </p>
 
-        <!-- Metadata Pills -->
-        <div class="pt-2 flex items-center gap-2.5 text-xs font-bold text-slate-300 flex-wrap">
-          <span class="bg-white/10 border border-white/10 px-3 py-1.5 rounded-xl">📍 UIT Campus, Naini, Prayagraj</span>
-          <span class="bg-white/10 border border-white/10 px-3 py-1.5 rounded-xl">📅 22 August 2026</span>
-          <span class="bg-white/10 border border-white/10 px-3 py-1.5 rounded-xl">👥 77 Teams · 462 Students</span>
+        <!-- Quick Summary Stats Pills -->
+        <div class="pt-2 flex items-center gap-2.5 text-xs font-bold text-slate-200 flex-wrap">
+          <span class="bg-white/10 border border-white/15 px-3 py-1.5 rounded-xl">📍 UIT Campus, Naini, Prayagraj</span>
+          <span class="bg-white/10 border border-white/15 px-3 py-1.5 rounded-xl">👥 77 Teams · 462 Students</span>
+          <span class="bg-white/10 border border-white/15 px-3 py-1.5 rounded-xl">⚖️ 8 Panels · 16 Faculty Judges</span>
           <span class="bg-emerald-500/20 text-emerald-300 border border-emerald-500/40 px-3 py-1.5 rounded-xl">🏆 45 Shortlisted + 5 Waitlisted</span>
         </div>
       </div>
     </header>
 
-    <!-- ── Report Content Sections ── -->
+    <!-- ── Report Body Sections ── -->
     <div class="space-y-10">
 
-      <!-- 1. Executive Summary & National Context -->
-      <section class="glass-card-pro rounded-3xl p-6 sm:p-8 space-y-4">
+      <!-- Section 1: Executive Summary & National Vision -->
+      <section class="glass-card-pro rounded-3xl p-6 sm:p-8 space-y-4 border border-slate-200/90 shadow-sm">
         <div class="flex items-center gap-3 text-blue-700">
           <span class="w-8 h-8 rounded-xl bg-blue-100 font-black text-sm flex items-center justify-center">01</span>
           <h2 class="text-xl sm:text-2xl font-black text-slate-900">Executive Summary &amp; Institutional Vision</h2>
@@ -166,14 +198,47 @@
           The <strong>Smart India Hackathon (SIH)</strong> is the Government of India’s premier nationwide initiative launched by the Ministry of Education’s Innovation Cell (MIC) and AICTE to identify problem-solvers, promote out-of-the-box thinking, and engage youth in solving real-world challenges posed by Union Ministries, State Departments, and Industry Leaders.
         </p>
         <p class="text-xs sm:text-sm text-slate-700 leading-relaxed font-medium">
-          In alignment with this national mandate, <strong>United Institute of Technology (UIT), Prayagraj</strong> conducted the <strong>SIH 2026 College-Level Internal Hackathon</strong> to rigorously evaluate and filter the institution's top engineering innovations. Under the guidance of Principal <strong>Prof. Sanjay Srivastava</strong>, Institute SPOC <strong>Dr. Dhananjay Kumar Sharma</strong>, Dean Student Welfare <strong>Dr. Manas Pandey</strong>, and Faculty Coordinators <strong>Mr. Gaurav Narain Singh</strong> and <strong>Mr. Kushagra Dwivedi</strong>, the conclave mobilized <strong>462 students across 77 multi-disciplinary teams</strong>.
+          In alignment with this national mandate, <strong>United Institute of Technology (UIT), Prayagraj</strong> conducted the <strong>SIH 2026 College-Level Internal Hackathon</strong> to rigorously evaluate and filter the institution's top engineering innovations. Under the executive leadership of Principal <strong>Prof. Sanjay Srivastava</strong>, Institute SPOC <strong>Dr. Dhananjay Kumar Sharma</strong>, Dean Student Welfare <strong>Dr. Manas Pandey</strong>, and Faculty Coordinators <strong>Mr. Gaurav Narain Singh</strong> and <strong>Mr. Kushagra Dwivedi</strong>, the conclave mobilized <strong>462 students across 77 multi-disciplinary teams</strong>.
         </p>
       </section>
 
-      <!-- 2. Participation Analytics & Demographic Breakdown -->
-      <section class="glass-card-pro rounded-3xl p-6 sm:p-8 space-y-5">
+      <!-- Section 2: Conclave Day Schedule & Minute-by-Minute Timeline -->
+      <section class="glass-card-pro rounded-3xl p-6 sm:p-8 space-y-4 border border-slate-200/90 shadow-sm">
         <div class="flex items-center gap-3 text-indigo-700">
           <span class="w-8 h-8 rounded-xl bg-indigo-100 font-black text-sm flex items-center justify-center">02</span>
+          <h2 class="text-xl sm:text-2xl font-black text-slate-900">Conclave Day Schedule &amp; Execution Chronology</h2>
+        </div>
+        <p class="text-xs sm:text-sm text-slate-600 font-medium">
+          The conclave followed a strict, seamless schedule on <strong>22 August 2026</strong> across the UIT campus:
+        </p>
+
+        <div class="overflow-x-auto">
+          <table class="w-full text-left text-xs border border-slate-200 rounded-2xl overflow-hidden">
+            <thead class="bg-slate-100 font-black text-slate-800">
+              <tr>
+                <th class="p-3 w-36">Time Slot</th>
+                <th class="p-3">Session Activity</th>
+                <th class="p-3 w-48">Location / Venue</th>
+                <th class="p-3 w-40">Responsible Desk</th>
+              </tr>
+            </thead>
+            <tbody class="divide-y divide-slate-200 font-medium text-slate-700">
+              <tr><td class="p-3 font-mono font-bold text-blue-700">08:00 AM – 09:15 AM</td><td class="p-3">Participant Spot Registration &amp; Team Verification</td><td class="p-3">Main Foyer Desks</td><td class="p-3 text-slate-500">Student Volunteers</td></tr>
+              <tr><td class="p-3 font-mono font-bold text-blue-700">09:30 AM – 10:15 AM</td><td class="p-3">Official Inauguration, Keynote Address &amp; Lamp Lighting</td><td class="p-3">UIT Main Auditorium</td><td class="p-3 text-slate-500">Dignitaries &amp; SPOC</td></tr>
+              <tr><td class="p-3 font-mono font-bold text-blue-700">10:30 AM – 01:15 PM</td><td class="p-3">Evaluation Round 1: Idea Pitch &amp; Architecture Review</td><td class="p-3">8 Parallel Evaluation Rooms</td><td class="p-3 text-slate-500">16 Faculty Judges</td></tr>
+              <tr><td class="p-3 font-mono font-bold text-blue-700">01:15 PM – 02:00 PM</td><td class="p-3">Networking, Mentorship Consultation &amp; Lunch</td><td class="p-3">Central Dining Hall</td><td class="p-3 text-slate-500">Logistics Crew</td></tr>
+              <tr><td class="p-3 font-mono font-bold text-blue-700">02:00 PM – 04:30 PM</td><td class="p-3">Evaluation Round 2: Live Code Demo &amp; Hardware Testing</td><td class="p-3">8 Parallel Evaluation Rooms</td><td class="p-3 text-slate-500">16 Faculty Judges</td></tr>
+              <tr><td class="p-3 font-mono font-bold text-blue-700">04:30 PM – 05:15 PM</td><td class="p-3">Score Consolidation, SPOC Verification &amp; Result Audit</td><td class="p-3">SPOC Central Control Desk</td><td class="p-3 text-slate-500">SPOC &amp; Jury Chairs</td></tr>
+              <tr><td class="p-3 font-mono font-bold text-blue-700">05:30 PM – 06:15 PM</td><td class="p-3">Valedictory Session, Thanksgiving Ceremony &amp; Group Photo</td><td class="p-3">UIT Main Auditorium</td><td class="p-3 text-slate-500">All Leadership &amp; Teams</td></tr>
+            </tbody>
+          </table>
+        </div>
+      </section>
+
+      <!-- Section 3: Participation Demographics & Statistical Analytics -->
+      <section class="glass-card-pro rounded-3xl p-6 sm:p-8 space-y-5 border border-slate-200/90 shadow-sm">
+        <div class="flex items-center gap-3 text-teal-700">
+          <span class="w-8 h-8 rounded-xl bg-teal-100 font-black text-sm flex items-center justify-center">03</span>
           <h2 class="text-xl sm:text-2xl font-black text-slate-900">Participation Analytics &amp; Demographics</h2>
         </div>
 
@@ -181,7 +246,7 @@
           The internal hackathon achieved record mobilization with 100% compliance with national gender diversity rules (mandatory minimum of 1 female student per 6-member team):
         </p>
 
-        <!-- Metric Cards -->
+        <!-- Metric Cards Grid -->
         <div class="grid grid-cols-2 sm:grid-cols-4 gap-3 text-xs">
           <div class="p-4 bg-slate-50 rounded-2xl border border-slate-200">
             <div class="text-[10px] text-slate-500 font-bold">Total Teams Evaluated</div>
@@ -201,7 +266,7 @@
           </div>
         </div>
 
-        <!-- Demographic Tables -->
+        <!-- Demographic Breakdown Tables -->
         <div class="grid grid-cols-1 md:grid-cols-2 gap-4 text-xs pt-2">
           
           <div class="p-4 bg-slate-50 rounded-2xl border border-slate-200 space-y-2">
@@ -226,11 +291,11 @@
         </div>
       </section>
 
-      <!-- 3. Problem Statements Repository Structure -->
-      <section class="glass-card-pro rounded-3xl p-6 sm:p-8 space-y-4">
-        <div class="flex items-center gap-3 text-teal-700">
-          <span class="w-8 h-8 rounded-xl bg-teal-100 font-black text-sm flex items-center justify-center">03</span>
-          <h2 class="text-xl sm:text-2xl font-black text-slate-900">Problem Statements Bank (37 Challenges)</h2>
+      <!-- Section 4: Problem Statement Thematic Tracks (37 PS) -->
+      <section class="glass-card-pro rounded-3xl p-6 sm:p-8 space-y-4 border border-slate-200/90 shadow-sm">
+        <div class="flex items-center gap-3 text-purple-700">
+          <span class="w-8 h-8 rounded-xl bg-purple-100 font-black text-sm flex items-center justify-center">04</span>
+          <h2 class="text-xl sm:text-2xl font-black text-slate-900">Problem Statements Bank (37 National Challenges)</h2>
         </div>
         <p class="text-xs sm:text-sm text-slate-700 leading-relaxed font-medium">
           A total of <strong>37 national problem statements (PS01 through PS36 + PS37 Open Innovation)</strong> were curated across high-impact thematic domains. Participating teams selected challenges mapped directly to national priorities:
@@ -247,23 +312,23 @@
         </div>
       </section>
 
-      <!-- 4. Official 8 Judging Panels & Campus Venues -->
-      <section class="glass-card-pro rounded-3xl p-6 sm:p-8 space-y-4">
-        <div class="flex items-center gap-3 text-purple-700">
-          <span class="w-8 h-8 rounded-xl bg-purple-100 font-black text-sm flex items-center justify-center">04</span>
-          <h2 class="text-xl sm:text-2xl font-black text-slate-900">8 Official Judging Panels &amp; Evaluation Venues</h2>
+      <!-- Section 5: Official 8 Judging Panels & Venues -->
+      <section class="glass-card-pro rounded-3xl p-6 sm:p-8 space-y-4 border border-slate-200/90 shadow-sm">
+        <div class="flex items-center gap-3 text-emerald-700">
+          <span class="w-8 h-8 rounded-xl bg-emerald-100 font-black text-sm flex items-center justify-center">05</span>
+          <h2 class="text-xl sm:text-2xl font-black text-slate-900">Official 8 Judging Panels &amp; Evaluation Venues</h2>
         </div>
         <p class="text-xs sm:text-sm text-slate-700 leading-relaxed font-medium">
-          Evaluation was conducted across <strong>8 dedicated campus venues</strong> by <strong>16 faculty evaluators</strong> over 8 continuous hours:
+          Evaluation was conducted across <strong>8 dedicated campus venues</strong> by <strong>16 faculty evaluators</strong> over 8 continuous hours on 22 August 2026:
         </p>
 
         <div class="overflow-x-auto">
           <table class="w-full text-left text-xs border border-slate-200 rounded-2xl overflow-hidden">
             <thead class="bg-slate-100 font-black text-slate-800">
               <tr>
-                <th class="p-3">Panel</th>
+                <th class="p-3 w-24">Panel</th>
                 <th class="p-3">Faculty Evaluators</th>
-                <th class="p-3">Venue</th>
+                <th class="p-3 w-40">Campus Venue</th>
                 <th class="p-3">Domain Focus</th>
               </tr>
             </thead>
@@ -281,36 +346,44 @@
         </div>
       </section>
 
-      <!-- 5. Evaluation Rubric & Scoring Methodology -->
-      <section class="glass-card-pro rounded-3xl p-6 sm:p-8 space-y-4">
+      <!-- Section 6: Standardized Evaluation Rubric -->
+      <section class="glass-card-pro rounded-3xl p-6 sm:p-8 space-y-4 border border-slate-200/90 shadow-sm">
         <div class="flex items-center gap-3 text-amber-700">
-          <span class="w-8 h-8 rounded-xl bg-amber-100 font-black text-sm flex items-center justify-center">05</span>
-          <h2 class="text-xl sm:text-2xl font-black text-slate-900">Standardized Evaluation Rubric (100 Marks)</h2>
+          <span class="w-8 h-8 rounded-xl bg-amber-100 font-black text-sm flex items-center justify-center">06</span>
+          <h2 class="text-xl sm:text-2xl font-black text-slate-900">Standardized Evaluation Rubric (100 Marks Framework)</h2>
         </div>
-        <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-3 text-xs">
+        <p class="text-xs sm:text-sm text-slate-600 font-medium">
+          Evaluations were conducted using a standardized 5-parameter rubric aligned with national SIH criteria:
+        </p>
+
+        <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-5 gap-3 text-xs">
           <div class="p-4 bg-slate-50 rounded-2xl border border-slate-200">
-            <div class="font-black text-slate-900 mb-1">1. Novelty &amp; Innovation (25%)</div>
-            <p class="text-slate-600">Uniqueness of the proposed approach vs existing market solutions.</p>
+            <div class="font-black text-slate-900 mb-1">1. Problem Depth (20 pts)</div>
+            <p class="text-slate-600">Relevance, domain research, and problem-solution alignment.</p>
           </div>
           <div class="p-4 bg-slate-50 rounded-2xl border border-slate-200">
-            <div class="font-black text-slate-900 mb-1">2. Technical Feasibility (25%)</div>
-            <p class="text-slate-600">Architecture, chosen tech stack, and practical implementation depth.</p>
+            <div class="font-black text-slate-900 mb-1">2. Innovation (25 pts)</div>
+            <p class="text-slate-600">Novelty and distinct competitive advantage over existing tools.</p>
           </div>
           <div class="p-4 bg-slate-50 rounded-2xl border border-slate-200">
-            <div class="font-black text-slate-900 mb-1">3. Working Demo / Prototype (25%)</div>
-            <p class="text-slate-600">Live demonstration, UI responsiveness, and functional code readiness.</p>
+            <div class="font-black text-slate-900 mb-1">3. Tech Architecture (25 pts)</div>
+            <p class="text-slate-600">Scalability, database design, framework choices, and code quality.</p>
           </div>
           <div class="p-4 bg-slate-50 rounded-2xl border border-slate-200">
-            <div class="font-black text-slate-900 mb-1">4. Presentation &amp; Q&amp;A (25%)</div>
-            <p class="text-slate-600">Clarity of slides, team coordination, and answering jury questions.</p>
+            <div class="font-black text-slate-900 mb-1">4. Working Demo (20 pts)</div>
+            <p class="text-slate-600">Live operational demonstration, responsiveness, and hardware rig.</p>
+          </div>
+          <div class="p-4 bg-slate-50 rounded-2xl border border-slate-200">
+            <div class="font-black text-slate-900 mb-1">5. Team Defense (10 pts)</div>
+            <p class="text-slate-600">Clarity of presentation and technical Q&amp;A defense before judges.</p>
           </div>
         </div>
       </section>
 
-      <!-- 6. Official Selection Results (45 Shortlisted + 5 Waitlisted) -->
-      <section class="glass-card-pro rounded-3xl p-6 sm:p-8 space-y-4">
+      <!-- Section 7: Selection Results (45 Shortlisted + 5 Waitlisted) -->
+      <section class="glass-card-pro rounded-3xl p-6 sm:p-8 space-y-4 border border-slate-200/90 shadow-sm">
         <div class="flex items-center gap-3 text-emerald-700">
-          <span class="w-8 h-8 rounded-xl bg-emerald-100 font-black text-sm flex items-center justify-center">06</span>
+          <span class="w-8 h-8 rounded-xl bg-emerald-100 font-black text-sm flex items-center justify-center">07</span>
           <h2 class="text-xl sm:text-2xl font-black text-slate-900">Selection Results &amp; MoE Portal Nominations</h2>
         </div>
         
@@ -319,26 +392,26 @@
         </p>
 
         <div class="grid grid-cols-1 sm:grid-cols-2 gap-4 text-xs font-medium">
-          <div class="p-4 bg-emerald-50 rounded-2xl border border-emerald-200 space-y-1.5">
+          <div class="p-4 bg-emerald-50 rounded-2xl border border-emerald-200 space-y-2">
             <h4 class="text-emerald-950 font-black text-sm">🟢 45 Shortlisted Teams (MoE Nominations)</h4>
-            <p class="text-emerald-800">
-              Officially nominated for central upload to the Ministry of Education SIH Portal. Includes top teams: <strong>BITS N BYTES</strong>, <strong>AASIA-Z</strong>, <strong>ALPHA INNOVATORS</strong>, <strong>RISING CODERS</strong>, <strong>EVOLVEX</strong>, <strong>TECH GEEKS</strong>, <strong>TRACK SHIELD</strong>, and more.
+            <p class="text-emerald-800 leading-relaxed">
+              Officially nominated for central upload to the Ministry of Education SIH Portal. Top ranked teams include <strong>BITS N BYTES</strong> (SIH2026-0142), <strong>AASIA-Z</strong> (SIH2026-0028), <strong>ALPHA INNOVATORS</strong> (SIH2026-0140), <strong>RISING CODERS</strong> (SIH2026-0065), <strong>EVOLVEX</strong> (SIH2026-0031), <strong>TECH GEEKS</strong> (SIH2026-0068), <strong>TRACK SHIELD</strong> (SIH2026-0072), and more.
             </p>
           </div>
 
-          <div class="p-4 bg-amber-50 rounded-2xl border border-amber-200 space-y-1.5">
+          <div class="p-4 bg-amber-50 rounded-2xl border border-amber-200 space-y-2">
             <h4 class="text-amber-950 font-black text-sm">🟡 5 Waitlisted Teams (Merit Standby)</h4>
-            <p class="text-amber-800">
-              Standby contingency quota: <strong>FUSIONX</strong> (Waitlist #1), <strong>TEAM PRAYAS</strong> (Waitlist #2), <strong>FERRUMLOGICA</strong> (Waitlist #3), <strong>LINKEDLIST</strong> (Waitlist #4), and <strong>MIND MATRIX</strong> (Waitlist #5).
+            <p class="text-amber-800 leading-relaxed">
+              Standby contingency quota: <strong>FUSIONX</strong> (Waitlist #1 · SIH2026-0139), <strong>TEAM PRAYAS</strong> (Waitlist #2 · SIH2026-0027), <strong>FERRUMLOGICA</strong> (Waitlist #3 · SIH2026-0130), <strong>LINKEDLIST</strong> (Waitlist #4 · SIH2026-0043), and <strong>MIND MATRIX</strong> (Waitlist #5 · SIH2026-0032).
             </p>
           </div>
         </div>
       </section>
 
-      <!-- 7. Organizing Committee & Execution Roster -->
-      <section class="glass-card-pro rounded-3xl p-6 sm:p-8 space-y-5">
+      <!-- Section 8: Organizing Committee & Institutional Endorsement -->
+      <section class="glass-card-pro rounded-3xl p-6 sm:p-8 space-y-5 border border-slate-200/90 shadow-sm">
         <div class="flex items-center gap-3 text-slate-900">
-          <span class="w-8 h-8 rounded-xl bg-slate-200 font-black text-sm flex items-center justify-center">07</span>
+          <span class="w-8 h-8 rounded-xl bg-slate-200 font-black text-sm flex items-center justify-center">08</span>
           <h2 class="text-xl sm:text-2xl font-black text-slate-900">Organising Leadership &amp; Student Operations</h2>
         </div>
 
@@ -350,11 +423,27 @@
             <li><strong>Core Student Volunteers (8 Members):</strong> Abhinav Tiwari, Amit Dubey, Prabhat Pandey, Abhi, Praveen, Ayush Singh, Rohit Pal, and Yash Singh.</li>
           </ul>
         </div>
+
+        <!-- Institutional Endorsement Signature Strip -->
+        <div class="pt-6 border-t border-slate-200 grid grid-cols-1 sm:grid-cols-3 gap-6 text-center text-xs font-bold">
+          <div class="space-y-1">
+            <div class="font-black text-slate-900">Prof. Sanjay Srivastava</div>
+            <div class="text-[11px] text-slate-500 font-medium">Principal, UIT · Institutional Patron</div>
+          </div>
+          <div class="space-y-1">
+            <div class="font-black text-slate-900">Dr. Dhananjay Kumar Sharma</div>
+            <div class="text-[11px] text-slate-500 font-medium">HOD CSE (AIML &amp; DS) · Institute SPOC</div>
+          </div>
+          <div class="space-y-1">
+            <div class="font-black text-slate-900">Gautam Kumar Maurya</div>
+            <div class="text-[11px] text-slate-500 font-medium">Head, Developers Club · Lead Coordinator</div>
+          </div>
+        </div>
       </section>
 
-      <!-- 8. Institutional Outcomes & Digital Archive Preservation -->
+      <!-- Section 9: Conclusion & Permanent Digital Preservation -->
       <section class="glass-card-pro rounded-3xl p-6 sm:p-8 space-y-4 bg-gradient-to-r from-blue-50/50 via-white to-indigo-50/50 border-2 border-blue-200">
-        <h2 class="text-xl font-black text-slate-900">8. Conclusion &amp; Permanent Digital Preservation</h2>
+        <h2 class="text-xl font-black text-slate-900">9. Conclusion &amp; Permanent Digital Preservation</h2>
         <p class="text-xs sm:text-sm text-slate-700 leading-relaxed font-medium">
           The Smart India Hackathon 2026 Internal Hackathon at United Institute of Technology, Prayagraj successfully accomplished its primary mission of identifying high-caliber technical solutions and preparing 50 student teams for national-level representation.
         </p>
@@ -363,7 +452,7 @@
         </p>
         <div class="pt-4 border-t border-slate-200 flex flex-col sm:flex-row items-center justify-between gap-2 text-xs font-bold text-slate-500 text-center sm:text-left">
           <span>Official Report · United Institute of Technology, Prayagraj</span>
-          <span class="text-slate-800">Concluded on 22 August 2026 ✓</span>
+          <span class="text-slate-800 font-mono">Concluded on 22 August 2026 ✓</span>
         </div>
       </section>
 
@@ -399,31 +488,62 @@
   </footer>
 
 
-  <!-- ── Floating Navbar on Scroll Script ── -->
+  <!-- ── Mobile Menu & Floating Nav Script ── -->
   <script>
   (() => {
-    function initFloatingNav() {
+    function initNav() {
+      const mobileBtn = document.getElementById('mobile-menu-btn');
+      const mobileMenu = document.getElementById('mobile-menu');
+      const iconOpen = document.getElementById('menu-icon-open');
+      const iconClose = document.getElementById('menu-icon-close');
+
+      if (mobileBtn && mobileMenu) {
+        mobileBtn.onclick = (e) => {
+          e.stopPropagation();
+          const isHidden = mobileMenu.classList.contains('hidden');
+          if (isHidden) {
+            mobileMenu.classList.remove('hidden');
+            if (iconOpen) iconOpen.classList.add('hidden');
+            if (iconClose) iconClose.classList.remove('hidden');
+            mobileBtn.setAttribute('aria-expanded', 'true');
+          } else {
+            mobileMenu.classList.add('hidden');
+            if (iconOpen) iconOpen.classList.remove('hidden');
+            if (iconClose) iconClose.classList.add('hidden');
+            mobileBtn.setAttribute('aria-expanded', 'false');
+          }
+        };
+
+        document.addEventListener('click', (e) => {
+          if (!mobileMenu.contains(e.target) && !mobileBtn.contains(e.target)) {
+            mobileMenu.classList.add('hidden');
+            if (iconOpen) iconOpen.classList.remove('hidden');
+            if (iconClose) iconClose.classList.add('hidden');
+            mobileBtn.setAttribute('aria-expanded', 'false');
+          }
+        });
+      }
+
+      // Floating header on scroll
       const header = document.querySelector('header');
-      if (!header) return;
-      
-      header.classList.add('site-header');
-
-      const onScroll = () => {
-        if (window.scrollY > 25) {
-          header.classList.add('is-scrolled');
-        } else {
-          header.classList.remove('is-scrolled');
-        }
-      };
-
-      window.addEventListener('scroll', onScroll, { passive: true });
-      onScroll();
+      if (header) {
+        header.classList.add('site-header');
+        const handleScroll = () => {
+          if (window.scrollY > 25) {
+            header.classList.add('is-scrolled');
+          } else {
+            header.classList.remove('is-scrolled');
+          }
+        };
+        window.addEventListener('scroll', handleScroll, { passive: true });
+        handleScroll();
+      }
     }
 
     if (document.readyState === 'loading') {
-      document.addEventListener('DOMContentLoaded', initFloatingNav);
+      document.addEventListener('DOMContentLoaded', initNav);
     } else {
-      initFloatingNav();
+      initNav();
     }
   })();
   </script>
