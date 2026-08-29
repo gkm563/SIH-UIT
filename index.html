@@ -11,7 +11,7 @@
   <meta name="keywords" content="SIH 2026, Smart India Hackathon 2026, United Institute of Technology, UIT Prayagraj, UIT Naini, Gautam Kumar Maurya, Dr Manas Pandey, Dhananjay SPOC, SIH Internal Hackathon, SIH 2026 Problem Statements, Top 50 Nominated Teams, College Hackathon Prayagraj, Ministry of Education Innovation Cell, AICTE SIH" />
   <meta name="author" content="Gautam Kumar Maurya (GKM)" />
   <meta name="robots" content="index, follow, max-snippet:-1, max-image-preview:large, max-video-preview:-1" />
-  <meta name="theme-color" content="#1a73e8" />
+  <meta name="theme-color" content="#1e3a8a" />
   <link rel="canonical" href="https://sih-uit.vercel.app/" />
 
   <!-- ── Open Graph / Facebook / WhatsApp ── -->
@@ -52,13 +52,24 @@
             display: ['Space Grotesk', 'Outfit', 'sans-serif'],
           },
           colors: {
-            primary: { DEFAULT: '#1a73e8', dark: '#1557b0', light: '#e8f0fe' },
-            united: { DEFAULT: '#2A4B8D', dark: '#1e3565', light: '#f0f4fc', red: '#D63333' }
+            brand: {
+              50: '#eff6ff',
+              100: '#dbeafe',
+              200: '#bfdbfe',
+              500: '#3b82f6',
+              600: '#2563eb',
+              700: '#1d4ed8',
+              800: '#1e40af',
+              900: '#1e3a8a',
+              950: '#0f172a',
+            },
+            united: { DEFAULT: '#1e3a8a', red: '#e11d48' }
           },
           boxShadow: {
-            'glow': '0 0 25px -5px rgba(37, 99, 235, 0.25)',
-            'card': '0 10px 30px -5px rgba(15, 23, 42, 0.05)',
-            'card-hover': '0 20px 40px -10px rgba(15, 23, 42, 0.10)',
+            'glow-blue': '0 0 25px -4px rgba(37, 99, 235, 0.28)',
+            'glow-indigo': '0 0 25px -4px rgba(79, 70, 229, 0.25)',
+            'card-luxury': '0 10px 30px -5px rgba(15, 23, 42, 0.04), 0 1px 3px 0 rgba(15, 23, 42, 0.02)',
+            'card-luxury-hover': '0 20px 40px -10px rgba(15, 23, 42, 0.08), 0 1px 3px 0 rgba(0, 0, 0, 0.02)',
           }
         }
       }
@@ -121,15 +132,15 @@
 <body class="bg-slate-50 text-slate-900 font-sans antialiased min-h-screen flex flex-col selection:bg-blue-600 selection:text-white">
 
   <!-- ── Top Announcement Ticker Bar ── -->
-  <aside class="bg-gradient-to-r from-blue-900 via-indigo-900 to-slate-950 text-white text-[11px] sm:text-xs py-2 px-3 sm:px-4 sticky top-0 z-[60] border-b border-blue-800/40 shadow-xs" aria-label="Official Announcement Ticker">
+  <aside class="bg-gradient-to-r from-slate-950 via-blue-950 to-indigo-950 text-white text-[11px] sm:text-xs py-2 px-3 sm:px-4 sticky top-0 z-[60] border-b border-blue-900/40 shadow-xs" aria-label="Official Announcement Ticker">
     <div class="max-w-7xl mx-auto flex items-center justify-between gap-2.5 flex-wrap">
       <div class="flex items-center gap-2 min-w-0">
-        <span class="inline-flex items-center gap-1.5 bg-emerald-500/20 text-emerald-300 border border-emerald-400/40 px-2 py-0.5 rounded-full font-extrabold uppercase tracking-wider text-[9px] sm:text-[10px] flex-shrink-0">
+        <span class="inline-flex items-center gap-1.5 bg-emerald-500/20 text-emerald-300 border border-emerald-400/40 px-2.5 py-0.5 rounded-full font-black uppercase tracking-wider text-[9px] sm:text-[10px] flex-shrink-0">
           <span class="w-1.5 h-1.5 rounded-full bg-emerald-400 animate-ping"></span>
           Evaluation Done
         </span>
         <span class="font-medium text-slate-200 truncate text-[11px] sm:text-xs">
-          🏆 <strong>SIH 2026 Internal Hackathon Completed</strong> — Top 50 Nominations in progress.
+          🏆 <strong>SIH 2026 Internal Hackathon Concluded</strong> — Top 50 Nominations in progress.
         </span>
       </div>
       <div class="flex items-center gap-3 text-slate-300 flex-shrink-0 text-[11px] ml-auto">
@@ -144,22 +155,24 @@
   </aside>
 
   <!-- ── Main Sticky Navigation Header ── -->
-  <header class="bg-white/95 backdrop-blur-md border-b border-slate-200/90 sticky top-[33px] sm:top-[35px] z-50 transition-all duration-200 shadow-xs" role="banner">
+  <header class="bg-white/90 backdrop-blur-xl border-b border-slate-200/80 sticky top-[33px] sm:top-[35px] z-50 transition-all duration-200 shadow-xs" role="banner">
     <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-2.5 sm:py-3 flex items-center justify-between gap-3">
       
       <!-- Left: Institutional Branding -->
       <a href="index.html" class="flex items-center gap-2.5 sm:gap-3.5 group flex-shrink-0" title="United Institute of Technology — SIH 2026 Portal">
-        <img
-          class="w-9 h-9 sm:w-11 sm:h-11 object-contain transition-transform group-hover:scale-105"
-          src="assets/united-logo.png"
-          alt="United Institute of Technology Logo"
-        />
+        <div class="p-1 rounded-2xl bg-slate-50 border border-slate-200/80 group-hover:border-blue-300 transition-colors shadow-2xs">
+          <img
+            class="w-9 h-9 sm:w-10 sm:h-10 object-contain transition-transform group-hover:scale-105"
+            src="assets/united-logo.png"
+            alt="United Institute of Technology Logo"
+          />
+        </div>
         <div class="flex flex-col justify-center min-w-0">
           <div class="flex items-center gap-1.5 flex-wrap">
-            <span class="text-sm sm:text-base font-black text-[#2A4B8D] leading-none tracking-tight">
+            <span class="text-sm sm:text-base font-black text-[#1e3a8a] leading-none tracking-tight">
               UIT <span class="text-blue-600">Prayagraj</span>
             </span>
-            <span class="text-[9px] sm:text-[10px] font-extrabold text-blue-700 bg-blue-50 border border-blue-200/90 px-1.5 sm:px-2 py-0.5 rounded-full leading-none">
+            <span class="text-[9px] sm:text-[10px] font-extrabold text-blue-700 bg-blue-50 border border-blue-200/80 px-2 py-0.5 rounded-full leading-none">
               SIH 2026
             </span>
           </div>
@@ -170,13 +183,13 @@
       </a>
 
       <!-- Center: Desktop Navigation Menu -->
-      <nav class="hidden lg:flex items-center gap-1 bg-slate-100/90 p-1.5 rounded-full border border-slate-200/90 shadow-2xs" role="navigation" aria-label="Main Navigation">
+      <nav class="hidden lg:flex items-center gap-1 bg-slate-100/80 p-1.5 rounded-full border border-slate-200/80 shadow-2xs" role="navigation" aria-label="Main Navigation">
         <a href="#hero" class="px-3.5 py-1.5 text-xs font-extrabold text-blue-700 bg-white rounded-full shadow-2xs transition-all">Home</a>
         <a href="#team" class="px-3.5 py-1.5 text-xs font-bold text-slate-600 hover:text-blue-700 rounded-full transition-colors">Leadership Team</a>
         <a href="#process" class="px-3.5 py-1.5 text-xs font-bold text-slate-600 hover:text-blue-700 rounded-full transition-colors">Top 50 Process</a>
         <a href="#rules" class="px-3.5 py-1.5 text-xs font-bold text-slate-600 hover:text-blue-700 rounded-full transition-colors">SIH Rules</a>
         <a href="#checklist" class="px-3.5 py-1.5 text-xs font-bold text-slate-600 hover:text-blue-700 rounded-full transition-colors">10-Point Checklist</a>
-        <a href="gallery.html" class="px-3.5 py-1.5 text-xs font-extrabold text-emerald-700 hover:text-emerald-800 bg-emerald-50/70 border border-emerald-200/80 rounded-full transition-all flex items-center gap-1.5">
+        <a href="gallery.html" class="px-3.5 py-1.5 text-xs font-extrabold text-emerald-800 hover:text-emerald-900 bg-emerald-50 border border-emerald-200/80 rounded-full transition-all flex items-center gap-1.5">
           <span>📸 Gallery</span>
           <span class="bg-emerald-600 text-white text-[9px] px-1.5 py-0.2 rounded-full font-black">38</span>
         </a>
@@ -186,7 +199,7 @@
       <div class="flex items-center gap-2 sm:gap-3 flex-shrink-0">
         <a
           href="gallery.html"
-          class="inline-flex items-center gap-1.5 px-3 py-1.5 bg-emerald-50 hover:bg-emerald-100/80 border border-emerald-200 text-emerald-800 text-xs font-extrabold rounded-full active:scale-95 transition-all shadow-2xs"
+          class="inline-flex items-center gap-1.5 px-3 py-1.5 bg-emerald-50 hover:bg-emerald-100/90 border border-emerald-200/90 text-emerald-800 text-xs font-extrabold rounded-full active:scale-95 transition-all shadow-2xs"
           title="Captured Moments Photo Gallery"
         >
           <span>📸 Gallery</span>
@@ -196,7 +209,7 @@
           href="https://www.sih.gov.in/sih2026PS"
           target="_blank"
           rel="noopener noreferrer"
-          class="hidden sm:inline-flex items-center gap-2 px-3.5 sm:px-4 py-2 bg-gradient-to-r from-blue-600 to-indigo-600 hover:from-blue-700 hover:to-indigo-700 text-white text-xs font-black rounded-xl shadow-xs hover:shadow-md transition-all active:scale-95"
+          class="hidden sm:inline-flex items-center gap-2 px-4 py-2 bg-gradient-to-r from-blue-600 via-blue-700 to-indigo-700 hover:from-blue-700 hover:to-indigo-800 text-white text-xs font-black rounded-xl shadow-glow-blue hover:shadow-lg transition-all active:scale-95"
         >
           <span>SIH Official</span>
           <svg class="w-3.5 h-3.5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2.5" d="M10 6H6a2 2 0 00-2 2v10a2 2 0 002 2h10a2 2 0 002-2v-4M14 4h6m0 0v6m0-6L10 14"/></svg>
@@ -218,7 +231,7 @@
     </div>
 
     <!-- Mobile Dropdown Navigation Menu Drawer -->
-    <div id="mobile-menu" class="hidden lg:hidden border-t border-slate-200 bg-white/95 backdrop-blur-xl px-4 py-4 space-y-2 shadow-lg">
+    <div id="mobile-menu" class="hidden lg:hidden border-t border-slate-200 bg-white/95 backdrop-blur-xl px-4 py-4 space-y-2 shadow-xl">
       <div class="grid grid-cols-2 gap-2 text-xs font-bold">
         <a href="#hero" class="mobile-nav-link flex items-center gap-2 p-2.5 rounded-xl bg-slate-50 text-slate-800 active:bg-blue-50 active:text-blue-700 border border-slate-200/80">
           <span>🏠 Home</span>
@@ -256,23 +269,23 @@
     <!-- ══════════════════════════════════════════════════════════════════ -->
     <!-- 1. HERO SECTION: High-Impact Branded College Portal Banner -->
     <!-- ══════════════════════════════════════════════════════════════════ -->
-    <section id="hero" class="relative rounded-3xl border border-slate-200/90 shadow-card bg-gradient-to-br from-white via-blue-50/30 to-indigo-50/40 p-5 sm:p-10 lg:p-12 overflow-hidden" aria-labelledby="hero-title">
+    <section id="hero" class="relative rounded-3xl border border-slate-200/90 shadow-card-luxury bg-gradient-to-br from-white via-blue-50/30 to-indigo-50/40 p-5 sm:p-10 lg:p-12 overflow-hidden" aria-labelledby="hero-title">
       <!-- Ambient decorative glow orbs with subtle animation -->
-      <div class="absolute -right-24 -top-24 w-80 h-80 bg-blue-400/15 rounded-full blur-3xl pointer-events-none animate-glow-pulse"></div>
-      <div class="absolute -left-24 -bottom-24 w-80 h-80 bg-indigo-400/15 rounded-full blur-3xl pointer-events-none animate-glow-pulse" style="animation-delay: 2.5s;"></div>
+      <div class="absolute -right-24 -top-24 w-80 h-80 bg-blue-500/15 rounded-full blur-3xl pointer-events-none animate-glow-pulse"></div>
+      <div class="absolute -left-24 -bottom-24 w-80 h-80 bg-indigo-500/15 rounded-full blur-3xl pointer-events-none animate-glow-pulse" style="animation-delay: 2.5s;"></div>
 
       <div class="relative z-10 max-w-4xl mx-auto text-center space-y-6">
         
         <!-- Top Floating Glass Chips (Staggered Animation) -->
         <div class="flex items-center justify-center gap-2 sm:gap-3 flex-wrap">
-          <span class="glass-chip inline-flex items-center gap-2 bg-blue-50/90 border border-blue-200 text-blue-800 text-[11px] sm:text-xs font-black uppercase tracking-wider px-3.5 py-1.5 rounded-full animate-float">
+          <span class="glass-chip inline-flex items-center gap-2 bg-blue-50/90 border border-blue-200 text-blue-900 text-[11px] sm:text-xs font-black uppercase tracking-wider px-3.5 py-1.5 rounded-full animate-float">
             <span class="w-2 h-2 rounded-full bg-blue-600 animate-ping"></span>
             Smart India Hackathon 2026
           </span>
-          <span class="glass-chip inline-flex items-center gap-1.5 bg-indigo-50/90 border border-indigo-200 text-indigo-800 text-[11px] sm:text-xs font-black px-3.5 py-1.5 rounded-full animate-float-reverse">
+          <span class="glass-chip inline-flex items-center gap-1.5 bg-indigo-50/90 border border-indigo-200 text-indigo-900 text-[11px] sm:text-xs font-black px-3.5 py-1.5 rounded-full animate-float-reverse">
             ⚡ Organized by Gautam Kumar Maurya (GKM)
           </span>
-          <span class="glass-chip inline-flex items-center gap-1.5 bg-emerald-50/90 border border-emerald-200 text-emerald-800 text-[11px] sm:text-xs font-bold px-3.5 py-1.5 rounded-full animate-float" style="animation-delay: 1.5s;">
+          <span class="glass-chip inline-flex items-center gap-1.5 bg-emerald-50/90 border border-emerald-200 text-emerald-900 text-[11px] sm:text-xs font-bold px-3.5 py-1.5 rounded-full animate-float" style="animation-delay: 1.5s;">
             🏛️ United Institute of Technology, Prayagraj
           </span>
         </div>
@@ -292,24 +305,24 @@
 
         <!-- Metric Highlight Cards Grid (Mobile 2x2 Grid) -->
         <div class="grid grid-cols-2 sm:grid-cols-4 gap-2.5 sm:gap-4 pt-1 text-left">
-          <div class="glass-chip bg-white/90 border border-blue-100 rounded-2xl p-3 sm:p-4 shadow-2xs">
+          <div class="glass-chip bg-white/95 border border-blue-100 rounded-2xl p-3.5 sm:p-4 shadow-2xs">
             <div class="text-2xl sm:text-3xl font-black font-display text-blue-700">50</div>
-            <div class="text-[11px] sm:text-xs font-bold text-slate-900 mt-0.5">Top Nominated Teams</div>
+            <div class="text-[11px] sm:text-xs font-black text-slate-900 mt-0.5">Top Nominated Teams</div>
             <div class="text-[9px] sm:text-[10px] text-slate-500 font-medium">45 Shortlisted + 5 Waiting</div>
           </div>
-          <div class="glass-chip bg-white/90 border border-indigo-100 rounded-2xl p-3 sm:p-4 shadow-2xs">
+          <div class="glass-chip bg-white/95 border border-indigo-100 rounded-2xl p-3.5 sm:p-4 shadow-2xs">
             <div class="text-2xl sm:text-3xl font-black font-display text-indigo-700">37+</div>
-            <div class="text-[11px] sm:text-xs font-bold text-slate-900 mt-0.5">Problem Statements</div>
+            <div class="text-[11px] sm:text-xs font-black text-slate-900 mt-0.5">Problem Statements</div>
             <div class="text-[9px] sm:text-[10px] text-slate-500 font-medium">Software, Hardware &amp; Open</div>
           </div>
-          <div class="glass-chip bg-white/90 border border-emerald-100 rounded-2xl p-3 sm:p-4 shadow-2xs">
+          <div class="glass-chip bg-white/95 border border-emerald-100 rounded-2xl p-3.5 sm:p-4 shadow-2xs">
             <div class="text-2xl sm:text-3xl font-black font-display text-emerald-700">38+</div>
-            <div class="text-[11px] sm:text-xs font-bold text-slate-900 mt-0.5">Captured Moments</div>
+            <div class="text-[11px] sm:text-xs font-black text-slate-900 mt-0.5">Captured Moments</div>
             <div class="text-[9px] sm:text-[10px] text-slate-500 font-medium">DSLR High-Res Gallery</div>
           </div>
-          <div class="glass-chip bg-white/90 border border-amber-100 rounded-2xl p-3 sm:p-4 shadow-2xs">
+          <div class="glass-chip bg-white/95 border border-amber-100 rounded-2xl p-3.5 sm:p-4 shadow-2xs">
             <div class="text-2xl sm:text-3xl font-black font-display text-amber-700">100%</div>
-            <div class="text-[11px] sm:text-xs font-bold text-slate-900 mt-0.5">Evaluation Complete</div>
+            <div class="text-[11px] sm:text-xs font-black text-slate-900 mt-0.5">Evaluation Complete</div>
             <div class="text-[9px] sm:text-[10px] text-slate-500 font-medium">Jury Assessment Done</div>
           </div>
         </div>
@@ -318,14 +331,14 @@
         <div class="flex items-center justify-center gap-2.5 sm:gap-4 pt-2 flex-wrap">
           <a
             href="#process"
-            class="w-full sm:w-auto inline-flex items-center justify-center gap-2 px-6 sm:px-8 py-3.5 bg-gradient-to-r from-blue-600 to-indigo-600 hover:from-blue-700 hover:to-indigo-700 text-white font-extrabold text-xs sm:text-sm rounded-2xl shadow-md hover:shadow-lg transition-all active:scale-95"
+            class="w-full sm:w-auto inline-flex items-center justify-center gap-2 px-6 sm:px-8 py-3.5 bg-gradient-to-r from-blue-600 via-blue-700 to-indigo-700 hover:from-blue-700 hover:to-indigo-800 text-white font-extrabold text-xs sm:text-sm rounded-2xl shadow-glow-blue hover:shadow-xl transition-all active:scale-95"
           >
             <span>🚀 View Top 50 Process &amp; Guidelines</span>
             <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2.5" d="M19 9l-7 7-7-7"/></svg>
           </a>
           <a
             href="gallery.html"
-            class="w-full sm:w-auto inline-flex items-center justify-center gap-2 px-6 sm:px-7 py-3.5 bg-white border border-slate-200 text-slate-800 hover:text-blue-700 hover:border-blue-300 font-extrabold text-xs sm:text-sm rounded-2xl shadow-2xs hover:shadow-md transition-all active:scale-95"
+            class="w-full sm:w-auto inline-flex items-center justify-center gap-2 px-6 sm:px-7 py-3.5 bg-white border border-slate-200/90 text-slate-800 hover:text-blue-700 hover:border-blue-300 font-extrabold text-xs sm:text-sm rounded-2xl shadow-2xs hover:shadow-md transition-all active:scale-95"
           >
             <span>📸 View Hackathon Gallery (38 Photos)</span>
           </a>
@@ -346,7 +359,7 @@
     <section id="team" class="space-y-6" aria-labelledby="team-heading">
       <div class="flex flex-col sm:flex-row items-start sm:items-end justify-between gap-3 border-b border-slate-200/80 pb-4">
         <div>
-          <div class="inline-flex items-center gap-2 px-3 py-1 bg-blue-50 border border-blue-200 text-blue-800 text-[11px] font-black uppercase tracking-wider rounded-full mb-2">
+          <div class="inline-flex items-center gap-2 px-3 py-1 bg-blue-50 border border-blue-200 text-blue-900 text-[11px] font-black uppercase tracking-wider rounded-full mb-2">
             <span>👥 Key People Behind SIH 2026 UIT</span>
           </div>
           <h2 id="team-heading" class="text-2xl sm:text-3xl font-black text-slate-900 tracking-tight">
@@ -358,22 +371,22 @@
         </div>
       </div>
 
-      <!-- Executive Profile Cards Grid (Responsive 1 Col Mobile -> 2 Col Tablet -> 4 Col Desktop) -->
+      <!-- Executive Profile Cards Grid -->
       <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4 sm:gap-5">
         
         <!-- Member 1: Dr. Manas Pandey (DSW) -->
-        <article class="card-interactive bg-white rounded-3xl border border-slate-200/90 shadow-card p-5 sm:p-6 flex flex-col justify-between group">
+        <article class="card-interactive bg-white rounded-3xl border border-slate-200/90 shadow-card-luxury p-5 sm:p-6 flex flex-col justify-between group">
           <div class="space-y-4">
             <div class="flex items-center justify-between">
               <div class="w-14 h-14 rounded-2xl bg-gradient-to-br from-amber-500 to-amber-700 text-white flex items-center justify-center text-xl font-black shadow-md">
                 MP
               </div>
-              <span class="text-[10px] font-black uppercase tracking-wider bg-amber-50 text-amber-800 border border-amber-200 px-2.5 py-1 rounded-full">
+              <span class="text-[10px] font-black uppercase tracking-wider bg-amber-50 text-amber-900 border border-amber-200 px-2.5 py-1 rounded-full">
                 🏛️ Institutional Patron
               </span>
             </div>
             <div>
-              <h3 class="text-base font-black text-slate-900 group-hover:text-amber-700 transition-colors">
+              <h3 class="text-base font-black text-slate-900 group-hover:text-amber-800 transition-colors">
                 Dr. Manas Pandey
               </h3>
               <p class="text-xs font-bold text-amber-800 mt-0.5">Dean Student Welfare (DSW)</p>
@@ -392,13 +405,13 @@
         </article>
 
         <!-- Member 2: Dhananjay Sir (SPOC) -->
-        <article class="card-interactive bg-white rounded-3xl border border-slate-200/90 shadow-card p-5 sm:p-6 flex flex-col justify-between group">
+        <article class="card-interactive bg-white rounded-3xl border border-slate-200/90 shadow-card-luxury p-5 sm:p-6 flex flex-col justify-between group">
           <div class="space-y-4">
             <div class="flex items-center justify-between">
               <div class="w-14 h-14 rounded-2xl bg-gradient-to-br from-blue-600 to-indigo-800 text-white flex items-center justify-center text-xl font-black shadow-md">
                 DS
               </div>
-              <span class="text-[10px] font-black uppercase tracking-wider bg-blue-50 text-blue-800 border border-blue-200 px-2.5 py-1 rounded-full">
+              <span class="text-[10px] font-black uppercase tracking-wider bg-blue-50 text-blue-900 border border-blue-200 px-2.5 py-1 rounded-full">
                 🔑 Central SIH SPOC
               </span>
             </div>
@@ -422,7 +435,7 @@
         </article>
 
         <!-- Member 3: Gautam Kumar Maurya (GKM) - Lead Organizer & Developer -->
-        <article class="card-interactive bg-gradient-to-br from-white via-blue-50/40 to-indigo-50/50 rounded-3xl border-2 border-blue-300/90 shadow-card p-5 sm:p-6 flex flex-col justify-between group relative overflow-hidden">
+        <article class="card-interactive bg-gradient-to-br from-white via-blue-50/40 to-indigo-50/60 rounded-3xl border-2 border-blue-300 shadow-glow-blue p-5 sm:p-6 flex flex-col justify-between group relative overflow-hidden">
           <div class="absolute -right-8 -top-8 w-24 h-24 bg-blue-500/10 rounded-full blur-xl pointer-events-none"></div>
           <div class="space-y-4 relative z-10">
             <div class="flex items-center justify-between">
@@ -455,13 +468,13 @@
         </article>
 
         <!-- Member 4: Harsh Srivastava - Student Coordinator -->
-        <article class="card-interactive bg-white rounded-3xl border border-slate-200/90 shadow-card p-5 sm:p-6 flex flex-col justify-between group">
+        <article class="card-interactive bg-white rounded-3xl border border-slate-200/90 shadow-card-luxury p-5 sm:p-6 flex flex-col justify-between group">
           <div class="space-y-4">
             <div class="flex items-center justify-between">
               <div class="w-14 h-14 rounded-2xl bg-gradient-to-br from-emerald-600 to-teal-800 text-white flex items-center justify-center text-xl font-black shadow-md">
                 HS
               </div>
-              <span class="text-[10px] font-black uppercase tracking-wider bg-emerald-50 text-emerald-800 border border-emerald-200 px-2.5 py-1 rounded-full">
+              <span class="text-[10px] font-black uppercase tracking-wider bg-emerald-50 text-emerald-900 border border-emerald-200 px-2.5 py-1 rounded-full">
                 👥 Event Coordinator
               </span>
             </div>
@@ -490,17 +503,17 @@
     <!-- ══════════════════════════════════════════════════════════════════ -->
     <!-- 3. TOP 50 NOMINATION PROCESS & STEP-BY-STEP WORKFLOW -->
     <!-- ══════════════════════════════════════════════════════════════════ -->
-    <section id="process" class="rounded-3xl border border-slate-200/90 shadow-card bg-gradient-to-br from-white via-blue-50/20 to-indigo-50/30 p-5 sm:p-8 lg:p-10 relative overflow-hidden" aria-labelledby="process-heading">
+    <section id="process" class="rounded-3xl border border-slate-200/90 shadow-card-luxury bg-gradient-to-br from-white via-blue-50/20 to-indigo-50/30 p-5 sm:p-8 lg:p-10 relative overflow-hidden" aria-labelledby="process-heading">
       <div class="relative z-10 space-y-6">
         
         <!-- Top Status Pill -->
         <div class="flex items-center justify-between gap-3 flex-wrap border-b border-slate-200/80 pb-4">
           <div class="flex items-center gap-2 flex-wrap">
-            <span class="glass-chip inline-flex items-center gap-2 bg-blue-50/90 border border-blue-200 text-blue-800 text-xs font-black uppercase tracking-wide px-3.5 py-1.5 rounded-full">
+            <span class="glass-chip inline-flex items-center gap-2 bg-blue-50/90 border border-blue-200 text-blue-900 text-xs font-black uppercase tracking-wide px-3.5 py-1.5 rounded-full">
               <span class="w-2 h-2 rounded-full bg-blue-600 animate-ping"></span>
               🏆 Top 50 Selection &amp; Nomination Workflow
             </span>
-            <span class="glass-chip inline-flex items-center gap-1.5 bg-amber-50/90 border border-amber-200 text-amber-800 text-xs font-bold px-3 py-1.5 rounded-full">
+            <span class="glass-chip inline-flex items-center gap-1.5 bg-amber-50/90 border border-amber-200 text-amber-900 text-xs font-bold px-3 py-1.5 rounded-full">
               ⚡ Action for Team Leaders
             </span>
           </div>
@@ -508,7 +521,7 @@
             href="https://www.sih.gov.in/sih2026PS"
             target="_blank"
             rel="noopener noreferrer"
-            class="inline-flex items-center gap-2 px-4 py-2 bg-gradient-to-r from-blue-600 to-indigo-600 text-white text-xs font-black rounded-xl shadow-xs hover:shadow-md transition-all active:scale-95"
+            class="inline-flex items-center gap-2 px-4 py-2 bg-gradient-to-r from-blue-600 to-indigo-600 text-white text-xs font-black rounded-xl shadow-glow-blue hover:shadow-md transition-all active:scale-95"
           >
             <span>Explore SIH 2026 PS (sih.gov.in)</span>
             <svg class="w-3.5 h-3.5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2.5" d="M10 6H6a2 2 0 00-2 2v10a2 2 0 002 2h10a2 2 0 002-2v-4M14 4h6m0 0v6m0-6L10 14"/></svg>
@@ -632,7 +645,7 @@
       <div class="grid grid-cols-1 md:grid-cols-3 gap-4 sm:gap-5">
         
         <!-- Rule 1: 500 Ideas Limit -->
-        <div class="card-interactive bg-white rounded-3xl p-5 sm:p-6 border border-rose-200/90 shadow-card flex flex-col justify-between">
+        <div class="card-interactive bg-white rounded-3xl p-5 sm:p-6 border border-rose-200/90 shadow-card-luxury flex flex-col justify-between">
           <div class="space-y-3">
             <div class="flex items-center gap-2.5 text-rose-700 font-black text-xs uppercase tracking-wide">
               <span class="w-8 h-8 rounded-xl bg-rose-50 border border-rose-200 text-rose-600 flex items-center justify-center text-base">⏳</span>
@@ -648,7 +661,7 @@
         </div>
 
         <!-- Rule 2: Max 2 PS per Team -->
-        <div class="card-interactive bg-white rounded-3xl p-5 sm:p-6 border border-blue-200/90 shadow-card flex flex-col justify-between">
+        <div class="card-interactive bg-white rounded-3xl p-5 sm:p-6 border border-blue-200/90 shadow-card-luxury flex flex-col justify-between">
           <div class="space-y-3">
             <div class="flex items-center gap-2.5 text-blue-700 font-black text-xs uppercase tracking-wide">
               <span class="w-8 h-8 rounded-xl bg-blue-50 border border-blue-200 text-blue-600 flex items-center justify-center text-base">🎯</span>
@@ -664,7 +677,7 @@
         </div>
 
         <!-- Rule 3: SPOC Nomination Only -->
-        <div class="card-interactive bg-white rounded-3xl p-5 sm:p-6 border border-emerald-200/90 shadow-card flex flex-col justify-between">
+        <div class="card-interactive bg-white rounded-3xl p-5 sm:p-6 border border-emerald-200/90 shadow-card-luxury flex flex-col justify-between">
           <div class="space-y-3">
             <div class="flex items-center gap-2.5 text-emerald-700 font-black text-xs uppercase tracking-wide">
               <span class="w-8 h-8 rounded-xl bg-emerald-50 border border-emerald-200 text-emerald-600 flex items-center justify-center text-base">🔑</span>
@@ -685,7 +698,7 @@
     <!-- ══════════════════════════════════════════════════════════════════ -->
     <!-- 5. INTERACTIVE 10-POINT TEAM LEADER VERIFICATION CHECKLIST -->
     <!-- ══════════════════════════════════════════════════════════════════ -->
-    <section id="checklist" class="bg-white rounded-3xl border border-slate-200/90 shadow-card p-5 sm:p-8 lg:p-10 space-y-6" aria-labelledby="checklist-heading">
+    <section id="checklist" class="bg-white rounded-3xl border border-slate-200/90 shadow-card-luxury p-5 sm:p-8 lg:p-10 space-y-6" aria-labelledby="checklist-heading">
       <div class="flex flex-col sm:flex-row items-start sm:items-center justify-between gap-3 border-b border-slate-100 pb-4">
         <div class="flex items-center gap-3">
           <span class="w-10 h-10 rounded-2xl bg-blue-50 border border-blue-200 text-blue-700 text-lg font-black flex items-center justify-center flex-shrink-0 shadow-2xs">📋</span>
@@ -791,7 +804,7 @@
       </div>
 
       <!-- Waitlisted Teams Notification -->
-      <div class="flex items-start gap-3 bg-amber-50/80 border border-amber-200/90 rounded-2xl p-4 text-xs text-slate-700">
+      <div class="flex items-start gap-3 bg-amber-50/90 border border-amber-200 rounded-2xl p-4 text-xs text-slate-700">
         <span class="text-amber-600 text-lg flex-shrink-0 mt-0.5">⚠️</span>
         <div class="space-y-1">
           <p>
@@ -810,7 +823,7 @@
     <section id="gallery" class="space-y-6" aria-labelledby="gallery-heading">
       <div class="flex flex-col sm:flex-row items-start sm:items-end justify-between gap-3 border-b border-slate-200/80 pb-4">
         <div>
-          <div class="inline-flex items-center gap-2 px-3 py-1 bg-emerald-50 border border-emerald-200 text-emerald-800 text-[11px] font-black uppercase tracking-wider rounded-full mb-2">
+          <div class="inline-flex items-center gap-2 px-3 py-1 bg-emerald-50 border border-emerald-200 text-emerald-900 text-[11px] font-black uppercase tracking-wider rounded-full mb-2">
             <span>📸 Captured Moments · 22 August 2026</span>
           </div>
           <h2 id="gallery-heading" class="text-2xl sm:text-3xl font-black text-slate-900 tracking-tight">
@@ -832,42 +845,42 @@
       <!-- 6 Featured Image Cards Grid (2 Col Mobile -> 3 Col Tablet -> 6 Col Desktop) -->
       <div class="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-6 gap-3 sm:gap-4">
         
-        <a href="gallery.html" class="group relative rounded-2xl overflow-hidden shadow-2xs hover:shadow-card-hover hover:-translate-y-1 transition-all duration-200 bg-slate-200 aspect-[4/3] skeleton-image-wrapper">
+        <a href="gallery.html" class="group relative rounded-2xl overflow-hidden shadow-2xs hover:shadow-card-luxury-hover hover:-translate-y-1 transition-all duration-200 bg-slate-200 aspect-[4/3] skeleton-image-wrapper">
           <img src="assets/gallery/DSC_0163.JPG" alt="SIH 2026 Hackathon Presentation UIT" loading="lazy" onload="this.parentElement.classList.add('skeleton-loaded')" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-300" />
           <div class="absolute inset-0 bg-gradient-to-t from-slate-900/60 via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-opacity flex items-end p-2.5">
             <span class="text-[10px] font-bold text-white">Presentation Day</span>
           </div>
         </a>
 
-        <a href="gallery.html" class="group relative rounded-2xl overflow-hidden shadow-2xs hover:shadow-card-hover hover:-translate-y-1 transition-all duration-200 bg-slate-200 aspect-[4/3] skeleton-image-wrapper">
+        <a href="gallery.html" class="group relative rounded-2xl overflow-hidden shadow-2xs hover:shadow-card-luxury-hover hover:-translate-y-1 transition-all duration-200 bg-slate-200 aspect-[4/3] skeleton-image-wrapper">
           <img src="assets/gallery/DSC_0171.JPG" alt="Jury Evaluation SIH 2026" loading="lazy" onload="this.parentElement.classList.add('skeleton-loaded')" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-300" />
           <div class="absolute inset-0 bg-gradient-to-t from-slate-900/60 via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-opacity flex items-end p-2.5">
             <span class="text-[10px] font-bold text-white">Jury Assessment</span>
           </div>
         </a>
 
-        <a href="gallery.html" class="group relative rounded-2xl overflow-hidden shadow-2xs hover:shadow-card-hover hover:-translate-y-1 transition-all duration-200 bg-slate-200 aspect-[4/3] skeleton-image-wrapper">
+        <a href="gallery.html" class="group relative rounded-2xl overflow-hidden shadow-2xs hover:shadow-card-luxury-hover hover:-translate-y-1 transition-all duration-200 bg-slate-200 aspect-[4/3] skeleton-image-wrapper">
           <img src="assets/gallery/DSC_0180.JPG" alt="Team Presentation SIH 2026" loading="lazy" onload="this.parentElement.classList.add('skeleton-loaded')" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-300" />
           <div class="absolute inset-0 bg-gradient-to-t from-slate-900/60 via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-opacity flex items-end p-2.5">
             <span class="text-[10px] font-bold text-white">Project Demo</span>
           </div>
         </a>
 
-        <a href="gallery.html" class="group relative rounded-2xl overflow-hidden shadow-2xs hover:shadow-card-hover hover:-translate-y-1 transition-all duration-200 bg-slate-200 aspect-[4/3] skeleton-image-wrapper">
+        <a href="gallery.html" class="group relative rounded-2xl overflow-hidden shadow-2xs hover:shadow-card-luxury-hover hover:-translate-y-1 transition-all duration-200 bg-slate-200 aspect-[4/3] skeleton-image-wrapper">
           <img src="assets/gallery/DSC_0222.JPG" alt="Student Innovators at UIT" loading="lazy" onload="this.parentElement.classList.add('skeleton-loaded')" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-300" />
           <div class="absolute inset-0 bg-gradient-to-t from-slate-900/60 via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-opacity flex items-end p-2.5">
             <span class="text-[10px] font-bold text-white">Student Teams</span>
           </div>
         </a>
 
-        <a href="gallery.html" class="group relative rounded-2xl overflow-hidden shadow-2xs hover:shadow-card-hover hover:-translate-y-1 transition-all duration-200 bg-slate-200 aspect-[4/3] skeleton-image-wrapper">
+        <a href="gallery.html" class="group relative rounded-2xl overflow-hidden shadow-2xs hover:shadow-card-luxury-hover hover:-translate-y-1 transition-all duration-200 bg-slate-200 aspect-[4/3] skeleton-image-wrapper">
           <img src="assets/gallery/DSC_0245.JPG" alt="Hackathon Review Session" loading="lazy" onload="this.parentElement.classList.add('skeleton-loaded')" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-300" />
           <div class="absolute inset-0 bg-gradient-to-t from-slate-900/60 via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-opacity flex items-end p-2.5">
             <span class="text-[10px] font-bold text-white">Review Panel</span>
           </div>
         </a>
 
-        <a href="gallery.html" class="group relative rounded-2xl overflow-hidden shadow-2xs hover:shadow-card-hover hover:-translate-y-1 transition-all duration-200 bg-slate-200 aspect-[4/3] skeleton-image-wrapper">
+        <a href="gallery.html" class="group relative rounded-2xl overflow-hidden shadow-2xs hover:shadow-card-luxury-hover hover:-translate-y-1 transition-all duration-200 bg-slate-200 aspect-[4/3] skeleton-image-wrapper">
           <img src="assets/gallery/DSC_0290.JPG" alt="Valedictory & Group Moments" loading="lazy" onload="this.parentElement.classList.add('skeleton-loaded')" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-300" />
           <div class="absolute inset-0 bg-gradient-to-t from-slate-900/60 via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-opacity flex items-end p-2.5">
             <span class="text-[10px] font-bold text-white">Event Highlights</span>
@@ -886,7 +899,7 @@
         href="https://www.sih.gov.in/sih2026PS"
         target="_blank"
         rel="noopener noreferrer"
-        class="card-interactive bg-white rounded-3xl border border-slate-200/90 shadow-card p-5 sm:p-7 flex items-center justify-between group"
+        class="card-interactive bg-white rounded-3xl border border-slate-200/90 shadow-card-luxury p-5 sm:p-7 flex items-center justify-between group"
       >
         <div class="flex items-center gap-4">
           <div class="w-12 h-12 sm:w-14 sm:h-14 rounded-2xl bg-blue-50 border border-blue-200 text-blue-700 flex items-center justify-center text-xl sm:text-2xl flex-shrink-0 group-hover:bg-blue-600 group-hover:text-white transition-colors shadow-2xs">
@@ -906,7 +919,7 @@
 
       <a
         href="gallery.html"
-        class="card-interactive bg-white rounded-3xl border border-slate-200/90 shadow-card p-5 sm:p-7 flex items-center justify-between group"
+        class="card-interactive bg-white rounded-3xl border border-slate-200/90 shadow-card-luxury p-5 sm:p-7 flex items-center justify-between group"
       >
         <div class="flex items-center gap-4">
           <div class="w-12 h-12 sm:w-14 sm:h-14 rounded-2xl bg-emerald-50 border border-emerald-200 text-emerald-700 flex items-center justify-center text-xl sm:text-2xl flex-shrink-0 group-hover:bg-emerald-600 group-hover:text-white transition-colors shadow-2xs">
@@ -928,7 +941,7 @@
 
   </main>
 
-    <!-- ── Rich Institutional Footer ── -->
+  <!-- ── Rich Institutional Footer ── -->
   <footer class="bg-gradient-to-b from-slate-50 via-white to-blue-50/50 border-t border-slate-200/90 pt-10 pb-8 mt-auto w-full" role="contentinfo">
     <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 space-y-8">
       
@@ -936,10 +949,12 @@
       <div class="flex flex-col md:flex-row items-center justify-between pb-8 border-b border-slate-200/70 gap-6 text-center md:text-left">
         
         <div class="flex flex-col sm:flex-row items-center gap-4">
-          <img class="w-12 h-12 object-contain" src="assets/united-logo.png" alt="United Group of Institutions Logo" />
+          <div class="p-1.5 rounded-2xl bg-white border border-slate-200/90 shadow-2xs">
+            <img class="w-12 h-12 object-contain" src="assets/united-logo.png" alt="United Group of Institutions Logo" />
+          </div>
           <div class="flex flex-col items-center sm:items-start">
             <div class="flex items-center gap-2 flex-wrap justify-center sm:justify-start">
-              <span class="text-base font-black text-[#2A4B8D] leading-none">United Institute of Technology</span>
+              <span class="text-base font-black text-[#1e3a8a] leading-none">United Institute of Technology</span>
               <span class="text-[10px] font-extrabold text-blue-700 bg-blue-50 border border-blue-200 px-2.5 py-0.5 rounded-full">SIH 2026</span>
             </div>
             <p class="text-xs font-medium text-slate-500 mt-1">Smart India Hackathon 2026 · Internal College Portal · Naini, Prayagraj, UP</p>
@@ -951,7 +966,7 @@
           <a href="#team" class="hover:text-blue-700 px-3 py-1.5 rounded-xl hover:bg-blue-50/80 transition-colors">Leadership Team</a>
           <a href="#process" class="hover:text-blue-700 px-3 py-1.5 rounded-xl hover:bg-blue-50/80 transition-colors">Top 50 Process</a>
           <a href="#rules" class="hover:text-blue-700 px-3 py-1.5 rounded-xl hover:bg-blue-50/80 transition-colors">SIH Rules</a>
-          <a href="gallery.html" class="text-emerald-700 font-extrabold px-3 py-1.5 rounded-xl hover:bg-emerald-50 transition-colors">Gallery (38 Photos)</a>
+          <a href="gallery.html" class="text-emerald-800 font-extrabold px-3 py-1.5 rounded-xl hover:bg-emerald-50 transition-colors">Gallery (38 Photos)</a>
         </nav>
       </div>
 
