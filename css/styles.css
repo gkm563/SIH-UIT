@@ -212,3 +212,31 @@ body {
   pointer-events: auto;
   transform: translateY(0);
 }
+
+/* ── Mobile Optimization & Touch Support ── */
+html, body {
+  max-width: 100vw;
+  overflow-x: hidden;
+  -webkit-tap-highlight-color: transparent;
+}
+
+/* Hide scrollbar for horizontal chip bars */
+.no-scrollbar::-webkit-scrollbar {
+  display: none;
+}
+.no-scrollbar {
+  -ms-overflow-style: none;
+  scrollbar-width: none;
+}
+
+/* Ensure images don't overflow parent containers */
+img, video {
+  max-width: 100%;
+  height: auto;
+}
+
+@media (max-width: 640px) {
+  .glass-card-pro {
+    backdrop-filter: blur(12px) saturate(160%);
+  }
+}
