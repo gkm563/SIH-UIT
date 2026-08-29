@@ -238,12 +238,23 @@
       }
     }
 
-    function getTeamStatus(index) {
-      // 45 Shortlisted, 5 Waitlisted, Rest Participated
-      if (index < 45) return { label: 'SHORTLISTED', class: 'bg-emerald-100 text-emerald-800 border-emerald-300' };
-      if (index < 50) return { label: 'WAITLISTED', class: 'bg-amber-100 text-amber-800 border-amber-300' };
+    
+    const TOP_50_SHORTLISTED_IDS = ["SIH2026-0142","SIH2026-0028","SIH2026-0140","SIH2026-0065","SIH2026-0031","SIH2026-0068","SIH2026-0072","SIH2026-0129","SIH2026-0054","SIH2026-0060","SIH2026-0056","SIH2026-0058","SIH2026-0091","SIH2026-0100","SIH2026-0033","SIH2026-0136","SIH2026-0135","SIH2026-0035","SIH2026-0137","SIH2026-0066","SIH2026-0123","SIH2026-0053","SIH2026-0064","SIH2026-0074","SIH2026-0133","SIH2026-0019","SIH2026-0127","SIH2026-0138","SIH2026-0041","SIH2026-0037","SIH2026-0045","SIH2026-0057","SIH2026-0069","SIH2026-0128","SIH2026-0144","SIH2026-0134","SIH2026-0067","SIH2026-0021","SIH2026-0034","SIH2026-0044","SIH2026-0073","SIH2026-0038","SIH2026-0039","SIH2026-0052","SIH2026-0036"];
+    const TOP_50_WAITLISTED_IDS = ["SIH2026-0139","SIH2026-0027","SIH2026-0130","SIH2026-0043","SIH2026-0032"];
+
+    function getTeamStatus(team, index) {
+      const regId = (team.registrationId || team.id || '').toUpperCase();
+      const name = (team.teamName || team.name || '').toUpperCase();
+
+      if (TOP_50_SHORTLISTED_IDS.includes(regId) || TOP_50_SHORTLISTED_IDS.some(id => regId.includes(id))) {
+        return { label: 'SHORTLISTED', class: 'bg-emerald-100 text-emerald-800 border-emerald-300' };
+      }
+      if (TOP_50_WAITLISTED_IDS.includes(regId) || TOP_50_WAITLISTED_IDS.some(id => regId.includes(id))) {
+        return { label: 'WAITLISTED', class: 'bg-amber-100 text-amber-800 border-amber-300' };
+      }
       return { label: 'PARTICIPATED', class: 'bg-slate-100 text-slate-700 border-slate-300' };
     }
+
 
     function render(teams) {
       if (!teams || teams.length === 0) {
@@ -259,7 +270,7 @@
         const leaderYear = t.leaderYear || 'Second Year';
         const leaderGender = t.leaderGender || '';
 
-        const statusInfo = getTeamStatus(idx);
+        const statusInfo = getTeamStatus(t, idx);
 
         // Members list
         const rawMembers = Array.isArray(t.teamMembers) ? t.teamMembers : [];
@@ -313,7 +324,7 @@
           membersStr = t.teamMembers.map(m => m.name || '').join(' ').toLowerCase();
         }
 
-        const statusInfo = getTeamStatus(idx);
+        const statusInfo = getTeamStatus(t, idx);
         const matchesStatus = (currentFilter === 'all' || statusInfo.label.toLowerCase() === currentFilter);
 
         const matchesQuery = (!q || teamName.includes(q) || regId.includes(q) || leader.includes(q) || branch.includes(q) || membersStr.includes(q));

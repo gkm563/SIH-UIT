@@ -1,5 +1,6 @@
 /**
  * Real Verified Teams Roster Cache from Google Sheets (SIH 2026 UIT)
+ * Synced with Official Top 50 Selected Teams
  */
 const REAL_TEAMS_CACHE = [
   {
@@ -72,7 +73,9 @@ const REAL_TEAMS_CACHE = [
         "email": "harshsrivastava26009@gmail.com",
         "mobile": "9453791817"
       }
-    ]
+    ],
+    "selectionStatus": "SHORTLISTED",
+    "rank": 26
   },
   {
     "registrationId": "SIH2026-0027",
@@ -144,7 +147,9 @@ const REAL_TEAMS_CACHE = [
         "email": "kritikayadav1904@gmail.com",
         "mobile": "7235806381"
       }
-    ]
+    ],
+    "selectionStatus": "WAITLISTED",
+    "rank": 2
   },
   {
     "registrationId": "SIH2026-0029",
@@ -216,7 +221,8 @@ const REAL_TEAMS_CACHE = [
         "email": "nikkikushwaha723@gmail.com",
         "mobile": "7237072852"
       }
-    ]
+    ],
+    "selectionStatus": "PARTICIPATED"
   },
   {
     "registrationId": "SIH2026-0030",
@@ -288,7 +294,8 @@ const REAL_TEAMS_CACHE = [
         "email": "ayan25181@gmail.com",
         "mobile": "8052892203"
       }
-    ]
+    ],
+    "selectionStatus": "PARTICIPATED"
   },
   {
     "registrationId": "SIH2026-0031",
@@ -360,7 +367,9 @@ const REAL_TEAMS_CACHE = [
         "email": "ghoshtanushka10@gmail.com",
         "mobile": "9450238798"
       }
-    ]
+    ],
+    "selectionStatus": "SHORTLISTED",
+    "rank": 5
   },
   {
     "registrationId": "SIH2026-0033",
@@ -432,7 +441,9 @@ const REAL_TEAMS_CACHE = [
         "email": "jaiswal.akshat1979@gmail.com",
         "mobile": "9236181108"
       }
-    ]
+    ],
+    "selectionStatus": "SHORTLISTED",
+    "rank": 15
   },
   {
     "registrationId": "SIH2026-0034",
@@ -504,7 +515,9 @@ const REAL_TEAMS_CACHE = [
         "email": "priyakumari.2635139@gmail.com",
         "mobile": "8126617829"
       }
-    ]
+    ],
+    "selectionStatus": "SHORTLISTED",
+    "rank": 39
   },
   {
     "registrationId": "SIH2026-0036",
@@ -576,7 +589,9 @@ const REAL_TEAMS_CACHE = [
         "email": "vermadhairya96@gmail.com",
         "mobile": "9667899396"
       }
-    ]
+    ],
+    "selectionStatus": "SHORTLISTED",
+    "rank": 45
   },
   {
     "registrationId": "SIH2026-0037",
@@ -648,7 +663,9 @@ const REAL_TEAMS_CACHE = [
         "email": "singhaarika64@gmail.com",
         "mobile": "8303165345"
       }
-    ]
+    ],
+    "selectionStatus": "SHORTLISTED",
+    "rank": 30
   },
   {
     "registrationId": "SIH2026-0038",
@@ -720,7 +737,9 @@ const REAL_TEAMS_CACHE = [
         "email": "katishay.30.10@gmail.com",
         "mobile": "9451848611"
       }
-    ]
+    ],
+    "selectionStatus": "SHORTLISTED",
+    "rank": 42
   },
   {
     "registrationId": "SIH2026-0039",
@@ -792,7 +811,9 @@ const REAL_TEAMS_CACHE = [
         "email": "gungun23032005@gmail.com",
         "mobile": "9839501404"
       }
-    ]
+    ],
+    "selectionStatus": "SHORTLISTED",
+    "rank": 43
   },
   {
     "registrationId": "SIH2026-0041",
@@ -864,7 +885,9 @@ const REAL_TEAMS_CACHE = [
         "email": "vaishnavidwivedi555@gmail.com",
         "mobile": "9335319402"
       }
-    ]
+    ],
+    "selectionStatus": "SHORTLISTED",
+    "rank": 29
   },
   {
     "registrationId": "SIH2026-0044",
@@ -936,7 +959,9 @@ const REAL_TEAMS_CACHE = [
         "email": "arpit14kumar20@gmail.com",
         "mobile": "9244738306"
       }
-    ]
+    ],
+    "selectionStatus": "SHORTLISTED",
+    "rank": 40
   },
   {
     "registrationId": "SIH2026-0045",
@@ -1008,7 +1033,9 @@ const REAL_TEAMS_CACHE = [
         "email": "aryan7728patel@gmail.com",
         "mobile": "9236469607"
       }
-    ]
+    ],
+    "selectionStatus": "SHORTLISTED",
+    "rank": 31
   },
   {
     "registrationId": "SIH2026-0047",
@@ -1080,7 +1107,8 @@ const REAL_TEAMS_CACHE = [
         "email": "tanyasingh11102000@gmail.com",
         "mobile": "8188850438"
       }
-    ]
+    ],
+    "selectionStatus": "PARTICIPATED"
   },
   {
     "registrationId": "SIH2026-0048",
@@ -1152,7 +1180,8 @@ const REAL_TEAMS_CACHE = [
         "email": "riyayapandey08@gmail.com",
         "mobile": "8429028893"
       }
-    ]
+    ],
+    "selectionStatus": "PARTICIPATED"
   },
   {
     "registrationId": "SIH2026-0052",
@@ -1224,7 +1253,9 @@ const REAL_TEAMS_CACHE = [
         "email": "ikashishyadav1107@gmail.com",
         "mobile": "8303642883"
       }
-    ]
+    ],
+    "selectionStatus": "SHORTLISTED",
+    "rank": 44
   },
   {
     "registrationId": "SIH2026-0055",
@@ -1296,7 +1327,8 @@ const REAL_TEAMS_CACHE = [
         "email": "kunalsen7376@gmail.com",
         "mobile": "7905898396"
       }
-    ]
+    ],
+    "selectionStatus": "PARTICIPATED"
   },
   {
     "registrationId": "SIH2026-0057",
@@ -1368,7 +1400,9 @@ const REAL_TEAMS_CACHE = [
         "email": "hims73075@gmail.com",
         "mobile": "7307558782"
       }
-    ]
+    ],
+    "selectionStatus": "SHORTLISTED",
+    "rank": 32
   },
   {
     "registrationId": "SIH2026-0058",
@@ -1440,7 +1474,9 @@ const REAL_TEAMS_CACHE = [
         "email": "tiwariharsh9973@gmail.com",
         "mobile": "9235579973"
       }
-    ]
+    ],
+    "selectionStatus": "SHORTLISTED",
+    "rank": 12
   },
   {
     "registrationId": "SIH2026-0060",
@@ -1512,7 +1548,9 @@ const REAL_TEAMS_CACHE = [
         "email": "madheshiyaroshni3112@gmail.com",
         "mobile": "9322159718"
       }
-    ]
+    ],
+    "selectionStatus": "SHORTLISTED",
+    "rank": 10
   },
   {
     "registrationId": "SIH2026-0064",
@@ -1584,7 +1622,9 @@ const REAL_TEAMS_CACHE = [
         "email": "onibakhan6@gmail.com",
         "mobile": "7522890493"
       }
-    ]
+    ],
+    "selectionStatus": "SHORTLISTED",
+    "rank": 23
   },
   {
     "registrationId": "SIH2026-0066",
@@ -1656,7 +1696,9 @@ const REAL_TEAMS_CACHE = [
         "email": "shrivastavaakchat7@gmail.com",
         "mobile": "9277279884"
       }
-    ]
+    ],
+    "selectionStatus": "SHORTLISTED",
+    "rank": 20
   },
   {
     "registrationId": "SIH2026-0067",
@@ -1728,7 +1770,9 @@ const REAL_TEAMS_CACHE = [
         "email": "sudhan.alld.2184@gmail.com",
         "mobile": "8726546922"
       }
-    ]
+    ],
+    "selectionStatus": "SHORTLISTED",
+    "rank": 37
   },
   {
     "registrationId": "SIH2026-0068",
@@ -1800,7 +1844,9 @@ const REAL_TEAMS_CACHE = [
         "email": "ashmitverma3037@gmail.com",
         "mobile": "9328489360"
       }
-    ]
+    ],
+    "selectionStatus": "SHORTLISTED",
+    "rank": 6
   },
   {
     "registrationId": "SIH2026-0069",
@@ -1872,7 +1918,9 @@ const REAL_TEAMS_CACHE = [
         "email": "sakshisi1009@gmail.com",
         "mobile": "8765870884"
       }
-    ]
+    ],
+    "selectionStatus": "SHORTLISTED",
+    "rank": 33
   },
   {
     "registrationId": "SIH2026-0075",
@@ -1944,7 +1992,8 @@ const REAL_TEAMS_CACHE = [
         "email": "abhaytripathi1811@gmail.com",
         "mobile": "9653088783"
       }
-    ]
+    ],
+    "selectionStatus": "PARTICIPATED"
   },
   {
     "registrationId": "SIH2026-0091",
@@ -2016,7 +2065,9 @@ const REAL_TEAMS_CACHE = [
         "email": "vaidehiydav420@gmail.com",
         "mobile": "9555323035"
       }
-    ]
+    ],
+    "selectionStatus": "SHORTLISTED",
+    "rank": 13
   },
   {
     "registrationId": "SIH2026-0123",
@@ -2088,7 +2139,9 @@ const REAL_TEAMS_CACHE = [
         "email": "tri2007sin@gmail.com",
         "mobile": "8318707011"
       }
-    ]
+    ],
+    "selectionStatus": "SHORTLISTED",
+    "rank": 21
   },
   {
     "registrationId": "SIH2026-0125",
@@ -2160,7 +2213,8 @@ const REAL_TEAMS_CACHE = [
         "email": "ishikasrivastava8795@gmail.com",
         "mobile": "8795719315"
       }
-    ]
+    ],
+    "selectionStatus": "PARTICIPATED"
   },
   {
     "registrationId": "SIH2026-0127",
@@ -2232,7 +2286,9 @@ const REAL_TEAMS_CACHE = [
         "email": "sujeetpandey812765@gmail.com",
         "mobile": "8127653008"
       }
-    ]
+    ],
+    "selectionStatus": "SHORTLISTED",
+    "rank": 27
   },
   {
     "registrationId": "SIH2026-0129",
@@ -2304,7 +2360,9 @@ const REAL_TEAMS_CACHE = [
         "email": "bhoomika023karmakar@gmail.com",
         "mobile": "9026492850"
       }
-    ]
+    ],
+    "selectionStatus": "SHORTLISTED",
+    "rank": 8
   },
   {
     "registrationId": "SIH2026-0131",
@@ -2376,7 +2434,8 @@ const REAL_TEAMS_CACHE = [
         "email": "utkarshkumarshukla8@gmail.com",
         "mobile": "9795053973"
       }
-    ]
+    ],
+    "selectionStatus": "PARTICIPATED"
   },
   {
     "registrationId": "SIH2026-0134",
@@ -2448,7 +2507,9 @@ const REAL_TEAMS_CACHE = [
         "email": "mailtokomal00@gmail.com",
         "mobile": "8969180700"
       }
-    ]
+    ],
+    "selectionStatus": "SHORTLISTED",
+    "rank": 36
   },
   {
     "registrationId": "SIH2026-0135",
@@ -2520,7 +2581,9 @@ const REAL_TEAMS_CACHE = [
         "email": "dwivedivanshika84@gmail.com",
         "mobile": "9005787564"
       }
-    ]
+    ],
+    "selectionStatus": "SHORTLISTED",
+    "rank": 17
   },
   {
     "registrationId": "SIH2026-0139",
@@ -2592,7 +2655,9 @@ const REAL_TEAMS_CACHE = [
         "email": "omtiwariom981@gmail.com",
         "mobile": "7309892738"
       }
-    ]
+    ],
+    "selectionStatus": "WAITLISTED",
+    "rank": 1
   },
   {
     "registrationId": "SIH2026-0140",
@@ -2664,7 +2729,9 @@ const REAL_TEAMS_CACHE = [
         "email": "hk40048900@gmail.com",
         "mobile": "9559382681"
       }
-    ]
+    ],
+    "selectionStatus": "SHORTLISTED",
+    "rank": 3
   },
   {
     "registrationId": "SIH2026-0142",
@@ -2736,7 +2803,9 @@ const REAL_TEAMS_CACHE = [
         "email": "pranjalsandilya405@gmail.com",
         "mobile": "8459753183"
       }
-    ]
+    ],
+    "selectionStatus": "SHORTLISTED",
+    "rank": 1
   },
   {
     "registrationId": "SIH2026-0145",
@@ -2808,7 +2877,8 @@ const REAL_TEAMS_CACHE = [
         "email": "srivastavashreyansh600@gmail.com",
         "mobile": "8299875512"
       }
-    ]
+    ],
+    "selectionStatus": "PARTICIPATED"
   },
   {
     "registrationId": "SIH2026-0028",
@@ -2880,7 +2950,9 @@ const REAL_TEAMS_CACHE = [
         "email": "b.khushnuma.6497@gmail.com",
         "mobile": "9140554048"
       }
-    ]
+    ],
+    "selectionStatus": "SHORTLISTED",
+    "rank": 2
   },
   {
     "registrationId": "SIH2026-0137",
@@ -2952,7 +3024,9 @@ const REAL_TEAMS_CACHE = [
         "email": "chaturvedipriyanshi63@gmail.com",
         "mobile": "8924901691"
       }
-    ]
+    ],
+    "selectionStatus": "SHORTLISTED",
+    "rank": 19
   },
   {
     "registrationId": "SIH2026-0136",
@@ -3024,7 +3098,9 @@ const REAL_TEAMS_CACHE = [
         "email": "varunalok49@gmail.com",
         "mobile": "6392323927"
       }
-    ]
+    ],
+    "selectionStatus": "SHORTLISTED",
+    "rank": 16
   },
   {
     "registrationId": "SIH2026-0141",
@@ -3096,7 +3172,8 @@ const REAL_TEAMS_CACHE = [
         "email": "saksham3818@gmail.com",
         "mobile": "7905038809"
       }
-    ]
+    ],
+    "selectionStatus": "PARTICIPATED"
   },
   {
     "registrationId": "SIH2026-0043",
@@ -3168,7 +3245,9 @@ const REAL_TEAMS_CACHE = [
         "email": "aagmanpal@gmail.com",
         "mobile": "7843819008"
       }
-    ]
+    ],
+    "selectionStatus": "WAITLISTED",
+    "rank": 4
   },
   {
     "registrationId": "SIH2026-0130",
@@ -3240,7 +3319,9 @@ const REAL_TEAMS_CACHE = [
         "email": "dev2005v@gmail.com",
         "mobile": "6387108678"
       }
-    ]
+    ],
+    "selectionStatus": "WAITLISTED",
+    "rank": 3
   },
   {
     "registrationId": "SIH2026-0032",
@@ -3312,7 +3393,9 @@ const REAL_TEAMS_CACHE = [
         "email": "rohit21072007@gmail.com",
         "mobile": "7859087219"
       }
-    ]
+    ],
+    "selectionStatus": "WAITLISTED",
+    "rank": 5
   },
   {
     "registrationId": "SIH2026-0042",
@@ -3384,7 +3467,8 @@ const REAL_TEAMS_CACHE = [
         "email": "vigneshmishrax07@gmail.com",
         "mobile": "7985987335"
       }
-    ]
+    ],
+    "selectionStatus": "PARTICIPATED"
   },
   {
     "registrationId": "SIH2026-0046",
@@ -3456,7 +3540,8 @@ const REAL_TEAMS_CACHE = [
         "email": "anushkaraj0617@gmail.com",
         "mobile": "6392055122"
       }
-    ]
+    ],
+    "selectionStatus": "PARTICIPATED"
   },
   {
     "registrationId": "SIH2026-0054",
@@ -3528,7 +3613,9 @@ const REAL_TEAMS_CACHE = [
         "email": "niteshy8477@gmail.com",
         "mobile": "7052262988"
       }
-    ]
+    ],
+    "selectionStatus": "SHORTLISTED",
+    "rank": 9
   },
   {
     "registrationId": "SIH2026-0065",
@@ -3600,7 +3687,9 @@ const REAL_TEAMS_CACHE = [
         "email": "yasharthsri1801@gmail.com",
         "mobile": "9794735365"
       }
-    ]
+    ],
+    "selectionStatus": "SHORTLISTED",
+    "rank": 4
   },
   {
     "registrationId": "SIH2026-0074",
@@ -3672,7 +3761,9 @@ const REAL_TEAMS_CACHE = [
         "email": "mauryarajwant56@gmail.com",
         "mobile": "8580470972"
       }
-    ]
+    ],
+    "selectionStatus": "SHORTLISTED",
+    "rank": 24
   },
   {
     "registrationId": "SIH2026-0100",
@@ -3744,7 +3835,9 @@ const REAL_TEAMS_CACHE = [
         "email": "raiharshita0102@gmail.com",
         "mobile": "6394055936"
       }
-    ]
+    ],
+    "selectionStatus": "SHORTLISTED",
+    "rank": 14
   },
   {
     "registrationId": "SIH2026-0132",
@@ -3816,7 +3909,8 @@ const REAL_TEAMS_CACHE = [
         "email": "shatakshi0202@gmail.com",
         "mobile": "9580113088"
       }
-    ]
+    ],
+    "selectionStatus": "PARTICIPATED"
   },
   {
     "registrationId": "SIH2026-0143",
@@ -3888,7 +3982,8 @@ const REAL_TEAMS_CACHE = [
         "email": "vinayaksrivastav893@gmail.com",
         "mobile": "8528894509"
       }
-    ]
+    ],
+    "selectionStatus": "PARTICIPATED"
   },
   {
     "registrationId": "SIH2026-0144",
@@ -3960,7 +4055,9 @@ const REAL_TEAMS_CACHE = [
         "email": "gautamishant50@gmail.com",
         "mobile": "8429984604"
       }
-    ]
+    ],
+    "selectionStatus": "SHORTLISTED",
+    "rank": 35
   },
   {
     "registrationId": "SIH2026-0021",
@@ -4032,7 +4129,9 @@ const REAL_TEAMS_CACHE = [
         "email": "abhilasha80538@gmail.com",
         "mobile": "7307188207"
       }
-    ]
+    ],
+    "selectionStatus": "SHORTLISTED",
+    "rank": 38
   },
   {
     "registrationId": "SIH2026-0071",
@@ -4104,7 +4203,8 @@ const REAL_TEAMS_CACHE = [
         "email": "pandeymehak000@gmail.com",
         "mobile": "8400449198"
       }
-    ]
+    ],
+    "selectionStatus": "PARTICIPATED"
   },
   {
     "registrationId": "SIH2026-0072",
@@ -4176,7 +4276,9 @@ const REAL_TEAMS_CACHE = [
         "email": "satyamonly26@gmail.com",
         "mobile": "9235461231"
       }
-    ]
+    ],
+    "selectionStatus": "SHORTLISTED",
+    "rank": 7
   },
   {
     "registrationId": "SIH2026-0073",
@@ -4248,7 +4350,9 @@ const REAL_TEAMS_CACHE = [
         "email": "amriteshnandanmall37@gmail.com",
         "mobile": "8707812005"
       }
-    ]
+    ],
+    "selectionStatus": "SHORTLISTED",
+    "rank": 41
   },
   {
     "registrationId": "SIH2026-0128",
@@ -4320,7 +4424,9 @@ const REAL_TEAMS_CACHE = [
         "email": "dhruvmehrotra09@gmail.com",
         "mobile": "8853976955"
       }
-    ]
+    ],
+    "selectionStatus": "SHORTLISTED",
+    "rank": 34
   },
   {
     "registrationId": "SIH2026-0138",
@@ -4392,7 +4498,9 @@ const REAL_TEAMS_CACHE = [
         "email": "gauravupadhyay6207488903@gmail.com",
         "mobile": "9142072228"
       }
-    ]
+    ],
+    "selectionStatus": "SHORTLISTED",
+    "rank": 28
   },
   {
     "registrationId": "SIH2026-0133",
@@ -4464,7 +4572,9 @@ const REAL_TEAMS_CACHE = [
         "email": "apfre0448mp@gmail.com",
         "mobile": "8052493242"
       }
-    ]
+    ],
+    "selectionStatus": "SHORTLISTED",
+    "rank": 25
   },
   {
     "registrationId": "SIH2026-0035",
@@ -4536,7 +4646,9 @@ const REAL_TEAMS_CACHE = [
         "email": "shivangsingh932007@gmail.com",
         "mobile": "8601772856"
       }
-    ]
+    ],
+    "selectionStatus": "SHORTLISTED",
+    "rank": 18
   },
   {
     "registrationId": "SIH2026-0053",
@@ -4608,7 +4720,9 @@ const REAL_TEAMS_CACHE = [
         "email": "chitranshis364@gmail.com",
         "mobile": "7991978123"
       }
-    ]
+    ],
+    "selectionStatus": "SHORTLISTED",
+    "rank": 22
   },
   {
     "registrationId": "SIH2026-0056",
@@ -4680,7 +4794,9 @@ const REAL_TEAMS_CACHE = [
         "email": "sachinkumar7607733762@gmail.com",
         "mobile": "7607733762"
       }
-    ]
+    ],
+    "selectionStatus": "SHORTLISTED",
+    "rank": 11
   },
   {
     "registrationId": "SIH2026-0051",
@@ -4752,7 +4868,8 @@ const REAL_TEAMS_CACHE = [
         "email": "yashmishra96836@gmail.com",
         "mobile": "6386521694"
       }
-    ]
+    ],
+    "selectionStatus": "PARTICIPATED"
   },
   {
     "registrationId": "SIH2026-0563",
@@ -4824,6 +4941,7 @@ const REAL_TEAMS_CACHE = [
         "email": "yashmishra96836@gmail.com",
         "mobile": "6386521694"
       }
-    ]
+    ],
+    "selectionStatus": "PARTICIPATED"
   }
 ];
