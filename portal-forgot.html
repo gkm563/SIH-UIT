@@ -4,6 +4,8 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0" />
   <title>Forgot Password | SIH 2026 Team Portal</title>
+  <link rel="preconnect" href="https://cdn.tailwindcss.com" crossorigin />
+  <link rel="dns-prefetch" href="https://script.google.com" />
   <meta name="description" content="Reset your SIH 2026 portal password via OTP sent to your team leader's email." />
   <link rel="icon" href="assets/united-logo.png" type="image/png" />
   <script src="https://cdn.tailwindcss.com"></script>
@@ -64,11 +66,10 @@
           </a>
         </nav>
 
-        <img
-          class="sih-header-logo h-8 sm:h-10 w-auto object-contain bg-white p-1 rounded-lg border border-slate-200/80 shadow-2xs hidden sm:block"
+        <img class="sih-header-logo h-8 sm:h-10 w-auto object-contain bg-white p-1 rounded-lg border border-slate-200/80 shadow-2xs hidden sm:block"
           src="assets/sih-logo.png"
           alt="SIH 2026 logo"
-        />
+        / loading="lazy" decoding="async">
       </div>
 
     </div>
