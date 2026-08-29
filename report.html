@@ -45,7 +45,7 @@
   </aside>
 
   <!-- ── Main Sticky Navigation Header ── -->
-  <header class="bg-white/90 backdrop-blur-xl border-b border-slate-200/80 sticky top-[33px] sm:top-[35px] z-50 transition-all duration-200 shadow-xs" role="banner">
+  <header class="bg-white/90 backdrop-blur-xl border-b border-slate-200/80 sticky top-[33px] sm:top-[35px] z-50 transition-all duration-200 shadow-xs site-header" role="banner">
     <div class="max-w-7xl mx-auto px-3 sm:px-6 lg:px-8 py-2.5 sm:py-3 flex items-center justify-between gap-2 sm:gap-3">
       
       <!-- Institutional Logo & Branding -->
@@ -138,7 +138,7 @@
   <main class="flex-1 w-full max-w-5xl mx-auto px-3.5 sm:px-6 lg:px-8 py-8 sm:py-12 space-y-12">
     
     <!-- ── Report Master Header Banner ── -->
-    <header class="glass-card-pro rounded-3xl p-6 sm:p-10 bg-gradient-to-r from-slate-950 via-blue-950 to-indigo-950 text-white space-y-5 shadow-2xl border border-blue-900/50 relative overflow-hidden">
+    <header class="glass-card-pro rounded-3xl p-6 sm:p-10 bg-gradient-to-r from-slate-950 via-blue-950 to-indigo-950 text-white space-y-5 shadow-2xl border border-blue-900/50 relative overflow-hidden site-header">
       <div class="absolute -right-20 -top-20 w-80 h-80 bg-blue-600/15 rounded-full blur-3xl pointer-events-none"></div>
       
       <div class="relative z-10 space-y-4">
@@ -419,5 +419,34 @@
     </div>
   </footer>
 
+
+  <!-- ── Floating Navbar on Scroll Script ── -->
+  <script>
+  (() => {
+    function initFloatingNav() {
+      const header = document.querySelector('header');
+      if (!header) return;
+      
+      header.classList.add('site-header');
+
+      const onScroll = () => {
+        if (window.scrollY > 25) {
+          header.classList.add('is-scrolled');
+        } else {
+          header.classList.remove('is-scrolled');
+        }
+      };
+
+      window.addEventListener('scroll', onScroll, { passive: true });
+      onScroll();
+    }
+
+    if (document.readyState === 'loading') {
+      document.addEventListener('DOMContentLoaded', initFloatingNav);
+    } else {
+      initFloatingNav();
+    }
+  })();
+  </script>
 </body>
 </html>

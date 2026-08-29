@@ -240,3 +240,32 @@ img, video {
     backdrop-filter: blur(12px) saturate(160%);
   }
 }
+
+/* ── Dynamic Floating Glassmorphic Header on Scroll ── */
+header.site-header {
+  transition: all 0.35s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+header.site-header.is-scrolled {
+  top: 0.75rem !important;
+  margin-left: auto !important;
+  margin-right: auto !important;
+  max-width: 80rem !important;
+  border-radius: 9999px !important;
+  box-shadow: 0 16px 36px -8px rgba(15, 23, 42, 0.14), 0 0 24px -4px rgba(37, 99, 235, 0.15) !important;
+  border: 1px solid rgba(203, 213, 225, 0.9) !important;
+  background: rgba(255, 255, 255, 0.92) !important;
+  backdrop-filter: blur(20px) saturate(190%) !important;
+  padding-left: 0.5rem;
+  padding-right: 0.5rem;
+}
+
+@media (max-width: 768px) {
+  header.site-header.is-scrolled {
+    top: 0.5rem !important;
+    border-radius: 1.25rem !important;
+    margin-left: 0.6rem !important;
+    margin-right: 0.6rem !important;
+    max-width: calc(100vw - 1.2rem) !important;
+  }
+}

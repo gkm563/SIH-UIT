@@ -867,5 +867,34 @@
 
   })();
   </script>
+
+  <!-- ── Floating Navbar on Scroll Script ── -->
+  <script>
+  (() => {
+    function initFloatingNav() {
+      const header = document.querySelector('header');
+      if (!header) return;
+      
+      header.classList.add('site-header');
+
+      const onScroll = () => {
+        if (window.scrollY > 25) {
+          header.classList.add('is-scrolled');
+        } else {
+          header.classList.remove('is-scrolled');
+        }
+      };
+
+      window.addEventListener('scroll', onScroll, { passive: true });
+      onScroll();
+    }
+
+    if (document.readyState === 'loading') {
+      document.addEventListener('DOMContentLoaded', initFloatingNav);
+    } else {
+      initFloatingNav();
+    }
+  })();
+  </script>
 </body>
 </html>
