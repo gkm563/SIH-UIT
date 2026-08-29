@@ -1,309 +1,312 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" class="scroll-smooth">
 <head>
   <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0" />
-  <meta name="description" content="SIH 2026 Internal Hackathon — Captured Moments Gallery, United Institute of Technology, Prayagraj" />
-  <meta name="robots" content="noindex, nofollow" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=5.0" />
+
+  <!-- ── Primary SEO Meta Tags ── -->
+  <title>Photo Gallery · SIH 2026 Hackathon Day | United Institute of Technology, Prayagraj</title>
+  <meta name="title" content="Photo Gallery · SIH 2026 Hackathon Day | United Institute of Technology, Prayagraj" />
+  <meta name="description" content="Explore high-resolution DSLR photos & captured moments from the Smart India Hackathon (SIH) 2026 Internal Evaluation Day at United Institute of Technology (UIT), Prayagraj. Organized by Gautam Kumar Maurya (GKM)." />
+  <meta name="keywords" content="SIH 2026 Gallery, Smart India Hackathon Photos, United Institute of Technology Gallery, UIT Prayagraj Hackathon Photos, Gautam Kumar Maurya, SIH Day Images, College Hackathon Moments" />
+  <meta name="author" content="Gautam Kumar Maurya (GKM)" />
+  <meta name="robots" content="index, follow" />
   <meta name="theme-color" content="#1a73e8" />
-  <title>Gallery — SIH 2026 Hackathon Day | UIT Prayagraj</title>
+  <link rel="canonical" href="https://sih-uit.vercel.app/gallery.html" />
+
+  <!-- ── Open Graph / Facebook / WhatsApp ── -->
+  <meta property="og:type" content="website" />
+  <meta property="og:url" content="https://sih-uit.vercel.app/gallery.html" />
+  <meta property="og:site_name" content="SIH 2026 UIT Prayagraj" />
+  <meta property="og:title" content="Photo Gallery · SIH 2026 Hackathon Day | UIT Prayagraj" />
+  <meta property="og:description" content="Captured moments and presentations from Smart India Hackathon 2026 at United Institute of Technology, Prayagraj. Organized by Gautam Kumar Maurya." />
+  <meta property="og:image" content="https://sih-uit.vercel.app/assets/gallery/DSC_0163.JPG" />
+  <meta property="og:image:width" content="1200" />
+  <meta property="og:image:height" content="630" />
+
+  <!-- ── Twitter Card ── -->
+  <meta name="twitter:card" content="summary_large_image" />
+  <meta name="twitter:url" content="https://sih-uit.vercel.app/gallery.html" />
+  <meta name="twitter:title" content="Photo Gallery · SIH 2026 Hackathon Day | UIT Prayagraj" />
+  <meta name="twitter:description" content="38 captured moments and presentations from SIH 2026 Internal Hackathon at United Institute of Technology, Prayagraj." />
+  <meta name="twitter:image" content="https://sih-uit.vercel.app/assets/gallery/DSC_0163.JPG" />
+
+  <!-- ── Favicon & App Icons ── -->
   <link rel="icon" href="assets/united-logo.png" type="image/png" />
+  <link rel="apple-touch-icon" href="assets/united-logo.png" />
+
+  <!-- ── Google Fonts ── -->
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-  <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@300;400;500;600;700&family=Outfit:wght@400;500;600;700;800;900&display=swap" rel="stylesheet" />
+  <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;600;700;800;900&family=Space+Grotesk:wght@400;500;600;700;800&family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap" rel="stylesheet" />
+
+  <!-- ── Tailwind CSS CDN ── -->
   <script src="https://cdn.tailwindcss.com"></script>
   <script>
     tailwind.config = {
-      theme: { extend: { colors: {
-        primary: { DEFAULT: '#1a73e8', dark: '#1557b0', light: '#e8f0fe' },
-        united:  { DEFAULT: '#2A4B8D', red: '#D63333' }
-      }}}
+      theme: {
+        extend: {
+          fontFamily: {
+            sans: ['Outfit', 'Plus Jakarta Sans', 'system-ui', 'sans-serif'],
+            display: ['Space Grotesk', 'Outfit', 'sans-serif'],
+          },
+          colors: {
+            primary: { DEFAULT: '#1a73e8', dark: '#1557b0', light: '#e8f0fe' },
+            united: { DEFAULT: '#2A4B8D', dark: '#1e3565', light: '#f0f4fc', red: '#D63333' }
+          },
+          boxShadow: {
+            'glow': '0 0 25px -5px rgba(37, 99, 235, 0.25)',
+            'card': '0 10px 30px -5px rgba(15, 23, 42, 0.06)',
+            'card-hover': '0 20px 40px -10px rgba(15, 23, 42, 0.12)',
+          }
+        }
+      }
     };
   </script>
-  <link rel="stylesheet" href="css/styles.css" />
-  <style>
-    body { font-family: 'Outfit','Space Grotesk',system-ui,sans-serif; }
 
-    /* ── Masonry grid ── */
-    .masonry { columns:4; column-gap:10px; }
-    @media(max-width:1280px){ .masonry{ columns:3; } }
-    @media(max-width:900px) { .masonry{ columns:2; } }
-    @media(max-width:500px) { .masonry{ columns:1; } }
+  <!-- ── Core Stylesheet ── -->
+  <link rel="stylesheet" href="css/styles.css" />
+
+  <style>
+    /* Masonry grid */
+    .masonry { columns: 4; column-gap: 12px; }
+    @media (max-width: 1280px) { .masonry { columns: 3; } }
+    @media (max-width: 900px)  { .masonry { columns: 2; } }
+    @media (max-width: 540px)  { .masonry { columns: 1; } }
 
     .masonry-item {
-      break-inside:avoid; margin-bottom:10px;
-      border-radius:14px; overflow:hidden;
-      cursor:zoom-in; position:relative;
-      background:#e2e8f0;
-      transition: transform .25s cubic-bezier(.16,1,.3,1),
-                  box-shadow .25s cubic-bezier(.16,1,.3,1);
+      break-inside: avoid;
+      margin-bottom: 12px;
+      border-radius: 16px;
+      overflow: hidden;
+      cursor: zoom-in;
+      position: relative;
+      background: #f1f5f9;
+      transition: transform 0.25s cubic-bezier(0.16, 1, 0.3, 1),
+                  box-shadow 0.25s cubic-bezier(0.16, 1, 0.3, 1);
     }
-    .masonry-item:hover { transform:translateY(-4px) scale(1.01); box-shadow:0 16px 40px rgba(0,0,0,.18); z-index:2; }
-    .masonry-item img { width:100%; height:auto; display:block; border-radius:14px; transition:opacity .4s ease; }
-    .masonry-item img.loading { opacity:0; }
-    .masonry-item img.loaded  { opacity:1; }
-    .masonry-item .overlay {
-      position:absolute; inset:0; border-radius:14px;
-      background:rgba(15,23,42,0);
-      display:flex; align-items:center; justify-content:center;
-      font-size:1.8rem; opacity:0;
-      transition:all .25s ease; pointer-events:none;
+    .masonry-item:hover {
+      transform: translateY(-4px);
+      box-shadow: 0 16px 36px -8px rgba(15, 23, 42, 0.18);
+      z-index: 2;
     }
-    .masonry-item:hover .overlay { background:rgba(15,23,42,.28); opacity:1; }
+    .masonry-item img {
+      width: 100%;
+      height: auto;
+      display: block;
+      border-radius: 16px;
+      transition: opacity 0.4s ease, transform 0.4s ease;
+    }
+    .masonry-item:hover img {
+      transform: scale(1.02);
+    }
+    .masonry-item img.loading { opacity: 0; }
+    .masonry-item img.loaded  { opacity: 1; }
 
-    /* ── Skeleton shimmer ── */
-    @keyframes shimmer { 0%{background-position:-400px 0} 100%{background-position:400px 0} }
-    .skeleton {
-      background:linear-gradient(90deg,#e2e8f0 25%,#f1f5f9 50%,#e2e8f0 75%);
-      background-size:800px 100%; animation:shimmer 1.4s infinite linear;
-      min-height:180px; border-radius:14px;
-    }
-
-    /* ── Lightbox ── */
+    /* Lightbox Modal */
     #lightbox {
-      position:fixed; inset:0; z-index:999;
-      background:rgba(0,0,0,.92);
-      backdrop-filter:blur(14px); -webkit-backdrop-filter:blur(14px);
-      display:flex; align-items:center; justify-content:center;
-      opacity:0; pointer-events:none;
-      transition:opacity .3s ease;
+      position: fixed; inset: 0; z-index: 100;
+      background: rgba(15, 23, 42, 0.95);
+      backdrop-filter: blur(12px);
+      display: flex; align-items: center; justify-content: center;
+      opacity: 0; pointer-events: none;
+      transition: opacity 0.25s ease;
     }
-    #lightbox.open { opacity:1; pointer-events:all; }
-    #lightbox-img {
-      max-width:min(92vw,1200px); max-height:88vh;
-      border-radius:16px; box-shadow:0 32px 80px rgba(0,0,0,.6);
-      object-fit:contain;
-      transition:opacity .22s ease, transform .22s ease;
+    #lightbox.open {
+      opacity: 1; pointer-events: auto;
     }
-    #lightbox-img.changing { opacity:0; transform:scale(.97); }
-
+    #lb-img {
+      max-width: 92vw; max-height: 88vh;
+      object-contain: contain;
+      border-radius: 16px;
+      box-shadow: 0 25px 60px rgba(0, 0, 0, 0.6);
+      transform: scale(0.96);
+      transition: transform 0.25s ease;
+    }
+    #lightbox.open #lb-img {
+      transform: scale(1);
+    }
     .lb-arrow {
-      position:absolute; top:50%; transform:translateY(-50%);
-      width:50px; height:50px; border-radius:50%;
-      background:rgba(255,255,255,.12); border:1.5px solid rgba(255,255,255,.2);
-      color:#fff; font-size:1.4rem;
-      display:flex; align-items:center; justify-content:center;
-      cursor:pointer; transition:all .2s ease;
-      backdrop-filter:blur(8px); user-select:none; touch-action:manipulation; z-index:10;
+      position: absolute; top: 50%; transform: translateY(-50%);
+      width: 48px; height: 48px; border-radius: 50%;
+      background: rgba(255, 255, 255, 0.15);
+      backdrop-filter: blur(8px);
+      color: #fff; font-size: 1.5rem; font-weight: 900;
+      display: flex; align-items: center; justify-content: center;
+      cursor: pointer; border: 1px solid rgba(255, 255, 255, 0.25);
+      transition: all 0.2s; user-select: none;
     }
-    .lb-arrow:hover { background:rgba(255,255,255,.25); border-color:rgba(255,255,255,.4); }
-    .lb-arrow:active { transform:translateY(-50%) scale(.93); }
-    #lb-prev { left:14px; }
-    #lb-next { right:14px; }
-
+    .lb-arrow:hover {
+      background: rgba(255, 255, 255, 0.3);
+      transform: translateY(-50%) scale(1.08);
+    }
+    #lb-prev { left: 16px; }
+    #lb-next { right: 16px; }
     #lb-close {
-      position:absolute; top:14px; right:16px;
-      width:42px; height:42px; border-radius:50%;
-      background:rgba(255,255,255,.12); border:1.5px solid rgba(255,255,255,.2);
-      color:#fff; font-size:1.1rem;
-      display:flex; align-items:center; justify-content:center;
-      cursor:pointer; transition:all .2s ease; z-index:10;
+      position: absolute; top: 16px; right: 16px;
+      width: 44px; height: 44px; border-radius: 50%;
+      background: rgba(255, 255, 255, 0.15);
+      backdrop-filter: blur(8px);
+      color: #fff; font-size: 1.25rem; font-weight: 900;
+      display: flex; align-items: center; justify-content: center;
+      cursor: pointer; border: 1px solid rgba(255, 255, 255, 0.25);
+      transition: all 0.2s;
     }
-    #lb-close:hover { background:rgba(239,68,68,.4); border-color:rgba(239,68,68,.6); }
-
+    #lb-close:hover {
+      background: rgba(239, 68, 68, 0.8);
+      transform: scale(1.08);
+    }
     #lb-counter {
-      position:absolute; bottom:16px; left:50%; transform:translateX(-50%);
-      background:rgba(0,0,0,.55); color:rgba(255,255,255,.9);
-      font-size:.75rem; font-weight:700;
-      padding:.35rem 1rem; border-radius:99px;
-      backdrop-filter:blur(8px); letter-spacing:.04em;
+      position: absolute; bottom: 20px;
+      left: 50%; transform: translateX(-50%);
+      background: rgba(255, 255, 255, 0.15);
+      backdrop-filter: blur(8px);
+      color: #e2e8f0; font-size: 0.8rem; font-weight: 800;
+      padding: 6px 18px; border-radius: 999px;
+      border: 1px solid rgba(255, 255, 255, 0.2);
+      letter-spacing: 0.05em;
     }
-
-    /* Hero gradient */
-    .hero-grad {
-      background:linear-gradient(135deg,#6366f1,#3b82f6,#06b6d4);
-      -webkit-background-clip:text; -webkit-text-fill-color:transparent; background-clip:text;
-    }
-
-    /* ── MOBILE & TABLET RESPONSIVE ── */
-
-    /* Header nav: scrollable row on small screens */
-    @media(max-width:640px){
-      .nav-switch {
-        overflow-x: auto;
-        -webkit-overflow-scrolling: touch;
-        scrollbar-width: none;
-        max-width: calc(100vw - 130px);
-        flex-shrink: 1;
-      }
-      .nav-switch::-webkit-scrollbar { display:none; }
-      .nav-pill {
-        white-space: nowrap;
-        flex-shrink: 0;
-        padding: 0.35rem 0.65rem !important;
-        font-size: 0.68rem !important;
-        min-height: 32px;
-      }
-      .nav-pill svg { width: 12px; height: 12px; }
-      .college-logo { width: 30px !important; height: 30px !important; }
-      .header-inner { padding: 0.4rem 0.75rem !important; gap: 0.4rem !important; }
-    }
-
-    /* Hero banner: compact on mobile */
-    @media(max-width:640px){
-      section.py-10 { padding-top: 2rem !important; padding-bottom: 2rem !important; }
-      section h1 { font-size: 1.75rem !important; line-height: 1.2 !important; margin-bottom: 0.5rem !important; }
-      section p  { font-size: 0.8rem !important; margin-bottom: 1rem !important; }
-
-      /* Info pills: wrap tightly */
-      section .flex.items-center.justify-center.gap-2 {
-        gap: 0.4rem !important;
-      }
-      section .flex.items-center.justify-center.gap-2 span {
-        padding: 0.35rem 0.6rem !important;
-        font-size: 0.68rem !important;
-      }
-
-      /* Announcement pill */
-      section > div > div:first-child {
-        font-size: 0.65rem !important;
-        padding: 0.3rem 0.75rem !important;
-        margin-bottom: 0.75rem !important;
-      }
-    }
-
-    /* Masonry: tighter gaps on phone */
-    @media(max-width:500px){
-      .masonry { column-gap: 8px; }
-      .masonry-item { margin-bottom: 8px; border-radius: 10px; }
-      .masonry-item img { border-radius: 10px; }
-    }
-
-    /* Touch: show overlay briefly on tap (no hover on touch devices) */
-    @media(hover:none){
-      .masonry-item:hover { transform: none; box-shadow: none; }
-      .masonry-item:active { transform: scale(0.98); opacity: 0.92; }
-      .masonry-item:hover .overlay { opacity: 0; background: transparent; }
-    }
-
-    /* Lightbox: full-screen feel on phone */
-    @media(max-width:640px){
-      #lightbox-img {
-        max-width: 100vw !important;
-        max-height: 80vh !important;
-        border-radius: 10px !important;
-      }
-      .lb-arrow {
-        width: 40px; height: 40px; font-size: 1.1rem;
-        background: rgba(0,0,0,.45);
-        border-color: rgba(255,255,255,.15);
-      }
-      #lb-prev { left: 6px; }
-      #lb-next { right: 6px; }
-      #lb-close { top: 10px; right: 10px; width: 36px; height: 36px; font-size: 0.9rem; }
-      #lb-counter {
-        bottom: 10px;
-        font-size: 0.7rem;
-        padding: 0.25rem 0.75rem;
-      }
-    }
-
-    /* Main gallery: reduce padding on mobile */
-    @media(max-width:640px){
-      #gallery-grid { padding: 0.75rem 0.5rem 2rem !important; }
-    }
-
-    /* Safe area insets (iPhone notch/home bar) */
-    header { padding-top: env(safe-area-inset-top, 0); }
-    footer { padding-bottom: env(safe-area-inset-bottom, 0); }
-    #lightbox {
-      padding-bottom: env(safe-area-inset-bottom, 0);
-      padding-left: env(safe-area-inset-left, 0);
-      padding-right: env(safe-area-inset-right, 0);
-    }
-
-    /* Prevent horizontal scroll everywhere */
-    html, body { overflow-x: hidden; max-width: 100vw; }
-    * { min-width: 0; box-sizing: border-box; }
   </style>
 </head>
-<body class="bg-slate-50 min-h-screen flex flex-col antialiased">
+<body class="bg-slate-50 text-slate-900 font-sans antialiased min-h-screen flex flex-col selection:bg-blue-600 selection:text-white">
 
-  <a class="sr-only" href="#gallery-grid">Skip to Gallery</a>
+  <!-- ── Top Announcement Ticker Bar ── -->
+  <aside class="bg-gradient-to-r from-blue-900 via-indigo-900 to-slate-950 text-white text-[11px] sm:text-xs py-2 px-4 sticky top-0 z-[60] border-b border-blue-800/40 shadow-sm" aria-label="Official Announcement Ticker">
+    <div class="max-w-7xl mx-auto flex items-center justify-between gap-3 flex-wrap">
+      <div class="flex items-center gap-2 min-w-0">
+        <span class="inline-flex items-center gap-1.5 bg-emerald-500/20 text-emerald-300 border border-emerald-400/40 px-2 py-0.5 rounded-full font-extrabold uppercase tracking-wider text-[10px]">
+          <span class="w-1.5 h-1.5 rounded-full bg-emerald-400"></span>
+          Photo Gallery
+        </span>
+        <span class="font-medium text-slate-200 truncate">
+          📸 <strong>38 Captured Moments</strong> — Smart India Hackathon 2026 Internal Hackathon Day at UIT Prayagraj.
+        </span>
+      </div>
+      <div class="flex items-center gap-3 text-slate-300 flex-shrink-0 text-[11px]">
+        <span class="hidden md:inline text-slate-400">Organized by <strong class="text-white">Gautam Kumar Maurya</strong></span>
+        <span class="hidden md:inline text-slate-600">|</span>
+        <a href="index.html" class="text-blue-300 hover:text-white font-bold flex items-center gap-1 transition-colors">
+          <span>← Back to Home</span>
+        </a>
+      </div>
+    </div>
+  </aside>
 
-  <!-- ── Header ── -->
-  <header class="site-header bg-white/95 backdrop-blur-md border-b border-gray-200/80 sticky top-0 z-50 shadow-sm" role="banner">
-    <div class="header-inner w-full max-w-full px-4 sm:px-8 lg:px-12 py-2 sm:py-2.5 flex items-center justify-between gap-2 sm:gap-4">
-      <a href="index.html" class="flex items-center gap-2 sm:gap-3 flex-shrink-0 group transition-transform active:scale-95">
-        <img class="college-logo w-9 h-9 sm:w-11 sm:h-11 object-contain" src="assets/united-logo.png" alt="UIT logo" />
+  <!-- ── Main Sticky Navigation Header ── -->
+  <header class="bg-white/95 backdrop-blur-md border-b border-slate-200/90 sticky top-[33px] sm:top-[35px] z-50 transition-all duration-200 shadow-xs" role="banner">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-2.5 sm:py-3 flex items-center justify-between gap-3">
+      
+      <!-- Left: Institutional Branding -->
+      <a href="index.html" class="flex items-center gap-2.5 sm:gap-3.5 group flex-shrink-0" title="United Institute of Technology — SIH 2026 Portal">
+        <img
+          class="w-10 h-10 sm:w-11 sm:h-11 object-contain transition-transform group-hover:scale-105"
+          src="assets/united-logo.png"
+          alt="United Institute of Technology Logo"
+        />
         <div class="flex flex-col justify-center min-w-0">
           <div class="flex items-center gap-1.5 flex-wrap">
-            <span class="text-xs sm:text-base font-black text-[#2A4B8D] leading-none tracking-tight">UIT <span class="font-bold text-[#2A4B8D]/90">Prayagraj</span></span>
-            <span class="text-[9px] sm:text-[10px] font-extrabold text-blue-700 bg-blue-50 border border-blue-200/80 px-1.5 py-0.5 rounded-full leading-none">SIH 2026</span>
+            <span class="text-sm sm:text-base font-black text-[#2A4B8D] leading-none tracking-tight">
+              UIT <span class="text-blue-600">Prayagraj</span>
+            </span>
+            <span class="text-[9px] sm:text-[10px] font-extrabold text-blue-700 bg-blue-50 border border-blue-200/90 px-2 py-0.5 rounded-full leading-none">
+              SIH 2026
+            </span>
           </div>
-          <span class="text-[10px] sm:text-xs font-semibold text-slate-500 leading-tight mt-0.5">Smart India Hackathon · Gallery</span>
+          <span class="text-[10px] sm:text-xs font-semibold text-slate-500 leading-tight mt-0.5 truncate">
+            Smart India Hackathon · Captured Moments Gallery
+          </span>
         </div>
       </a>
+
+      <!-- Center: Navigation Menu -->
+      <nav class="flex items-center gap-1 bg-slate-100/90 p-1.5 rounded-full border border-slate-200/90 shadow-2xs" role="navigation" aria-label="Main Navigation">
+        <a href="index.html" class="px-3.5 py-1.5 text-xs font-bold text-slate-600 hover:text-blue-700 rounded-full transition-colors flex items-center gap-1.5">
+          <svg class="w-3.5 h-3.5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 12l2-2m0 0l7-7 7 7M5 10v10a1 1 0 001 1h3m10-11l2 2m-2-2v10a1 1 0 01-1 1h-3m-6 0a1 1 0 00-1-1v-4a1 1 0 011-1h2a1 1 0 011 1v4a1 1 0 001 1m-6 0h6"/></svg>
+          <span>Home</span>
+        </a>
+        <a href="gallery.html" class="px-3.5 py-1.5 text-xs font-extrabold text-emerald-700 bg-white rounded-full shadow-2xs transition-all flex items-center gap-1.5">
+          <span>📸 Gallery</span>
+          <span class="bg-emerald-600 text-white text-[9px] px-1.5 py-0.2 rounded-full font-black">38</span>
+        </a>
+      </nav>
+
+      <!-- Right Action Button -->
       <div class="flex items-center gap-2 sm:gap-3 flex-shrink-0">
-        <nav class="nav-switch flex items-center bg-slate-100/90 p-1 rounded-full border border-slate-200/80 shadow-sm overflow-x-auto" style="scrollbar-width:none">
-          <a href="index.html" class="nav-pill">
-            <svg class="w-3.5 h-3.5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 12l2-2m0 0l7-7 7 7M5 10v10a1 1 0 001 1h3m10-11l2 2m-2-2v10a1 1 0 01-1 1h-3m-6 0a1 1 0 00-1-1v-4a1 1 0 011-1h2a1 1 0 011 1v4a1 1 0 001 1m-6 0h6"/></svg>
-            <span class="text-xs font-bold">Home</span>
-          </a>
-          <a href="gallery.html" class="nav-pill active" aria-current="page">
-            <svg class="w-3.5 h-3.5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 16l4.586-4.586a2 2 0 012.828 0L16 16m-2-2l1.586-1.586a2 2 0 012.828 0L20 14m-6-6h.01M6 20h12a2 2 0 002-2V6a2 2 0 00-2-2H6a2 2 0 00-2 2v12a2 2 0 002 2z"/></svg>
-            <span class="text-xs font-bold">Gallery</span>
-          </a>
-        </nav>
-        <img class="h-8 sm:h-10 w-auto object-contain bg-white p-1 rounded-lg border border-slate-200/80 shadow-sm hidden sm:block" src="assets/sih-logo.png" alt="SIH 2026" />
+        <a
+          href="https://www.sih.gov.in/sih2026PS"
+          target="_blank"
+          rel="noopener noreferrer"
+          class="hidden sm:inline-flex items-center gap-2 px-4 py-2 bg-gradient-to-r from-blue-600 to-indigo-600 hover:from-blue-700 hover:to-indigo-700 text-white text-xs font-black rounded-xl shadow-sm hover:shadow-md transition-all active:scale-95"
+        >
+          <span>SIH Official Portal</span>
+          <svg class="w-3.5 h-3.5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2.5" d="M10 6H6a2 2 0 00-2 2v10a2 2 0 002 2h10a2 2 0 002-2v-4M14 4h6m0 0v6m0-6L10 14"/></svg>
+        </a>
       </div>
+
     </div>
   </header>
 
-  <!-- ── Hero Banner (Clean Light Theme) ── -->
-  <section class="bg-gradient-to-br from-white via-blue-50/40 to-indigo-50/50 border-b border-slate-200/80 py-10 sm:py-14 px-4 relative overflow-hidden">
-    <div class="absolute inset-0 pointer-events-none">
-      <div class="absolute -right-24 -top-24 w-72 h-72 bg-blue-400/10 rounded-full blur-3xl"></div>
-      <div class="absolute -left-24 -bottom-24 w-72 h-72 bg-indigo-400/10 rounded-full blur-3xl"></div>
-    </div>
-    <div class="max-w-4xl mx-auto text-center relative z-10">
-      <div class="inline-flex items-center gap-2 px-4 py-1.5 bg-blue-50 border border-blue-200/90 rounded-full text-xs font-black uppercase tracking-widest mb-4 text-blue-800 shadow-2xs">
-        <span class="w-2 h-2 rounded-full bg-blue-600 animate-ping"></span>
-        📸 Captured Moments
+  <!-- ── Main Content Area ── -->
+  <main id="main-content" class="flex-1 w-full max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-8 space-y-8">
+    
+    <!-- Hero Banner -->
+    <section class="rounded-3xl border border-slate-200/90 shadow-card bg-gradient-to-br from-white via-blue-50/20 to-indigo-50/30 p-6 sm:p-8 relative overflow-hidden text-center space-y-3">
+      <div class="inline-flex items-center gap-2 bg-emerald-50 border border-emerald-200 text-emerald-800 text-xs font-black uppercase tracking-wide px-3.5 py-1.5 rounded-full shadow-2xs">
+        <span>📸 38 High-Resolution DSLR Photos</span>
       </div>
-      <h1 class="text-3xl sm:text-5xl font-black tracking-tight text-slate-900 mb-3 leading-tight">
-        SIH 2026 <span class="hero-grad">Hackathon Day</span>
+      <h1 class="text-2xl sm:text-4xl font-black text-slate-900 tracking-tight">
+        SIH 2026 Hackathon Day Moments
       </h1>
-      <p class="text-slate-600 text-sm sm:text-base font-medium max-w-xl mx-auto mb-6 leading-relaxed">
-        Relive the energy, innovation &amp; teamwork from <strong class="text-slate-900">22 August 2026</strong> — United Institute of Technology, Prayagraj's Internal Hackathon Presentation Day.
+      <p class="text-xs sm:text-sm text-slate-600 font-medium max-w-2xl mx-auto leading-relaxed">
+        Relive the energy, presentations, working demos, and jury evaluation rounds from <strong>22 August 2026</strong> at United Institute of Technology, Prayagraj. Click any photo to enlarge in full-screen lightbox.
       </p>
-      <div class="flex items-center justify-center gap-2 sm:gap-3 flex-wrap">
-        <span class="flex items-center gap-1.5 bg-white border border-slate-200/80 px-3.5 sm:px-4 py-2 rounded-xl text-xs font-bold text-slate-800 shadow-2xs">
-          <svg class="w-3.5 h-3.5 text-amber-500 flex-shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 9a2 2 0 012-2h.93a2 2 0 001.664-.89l.812-1.22A2 2 0 0110.07 4h3.86a2 2 0 011.664.89l.812 1.22A2 2 0 0018.07 7H19a2 2 0 012 2v9a2 2 0 01-2 2H5a2 2 0 01-2-2V9z"/><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 13a3 3 0 11-6 0 3 3 0 016 0z"/></svg>
-          38 Photos
-        </span>
-        <span class="flex items-center gap-1.5 bg-white border border-slate-200/80 px-3.5 sm:px-4 py-2 rounded-xl text-xs font-bold text-slate-800 shadow-2xs">
-          📅 22 August 2026 (Saturday)
-        </span>
-        <span class="flex items-center gap-1.5 bg-white border border-slate-200/80 px-3.5 sm:px-4 py-2 rounded-xl text-xs font-bold text-slate-800 shadow-2xs">
-          📍 UIT Prayagraj
-        </span>
+      <div class="flex items-center justify-center gap-4 text-xs font-bold text-slate-500 pt-1">
+        <span>⌨️ Keyboard: Arrow Keys (← →), Esc to Close</span>
+        <span class="hidden sm:inline">·</span>
+        <span class="hidden sm:inline">📱 Mobile: Tap to Open &amp; Swipe</span>
       </div>
-    </div>
-  </section>
+    </section>
 
-  <!-- ── Gallery Grid ── -->
-  <main id="gallery-grid" class="w-full max-w-screen-2xl mx-auto px-3 sm:px-5 lg:px-8 py-8 flex-1" role="main">
-    <div class="masonry" id="masonry-container"></div>
+    <!-- Masonry Grid Container -->
+    <section aria-label="Photo Gallery Grid">
+      <div class="masonry" id="masonry-container">
+        <!-- Dynamically injected photos -->
+      </div>
+    </section>
+
   </main>
 
-  <!-- ── Lightbox ── -->
-  <div id="lightbox" role="dialog" aria-modal="true" aria-label="Photo viewer">
-    <button id="lb-close" title="Close (Esc)" aria-label="Close">✕</button>
-    <button class="lb-arrow" id="lb-prev" aria-label="Previous (←)">‹</button>
-    <img id="lightbox-img" src="" alt="Gallery photo" draggable="false" />
-    <button class="lb-arrow" id="lb-next" aria-label="Next (→)">›</button>
+  <!-- ── Lightbox Modal ── -->
+  <div id="lightbox" role="dialog" aria-modal="true" aria-label="Image Preview Lightbox">
+    <button class="lb-arrow" id="lb-prev" aria-label="Previous Photo (←)">‹</button>
+    <img id="lb-img" src="" alt="Enlarged Hackathon Photo" />
+    <button class="lb-arrow" id="lb-next" aria-label="Next Photo (→)">›</button>
+    <button id="lb-close" aria-label="Close Lightbox (Esc)">✕</button>
     <div id="lb-counter">1 / 38</div>
   </div>
 
   <!-- ── Footer ── -->
-  <footer class="site-footer bg-gradient-to-b from-slate-50/70 via-white to-blue-50/30 border-t border-slate-200/90 pt-6 pb-5 mt-auto w-full" role="contentinfo">
-    <div class="w-full max-w-full px-4 sm:px-8 lg:px-12 mx-auto flex flex-col sm:flex-row items-center justify-between text-xs text-slate-500 font-medium gap-2 text-center">
-      <div>© 2026 United Institute of Technology, Prayagraj. All rights reserved.</div>
-      <div>Developed by <a href="https://www.linkedin.com/in/gkm563/" target="_blank" rel="noopener noreferrer" class="text-slate-700 hover:text-blue-700 font-extrabold transition-colors">GKM</a></div>
+  <footer class="bg-gradient-to-b from-slate-50 via-white to-blue-50/50 border-t border-slate-200/90 pt-8 pb-6 mt-auto w-full" role="contentinfo">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 flex flex-col sm:flex-row items-center justify-between text-xs text-slate-500 font-medium gap-3 text-center sm:text-left">
+      <div>
+        &copy; 2026 <strong>United Institute of Technology</strong>, Prayagraj. All rights reserved.
+      </div>
+      <div class="flex items-center gap-2 text-slate-600">
+        <span>Organized &amp; Developed by</span>
+        <a
+          href="https://www.linkedin.com/in/gkm563/"
+          target="_blank"
+          rel="noopener noreferrer"
+          class="text-blue-700 hover:text-blue-900 font-black flex items-center gap-1 transition-colors"
+        >
+          <span>Gautam Kumar Maurya (GKM)</span>
+          <svg class="w-3 h-3" fill="currentColor" viewBox="0 0 24 24"><path d="M19 3a2 2 0 0 1 2 2v14a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h14m-.5 15.5v-5.3a3.26 3.26 0 0 0-3.26-3.26c-.85 0-1.84.52-2.28 1.3v-1.11h-2.79v8.37h2.79v-4.93c0-.77.62-1.4 1.39-1.4a1.4 1.4 0 0 1 1.4 1.4v4.93h2.75M6.88 8.56a1.68 1.68 0 0 0 1.68-1.68c0-.93-.75-1.69-1.68-1.69a1.69 1.69 0 0 0-1.69 1.69c0 .93.76 1.68 1.69 1.68m1.39 9.94v-8.37H5.5v8.37h2.77z"/></svg>
+        </a>
+      </div>
     </div>
   </footer>
 
+  <!-- ── Gallery Lightbox Script ── -->
   <script>
   (() => {
     'use strict';
@@ -322,112 +325,128 @@
     ];
 
     const BASE = 'assets/gallery/';
-    const ORIG = 'assets/SIH Day Images/';
     let currentIdx = 0;
 
-    // Build masonry
     const container = document.getElementById('masonry-container');
+    const lightbox = document.getElementById('lightbox');
+    const lbImg = document.getElementById('lb-img');
+    const lbCounter = document.getElementById('lb-counter');
+    const lbPrev = document.getElementById('lb-prev');
+    const lbNext = document.getElementById('lb-next');
+    const lbClose = document.getElementById('lb-close');
 
-    IMAGES.forEach((name, idx) => {
+    // Build masonry items
+    IMAGES.forEach((filename, idx) => {
       const item = document.createElement('div');
       item.className = 'masonry-item';
-      item.tabIndex = 0;
       item.setAttribute('role', 'button');
-      item.setAttribute('aria-label', 'View photo ' + (idx + 1) + ' of ' + IMAGES.length);
-
-      const skel = document.createElement('div');
-      skel.className = 'skeleton';
-      item.appendChild(skel);
-
-      const overlay = document.createElement('div');
-      overlay.className = 'overlay';
-      overlay.textContent = '🔍';
+      item.setAttribute('tabindex', '0');
+      item.setAttribute('aria-label', 'Photo ' + (idx + 1) + ' of ' + IMAGES.length);
 
       const img = document.createElement('img');
       img.className = 'loading';
-      img.alt = 'SIH 2026 Hackathon — Moment ' + (idx + 1);
+      img.dataset.src = BASE + filename;
+      img.alt = 'Smart India Hackathon 2026 Moment ' + (idx + 1);
       img.loading = 'lazy';
-      img.decoding = 'async';
-      img.src = BASE + name;
 
-      const onLoad = () => {
-        img.classList.replace('loading', 'loaded');
-        if (skel.parentNode) skel.remove();
-      };
-      img.addEventListener('load', onLoad);
-      img.addEventListener('error', () => {
-        img.src = ORIG + name;
-        img.addEventListener('load', onLoad, { once: true });
-      }, { once: true });
+      img.onload = () => img.classList.replace('loading', 'loaded');
 
       item.appendChild(img);
-      item.appendChild(overlay);
-
-      const open = () => openLightbox(idx);
-      item.addEventListener('click', open);
-      item.addEventListener('keydown', e => { if (e.key === 'Enter' || e.key === ' ') { e.preventDefault(); open(); }});
+      item.addEventListener('click', () => openLightbox(idx));
+      item.addEventListener('keydown', (e) => {
+        if (e.key === 'Enter' || e.key === ' ') {
+          e.preventDefault();
+          openLightbox(idx);
+        }
+      });
 
       container.appendChild(item);
     });
 
-    // ── Lightbox ──
-    const lb      = document.getElementById('lightbox');
-    const lbImg   = document.getElementById('lightbox-img');
-    const lbCtr   = document.getElementById('lb-counter');
-    const lbClose = document.getElementById('lb-close');
-    const lbPrev  = document.getElementById('lb-prev');
-    const lbNext  = document.getElementById('lb-next');
+    // IntersectionObserver for lazy loading
+    if ('IntersectionObserver' in window) {
+      const obs = new IntersectionObserver((entries, observer) => {
+        entries.forEach((entry) => {
+          if (entry.isIntersecting) {
+            const img = entry.target.querySelector('img');
+            if (img && img.dataset.src) {
+              img.src = img.dataset.src;
+              delete img.dataset.src;
+            }
+            observer.unobserve(entry.target);
+          }
+        });
+      }, { rootMargin: '300px' });
+
+      document.querySelectorAll('.masonry-item').forEach((item) => obs.observe(item));
+    } else {
+      document.querySelectorAll('.masonry-item img').forEach((img) => {
+        img.src = img.dataset.src;
+      });
+    }
 
     function openLightbox(idx) {
       currentIdx = idx;
-      showPhoto(idx, false);
-      lb.classList.add('open');
+      updateLightbox();
+      lightbox.classList.add('open');
       document.body.style.overflow = 'hidden';
     }
 
     function closeLightbox() {
-      lb.classList.remove('open');
+      lightbox.classList.remove('open');
       document.body.style.overflow = '';
     }
 
-    function showPhoto(idx, animate = true) {
-      const src = BASE + IMAGES[idx];
-      const setImg = (s) => {
-        lbImg.src = s;
-        lbImg.onerror = () => { lbImg.src = ORIG + IMAGES[idx]; };
-      };
-      if (animate) {
-        lbImg.classList.add('changing');
-        setTimeout(() => { setImg(src); lbImg.classList.remove('changing'); }, 200);
-      } else {
-        setImg(src);
-      }
-      lbCtr.textContent = (idx + 1) + ' / ' + IMAGES.length;
+    function updateLightbox() {
+      lbImg.src = BASE + IMAGES[currentIdx];
+      lbCounter.textContent = (currentIdx + 1) + ' / ' + IMAGES.length;
     }
 
-    const prev = () => { currentIdx = (currentIdx - 1 + IMAGES.length) % IMAGES.length; showPhoto(currentIdx); };
-    const next = () => { currentIdx = (currentIdx + 1) % IMAGES.length; showPhoto(currentIdx); };
+    function showPrev() {
+      currentIdx = (currentIdx - 1 + IMAGES.length) % IMAGES.length;
+      updateLightbox();
+    }
 
+    function showNext() {
+      currentIdx = (currentIdx + 1) % IMAGES.length;
+      updateLightbox();
+    }
+
+    lbPrev.addEventListener('click', (e) => { e.stopPropagation(); showPrev(); });
+    lbNext.addEventListener('click', (e) => { e.stopPropagation(); showNext(); });
     lbClose.addEventListener('click', closeLightbox);
-    lbPrev.addEventListener('click', prev);
-    lbNext.addEventListener('click', next);
-    lb.addEventListener('click', e => { if (e.target === lb) closeLightbox(); });
 
-    document.addEventListener('keydown', e => {
-      if (!lb.classList.contains('open')) return;
-      if (e.key === 'Escape') closeLightbox();
-      if (e.key === 'ArrowLeft')  prev();
-      if (e.key === 'ArrowRight') next();
+    lightbox.addEventListener('click', (e) => {
+      if (e.target === lightbox || e.target === lbImg) closeLightbox();
     });
 
-    // Touch swipe
-    let tx = 0;
-    lb.addEventListener('touchstart', e => { tx = e.touches[0].clientX; }, { passive: true });
-    lb.addEventListener('touchend', e => {
-      const dx = e.changedTouches[0].clientX - tx;
-      if (Math.abs(dx) < 40) return;
-      dx < 0 ? next() : prev();
+    // Keyboard navigation
+    document.addEventListener('keydown', (e) => {
+      if (!lightbox.classList.contains('open')) return;
+      if (e.key === 'Escape') closeLightbox();
+      if (e.key === 'ArrowLeft') showPrev();
+      if (e.key === 'ArrowRight') showNext();
+    });
+
+    // Touch Swipe navigation
+    let touchStartX = 0;
+    let touchEndX = 0;
+    lightbox.addEventListener('touchstart', (e) => {
+      touchStartX = e.changedTouches[0].screenX;
     }, { passive: true });
+
+    lightbox.addEventListener('touchend', (e) => {
+      touchEndX = e.changedTouches[0].screenX;
+      handleSwipe();
+    }, { passive: true });
+
+    function handleSwipe() {
+      const diff = touchEndX - touchStartX;
+      if (Math.abs(diff) > 50) {
+        if (diff > 0) showPrev();
+        else showNext();
+      }
+    }
 
   })();
   </script>
