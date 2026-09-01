@@ -3,10 +3,10 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=5.0, viewport-fit=cover" />
-  <title>Participating Teams Archive | Real Verified Rosters — SIH 2026 UIT</title>
+  <title>Presenting Teams Archive (66 Teams) | SIH 2026 UIT Prayagraj</title>
   <link rel="preconnect" href="https://cdn.tailwindcss.com" crossorigin />
   <link rel="dns-prefetch" href="https://script.google.com" />
-  <meta name="description" content="Official permanent verified roster of participating and presenting student teams for the Smart India Hackathon 2026 College-Level Internal Hackathon at United Institute of Technology, Prayagraj." />
+  <meta name="description" content="Official permanent verified roster of all 66 student teams who delivered presentations during the Smart India Hackathon 2026 Internal Hackathon at United Institute of Technology, Prayagraj." />
   <link rel="icon" href="assets/united-logo.png" type="image/png" />
   <script src="https://cdn.tailwindcss.com"></script>
   <script>
@@ -14,15 +14,16 @@
       theme: {
         extend: {
           fontFamily: {
-            sans: ['Outfit', 'Plus Jakarta Sans', 'system-ui', 'sans-serif'],
-            display: ['Space Grotesk', 'Outfit', 'sans-serif'],
+            sans: ['"Plus Jakarta Sans"', 'Outfit', 'sans-serif'],
+            display: ['"Space Grotesk"', 'Outfit', 'sans-serif'],
+            mono: ['"JetBrains Mono"', 'monospace'],
           }
         }
       }
     };
   </script>
   <link rel="stylesheet" href="css/styles.css" />
-  <script src="js/data/real-teams.js"></script>
+  <script src="js/data/presenting-teams.js"></script>
 
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
@@ -30,7 +31,8 @@
 </head>
 <body class="bg-slate-50 text-slate-900 font-sans antialiased min-h-screen flex flex-col selection:bg-blue-600 selection:text-white overflow-x-hidden">
 
-  <!-- ── Main Sticky Navigation Header ── -->
+
+  <!-- ── Main Floating Navigation Header ── -->
   <header class="site-header" role="banner">
     <div class="nav-container px-3 sm:px-6 lg:px-8 py-2.5 sm:py-3 flex items-center justify-between gap-2 sm:gap-3">
       
@@ -105,185 +107,181 @@
       </div>
     </div>
   </header>
+  
 
   <main class="flex-1 w-full max-w-7xl mx-auto px-3.5 sm:px-6 lg:px-8 py-6 sm:py-10 space-y-8">
     
-    <!-- Header Banner -->
-    <div class="glass-card-pro rounded-3xl p-5 sm:p-8 bg-gradient-to-r from-blue-50/50 via-white to-indigo-50/40 border border-slate-200/90 text-center sm:text-left flex flex-col sm:flex-row items-center justify-between gap-4">
-      <div class="space-y-2 max-w-3xl">
-        <div class="inline-flex items-center gap-2 px-3 py-1 bg-emerald-100 text-emerald-900 border border-emerald-300 text-xs font-black uppercase tracking-wider rounded-full">
-          <span>✓ VERIFIED GOOGLE SHEETS ROSTER ARCHIVE</span>
+    <!-- ══════════════════════════════════════════════════════════════════ -->
+    <!-- 1. HEADER BANNER: Verified Presenting Teams Showcase -->
+    <!-- ══════════════════════════════════════════════════════════════════ -->
+    <div class="glass-card-pro rounded-3xl p-6 sm:p-10 bg-gradient-to-br from-blue-50/50 via-white to-indigo-50/40 border border-slate-200/90 relative overflow-hidden space-y-6">
+      <div class="absolute -right-16 -top-16 w-64 h-64 bg-blue-500/10 rounded-full blur-3xl pointer-events-none"></div>
+      <div class="absolute -left-16 -bottom-16 w-64 h-64 bg-indigo-500/10 rounded-full blur-3xl pointer-events-none"></div>
+
+      <div class="flex flex-col lg:flex-row lg:items-center justify-between gap-6 relative z-10">
+        <div class="space-y-3 max-w-3xl">
+          <div class="inline-flex items-center gap-2 px-3.5 py-1.5 bg-blue-100/90 text-blue-900 border border-blue-300 text-xs font-black uppercase tracking-wider rounded-full shadow-xs">
+            <span>🎤 66 TEAMS PRESENTED ON CONCLAVE STAGE</span>
+          </div>
+          <h1 class="text-2xl sm:text-4xl font-black text-slate-900 tracking-tight font-display">
+            Presenting Teams Archive
+          </h1>
+          <p class="text-xs sm:text-sm text-slate-600 font-medium leading-relaxed">
+            Official institutional register of all <strong>66 student innovation teams (396 participants)</strong> who delivered offline presentations before the expert evaluation jury on 22 August 2026 at United Institute of Technology, Prayagraj.
+          </p>
         </div>
-        <h1 class="text-2xl sm:text-4xl font-black text-slate-900 tracking-tight">
-          Participating Teams Archive
-        </h1>
-        <p class="text-xs sm:text-sm text-slate-600 font-medium leading-relaxed">
-          Official permanent database of student teams, team leaders, and verified member rosters who participated in the SIH 2026 Internal Hackathon at UIT Prayagraj.
-        </p>
-      </div>
-      <div class="flex flex-col sm:items-end gap-1 flex-shrink-0 text-center sm:text-right">
-        <span id="teams-count-display" class="text-2xl sm:text-3xl font-black font-display text-blue-700">67 Teams</span>
-        <span class="text-[11px] text-slate-500 font-medium">Real-Time Verified Data</span>
+
+        <!-- Metric Counter Badges -->
+        <div class="grid grid-cols-2 sm:grid-cols-4 gap-2.5 flex-shrink-0 text-center">
+          <div class="p-3 bg-white/90 rounded-2xl border border-slate-200/80 shadow-xs">
+            <div class="text-xl sm:text-2xl font-black font-display text-blue-700">66</div>
+            <div class="text-[10px] font-bold text-slate-500 uppercase">Presented</div>
+          </div>
+          <div class="p-3 bg-white/90 rounded-2xl border border-emerald-200/80 shadow-xs">
+            <div class="text-xl sm:text-2xl font-black font-display text-emerald-700">45</div>
+            <div class="text-[10px] font-bold text-slate-500 uppercase">Shortlisted</div>
+          </div>
+          <div class="p-3 bg-white/90 rounded-2xl border border-amber-200/80 shadow-xs">
+            <div class="text-xl sm:text-2xl font-black font-display text-amber-700">5</div>
+            <div class="text-[10px] font-bold text-slate-500 uppercase">Waitlisted</div>
+          </div>
+          <div class="p-3 bg-white/90 rounded-2xl border border-indigo-200/80 shadow-xs">
+            <div class="text-xl sm:text-2xl font-black font-display text-indigo-700">16</div>
+            <div class="text-[10px] font-bold text-slate-500 uppercase">Evaluated</div>
+          </div>
+        </div>
       </div>
     </div>
 
-    <!-- Search & Status Filter Bar -->
-    <div class="glass-card-pro rounded-2xl p-3 sm:p-4 flex flex-col sm:flex-row items-center justify-between gap-3">
-      <div class="relative w-full sm:w-80">
+    <!-- ══════════════════════════════════════════════════════════════════ -->
+    <!-- 2. SEARCH & FILTER CONTROLS -->
+    <!-- ══════════════════════════════════════════════════════════════════ -->
+    <div class="glass-card-pro rounded-2xl p-3.5 sm:p-4 flex flex-col md:flex-row items-center justify-between gap-3 shadow-xs">
+      <div class="relative w-full md:w-96">
         <input
           id="team-search-input"
           type="text"
-          placeholder="Search by team name, leader, member, or ID..."
-          class="w-full pl-9 pr-4 py-2.5 bg-slate-100/90 border border-slate-200 rounded-xl text-xs font-medium text-slate-800 focus:outline-none focus:ring-2 focus:ring-blue-500"
+          placeholder="Search by team name, leader, member, or ID (e.g. BITS N BYTES)..."
+          class="w-full pl-9 pr-4 py-2.5 bg-slate-100/90 border border-slate-200 rounded-xl text-xs font-medium text-slate-800 focus:outline-none focus:ring-2 focus:ring-blue-500 transition-all placeholder:text-slate-400"
         />
         <svg class="w-4 h-4 text-slate-400 absolute left-3 top-3" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z"/></svg>
       </div>
 
-      <div class="flex items-center gap-1.5 flex-wrap w-full sm:w-auto text-xs font-bold" id="status-filters">
-        <button data-status="all" class="team-filter-btn px-3.5 py-1.5 rounded-xl bg-blue-600 text-white shadow-xs">All Teams</button>
-        <button data-status="shortlisted" class="team-filter-btn px-3.5 py-1.5 rounded-xl bg-slate-100 text-slate-700 hover:bg-slate-200">Shortlisted (45)</button>
-        <button data-status="waitlisted" class="team-filter-btn px-3.5 py-1.5 rounded-xl bg-slate-100 text-slate-700 hover:bg-slate-200">Waitlisted (5)</button>
-        <button data-status="participated" class="team-filter-btn px-3.5 py-1.5 rounded-xl bg-slate-100 text-slate-700 hover:bg-slate-200">Participated</button>
+      <!-- Filter Buttons -->
+      <div class="flex items-center gap-1.5 flex-wrap w-full md:w-auto text-xs font-bold" id="status-filters">
+        <button data-status="all" class="team-filter-btn px-3.5 py-1.5 rounded-xl bg-blue-600 text-white shadow-xs transition-all">All (66)</button>
+        <button data-status="shortlisted" class="team-filter-btn px-3.5 py-1.5 rounded-xl bg-slate-100 text-slate-700 hover:bg-slate-200 transition-all">🏆 Shortlisted (45)</button>
+        <button data-status="waitlisted" class="team-filter-btn px-3.5 py-1.5 rounded-xl bg-slate-100 text-slate-700 hover:bg-slate-200 transition-all">⏳ Waitlisted (5)</button>
+        <button data-status="participated" class="team-filter-btn px-3.5 py-1.5 rounded-xl bg-slate-100 text-slate-700 hover:bg-slate-200 transition-all">🎤 Presented (16)</button>
       </div>
     </div>
 
-    <!-- Teams Roster Grid Container -->
+    <!-- Active Filter Counter Text -->
+    <div class="flex items-center justify-between text-xs font-semibold text-slate-500 px-1">
+      <span id="active-filter-summary">Showing all 66 presenting teams</span>
+      <span class="text-[11px] text-emerald-700 font-bold">✓ 100% Offline Presentations Verified</span>
+    </div>
+
+    <!-- ══════════════════════════════════════════════════════════════════ -->
+    <!-- 3. TEAMS ROSTER GRID CONTAINER -->
+    <!-- ══════════════════════════════════════════════════════════════════ -->
     <div id="teams-roster-grid" class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4">
-      <!-- Injected by client script -->
+      <!-- Populated instantly by script below -->
     </div>
 
   </main>
 
-  <!-- ── Clean Minimal Institutional Footer ── -->
-  <footer class="bg-gradient-to-b from-slate-50 via-white to-blue-50/40 border-t border-slate-200/90 py-6 mt-auto w-full" role="contentinfo">
-    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 flex flex-col sm:flex-row items-center justify-between text-xs text-slate-600 font-medium gap-3 text-center sm:text-left">
-      <div class="space-y-1">
-        <p class="font-bold text-slate-800 text-xs sm:text-sm">
-          &copy; 2026 <strong>Smart India Hackathon (SIH) · UIT Prayagraj</strong>
-        </p>
-        <p class="text-[11px] text-slate-500">
-          Official Institutional Event Archive · Powered by <strong>United Institute of Technology (UIT)</strong>
-        </p>
-      </div>
-      
-      <div class="flex items-center gap-1.5 text-slate-700 bg-white/90 border border-slate-200/90 px-4 py-2 rounded-2xl shadow-xs">
-        <span>Designed & Developed by</span>
-        <a
-          href="https://www.linkedin.com/in/gkm563/"
-          target="_blank"
-          rel="noopener noreferrer"
-          class="text-blue-700 hover:text-blue-900 font-black flex items-center gap-1 transition-colors underline hover:no-underline"
-        >
-          <span>GKM</span>
-          <svg class="w-3.5 h-3.5 text-[#0077b5]" fill="currentColor" viewBox="0 0 24 24"><path d="M19 3a2 2 0 0 1 2 2v14a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h14m-.5 15.5v-5.3a3.26 3.26 0 0 0-3.26-3.26c-.85 0-1.84.52-2.28 1.3v-1.11h-2.79v8.37h2.79v-4.93c0-.77.62-1.4 1.39-1.4a1.4 1.4 0 0 1 1.4 1.4v4.93h2.75M6.88 8.56a1.68 1.68 0 0 0 1.68-1.68c0-.93-.75-1.69-1.68-1.69a1.69 1.69 0 0 0-1.69 1.69c0 .93.76 1.68 1.69 1.68m1.39 9.94v-8.37H5.5v8.37h2.77z"/></svg>
+
+  <!-- Minimal Clean Institutional Footer -->
+  <footer class="mt-auto border-t border-slate-200/80 bg-white/80 backdrop-blur-md py-6 text-xs text-slate-500 text-center space-y-2">
+    <div class="max-w-7xl mx-auto px-4 flex flex-col sm:flex-row items-center justify-between gap-3">
+      <p>© 2026 Smart India Hackathon · United Institute of Technology, Prayagraj</p>
+      <div class="flex items-center gap-2">
+        <span>Designed &amp; Developed by</span>
+        <a href="https://www.linkedin.com/in/gkm563/" target="_blank" rel="noopener noreferrer" class="font-bold text-blue-700 hover:underline">
+          GKM
         </a>
       </div>
     </div>
   </footer>
+  
 
+  <!-- ── Interactive Client Script for 66 Presenting Teams ── -->
   <script>
   document.addEventListener('DOMContentLoaded', () => {
     const grid = document.getElementById('teams-roster-grid');
     const searchInput = document.getElementById('team-search-input');
-    const countDisplay = document.getElementById('teams-count-display');
     const filterBtns = document.querySelectorAll('.team-filter-btn');
+    const summarySpan = document.getElementById('active-filter-summary');
 
-    let allTeams = [];
+    let allTeams = (typeof PRESENTING_TEAMS_DATA !== 'undefined' && Array.isArray(PRESENTING_TEAMS_DATA))
+      ? PRESENTING_TEAMS_DATA
+      : [];
+
     let currentFilter = 'all';
 
-    // 1. Initial Load from Local Cache (Instant)
-    if (typeof REAL_TEAMS_CACHE !== 'undefined' && Array.isArray(REAL_TEAMS_CACHE)) {
-      allTeams = REAL_TEAMS_CACHE;
-      updateCount(allTeams.length);
-      render(allTeams);
-    }
-
-    // 2. Live Fetch in background to update dynamically
-    const apiUrl = 'https://script.google.com/macros/s/AKfycbzq4KNMHY0WvdHSnY2P18iUL5GAFJBQudUgDMG6_nHw3HGpH8mAtvAXs_jDo3odosLX/exec?action=getteams';
-    fetch(apiUrl)
-      .then(res => res.json())
-      .then(data => {
-        if (data && data.success && Array.isArray(data.teams) && data.teams.length > 0) {
-          allTeams = data.teams;
-          updateCount(allTeams.length);
-          filterAndRender();
-        }
-      })
-      .catch(err => console.warn('Using static verified team cache', err));
-
-    function updateCount(count) {
-      if (countDisplay) {
-        countDisplay.textContent = count + ' Teams';
-      }
-    }
-
-    
-    const TOP_50_SHORTLISTED_IDS = ["SIH2026-0142","SIH2026-0028","SIH2026-0140","SIH2026-0065","SIH2026-0031","SIH2026-0068","SIH2026-0072","SIH2026-0129","SIH2026-0054","SIH2026-0060","SIH2026-0056","SIH2026-0058","SIH2026-0091","SIH2026-0100","SIH2026-0033","SIH2026-0136","SIH2026-0135","SIH2026-0035","SIH2026-0137","SIH2026-0066","SIH2026-0123","SIH2026-0053","SIH2026-0064","SIH2026-0074","SIH2026-0133","SIH2026-0019","SIH2026-0127","SIH2026-0138","SIH2026-0041","SIH2026-0037","SIH2026-0045","SIH2026-0057","SIH2026-0069","SIH2026-0128","SIH2026-0144","SIH2026-0134","SIH2026-0067","SIH2026-0021","SIH2026-0034","SIH2026-0044","SIH2026-0073","SIH2026-0038","SIH2026-0039","SIH2026-0052","SIH2026-0036"];
-    const TOP_50_WAITLISTED_IDS = ["SIH2026-0139","SIH2026-0027","SIH2026-0130","SIH2026-0043","SIH2026-0032"];
-
-    function getTeamStatus(team, index) {
-      const regId = (team.registrationId || team.id || '').toUpperCase();
-      const name = (team.teamName || team.name || '').toUpperCase();
-
-      if (TOP_50_SHORTLISTED_IDS.includes(regId) || TOP_50_SHORTLISTED_IDS.some(id => regId.includes(id))) {
-        return { label: 'SHORTLISTED', class: 'bg-emerald-100 text-emerald-800 border-emerald-300' };
-      }
-      if (TOP_50_WAITLISTED_IDS.includes(regId) || TOP_50_WAITLISTED_IDS.some(id => regId.includes(id))) {
-        return { label: 'WAITLISTED', class: 'bg-amber-100 text-amber-800 border-amber-300' };
-      }
-      return { label: 'PARTICIPATED', class: 'bg-slate-100 text-slate-700 border-slate-300' };
-    }
-
-
     function render(teams) {
+      if (!grid) return;
       if (!teams || teams.length === 0) {
-        grid.innerHTML = '<div class="col-span-full text-center py-12 glass-card-pro rounded-3xl text-slate-500 font-bold text-sm">No teams found matching your search.</div>';
+        grid.innerHTML = '<div class="col-span-full text-center py-16 glass-card-pro rounded-3xl text-slate-500 font-bold text-sm">No teams found matching your search. Try another keyword.</div>';
         return;
       }
 
       grid.innerHTML = teams.map((t, idx) => {
-        const teamName = t.teamName || 'Registered Team';
-        const regId = t.registrationId || 'SIH2026-REG';
+        const teamName = t.teamName || 'Presenting Team';
+        const regId = t.registrationId || ('SIH2026-' + String(idx + 1).padStart(4, '0'));
         const leaderName = t.teamLeaderName || 'Team Leader';
         const leaderBranch = t.leaderBranch || 'CSE';
         const leaderYear = t.leaderYear || 'Second Year';
-        const leaderGender = t.leaderGender || '';
-
-        const statusInfo = getTeamStatus(t, idx);
+        const badgeLabel = t.badgeLabel || 'PRESENTATION COMPLETED';
+        const badgeClass = t.badgeClass || 'bg-slate-100 text-slate-800 border-slate-300';
 
         // Members list
         const rawMembers = Array.isArray(t.teamMembers) ? t.teamMembers : [];
         const membersListHtml = rawMembers.length > 0
-          ? rawMembers.map(m => `<li class="flex items-center justify-between text-slate-600 py-0.5"><span class="font-medium text-slate-800">• ${m.name || 'Member'}</span> <span class="text-[10px] text-slate-400">${m.branch || leaderBranch}</span></li>`).join('')
-          : '<li class="text-slate-400 italic">5 Verified Team Members</li>';
+          ? rawMembers.map(m => `
+              <li class="flex items-center justify-between text-slate-600 py-0.5">
+                <span class="font-medium text-slate-800 truncate">• ${m.name || 'Member'}</span>
+                <span class="text-[10px] text-slate-400 flex-shrink-0">${m.branch || leaderBranch}</span>
+              </li>
+            `).join('')
+          : '<li class="text-slate-400 italic">5 Verified Co-Presenters</li>';
 
         return `
-          <article class="glass-card-pro rounded-3xl p-5 flex flex-col justify-between group space-y-3.5">
+          <article class="glass-card-pro rounded-3xl p-5 flex flex-col justify-between group space-y-3.5 hover:shadow-xl hover:-translate-y-0.5 transition-all duration-300 border border-slate-200/90">
             <div class="space-y-3">
-              <div class="flex items-center justify-between">
-                <span class="text-xs font-mono font-black text-slate-500 bg-slate-100 px-2 py-0.5 rounded-md">${regId}</span>
-                <span class="text-[9px] font-black uppercase px-2 py-0.5 rounded-md border ${statusInfo.class}">
-                  ${statusInfo.label}
+              <div class="flex items-center justify-between gap-2">
+                <span class="text-xs font-mono font-black text-slate-600 bg-slate-100 px-2.5 py-0.5 rounded-lg border border-slate-200/80">${regId}</span>
+                <span class="text-[9px] font-black uppercase px-2.5 py-0.5 rounded-lg border ${badgeClass}">
+                  ${badgeLabel}
                 </span>
               </div>
+              
               <div>
-                <h3 class="text-base font-black text-slate-900 group-hover:text-blue-700 transition-colors leading-snug">${teamName}</h3>
+                <h3 class="text-base font-black text-slate-900 group-hover:text-blue-700 transition-colors leading-snug">
+                  ${teamName}
+                </h3>
                 <div class="flex items-center gap-1.5 text-[11px] font-bold text-blue-700 mt-1">
                   <span>Leader:</span>
-                  <span class="text-slate-900">${leaderName}</span>
-                  <span class="text-slate-400">(${leaderBranch} · ${leaderYear})</span>
+                  <span class="text-slate-900 font-extrabold">${leaderName}</span>
+                  <span class="text-slate-400 font-medium">(${leaderBranch} · ${leaderYear})</span>
                 </div>
               </div>
+
               <div class="pt-2 border-t border-slate-100">
-                <div class="text-[10px] font-black uppercase text-slate-400 tracking-wider mb-1.5">Team Members</div>
+                <div class="text-[10px] font-black uppercase text-slate-400 tracking-wider mb-1.5 flex items-center justify-between">
+                  <span>Team Members (6 Members)</span>
+                  <span class="text-emerald-700 font-bold">Verified ✓</span>
+                </div>
                 <ul class="text-xs space-y-0.5">
                   ${membersListHtml}
                 </ul>
               </div>
             </div>
+
             <div class="pt-3 border-t border-slate-100 flex items-center justify-between text-[10px] font-bold text-slate-400">
-              <span>Internal Presentation Done</span>
-              <span class="text-emerald-700 font-extrabold">6 Members Verified ✓</span>
+              <span class="text-slate-500">🎤 Presentation Delivered</span>
+              <span class="text-blue-700 font-extrabold">Internal Hackathon 2026</span>
             </div>
           </article>
         `;
@@ -291,8 +289,8 @@
     }
 
     function filterAndRender() {
-      const q = searchInput.value.toLowerCase().trim();
-      const filtered = allTeams.filter((t, idx) => {
+      const q = searchInput ? searchInput.value.toLowerCase().trim() : '';
+      const filtered = allTeams.filter((t) => {
         const teamName = (t.teamName || '').toLowerCase();
         const regId = (t.registrationId || '').toLowerCase();
         const leader = (t.teamLeaderName || '').toLowerCase();
@@ -303,39 +301,36 @@
           membersStr = t.teamMembers.map(m => m.name || '').join(' ').toLowerCase();
         }
 
-        const statusInfo = getTeamStatus(t, idx);
-        const matchesStatus = (currentFilter === 'all' || statusInfo.label.toLowerCase() === currentFilter);
+        const statusMatch = (currentFilter === 'all' || (t.status || '').toLowerCase() === currentFilter);
+        const queryMatch = (!q || teamName.includes(q) || regId.includes(q) || leader.includes(q) || branch.includes(q) || membersStr.includes(q));
 
-        const matchesQuery = (!q || teamName.includes(q) || regId.includes(q) || leader.includes(q) || branch.includes(q) || membersStr.includes(q));
-
-        return matchesStatus && matchesQuery;
+        return statusMatch && queryMatch;
       });
+
+      if (summarySpan) {
+        summarySpan.textContent = `Showing ${filtered.length} of ${allTeams.length} presenting teams`;
+      }
 
       render(filtered);
     }
 
-    searchInput.addEventListener('input', filterAndRender);
+    if (searchInput) {
+      searchInput.addEventListener('input', filterAndRender);
+    }
 
     filterBtns.forEach(btn => {
       btn.addEventListener('click', () => {
-        filterBtns.forEach(b => b.className = 'team-filter-btn px-3.5 py-1.5 rounded-xl bg-slate-100 text-slate-700 hover:bg-slate-200');
-        btn.className = 'team-filter-btn px-3.5 py-1.5 rounded-xl bg-blue-600 text-white shadow-xs';
+        filterBtns.forEach(b => b.className = 'team-filter-btn px-3.5 py-1.5 rounded-xl bg-slate-100 text-slate-700 hover:bg-slate-200 transition-all');
+        btn.className = 'team-filter-btn px-3.5 py-1.5 rounded-xl bg-blue-600 text-white shadow-xs transition-all';
         currentFilter = btn.getAttribute('data-status');
         filterAndRender();
       });
     });
+
+    // Initial render
+    filterAndRender();
   });
   </script>
-
-  
-
-  
-
-  
-
-  
-
-  
 
   <!-- ── Master Navigation & Mobile Drawer Script ── -->
   <script>
@@ -365,7 +360,6 @@
 
       // 2. Mobile Menu Toggle
       if (mobileBtn && mobileMenu) {
-        // Prevent duplicate bindings
         if (mobileBtn._navInitialized) return;
         mobileBtn._navInitialized = true;
 
