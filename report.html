@@ -485,16 +485,19 @@
 
   
 
-  <!-- ── Active Floating Navbar on Scroll Script ── -->
+  
+
+  <!-- ── Master Navigation & Mobile Drawer Script ── -->
   <script>
   (() => {
-    function initFloatingNav() {
+    function initMasterNav() {
       const header = document.querySelector('header');
       const mobileBtn = document.getElementById('mobile-menu-btn');
       const mobileMenu = document.getElementById('mobile-menu');
       const iconOpen = document.getElementById('menu-icon-open');
       const iconClose = document.getElementById('menu-icon-close');
 
+      // 1. Scroll elevation listener
       if (header) {
         header.classList.add('site-header');
         const handleScroll = () => {
@@ -510,11 +513,19 @@
         handleScroll();
       }
 
+      // 2. Mobile Menu Toggle
       if (mobileBtn && mobileMenu) {
-        mobileBtn.onclick = (e) => {
-          e.stopPropagation();
-          const isHidden = mobileMenu.classList.contains('hidden');
-          if (isHidden) {
+        // Prevent duplicate bindings
+        if (mobileBtn._navInitialized) return;
+        mobileBtn._navInitialized = true;
+
+        function toggleMenu(e) {
+          if (e) {
+            e.preventDefault();
+            e.stopPropagation();
+          }
+          const isCurrentlyHidden = mobileMenu.classList.contains('hidden');
+          if (isCurrentlyHidden) {
             mobileMenu.classList.remove('hidden');
             if (iconOpen) iconOpen.classList.add('hidden');
             if (iconClose) iconClose.classList.remove('hidden');
@@ -525,23 +536,38 @@
             if (iconClose) iconClose.classList.add('hidden');
             mobileBtn.setAttribute('aria-expanded', 'false');
           }
-        };
+        }
 
-        document.addEventListener('click', (e) => {
-          if (!mobileMenu.contains(e.target) && !mobileBtn.contains(e.target)) {
+        mobileBtn.addEventListener('click', toggleMenu);
+
+        // Close on clicking any link inside mobile menu
+        mobileMenu.querySelectorAll('a').forEach(link => {
+          link.addEventListener('click', () => {
             mobileMenu.classList.add('hidden');
             if (iconOpen) iconOpen.classList.remove('hidden');
             if (iconClose) iconClose.classList.add('hidden');
             mobileBtn.setAttribute('aria-expanded', 'false');
+          });
+        });
+
+        // Close on outside click
+        document.addEventListener('click', (e) => {
+          if (!mobileMenu.classList.contains('hidden')) {
+            if (!mobileMenu.contains(e.target) && !mobileBtn.contains(e.target)) {
+              mobileMenu.classList.add('hidden');
+              if (iconOpen) iconOpen.classList.remove('hidden');
+              if (iconClose) iconClose.classList.add('hidden');
+              mobileBtn.setAttribute('aria-expanded', 'false');
+            }
           }
         });
       }
     }
 
     if (document.readyState === 'loading') {
-      document.addEventListener('DOMContentLoaded', initFloatingNav);
+      document.addEventListener('DOMContentLoaded', initMasterNav);
     } else {
-      initFloatingNav();
+      initMasterNav();
     }
   })();
   </script>
