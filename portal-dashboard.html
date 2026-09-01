@@ -478,7 +478,7 @@
   </footer>
 
   <!-- Toast -->
-  <div id="toast" class="fixed bottom-6 left-1/2 -translate-x-1/2 translate-y-16 opacity-0 bg-slate-900 text-white text-xs font-bold px-5 py-2.5 rounded-full shadow-2xl z-[9999] transition-all duration-300 pointer-events-none whitespace-nowrap"></div>
+  <div id="toast" class="fixed bottom-6 left-1/2 -translate-x-1/2 translate-y-16 opacity-0 skeleton-loading text-white text-xs font-bold px-5 py-2.5 rounded-full shadow-2xl z-[9999] transition-all duration-300 pointer-events-none whitespace-nowrap"></div>
 
   <script src="js/config.js"></script>
   <script src="js/portal-api.js"></script>
@@ -986,6 +986,50 @@
       document.addEventListener('DOMContentLoaded', initMasterNav);
     } else {
       initMasterNav();
+    }
+  })();
+  </script>
+
+  <!-- ── Image Skeleton Loading & Smooth Fade-in Script ── -->
+  <script>
+  (() => {
+    function initImageSkeletons() {
+      const images = document.querySelectorAll('img');
+      images.forEach(img => {
+        // Mark image as loaded if already in cache
+        if (img.complete && img.naturalWidth > 0) {
+          img.classList.remove('img-loading');
+          img.classList.add('img-loaded');
+          const parent = img.parentElement;
+          if (parent && parent.classList.contains('skeleton-loading')) {
+            parent.classList.remove('skeleton-loading');
+          }
+        } else {
+          img.classList.add('img-loading');
+          if (img.parentElement && !img.parentElement.classList.contains('skeleton-loading')) {
+            img.parentElement.classList.add('skeleton-loading');
+          }
+          img.onload = () => {
+            img.classList.remove('img-loading');
+            img.classList.add('img-loaded');
+            if (img.parentElement) {
+              img.parentElement.classList.remove('skeleton-loading');
+            }
+          };
+          img.onerror = () => {
+            img.classList.remove('img-loading');
+            if (img.parentElement) {
+              img.parentElement.classList.remove('skeleton-loading');
+            }
+          };
+        }
+      });
+    }
+
+    if (document.readyState === 'loading') {
+      document.addEventListener('DOMContentLoaded', initImageSkeletons);
+    } else {
+      initImageSkeletons();
     }
   })();
   </script>

@@ -260,3 +260,33 @@ img, video {
   0% { transform: translate(-100%, -100%) rotate(30deg); }
   100% { transform: translate(100%, 100%) rotate(30deg); }
 }
+
+/* ── Premium Skeleton Loading Shimmer ── */
+@keyframes skeletonShimmer {
+  0% {
+    background-position: -200% 0;
+  }
+  100% {
+    background-position: 200% 0;
+  }
+}
+
+.skeleton-loading {
+  background: linear-gradient(
+    90deg,
+    #e2e8f0 0%,
+    #f8fafc 50%,
+    #e2e8f0 100%
+  ) !important;
+  background-size: 200% 100% !important;
+  animation: skeletonShimmer 1.6s infinite ease-in-out !important;
+}
+
+img.img-loading {
+  opacity: 0;
+  transition: opacity 0.4s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+img.img-loaded {
+  opacity: 1;
+}

@@ -135,7 +135,7 @@
       <div class="grid grid-cols-1 md:grid-cols-2 gap-4 sm:gap-6 pt-4 text-left">
         <!-- Stage Photo Card -->
         <div class="glass-card-pro rounded-2xl overflow-hidden border border-slate-200/90 shadow-md group">
-          <div class="aspect-video relative overflow-hidden bg-slate-900">
+          <div class="aspect-video relative overflow-hidden skeleton-loading">
             <img
               src="assets/organizing-team-stage.jpg"
               alt="Full Organizing Committee and Student Volunteers on Stage with Faculty and GKM"
@@ -153,7 +153,7 @@
 
         <!-- Inauguration Photo Card -->
         <div class="glass-card-pro rounded-2xl overflow-hidden border border-slate-200/90 shadow-md group">
-          <div class="aspect-video relative overflow-hidden bg-slate-900">
+          <div class="aspect-video relative overflow-hidden skeleton-loading">
             <img
               src="assets/organizing-team-1.jpg"
               alt="Inauguration Session and Steering Team with Faculty and Gautam Kumar Maurya"
@@ -265,7 +265,7 @@
         <!-- Lead 1: Gautam Kumar Maurya (GKM) -->
         <article class="glass-card-pro rounded-3xl p-6 sm:p-8 border-2 border-blue-400 bg-gradient-to-br from-white via-blue-50/40 to-indigo-50/50 shadow-xl hover:shadow-2xl transition-all duration-300 hover:-translate-y-1">
           <div class="flex flex-col sm:flex-row items-center sm:items-start gap-6">
-            <div class="relative w-32 sm:w-36 aspect-square rounded-3xl overflow-hidden bg-slate-900 border-2 border-blue-300 shadow-lg flex-shrink-0 group">
+            <div class="relative w-32 sm:w-36 aspect-square rounded-3xl overflow-hidden skeleton-loading border-2 border-blue-300 shadow-lg flex-shrink-0 group">
               <img
                 src="assets/gautam.jpg"
                 alt="Gautam Kumar Maurya (GKM)"
@@ -309,7 +309,7 @@
         <!-- Lead 2: Harsh Srivastava -->
         <article class="glass-card-pro rounded-3xl p-6 sm:p-8 border-2 border-emerald-400 bg-gradient-to-br from-white via-emerald-50/40 to-teal-50/50 shadow-xl hover:shadow-2xl transition-all duration-300 hover:-translate-y-1">
           <div class="flex flex-col sm:flex-row items-center sm:items-start gap-6">
-            <div class="relative w-32 sm:w-36 aspect-square rounded-3xl overflow-hidden bg-slate-900 border-2 border-emerald-300 shadow-lg flex-shrink-0 group">
+            <div class="relative w-32 sm:w-36 aspect-square rounded-3xl overflow-hidden skeleton-loading border-2 border-emerald-300 shadow-lg flex-shrink-0 group">
               <img
                 src="assets/harsh.jpg"
                 alt="Harsh Srivastava"
@@ -540,6 +540,50 @@
       document.addEventListener('DOMContentLoaded', initMasterNav);
     } else {
       initMasterNav();
+    }
+  })();
+  </script>
+
+  <!-- ── Image Skeleton Loading & Smooth Fade-in Script ── -->
+  <script>
+  (() => {
+    function initImageSkeletons() {
+      const images = document.querySelectorAll('img');
+      images.forEach(img => {
+        // Mark image as loaded if already in cache
+        if (img.complete && img.naturalWidth > 0) {
+          img.classList.remove('img-loading');
+          img.classList.add('img-loaded');
+          const parent = img.parentElement;
+          if (parent && parent.classList.contains('skeleton-loading')) {
+            parent.classList.remove('skeleton-loading');
+          }
+        } else {
+          img.classList.add('img-loading');
+          if (img.parentElement && !img.parentElement.classList.contains('skeleton-loading')) {
+            img.parentElement.classList.add('skeleton-loading');
+          }
+          img.onload = () => {
+            img.classList.remove('img-loading');
+            img.classList.add('img-loaded');
+            if (img.parentElement) {
+              img.parentElement.classList.remove('skeleton-loading');
+            }
+          };
+          img.onerror = () => {
+            img.classList.remove('img-loading');
+            if (img.parentElement) {
+              img.parentElement.classList.remove('skeleton-loading');
+            }
+          };
+        }
+      });
+    }
+
+    if (document.readyState === 'loading') {
+      document.addEventListener('DOMContentLoaded', initImageSkeletons);
+    } else {
+      initImageSkeletons();
     }
   })();
   </script>

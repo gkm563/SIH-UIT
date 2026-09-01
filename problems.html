@@ -343,5 +343,49 @@
     }
   })();
   </script>
+
+  <!-- ── Image Skeleton Loading & Smooth Fade-in Script ── -->
+  <script>
+  (() => {
+    function initImageSkeletons() {
+      const images = document.querySelectorAll('img');
+      images.forEach(img => {
+        // Mark image as loaded if already in cache
+        if (img.complete && img.naturalWidth > 0) {
+          img.classList.remove('img-loading');
+          img.classList.add('img-loaded');
+          const parent = img.parentElement;
+          if (parent && parent.classList.contains('skeleton-loading')) {
+            parent.classList.remove('skeleton-loading');
+          }
+        } else {
+          img.classList.add('img-loading');
+          if (img.parentElement && !img.parentElement.classList.contains('skeleton-loading')) {
+            img.parentElement.classList.add('skeleton-loading');
+          }
+          img.onload = () => {
+            img.classList.remove('img-loading');
+            img.classList.add('img-loaded');
+            if (img.parentElement) {
+              img.parentElement.classList.remove('skeleton-loading');
+            }
+          };
+          img.onerror = () => {
+            img.classList.remove('img-loading');
+            if (img.parentElement) {
+              img.parentElement.classList.remove('skeleton-loading');
+            }
+          };
+        }
+      });
+    }
+
+    if (document.readyState === 'loading') {
+      document.addEventListener('DOMContentLoaded', initImageSkeletons);
+    } else {
+      initImageSkeletons();
+    }
+  })();
+  </script>
 </body>
 </html>
