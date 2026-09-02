@@ -63,6 +63,15 @@
     .glow-dot {
       animation: subtleGlow 2s ease-in-out infinite;
     }
+  
+    /* Hide Navbar when modal is open to eliminate overlap on laptops & mobile */
+    body.modal-open header.site-header {
+      display: none !important;
+      visibility: hidden !important;
+      opacity: 0 !important;
+      pointer-events: none !important;
+    }
+
   </style>
 </head>
 <body class="bg-slate-50 text-slate-900 font-sans antialiased min-h-screen flex flex-col selection:bg-blue-600 selection:text-white overflow-x-hidden">
@@ -322,44 +331,61 @@
   </main>
 
   <!-- ══════════════════════════════════════════════════════════════════ -->
-  <!-- 4. FULL PROBLEM STATEMENT DETAILS MODAL (ROCK-SOLID & STATIC) -->
+  <!-- 4. FULL PROBLEM STATEMENT DETAILS MODAL (ROCK-SOLID & IMMERSIVE) -->
   <!-- ══════════════════════════════════════════════════════════════════ -->
-  <div id="ps-modal" class="fixed inset-0 z-50 hidden bg-slate-950/70 backdrop-blur-md flex items-center justify-center p-3 sm:p-6 overflow-y-auto">
-    <div id="ps-modal-card" class="bg-white rounded-3xl max-w-3xl w-full max-h-[90vh] flex flex-col shadow-2xl border border-slate-200 overflow-hidden relative">
+  <div id="ps-modal" class="fixed inset-0 z-[9999] hidden bg-slate-950/80 backdrop-blur-md flex items-center justify-center p-2 sm:p-4 md:p-6 overflow-y-auto">
+    <div id="ps-modal-card" class="bg-white rounded-3xl max-w-4xl w-full max-h-[92vh] flex flex-col shadow-2xl border border-slate-200 overflow-hidden relative my-auto">
       
-      <!-- Modal Header -->
-      <div class="p-5 sm:p-6 border-b border-slate-100 flex items-start justify-between gap-4 bg-gradient-to-r from-slate-50 to-blue-50/50">
-        <div class="space-y-2">
+      <!-- Modal Header (Sleek Institutional Briefing Bar) -->
+      <div class="p-4 sm:p-6 border-b border-slate-200/90 bg-gradient-to-r from-slate-50 via-blue-50/60 to-indigo-50/60 flex items-start justify-between gap-4 flex-shrink-0">
+        <div class="space-y-2 flex-1 min-w-0">
           <div class="flex items-center gap-2 flex-wrap">
-            <span id="modal-ps-id" class="text-xs font-mono font-black text-blue-700 bg-blue-100 px-3 py-1 rounded-xl border border-blue-200"></span>
-            <span id="modal-category" class="text-[10px] font-black uppercase px-2.5 py-1 rounded-xl"></span>
-            <span id="modal-theme" class="text-[10px] font-bold bg-slate-200 text-slate-700 px-2.5 py-1 rounded-xl truncate max-w-xs"></span>
-            <span id="modal-new-badge" class="hidden text-[10px] font-black uppercase bg-rose-600 text-white px-2.5 py-1 rounded-full animate-pulse">🔥 RECENTLY ADDED</span>
+            <span id="modal-ps-id" class="text-xs sm:text-sm font-mono font-black text-blue-700 bg-white px-3 py-1 rounded-xl border border-blue-200 shadow-xs"></span>
+            <span id="modal-category" class="text-[10px] sm:text-xs font-black uppercase px-2.5 py-1 rounded-xl"></span>
+            <span id="modal-theme" class="text-[10px] sm:text-xs font-bold bg-white text-slate-700 px-3 py-1 rounded-xl border border-slate-200 shadow-xs truncate max-w-xs"></span>
+            <span id="modal-new-badge" class="hidden text-[10px] sm:text-xs font-black uppercase bg-rose-600 text-white px-3 py-1 rounded-full shadow-xs">🔥 RECENTLY ADDED</span>
           </div>
-          <h2 id="modal-title" class="text-base sm:text-xl font-black text-slate-900 leading-snug font-display"></h2>
-          <p id="modal-org" class="text-xs font-bold text-slate-500"></p>
+          <h2 id="modal-title" class="text-base sm:text-xl md:text-2xl font-black text-slate-900 leading-snug font-display"></h2>
+          <div class="flex items-center gap-2 text-xs font-bold text-slate-600 flex-wrap">
+            <span class="flex items-center gap-1 text-blue-600">
+              <span>🏛️</span>
+              <span id="modal-org"></span>
+            </span>
+            <span class="text-slate-300">|</span>
+            <span id="modal-dept" class="text-slate-500"></span>
+          </div>
         </div>
 
-        <button id="modal-close-btn" class="p-2 rounded-xl text-slate-400 hover:text-slate-700 hover:bg-slate-200 transition-colors flex-shrink-0" aria-label="Close modal">
-          <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12"/></svg>
+        <!-- Close Button (Always visible on top-right) -->
+        <button id="modal-close-btn" class="p-2 sm:p-2.5 rounded-2xl bg-white text-slate-400 hover:text-slate-700 hover:bg-slate-100 border border-slate-200 shadow-xs transition-colors flex-shrink-0" aria-label="Close modal">
+          <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2.5" d="M6 18L18 6M6 6l12 12"/></svg>
         </button>
       </div>
 
-      <!-- Modal Body -->
-      <div class="p-5 sm:p-7 overflow-y-auto space-y-5 text-slate-700 text-xs sm:text-sm leading-relaxed" id="modal-body-content">
-        <!-- Injected dynamically -->
+      <!-- Modal Body (Rich Document Breakdown) -->
+      <div class="p-4 sm:p-7 overflow-y-auto space-y-6 text-slate-700 text-xs sm:text-sm leading-relaxed flex-1" id="modal-body-content">
+        <!-- Dynamically injected with rich structured cards -->
       </div>
 
-      <!-- Modal Footer -->
-      <div class="p-4 sm:p-5 border-t border-slate-100 bg-slate-50 flex items-center justify-between gap-3 flex-wrap">
-        <button id="modal-copy-ai-btn" class="inline-flex items-center gap-2 px-5 py-3 rounded-2xl bg-gradient-to-r from-violet-600 via-indigo-600 to-blue-600 hover:from-violet-700 hover:to-blue-700 text-white text-xs font-black shadow-md transition-all active:scale-95">
-          <span>🤖 Copy Prompt for AI Brainstorming</span>
-        </button>
+      <!-- Modal Sticky Action Footer -->
+      <div class="p-4 sm:p-5 border-t border-slate-200 bg-slate-50 flex items-center justify-between gap-3 flex-wrap flex-shrink-0">
+        <div class="flex items-center gap-2 flex-wrap">
+          <button id="modal-copy-ai-btn" class="inline-flex items-center gap-2 px-5 py-3 rounded-2xl bg-gradient-to-r from-violet-600 via-indigo-600 to-blue-600 hover:from-violet-700 hover:to-blue-700 text-white text-xs sm:text-sm font-black shadow-md transition-all active:scale-95">
+            <span>🤖 Copy Prompt for AI Brainstorming</span>
+          </button>
+          
+          <button id="modal-shortlist-toggle-btn" class="inline-flex items-center gap-1.5 px-4 py-3 rounded-2xl bg-amber-50 hover:bg-amber-100 border border-amber-300 text-amber-900 text-xs sm:text-sm font-bold transition-all active:scale-95">
+            <span id="modal-star-icon">☆</span>
+            <span id="modal-star-text">Add to Shortlist</span>
+          </button>
+        </div>
+
         <div class="flex items-center gap-2">
-          <a id="modal-official-link" href="https://www.sih.gov.in/sih2026PS" target="_blank" rel="noopener noreferrer" class="px-4 py-2.5 rounded-xl bg-white hover:bg-slate-100 border border-slate-200 text-slate-700 text-xs font-bold transition-all">
-            Official SIH Portal ↗
+          <a id="modal-official-link" href="https://www.sih.gov.in/sih2026PS" target="_blank" rel="noopener noreferrer" class="px-4 py-3 rounded-2xl bg-white hover:bg-slate-100 border border-slate-300 text-slate-800 text-xs sm:text-sm font-bold transition-all flex items-center gap-1">
+            <span>Official SIH Portal</span>
+            <svg class="w-3.5 h-3.5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10 6H6a2 2 0 00-2 2v10a2 2 0 002 2h10a2 2 0 002-2v-4M14 4h6m0 0v6m0-6L10 14"/></svg>
           </a>
-          <button id="modal-close-secondary-btn" class="px-4 py-2.5 rounded-xl bg-slate-200 hover:bg-slate-300 text-slate-700 text-xs font-bold transition-all">
+          <button id="modal-close-secondary-btn" class="px-5 py-3 rounded-2xl bg-slate-200 hover:bg-slate-300 text-slate-800 text-xs sm:text-sm font-bold transition-all">
             Close
           </button>
         </div>
@@ -527,7 +553,7 @@ Analyze the problem statement above and help our student team build a winning, p
       filterAndRender();
     };
 
-    // Open Reader Modal (Rock-solid, no shake!)
+    // Open Immersive Reader Modal with structured sections
     window.openPsModal = function(psId) {
       const item = rawData.find(p => String(p.psId) === String(psId));
       if (!item || !modal) return;
@@ -536,12 +562,17 @@ Analyze the problem statement above and help our student team build a winning, p
       modalPsId.textContent = 'PS ID: ' + item.psId;
       modalCategory.textContent = item.category;
       modalCategory.className = item.category === 'Software'
-        ? 'text-[10px] font-black uppercase px-2.5 py-1 rounded-xl bg-blue-100 text-blue-800 border border-blue-200'
-        : 'text-[10px] font-black uppercase px-2.5 py-1 rounded-xl bg-amber-100 text-amber-900 border border-amber-200';
+        ? 'text-[10px] sm:text-xs font-black uppercase px-2.5 py-1 rounded-xl bg-blue-100 text-blue-800 border border-blue-200'
+        : 'text-[10px] sm:text-xs font-black uppercase px-2.5 py-1 rounded-xl bg-amber-100 text-amber-900 border border-amber-200';
 
       modalTheme.textContent = item.theme;
       modalTitle.textContent = item.title;
-      modalOrg.textContent = item.organization + (item.department ? ' · ' + item.department : '');
+      modalOrg.textContent = item.organization;
+      
+      const modalDept = document.getElementById('modal-dept');
+      if (modalDept) {
+        modalDept.textContent = item.department ? item.department : 'General Sector';
+      }
 
       if (item.isNew) {
         modalNewBadge.classList.remove('hidden');
@@ -549,55 +580,203 @@ Analyze the problem statement above and help our student team build a winning, p
         modalNewBadge.classList.add('hidden');
       }
 
-      // Format description with paragraphs
-      let formattedDesc = item.description
-        .replace(/\n/g, '<br/>')
-        .replace(/<b>/gi, '<strong class="text-slate-900 font-black">')
-        .replace(/<\/b>/gi, '</strong>');
-
-      let extraLinks = '';
-      if (item.youtubeLink) {
-        extraLinks += `
-          <div class="mt-4 p-3.5 bg-rose-50 rounded-2xl border border-rose-200 flex items-center justify-between">
-            <span class="text-xs font-bold text-rose-800 flex items-center gap-1.5">
-              <span>▶ Official Problem Video:</span>
-            </span>
-            <a href="${item.youtubeLink}" target="_blank" rel="noopener noreferrer" class="px-3 py-1 bg-rose-600 text-white rounded-lg text-xs font-bold hover:bg-rose-700">Watch on YouTube ↗</a>
-          </div>
-        `;
-      }
-      if (item.datasetLink) {
-        extraLinks += `
-          <div class="mt-2 p-3.5 bg-indigo-50 rounded-2xl border border-indigo-200 flex items-center justify-between">
-            <span class="text-xs font-bold text-indigo-800 flex items-center gap-1.5">
-              <span>📎 Technical Attachment / Dataset:</span>
-            </span>
-            <a href="${item.datasetLink}" target="_blank" rel="noopener noreferrer" class="px-3 py-1 bg-indigo-600 text-white rounded-lg text-xs font-bold hover:bg-indigo-700">View Resource ↗</a>
-          </div>
-        `;
+      // Update Shortlist button inside modal
+      const starIcon = document.getElementById('modal-star-icon');
+      const starText = document.getElementById('modal-star-text');
+      const isShortlisted = userShortlist.includes(String(item.psId));
+      if (starIcon && starText) {
+        starIcon.textContent = isShortlisted ? '★' : '☆';
+        starText.textContent = isShortlisted ? 'Remove from Shortlist' : 'Add to Shortlist';
       }
 
-      modalBody.innerHTML = `
-        <div class="space-y-4">
+      // Process description into rich formatted HTML
+      let rawText = item.description || item.title;
+
+      // Extract sections if keywords exist
+      let bgText = '';
+      let descText = rawText;
+      let deliverablesText = '';
+
+      if (rawText.includes('Background:') && rawText.includes('Description:')) {
+        const bgParts = rawText.split('Description:');
+        bgText = bgParts[0].replace('Background:', '').trim();
+        descText = bgParts[1].trim();
+      }
+
+      if (descText.includes('Expected Deliverables:') || descText.includes('Expected Solution:')) {
+        const delParts = descText.split(/Expected Deliverables:|Expected Solution:/);
+        descText = delParts[0].trim();
+        deliverablesText = delParts[1].trim();
+      }
+
+      function cleanAndFormat(txt) {
+        return txt
+          .replace(/\n/g, '<br/>')
+          .replace(/•/g, '<span class="text-blue-600 font-bold mr-1">•</span>')
+          .replace(/<b>/gi, '<strong class="text-slate-900 font-black">')
+          .replace(/<\/b>/gi, '</strong>');
+      }
+
+      let structuredHtml = '';
+
+      // Section: Overview Metadata Grid
+      structuredHtml += `
+        <div class="grid grid-cols-2 sm:grid-cols-4 gap-2.5 p-3.5 bg-slate-100/90 rounded-2xl border border-slate-200 text-center">
           <div>
-            <h4 class="text-xs font-black uppercase text-slate-400 tracking-wider mb-2">Problem Statement Specifications</h4>
-            <div class="p-4 sm:p-5 bg-slate-50 rounded-2xl border border-slate-200 leading-relaxed font-medium">
-              ${formattedDesc}
-            </div>
+            <div class="text-[10px] font-black uppercase text-slate-400">Category</div>
+            <div class="text-xs sm:text-sm font-extrabold text-slate-800 mt-0.5">${item.category}</div>
           </div>
-          ${extraLinks}
+          <div>
+            <div class="text-[10px] font-black uppercase text-slate-400">Theme</div>
+            <div class="text-xs sm:text-sm font-extrabold text-blue-700 mt-0.5 truncate">${item.theme}</div>
+          </div>
+          <div>
+            <div class="text-[10px] font-black uppercase text-slate-400">Edition</div>
+            <div class="text-xs sm:text-sm font-extrabold text-slate-800 mt-0.5">SIH 2026</div>
+          </div>
+          <div>
+            <div class="text-[10px] font-black uppercase text-slate-400">Portal Status</div>
+            <div class="text-xs sm:text-sm font-extrabold text-emerald-700 mt-0.5">Verified Active ✓</div>
+          </div>
         </div>
       `;
 
+      // Section: Background Context (if present)
+      if (bgText) {
+        structuredHtml += `
+          <div class="p-4 sm:p-5 bg-blue-50/60 rounded-2xl border border-blue-200 space-y-2">
+            <div class="flex items-center gap-2 text-xs font-black uppercase tracking-wider text-blue-900">
+              <span>📋 Problem Background &amp; Context</span>
+            </div>
+            <div class="leading-relaxed text-slate-700 font-medium">
+              ${cleanAndFormat(bgText)}
+            </div>
+          </div>
+        `;
+      }
+
+      // Section: Detailed Description & Scope
+      structuredHtml += `
+        <div class="p-4 sm:p-5 bg-white rounded-2xl border border-slate-200 shadow-xs space-y-2">
+          <div class="flex items-center gap-2 text-xs font-black uppercase tracking-wider text-slate-800">
+            <span>⚡ Problem Scope &amp; Technical Requirements</span>
+          </div>
+          <div class="leading-relaxed text-slate-700 font-medium">
+            ${cleanAndFormat(descText)}
+          </div>
+        </div>
+      `;
+
+      // Section: Expected Deliverables (if present)
+      if (deliverablesText) {
+        structuredHtml += `
+          <div class="p-4 sm:p-5 bg-emerald-50/60 rounded-2xl border border-emerald-200 space-y-2">
+            <div class="flex items-center gap-2 text-xs font-black uppercase tracking-wider text-emerald-900">
+              <span>🏆 Expected Solution &amp; Deliverables</span>
+            </div>
+            <div class="leading-relaxed text-slate-700 font-medium">
+              ${cleanAndFormat(deliverablesText)}
+            </div>
+          </div>
+        `;
+      }
+
+      // Section: Video / Dataset Links
+      if (item.youtubeLink || item.datasetLink) {
+        structuredHtml += '<div class="space-y-2">';
+        if (item.youtubeLink) {
+          structuredHtml += `
+            <div class="p-3.5 bg-rose-50 rounded-2xl border border-rose-200 flex items-center justify-between gap-3">
+              <div class="flex items-center gap-2 text-xs font-bold text-rose-900">
+                <span class="text-base">▶</span>
+                <span>Official Explainer Video / Presentation</span>
+              </div>
+              <a href="${item.youtubeLink}" target="_blank" rel="noopener noreferrer" class="px-3.5 py-1.5 bg-rose-600 hover:bg-rose-700 text-white rounded-xl text-xs font-bold shadow-xs">
+                Watch on YouTube ↗
+              </a>
+            </div>
+          `;
+        }
+        if (item.datasetLink) {
+          structuredHtml += `
+            <div class="p-3.5 bg-indigo-50 rounded-2xl border border-indigo-200 flex items-center justify-between gap-3">
+              <div class="flex items-center gap-2 text-xs font-bold text-indigo-900">
+                <span class="text-base">📎</span>
+                <span>Technical Attachment / Sample Dataset</span>
+              </div>
+              <a href="${item.datasetLink}" target="_blank" rel="noopener noreferrer" class="px-3.5 py-1.5 bg-indigo-600 hover:bg-indigo-700 text-white rounded-xl text-xs font-bold shadow-xs">
+                Download Resource ↗
+              </a>
+            </div>
+          `;
+        }
+        structuredHtml += '</div>';
+      }
+
+      // Section: AI Quick Launcher Box
+      structuredHtml += `
+        <div class="p-4 sm:p-5 bg-gradient-to-br from-violet-50 to-indigo-50 rounded-2xl border-2 border-indigo-200 space-y-3">
+          <div class="flex items-center justify-between gap-2 flex-wrap">
+            <div class="flex items-center gap-2 text-xs font-black uppercase text-indigo-950">
+              <span class="text-lg">🤖</span>
+              <span>AI Brainstorming Studio</span>
+            </div>
+            <span class="text-[11px] font-bold text-indigo-700 bg-white px-2.5 py-0.5 rounded-lg border border-indigo-200">
+              Custom Prompt Generator
+            </span>
+          </div>
+          <p class="text-xs text-indigo-900 font-medium leading-relaxed">
+            Generate full solution architecture, tech stack recommendations, feasibility notes, and 4-slide presentation content using our pre-engineered mentor prompt.
+          </p>
+          <div class="flex items-center gap-2 flex-wrap pt-1">
+            <button onclick="copyAiPrompt('${item.psId}')" class="px-4 py-2 bg-indigo-600 hover:bg-indigo-700 text-white text-xs font-bold rounded-xl shadow-xs transition-all flex items-center gap-1.5">
+              <span>📋 Copy AI Prompt</span>
+            </button>
+            <a href="https://chatgpt.com/" target="_blank" rel="noopener noreferrer" class="px-3 py-2 bg-white hover:bg-slate-100 border border-slate-300 text-slate-800 text-xs font-bold rounded-xl transition-all">
+              ChatGPT ↗
+            </a>
+            <a href="https://claude.ai/" target="_blank" rel="noopener noreferrer" class="px-3 py-2 bg-white hover:bg-slate-100 border border-slate-300 text-slate-800 text-xs font-bold rounded-xl transition-all">
+              Claude ↗
+            </a>
+            <a href="https://gemini.google.com/" target="_blank" rel="noopener noreferrer" class="px-3 py-2 bg-white hover:bg-slate-100 border border-slate-300 text-slate-800 text-xs font-bold rounded-xl transition-all">
+              Google Gemini ↗
+            </a>
+          </div>
+        </div>
+      `;
+
+      modalBody.innerHTML = structuredHtml;
+
+      // Show modal and add modal-open class to body (which HIDES navbar!)
       modal.classList.remove('hidden');
+      document.body.classList.add('modal-open');
       document.body.style.overflow = 'hidden';
     };
 
     function closeModal() {
       if (modal) {
         modal.classList.add('hidden');
+        document.body.classList.remove('modal-open');
         document.body.style.overflow = '';
       }
+    }
+
+    // Modal Shortlist Toggle Event
+    const modalShortlistBtn = document.getElementById('modal-shortlist-toggle-btn');
+    if (modalShortlistBtn) {
+      modalShortlistBtn.addEventListener('click', () => {
+        if (activeModalItem) {
+          toggleShortlist(activeModalItem.psId);
+          const starIcon = document.getElementById('modal-star-icon');
+          const starText = document.getElementById('modal-star-text');
+          const isShortlisted = userShortlist.includes(String(activeModalItem.psId));
+          if (starIcon && starText) {
+            starIcon.textContent = isShortlisted ? '★' : '☆';
+            starText.textContent = isShortlisted ? 'Remove from Shortlist' : 'Add to Shortlist';
+          }
+        }
+      });
+    }
     }
 
     if (modalCloseBtn) modalCloseBtn.addEventListener('click', closeModal);
