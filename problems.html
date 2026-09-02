@@ -28,6 +28,42 @@
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
   <link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;600;700;800&family=Outfit:wght@400;500;600;700;800;900&family=Plus+Jakarta+Sans:wght@400;500;600;700;800;900&family=Space+Grotesk:wght@500;600;700;800;900&display=swap" rel="stylesheet" />
+
+  <style>
+    /* Vibrant Gradient Accents */
+    .grad-software { background: linear-gradient(135deg, #0284c7 0%, #2563eb 50%, #4f46e5 100%); }
+    .grad-hardware { background: linear-gradient(135deg, #d97706 0%, #ea580c 50%, #e11d48 100%); }
+    .grad-ai { background: linear-gradient(135deg, #4f46e5 0%, #7c3aed 50%, #c026d3 100%); }
+    .grad-new { background: linear-gradient(135deg, #e11d48 0%, #f43f5e 50%, #fb7185 100%); }
+    
+    /* Rock-Solid Non-Shaking Modal */
+    #ps-modal {
+      animation: none !important;
+      transform: none !important;
+    }
+    #ps-modal-card {
+      animation: none !important;
+      transform: none !important;
+    }
+
+    /* Vibrant Card Border Glow */
+    .ps-card {
+      transition: all 0.28s cubic-bezier(0.16, 1, 0.3, 1);
+    }
+    .ps-card:hover {
+      transform: translateY(-4px);
+      box-shadow: 0 20px 35px -10px rgba(37, 99, 235, 0.14), 0 0 0 1.5px rgba(59, 130, 246, 0.4);
+    }
+
+    /* Pulse Glow */
+    @keyframes subtleGlow {
+      0%, 100% { opacity: 0.8; transform: scale(1); }
+      50% { opacity: 1; transform: scale(1.05); }
+    }
+    .glow-dot {
+      animation: subtleGlow 2s ease-in-out infinite;
+    }
+  </style>
 </head>
 <body class="bg-slate-50 text-slate-900 font-sans antialiased min-h-screen flex flex-col selection:bg-blue-600 selection:text-white overflow-x-hidden">
 
@@ -116,78 +152,88 @@
   <main class="flex-1 w-full max-w-7xl mx-auto px-3.5 sm:px-6 lg:px-8 py-6 sm:py-10 space-y-8">
 
     <!-- ══════════════════════════════════════════════════════════════════ -->
-    <!-- 1. HERO SHOWCASE: SIH 2026 Problem Statement Explorer -->
+    <!-- 1. VIBRANT HERO SHOWCASE -->
     <!-- ══════════════════════════════════════════════════════════════════ -->
-    <div class="glass-card-pro rounded-3xl p-6 sm:p-10 bg-gradient-to-br from-white via-blue-50/40 to-indigo-50/40 border border-slate-200/90 relative overflow-hidden space-y-6">
+    <div class="glass-card-pro rounded-3xl p-6 sm:p-10 bg-gradient-to-br from-white via-blue-50/50 to-indigo-50/60 border border-slate-200/90 relative overflow-hidden space-y-6 shadow-lg">
       <div class="absolute -right-24 -top-24 w-80 h-80 bg-blue-500/15 rounded-full blur-3xl pointer-events-none animate-glow"></div>
-      <div class="absolute -left-24 -bottom-24 w-80 h-80 bg-emerald-500/10 rounded-full blur-3xl pointer-events-none animate-glow" style="animation-delay: 3s;"></div>
+      <div class="absolute -left-24 -bottom-24 w-80 h-80 bg-purple-500/15 rounded-full blur-3xl pointer-events-none animate-glow" style="animation-delay: 3s;"></div>
 
       <div class="flex flex-col lg:flex-row lg:items-center justify-between gap-6 relative z-10">
         <div class="space-y-3.5 max-w-3xl">
-          <div class="inline-flex items-center gap-2 px-3.5 py-1.5 bg-blue-100 text-blue-900 border border-blue-300 text-xs font-black uppercase tracking-wider rounded-full shadow-xs">
-            <span class="w-2 h-2 rounded-full bg-blue-600 animate-ping"></span>
-            <span>💡 OFFICIAL SIH 2026 REPOSITORY · 231 VERIFIED PROBLEM STATEMENTS</span>
+          <div class="inline-flex items-center gap-2 px-3.5 py-1.5 bg-gradient-to-r from-blue-600 to-indigo-700 text-white text-xs font-black uppercase tracking-wider rounded-full shadow-md">
+            <span class="w-2 h-2 rounded-full bg-emerald-300 glow-dot"></span>
+            <span>💡 OFFICIAL SIH 2026 REPOSITORY · 231 LIVE PROBLEM STATEMENTS</span>
           </div>
           
           <h1 class="text-2xl sm:text-4xl lg:text-5xl font-black text-slate-900 tracking-tight font-display">
-            SIH 2026 Problem Statements Explorer
+            SIH 2026 Problem Statements <span class="text-gradient-shimmer">Explorer</span>
           </h1>
           
           <p class="text-xs sm:text-sm text-slate-600 font-medium leading-relaxed max-w-2xl">
-            Complete, live synchronized repository of all <strong>231 official problem statements</strong> released by the Ministry of Education &amp; AICTE for <strong>Smart India Hackathon 2026</strong>. Browse with ultra-fast search, filter by category or ministry, track new additions, and <strong>1-click export prompts for your favourite AI tools</strong> (ChatGPT, Claude, Gemini) to brainstorm winning architectures.
+            Live official repository of all <strong>231 problem statements</strong> from the Ministry of Education &amp; AICTE for <strong>Smart India Hackathon 2026</strong>. Browse with instant search, track newly added statements, filter by category or ministry, and <strong>1-click export prompts tailored for your favourite AI tools</strong> (ChatGPT, Claude, Gemini) to brainstorm winning solutions.
           </p>
 
           <div class="flex items-center gap-3 pt-1 text-[11px] font-bold text-slate-500 flex-wrap">
-            <span class="flex items-center gap-1 text-emerald-700 bg-emerald-50 px-2.5 py-1 rounded-lg border border-emerald-200/80">
-              <svg class="w-3.5 h-3.5" fill="currentColor" viewBox="0 0 20 20"><path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clip-rule="evenodd"/></path></svg>
+            <span class="flex items-center gap-1.5 text-emerald-800 bg-emerald-100/80 px-3 py-1 rounded-xl border border-emerald-300">
+              <span class="w-2 h-2 rounded-full bg-emerald-600"></span>
               <span>100% Synced with sih.gov.in</span>
             </span>
             <span>·</span>
-            <a href="https://www.sih.gov.in/sih2026PS" target="_blank" rel="noopener noreferrer" class="text-blue-700 hover:underline flex items-center gap-1 font-semibold">
+            <a href="https://www.sih.gov.in/sih2026PS" target="_blank" rel="noopener noreferrer" class="text-blue-700 hover:text-blue-800 flex items-center gap-1 font-extrabold hover:underline">
               <span>View on Official SIH Portal</span>
               <svg class="w-3 h-3" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10 6H6a2 2 0 00-2 2v10a2 2 0 002 2h10a2 2 0 002-2v-4M14 4h6m0 0v6m0-6L10 14"/></svg>
             </a>
           </div>
         </div>
 
-        <!-- Metric Stat Cards -->
-        <div class="grid grid-cols-2 sm:grid-cols-4 gap-2.5 flex-shrink-0 text-center">
-          <div class="p-3.5 bg-white/95 rounded-2xl border border-slate-200/90 shadow-xs hover:border-blue-400 transition-colors">
-            <div id="stat-total" class="text-2xl sm:text-3xl font-black font-display text-blue-700">231</div>
-            <div class="text-[10px] font-bold text-slate-500 uppercase tracking-wider">Total PS</div>
+        <!-- 4 Colorful Metric Stat Cards -->
+        <div class="grid grid-cols-2 sm:grid-cols-4 gap-3 flex-shrink-0 text-center">
+          
+          <!-- Stat 1: Total -->
+          <div class="p-4 bg-gradient-to-br from-white to-blue-50/70 rounded-2xl border-2 border-blue-200 shadow-sm hover:border-blue-400 transition-all hover:scale-105">
+            <div id="stat-total" class="text-3xl sm:text-4xl font-black font-display text-blue-700">231</div>
+            <div class="text-[10px] font-extrabold text-blue-900 uppercase tracking-wider mt-0.5">Total PS</div>
           </div>
-          <div class="p-3.5 bg-white/95 rounded-2xl border border-blue-200/90 shadow-xs hover:border-blue-400 transition-colors">
-            <div id="stat-software" class="text-2xl sm:text-3xl font-black font-display text-blue-700">176</div>
-            <div class="text-[10px] font-bold text-slate-500 uppercase tracking-wider">💻 Software</div>
+
+          <!-- Stat 2: Software -->
+          <div class="p-4 bg-gradient-to-br from-white to-cyan-50/70 rounded-2xl border-2 border-cyan-200 shadow-sm hover:border-cyan-400 transition-all hover:scale-105">
+            <div id="stat-software" class="text-3xl sm:text-4xl font-black font-display text-cyan-700">176</div>
+            <div class="text-[10px] font-extrabold text-cyan-900 uppercase tracking-wider mt-0.5">💻 Software</div>
           </div>
-          <div class="p-3.5 bg-white/95 rounded-2xl border border-amber-200/90 shadow-xs hover:border-amber-400 transition-colors">
-            <div id="stat-hardware" class="text-2xl sm:text-3xl font-black font-display text-amber-700">55</div>
-            <div class="text-[10px] font-bold text-slate-500 uppercase tracking-wider">⚡ Hardware</div>
+
+          <!-- Stat 3: Hardware -->
+          <div class="p-4 bg-gradient-to-br from-white to-amber-50/70 rounded-2xl border-2 border-amber-200 shadow-sm hover:border-amber-400 transition-all hover:scale-105">
+            <div id="stat-hardware" class="text-3xl sm:text-4xl font-black font-display text-amber-600">55</div>
+            <div class="text-[10px] font-extrabold text-amber-900 uppercase tracking-wider mt-0.5">⚡ Hardware</div>
           </div>
-          <div class="p-3.5 bg-white/95 rounded-2xl border border-rose-200/90 shadow-xs hover:border-rose-400 transition-colors">
-            <div id="stat-new" class="text-2xl sm:text-3xl font-black font-display text-rose-600">25</div>
-            <div class="text-[10px] font-bold text-slate-500 uppercase tracking-wider">🔥 New Added</div>
+
+          <!-- Stat 4: New Added -->
+          <div class="p-4 bg-gradient-to-br from-white to-rose-50/70 rounded-2xl border-2 border-rose-200 shadow-sm hover:border-rose-400 transition-all hover:scale-105 relative overflow-hidden">
+            <span class="absolute top-1 right-1 w-2 h-2 rounded-full bg-rose-500 glow-dot"></span>
+            <div id="stat-new" class="text-3xl sm:text-4xl font-black font-display text-rose-600">25</div>
+            <div class="text-[10px] font-extrabold text-rose-900 uppercase tracking-wider mt-0.5">🔥 New Added</div>
           </div>
+
         </div>
       </div>
 
-      <!-- Ratio Bar -->
-      <div class="space-y-1.5 pt-2 border-t border-slate-200/70">
+      <!-- Ratio Progress Bar -->
+      <div class="space-y-1.5 pt-2 border-t border-slate-200/80">
         <div class="flex items-center justify-between text-[11px] font-bold text-slate-500">
-          <span>Problem Statements Ratio</span>
-          <span class="text-slate-700 font-extrabold">176 Software (76.2%) · 55 Hardware (23.8%) · 17 National Themes</span>
+          <span>Official Roster Composition</span>
+          <span class="text-slate-800 font-extrabold">176 Software (76.2%) · 55 Hardware &amp; IoT (23.8%) · 17 National Themes</span>
         </div>
-        <div class="w-full h-2.5 bg-slate-200 rounded-full overflow-hidden flex shadow-inner">
-          <div class="bg-blue-600 h-full transition-all" style="width: 76.2%" title="176 Software (76.2%)"></div>
-          <div class="bg-amber-500 h-full transition-all" style="width: 23.8%" title="55 Hardware (23.8%)"></div>
+        <div class="w-full h-3 bg-slate-200 rounded-full overflow-hidden flex shadow-inner">
+          <div class="bg-gradient-to-r from-blue-600 to-cyan-500 h-full transition-all" style="width: 76.2%" title="176 Software (76.2%)"></div>
+          <div class="bg-gradient-to-r from-amber-500 to-orange-500 h-full transition-all" style="width: 23.8%" title="55 Hardware (23.8%)"></div>
         </div>
       </div>
     </div>
 
     <!-- ══════════════════════════════════════════════════════════════════ -->
-    <!-- 2. CONTROL CENTER: SEARCH, CATEGORY, THEME, SHORTLIST -->
+    <!-- 2. CONTROL CENTER: SEARCH & COLORFUL FILTERS -->
     <!-- ══════════════════════════════════════════════════════════════════ -->
-    <div class="glass-card-pro rounded-3xl p-4 sm:p-6 space-y-4 shadow-sm">
+    <div class="glass-card-pro rounded-3xl p-4 sm:p-6 space-y-4 shadow-md bg-white/95">
       
       <!-- Top Search & Quick Category Filter -->
       <div class="flex flex-col lg:flex-row gap-3 items-stretch lg:items-center justify-between">
@@ -197,43 +243,47 @@
           <input
             id="ps-search-input"
             type="text"
-            placeholder="Search by PS ID (e.g. 26001), Title, Ministry (e.g. Coal, MDoNER), or Keyword (e.g. Drone, AI, Medical)..."
-            class="w-full pl-10 pr-4 py-3 bg-slate-100/90 border border-slate-200 rounded-2xl text-xs sm:text-sm font-semibold text-slate-800 focus:outline-none focus:ring-2 focus:ring-blue-500 transition-all placeholder:text-slate-400"
+            placeholder="Search PS ID (e.g. 26001), Title, Ministry (e.g. Coal, MDoNER), or Keyword (e.g. Drone, AI, Medical)..."
+            class="w-full pl-11 pr-4 py-3.5 bg-slate-50 border-2 border-slate-200 rounded-2xl text-xs sm:text-sm font-semibold text-slate-800 focus:outline-none focus:border-blue-500 focus:bg-white transition-all placeholder:text-slate-400"
           />
-          <svg class="w-4 h-4 text-slate-400 absolute left-3.5 top-3.5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z"/></svg>
+          <svg class="w-5 h-5 text-blue-500 absolute left-3.5 top-3.5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z"/></svg>
         </div>
 
-        <!-- Category & Tab Filters -->
-        <div class="flex items-center gap-1.5 flex-wrap text-xs font-bold" id="category-tabs">
-          <button data-filter="all" class="ps-tab-btn px-3.5 py-2 rounded-xl bg-blue-600 text-white shadow-xs transition-all">All (231)</button>
-          <button data-filter="software" class="ps-tab-btn px-3.5 py-2 rounded-xl bg-slate-100 text-slate-700 hover:bg-slate-200 transition-all">💻 Software (176)</button>
-          <button data-filter="hardware" class="ps-tab-btn px-3.5 py-2 rounded-xl bg-slate-100 text-slate-700 hover:bg-slate-200 transition-all">⚡ Hardware (55)</button>
-          <button data-filter="new" class="ps-tab-btn px-3.5 py-2 rounded-xl bg-rose-50 text-rose-700 hover:bg-rose-100 border border-rose-200 transition-all">🔥 New (25)</button>
-          <button data-filter="shortlist" class="ps-tab-btn px-3.5 py-2 rounded-xl bg-amber-50 text-amber-800 hover:bg-amber-100 border border-amber-200 transition-all">⭐ Shortlist (<span id="shortlist-counter">0</span>)</button>
+        <!-- Vibrant Category & Tab Filters -->
+        <div class="flex items-center gap-2 flex-wrap text-xs font-black" id="category-tabs">
+          <button data-filter="all" class="ps-tab-btn px-4 py-2.5 rounded-xl bg-blue-600 text-white shadow-md transition-all">All (231)</button>
+          <button data-filter="software" class="ps-tab-btn px-4 py-2.5 rounded-xl bg-cyan-50 text-cyan-900 border border-cyan-300 hover:bg-cyan-100 transition-all">💻 Software (176)</button>
+          <button data-filter="hardware" class="ps-tab-btn px-4 py-2.5 rounded-xl bg-amber-50 text-amber-900 border border-amber-300 hover:bg-amber-100 transition-all">⚡ Hardware (55)</button>
+          <button data-filter="new" class="ps-tab-btn px-4 py-2.5 rounded-xl bg-rose-50 text-rose-800 border-2 border-rose-300 hover:bg-rose-100 transition-all flex items-center gap-1">
+            <span class="w-2 h-2 rounded-full bg-rose-500 glow-dot"></span>
+            <span>🔥 New Added (25)</span>
+          </button>
+          <button data-filter="shortlist" class="ps-tab-btn px-4 py-2.5 rounded-xl bg-amber-100/90 text-amber-950 border border-amber-300 hover:bg-amber-200 transition-all flex items-center gap-1">
+            <span>⭐ Team Shortlist</span>
+            <span id="shortlist-counter" class="bg-amber-600 text-white px-1.5 py-0.2 text-[10px] rounded-full">0</span>
+          </button>
         </div>
       </div>
 
       <!-- Advanced Selectors: Theme & Organization & Sorting -->
       <div class="grid grid-cols-1 sm:grid-cols-3 gap-3 pt-2 border-t border-slate-100">
         <div>
-          <label class="block text-[10px] font-black uppercase text-slate-400 mb-1">Select Theme / Domain</label>
-          <select id="theme-select" class="w-full px-3 py-2 bg-slate-100/90 border border-slate-200 rounded-xl text-xs font-semibold text-slate-800 focus:outline-none focus:ring-2 focus:ring-blue-500">
+          <label class="block text-[10px] font-black uppercase text-slate-500 mb-1">Filter by Theme / Domain</label>
+          <select id="theme-select" class="w-full px-3 py-2.5 bg-slate-50 border border-slate-200 rounded-xl text-xs font-semibold text-slate-800 focus:outline-none focus:ring-2 focus:ring-blue-500">
             <option value="">All 17 Themes</option>
-            <!-- Populated dynamically -->
           </select>
         </div>
 
         <div>
-          <label class="block text-[10px] font-black uppercase text-slate-400 mb-1">Select Ministry / Organization</label>
-          <select id="org-select" class="w-full px-3 py-2 bg-slate-100/90 border border-slate-200 rounded-xl text-xs font-semibold text-slate-800 focus:outline-none focus:ring-2 focus:ring-blue-500">
+          <label class="block text-[10px] font-black uppercase text-slate-500 mb-1">Filter by Ministry / Organization</label>
+          <select id="org-select" class="w-full px-3 py-2.5 bg-slate-50 border border-slate-200 rounded-xl text-xs font-semibold text-slate-800 focus:outline-none focus:ring-2 focus:ring-blue-500">
             <option value="">All Organizations</option>
-            <!-- Populated dynamically -->
           </select>
         </div>
 
         <div>
-          <label class="block text-[10px] font-black uppercase text-slate-400 mb-1">Sort Statements</label>
-          <select id="sort-select" class="w-full px-3 py-2 bg-slate-100/90 border border-slate-200 rounded-xl text-xs font-semibold text-slate-800 focus:outline-none focus:ring-2 focus:ring-blue-500">
+          <label class="block text-[10px] font-black uppercase text-slate-500 mb-1">Sort Order</label>
+          <select id="sort-select" class="w-full px-3 py-2.5 bg-slate-50 border border-slate-200 rounded-xl text-xs font-semibold text-slate-800 focus:outline-none focus:ring-2 focus:ring-blue-500">
             <option value="default">Default Official Sequence</option>
             <option value="newest">🔥 Newly Added First</option>
             <option value="id_asc">PS ID (Ascending)</option>
@@ -244,13 +294,13 @@
       </div>
 
       <!-- AI Prompt Guidance Alert -->
-      <div class="p-3 bg-gradient-to-r from-blue-50 to-indigo-50 rounded-2xl border border-blue-200/80 flex items-center justify-between gap-3 flex-wrap">
-        <div class="flex items-center gap-2 text-xs text-blue-900 font-semibold">
-          <span class="text-base">🤖</span>
-          <span><strong>AI Brainstorming Ready:</strong> Click <strong>"Copy for AI"</strong> on any Problem Statement to copy an architect-grade prompt tailored for ChatGPT, Claude, or Gemini!</span>
+      <div class="p-3.5 bg-gradient-to-r from-violet-600 via-indigo-600 to-blue-600 rounded-2xl text-white flex items-center justify-between gap-3 flex-wrap shadow-sm">
+        <div class="flex items-center gap-2.5 text-xs font-semibold">
+          <span class="text-xl">🤖</span>
+          <span><strong>AI Brainstorming Engine Active:</strong> Click <strong>"🤖 Copy for AI"</strong> on any Problem Statement to copy an architect-grade prompt customized for <strong>ChatGPT, Claude, or Gemini</strong>!</span>
         </div>
-        <span class="text-[11px] font-mono font-bold text-blue-700 bg-white/90 px-2.5 py-1 rounded-lg border border-blue-200">
-          Ready for ChatGPT · Claude · Gemini
+        <span class="text-[11px] font-mono font-bold bg-white/20 px-3 py-1 rounded-xl border border-white/30 backdrop-blur-sm">
+          Prompt Ready for AI Models ✓
         </span>
       </div>
 
@@ -259,57 +309,57 @@
     <!-- Active Filter Counter Text -->
     <div class="flex items-center justify-between text-xs font-bold text-slate-500 px-1">
       <span id="ps-results-count">Showing 231 problem statements</span>
-      <button id="reset-filters-btn" class="text-blue-700 hover:underline hidden">Reset all filters</button>
+      <button id="reset-filters-btn" class="text-blue-700 font-extrabold hover:underline hidden">Reset all filters</button>
     </div>
 
     <!-- ══════════════════════════════════════════════════════════════════ -->
     <!-- 3. PROBLEM STATEMENTS GRID -->
     <!-- ══════════════════════════════════════════════════════════════════ -->
-    <div id="ps-grid" class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4 sm:gap-5">
+    <div id="ps-grid" class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4 sm:gap-6">
       <!-- Populated via client script -->
     </div>
 
   </main>
 
   <!-- ══════════════════════════════════════════════════════════════════ -->
-  <!-- 4. FULL PROBLEM STATEMENT DETAILS MODAL / DRAWER -->
+  <!-- 4. FULL PROBLEM STATEMENT DETAILS MODAL (ROCK-SOLID & STATIC) -->
   <!-- ══════════════════════════════════════════════════════════════════ -->
-  <div id="ps-modal" class="fixed inset-0 z-50 hidden bg-slate-950/60 backdrop-blur-sm flex items-center justify-center p-3 sm:p-6 overflow-y-auto">
-    <div class="bg-white rounded-3xl max-w-3xl w-full max-h-[90vh] flex flex-col shadow-2xl border border-slate-200 overflow-hidden animate-float" style="animation-duration: 0.2s;">
+  <div id="ps-modal" class="fixed inset-0 z-50 hidden bg-slate-950/70 backdrop-blur-md flex items-center justify-center p-3 sm:p-6 overflow-y-auto">
+    <div id="ps-modal-card" class="bg-white rounded-3xl max-w-3xl w-full max-h-[90vh] flex flex-col shadow-2xl border border-slate-200 overflow-hidden relative">
       
       <!-- Modal Header -->
-      <div class="p-5 sm:p-6 border-b border-slate-100 flex items-start justify-between gap-4 bg-slate-50/70">
-        <div class="space-y-1.5">
+      <div class="p-5 sm:p-6 border-b border-slate-100 flex items-start justify-between gap-4 bg-gradient-to-r from-slate-50 to-blue-50/50">
+        <div class="space-y-2">
           <div class="flex items-center gap-2 flex-wrap">
-            <span id="modal-ps-id" class="text-xs font-mono font-black text-blue-700 bg-blue-100/90 px-2.5 py-1 rounded-xl border border-blue-200"></span>
+            <span id="modal-ps-id" class="text-xs font-mono font-black text-blue-700 bg-blue-100 px-3 py-1 rounded-xl border border-blue-200"></span>
             <span id="modal-category" class="text-[10px] font-black uppercase px-2.5 py-1 rounded-xl"></span>
             <span id="modal-theme" class="text-[10px] font-bold bg-slate-200 text-slate-700 px-2.5 py-1 rounded-xl truncate max-w-xs"></span>
-            <span id="modal-new-badge" class="hidden text-[10px] font-black uppercase bg-rose-600 text-white px-2 py-0.5 rounded-full">🔥 NEW</span>
+            <span id="modal-new-badge" class="hidden text-[10px] font-black uppercase bg-rose-600 text-white px-2.5 py-1 rounded-full animate-pulse">🔥 RECENTLY ADDED</span>
           </div>
           <h2 id="modal-title" class="text-base sm:text-xl font-black text-slate-900 leading-snug font-display"></h2>
-          <p id="modal-org" class="text-xs font-semibold text-slate-500"></p>
+          <p id="modal-org" class="text-xs font-bold text-slate-500"></p>
         </div>
 
         <button id="modal-close-btn" class="p-2 rounded-xl text-slate-400 hover:text-slate-700 hover:bg-slate-200 transition-colors flex-shrink-0" aria-label="Close modal">
-          <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12"/></svg>
+          <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12"/></svg>
         </button>
       </div>
 
       <!-- Modal Body -->
-      <div class="p-5 sm:p-6 overflow-y-auto space-y-5 text-slate-700 text-xs sm:text-sm leading-relaxed" id="modal-body-content">
+      <div class="p-5 sm:p-7 overflow-y-auto space-y-5 text-slate-700 text-xs sm:text-sm leading-relaxed" id="modal-body-content">
         <!-- Injected dynamically -->
       </div>
 
       <!-- Modal Footer -->
       <div class="p-4 sm:p-5 border-t border-slate-100 bg-slate-50 flex items-center justify-between gap-3 flex-wrap">
-        <button id="modal-copy-ai-btn" class="inline-flex items-center gap-2 px-4 py-2.5 rounded-xl bg-blue-600 hover:bg-blue-700 text-white text-xs font-bold shadow-xs transition-all active:scale-95">
+        <button id="modal-copy-ai-btn" class="inline-flex items-center gap-2 px-5 py-3 rounded-2xl bg-gradient-to-r from-violet-600 via-indigo-600 to-blue-600 hover:from-violet-700 hover:to-blue-700 text-white text-xs font-black shadow-md transition-all active:scale-95">
           <span>🤖 Copy Prompt for AI Brainstorming</span>
         </button>
         <div class="flex items-center gap-2">
-          <a id="modal-official-link" href="https://www.sih.gov.in/sih2026PS" target="_blank" rel="noopener noreferrer" class="px-3.5 py-2 rounded-xl bg-white hover:bg-slate-100 border border-slate-200 text-slate-700 text-xs font-bold transition-all">
+          <a id="modal-official-link" href="https://www.sih.gov.in/sih2026PS" target="_blank" rel="noopener noreferrer" class="px-4 py-2.5 rounded-xl bg-white hover:bg-slate-100 border border-slate-200 text-slate-700 text-xs font-bold transition-all">
             Official SIH Portal ↗
           </a>
-          <button id="modal-close-secondary-btn" class="px-4 py-2 rounded-xl bg-slate-200 hover:bg-slate-300 text-slate-700 text-xs font-bold transition-all">
+          <button id="modal-close-secondary-btn" class="px-4 py-2.5 rounded-xl bg-slate-200 hover:bg-slate-300 text-slate-700 text-xs font-bold transition-all">
             Close
           </button>
         </div>
@@ -319,8 +369,8 @@
   </div>
 
   <!-- Toast Notification -->
-  <div id="toast" class="fixed bottom-6 right-6 z-50 hidden bg-slate-900 text-white px-4 py-3 rounded-2xl shadow-2xl border border-slate-700 text-xs font-bold flex items-center gap-2.5 transition-all">
-    <span class="text-emerald-400 text-base">✓</span>
+  <div id="toast" class="fixed bottom-6 right-6 z-50 hidden bg-slate-900 text-white px-5 py-3.5 rounded-2xl shadow-2xl border border-slate-700 text-xs font-bold flex items-center gap-3 transition-all">
+    <span class="text-emerald-400 text-lg">✓</span>
     <span id="toast-msg">Copied to clipboard! Ready to paste into ChatGPT, Claude, or Gemini!</span>
   </div>
 
@@ -477,7 +527,7 @@ Analyze the problem statement above and help our student team build a winning, p
       filterAndRender();
     };
 
-    // Open Reader Modal
+    // Open Reader Modal (Rock-solid, no shake!)
     window.openPsModal = function(psId) {
       const item = rawData.find(p => String(p.psId) === String(psId));
       if (!item || !modal) return;
@@ -520,7 +570,7 @@ Analyze the problem statement above and help our student team build a winning, p
         extraLinks += `
           <div class="mt-2 p-3.5 bg-indigo-50 rounded-2xl border border-indigo-200 flex items-center justify-between">
             <span class="text-xs font-bold text-indigo-800 flex items-center gap-1.5">
-              <span>📎 Dataset / Technical Attachment:</span>
+              <span>📎 Technical Attachment / Dataset:</span>
             </span>
             <a href="${item.datasetLink}" target="_blank" rel="noopener noreferrer" class="px-3 py-1 bg-indigo-600 text-white rounded-lg text-xs font-bold hover:bg-indigo-700">View Resource ↗</a>
           </div>
@@ -531,7 +581,7 @@ Analyze the problem statement above and help our student team build a winning, p
         <div class="space-y-4">
           <div>
             <h4 class="text-xs font-black uppercase text-slate-400 tracking-wider mb-2">Problem Statement Specifications</h4>
-            <div class="p-4 bg-slate-50 rounded-2xl border border-slate-200/90 leading-relaxed">
+            <div class="p-4 sm:p-5 bg-slate-50 rounded-2xl border border-slate-200 leading-relaxed font-medium">
               ${formattedDesc}
             </div>
           </div>
@@ -566,15 +616,28 @@ Analyze the problem statement above and help our student team build a winning, p
       });
     }
 
-    // Render Cards
+    // Color mapper for Theme Tags
+    function getThemeBadge(theme) {
+      const t = (theme || '').toLowerCase();
+      if (t.includes('disaster')) return 'bg-rose-50 text-rose-700 border-rose-200';
+      if (t.includes('security') || t.includes('blockchain')) return 'bg-purple-50 text-purple-700 border-purple-200';
+      if (t.includes('health') || t.includes('medtech')) return 'bg-emerald-50 text-emerald-700 border-emerald-200';
+      if (t.includes('agri') || t.includes('rural')) return 'bg-green-50 text-green-700 border-green-200';
+      if (t.includes('space')) return 'bg-sky-50 text-sky-700 border-sky-200';
+      if (t.includes('robot') || t.includes('drone')) return 'bg-indigo-50 text-indigo-700 border-indigo-200';
+      if (t.includes('energy') || t.includes('clean')) return 'bg-amber-50 text-amber-700 border-amber-200';
+      return 'bg-blue-50 text-blue-700 border-blue-200';
+    }
+
+    // Render Colorful PS Cards
     function renderCards(list) {
       if (!grid) return;
       if (!list || list.length === 0) {
         grid.innerHTML = `
           <div class="col-span-full py-16 text-center glass-card-pro rounded-3xl p-8 space-y-3">
-            <span class="text-3xl">🔍</span>
+            <span class="text-4xl">🔍</span>
             <h3 class="text-lg font-bold text-slate-800">No Problem Statements found</h3>
-            <p class="text-xs text-slate-500 max-w-md mx-auto">Try clearing search keywords, switching categories, or resetting the theme filter.</p>
+            <p class="text-xs text-slate-500 max-w-md mx-auto">Try clearing keywords, switching tabs, or resetting filters.</p>
           </div>
         `;
         return;
@@ -582,26 +645,37 @@ Analyze the problem statement above and help our student team build a winning, p
 
       grid.innerHTML = list.map((item) => {
         const isShortlisted = userShortlist.includes(String(item.psId));
-        const categoryBadge = item.category === 'Software'
-          ? '<span class="text-[9px] font-black uppercase px-2 py-0.5 rounded-lg bg-blue-100 text-blue-800 border border-blue-200">💻 Software</span>'
-          : '<span class="text-[9px] font-black uppercase px-2 py-0.5 rounded-lg bg-amber-100 text-amber-900 border border-amber-200">⚡ Hardware</span>';
+        const isSoftware = item.category === 'Software';
+
+        // Top Accent Stripe Color
+        const accentClass = isSoftware ? 'from-blue-600 via-cyan-500 to-indigo-600' : 'from-amber-500 via-orange-500 to-rose-500';
+        
+        const categoryBadge = isSoftware
+          ? '<span class="text-[10px] font-black uppercase px-2.5 py-1 rounded-xl bg-blue-100 text-blue-800 border border-blue-200">💻 Software</span>'
+          : '<span class="text-[10px] font-black uppercase px-2.5 py-1 rounded-xl bg-amber-100 text-amber-900 border border-amber-200">⚡ Hardware</span>';
 
         const newBadge = item.isNew
           ? '<span class="text-[9px] font-black uppercase px-2 py-0.5 rounded-lg bg-rose-600 text-white animate-pulse">🔥 NEW</span>'
           : '';
+
+        const themeBadgeClass = getThemeBadge(item.theme);
 
         // Snippet
         let snippet = item.description ? item.description.slice(0, 160) : item.title;
         if (snippet.length >= 160) snippet += '...';
 
         return `
-          <article class="glass-card-pro rounded-3xl p-5 sm:p-6 flex flex-col justify-between group space-y-4 hover:shadow-xl hover:-translate-y-1 transition-all duration-300 border border-slate-200/90 relative overflow-hidden bg-white/95">
-            <div class="space-y-3">
+          <article class="ps-card glass-card-pro rounded-3xl p-5 sm:p-6 flex flex-col justify-between group space-y-4 border border-slate-200/90 relative overflow-hidden bg-white/95">
+            
+            <!-- Top Gradient Accent Stripe -->
+            <div class="absolute top-0 left-0 right-0 h-1.5 bg-gradient-to-r ${accentClass}"></div>
+
+            <div class="space-y-3 pt-1">
               
               <!-- Card Header -->
               <div class="flex items-center justify-between gap-2">
                 <div class="flex items-center gap-1.5">
-                  <span class="text-xs font-mono font-black text-blue-700 bg-blue-50/90 px-2.5 py-1 rounded-xl border border-blue-200/80">
+                  <span class="text-xs font-mono font-black text-blue-700 bg-blue-50 px-2.5 py-1 rounded-xl border border-blue-200">
                     PS ${item.psId}
                   </span>
                   ${newBadge}
@@ -611,9 +685,9 @@ Analyze the problem statement above and help our student team build a winning, p
                   <button
                     onclick="toggleShortlist('${item.psId}')"
                     title="${isShortlisted ? 'Remove from shortlist' : 'Star / Add to shortlist'}"
-                    class="p-1.5 rounded-lg text-slate-400 hover:text-amber-500 hover:bg-slate-100 transition-colors"
+                    class="p-1.5 rounded-xl text-slate-400 hover:text-amber-500 hover:bg-amber-50 transition-colors"
                   >
-                    ${isShortlisted ? '<span class="text-amber-500 text-base">★</span>' : '<span class="text-slate-300 hover:text-amber-400 text-base">☆</span>'}
+                    ${isShortlisted ? '<span class="text-amber-500 text-lg">★</span>' : '<span class="text-slate-300 hover:text-amber-400 text-lg">☆</span>'}
                   </button>
                 </div>
               </div>
@@ -624,14 +698,14 @@ Analyze the problem statement above and help our student team build a winning, p
                   ${item.title}
                 </h3>
                 <div class="mt-2 flex items-center gap-1.5 text-[11px] font-bold text-slate-500 truncate">
-                  <span class="text-slate-400">🏛️</span>
-                  <span class="truncate">${item.organization}</span>
+                  <span class="text-blue-500">🏛️</span>
+                  <span class="truncate text-slate-700">${item.organization}</span>
                 </div>
               </div>
 
               <!-- Theme Tag -->
               <div class="pt-2 border-t border-slate-100 flex items-center justify-between gap-2">
-                <span class="text-[10px] font-extrabold text-slate-600 bg-slate-100 px-2.5 py-1 rounded-lg border border-slate-200/80 truncate">
+                <span class="text-[10px] font-black uppercase px-2.5 py-1 rounded-lg border ${themeBadgeClass} truncate">
                   ${item.theme}
                 </span>
                 <span class="text-[10px] text-slate-400 font-semibold flex-shrink-0">
@@ -651,13 +725,13 @@ Analyze the problem statement above and help our student team build a winning, p
               <div class="grid grid-cols-2 gap-2">
                 <button
                   onclick="openPsModal('${item.psId}')"
-                  class="w-full py-2 bg-slate-100 hover:bg-slate-200 text-slate-800 text-xs font-bold rounded-xl transition-colors text-center"
+                  class="w-full py-2.5 bg-slate-100 hover:bg-slate-200 text-slate-800 text-xs font-bold rounded-xl transition-colors text-center"
                 >
                   📖 Full Details
                 </button>
                 <button
                   onclick="copyAiPrompt('${item.psId}')"
-                  class="w-full py-2 bg-blue-600 hover:bg-blue-700 text-white text-xs font-bold rounded-xl transition-all shadow-xs active:scale-95 text-center flex items-center justify-center gap-1"
+                  class="w-full py-2.5 bg-gradient-to-r from-violet-600 via-indigo-600 to-blue-600 hover:from-violet-700 hover:to-blue-700 text-white text-xs font-bold rounded-xl transition-all shadow-md active:scale-95 text-center flex items-center justify-center gap-1"
                   title="Copy formatted prompt for ChatGPT / Claude / Gemini"
                 >
                   <span>🤖 Copy for AI</span>
@@ -739,9 +813,9 @@ Analyze the problem statement above and help our student team build a winning, p
     categoryTabs.forEach(btn => {
       btn.addEventListener('click', () => {
         categoryTabs.forEach(b => {
-          b.className = 'ps-tab-btn px-3.5 py-2 rounded-xl bg-slate-100 text-slate-700 hover:bg-slate-200 transition-all';
+          b.className = 'ps-tab-btn px-4 py-2.5 rounded-xl bg-slate-100 text-slate-700 hover:bg-slate-200 transition-all';
         });
-        btn.className = 'ps-tab-btn px-3.5 py-2 rounded-xl bg-blue-600 text-white shadow-xs transition-all';
+        btn.className = 'ps-tab-btn px-4 py-2.5 rounded-xl bg-blue-600 text-white shadow-md transition-all';
         currentTab = btn.getAttribute('data-filter');
         filterAndRender();
       });
@@ -756,8 +830,8 @@ Analyze the problem statement above and help our student team build a winning, p
         currentTab = 'all';
         categoryTabs.forEach(b => {
           b.className = (b.getAttribute('data-filter') === 'all')
-            ? 'ps-tab-btn px-3.5 py-2 rounded-xl bg-blue-600 text-white shadow-xs transition-all'
-            : 'ps-tab-btn px-3.5 py-2 rounded-xl bg-slate-100 text-slate-700 hover:bg-slate-200 transition-all';
+            ? 'ps-tab-btn px-4 py-2.5 rounded-xl bg-blue-600 text-white shadow-md transition-all'
+            : 'ps-tab-btn px-4 py-2.5 rounded-xl bg-slate-100 text-slate-700 hover:bg-slate-200 transition-all';
         });
         filterAndRender();
       });
