@@ -1,8 +1,8 @@
 /**
  * Official Presenting Teams Archive (SIH 2026 Internal Hackathon - UIT Prayagraj)
- * Exactly 57 Teams Successfully Delivered Presentations Before Juries
- * (45 Shortlisted + 5 Waitlisted + 7 Evaluated Participants = 57 Presented)
- * 16 Additional Registered Teams Were Not Evaluated / Absent
+ * Total 57 Teams Delivered Physical Presentations & Were Evaluated by Juries.
+ * • Top 50 Selected (45 Shortlisted + 5 Waitlisted)
+ * • 7 Evaluated (Not Selected / Active Participants)
  */
 const PRESENTING_TEAMS_DATA = [
   {
@@ -75,7 +75,8 @@ const PRESENTING_TEAMS_DATA = [
     "status": "SHORTLISTED",
     "badgeLabel": "TOP 45 SHORTLISTED · #1",
     "badgeClass": "bg-emerald-100 text-emerald-800 border-emerald-300",
-    "presented": true
+    "presented": true,
+    "evaluated": true
   },
   {
     "rank": 2,
@@ -147,7 +148,8 @@ const PRESENTING_TEAMS_DATA = [
     "status": "SHORTLISTED",
     "badgeLabel": "TOP 45 SHORTLISTED · #2",
     "badgeClass": "bg-emerald-100 text-emerald-800 border-emerald-300",
-    "presented": true
+    "presented": true,
+    "evaluated": true
   },
   {
     "rank": 3,
@@ -219,7 +221,8 @@ const PRESENTING_TEAMS_DATA = [
     "status": "SHORTLISTED",
     "badgeLabel": "TOP 45 SHORTLISTED · #3",
     "badgeClass": "bg-emerald-100 text-emerald-800 border-emerald-300",
-    "presented": true
+    "presented": true,
+    "evaluated": true
   },
   {
     "rank": 4,
@@ -291,7 +294,8 @@ const PRESENTING_TEAMS_DATA = [
     "status": "SHORTLISTED",
     "badgeLabel": "TOP 45 SHORTLISTED · #4",
     "badgeClass": "bg-emerald-100 text-emerald-800 border-emerald-300",
-    "presented": true
+    "presented": true,
+    "evaluated": true
   },
   {
     "rank": 5,
@@ -363,7 +367,8 @@ const PRESENTING_TEAMS_DATA = [
     "status": "SHORTLISTED",
     "badgeLabel": "TOP 45 SHORTLISTED · #5",
     "badgeClass": "bg-emerald-100 text-emerald-800 border-emerald-300",
-    "presented": true
+    "presented": true,
+    "evaluated": true
   },
   {
     "rank": 6,
@@ -435,7 +440,8 @@ const PRESENTING_TEAMS_DATA = [
     "status": "SHORTLISTED",
     "badgeLabel": "TOP 45 SHORTLISTED · #6",
     "badgeClass": "bg-emerald-100 text-emerald-800 border-emerald-300",
-    "presented": true
+    "presented": true,
+    "evaluated": true
   },
   {
     "rank": 7,
@@ -507,7 +513,8 @@ const PRESENTING_TEAMS_DATA = [
     "status": "SHORTLISTED",
     "badgeLabel": "TOP 45 SHORTLISTED · #7",
     "badgeClass": "bg-emerald-100 text-emerald-800 border-emerald-300",
-    "presented": true
+    "presented": true,
+    "evaluated": true
   },
   {
     "rank": 8,
@@ -579,7 +586,8 @@ const PRESENTING_TEAMS_DATA = [
     "status": "SHORTLISTED",
     "badgeLabel": "TOP 45 SHORTLISTED · #8",
     "badgeClass": "bg-emerald-100 text-emerald-800 border-emerald-300",
-    "presented": true
+    "presented": true,
+    "evaluated": true
   },
   {
     "rank": 9,
@@ -651,7 +659,8 @@ const PRESENTING_TEAMS_DATA = [
     "status": "SHORTLISTED",
     "badgeLabel": "TOP 45 SHORTLISTED · #9",
     "badgeClass": "bg-emerald-100 text-emerald-800 border-emerald-300",
-    "presented": true
+    "presented": true,
+    "evaluated": true
   },
   {
     "rank": 10,
@@ -723,7 +732,8 @@ const PRESENTING_TEAMS_DATA = [
     "status": "SHORTLISTED",
     "badgeLabel": "TOP 45 SHORTLISTED · #10",
     "badgeClass": "bg-emerald-100 text-emerald-800 border-emerald-300",
-    "presented": true
+    "presented": true,
+    "evaluated": true
   },
   {
     "rank": 11,
@@ -795,7 +805,8 @@ const PRESENTING_TEAMS_DATA = [
     "status": "SHORTLISTED",
     "badgeLabel": "TOP 45 SHORTLISTED · #11",
     "badgeClass": "bg-emerald-100 text-emerald-800 border-emerald-300",
-    "presented": true
+    "presented": true,
+    "evaluated": true
   },
   {
     "rank": 12,
@@ -867,7 +878,8 @@ const PRESENTING_TEAMS_DATA = [
     "status": "SHORTLISTED",
     "badgeLabel": "TOP 45 SHORTLISTED · #12",
     "badgeClass": "bg-emerald-100 text-emerald-800 border-emerald-300",
-    "presented": true
+    "presented": true,
+    "evaluated": true
   },
   {
     "rank": 13,
@@ -939,7 +951,8 @@ const PRESENTING_TEAMS_DATA = [
     "status": "SHORTLISTED",
     "badgeLabel": "TOP 45 SHORTLISTED · #13",
     "badgeClass": "bg-emerald-100 text-emerald-800 border-emerald-300",
-    "presented": true
+    "presented": true,
+    "evaluated": true
   },
   {
     "rank": 14,
@@ -1011,7 +1024,8 @@ const PRESENTING_TEAMS_DATA = [
     "status": "SHORTLISTED",
     "badgeLabel": "TOP 45 SHORTLISTED · #14",
     "badgeClass": "bg-emerald-100 text-emerald-800 border-emerald-300",
-    "presented": true
+    "presented": true,
+    "evaluated": true
   },
   {
     "rank": 15,
@@ -1083,7 +1097,8 @@ const PRESENTING_TEAMS_DATA = [
     "status": "SHORTLISTED",
     "badgeLabel": "TOP 45 SHORTLISTED · #15",
     "badgeClass": "bg-emerald-100 text-emerald-800 border-emerald-300",
-    "presented": true
+    "presented": true,
+    "evaluated": true
   },
   {
     "rank": 16,
@@ -1155,7 +1170,8 @@ const PRESENTING_TEAMS_DATA = [
     "status": "SHORTLISTED",
     "badgeLabel": "TOP 45 SHORTLISTED · #16",
     "badgeClass": "bg-emerald-100 text-emerald-800 border-emerald-300",
-    "presented": true
+    "presented": true,
+    "evaluated": true
   },
   {
     "rank": 17,
@@ -1227,7 +1243,8 @@ const PRESENTING_TEAMS_DATA = [
     "status": "SHORTLISTED",
     "badgeLabel": "TOP 45 SHORTLISTED · #17",
     "badgeClass": "bg-emerald-100 text-emerald-800 border-emerald-300",
-    "presented": true
+    "presented": true,
+    "evaluated": true
   },
   {
     "rank": 18,
@@ -1299,7 +1316,8 @@ const PRESENTING_TEAMS_DATA = [
     "status": "SHORTLISTED",
     "badgeLabel": "TOP 45 SHORTLISTED · #18",
     "badgeClass": "bg-emerald-100 text-emerald-800 border-emerald-300",
-    "presented": true
+    "presented": true,
+    "evaluated": true
   },
   {
     "rank": 19,
@@ -1371,7 +1389,8 @@ const PRESENTING_TEAMS_DATA = [
     "status": "SHORTLISTED",
     "badgeLabel": "TOP 45 SHORTLISTED · #19",
     "badgeClass": "bg-emerald-100 text-emerald-800 border-emerald-300",
-    "presented": true
+    "presented": true,
+    "evaluated": true
   },
   {
     "rank": 20,
@@ -1443,7 +1462,8 @@ const PRESENTING_TEAMS_DATA = [
     "status": "SHORTLISTED",
     "badgeLabel": "TOP 45 SHORTLISTED · #20",
     "badgeClass": "bg-emerald-100 text-emerald-800 border-emerald-300",
-    "presented": true
+    "presented": true,
+    "evaluated": true
   },
   {
     "rank": 21,
@@ -1515,7 +1535,8 @@ const PRESENTING_TEAMS_DATA = [
     "status": "SHORTLISTED",
     "badgeLabel": "TOP 45 SHORTLISTED · #21",
     "badgeClass": "bg-emerald-100 text-emerald-800 border-emerald-300",
-    "presented": true
+    "presented": true,
+    "evaluated": true
   },
   {
     "rank": 22,
@@ -1587,7 +1608,8 @@ const PRESENTING_TEAMS_DATA = [
     "status": "SHORTLISTED",
     "badgeLabel": "TOP 45 SHORTLISTED · #22",
     "badgeClass": "bg-emerald-100 text-emerald-800 border-emerald-300",
-    "presented": true
+    "presented": true,
+    "evaluated": true
   },
   {
     "rank": 23,
@@ -1659,7 +1681,8 @@ const PRESENTING_TEAMS_DATA = [
     "status": "SHORTLISTED",
     "badgeLabel": "TOP 45 SHORTLISTED · #23",
     "badgeClass": "bg-emerald-100 text-emerald-800 border-emerald-300",
-    "presented": true
+    "presented": true,
+    "evaluated": true
   },
   {
     "rank": 24,
@@ -1731,7 +1754,8 @@ const PRESENTING_TEAMS_DATA = [
     "status": "SHORTLISTED",
     "badgeLabel": "TOP 45 SHORTLISTED · #24",
     "badgeClass": "bg-emerald-100 text-emerald-800 border-emerald-300",
-    "presented": true
+    "presented": true,
+    "evaluated": true
   },
   {
     "rank": 25,
@@ -1803,7 +1827,8 @@ const PRESENTING_TEAMS_DATA = [
     "status": "SHORTLISTED",
     "badgeLabel": "TOP 45 SHORTLISTED · #25",
     "badgeClass": "bg-emerald-100 text-emerald-800 border-emerald-300",
-    "presented": true
+    "presented": true,
+    "evaluated": true
   },
   {
     "rank": 26,
@@ -1875,7 +1900,8 @@ const PRESENTING_TEAMS_DATA = [
     "status": "SHORTLISTED",
     "badgeLabel": "TOP 45 SHORTLISTED · #26",
     "badgeClass": "bg-emerald-100 text-emerald-800 border-emerald-300",
-    "presented": true
+    "presented": true,
+    "evaluated": true
   },
   {
     "rank": 27,
@@ -1947,7 +1973,8 @@ const PRESENTING_TEAMS_DATA = [
     "status": "SHORTLISTED",
     "badgeLabel": "TOP 45 SHORTLISTED · #27",
     "badgeClass": "bg-emerald-100 text-emerald-800 border-emerald-300",
-    "presented": true
+    "presented": true,
+    "evaluated": true
   },
   {
     "rank": 28,
@@ -2019,7 +2046,8 @@ const PRESENTING_TEAMS_DATA = [
     "status": "SHORTLISTED",
     "badgeLabel": "TOP 45 SHORTLISTED · #28",
     "badgeClass": "bg-emerald-100 text-emerald-800 border-emerald-300",
-    "presented": true
+    "presented": true,
+    "evaluated": true
   },
   {
     "rank": 29,
@@ -2091,7 +2119,8 @@ const PRESENTING_TEAMS_DATA = [
     "status": "SHORTLISTED",
     "badgeLabel": "TOP 45 SHORTLISTED · #29",
     "badgeClass": "bg-emerald-100 text-emerald-800 border-emerald-300",
-    "presented": true
+    "presented": true,
+    "evaluated": true
   },
   {
     "rank": 30,
@@ -2163,7 +2192,8 @@ const PRESENTING_TEAMS_DATA = [
     "status": "SHORTLISTED",
     "badgeLabel": "TOP 45 SHORTLISTED · #30",
     "badgeClass": "bg-emerald-100 text-emerald-800 border-emerald-300",
-    "presented": true
+    "presented": true,
+    "evaluated": true
   },
   {
     "rank": 31,
@@ -2235,7 +2265,8 @@ const PRESENTING_TEAMS_DATA = [
     "status": "SHORTLISTED",
     "badgeLabel": "TOP 45 SHORTLISTED · #31",
     "badgeClass": "bg-emerald-100 text-emerald-800 border-emerald-300",
-    "presented": true
+    "presented": true,
+    "evaluated": true
   },
   {
     "rank": 32,
@@ -2307,7 +2338,8 @@ const PRESENTING_TEAMS_DATA = [
     "status": "SHORTLISTED",
     "badgeLabel": "TOP 45 SHORTLISTED · #32",
     "badgeClass": "bg-emerald-100 text-emerald-800 border-emerald-300",
-    "presented": true
+    "presented": true,
+    "evaluated": true
   },
   {
     "rank": 33,
@@ -2379,7 +2411,8 @@ const PRESENTING_TEAMS_DATA = [
     "status": "SHORTLISTED",
     "badgeLabel": "TOP 45 SHORTLISTED · #33",
     "badgeClass": "bg-emerald-100 text-emerald-800 border-emerald-300",
-    "presented": true
+    "presented": true,
+    "evaluated": true
   },
   {
     "rank": 34,
@@ -2451,7 +2484,8 @@ const PRESENTING_TEAMS_DATA = [
     "status": "SHORTLISTED",
     "badgeLabel": "TOP 45 SHORTLISTED · #34",
     "badgeClass": "bg-emerald-100 text-emerald-800 border-emerald-300",
-    "presented": true
+    "presented": true,
+    "evaluated": true
   },
   {
     "rank": 35,
@@ -2523,7 +2557,8 @@ const PRESENTING_TEAMS_DATA = [
     "status": "SHORTLISTED",
     "badgeLabel": "TOP 45 SHORTLISTED · #35",
     "badgeClass": "bg-emerald-100 text-emerald-800 border-emerald-300",
-    "presented": true
+    "presented": true,
+    "evaluated": true
   },
   {
     "rank": 36,
@@ -2595,7 +2630,8 @@ const PRESENTING_TEAMS_DATA = [
     "status": "SHORTLISTED",
     "badgeLabel": "TOP 45 SHORTLISTED · #36",
     "badgeClass": "bg-emerald-100 text-emerald-800 border-emerald-300",
-    "presented": true
+    "presented": true,
+    "evaluated": true
   },
   {
     "rank": 37,
@@ -2667,7 +2703,8 @@ const PRESENTING_TEAMS_DATA = [
     "status": "SHORTLISTED",
     "badgeLabel": "TOP 45 SHORTLISTED · #37",
     "badgeClass": "bg-emerald-100 text-emerald-800 border-emerald-300",
-    "presented": true
+    "presented": true,
+    "evaluated": true
   },
   {
     "rank": 38,
@@ -2739,7 +2776,8 @@ const PRESENTING_TEAMS_DATA = [
     "status": "SHORTLISTED",
     "badgeLabel": "TOP 45 SHORTLISTED · #38",
     "badgeClass": "bg-emerald-100 text-emerald-800 border-emerald-300",
-    "presented": true
+    "presented": true,
+    "evaluated": true
   },
   {
     "rank": 39,
@@ -2811,7 +2849,8 @@ const PRESENTING_TEAMS_DATA = [
     "status": "SHORTLISTED",
     "badgeLabel": "TOP 45 SHORTLISTED · #39",
     "badgeClass": "bg-emerald-100 text-emerald-800 border-emerald-300",
-    "presented": true
+    "presented": true,
+    "evaluated": true
   },
   {
     "rank": 40,
@@ -2883,7 +2922,8 @@ const PRESENTING_TEAMS_DATA = [
     "status": "SHORTLISTED",
     "badgeLabel": "TOP 45 SHORTLISTED · #40",
     "badgeClass": "bg-emerald-100 text-emerald-800 border-emerald-300",
-    "presented": true
+    "presented": true,
+    "evaluated": true
   },
   {
     "rank": 41,
@@ -2955,7 +2995,8 @@ const PRESENTING_TEAMS_DATA = [
     "status": "SHORTLISTED",
     "badgeLabel": "TOP 45 SHORTLISTED · #41",
     "badgeClass": "bg-emerald-100 text-emerald-800 border-emerald-300",
-    "presented": true
+    "presented": true,
+    "evaluated": true
   },
   {
     "rank": 42,
@@ -3027,7 +3068,8 @@ const PRESENTING_TEAMS_DATA = [
     "status": "SHORTLISTED",
     "badgeLabel": "TOP 45 SHORTLISTED · #42",
     "badgeClass": "bg-emerald-100 text-emerald-800 border-emerald-300",
-    "presented": true
+    "presented": true,
+    "evaluated": true
   },
   {
     "rank": 43,
@@ -3099,7 +3141,8 @@ const PRESENTING_TEAMS_DATA = [
     "status": "SHORTLISTED",
     "badgeLabel": "TOP 45 SHORTLISTED · #43",
     "badgeClass": "bg-emerald-100 text-emerald-800 border-emerald-300",
-    "presented": true
+    "presented": true,
+    "evaluated": true
   },
   {
     "rank": 44,
@@ -3171,7 +3214,8 @@ const PRESENTING_TEAMS_DATA = [
     "status": "SHORTLISTED",
     "badgeLabel": "TOP 45 SHORTLISTED · #44",
     "badgeClass": "bg-emerald-100 text-emerald-800 border-emerald-300",
-    "presented": true
+    "presented": true,
+    "evaluated": true
   },
   {
     "rank": 45,
@@ -3243,7 +3287,8 @@ const PRESENTING_TEAMS_DATA = [
     "status": "SHORTLISTED",
     "badgeLabel": "TOP 45 SHORTLISTED · #45",
     "badgeClass": "bg-emerald-100 text-emerald-800 border-emerald-300",
-    "presented": true
+    "presented": true,
+    "evaluated": true
   },
   {
     "rank": 46,
@@ -3315,7 +3360,8 @@ const PRESENTING_TEAMS_DATA = [
     "status": "WAITLISTED",
     "badgeLabel": "WAITLISTED · #1",
     "badgeClass": "bg-amber-100 text-amber-900 border-amber-300",
-    "presented": true
+    "presented": true,
+    "evaluated": true
   },
   {
     "rank": 47,
@@ -3387,7 +3433,8 @@ const PRESENTING_TEAMS_DATA = [
     "status": "WAITLISTED",
     "badgeLabel": "WAITLISTED · #2",
     "badgeClass": "bg-amber-100 text-amber-900 border-amber-300",
-    "presented": true
+    "presented": true,
+    "evaluated": true
   },
   {
     "rank": 48,
@@ -3459,7 +3506,8 @@ const PRESENTING_TEAMS_DATA = [
     "status": "WAITLISTED",
     "badgeLabel": "WAITLISTED · #3",
     "badgeClass": "bg-amber-100 text-amber-900 border-amber-300",
-    "presented": true
+    "presented": true,
+    "evaluated": true
   },
   {
     "rank": 49,
@@ -3531,7 +3579,8 @@ const PRESENTING_TEAMS_DATA = [
     "status": "WAITLISTED",
     "badgeLabel": "WAITLISTED · #4",
     "badgeClass": "bg-amber-100 text-amber-900 border-amber-300",
-    "presented": true
+    "presented": true,
+    "evaluated": true
   },
   {
     "rank": 50,
@@ -3603,7 +3652,8 @@ const PRESENTING_TEAMS_DATA = [
     "status": "WAITLISTED",
     "badgeLabel": "WAITLISTED · #5",
     "badgeClass": "bg-amber-100 text-amber-900 border-amber-300",
-    "presented": true
+    "presented": true,
+    "evaluated": true
   },
   {
     "rank": 51,
@@ -3672,10 +3722,11 @@ const PRESENTING_TEAMS_DATA = [
         "mobile": "6392055122"
       }
     ],
-    "status": "EVALUATED",
-    "badgeLabel": "EVALUATED & PRESENTED",
-    "badgeClass": "bg-indigo-100 text-indigo-900 border-indigo-300",
-    "presented": true
+    "status": "NOT_SELECTED",
+    "badgeLabel": "EVALUATED · NOT SELECTED",
+    "badgeClass": "bg-slate-100 text-slate-700 border-slate-300",
+    "presented": true,
+    "evaluated": true
   },
   {
     "rank": 52,
@@ -3744,10 +3795,11 @@ const PRESENTING_TEAMS_DATA = [
         "mobile": "7905898396"
       }
     ],
-    "status": "EVALUATED",
-    "badgeLabel": "EVALUATED & PRESENTED",
-    "badgeClass": "bg-indigo-100 text-indigo-900 border-indigo-300",
-    "presented": true
+    "status": "NOT_SELECTED",
+    "badgeLabel": "EVALUATED · NOT SELECTED",
+    "badgeClass": "bg-slate-100 text-slate-700 border-slate-300",
+    "presented": true,
+    "evaluated": true
   },
   {
     "rank": 53,
@@ -3816,10 +3868,11 @@ const PRESENTING_TEAMS_DATA = [
         "mobile": "8795719315"
       }
     ],
-    "status": "EVALUATED",
-    "badgeLabel": "EVALUATED & PRESENTED",
-    "badgeClass": "bg-indigo-100 text-indigo-900 border-indigo-300",
-    "presented": true
+    "status": "NOT_SELECTED",
+    "badgeLabel": "EVALUATED · NOT SELECTED",
+    "badgeClass": "bg-slate-100 text-slate-700 border-slate-300",
+    "presented": true,
+    "evaluated": true
   },
   {
     "rank": 54,
@@ -3888,10 +3941,11 @@ const PRESENTING_TEAMS_DATA = [
         "mobile": "7237072852"
       }
     ],
-    "status": "EVALUATED",
-    "badgeLabel": "EVALUATED & PRESENTED",
-    "badgeClass": "bg-indigo-100 text-indigo-900 border-indigo-300",
-    "presented": true
+    "status": "NOT_SELECTED",
+    "badgeLabel": "EVALUATED · NOT SELECTED",
+    "badgeClass": "bg-slate-100 text-slate-700 border-slate-300",
+    "presented": true,
+    "evaluated": true
   },
   {
     "rank": 55,
@@ -3960,10 +4014,11 @@ const PRESENTING_TEAMS_DATA = [
         "mobile": "7985987335"
       }
     ],
-    "status": "EVALUATED",
-    "badgeLabel": "EVALUATED & PRESENTED",
-    "badgeClass": "bg-indigo-100 text-indigo-900 border-indigo-300",
-    "presented": true
+    "status": "NOT_SELECTED",
+    "badgeLabel": "EVALUATED · NOT SELECTED",
+    "badgeClass": "bg-slate-100 text-slate-700 border-slate-300",
+    "presented": true,
+    "evaluated": true
   },
   {
     "rank": 56,
@@ -4032,10 +4087,11 @@ const PRESENTING_TEAMS_DATA = [
         "mobile": "7905038809"
       }
     ],
-    "status": "EVALUATED",
-    "badgeLabel": "EVALUATED & PRESENTED",
-    "badgeClass": "bg-indigo-100 text-indigo-900 border-indigo-300",
-    "presented": true
+    "status": "NOT_SELECTED",
+    "badgeLabel": "EVALUATED · NOT SELECTED",
+    "badgeClass": "bg-slate-100 text-slate-700 border-slate-300",
+    "presented": true,
+    "evaluated": true
   },
   {
     "rank": 57,
@@ -4104,690 +4160,11 @@ const PRESENTING_TEAMS_DATA = [
         "mobile": "8299875512"
       }
     ],
-    "status": "EVALUATED",
-    "badgeLabel": "EVALUATED & PRESENTED",
-    "badgeClass": "bg-indigo-100 text-indigo-900 border-indigo-300",
-    "presented": true
-  },
-  {
-    "rank": 58,
-    "teamName": "cookieking",
-    "registrationId": "SIH2026-0030",
-    "teamLeaderName": "Raheel Ahmer Usmani",
-    "leaderBranch": "CSE (Data Science)",
-    "leaderYear": "Second Year",
-    "leaderEmail": "raheellusmaniii@gmail.com",
-    "leaderMobile": "8737961093",
-    "leaderGender": "Male",
-    "teamMembers": [
-      {
-        "name": "Rehan Luqman Khan",
-        "rollNumber": "2502841530072",
-        "enrollment": "51250477",
-        "branch": "CSE (AI & ML)",
-        "year": "Second Year",
-        "sem": "3",
-        "gender": "Male",
-        "email": "rehaniskhan0904@gmail.com",
-        "mobile": "8858244675"
-      },
-      {
-        "name": "Arsalan Ajaz",
-        "rollNumber": "2502840100069",
-        "enrollment": "51250161",
-        "branch": "CSE",
-        "year": "Second Year",
-        "sem": "3",
-        "gender": "Male",
-        "email": "ajazarsalan05@gmail.com",
-        "mobile": "6307625093"
-      },
-      {
-        "name": "Aradhya Kesharwani",
-        "rollNumber": "2502841540013",
-        "enrollment": "51250257",
-        "branch": "CSE (Data Science)",
-        "year": "Second Year",
-        "sem": "3",
-        "gender": "Female",
-        "email": "aradhyakeshri2007@gmail.com",
-        "mobile": "9696122706"
-      },
-      {
-        "name": "Pranvi Kumar",
-        "rollNumber": "2502840100188",
-        "enrollment": "51250520",
-        "branch": "CSE",
-        "year": "Second Year",
-        "sem": "3",
-        "gender": "Female",
-        "email": "pranvikumar006@gmail.com",
-        "mobile": "7355271867"
-      },
-      {
-        "name": "Affan Khan",
-        "rollNumber": "2502840100029",
-        "enrollment": "51250241",
-        "branch": "CSE",
-        "year": "Second Year",
-        "sem": "3",
-        "gender": "Male",
-        "email": "ayan25181@gmail.com",
-        "mobile": "8052892203"
-      }
-    ],
-    "status": "UNEVALUATED",
-    "badgeLabel": "NOT EVALUATED / ABSENT",
-    "badgeClass": "bg-slate-100 text-slate-500 border-slate-300",
-    "presented": false
-  },
-  {
-    "rank": 59,
-    "teamName": "The Phoenix 🐦‍🔥",
-    "registrationId": "SIH2026-0059",
-    "teamLeaderName": "Registered Leader",
-    "leaderBranch": "CSE",
-    "leaderYear": "Third Year",
-    "status": "UNEVALUATED",
-    "badgeLabel": "NOT EVALUATED / ABSENT",
-    "badgeClass": "bg-slate-100 text-slate-500 border-slate-300",
-    "presented": false,
-    "teamMembers": []
-  },
-  {
-    "rank": 60,
-    "teamName": "Viper Syndicate",
-    "registrationId": "SIH2026-0047",
-    "teamLeaderName": "Ujjwal Yadav",
-    "leaderBranch": "CSE",
-    "leaderYear": "Second Year",
-    "leaderEmail": "ujjwalyadavvv10631@gmail.com",
-    "leaderMobile": "9335544027",
-    "leaderGender": "Male",
-    "teamMembers": [
-      {
-        "name": "Utkarsh maurya",
-        "rollNumber": "2502840100274",
-        "enrollment": "51250249",
-        "branch": "CSE",
-        "year": "Second Year",
-        "sem": "3",
-        "gender": "Male",
-        "email": "mauryautkarsh6387@gmail.com",
-        "mobile": "7266977638"
-      },
-      {
-        "name": "Vinay singh",
-        "rollNumber": "2502840100279",
-        "enrollment": "51250271",
-        "branch": "CSE",
-        "year": "Second Year",
-        "sem": "3",
-        "gender": "Male",
-        "email": "vinaysingh33567@gmail.com",
-        "mobile": "9580008531"
-      },
-      {
-        "name": "MOHAMMAD SAMEER",
-        "rollNumber": "2502840100157",
-        "enrollment": "51250069",
-        "branch": "CSE",
-        "year": "Second Year",
-        "sem": "3",
-        "gender": "Male",
-        "email": "m4027783@gmail.com",
-        "mobile": "9935953328"
-      },
-      {
-        "name": "Sahil jaiswal",
-        "rollNumber": "2502840100218",
-        "enrollment": "51250236",
-        "branch": "CSE",
-        "year": "Second Year",
-        "sem": "3",
-        "gender": "Male",
-        "email": "sahil.jaiswal.uit@gmail.com",
-        "mobile": "8081110598"
-      },
-      {
-        "name": "Tanya singh",
-        "rollNumber": "2502840100269",
-        "enrollment": "51250391",
-        "branch": "CSE",
-        "year": "Second Year",
-        "sem": "3",
-        "gender": "Female",
-        "email": "tanyasingh11102000@gmail.com",
-        "mobile": "8188850438"
-      }
-    ],
-    "status": "UNEVALUATED",
-    "badgeLabel": "NOT EVALUATED / ABSENT",
-    "badgeClass": "bg-slate-100 text-slate-500 border-slate-300",
-    "presented": false
-  },
-  {
-    "rank": 61,
-    "teamName": "Apex Developers",
-    "registrationId": "SIH2026-0075",
-    "teamLeaderName": "Abu Talib Khan",
-    "leaderBranch": "CSE (AI & ML)",
-    "leaderYear": "Second Year",
-    "leaderEmail": "abutalibkhan0909@gmail.com",
-    "leaderMobile": "8081412806",
-    "leaderGender": "Male",
-    "teamMembers": [
-      {
-        "name": "Kushal Srivastava",
-        "rollNumber": "2502841530054",
-        "enrollment": "51250144",
-        "branch": "CSE (AI & ML)",
-        "year": "Second Year",
-        "sem": "3",
-        "gender": "Male",
-        "email": "srivastavakushal758@gmail.com",
-        "mobile": "9838824606"
-      },
-      {
-        "name": "Beauty Kumari",
-        "rollNumber": "2502841530035",
-        "enrollment": "51250335",
-        "branch": "CSE (AI & ML)",
-        "year": "Second Year",
-        "sem": "3",
-        "gender": "Female",
-        "email": "beautykeshri29@gmail.com",
-        "mobile": "9334052576"
-      },
-      {
-        "name": "Mohd Sohail",
-        "rollNumber": "2502841530059",
-        "enrollment": "51250444",
-        "branch": "CSE (AI & ML)",
-        "year": "Second Year",
-        "sem": "3",
-        "gender": "Male",
-        "email": "mohdsohail062006@gmail.com",
-        "mobile": "9236577593"
-      },
-      {
-        "name": "Mohd Sohail Ansari",
-        "rollNumber": "2502841530060",
-        "enrollment": "51250090",
-        "branch": "CSE (AI & ML)",
-        "year": "Second Year",
-        "sem": "3",
-        "gender": "Male",
-        "email": "mohdsohailansari2007@gmail.com",
-        "mobile": "7266029868"
-      },
-      {
-        "name": "Abhay Tripathi",
-        "rollNumber": "2502841530002",
-        "enrollment": "51250026",
-        "branch": "CSE (AI & ML)",
-        "year": "Second Year",
-        "sem": "3",
-        "gender": "Male",
-        "email": "abhaytripathi1811@gmail.com",
-        "mobile": "9653088783"
-      }
-    ],
-    "status": "UNEVALUATED",
-    "badgeLabel": "NOT EVALUATED / ABSENT",
-    "badgeClass": "bg-slate-100 text-slate-500 border-slate-300",
-    "presented": false
-  },
-  {
-    "rank": 62,
-    "teamName": "MLXPERTS",
-    "registrationId": "SIH2026-0143",
-    "teamLeaderName": "Saksham Singh",
-    "leaderBranch": "CSE (Data Science)",
-    "leaderYear": "Third Year",
-    "leaderEmail": "sakshamsingh.as@gmail.com",
-    "leaderMobile": "9936457210",
-    "leaderGender": "Male",
-    "teamMembers": [
-      {
-        "name": "Rishabh Chaturvedi",
-        "rollNumber": "2402841540032",
-        "enrollment": "51240108",
-        "branch": "CSE (Data Science)",
-        "year": "Third Year",
-        "sem": "5",
-        "gender": "Male",
-        "email": "rishabhchaturvedi8810@gmail.com",
-        "mobile": "6307382247"
-      },
-      {
-        "name": "Devesh Singh",
-        "rollNumber": "2402841540016",
-        "enrollment": "51240091",
-        "branch": "CSE (Data Science)",
-        "year": "Third Year",
-        "sem": "5",
-        "gender": "Male",
-        "email": "officialdevesh0505@gmail.com",
-        "mobile": "9076513258"
-      },
-      {
-        "name": "Ujala Saroj",
-        "rollNumber": "2402841540048",
-        "enrollment": "51240518",
-        "branch": "CSE (Data Science)",
-        "year": "Third Year",
-        "sem": "5",
-        "gender": "Female",
-        "email": "ujalasaroj113@gmail.com",
-        "mobile": "8726562690"
-      },
-      {
-        "name": "Shivanand Singh",
-        "rollNumber": "2402841540041",
-        "enrollment": "51240347",
-        "branch": "CSE (Data Science)",
-        "year": "Third Year",
-        "sem": "5",
-        "gender": "Male",
-        "email": "singhshivanand720@gmail.com",
-        "mobile": "7268030667"
-      },
-      {
-        "name": "Vinayak Shrivastava",
-        "rollNumber": "2402841540052",
-        "enrollment": "51240368",
-        "branch": "CSE (Data Science)",
-        "year": "Third Year",
-        "sem": "5",
-        "gender": "Male",
-        "email": "vinayaksrivastav893@gmail.com",
-        "mobile": "8528894509"
-      }
-    ],
-    "status": "UNEVALUATED",
-    "badgeLabel": "NOT EVALUATED / ABSENT",
-    "badgeClass": "bg-slate-100 text-slate-500 border-slate-300",
-    "presented": false
-  },
-  {
-    "rank": 63,
-    "teamName": "Obsidian Tech",
-    "registrationId": "SIH2026-0071",
-    "teamLeaderName": "Abhyuday Srivastava",
-    "leaderBranch": "CSE (AI & ML)",
-    "leaderYear": "Second Year",
-    "leaderEmail": "sabhyuday938@gmail.com",
-    "leaderMobile": "9219391413",
-    "leaderGender": "Male",
-    "teamMembers": [
-      {
-        "name": "Akshat Misra",
-        "rollNumber": "2502841530015",
-        "enrollment": "51250130",
-        "branch": "CSE (AI & ML)",
-        "year": "Second Year",
-        "sem": "3",
-        "gender": "Male",
-        "email": "akshatmisra1@gmail.com",
-        "mobile": "8707337475"
-      },
-      {
-        "name": "Alok Kumar",
-        "rollNumber": "2502841530018",
-        "enrollment": "51250467",
-        "branch": "CSE (AI & ML)",
-        "year": "Second Year",
-        "sem": "3",
-        "gender": "Male",
-        "email": "krakesh41725@gmail.com",
-        "mobile": "9305358757"
-      },
-      {
-        "name": "Ravi Roshan Pandey",
-        "rollNumber": "2502841540048",
-        "enrollment": "51250393",
-        "branch": "CSE (Data Science)",
-        "year": "Second Year",
-        "sem": "3",
-        "gender": "Male",
-        "email": "ravipandey052704@gmail.com",
-        "mobile": "8887730780"
-      },
-      {
-        "name": "Abhinav Yadav",
-        "rollNumber": "2502841530005",
-        "enrollment": "51250106",
-        "branch": "CSE (AI & ML)",
-        "year": "Second Year",
-        "sem": "3",
-        "gender": "Male",
-        "email": "jaiyadav1765@gmail.com",
-        "mobile": "7379767137"
-      },
-      {
-        "name": "Mahak Pandey",
-        "rollNumber": "2502840100148",
-        "enrollment": "51250025",
-        "branch": "CSE",
-        "year": "Second Year",
-        "sem": "3",
-        "gender": "Female",
-        "email": "pandeymehak000@gmail.com",
-        "mobile": "8400449198"
-      }
-    ],
-    "status": "UNEVALUATED",
-    "badgeLabel": "NOT EVALUATED / ABSENT",
-    "badgeClass": "bg-slate-100 text-slate-500 border-slate-300",
-    "presented": false
-  },
-  {
-    "rank": 64,
-    "teamName": "Paperx",
-    "registrationId": "SIH2026-0132",
-    "teamLeaderName": "Rudra Pratap Singh",
-    "leaderBranch": "CSE",
-    "leaderYear": "Third Year",
-    "leaderEmail": "abhisinghtomar22@gmail.com",
-    "leaderMobile": "8726625831",
-    "leaderGender": "Male",
-    "teamMembers": [
-      {
-        "name": "Satyam Vishwakarma",
-        "rollNumber": "2402840100214",
-        "enrollment": "51240386",
-        "branch": "CSE",
-        "year": "Third Year",
-        "sem": "5",
-        "gender": "Male",
-        "email": "satyamv83206@gmail.com",
-        "mobile": "9451271619"
-      },
-      {
-        "name": "Shaurya Sharma",
-        "rollNumber": "2402840100223",
-        "enrollment": "51240319",
-        "branch": "CSE",
-        "year": "Third Year",
-        "sem": "5",
-        "gender": "Male",
-        "email": "sshouryas538@gmail.com",
-        "mobile": "6393152679"
-      },
-      {
-        "name": "Somya yadav",
-        "rollNumber": "240284010232",
-        "enrollment": "51240044",
-        "branch": "CSE",
-        "year": "Third Year",
-        "sem": "5",
-        "gender": "Female",
-        "email": "somyaaa32@gmail.com",
-        "mobile": "9580830321"
-      },
-      {
-        "name": "Piyush verma",
-        "rollNumber": "2402841530052",
-        "enrollment": "51240241",
-        "branch": "CSE (AI & ML)",
-        "year": "Third Year",
-        "sem": "5",
-        "gender": "Male",
-        "email": "piyushverma3327@gmail.com",
-        "mobile": "7991493327"
-      },
-      {
-        "name": "Shatakshi yadav",
-        "rollNumber": "2402840100220",
-        "enrollment": "51240456",
-        "branch": "CSE",
-        "year": "Third Year",
-        "sem": "5",
-        "gender": "Female",
-        "email": "shatakshi0202@gmail.com",
-        "mobile": "9580113088"
-      }
-    ],
-    "status": "UNEVALUATED",
-    "badgeLabel": "NOT EVALUATED / ABSENT",
-    "badgeClass": "bg-slate-100 text-slate-500 border-slate-300",
-    "presented": false
-  },
-  {
-    "rank": 65,
-    "teamName": "Bug Slayers",
-    "registrationId": "SIH2026-0051",
-    "teamLeaderName": "Ashutosh Dwivedi",
-    "leaderBranch": "CSE",
-    "leaderYear": "Second Year",
-    "leaderEmail": "dwivediashutosh685@gmail.com",
-    "leaderMobile": "8081074613",
-    "leaderGender": "Male",
-    "teamMembers": [
-      {
-        "name": "Arpit Singh",
-        "rollNumber": "2502840100068",
-        "enrollment": "51250096",
-        "branch": "CSE",
-        "year": "Second Year",
-        "sem": "3",
-        "gender": "Male",
-        "email": "arpitsinghranjeetsingh@gmail.com",
-        "mobile": "9696395553"
-      },
-      {
-        "name": "ARCHI MANI MISHRA",
-        "rollNumber": "2502840100064",
-        "enrollment": "51250164",
-        "branch": "CSE",
-        "year": "Second Year",
-        "sem": "3",
-        "gender": "Female",
-        "email": "archimanimishra@gmail.com",
-        "mobile": "7007807923"
-      },
-      {
-        "name": "DIMPAL OBERAI",
-        "rollNumber": "2502840100105",
-        "enrollment": "51250373",
-        "branch": "CSE",
-        "year": "Second Year",
-        "sem": "3",
-        "gender": "Female",
-        "email": "dimpaloberai00@gmail.com",
-        "mobile": "7985811561"
-      },
-      {
-        "name": "DIVYANSH SRIVASTAV",
-        "rollNumber": "2502840100109",
-        "enrollment": "51250284",
-        "branch": "CSE",
-        "year": "Second Year",
-        "sem": "3",
-        "gender": "Male",
-        "email": "divyanshsrivastav2006@gmail.com",
-        "mobile": "6394009047"
-      },
-      {
-        "name": "YASH MISHRA",
-        "rollNumber": "2502840100287",
-        "enrollment": "51250234",
-        "branch": "CSE",
-        "year": "Second Year",
-        "sem": "3",
-        "gender": "Male",
-        "email": "yashmishra96836@gmail.com",
-        "mobile": "6386521694"
-      }
-    ],
-    "status": "UNEVALUATED",
-    "badgeLabel": "NOT EVALUATED / ABSENT",
-    "badgeClass": "bg-slate-100 text-slate-500 border-slate-300",
-    "presented": false
-  },
-  {
-    "rank": 66,
-    "teamName": "Shield core",
-    "registrationId": "SIH2026-0131",
-    "teamLeaderName": "Prakhar Shukla",
-    "leaderBranch": "CSE (Data Science)",
-    "leaderYear": "Second Year",
-    "leaderEmail": "prakharshukla831@gmail.com",
-    "leaderMobile": "9137911863",
-    "leaderGender": "Male",
-    "teamMembers": [
-      {
-        "name": "Mahak Pandey",
-        "rollNumber": "2502840100148",
-        "enrollment": "51250025",
-        "branch": "CSE",
-        "year": "Second Year",
-        "sem": "3",
-        "gender": "Female",
-        "email": "pandeymehak000@gmail.com",
-        "mobile": "8400449198"
-      },
-      {
-        "name": "Sachin yadav",
-        "rollNumber": "2502841530077",
-        "enrollment": "51250187",
-        "branch": "CSE (AI & ML)",
-        "year": "Second Year",
-        "sem": "3",
-        "gender": "Male",
-        "email": "sy068549@gmail.com",
-        "mobile": "8840348885"
-      },
-      {
-        "name": "Ujjwal singh",
-        "rollNumber": "2502840100270",
-        "enrollment": "51250205",
-        "branch": "CSE",
-        "year": "Second Year",
-        "sem": "3",
-        "gender": "Male",
-        "email": "singhujjwal92084@gmail.com",
-        "mobile": "9208428426"
-      },
-      {
-        "name": "Sushmit Mishra",
-        "rollNumber": "2502840100265",
-        "enrollment": "51250201",
-        "branch": "CSE",
-        "year": "Second Year",
-        "sem": "3",
-        "gender": "Male",
-        "email": "sushmitmishraofficial@gmail.com",
-        "mobile": "8303379613"
-      },
-      {
-        "name": "Utkarsh kumar shukla",
-        "rollNumber": "2502840100273",
-        "enrollment": "51250434",
-        "branch": "CSE",
-        "year": "Second Year",
-        "sem": "3",
-        "gender": "Male",
-        "email": "utkarshkumarshukla8@gmail.com",
-        "mobile": "9795053973"
-      }
-    ],
-    "status": "UNEVALUATED",
-    "badgeLabel": "NOT EVALUATED / ABSENT",
-    "badgeClass": "bg-slate-100 text-slate-500 border-slate-300",
-    "presented": false
-  },
-  {
-    "rank": 67,
-    "teamName": "HealTech",
-    "registrationId": "SIH2026-0067",
-    "teamLeaderName": "Registered Leader",
-    "leaderBranch": "CSE",
-    "leaderYear": "Third Year",
-    "status": "UNEVALUATED",
-    "badgeLabel": "NOT EVALUATED / ABSENT",
-    "badgeClass": "bg-slate-100 text-slate-500 border-slate-300",
-    "presented": false,
-    "teamMembers": []
-  },
-  {
-    "rank": 68,
-    "teamName": "Coder ninja",
-    "registrationId": "SIH2026-0068",
-    "teamLeaderName": "Registered Leader",
-    "leaderBranch": "CSE",
-    "leaderYear": "Third Year",
-    "status": "UNEVALUATED",
-    "badgeLabel": "NOT EVALUATED / ABSENT",
-    "badgeClass": "bg-slate-100 text-slate-500 border-slate-300",
-    "presented": false,
-    "teamMembers": []
-  },
-  {
-    "rank": 69,
-    "teamName": "Code Alchemists",
-    "registrationId": "SIH2026-0069",
-    "teamLeaderName": "Registered Leader",
-    "leaderBranch": "CSE",
-    "leaderYear": "Third Year",
-    "status": "UNEVALUATED",
-    "badgeLabel": "NOT EVALUATED / ABSENT",
-    "badgeClass": "bg-slate-100 text-slate-500 border-slate-300",
-    "presented": false,
-    "teamMembers": []
-  },
-  {
-    "rank": 70,
-    "teamName": "Panthers",
-    "registrationId": "SIH2026-0070",
-    "teamLeaderName": "Registered Leader",
-    "leaderBranch": "CSE",
-    "leaderYear": "Third Year",
-    "status": "UNEVALUATED",
-    "badgeLabel": "NOT EVALUATED / ABSENT",
-    "badgeClass": "bg-slate-100 text-slate-500 border-slate-300",
-    "presented": false,
-    "teamMembers": []
-  },
-  {
-    "rank": 71,
-    "teamName": "Syntax Avengers",
-    "registrationId": "SIH2026-0071",
-    "teamLeaderName": "Registered Leader",
-    "leaderBranch": "CSE",
-    "leaderYear": "Third Year",
-    "status": "UNEVALUATED",
-    "badgeLabel": "NOT EVALUATED / ABSENT",
-    "badgeClass": "bg-slate-100 text-slate-500 border-slate-300",
-    "presented": false,
-    "teamMembers": []
-  },
-  {
-    "rank": 72,
-    "teamName": "Code Innovators",
-    "registrationId": "SIH2026-0072",
-    "teamLeaderName": "Registered Leader",
-    "leaderBranch": "CSE",
-    "leaderYear": "Third Year",
-    "status": "UNEVALUATED",
-    "badgeLabel": "NOT EVALUATED / ABSENT",
-    "badgeClass": "bg-slate-100 text-slate-500 border-slate-300",
-    "presented": false,
-    "teamMembers": []
-  },
-  {
-    "rank": 73,
-    "teamName": "Cyber Titans",
-    "registrationId": "SIH2026-0073",
-    "teamLeaderName": "Registered Leader",
-    "leaderBranch": "CSE",
-    "leaderYear": "Third Year",
-    "status": "UNEVALUATED",
-    "badgeLabel": "NOT EVALUATED / ABSENT",
-    "badgeClass": "bg-slate-100 text-slate-500 border-slate-300",
-    "presented": false,
-    "teamMembers": []
+    "status": "NOT_SELECTED",
+    "badgeLabel": "EVALUATED · NOT SELECTED",
+    "badgeClass": "bg-slate-100 text-slate-700 border-slate-300",
+    "presented": true,
+    "evaluated": true
   }
 ];
 

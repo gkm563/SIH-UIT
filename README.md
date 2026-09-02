@@ -30,10 +30,10 @@ This digital platform serves as the **permanent, verified historical archive** p
 | Metric | Official Count | Details |
 |---|---|---|
 | **Registered Teams** | **73 Teams** | Roster verified through institutional portal |
-| **Presented Teams** | **57 Teams** | Physical presentations delivered before 8 evaluation juries |
+| **Presented & Evaluated** | **57 Teams** | Physical presentations evaluated by 8 juries (Top 50 Selected: 45+5, 7 Not Selected) |
 | **Verified Innovators** | **342 Students** | Interdisciplinary 6-member teams with female leadership representation |
-| **Top Shortlisted (Nominated)** | **45 Teams** | Institutional nominations submitted to central Ministry of Education portal |
-| **Waitlisted Reserve** | **5 Teams** | Merit standby quota ready to represent institutional slots |
+| **Selected: Shortlisted** | **45 Teams** | Institutional nominations submitted to central Ministry of Education portal |
+| **Selected: Waitlisted** | **5 Teams** | Merit standby quota ready to represent institutional slots |
 | **Grand Jury Panel** | **8 Evaluators** | Senior academic leaders, domain experts & research faculty |
 | **Official PS Repository** | **231 Statements** | 176 Software + 55 Hardware statements across 17 national themes |
 | **Idea PPT Deadline** | **20 September 2026** | 4-slide national submission timeline |
@@ -121,7 +121,7 @@ SIH-UIT/
 │   ├── receipt.js                   # Certificate and acknowledgement generator
 │   ├── validation.js                # Input validators for registration & search
 │   └── data/
-│       ├── presenting-teams.js      # 57 Presented Teams + 16 Registered Unevaluated Teams
+│       ├── presenting-teams.js      # 57 Evaluated Teams (45 Shortlisted + 5 Waitlisted + 7 Not Selected)
 │       ├── results-data.js          # 45 Shortlisted + 5 Waitlisted teams evaluation records
 │       └── sih-problem-statements.js# 231 Official national problem statements dataset
 ├── google-apps-script/

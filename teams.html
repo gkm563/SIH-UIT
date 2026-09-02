@@ -130,31 +130,26 @@
             Presenting Teams Archive
           </h1>
           <p class="text-xs sm:text-sm text-slate-600 font-medium leading-relaxed max-w-2xl">
-            Permanent institutional repository of all <strong>57 student innovation teams</strong> who successfully delivered physical presentations before the 8 evaluation juries on <strong>22 August 2026</strong> at United Institute of Technology, Prayagraj.
-          </p>
+            Permanent institutional repository of all <strong>57 student innovation teams</strong> who delivered physical presentations and were evaluated by 8 juries on <strong>22 August 2026</strong>. From these 57 evaluated teams, the <strong>Top 50 teams (45 Shortlisted + 5 Waitlisted)</strong> were selected, and 7 teams completed evaluated participation.</p>
         </div>
 
         <!-- Metric Counter Cards -->
-        <div class="grid grid-cols-2 sm:grid-cols-5 gap-2.5 flex-shrink-0 text-center">
-          <div class="p-3 bg-white/95 rounded-2xl border border-blue-200 shadow-xs hover:border-blue-400 transition-colors">
+        <div class="grid grid-cols-2 sm:grid-cols-4 gap-2.5 flex-shrink-0 text-center">
+          <div class="p-3.5 bg-white/95 rounded-2xl border border-blue-200 shadow-xs hover:border-blue-400 transition-colors">
             <div class="text-2xl sm:text-3xl font-black font-display text-blue-700">57</div>
-            <div class="text-[10px] font-bold text-slate-500 uppercase tracking-wider">Total Presented</div>
+            <div class="text-[10px] font-bold text-slate-500 uppercase tracking-wider">Total Evaluated</div>
           </div>
-          <div class="p-3 bg-white/95 rounded-2xl border border-emerald-200 shadow-xs hover:border-emerald-400 transition-colors">
+          <div class="p-3.5 bg-white/95 rounded-2xl border border-emerald-200 shadow-xs hover:border-emerald-400 transition-colors">
             <div class="text-2xl sm:text-3xl font-black font-display text-emerald-700">45</div>
-            <div class="text-[10px] font-bold text-slate-500 uppercase tracking-wider">Top Shortlisted</div>
+            <div class="text-[10px] font-bold text-slate-500 uppercase tracking-wider">🏆 Shortlisted (Selected)</div>
           </div>
-          <div class="p-3 bg-white/95 rounded-2xl border border-amber-200 shadow-xs hover:border-amber-400 transition-colors">
+          <div class="p-3.5 bg-white/95 rounded-2xl border border-amber-200 shadow-xs hover:border-amber-400 transition-colors">
             <div class="text-2xl sm:text-3xl font-black font-display text-amber-700">5</div>
-            <div class="text-[10px] font-bold text-slate-500 uppercase tracking-wider">Waitlisted</div>
+            <div class="text-[10px] font-bold text-slate-500 uppercase tracking-wider">⏳ Waitlisted (Selected)</div>
           </div>
-          <div class="p-3 bg-white/95 rounded-2xl border border-indigo-200 shadow-xs hover:border-indigo-400 transition-colors">
-            <div class="text-2xl sm:text-3xl font-black font-display text-indigo-700">7</div>
-            <div class="text-[10px] font-bold text-slate-500 uppercase tracking-wider">Evaluated</div>
-          </div>
-          <div class="p-3 bg-white/95 rounded-2xl border border-slate-200 shadow-xs hover:border-slate-400 transition-colors">
-            <div class="text-2xl sm:text-3xl font-black font-display text-slate-500">16</div>
-            <div class="text-[10px] font-bold text-slate-400 uppercase tracking-wider">Unevaluated</div>
+          <div class="p-3.5 bg-white/95 rounded-2xl border border-slate-200 shadow-xs hover:border-slate-400 transition-colors">
+            <div class="text-2xl sm:text-3xl font-black font-display text-slate-600">7</div>
+            <div class="text-[10px] font-bold text-slate-500 uppercase tracking-wider">📜 Not Selected</div>
           </div>
         </div>
       </div>
@@ -162,15 +157,16 @@
       <!-- Visual Distribution Bar -->
       <div class="space-y-1.5 pt-2 border-t border-slate-200/70">
         <div class="flex items-center justify-between text-[11px] font-bold text-slate-500">
-          <span>Roster Nomination Distribution</span>
-          <span class="text-slate-700 font-extrabold">45 Shortlisted (78.9%) · 5 Waitlisted (8.8%) · 7 Evaluated (12.3%) of Presented Teams</span>
+          <span>57 Evaluated Teams Selection Distribution</span>
+          <span class="text-slate-700 font-extrabold">Top 50 Selected: 45 Shortlisted (78.9%) + 5 Waitlisted (8.8%) · 7 Not Selected (12.3%)</span>
         </div>
         <div class="w-full h-2.5 bg-slate-200 rounded-full overflow-hidden flex shadow-inner">
-          <div class="bg-emerald-500 h-full transition-all" style="width: 68.2%" title="45 Shortlisted (68.2%)"></div>
-          <div class="bg-amber-400 h-full transition-all" style="width: 7.6%" title="5 Waitlisted (7.6%)"></div>
-          <div class="bg-blue-500 h-full transition-all" style="width: 24.2%" title="16 Evaluated (24.2%)"></div>
+          <div class="bg-emerald-500 h-full transition-all" style="width: 78.9%" title="45 Shortlisted (78.9%)"></div>
+          <div class="bg-amber-400 h-full transition-all" style="width: 8.8%" title="5 Waitlisted (8.8%)"></div>
+          <div class="bg-slate-400 h-full transition-all" style="width: 12.3%" title="7 Not Selected (12.3%)"></div>
         </div>
       </div>
+    </div>
     </div>
 
     <!-- ══════════════════════════════════════════════════════════════════ -->
@@ -189,11 +185,10 @@
 
       <!-- Filter Buttons -->
       <div class="flex items-center gap-1.5 flex-wrap w-full md:w-auto text-xs font-bold" id="status-filters">
-        <button data-status="all_presented" class="team-filter-btn px-3.5 py-1.5 rounded-xl bg-blue-600 text-white shadow-xs transition-all">All Presented (57)</button>
+        <button data-status="all" class="team-filter-btn px-3.5 py-1.5 rounded-xl bg-blue-600 text-white shadow-xs transition-all">All Evaluated (57)</button>
         <button data-status="shortlisted" class="team-filter-btn px-3.5 py-1.5 rounded-xl bg-slate-100 text-slate-700 hover:bg-slate-200 transition-all">🏆 Shortlisted (45)</button>
         <button data-status="waitlisted" class="team-filter-btn px-3.5 py-1.5 rounded-xl bg-slate-100 text-slate-700 hover:bg-slate-200 transition-all">⏳ Waitlisted (5)</button>
-        <button data-status="evaluated" class="team-filter-btn px-3.5 py-1.5 rounded-xl bg-slate-100 text-slate-700 hover:bg-slate-200 transition-all">🎤 Evaluated (7)</button>
-        <button data-status="unevaluated" class="team-filter-btn px-3.5 py-1.5 rounded-xl bg-slate-100 text-slate-500 hover:bg-slate-200 transition-all">📋 Unevaluated (16)</button>
+        <button data-status="not_selected" class="team-filter-btn px-3.5 py-1.5 rounded-xl bg-slate-100 text-slate-700 hover:bg-slate-200 transition-all">📜 Not Selected (7)</button>
       </div>
     </div>
 
@@ -242,7 +237,7 @@
       ? PRESENTING_TEAMS_DATA
       : [];
 
-    let currentFilter = 'all_presented';
+    let currentFilter = 'all';
 
     function render(teams) {
       if (!grid) return;
@@ -327,18 +322,14 @@
           membersStr = t.teamMembers.map(m => m.name || '').join(' ').toLowerCase();
         }
 
-        const statusMatch = (currentFilter === 'all_presented')
-          ? (t.presented === true)
-          : (currentFilter === 'all')
-            ? true
-            : (t.status || '').toLowerCase() === currentFilter;
+        const statusMatch = (currentFilter === 'all' || (t.status || '').toLowerCase() === currentFilter);
         const queryMatch = (!q || teamName.includes(q) || regId.includes(q) || leader.includes(q) || branch.includes(q) || membersStr.includes(q));
 
         return statusMatch && queryMatch;
       });
 
       if (summarySpan) {
-        summarySpan.textContent = (currentFilter === "unevaluated") ? `Showing ${filtered.length} unevaluated registered teams` : `Showing ${filtered.length} presenting teams (57 total presented)`;
+        summarySpan.textContent = `Showing ${filtered.length} of 57 evaluated teams`;
       }
 
       render(filtered);
