@@ -1,6 +1,8 @@
 /**
- * Verified 66 Presenting Teams Archive (SIH 2026 Internal Hackathon - UIT Prayagraj)
- * Embedded directly for 0ms instantaneous loading across all browsers and devices
+ * Official Presenting Teams Archive (SIH 2026 Internal Hackathon - UIT Prayagraj)
+ * Exactly 57 Teams Successfully Delivered Presentations Before Juries
+ * (45 Shortlisted + 5 Waitlisted + 7 Evaluated Participants = 57 Presented)
+ * 16 Additional Registered Teams Were Not Evaluated / Absent
  */
 const PRESENTING_TEAMS_DATA = [
   {
@@ -72,7 +74,8 @@ const PRESENTING_TEAMS_DATA = [
     ],
     "status": "SHORTLISTED",
     "badgeLabel": "TOP 45 SHORTLISTED · #1",
-    "badgeClass": "bg-emerald-100 text-emerald-900 border-emerald-300 font-extrabold"
+    "badgeClass": "bg-emerald-100 text-emerald-800 border-emerald-300",
+    "presented": true
   },
   {
     "rank": 2,
@@ -143,7 +146,8 @@ const PRESENTING_TEAMS_DATA = [
     ],
     "status": "SHORTLISTED",
     "badgeLabel": "TOP 45 SHORTLISTED · #2",
-    "badgeClass": "bg-emerald-100 text-emerald-900 border-emerald-300 font-extrabold"
+    "badgeClass": "bg-emerald-100 text-emerald-800 border-emerald-300",
+    "presented": true
   },
   {
     "rank": 3,
@@ -214,7 +218,8 @@ const PRESENTING_TEAMS_DATA = [
     ],
     "status": "SHORTLISTED",
     "badgeLabel": "TOP 45 SHORTLISTED · #3",
-    "badgeClass": "bg-emerald-100 text-emerald-900 border-emerald-300 font-extrabold"
+    "badgeClass": "bg-emerald-100 text-emerald-800 border-emerald-300",
+    "presented": true
   },
   {
     "rank": 4,
@@ -285,7 +290,8 @@ const PRESENTING_TEAMS_DATA = [
     ],
     "status": "SHORTLISTED",
     "badgeLabel": "TOP 45 SHORTLISTED · #4",
-    "badgeClass": "bg-emerald-100 text-emerald-900 border-emerald-300 font-extrabold"
+    "badgeClass": "bg-emerald-100 text-emerald-800 border-emerald-300",
+    "presented": true
   },
   {
     "rank": 5,
@@ -356,7 +362,8 @@ const PRESENTING_TEAMS_DATA = [
     ],
     "status": "SHORTLISTED",
     "badgeLabel": "TOP 45 SHORTLISTED · #5",
-    "badgeClass": "bg-emerald-100 text-emerald-900 border-emerald-300 font-extrabold"
+    "badgeClass": "bg-emerald-100 text-emerald-800 border-emerald-300",
+    "presented": true
   },
   {
     "rank": 6,
@@ -427,7 +434,8 @@ const PRESENTING_TEAMS_DATA = [
     ],
     "status": "SHORTLISTED",
     "badgeLabel": "TOP 45 SHORTLISTED · #6",
-    "badgeClass": "bg-emerald-100 text-emerald-900 border-emerald-300 font-extrabold"
+    "badgeClass": "bg-emerald-100 text-emerald-800 border-emerald-300",
+    "presented": true
   },
   {
     "rank": 7,
@@ -498,7 +506,8 @@ const PRESENTING_TEAMS_DATA = [
     ],
     "status": "SHORTLISTED",
     "badgeLabel": "TOP 45 SHORTLISTED · #7",
-    "badgeClass": "bg-emerald-100 text-emerald-900 border-emerald-300 font-extrabold"
+    "badgeClass": "bg-emerald-100 text-emerald-800 border-emerald-300",
+    "presented": true
   },
   {
     "rank": 8,
@@ -569,7 +578,8 @@ const PRESENTING_TEAMS_DATA = [
     ],
     "status": "SHORTLISTED",
     "badgeLabel": "TOP 45 SHORTLISTED · #8",
-    "badgeClass": "bg-emerald-100 text-emerald-900 border-emerald-300 font-extrabold"
+    "badgeClass": "bg-emerald-100 text-emerald-800 border-emerald-300",
+    "presented": true
   },
   {
     "rank": 9,
@@ -640,7 +650,8 @@ const PRESENTING_TEAMS_DATA = [
     ],
     "status": "SHORTLISTED",
     "badgeLabel": "TOP 45 SHORTLISTED · #9",
-    "badgeClass": "bg-emerald-100 text-emerald-900 border-emerald-300 font-extrabold"
+    "badgeClass": "bg-emerald-100 text-emerald-800 border-emerald-300",
+    "presented": true
   },
   {
     "rank": 10,
@@ -711,7 +722,8 @@ const PRESENTING_TEAMS_DATA = [
     ],
     "status": "SHORTLISTED",
     "badgeLabel": "TOP 45 SHORTLISTED · #10",
-    "badgeClass": "bg-emerald-100 text-emerald-900 border-emerald-300 font-extrabold"
+    "badgeClass": "bg-emerald-100 text-emerald-800 border-emerald-300",
+    "presented": true
   },
   {
     "rank": 11,
@@ -782,7 +794,8 @@ const PRESENTING_TEAMS_DATA = [
     ],
     "status": "SHORTLISTED",
     "badgeLabel": "TOP 45 SHORTLISTED · #11",
-    "badgeClass": "bg-emerald-100 text-emerald-900 border-emerald-300 font-extrabold"
+    "badgeClass": "bg-emerald-100 text-emerald-800 border-emerald-300",
+    "presented": true
   },
   {
     "rank": 12,
@@ -853,7 +866,8 @@ const PRESENTING_TEAMS_DATA = [
     ],
     "status": "SHORTLISTED",
     "badgeLabel": "TOP 45 SHORTLISTED · #12",
-    "badgeClass": "bg-emerald-100 text-emerald-900 border-emerald-300 font-extrabold"
+    "badgeClass": "bg-emerald-100 text-emerald-800 border-emerald-300",
+    "presented": true
   },
   {
     "rank": 13,
@@ -924,7 +938,8 @@ const PRESENTING_TEAMS_DATA = [
     ],
     "status": "SHORTLISTED",
     "badgeLabel": "TOP 45 SHORTLISTED · #13",
-    "badgeClass": "bg-emerald-100 text-emerald-900 border-emerald-300 font-extrabold"
+    "badgeClass": "bg-emerald-100 text-emerald-800 border-emerald-300",
+    "presented": true
   },
   {
     "rank": 14,
@@ -995,7 +1010,8 @@ const PRESENTING_TEAMS_DATA = [
     ],
     "status": "SHORTLISTED",
     "badgeLabel": "TOP 45 SHORTLISTED · #14",
-    "badgeClass": "bg-emerald-100 text-emerald-900 border-emerald-300 font-extrabold"
+    "badgeClass": "bg-emerald-100 text-emerald-800 border-emerald-300",
+    "presented": true
   },
   {
     "rank": 15,
@@ -1066,7 +1082,8 @@ const PRESENTING_TEAMS_DATA = [
     ],
     "status": "SHORTLISTED",
     "badgeLabel": "TOP 45 SHORTLISTED · #15",
-    "badgeClass": "bg-emerald-100 text-emerald-900 border-emerald-300 font-extrabold"
+    "badgeClass": "bg-emerald-100 text-emerald-800 border-emerald-300",
+    "presented": true
   },
   {
     "rank": 16,
@@ -1137,7 +1154,8 @@ const PRESENTING_TEAMS_DATA = [
     ],
     "status": "SHORTLISTED",
     "badgeLabel": "TOP 45 SHORTLISTED · #16",
-    "badgeClass": "bg-emerald-100 text-emerald-900 border-emerald-300 font-extrabold"
+    "badgeClass": "bg-emerald-100 text-emerald-800 border-emerald-300",
+    "presented": true
   },
   {
     "rank": 17,
@@ -1208,7 +1226,8 @@ const PRESENTING_TEAMS_DATA = [
     ],
     "status": "SHORTLISTED",
     "badgeLabel": "TOP 45 SHORTLISTED · #17",
-    "badgeClass": "bg-emerald-100 text-emerald-900 border-emerald-300 font-extrabold"
+    "badgeClass": "bg-emerald-100 text-emerald-800 border-emerald-300",
+    "presented": true
   },
   {
     "rank": 18,
@@ -1279,7 +1298,8 @@ const PRESENTING_TEAMS_DATA = [
     ],
     "status": "SHORTLISTED",
     "badgeLabel": "TOP 45 SHORTLISTED · #18",
-    "badgeClass": "bg-emerald-100 text-emerald-900 border-emerald-300 font-extrabold"
+    "badgeClass": "bg-emerald-100 text-emerald-800 border-emerald-300",
+    "presented": true
   },
   {
     "rank": 19,
@@ -1350,7 +1370,8 @@ const PRESENTING_TEAMS_DATA = [
     ],
     "status": "SHORTLISTED",
     "badgeLabel": "TOP 45 SHORTLISTED · #19",
-    "badgeClass": "bg-emerald-100 text-emerald-900 border-emerald-300 font-extrabold"
+    "badgeClass": "bg-emerald-100 text-emerald-800 border-emerald-300",
+    "presented": true
   },
   {
     "rank": 20,
@@ -1421,7 +1442,8 @@ const PRESENTING_TEAMS_DATA = [
     ],
     "status": "SHORTLISTED",
     "badgeLabel": "TOP 45 SHORTLISTED · #20",
-    "badgeClass": "bg-emerald-100 text-emerald-900 border-emerald-300 font-extrabold"
+    "badgeClass": "bg-emerald-100 text-emerald-800 border-emerald-300",
+    "presented": true
   },
   {
     "rank": 21,
@@ -1492,7 +1514,8 @@ const PRESENTING_TEAMS_DATA = [
     ],
     "status": "SHORTLISTED",
     "badgeLabel": "TOP 45 SHORTLISTED · #21",
-    "badgeClass": "bg-emerald-100 text-emerald-900 border-emerald-300 font-extrabold"
+    "badgeClass": "bg-emerald-100 text-emerald-800 border-emerald-300",
+    "presented": true
   },
   {
     "rank": 22,
@@ -1563,7 +1586,8 @@ const PRESENTING_TEAMS_DATA = [
     ],
     "status": "SHORTLISTED",
     "badgeLabel": "TOP 45 SHORTLISTED · #22",
-    "badgeClass": "bg-emerald-100 text-emerald-900 border-emerald-300 font-extrabold"
+    "badgeClass": "bg-emerald-100 text-emerald-800 border-emerald-300",
+    "presented": true
   },
   {
     "rank": 23,
@@ -1634,7 +1658,8 @@ const PRESENTING_TEAMS_DATA = [
     ],
     "status": "SHORTLISTED",
     "badgeLabel": "TOP 45 SHORTLISTED · #23",
-    "badgeClass": "bg-emerald-100 text-emerald-900 border-emerald-300 font-extrabold"
+    "badgeClass": "bg-emerald-100 text-emerald-800 border-emerald-300",
+    "presented": true
   },
   {
     "rank": 24,
@@ -1705,7 +1730,8 @@ const PRESENTING_TEAMS_DATA = [
     ],
     "status": "SHORTLISTED",
     "badgeLabel": "TOP 45 SHORTLISTED · #24",
-    "badgeClass": "bg-emerald-100 text-emerald-900 border-emerald-300 font-extrabold"
+    "badgeClass": "bg-emerald-100 text-emerald-800 border-emerald-300",
+    "presented": true
   },
   {
     "rank": 25,
@@ -1776,7 +1802,8 @@ const PRESENTING_TEAMS_DATA = [
     ],
     "status": "SHORTLISTED",
     "badgeLabel": "TOP 45 SHORTLISTED · #25",
-    "badgeClass": "bg-emerald-100 text-emerald-900 border-emerald-300 font-extrabold"
+    "badgeClass": "bg-emerald-100 text-emerald-800 border-emerald-300",
+    "presented": true
   },
   {
     "rank": 26,
@@ -1847,7 +1874,8 @@ const PRESENTING_TEAMS_DATA = [
     ],
     "status": "SHORTLISTED",
     "badgeLabel": "TOP 45 SHORTLISTED · #26",
-    "badgeClass": "bg-emerald-100 text-emerald-900 border-emerald-300 font-extrabold"
+    "badgeClass": "bg-emerald-100 text-emerald-800 border-emerald-300",
+    "presented": true
   },
   {
     "rank": 27,
@@ -1918,7 +1946,8 @@ const PRESENTING_TEAMS_DATA = [
     ],
     "status": "SHORTLISTED",
     "badgeLabel": "TOP 45 SHORTLISTED · #27",
-    "badgeClass": "bg-emerald-100 text-emerald-900 border-emerald-300 font-extrabold"
+    "badgeClass": "bg-emerald-100 text-emerald-800 border-emerald-300",
+    "presented": true
   },
   {
     "rank": 28,
@@ -1989,7 +2018,8 @@ const PRESENTING_TEAMS_DATA = [
     ],
     "status": "SHORTLISTED",
     "badgeLabel": "TOP 45 SHORTLISTED · #28",
-    "badgeClass": "bg-emerald-100 text-emerald-900 border-emerald-300 font-extrabold"
+    "badgeClass": "bg-emerald-100 text-emerald-800 border-emerald-300",
+    "presented": true
   },
   {
     "rank": 29,
@@ -2060,7 +2090,8 @@ const PRESENTING_TEAMS_DATA = [
     ],
     "status": "SHORTLISTED",
     "badgeLabel": "TOP 45 SHORTLISTED · #29",
-    "badgeClass": "bg-emerald-100 text-emerald-900 border-emerald-300 font-extrabold"
+    "badgeClass": "bg-emerald-100 text-emerald-800 border-emerald-300",
+    "presented": true
   },
   {
     "rank": 30,
@@ -2131,7 +2162,8 @@ const PRESENTING_TEAMS_DATA = [
     ],
     "status": "SHORTLISTED",
     "badgeLabel": "TOP 45 SHORTLISTED · #30",
-    "badgeClass": "bg-emerald-100 text-emerald-900 border-emerald-300 font-extrabold"
+    "badgeClass": "bg-emerald-100 text-emerald-800 border-emerald-300",
+    "presented": true
   },
   {
     "rank": 31,
@@ -2202,7 +2234,8 @@ const PRESENTING_TEAMS_DATA = [
     ],
     "status": "SHORTLISTED",
     "badgeLabel": "TOP 45 SHORTLISTED · #31",
-    "badgeClass": "bg-emerald-100 text-emerald-900 border-emerald-300 font-extrabold"
+    "badgeClass": "bg-emerald-100 text-emerald-800 border-emerald-300",
+    "presented": true
   },
   {
     "rank": 32,
@@ -2273,7 +2306,8 @@ const PRESENTING_TEAMS_DATA = [
     ],
     "status": "SHORTLISTED",
     "badgeLabel": "TOP 45 SHORTLISTED · #32",
-    "badgeClass": "bg-emerald-100 text-emerald-900 border-emerald-300 font-extrabold"
+    "badgeClass": "bg-emerald-100 text-emerald-800 border-emerald-300",
+    "presented": true
   },
   {
     "rank": 33,
@@ -2344,7 +2378,8 @@ const PRESENTING_TEAMS_DATA = [
     ],
     "status": "SHORTLISTED",
     "badgeLabel": "TOP 45 SHORTLISTED · #33",
-    "badgeClass": "bg-emerald-100 text-emerald-900 border-emerald-300 font-extrabold"
+    "badgeClass": "bg-emerald-100 text-emerald-800 border-emerald-300",
+    "presented": true
   },
   {
     "rank": 34,
@@ -2415,7 +2450,8 @@ const PRESENTING_TEAMS_DATA = [
     ],
     "status": "SHORTLISTED",
     "badgeLabel": "TOP 45 SHORTLISTED · #34",
-    "badgeClass": "bg-emerald-100 text-emerald-900 border-emerald-300 font-extrabold"
+    "badgeClass": "bg-emerald-100 text-emerald-800 border-emerald-300",
+    "presented": true
   },
   {
     "rank": 35,
@@ -2486,7 +2522,8 @@ const PRESENTING_TEAMS_DATA = [
     ],
     "status": "SHORTLISTED",
     "badgeLabel": "TOP 45 SHORTLISTED · #35",
-    "badgeClass": "bg-emerald-100 text-emerald-900 border-emerald-300 font-extrabold"
+    "badgeClass": "bg-emerald-100 text-emerald-800 border-emerald-300",
+    "presented": true
   },
   {
     "rank": 36,
@@ -2557,7 +2594,8 @@ const PRESENTING_TEAMS_DATA = [
     ],
     "status": "SHORTLISTED",
     "badgeLabel": "TOP 45 SHORTLISTED · #36",
-    "badgeClass": "bg-emerald-100 text-emerald-900 border-emerald-300 font-extrabold"
+    "badgeClass": "bg-emerald-100 text-emerald-800 border-emerald-300",
+    "presented": true
   },
   {
     "rank": 37,
@@ -2628,7 +2666,8 @@ const PRESENTING_TEAMS_DATA = [
     ],
     "status": "SHORTLISTED",
     "badgeLabel": "TOP 45 SHORTLISTED · #37",
-    "badgeClass": "bg-emerald-100 text-emerald-900 border-emerald-300 font-extrabold"
+    "badgeClass": "bg-emerald-100 text-emerald-800 border-emerald-300",
+    "presented": true
   },
   {
     "rank": 38,
@@ -2699,7 +2738,8 @@ const PRESENTING_TEAMS_DATA = [
     ],
     "status": "SHORTLISTED",
     "badgeLabel": "TOP 45 SHORTLISTED · #38",
-    "badgeClass": "bg-emerald-100 text-emerald-900 border-emerald-300 font-extrabold"
+    "badgeClass": "bg-emerald-100 text-emerald-800 border-emerald-300",
+    "presented": true
   },
   {
     "rank": 39,
@@ -2770,7 +2810,8 @@ const PRESENTING_TEAMS_DATA = [
     ],
     "status": "SHORTLISTED",
     "badgeLabel": "TOP 45 SHORTLISTED · #39",
-    "badgeClass": "bg-emerald-100 text-emerald-900 border-emerald-300 font-extrabold"
+    "badgeClass": "bg-emerald-100 text-emerald-800 border-emerald-300",
+    "presented": true
   },
   {
     "rank": 40,
@@ -2841,7 +2882,8 @@ const PRESENTING_TEAMS_DATA = [
     ],
     "status": "SHORTLISTED",
     "badgeLabel": "TOP 45 SHORTLISTED · #40",
-    "badgeClass": "bg-emerald-100 text-emerald-900 border-emerald-300 font-extrabold"
+    "badgeClass": "bg-emerald-100 text-emerald-800 border-emerald-300",
+    "presented": true
   },
   {
     "rank": 41,
@@ -2912,7 +2954,8 @@ const PRESENTING_TEAMS_DATA = [
     ],
     "status": "SHORTLISTED",
     "badgeLabel": "TOP 45 SHORTLISTED · #41",
-    "badgeClass": "bg-emerald-100 text-emerald-900 border-emerald-300 font-extrabold"
+    "badgeClass": "bg-emerald-100 text-emerald-800 border-emerald-300",
+    "presented": true
   },
   {
     "rank": 42,
@@ -2983,7 +3026,8 @@ const PRESENTING_TEAMS_DATA = [
     ],
     "status": "SHORTLISTED",
     "badgeLabel": "TOP 45 SHORTLISTED · #42",
-    "badgeClass": "bg-emerald-100 text-emerald-900 border-emerald-300 font-extrabold"
+    "badgeClass": "bg-emerald-100 text-emerald-800 border-emerald-300",
+    "presented": true
   },
   {
     "rank": 43,
@@ -3054,7 +3098,8 @@ const PRESENTING_TEAMS_DATA = [
     ],
     "status": "SHORTLISTED",
     "badgeLabel": "TOP 45 SHORTLISTED · #43",
-    "badgeClass": "bg-emerald-100 text-emerald-900 border-emerald-300 font-extrabold"
+    "badgeClass": "bg-emerald-100 text-emerald-800 border-emerald-300",
+    "presented": true
   },
   {
     "rank": 44,
@@ -3125,7 +3170,8 @@ const PRESENTING_TEAMS_DATA = [
     ],
     "status": "SHORTLISTED",
     "badgeLabel": "TOP 45 SHORTLISTED · #44",
-    "badgeClass": "bg-emerald-100 text-emerald-900 border-emerald-300 font-extrabold"
+    "badgeClass": "bg-emerald-100 text-emerald-800 border-emerald-300",
+    "presented": true
   },
   {
     "rank": 45,
@@ -3196,7 +3242,8 @@ const PRESENTING_TEAMS_DATA = [
     ],
     "status": "SHORTLISTED",
     "badgeLabel": "TOP 45 SHORTLISTED · #45",
-    "badgeClass": "bg-emerald-100 text-emerald-900 border-emerald-300 font-extrabold"
+    "badgeClass": "bg-emerald-100 text-emerald-800 border-emerald-300",
+    "presented": true
   },
   {
     "rank": 46,
@@ -3267,7 +3314,8 @@ const PRESENTING_TEAMS_DATA = [
     ],
     "status": "WAITLISTED",
     "badgeLabel": "WAITLISTED · #1",
-    "badgeClass": "bg-amber-100 text-amber-950 border-amber-300 font-extrabold"
+    "badgeClass": "bg-amber-100 text-amber-900 border-amber-300",
+    "presented": true
   },
   {
     "rank": 47,
@@ -3338,7 +3386,8 @@ const PRESENTING_TEAMS_DATA = [
     ],
     "status": "WAITLISTED",
     "badgeLabel": "WAITLISTED · #2",
-    "badgeClass": "bg-amber-100 text-amber-950 border-amber-300 font-extrabold"
+    "badgeClass": "bg-amber-100 text-amber-900 border-amber-300",
+    "presented": true
   },
   {
     "rank": 48,
@@ -3409,7 +3458,8 @@ const PRESENTING_TEAMS_DATA = [
     ],
     "status": "WAITLISTED",
     "badgeLabel": "WAITLISTED · #3",
-    "badgeClass": "bg-amber-100 text-amber-950 border-amber-300 font-extrabold"
+    "badgeClass": "bg-amber-100 text-amber-900 border-amber-300",
+    "presented": true
   },
   {
     "rank": 49,
@@ -3480,7 +3530,8 @@ const PRESENTING_TEAMS_DATA = [
     ],
     "status": "WAITLISTED",
     "badgeLabel": "WAITLISTED · #4",
-    "badgeClass": "bg-amber-100 text-amber-950 border-amber-300 font-extrabold"
+    "badgeClass": "bg-amber-100 text-amber-900 border-amber-300",
+    "presented": true
   },
   {
     "rank": 50,
@@ -3551,10 +3602,11 @@ const PRESENTING_TEAMS_DATA = [
     ],
     "status": "WAITLISTED",
     "badgeLabel": "WAITLISTED · #5",
-    "badgeClass": "bg-amber-100 text-amber-950 border-amber-300 font-extrabold"
+    "badgeClass": "bg-amber-100 text-amber-900 border-amber-300",
+    "presented": true
   },
   {
-    "rank": null,
+    "rank": 51,
     "teamName": "ByteForge",
     "registrationId": "SIH2026-0046",
     "teamLeaderName": "Hardik shukla",
@@ -3620,12 +3672,13 @@ const PRESENTING_TEAMS_DATA = [
         "mobile": "6392055122"
       }
     ],
-    "status": "PARTICIPATED",
-    "badgeLabel": "PRESENTATION COMPLETED",
-    "badgeClass": "bg-slate-100 text-slate-800 border-slate-300"
+    "status": "EVALUATED",
+    "badgeLabel": "EVALUATED & PRESENTED",
+    "badgeClass": "bg-indigo-100 text-indigo-900 border-indigo-300",
+    "presented": true
   },
   {
-    "rank": null,
+    "rank": 52,
     "teamName": "Sankalp Tech",
     "registrationId": "SIH2026-0055",
     "teamLeaderName": "Priyanshu Yadav",
@@ -3691,12 +3744,13 @@ const PRESENTING_TEAMS_DATA = [
         "mobile": "7905898396"
       }
     ],
-    "status": "PARTICIPATED",
-    "badgeLabel": "PRESENTATION COMPLETED",
-    "badgeClass": "bg-slate-100 text-slate-800 border-slate-300"
+    "status": "EVALUATED",
+    "badgeLabel": "EVALUATED & PRESENTED",
+    "badgeClass": "bg-indigo-100 text-indigo-900 border-indigo-300",
+    "presented": true
   },
   {
-    "rank": null,
+    "rank": 53,
     "teamName": "Health Horizons",
     "registrationId": "SIH2026-0125",
     "teamLeaderName": "Rupesh Patel",
@@ -3762,12 +3816,13 @@ const PRESENTING_TEAMS_DATA = [
         "mobile": "8795719315"
       }
     ],
-    "status": "PARTICIPATED",
-    "badgeLabel": "PRESENTATION COMPLETED",
-    "badgeClass": "bg-slate-100 text-slate-800 border-slate-300"
+    "status": "EVALUATED",
+    "badgeLabel": "EVALUATED & PRESENTED",
+    "badgeClass": "bg-indigo-100 text-indigo-900 border-indigo-300",
+    "presented": true
   },
   {
-    "rank": null,
+    "rank": 54,
     "teamName": "IntelliSix",
     "registrationId": "SIH2026-0029",
     "teamLeaderName": "Sunny Gupta",
@@ -3833,12 +3888,13 @@ const PRESENTING_TEAMS_DATA = [
         "mobile": "7237072852"
       }
     ],
-    "status": "PARTICIPATED",
-    "badgeLabel": "PRESENTATION COMPLETED",
-    "badgeClass": "bg-slate-100 text-slate-800 border-slate-300"
+    "status": "EVALUATED",
+    "badgeLabel": "EVALUATED & PRESENTED",
+    "badgeClass": "bg-indigo-100 text-indigo-900 border-indigo-300",
+    "presented": true
   },
   {
-    "rank": null,
+    "rank": 55,
     "teamName": "Restitutor Orbis",
     "registrationId": "SIH2026-0042",
     "teamLeaderName": "Mritunjay Singh",
@@ -3904,12 +3960,13 @@ const PRESENTING_TEAMS_DATA = [
         "mobile": "7985987335"
       }
     ],
-    "status": "PARTICIPATED",
-    "badgeLabel": "PRESENTATION COMPLETED",
-    "badgeClass": "bg-slate-100 text-slate-800 border-slate-300"
+    "status": "EVALUATED",
+    "badgeLabel": "EVALUATED & PRESENTED",
+    "badgeClass": "bg-indigo-100 text-indigo-900 border-indigo-300",
+    "presented": true
   },
   {
-    "rank": null,
+    "rank": 56,
     "teamName": "Apex Innovators",
     "registrationId": "SIH2026-0141",
     "teamLeaderName": "Nikita",
@@ -3975,12 +4032,13 @@ const PRESENTING_TEAMS_DATA = [
         "mobile": "7905038809"
       }
     ],
-    "status": "PARTICIPATED",
-    "badgeLabel": "PRESENTATION COMPLETED",
-    "badgeClass": "bg-slate-100 text-slate-800 border-slate-300"
+    "status": "EVALUATED",
+    "badgeLabel": "EVALUATED & PRESENTED",
+    "badgeClass": "bg-indigo-100 text-indigo-900 border-indigo-300",
+    "presented": true
   },
   {
-    "rank": null,
+    "rank": 57,
     "teamName": "Team CODERUDRA-X",
     "registrationId": "SIH2026-0145",
     "teamLeaderName": "Arish Hamid",
@@ -4046,12 +4104,13 @@ const PRESENTING_TEAMS_DATA = [
         "mobile": "8299875512"
       }
     ],
-    "status": "PARTICIPATED",
-    "badgeLabel": "PRESENTATION COMPLETED",
-    "badgeClass": "bg-slate-100 text-slate-800 border-slate-300"
+    "status": "EVALUATED",
+    "badgeLabel": "EVALUATED & PRESENTED",
+    "badgeClass": "bg-indigo-100 text-indigo-900 border-indigo-300",
+    "presented": true
   },
   {
-    "rank": null,
+    "rank": 58,
     "teamName": "cookieking",
     "registrationId": "SIH2026-0030",
     "teamLeaderName": "Raheel Ahmer Usmani",
@@ -4117,83 +4176,26 @@ const PRESENTING_TEAMS_DATA = [
         "mobile": "8052892203"
       }
     ],
-    "status": "PARTICIPATED",
-    "badgeLabel": "PRESENTATION COMPLETED",
-    "badgeClass": "bg-slate-100 text-slate-800 border-slate-300"
+    "status": "UNEVALUATED",
+    "badgeLabel": "NOT EVALUATED / ABSENT",
+    "badgeClass": "bg-slate-100 text-slate-500 border-slate-300",
+    "presented": false
   },
   {
-    "rank": null,
-    "teamName": "The Phoenix 🐦🔥",
-    "registrationId": "SIH2026-0048",
-    "teamLeaderName": "Amit Kumar",
-    "leaderBranch": "CSE (AI & ML)",
-    "leaderYear": "Second Year",
-    "leaderEmail": "amitkamhardih@gmail.com",
-    "leaderMobile": "9696606558",
-    "leaderGender": "Male",
-    "teamMembers": [
-      {
-        "name": "Praveen Kumar Tiwari",
-        "rollNumber": "2502841530067",
-        "enrollment": "51250318",
-        "branch": "CSE (AI & ML)",
-        "year": "Second Year",
-        "sem": "3",
-        "gender": "Male",
-        "email": "praveenkks2008@gmail.com",
-        "mobile": "praveenkks2008@gmail.com"
-      },
-      {
-        "name": "Swatantra Pandey",
-        "rollNumber": "2502841530098",
-        "enrollment": "51250221",
-        "branch": "CSE (AI & ML)",
-        "year": "Second Year",
-        "sem": "3",
-        "gender": "Male",
-        "email": "swatantra25042008@gmail.com",
-        "mobile": "7897138308"
-      },
-      {
-        "name": "Saksham Jaiswal",
-        "rollNumber": "2502840100219",
-        "enrollment": "51250095",
-        "branch": "CSE",
-        "year": "Second Year",
-        "sem": "3",
-        "gender": "Male",
-        "email": "saksham88587@gmail.com",
-        "mobile": "8858735745"
-      },
-      {
-        "name": "Soniya Kumari",
-        "rollNumber": "2502841530095",
-        "enrollment": "51250216",
-        "branch": "CSE (AI & ML)",
-        "year": "Second Year",
-        "sem": "3",
-        "gender": "Female",
-        "email": "soniyakumari59789@gmail.com",
-        "mobile": "7719759789"
-      },
-      {
-        "name": "Riya Pandey",
-        "rollNumber": "2502841530075",
-        "enrollment": "51250002",
-        "branch": "CSE (AI & ML)",
-        "year": "Second Year",
-        "sem": "3",
-        "gender": "Female",
-        "email": "riyayapandey08@gmail.com",
-        "mobile": "8429028893"
-      }
-    ],
-    "status": "PARTICIPATED",
-    "badgeLabel": "PRESENTATION COMPLETED",
-    "badgeClass": "bg-slate-100 text-slate-800 border-slate-300"
+    "rank": 59,
+    "teamName": "The Phoenix 🐦‍🔥",
+    "registrationId": "SIH2026-0059",
+    "teamLeaderName": "Registered Leader",
+    "leaderBranch": "CSE",
+    "leaderYear": "Third Year",
+    "status": "UNEVALUATED",
+    "badgeLabel": "NOT EVALUATED / ABSENT",
+    "badgeClass": "bg-slate-100 text-slate-500 border-slate-300",
+    "presented": false,
+    "teamMembers": []
   },
   {
-    "rank": null,
+    "rank": 60,
     "teamName": "Viper Syndicate",
     "registrationId": "SIH2026-0047",
     "teamLeaderName": "Ujjwal Yadav",
@@ -4259,12 +4261,13 @@ const PRESENTING_TEAMS_DATA = [
         "mobile": "8188850438"
       }
     ],
-    "status": "PARTICIPATED",
-    "badgeLabel": "PRESENTATION COMPLETED",
-    "badgeClass": "bg-slate-100 text-slate-800 border-slate-300"
+    "status": "UNEVALUATED",
+    "badgeLabel": "NOT EVALUATED / ABSENT",
+    "badgeClass": "bg-slate-100 text-slate-500 border-slate-300",
+    "presented": false
   },
   {
-    "rank": null,
+    "rank": 61,
     "teamName": "Apex Developers",
     "registrationId": "SIH2026-0075",
     "teamLeaderName": "Abu Talib Khan",
@@ -4330,12 +4333,13 @@ const PRESENTING_TEAMS_DATA = [
         "mobile": "9653088783"
       }
     ],
-    "status": "PARTICIPATED",
-    "badgeLabel": "PRESENTATION COMPLETED",
-    "badgeClass": "bg-slate-100 text-slate-800 border-slate-300"
+    "status": "UNEVALUATED",
+    "badgeLabel": "NOT EVALUATED / ABSENT",
+    "badgeClass": "bg-slate-100 text-slate-500 border-slate-300",
+    "presented": false
   },
   {
-    "rank": null,
+    "rank": 62,
     "teamName": "MLXPERTS",
     "registrationId": "SIH2026-0143",
     "teamLeaderName": "Saksham Singh",
@@ -4401,12 +4405,13 @@ const PRESENTING_TEAMS_DATA = [
         "mobile": "8528894509"
       }
     ],
-    "status": "PARTICIPATED",
-    "badgeLabel": "PRESENTATION COMPLETED",
-    "badgeClass": "bg-slate-100 text-slate-800 border-slate-300"
+    "status": "UNEVALUATED",
+    "badgeLabel": "NOT EVALUATED / ABSENT",
+    "badgeClass": "bg-slate-100 text-slate-500 border-slate-300",
+    "presented": false
   },
   {
-    "rank": null,
+    "rank": 63,
     "teamName": "Obsidian Tech",
     "registrationId": "SIH2026-0071",
     "teamLeaderName": "Abhyuday Srivastava",
@@ -4472,12 +4477,13 @@ const PRESENTING_TEAMS_DATA = [
         "mobile": "8400449198"
       }
     ],
-    "status": "PARTICIPATED",
-    "badgeLabel": "PRESENTATION COMPLETED",
-    "badgeClass": "bg-slate-100 text-slate-800 border-slate-300"
+    "status": "UNEVALUATED",
+    "badgeLabel": "NOT EVALUATED / ABSENT",
+    "badgeClass": "bg-slate-100 text-slate-500 border-slate-300",
+    "presented": false
   },
   {
-    "rank": null,
+    "rank": 64,
     "teamName": "Paperx",
     "registrationId": "SIH2026-0132",
     "teamLeaderName": "Rudra Pratap Singh",
@@ -4543,12 +4549,13 @@ const PRESENTING_TEAMS_DATA = [
         "mobile": "9580113088"
       }
     ],
-    "status": "PARTICIPATED",
-    "badgeLabel": "PRESENTATION COMPLETED",
-    "badgeClass": "bg-slate-100 text-slate-800 border-slate-300"
+    "status": "UNEVALUATED",
+    "badgeLabel": "NOT EVALUATED / ABSENT",
+    "badgeClass": "bg-slate-100 text-slate-500 border-slate-300",
+    "presented": false
   },
   {
-    "rank": null,
+    "rank": 65,
     "teamName": "Bug Slayers",
     "registrationId": "SIH2026-0051",
     "teamLeaderName": "Ashutosh Dwivedi",
@@ -4614,12 +4621,13 @@ const PRESENTING_TEAMS_DATA = [
         "mobile": "6386521694"
       }
     ],
-    "status": "PARTICIPATED",
-    "badgeLabel": "PRESENTATION COMPLETED",
-    "badgeClass": "bg-slate-100 text-slate-800 border-slate-300"
+    "status": "UNEVALUATED",
+    "badgeLabel": "NOT EVALUATED / ABSENT",
+    "badgeClass": "bg-slate-100 text-slate-500 border-slate-300",
+    "presented": false
   },
   {
-    "rank": null,
+    "rank": 66,
     "teamName": "Shield core",
     "registrationId": "SIH2026-0131",
     "teamLeaderName": "Prakhar Shukla",
@@ -4685,8 +4693,107 @@ const PRESENTING_TEAMS_DATA = [
         "mobile": "9795053973"
       }
     ],
-    "status": "PARTICIPATED",
-    "badgeLabel": "PRESENTATION COMPLETED",
-    "badgeClass": "bg-slate-100 text-slate-800 border-slate-300"
+    "status": "UNEVALUATED",
+    "badgeLabel": "NOT EVALUATED / ABSENT",
+    "badgeClass": "bg-slate-100 text-slate-500 border-slate-300",
+    "presented": false
+  },
+  {
+    "rank": 67,
+    "teamName": "HealTech",
+    "registrationId": "SIH2026-0067",
+    "teamLeaderName": "Registered Leader",
+    "leaderBranch": "CSE",
+    "leaderYear": "Third Year",
+    "status": "UNEVALUATED",
+    "badgeLabel": "NOT EVALUATED / ABSENT",
+    "badgeClass": "bg-slate-100 text-slate-500 border-slate-300",
+    "presented": false,
+    "teamMembers": []
+  },
+  {
+    "rank": 68,
+    "teamName": "Coder ninja",
+    "registrationId": "SIH2026-0068",
+    "teamLeaderName": "Registered Leader",
+    "leaderBranch": "CSE",
+    "leaderYear": "Third Year",
+    "status": "UNEVALUATED",
+    "badgeLabel": "NOT EVALUATED / ABSENT",
+    "badgeClass": "bg-slate-100 text-slate-500 border-slate-300",
+    "presented": false,
+    "teamMembers": []
+  },
+  {
+    "rank": 69,
+    "teamName": "Code Alchemists",
+    "registrationId": "SIH2026-0069",
+    "teamLeaderName": "Registered Leader",
+    "leaderBranch": "CSE",
+    "leaderYear": "Third Year",
+    "status": "UNEVALUATED",
+    "badgeLabel": "NOT EVALUATED / ABSENT",
+    "badgeClass": "bg-slate-100 text-slate-500 border-slate-300",
+    "presented": false,
+    "teamMembers": []
+  },
+  {
+    "rank": 70,
+    "teamName": "Panthers",
+    "registrationId": "SIH2026-0070",
+    "teamLeaderName": "Registered Leader",
+    "leaderBranch": "CSE",
+    "leaderYear": "Third Year",
+    "status": "UNEVALUATED",
+    "badgeLabel": "NOT EVALUATED / ABSENT",
+    "badgeClass": "bg-slate-100 text-slate-500 border-slate-300",
+    "presented": false,
+    "teamMembers": []
+  },
+  {
+    "rank": 71,
+    "teamName": "Syntax Avengers",
+    "registrationId": "SIH2026-0071",
+    "teamLeaderName": "Registered Leader",
+    "leaderBranch": "CSE",
+    "leaderYear": "Third Year",
+    "status": "UNEVALUATED",
+    "badgeLabel": "NOT EVALUATED / ABSENT",
+    "badgeClass": "bg-slate-100 text-slate-500 border-slate-300",
+    "presented": false,
+    "teamMembers": []
+  },
+  {
+    "rank": 72,
+    "teamName": "Code Innovators",
+    "registrationId": "SIH2026-0072",
+    "teamLeaderName": "Registered Leader",
+    "leaderBranch": "CSE",
+    "leaderYear": "Third Year",
+    "status": "UNEVALUATED",
+    "badgeLabel": "NOT EVALUATED / ABSENT",
+    "badgeClass": "bg-slate-100 text-slate-500 border-slate-300",
+    "presented": false,
+    "teamMembers": []
+  },
+  {
+    "rank": 73,
+    "teamName": "Cyber Titans",
+    "registrationId": "SIH2026-0073",
+    "teamLeaderName": "Registered Leader",
+    "leaderBranch": "CSE",
+    "leaderYear": "Third Year",
+    "status": "UNEVALUATED",
+    "badgeLabel": "NOT EVALUATED / ABSENT",
+    "badgeClass": "bg-slate-100 text-slate-500 border-slate-300",
+    "presented": false,
+    "teamMembers": []
   }
 ];
+
+if (typeof window !== 'undefined') {
+  window.PRESENTING_TEAMS_DATA = PRESENTING_TEAMS_DATA;
+}
+if (typeof module !== 'undefined' && module.exports) {
+  module.exports = PRESENTING_TEAMS_DATA;
+}
