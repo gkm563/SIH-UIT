@@ -3,10 +3,10 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=5.0, viewport-fit=cover" />
-  <title>SIH 2026 Problem Statement Explorer (231 PS) | Official Portal &amp; AI Brainstorming Hub</title>
+  <title>SIH 2026 Problem Statements Decision Studio (231 PS) | UIT Prayagraj</title>
   <link rel="preconnect" href="https://cdn.tailwindcss.com" crossorigin />
   <link rel="dns-prefetch" href="https://script.google.com" />
-  <meta name="description" content="Official Smart India Hackathon 2026 Problem Statements Explorer. Browse all 231 official problem statements (176 Software, 55 Hardware), filter by theme or ministry, track newly added statements, and copy pre-formatted prompts directly for ChatGPT, Claude, and Gemini brainstorming." />
+  <meta name="description" content="Official Smart India Hackathon 2026 Problem Statements Decision Studio for UIT Prayagraj Top 50 Selected Teams. Explore 231 official problem statements, compare ideas, toggle card/table views, filter by ministry, and 1-click export prompts for AI brainstorming." />
   <link rel="icon" href="assets/united-logo.png" type="image/png" />
   <script src="https://cdn.tailwindcss.com"></script>
   <script>
@@ -30,13 +30,15 @@
   <link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;600;700;800&family=Outfit:wght@400;500;600;700;800;900&family=Plus+Jakarta+Sans:wght@400;500;600;700;800;900&family=Space+Grotesk:wght@500;600;700;800;900&display=swap" rel="stylesheet" />
 
   <style>
-    /* Vibrant Gradient Accents */
-    .grad-software { background: linear-gradient(135deg, #0284c7 0%, #2563eb 50%, #4f46e5 100%); }
-    .grad-hardware { background: linear-gradient(135deg, #d97706 0%, #ea580c 50%, #e11d48 100%); }
-    .grad-ai { background: linear-gradient(135deg, #4f46e5 0%, #7c3aed 50%, #c026d3 100%); }
-    .grad-new { background: linear-gradient(135deg, #e11d48 0%, #f43f5e 50%, #fb7185 100%); }
-    
-    /* Rock-Solid Non-Shaking Modal */
+    /* Complete Navbar Suppression when Modal is Open */
+    body.modal-open header.site-header {
+      display: none !important;
+      visibility: hidden !important;
+      opacity: 0 !important;
+      pointer-events: none !important;
+    }
+
+    /* Rock-Solid Modal Box */
     #ps-modal {
       animation: none !important;
       transform: none !important;
@@ -46,32 +48,31 @@
       transform: none !important;
     }
 
-    /* Vibrant Card Border Glow */
-    .ps-card {
-      transition: all 0.28s cubic-bezier(0.16, 1, 0.3, 1);
+    /* Card Micro-Interactions */
+    .ps-card-item {
+      transition: all 0.25s cubic-bezier(0.16, 1, 0.3, 1);
     }
-    .ps-card:hover {
+    .ps-card-item:hover {
       transform: translateY(-4px);
-      box-shadow: 0 20px 35px -10px rgba(37, 99, 235, 0.14), 0 0 0 1.5px rgba(59, 130, 246, 0.4);
+      box-shadow: 0 20px 35px -10px rgba(37, 99, 235, 0.16), 0 0 0 1.5px rgba(59, 130, 246, 0.4);
     }
 
     /* Pulse Glow */
-    @keyframes subtleGlow {
+    @keyframes subtlePulse {
       0%, 100% { opacity: 0.8; transform: scale(1); }
-      50% { opacity: 1; transform: scale(1.05); }
+      50% { opacity: 1; transform: scale(1.06); }
     }
     .glow-dot {
-      animation: subtleGlow 2s ease-in-out infinite;
-    }
-  
-    /* Hide Navbar when modal is open to eliminate overlap on laptops & mobile */
-    body.modal-open header.site-header {
-      display: none !important;
-      visibility: hidden !important;
-      opacity: 0 !important;
-      pointer-events: none !important;
+      animation: subtlePulse 2s ease-in-out infinite;
     }
 
+    /* Table Row Hover */
+    .ps-table-row {
+      transition: background-color 0.15s ease;
+    }
+    .ps-table-row:hover {
+      background-color: rgba(239, 246, 255, 0.7) !important;
+    }
   </style>
 </head>
 <body class="bg-slate-50 text-slate-900 font-sans antialiased min-h-screen flex flex-col selection:bg-blue-600 selection:text-white overflow-x-hidden">
@@ -161,102 +162,106 @@
   <main class="flex-1 w-full max-w-7xl mx-auto px-3.5 sm:px-6 lg:px-8 py-6 sm:py-10 space-y-8">
 
     <!-- ══════════════════════════════════════════════════════════════════ -->
-    <!-- 1. VIBRANT HERO SHOWCASE -->
+    <!-- 1. OFFICIAL HIGH-IMPACT HERO: SIH 2026 PROBLEM STATEMENTS STUDIO -->
     <!-- ══════════════════════════════════════════════════════════════════ -->
-    <div class="glass-card-pro rounded-3xl p-6 sm:p-10 bg-gradient-to-br from-white via-blue-50/50 to-indigo-50/60 border border-slate-200/90 relative overflow-hidden space-y-6 shadow-lg">
-      <div class="absolute -right-24 -top-24 w-80 h-80 bg-blue-500/15 rounded-full blur-3xl pointer-events-none animate-glow"></div>
-      <div class="absolute -left-24 -bottom-24 w-80 h-80 bg-purple-500/15 rounded-full blur-3xl pointer-events-none animate-glow" style="animation-delay: 3s;"></div>
+    <div class="glass-card-pro rounded-3xl p-6 sm:p-10 bg-gradient-to-br from-slate-900 via-blue-950 to-indigo-950 text-white border border-slate-700/80 relative overflow-hidden space-y-6 shadow-2xl">
+      <div class="absolute -right-24 -top-24 w-80 h-80 bg-blue-500/20 rounded-full blur-3xl pointer-events-none animate-glow"></div>
+      <div class="absolute -left-24 -bottom-24 w-80 h-80 bg-indigo-500/20 rounded-full blur-3xl pointer-events-none animate-glow" style="animation-delay: 3s;"></div>
 
       <div class="flex flex-col lg:flex-row lg:items-center justify-between gap-6 relative z-10">
         <div class="space-y-3.5 max-w-3xl">
-          <div class="inline-flex items-center gap-2 px-3.5 py-1.5 bg-gradient-to-r from-blue-600 to-indigo-700 text-white text-xs font-black uppercase tracking-wider rounded-full shadow-md">
-            <span class="w-2 h-2 rounded-full bg-emerald-300 glow-dot"></span>
-            <span>💡 OFFICIAL SIH 2026 REPOSITORY · 231 LIVE PROBLEM STATEMENTS</span>
+          <div class="inline-flex items-center gap-2 px-3.5 py-1.5 bg-blue-500/20 text-blue-200 border border-blue-400/40 text-xs font-black uppercase tracking-wider rounded-full shadow-md backdrop-blur-md">
+            <span class="w-2 h-2 rounded-full bg-emerald-400 glow-dot"></span>
+            <span>⚡ OFFICIAL SIH 2026 REPOSITORY · 231 VERIFIED PROBLEM STATEMENTS</span>
           </div>
           
-          <h1 class="text-2xl sm:text-4xl lg:text-5xl font-black text-slate-900 tracking-tight font-display">
-            SIH 2026 Problem Statements <span class="text-gradient-shimmer">Explorer</span>
+          <h1 class="text-3xl sm:text-4xl lg:text-5xl font-black text-white tracking-tight font-display">
+            Problem Statements <span class="text-transparent bg-clip-text bg-gradient-to-r from-blue-300 via-cyan-200 to-amber-200">Decision Studio</span>
           </h1>
           
-          <p class="text-xs sm:text-sm text-slate-600 font-medium leading-relaxed max-w-2xl">
-            Live official repository of all <strong>231 problem statements</strong> from the Ministry of Education &amp; AICTE for <strong>Smart India Hackathon 2026</strong>. Browse with instant search, track newly added statements, filter by category or ministry, and <strong>1-click export prompts tailored for your favourite AI tools</strong> (ChatGPT, Claude, Gemini) to brainstorm winning solutions.
+          <p class="text-xs sm:text-sm text-slate-300 font-medium leading-relaxed max-w-2xl">
+            Complete synchronized repository of all <strong>231 official problem statements</strong> released by the Ministry of Education &amp; AICTE for <strong>Smart India Hackathon 2026</strong>. Specially engineered for <strong>UIT Prayagraj Top 50 Selected Teams (45 Shortlisted + 5 Waitlisted)</strong> to explore, evaluate feasibility, shortlist, and <strong>1-click export prompts for AI brainstorming (ChatGPT, Claude, Gemini)</strong>.
           </p>
 
-          <div class="flex items-center gap-3 pt-1 text-[11px] font-bold text-slate-500 flex-wrap">
-            <span class="flex items-center gap-1.5 text-emerald-800 bg-emerald-100/80 px-3 py-1 rounded-xl border border-emerald-300">
-              <span class="w-2 h-2 rounded-full bg-emerald-600"></span>
-              <span>100% Synced with sih.gov.in</span>
+          <div class="flex items-center gap-3 pt-1 text-[11px] font-bold text-slate-300 flex-wrap">
+            <span class="flex items-center gap-1.5 text-emerald-300 bg-emerald-950/60 px-3 py-1 rounded-xl border border-emerald-500/40">
+              <span class="w-2 h-2 rounded-full bg-emerald-400"></span>
+              <span>Live Synced with sih.gov.in</span>
             </span>
             <span>·</span>
-            <a href="https://www.sih.gov.in/sih2026PS" target="_blank" rel="noopener noreferrer" class="text-blue-700 hover:text-blue-800 flex items-center gap-1 font-extrabold hover:underline">
-              <span>View on Official SIH Portal</span>
-              <svg class="w-3 h-3" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10 6H6a2 2 0 00-2 2v10a2 2 0 002 2h10a2 2 0 002-2v-4M14 4h6m0 0v6m0-6L10 14"/></svg>
+            <span class="text-amber-300 font-semibold flex items-center gap-1">
+              <span>📅 Official Idea PPT Deadline:</span>
+              <strong class="text-white">20 September 2026</strong>
+            </span>
+            <span>·</span>
+            <a href="https://www.sih.gov.in/sih2026PS" target="_blank" rel="noopener noreferrer" class="text-cyan-300 hover:text-white flex items-center gap-1 font-bold underline">
+              <span>Official SIH Portal ↗</span>
             </a>
           </div>
         </div>
 
-        <!-- 4 Colorful Metric Stat Cards -->
+        <!-- 4 Vibrant Stat Counters matching Official SIH Style -->
         <div class="grid grid-cols-2 sm:grid-cols-4 gap-3 flex-shrink-0 text-center">
           
           <!-- Stat 1: Total -->
-          <div class="p-4 bg-gradient-to-br from-white to-blue-50/70 rounded-2xl border-2 border-blue-200 shadow-sm hover:border-blue-400 transition-all hover:scale-105">
-            <div id="stat-total" class="text-3xl sm:text-4xl font-black font-display text-blue-700">231</div>
-            <div class="text-[10px] font-extrabold text-blue-900 uppercase tracking-wider mt-0.5">Total PS</div>
+          <div class="p-4 bg-white/10 backdrop-blur-md rounded-2xl border border-white/15 shadow-sm hover:bg-white/15 transition-all">
+            <div id="stat-total" class="text-3xl sm:text-4xl font-black font-display text-white">231</div>
+            <div class="text-[10px] font-black text-slate-300 uppercase tracking-wider mt-0.5">Total PS</div>
           </div>
 
           <!-- Stat 2: Software -->
-          <div class="p-4 bg-gradient-to-br from-white to-cyan-50/70 rounded-2xl border-2 border-cyan-200 shadow-sm hover:border-cyan-400 transition-all hover:scale-105">
-            <div id="stat-software" class="text-3xl sm:text-4xl font-black font-display text-cyan-700">176</div>
-            <div class="text-[10px] font-extrabold text-cyan-900 uppercase tracking-wider mt-0.5">💻 Software</div>
+          <div class="p-4 bg-cyan-500/10 backdrop-blur-md rounded-2xl border border-cyan-400/30 shadow-sm hover:bg-cyan-500/20 transition-all">
+            <div id="stat-software" class="text-3xl sm:text-4xl font-black font-display text-cyan-300">176</div>
+            <div class="text-[10px] font-black text-cyan-200 uppercase tracking-wider mt-0.5">💻 Software</div>
           </div>
 
           <!-- Stat 3: Hardware -->
-          <div class="p-4 bg-gradient-to-br from-white to-amber-50/70 rounded-2xl border-2 border-amber-200 shadow-sm hover:border-amber-400 transition-all hover:scale-105">
-            <div id="stat-hardware" class="text-3xl sm:text-4xl font-black font-display text-amber-600">55</div>
-            <div class="text-[10px] font-extrabold text-amber-900 uppercase tracking-wider mt-0.5">⚡ Hardware</div>
+          <div class="p-4 bg-amber-500/10 backdrop-blur-md rounded-2xl border border-amber-400/30 shadow-sm hover:bg-amber-500/20 transition-all">
+            <div id="stat-hardware" class="text-3xl sm:text-4xl font-black font-display text-amber-300">55</div>
+            <div class="text-[10px] font-black text-amber-200 uppercase tracking-wider mt-0.5">⚡ Hardware</div>
           </div>
 
           <!-- Stat 4: New Added -->
-          <div class="p-4 bg-gradient-to-br from-white to-rose-50/70 rounded-2xl border-2 border-rose-200 shadow-sm hover:border-rose-400 transition-all hover:scale-105 relative overflow-hidden">
-            <span class="absolute top-1 right-1 w-2 h-2 rounded-full bg-rose-500 glow-dot"></span>
-            <div id="stat-new" class="text-3xl sm:text-4xl font-black font-display text-rose-600">25</div>
-            <div class="text-[10px] font-extrabold text-rose-900 uppercase tracking-wider mt-0.5">🔥 New Added</div>
+          <div class="p-4 bg-rose-500/10 backdrop-blur-md rounded-2xl border border-rose-400/30 shadow-sm hover:bg-rose-500/20 transition-all relative overflow-hidden">
+            <span class="absolute top-2 right-2 w-2 h-2 rounded-full bg-rose-400 glow-dot"></span>
+            <div id="stat-new" class="text-3xl sm:text-4xl font-black font-display text-rose-300">25</div>
+            <div class="text-[10px] font-black text-rose-200 uppercase tracking-wider mt-0.5">🔥 New Added</div>
           </div>
 
         </div>
       </div>
 
       <!-- Ratio Progress Bar -->
-      <div class="space-y-1.5 pt-2 border-t border-slate-200/80">
-        <div class="flex items-center justify-between text-[11px] font-bold text-slate-500">
-          <span>Official Roster Composition</span>
-          <span class="text-slate-800 font-extrabold">176 Software (76.2%) · 55 Hardware &amp; IoT (23.8%) · 17 National Themes</span>
+      <div class="space-y-1.5 pt-3 border-t border-white/15">
+        <div class="flex items-center justify-between text-[11px] font-bold text-slate-300">
+          <span>National Roster Breakdown</span>
+          <span class="text-cyan-200 font-extrabold">176 Software (76.2%) · 55 Hardware (23.8%) · 17 Thematic Domains</span>
         </div>
-        <div class="w-full h-3 bg-slate-200 rounded-full overflow-hidden flex shadow-inner">
-          <div class="bg-gradient-to-r from-blue-600 to-cyan-500 h-full transition-all" style="width: 76.2%" title="176 Software (76.2%)"></div>
-          <div class="bg-gradient-to-r from-amber-500 to-orange-500 h-full transition-all" style="width: 23.8%" title="55 Hardware (23.8%)"></div>
+        <div class="w-full h-2.5 bg-white/10 rounded-full overflow-hidden flex shadow-inner">
+          <div class="bg-gradient-to-r from-blue-400 to-cyan-400 h-full transition-all" style="width: 76.2%" title="176 Software"></div>
+          <div class="bg-gradient-to-r from-amber-400 to-orange-400 h-full transition-all" style="width: 23.8%" title="55 Hardware"></div>
         </div>
       </div>
     </div>
 
     <!-- ══════════════════════════════════════════════════════════════════ -->
-    <!-- UIT TOP 50 TEAMS ADVISORY & BRAINSTORMING ACCELERATOR BANNER -->
+    <!-- 2. UIT TOP 50 SELECTION ADVISORY & QUICK ACCELERATOR -->
     <!-- ══════════════════════════════════════════════════════════════════ -->
-    <div class="glass-card-pro rounded-3xl p-5 sm:p-7 bg-gradient-to-r from-amber-500/10 via-orange-500/10 to-blue-500/10 border-2 border-amber-300 shadow-md relative overflow-hidden space-y-4">
+    <div class="glass-card-pro rounded-3xl p-5 sm:p-7 bg-gradient-to-r from-amber-500/10 via-orange-500/10 to-blue-500/10 border-2 border-amber-300/80 shadow-md relative overflow-hidden space-y-4">
       <div class="flex flex-col md:flex-row md:items-center justify-between gap-4">
         <div class="space-y-1.5 max-w-3xl">
           <div class="inline-flex items-center gap-2 px-3 py-1 bg-amber-100 text-amber-950 border border-amber-300 text-[11px] font-black uppercase tracking-wider rounded-xl shadow-xs">
-            <span>🎯 EXCLUSIVELY DESIGNED FOR UIT TOP 50 TEAMS</span>
+            <span>🎯 UIT PRAYAGRAJ TOP 50 SELECTION DIRECTIVE</span>
           </div>
           <h2 class="text-lg sm:text-xl font-black text-slate-900 font-display">
-            Decision Hub for Shortlisted &amp; Waitlisted Teams (45 + 5)
+            Decision Accelerators for Shortlisted &amp; Waitlisted Teams (45 + 5)
           </h2>
           <p class="text-xs text-slate-700 font-medium leading-relaxed">
-            All 50 selected teams from the UIT Internal Hackathon must explore these 231 official problem statements, shortlist their top choices with their team members, and prepare the <strong>4-slide Idea PPT</strong> for final registration on the national portal.
+            All 50 selected teams from the UIT Internal Hackathon must explore these 231 statements, star their top 2-3 choices, and prepare the <strong>Official 4-Slide Idea PPT</strong> for final portal nomination.
           </p>
         </div>
 
-        <!-- Quick Resource Buttons -->
+        <!-- Quick Resource Action Buttons -->
         <div class="flex items-center gap-2.5 flex-wrap flex-shrink-0 text-xs font-black">
           <a
             href="https://www.sih.gov.in/letters/2026/SIH2026-IDEA-Presentation-Format.pptx"
@@ -278,17 +283,18 @@
             href="results.html"
             class="px-4 py-2.5 rounded-xl bg-blue-50 hover:bg-blue-100 border border-blue-200 text-blue-800 shadow-xs transition-all flex items-center gap-1.5"
           >
-            <span>🏆 View Top 50 Roster</span>
+            <span>🏆 View Top 50 Teams</span>
           </a>
         </div>
       </div>
     </div>
 
-    <!-- 2. CONTROL CENTER: SEARCH & COLORFUL FILTERS -->
+    <!-- ══════════════════════════════════════════════════════════════════ -->
+    <!-- 3. SMART CONTROL CENTER: SEARCH, DUAL VIEW TOGGLE, THEMES -->
     <!-- ══════════════════════════════════════════════════════════════════ -->
     <div class="glass-card-pro rounded-3xl p-4 sm:p-6 space-y-4 shadow-md bg-white/95">
       
-      <!-- Top Search & Quick Category Filter -->
+      <!-- Top Row: Search + View Toggle (Card vs Table) -->
       <div class="flex flex-col lg:flex-row gap-3 items-stretch lg:items-center justify-between">
         
         <!-- Live Instant Search -->
@@ -296,29 +302,40 @@
           <input
             id="ps-search-input"
             type="text"
-            placeholder="Search PS ID (e.g. 26001), Title, Ministry (e.g. Coal, MDoNER), or Keyword (e.g. Drone, AI, Medical)..."
+            placeholder="Search PS ID (e.g. 26001, SIH26007), Title, Ministry (e.g. Coal, MDoNER), or Keyword (Drone, AI)..."
             class="w-full pl-11 pr-4 py-3.5 bg-slate-50 border-2 border-slate-200 rounded-2xl text-xs sm:text-sm font-semibold text-slate-800 focus:outline-none focus:border-blue-500 focus:bg-white transition-all placeholder:text-slate-400"
           />
           <svg class="w-5 h-5 text-blue-500 absolute left-3.5 top-3.5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z"/></svg>
         </div>
 
-        <!-- Vibrant Category & Tab Filters -->
-        <div class="flex items-center gap-2 flex-wrap text-xs font-black" id="category-tabs">
-          <button data-filter="all" class="ps-tab-btn px-4 py-2.5 rounded-xl bg-blue-600 text-white shadow-md transition-all">All (231)</button>
-          <button data-filter="software" class="ps-tab-btn px-4 py-2.5 rounded-xl bg-cyan-50 text-cyan-900 border border-cyan-300 hover:bg-cyan-100 transition-all">💻 Software (176)</button>
-          <button data-filter="hardware" class="ps-tab-btn px-4 py-2.5 rounded-xl bg-amber-50 text-amber-900 border border-amber-300 hover:bg-amber-100 transition-all">⚡ Hardware (55)</button>
-          <button data-filter="new" class="ps-tab-btn px-4 py-2.5 rounded-xl bg-rose-50 text-rose-800 border-2 border-rose-300 hover:bg-rose-100 transition-all flex items-center gap-1">
-            <span class="w-2 h-2 rounded-full bg-rose-500 glow-dot"></span>
-            <span>🔥 New Added (25)</span>
+        <!-- View Mode Switcher: Cards View vs Table View -->
+        <div class="inline-flex items-center p-1 bg-slate-100 rounded-2xl border border-slate-200 flex-shrink-0">
+          <button id="view-cards-btn" class="px-3.5 py-2 rounded-xl bg-white text-blue-700 font-extrabold text-xs shadow-xs transition-all flex items-center gap-1.5">
+            <span>🎴 Cards View</span>
           </button>
-          <button data-filter="shortlist" class="ps-tab-btn px-4 py-2.5 rounded-xl bg-amber-100/90 text-amber-950 border border-amber-300 hover:bg-amber-200 transition-all flex items-center gap-1">
-            <span>⭐ Team Shortlist</span>
-            <span id="shortlist-counter" class="bg-amber-600 text-white px-1.5 py-0.2 text-[10px] rounded-full">0</span>
+          <button id="view-table-btn" class="px-3.5 py-2 rounded-xl text-slate-600 hover:text-slate-900 font-bold text-xs transition-all flex items-center gap-1.5">
+            <span>📊 Official Table View</span>
           </button>
         </div>
+
       </div>
 
-      <!-- Advanced Selectors: Theme & Organization & Sorting -->
+      <!-- Middle Row: Category Filter Tabs -->
+      <div class="flex items-center gap-2 flex-wrap text-xs font-black" id="category-tabs">
+        <button data-filter="all" class="ps-tab-btn px-4 py-2.5 rounded-xl bg-blue-600 text-white shadow-md transition-all">All Statements (231)</button>
+        <button data-filter="software" class="ps-tab-btn px-4 py-2.5 rounded-xl bg-cyan-50 text-cyan-900 border border-cyan-300 hover:bg-cyan-100 transition-all">💻 Software (176)</button>
+        <button data-filter="hardware" class="ps-tab-btn px-4 py-2.5 rounded-xl bg-amber-50 text-amber-900 border border-amber-300 hover:bg-amber-100 transition-all">⚡ Hardware (55)</button>
+        <button data-filter="new" class="ps-tab-btn px-4 py-2.5 rounded-xl bg-rose-50 text-rose-800 border-2 border-rose-300 hover:bg-rose-100 transition-all flex items-center gap-1">
+          <span class="w-2 h-2 rounded-full bg-rose-500 glow-dot"></span>
+          <span>🔥 Recently Added (25)</span>
+        </button>
+        <button data-filter="shortlist" class="ps-tab-btn px-4 py-2.5 rounded-xl bg-amber-100 text-amber-950 border border-amber-300 hover:bg-amber-200 transition-all flex items-center gap-1.5">
+          <span>⭐ Team Shortlist</span>
+          <span id="shortlist-counter" class="bg-amber-600 text-white px-2 py-0.2 text-[10px] rounded-full">0</span>
+        </button>
+      </div>
+
+      <!-- Bottom Row: Dropdown Selectors -->
       <div class="grid grid-cols-1 sm:grid-cols-3 gap-3 pt-2 border-t border-slate-100">
         <div>
           <label class="block text-[10px] font-black uppercase text-slate-500 mb-1">Filter by Theme / Domain</label>
@@ -335,7 +352,7 @@
         </div>
 
         <div>
-          <label class="block text-[10px] font-black uppercase text-slate-500 mb-1">Sort Order</label>
+          <label class="block text-[10px] font-black uppercase text-slate-500 mb-1">Sort Statements</label>
           <select id="sort-select" class="w-full px-3 py-2.5 bg-slate-50 border border-slate-200 rounded-xl text-xs font-semibold text-slate-800 focus:outline-none focus:ring-2 focus:ring-blue-500">
             <option value="default">Default Official Sequence</option>
             <option value="newest">🔥 Newly Added First</option>
@@ -359,23 +376,56 @@
 
     </div>
 
-    <!-- Active Filter Counter Text -->
-    <div class="flex items-center justify-between text-xs font-bold text-slate-500 px-1">
+    <!-- Active Filter Counter Text + Shortlist Share Button -->
+    <div class="flex items-center justify-between text-xs font-bold text-slate-500 px-1 flex-wrap gap-2">
       <span id="ps-results-count">Showing 231 problem statements</span>
-      <button id="reset-filters-btn" class="text-blue-700 font-extrabold hover:underline hidden">Reset all filters</button>
+      
+      <div class="flex items-center gap-3">
+        <button id="export-shortlist-btn" class="hidden text-amber-800 bg-amber-100 hover:bg-amber-200 px-3 py-1 rounded-lg border border-amber-300 font-extrabold flex items-center gap-1 transition-all">
+          <span>📋 Copy Shortlist for WhatsApp / Team</span>
+        </button>
+        <button id="reset-filters-btn" class="text-blue-700 font-extrabold hover:underline hidden">Reset all filters</button>
+      </div>
     </div>
 
     <!-- ══════════════════════════════════════════════════════════════════ -->
-    <!-- 3. PROBLEM STATEMENTS GRID -->
+    <!-- 4. VIEW CONTAINER: CARDS VIEW -->
     <!-- ══════════════════════════════════════════════════════════════════ -->
-    <div id="ps-grid" class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4 sm:gap-6">
-      <!-- Populated via client script -->
+    <div id="ps-grid-container">
+      <div id="ps-grid" class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4 sm:gap-6">
+        <!-- Populated dynamically -->
+      </div>
+    </div>
+
+    <!-- ══════════════════════════════════════════════════════════════════ -->
+    <!-- 5. VIEW CONTAINER: OFFICIAL DATA TABLE VIEW -->
+    <!-- ══════════════════════════════════════════════════════════════════ -->
+    <div id="ps-table-container" class="hidden glass-card-pro rounded-3xl border border-slate-200 overflow-hidden shadow-lg bg-white">
+      <div class="overflow-x-auto">
+        <table class="w-full text-left text-xs border-collapse">
+          <thead>
+            <tr class="bg-slate-100 border-b border-slate-200 text-slate-700 font-black uppercase text-[11px] tracking-wider">
+              <th class="py-3.5 px-3 text-center w-12">S.No.</th>
+              <th class="py-3.5 px-3 min-w-[140px]">PS Number</th>
+              <th class="py-3.5 px-3 min-w-[180px]">Organization</th>
+              <th class="py-3.5 px-3 min-w-[280px]">Problem Statement Title</th>
+              <th class="py-3.5 px-3 min-w-[100px] text-center">Category</th>
+              <th class="py-3.5 px-3 min-w-[140px]">Theme</th>
+              <th class="py-3.5 px-3 min-w-[110px] text-center">Submissions</th>
+              <th class="py-3.5 px-3 min-w-[140px] text-center">Actions</th>
+            </tr>
+          </thead>
+          <tbody id="ps-table-body" class="divide-y divide-slate-100">
+            <!-- Populated dynamically -->
+          </tbody>
+        </table>
+      </div>
     </div>
 
   </main>
 
   <!-- ══════════════════════════════════════════════════════════════════ -->
-  <!-- 4. FULL PROBLEM STATEMENT DETAILS MODAL (ROCK-SOLID & IMMERSIVE) -->
+  <!-- 6. FULL PROBLEM STATEMENT DETAILS MODAL (ROCK-SOLID & IMMERSIVE) -->
   <!-- ══════════════════════════════════════════════════════════════════ -->
   <div id="ps-modal" class="fixed inset-0 z-[9999] hidden bg-slate-950/80 backdrop-blur-md flex items-center justify-center p-2 sm:p-4 md:p-6 overflow-y-auto">
     <div id="ps-modal-card" class="bg-white rounded-3xl max-w-4xl w-full max-h-[92vh] flex flex-col shadow-2xl border border-slate-200 overflow-hidden relative my-auto">
@@ -430,8 +480,8 @@
             href="https://www.sih.gov.in/sih2026PS"
             target="_blank"
             rel="noopener noreferrer"
-            class="px-5 py-3 rounded-2xl bg-gradient-to-r from-amber-500 via-orange-500 to-amber-600 hover:from-amber-600 hover:to-orange-600 text-white text-xs sm:text-sm font-black shadow-md hover:shadow-lg transition-all flex items-center gap-2 border border-amber-300 active:scale-95 animate-pulse"
-            title="Click to open this exact problem statement on official SIH portal"
+            class="px-5 py-3 rounded-2xl bg-gradient-to-r from-amber-500 via-orange-500 to-amber-600 hover:from-amber-600 hover:to-orange-600 text-white text-xs sm:text-sm font-black shadow-md hover:shadow-lg transition-all flex items-center gap-2 border border-amber-300 active:scale-95"
+            title="Click to open this exact statement on official SIH portal"
           >
             <span>🏛️ Open Exact PS on Official SIH Portal</span>
             <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2.5" d="M10 6H6a2 2 0 00-2 2v10a2 2 0 002 2h10a2 2 0 002-2v-4M14 4h6m0 0v6m0-6L10 14"/></svg>
@@ -470,14 +520,17 @@
   </footer>
   
 
-  <!-- ── Interactive Client Script for 231 Problem Statements ── -->
+  <!-- ── Master JavaScript Application ── -->
   <script>
   document.addEventListener('DOMContentLoaded', () => {
     const rawData = (typeof SIH_PROBLEM_STATEMENTS !== 'undefined' && Array.isArray(SIH_PROBLEM_STATEMENTS))
       ? SIH_PROBLEM_STATEMENTS
       : [];
 
+    const gridContainer = document.getElementById('ps-grid-container');
+    const tableContainer = document.getElementById('ps-table-container');
     const grid = document.getElementById('ps-grid');
+    const tableBody = document.getElementById('ps-table-body');
     const searchInput = document.getElementById('ps-search-input');
     const categoryTabs = document.querySelectorAll('.ps-tab-btn');
     const themeSelect = document.getElementById('theme-select');
@@ -485,7 +538,13 @@
     const sortSelect = document.getElementById('sort-select');
     const resultsCount = document.getElementById('ps-results-count');
     const resetBtn = document.getElementById('reset-filters-btn');
+    const exportShortlistBtn = document.getElementById('export-shortlist-btn');
     const shortlistCounter = document.getElementById('shortlist-counter');
+
+    // View toggle buttons
+    const viewCardsBtn = document.getElementById('view-cards-btn');
+    const viewTableBtn = document.getElementById('view-table-btn');
+    let currentView = 'cards'; // 'cards' | 'table'
 
     // Modal elements
     const modal = document.getElementById('ps-modal');
@@ -497,8 +556,11 @@
     const modalNewBadge = document.getElementById('modal-new-badge');
     const modalTitle = document.getElementById('modal-title');
     const modalOrg = document.getElementById('modal-org');
+    const modalDept = document.getElementById('modal-dept');
     const modalBody = document.getElementById('modal-body-content');
     const modalCopyAiBtn = document.getElementById('modal-copy-ai-btn');
+    const modalShortlistBtn = document.getElementById('modal-shortlist-toggle-btn');
+    const modalOfficialLink = document.getElementById('modal-official-link');
 
     let currentTab = 'all';
     let activeModalItem = null;
@@ -514,6 +576,13 @@
     function updateShortlistBadge() {
       if (shortlistCounter) {
         shortlistCounter.textContent = userShortlist.length;
+      }
+      if (exportShortlistBtn) {
+        if (userShortlist.length > 0) {
+          exportShortlistBtn.classList.remove('hidden');
+        } else {
+          exportShortlistBtn.classList.add('hidden');
+        }
       }
     }
     updateShortlistBadge();
@@ -557,7 +626,7 @@
       if (!item) return;
 
       const prompt = `### Smart India Hackathon 2026 — Problem Statement Architecture & Brainstorming Prompt
-**Problem Statement ID:** ${item.psId}
+**Problem Statement ID:** ${item.officialPsNumber || item.psId}
 **Title:** ${item.title}
 **Category:** ${item.category}
 **Domain / Theme:** ${item.theme}
@@ -580,7 +649,7 @@ Analyze the problem statement above and help our student team build a winning, p
 6. **4-Slide SIH Idea Presentation Blueprint:** Concise structure for our PPT slides (Problem understanding, Proposed Solution, Tech Stack, and Feasibility/Impact).`;
 
       navigator.clipboard.writeText(prompt).then(() => {
-        showToast(`Copied PS ${item.psId} AI Prompt! Paste into ChatGPT, Claude, or Gemini.`);
+        showToast(`Copied PS ${item.officialPsNumber || item.psId} AI Prompt! Paste into ChatGPT, Claude, or Gemini.`);
       }).catch(() => {
         showToast('Copied to clipboard!');
       });
@@ -592,7 +661,7 @@ Analyze the problem statement above and help our student team build a winning, p
       const idx = userShortlist.indexOf(strId);
       if (idx === -1) {
         userShortlist.push(strId);
-        showToast(`Added PS ${psId} to your team's shortlist! ⭐`);
+        showToast(`Added PS ${psId} to team shortlist! ⭐`);
       } else {
         userShortlist.splice(idx, 1);
         showToast(`Removed PS ${psId} from shortlist.`);
@@ -604,13 +673,33 @@ Analyze the problem statement above and help our student team build a winning, p
       filterAndRender();
     };
 
-    // Open Immersive Reader Modal with structured sections
+    // Export Shortlist for WhatsApp / Team
+    if (exportShortlistBtn) {
+      exportShortlistBtn.addEventListener('click', () => {
+        const shortlistedItems = rawData.filter(p => userShortlist.includes(String(p.psId)));
+        if (shortlistedItems.length === 0) return;
+
+        let msg = `*🏆 UIT SIH 2026 — Team Shortlisted Problem Statements*\n\n`;
+        shortlistedItems.forEach((item, idx) => {
+          msg += `*${idx + 1}. ${item.officialPsNumber || item.psId}* — ${item.title}\n`;
+          msg += `• Category: ${item.category} | Theme: ${item.theme}\n`;
+          msg += `• Ministry: ${item.organization}\n\n`;
+        });
+        msg += `_Review details on UIT SIH Decision Studio: https://sih-uit.vercel.app/problems.html_`;
+
+        navigator.clipboard.writeText(msg).then(() => {
+          showToast('Copied team shortlist to clipboard! Ready to paste into WhatsApp!');
+        });
+      });
+    }
+
+    // Open Reader Modal (Rock-Solid & Immersive)
     window.openPsModal = function(psId) {
       const item = rawData.find(p => String(p.psId) === String(psId));
       if (!item || !modal) return;
 
       activeModalItem = item;
-      modalPsId.textContent = 'PS ID: ' + item.psId;
+      modalPsId.textContent = (item.officialPsNumber || ('SIH' + item.psId));
       modalCategory.textContent = item.category;
       modalCategory.className = item.category === 'Software'
         ? 'text-[10px] sm:text-xs font-black uppercase px-2.5 py-1 rounded-xl bg-blue-100 text-blue-800 border border-blue-200'
@@ -619,22 +708,6 @@ Analyze the problem statement above and help our student team build a winning, p
       modalTheme.textContent = item.theme;
       modalTitle.textContent = item.title;
       modalOrg.textContent = item.organization;
-
-      // Update Highlighted Official SIH Portal Link
-      const modalOfficialLink = document.getElementById('modal-official-link');
-      if (modalOfficialLink) {
-        modalOfficialLink.href = 'https://www.sih.gov.in/sih2026PS#ViewProblemStatement' + item.psId;
-        modalOfficialLink.innerHTML = `
-          <span>🏛️ Open PS ${item.psId} on Official SIH Portal</span>
-          <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2.5" d="M10 6H6a2 2 0 00-2 2v10a2 2 0 002 2h10a2 2 0 002-2v-4M14 4h6m0 0v6m0-6L10 14"/></svg>
-        `;
-        modalOfficialLink.onclick = () => {
-          navigator.clipboard.writeText(String(item.psId));
-          showToast(`Copied PS ${item.psId}! Opening SIH Portal — paste in search if needed.`);
-        };
-      }
-      
-      const modalDept = document.getElementById('modal-dept');
       if (modalDept) {
         modalDept.textContent = item.department ? item.department : 'General Sector';
       }
@@ -654,10 +727,17 @@ Analyze the problem statement above and help our student team build a winning, p
         starText.textContent = isShortlisted ? 'Remove from Shortlist' : 'Add to Shortlist';
       }
 
-      // Process description into rich formatted HTML
-      let rawText = item.description || item.title;
+      // Highlighted Official SIH Portal Link
+      if (modalOfficialLink) {
+        modalOfficialLink.href = 'https://www.sih.gov.in/sih2026PS#ViewProblemStatement' + item.psId;
+        modalOfficialLink.onclick = () => {
+          navigator.clipboard.writeText(String(item.officialPsNumber || item.psId));
+          showToast(`Copied PS ${item.officialPsNumber || item.psId}! Opening SIH Portal — paste in search.`);
+        };
+      }
 
-      // Extract sections if keywords exist
+      // Process description
+      let rawText = item.description || item.title;
       let bgText = '';
       let descText = rawText;
       let deliverablesText = '';
@@ -696,12 +776,12 @@ Analyze the problem statement above and help our student team build a winning, p
             <div class="text-xs sm:text-sm font-extrabold text-blue-700 mt-0.5 truncate">${item.theme}</div>
           </div>
           <div>
-            <div class="text-[10px] font-black uppercase text-slate-400">Edition</div>
-            <div class="text-xs sm:text-sm font-extrabold text-slate-800 mt-0.5">SIH 2026</div>
+            <div class="text-[10px] font-black uppercase text-slate-400">Submitted Ideas</div>
+            <div class="text-xs sm:text-sm font-extrabold text-slate-800 mt-0.5">${item.submissions || 0} / 500</div>
           </div>
           <div>
-            <div class="text-[10px] font-black uppercase text-slate-400">Portal Status</div>
-            <div class="text-xs sm:text-sm font-extrabold text-emerald-700 mt-0.5">Verified Active ✓</div>
+            <div class="text-[10px] font-black uppercase text-slate-400">Deadline</div>
+            <div class="text-xs sm:text-sm font-extrabold text-emerald-700 mt-0.5">${item.deadline || '20 Sept 2026'}</div>
           </div>
         </div>
       `;
@@ -787,11 +867,11 @@ Analyze the problem statement above and help our student team build a winning, p
               <span>AI Brainstorming Studio</span>
             </div>
             <span class="text-[11px] font-bold text-indigo-700 bg-white px-2.5 py-0.5 rounded-lg border border-indigo-200">
-              Custom Prompt Generator
+              Tailored Mentor Prompt
             </span>
           </div>
           <p class="text-xs text-indigo-900 font-medium leading-relaxed">
-            Generate full solution architecture, tech stack recommendations, feasibility notes, and 4-slide presentation content using our pre-engineered mentor prompt.
+            Instantly generate full solution architecture, tech stack recommendations, feasibility analysis, and 4-slide presentation content using our pre-engineered mentor prompt.
           </p>
           <div class="flex items-center gap-2 flex-wrap pt-1">
             <button onclick="copyAiPrompt('${item.psId}')" class="px-4 py-2 bg-indigo-600 hover:bg-indigo-700 text-white text-xs font-bold rounded-xl shadow-xs transition-all flex items-center gap-1.5">
@@ -812,7 +892,6 @@ Analyze the problem statement above and help our student team build a winning, p
 
       modalBody.innerHTML = structuredHtml;
 
-      // Show modal and add modal-open class to body (which HIDES navbar!)
       modal.classList.remove('hidden');
       document.body.classList.add('modal-open');
       document.body.style.overflow = 'hidden';
@@ -824,23 +903,6 @@ Analyze the problem statement above and help our student team build a winning, p
         document.body.classList.remove('modal-open');
         document.body.style.overflow = '';
       }
-    }
-
-    // Modal Shortlist Toggle Event
-    const modalShortlistBtn = document.getElementById('modal-shortlist-toggle-btn');
-    if (modalShortlistBtn) {
-      modalShortlistBtn.addEventListener('click', () => {
-        if (activeModalItem) {
-          toggleShortlist(activeModalItem.psId);
-          const starIcon = document.getElementById('modal-star-icon');
-          const starText = document.getElementById('modal-star-text');
-          const isShortlisted = userShortlist.includes(String(activeModalItem.psId));
-          if (starIcon && starText) {
-            starIcon.textContent = isShortlisted ? '★' : '☆';
-            starText.textContent = isShortlisted ? 'Remove from Shortlist' : 'Add to Shortlist';
-          }
-        }
-      });
     }
 
     if (modalCloseBtn) modalCloseBtn.addEventListener('click', closeModal);
@@ -859,6 +921,21 @@ Analyze the problem statement above and help our student team build a winning, p
       });
     }
 
+    if (modalShortlistBtn) {
+      modalShortlistBtn.addEventListener('click', () => {
+        if (activeModalItem) {
+          toggleShortlist(activeModalItem.psId);
+          const starIcon = document.getElementById('modal-star-icon');
+          const starText = document.getElementById('modal-star-text');
+          const isShortlisted = userShortlist.includes(String(activeModalItem.psId));
+          if (starIcon && starText) {
+            starIcon.textContent = isShortlisted ? '★' : '☆';
+            starText.textContent = isShortlisted ? 'Remove from Shortlist' : 'Add to Shortlist';
+          }
+        }
+      });
+    }
+
     // Color mapper for Theme Tags
     function getThemeBadge(theme) {
       const t = (theme || '').toLowerCase();
@@ -872,7 +949,7 @@ Analyze the problem statement above and help our student team build a winning, p
       return 'bg-blue-50 text-blue-700 border-blue-200';
     }
 
-    // Render Colorful PS Cards
+    // Render Cards View
     function renderCards(list) {
       if (!grid) return;
       if (!list || list.length === 0) {
@@ -880,7 +957,7 @@ Analyze the problem statement above and help our student team build a winning, p
           <div class="col-span-full py-16 text-center glass-card-pro rounded-3xl p-8 space-y-3">
             <span class="text-4xl">🔍</span>
             <h3 class="text-lg font-bold text-slate-800">No Problem Statements found</h3>
-            <p class="text-xs text-slate-500 max-w-md mx-auto">Try clearing keywords, switching tabs, or resetting filters.</p>
+            <p class="text-xs text-slate-500 max-w-md mx-auto">Try clearing search keywords, switching tabs, or resetting filters.</p>
           </div>
         `;
         return;
@@ -889,8 +966,8 @@ Analyze the problem statement above and help our student team build a winning, p
       grid.innerHTML = list.map((item) => {
         const isShortlisted = userShortlist.includes(String(item.psId));
         const isSoftware = item.category === 'Software';
+        const displayPsId = item.officialPsNumber || ('SIH' + item.psId);
 
-        // Top Accent Stripe Color
         const accentClass = isSoftware ? 'from-blue-600 via-cyan-500 to-indigo-600' : 'from-amber-500 via-orange-500 to-rose-500';
         
         const categoryBadge = isSoftware
@@ -903,23 +980,20 @@ Analyze the problem statement above and help our student team build a winning, p
 
         const themeBadgeClass = getThemeBadge(item.theme);
 
-        // Snippet
         let snippet = item.description ? item.description.slice(0, 160) : item.title;
         if (snippet.length >= 160) snippet += '...';
 
         return `
-          <article class="ps-card glass-card-pro rounded-3xl p-5 sm:p-6 flex flex-col justify-between group space-y-4 border border-slate-200/90 relative overflow-hidden bg-white/95">
+          <article class="ps-card-item glass-card-pro rounded-3xl p-5 sm:p-6 flex flex-col justify-between group space-y-4 border border-slate-200/90 relative overflow-hidden bg-white/95">
             
-            <!-- Top Gradient Accent Stripe -->
             <div class="absolute top-0 left-0 right-0 h-1.5 bg-gradient-to-r ${accentClass}"></div>
 
             <div class="space-y-3 pt-1">
               
-              <!-- Card Header -->
               <div class="flex items-center justify-between gap-2">
                 <div class="flex items-center gap-1.5">
                   <span class="text-xs font-mono font-black text-blue-700 bg-blue-50 px-2.5 py-1 rounded-xl border border-blue-200">
-                    PS ${item.psId}
+                    ${displayPsId}
                   </span>
                   ${newBadge}
                 </div>
@@ -935,7 +1009,6 @@ Analyze the problem statement above and help our student team build a winning, p
                 </div>
               </div>
 
-              <!-- Title & Organization -->
               <div>
                 <h3 class="text-sm sm:text-base font-black text-slate-900 group-hover:text-blue-700 transition-colors leading-snug font-display">
                   ${item.title}
@@ -946,24 +1019,21 @@ Analyze the problem statement above and help our student team build a winning, p
                 </div>
               </div>
 
-              <!-- Theme Tag -->
               <div class="pt-2 border-t border-slate-100 flex items-center justify-between gap-2">
                 <span class="text-[10px] font-black uppercase px-2.5 py-1 rounded-lg border ${themeBadgeClass} truncate">
                   ${item.theme}
                 </span>
                 <span class="text-[10px] text-slate-400 font-semibold flex-shrink-0">
-                  SIH 2026
+                  ${item.submissions || 0}/500 Ideas
                 </span>
               </div>
 
-              <!-- Description Snippet -->
               <p class="text-xs text-slate-600 leading-relaxed font-medium line-clamp-3">
                 ${snippet}
               </p>
 
             </div>
 
-            <!-- Card Actions -->
             <div class="pt-3 border-t border-slate-100 space-y-2">
               <div class="grid grid-cols-2 gap-2">
                 <button
@@ -986,6 +1056,74 @@ Analyze the problem statement above and help our student team build a winning, p
       }).join('');
     }
 
+    // Render Official Table View
+    function renderTable(list) {
+      if (!tableBody) return;
+      if (!list || list.length === 0) {
+        tableBody.innerHTML = `
+          <tr>
+            <td colspan="8" class="text-center py-12 text-slate-400 text-xs font-bold">
+              No problem statements found matching criteria.
+            </td>
+          </tr>
+        `;
+        return;
+      }
+
+      tableBody.innerHTML = list.map((item, idx) => {
+        const isShortlisted = userShortlist.includes(String(item.psId));
+        const displayPsId = item.officialPsNumber || ('SIH' + item.psId);
+        const categoryBadge = item.category === 'Software'
+          ? '<span class="px-2 py-0.5 rounded-md text-[10px] font-black uppercase bg-blue-100 text-blue-800">Software</span>'
+          : '<span class="px-2 py-0.5 rounded-md text-[10px] font-black uppercase bg-amber-100 text-amber-900">Hardware</span>';
+
+        return `
+          <tr class="ps-table-row border-b border-slate-100 text-slate-800">
+            <td class="py-3 px-3 text-center font-mono font-bold text-slate-400">${idx + 1}</td>
+            <td class="py-3 px-3 font-mono font-black text-blue-700">
+              <span class="bg-blue-50 px-2 py-0.5 rounded-md border border-blue-200/80">${displayPsId}</span>
+            </td>
+            <td class="py-3 px-3 font-semibold text-slate-700 truncate max-w-[200px]" title="${item.organization}">
+              ${item.organization}
+            </td>
+            <td class="py-3 px-3 font-bold text-slate-900">
+              <button onclick="openPsModal('${item.psId}')" class="text-left hover:text-blue-700 hover:underline">
+                ${item.title}
+              </button>
+            </td>
+            <td class="py-3 px-3 text-center">${categoryBadge}</td>
+            <td class="py-3 px-3 font-semibold text-slate-600 truncate max-w-[150px]">${item.theme}</td>
+            <td class="py-3 px-3 text-center font-mono text-slate-500">${item.submissions || 0}/500</td>
+            <td class="py-3 px-3 text-center">
+              <div class="flex items-center justify-center gap-1.5">
+                <button
+                  onclick="openPsModal('${item.psId}')"
+                  class="px-2.5 py-1 bg-blue-50 hover:bg-blue-100 text-blue-700 rounded-lg text-xs font-bold border border-blue-200"
+                  title="View full specs"
+                >
+                  View
+                </button>
+                <button
+                  onclick="copyAiPrompt('${item.psId}')"
+                  class="px-2.5 py-1 bg-violet-600 hover:bg-violet-700 text-white rounded-lg text-xs font-bold shadow-xs"
+                  title="Copy AI prompt"
+                >
+                  AI
+                </button>
+                <button
+                  onclick="toggleShortlist('${item.psId}')"
+                  class="p-1 rounded-lg text-slate-400 hover:text-amber-500"
+                  title="Shortlist"
+                >
+                  ${isShortlisted ? '<span class="text-amber-500 font-bold">★</span>' : '<span class="text-slate-300 font-bold">☆</span>'}
+                </button>
+              </div>
+            </td>
+          </tr>
+        `;
+      }).join('');
+    }
+
     // Master Filter & Sort Function
     function filterAndRender() {
       const q = searchInput ? searchInput.value.toLowerCase().trim() : '';
@@ -994,21 +1132,16 @@ Analyze the problem statement above and help our student team build a winning, p
       const selectedSort = sortSelect ? sortSelect.value : 'default';
 
       let filtered = rawData.filter(item => {
-        // Tab Category Filter
         if (currentTab === 'software' && item.category !== 'Software') return false;
         if (currentTab === 'hardware' && item.category !== 'Hardware') return false;
         if (currentTab === 'new' && !item.isNew) return false;
         if (currentTab === 'shortlist' && !userShortlist.includes(String(item.psId))) return false;
 
-        // Theme Filter
         if (selectedTheme && item.theme !== selectedTheme) return false;
-
-        // Org Filter
         if (selectedOrg && item.organization !== selectedOrg) return false;
 
-        // Query Search
         if (q) {
-          const matchId = String(item.psId).toLowerCase().includes(q);
+          const matchId = String(item.psId).toLowerCase().includes(q) || (item.officialPsNumber || '').toLowerCase().includes(q);
           const matchTitle = (item.title || '').toLowerCase().includes(q);
           const matchOrg = (item.organization || '').toLowerCase().includes(q);
           const matchTheme = (item.theme || '').toLowerCase().includes(q);
@@ -1033,7 +1166,7 @@ Analyze the problem statement above and help our student team build a winning, p
       }
 
       if (resultsCount) {
-        resultsCount.textContent = `Showing ${filtered.length} of ${rawData.length} official problem statements`;
+        resultsCount.textContent = `Showing ${filtered.length} of ${rawData.length} official statements`;
       }
 
       if (resetBtn) {
@@ -1044,7 +1177,32 @@ Analyze the problem statement above and help our student team build a winning, p
         }
       }
 
-      renderCards(filtered);
+      if (currentView === 'cards') {
+        renderCards(filtered);
+      } else {
+        renderTable(filtered);
+      }
+    }
+
+    // View Switcher Handler
+    if (viewCardsBtn && viewTableBtn) {
+      viewCardsBtn.addEventListener('click', () => {
+        currentView = 'cards';
+        viewCardsBtn.className = 'px-3.5 py-2 rounded-xl bg-white text-blue-700 font-extrabold text-xs shadow-xs transition-all flex items-center gap-1.5';
+        viewTableBtn.className = 'px-3.5 py-2 rounded-xl text-slate-600 hover:text-slate-900 font-bold text-xs transition-all flex items-center gap-1.5';
+        gridContainer.classList.remove('hidden');
+        tableContainer.classList.add('hidden');
+        filterAndRender();
+      });
+
+      viewTableBtn.addEventListener('click', () => {
+        currentView = 'table';
+        viewTableBtn.className = 'px-3.5 py-2 rounded-xl bg-white text-blue-700 font-extrabold text-xs shadow-xs transition-all flex items-center gap-1.5';
+        viewCardsBtn.className = 'px-3.5 py-2 rounded-xl text-slate-600 hover:text-slate-900 font-bold text-xs transition-all flex items-center gap-1.5';
+        gridContainer.classList.add('hidden');
+        tableContainer.classList.remove('hidden');
+        filterAndRender();
+      });
     }
 
     // Event Listeners

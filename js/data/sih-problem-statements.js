@@ -1,7 +1,7 @@
 /**
  * Official Smart India Hackathon 2026 Problem Statements Dataset
- * Synchronized live with https://www.sih.gov.in/sih2026PS
- * Total: 231 Problem Statements (Software: 176 | Hardware: 55 | Recently Added: 25)
+ * Synchronized live from https://www.sih.gov.in/sih2026PS
+ * Total: 231 (Software: 176 | Hardware: 55)
  */
 const SIH_PROBLEM_STATEMENTS = [
   {
@@ -16,7 +16,10 @@ const SIH_PROBLEM_STATEMENTS = [
     "submissions": 0,
     "youtubeLink": "",
     "datasetLink": "",
-    "isNew": false
+    "isNew": false,
+    "officialPsNumber": "SIH26001",
+    "deadline": "20 September 2026",
+    "maxSubmissions": 500
   },
   {
     "sNo": 2,
@@ -30,7 +33,10 @@ const SIH_PROBLEM_STATEMENTS = [
     "submissions": 0,
     "youtubeLink": "",
     "datasetLink": "",
-    "isNew": false
+    "isNew": false,
+    "officialPsNumber": "SIH26002",
+    "deadline": "20 September 2026",
+    "maxSubmissions": 500
   },
   {
     "sNo": 3,
@@ -44,7 +50,10 @@ const SIH_PROBLEM_STATEMENTS = [
     "submissions": 0,
     "youtubeLink": "",
     "datasetLink": "",
-    "isNew": false
+    "isNew": false,
+    "officialPsNumber": "SIH26003",
+    "deadline": "20 September 2026",
+    "maxSubmissions": 500
   },
   {
     "sNo": 4,
@@ -58,7 +67,10 @@ const SIH_PROBLEM_STATEMENTS = [
     "submissions": 0,
     "youtubeLink": "",
     "datasetLink": "",
-    "isNew": false
+    "isNew": false,
+    "officialPsNumber": "SIH26004",
+    "deadline": "20 September 2026",
+    "maxSubmissions": 500
   },
   {
     "sNo": 5,
@@ -72,7 +84,10 @@ const SIH_PROBLEM_STATEMENTS = [
     "submissions": 0,
     "youtubeLink": "",
     "datasetLink": "",
-    "isNew": false
+    "isNew": false,
+    "officialPsNumber": "SIH26005",
+    "deadline": "20 September 2026",
+    "maxSubmissions": 500
   },
   {
     "sNo": 6,
@@ -86,7 +101,10 @@ const SIH_PROBLEM_STATEMENTS = [
     "submissions": 0,
     "youtubeLink": "",
     "datasetLink": "",
-    "isNew": false
+    "isNew": false,
+    "officialPsNumber": "SIH26006",
+    "deadline": "20 September 2026",
+    "maxSubmissions": 500
   },
   {
     "sNo": 7,
@@ -96,11 +114,14 @@ const SIH_PROBLEM_STATEMENTS = [
     "department": "NMDC",
     "category": "Hardware",
     "theme": "Smart Automation",
-    "description": "Background:\n\n NMDC Limited is Indiaâ€™s largest Iron Ore producer, currently producing approximately 53 Million Tonnes Per Annum (MTPA) from its three fully mechanized mining complexes, namely BIOM-Kirandul Complex, BIOM-Bacheli Complex in Chhattisgarh, and Donimalai Complex in Karnataka. The Bailadila Region alone contributes nearly 37 MTPA of Iron Ore production. In line with the National Steel Policy, NMDC has set a target of achieving 100 MT production capacity by 2030, with approximately 80 MT expected from the Bailadila Sector.\n\n The Bailadila mining region experiences severe monsoon conditions from June to October, including heavy rainfall, strong winds, high humidity, dense clouds, and thick fog. During this period, visibility on mine haul roads, particularly in hilltop mining areas, often reduces to as low as 3â€“5 meters. These conditions significantly affect the safe and efficient movement of Heavy Earth Moving Machinery (HEMM), especially dumpers engaged in ore transportation.\n\n Problem Description:\n\n Dense fog and extremely low visibility during the monsoon season create major operational and safety challenges in the Bailadila iron ore mines. Poor visibility restricts dumper movement, forcing operators to reduce speed or temporarily halt operations to avoid accidents and unsafe conditions.This results in increased haul cycle times, reduced fleet productivity, lower ore evacuation, and production losses. The risk of vehicle collision, road accidents, and operational disruptions also increases substantially during such conditions. Existing visibility aids and operational controls have limited effectiveness in dense fog environments.There is a need for an intelligent, reliable, and technology-driven solution that can enable safe and efficient movement of mine vehicles under low-visibility conditions while ensuring continuity of operations and maintaining production levels. Expected Solution:\n\n The proposed solution should improve operator situational awareness, assist in vehicle guidance and collision avoidance, and support real-time monitoring and decision-making for safe haul road operations during adverse weather conditions.\n\n The solution may leverage technologies such as:\n\n • AI/ML-based analytics\n • Computer vision and thermal imaging\n • LiDAR and radar-based sensing\n • GPS/DGPS-based vehicle tracking\n • Vehicle-to-Vehicle (V2V) and Vehicle-to-Infrastructure (V2I) communication\n • Autonomous or driver-assistance systems\n • IoT-enabled monitoring systems\n • Centralized command and control platforms\n • Digital Twin-based operational monitoring Expected Outcomes\n • Improved safety of dumper operations during foggy conditions\n • Reduction in collision risks and operational accidents\n • Improved haulage efficiency and reduced cycle times\n • Enhanced fleet utilization and continuity of mining operations during monsoon\n • Reduction in production losses caused by low visibility\n • Real-time monitoring and decision support for operators and control rooms\n • Scalable and deployable solution for large-scale mechanized open cast mines",
+    "description": "Background:\n\n NMDC Limited is India's largest Iron Ore producer, currently producing approximately 53 Million Tonnes Per Annum (MTPA) from its three fully mechanized mining complexes, namely BIOM-Kirandul Complex, BIOM-Bacheli Complex in Chhattisgarh, and Donimalai Complex in Karnataka. The Bailadila Region alone contributes nearly 37 MTPA of Iron Ore production. In line with the National Steel Policy, NMDC has set a target of achieving 100 MT production capacity by 2030, with approximately 80 MT expected from the Bailadila Sector.\n\n The Bailadila mining region experiences severe monsoon conditions from June to October, including heavy rainfall, strong winds, high humidity, dense clouds, and thick fog. During this period, visibility on mine haul roads, particularly in hilltop mining areas, often reduces to as low as 3\"“5 meters. These conditions significantly affect the safe and efficient movement of Heavy Earth Moving Machinery (HEMM), especially dumpers engaged in ore transportation.\n\n Problem Description:\n\n Dense fog and extremely low visibility during the monsoon season create major operational and safety challenges in the Bailadila iron ore mines. Poor visibility restricts dumper movement, forcing operators to reduce speed or temporarily halt operations to avoid accidents and unsafe conditions.This results in increased haul cycle times, reduced fleet productivity, lower ore evacuation, and production losses. The risk of vehicle collision, road accidents, and operational disruptions also increases substantially during such conditions. Existing visibility aids and operational controls have limited effectiveness in dense fog environments.There is a need for an intelligent, reliable, and technology-driven solution that can enable safe and efficient movement of mine vehicles under low-visibility conditions while ensuring continuity of operations and maintaining production levels. Expected Solution:\n\n The proposed solution should improve operator situational awareness, assist in vehicle guidance and collision avoidance, and support real-time monitoring and decision-making for safe haul road operations during adverse weather conditions.\n\n The solution may leverage technologies such as:\n\n • AI/ML-based analytics\n • Computer vision and thermal imaging\n • LiDAR and radar-based sensing\n • GPS/DGPS-based vehicle tracking\n • Vehicle-to-Vehicle (V2V) and Vehicle-to-Infrastructure (V2I) communication\n • Autonomous or driver-assistance systems\n • IoT-enabled monitoring systems\n • Centralized command and control platforms\n • Digital Twin-based operational monitoring Expected Outcomes\n • Improved safety of dumper operations during foggy conditions\n • Reduction in collision risks and operational accidents\n • Improved haulage efficiency and reduced cycle times\n • Enhanced fleet utilization and continuity of mining operations during monsoon\n • Reduction in production losses caused by low visibility\n • Real-time monitoring and decision support for operators and control rooms\n • Scalable and deployable solution for large-scale mechanized open cast mines",
     "submissions": 0,
     "youtubeLink": "",
     "datasetLink": "",
-    "isNew": false
+    "isNew": false,
+    "officialPsNumber": "SIH26007",
+    "deadline": "20 September 2026",
+    "maxSubmissions": 500
   },
   {
     "sNo": 8,
@@ -114,7 +135,10 @@ const SIH_PROBLEM_STATEMENTS = [
     "submissions": 0,
     "youtubeLink": "",
     "datasetLink": "",
-    "isNew": false
+    "isNew": false,
+    "officialPsNumber": "SIH26008",
+    "deadline": "20 September 2026",
+    "maxSubmissions": 500
   },
   {
     "sNo": 9,
@@ -128,7 +152,10 @@ const SIH_PROBLEM_STATEMENTS = [
     "submissions": 0,
     "youtubeLink": "",
     "datasetLink": "",
-    "isNew": false
+    "isNew": false,
+    "officialPsNumber": "SIH26009",
+    "deadline": "20 September 2026",
+    "maxSubmissions": 500
   },
   {
     "sNo": 10,
@@ -142,7 +169,10 @@ const SIH_PROBLEM_STATEMENTS = [
     "submissions": 0,
     "youtubeLink": "",
     "datasetLink": "",
-    "isNew": false
+    "isNew": false,
+    "officialPsNumber": "SIH26010",
+    "deadline": "20 September 2026",
+    "maxSubmissions": 500
   },
   {
     "sNo": 11,
@@ -156,7 +186,10 @@ const SIH_PROBLEM_STATEMENTS = [
     "submissions": 0,
     "youtubeLink": "",
     "datasetLink": "",
-    "isNew": false
+    "isNew": false,
+    "officialPsNumber": "SIH26011",
+    "deadline": "20 September 2026",
+    "maxSubmissions": 500
   },
   {
     "sNo": 12,
@@ -170,7 +203,10 @@ const SIH_PROBLEM_STATEMENTS = [
     "submissions": 0,
     "youtubeLink": "",
     "datasetLink": "",
-    "isNew": false
+    "isNew": false,
+    "officialPsNumber": "SIH26012",
+    "deadline": "20 September 2026",
+    "maxSubmissions": 500
   },
   {
     "sNo": 13,
@@ -184,7 +220,10 @@ const SIH_PROBLEM_STATEMENTS = [
     "submissions": 0,
     "youtubeLink": "",
     "datasetLink": "",
-    "isNew": false
+    "isNew": false,
+    "officialPsNumber": "SIH26013",
+    "deadline": "20 September 2026",
+    "maxSubmissions": 500
   },
   {
     "sNo": 14,
@@ -198,7 +237,10 @@ const SIH_PROBLEM_STATEMENTS = [
     "submissions": 0,
     "youtubeLink": "",
     "datasetLink": "",
-    "isNew": false
+    "isNew": false,
+    "officialPsNumber": "SIH26014",
+    "deadline": "20 September 2026",
+    "maxSubmissions": 500
   },
   {
     "sNo": 15,
@@ -212,7 +254,10 @@ const SIH_PROBLEM_STATEMENTS = [
     "submissions": 0,
     "youtubeLink": "",
     "datasetLink": "https://drive.google.com/drive/folders/1ibmzWpl_nK7aBhQurs22R9kqh9fPAQwC",
-    "isNew": false
+    "isNew": false,
+    "officialPsNumber": "SIH26015",
+    "deadline": "20 September 2026",
+    "maxSubmissions": 500
   },
   {
     "sNo": 16,
@@ -222,11 +267,14 @@ const SIH_PROBLEM_STATEMENTS = [
     "department": "Dept of land resources (DoLR)",
     "category": "Software",
     "theme": "Smart Automation",
-    "description": "Background:\n\n Land acquisition is a critical component of infrastructure development and public welfare projects in India. It facilitates the implementation of highways, railways, industrial corridors, irrigation projects, urban development, renewable energy initiatives, and other strategic infrastructure. The process involves multiple stakeholders, including land requiring bodies, land acquiring authorities, district administrations, state governments, and central ministries.\n\n Description of the Study:\n\n Web-based National Land Acquisition & Management System that digitizes the complete land acquisition lifecycleâ€”from project proposal submission to final possession of land. The proposed platform should provide standardized workflows for different stakeholders and enable seamless coordination among Central Ministries, State Governments, District Authorities, and Project Implementing Agencies. The system should facilitate online submission and approval of proposals, digital scrutiny, document management, automated workflow routing, and status tracking at every stage.The platform should support geo-tagging of acquired land parcels using GIS technology, enabling visualization of project locations on interactive maps. It should also maintain real-time information on key land acquisition parameters such as:\n\n 7. Land proposed and acquired 8. Notifications issued 9. Awards declared 10. Compensation assessed and disbursed 11. Possession status 12. Rehabilitation and Resettlement (R&R) progress 13. Number of affected and displaced families 14. Project-wise and state-wise progress 15. Timeline monitoring and milestone tracking The platform should be scalable for nationwide implementation across all States and Union Territories while ensuring data security, interoperability, and compliance with government standards.\n\n Add 'Scope of Study' Table here Problems:\n\n At present, land acquisition activities are managed through fragmented systems, manual documentation, and state-specific processes. The absence of a unified national digital platform results in inconsistent data collection, duplication of efforts, delays in approvals, limited transparency, and inadequate monitoring. Decision-makers often lack access to real-time information on the progress of land acquisition, compensation disbursement, possession status, and rehabilitation measures.\n\n Expected Solution:\n\n The solution should incorporate role-based access control, automated alerts and notifications, API-based integration with relevant government systems, customizable dashboards, analytical reports, and predictive analytics to support policy formulation and efficient project execution.\n\n The system should provide:\n\n 7. End-to-end digital workflow for land acquisition processes;\n\n 8. Online submission, verification, approval, and tracking of proposals;\n\n 9. GIS-enabled geo-tagging and spatial visualization of land parcels;\n\n 10. Interactive national dashboard displaying: Area notified, Area acquired, Compensation assessed and paid, Number of affected and displaced families, Rehabilitation & Resettlement status, Project progress, Possession status, Timeline adherence 11. API-based integration with land records, cadastral maps, and relevant government portals.\n\n 12. Mobile-responsive interface for field-level data collection and verification.\n\n 13. Secure document repository with version control and audit history.\n\n 14. Customizable MIS reports and executive dashboards for decision-makers.\n\n The solution should significantly enhance transparency, accountability, efficiency, and data-driven governance in land acquisition while reducing processing time and improving inter-agency coordination.\n\n Add 'Suggested components-wise technology' table here",
+    "description": "Background:\n\n Land acquisition is a critical component of infrastructure development and public welfare projects in India. It facilitates the implementation of highways, railways, industrial corridors, irrigation projects, urban development, renewable energy initiatives, and other strategic infrastructure. The process involves multiple stakeholders, including land requiring bodies, land acquiring authorities, district administrations, state governments, and central ministries.\n\n Description of the Study:\n\n Web-based National Land Acquisition & Management System that digitizes the complete land acquisition lifecycle\"”from project proposal submission to final possession of land. The proposed platform should provide standardized workflows for different stakeholders and enable seamless coordination among Central Ministries, State Governments, District Authorities, and Project Implementing Agencies. The system should facilitate online submission and approval of proposals, digital scrutiny, document management, automated workflow routing, and status tracking at every stage.The platform should support geo-tagging of acquired land parcels using GIS technology, enabling visualization of project locations on interactive maps. It should also maintain real-time information on key land acquisition parameters such as:\n\n 7. Land proposed and acquired 8. Notifications issued 9. Awards declared 10. Compensation assessed and disbursed 11. Possession status 12. Rehabilitation and Resettlement (R&R) progress 13. Number of affected and displaced families 14. Project-wise and state-wise progress 15. Timeline monitoring and milestone tracking The platform should be scalable for nationwide implementation across all States and Union Territories while ensuring data security, interoperability, and compliance with government standards.\n\n Add 'Scope of Study' Table here Problems:\n\n At present, land acquisition activities are managed through fragmented systems, manual documentation, and state-specific processes. The absence of a unified national digital platform results in inconsistent data collection, duplication of efforts, delays in approvals, limited transparency, and inadequate monitoring. Decision-makers often lack access to real-time information on the progress of land acquisition, compensation disbursement, possession status, and rehabilitation measures.\n\n Expected Solution:\n\n The solution should incorporate role-based access control, automated alerts and notifications, API-based integration with relevant government systems, customizable dashboards, analytical reports, and predictive analytics to support policy formulation and efficient project execution.\n\n The system should provide:\n\n 7. End-to-end digital workflow for land acquisition processes;\n\n 8. Online submission, verification, approval, and tracking of proposals;\n\n 9. GIS-enabled geo-tagging and spatial visualization of land parcels;\n\n 10. Interactive national dashboard displaying: Area notified, Area acquired, Compensation assessed and paid, Number of affected and displaced families, Rehabilitation & Resettlement status, Project progress, Possession status, Timeline adherence 11. API-based integration with land records, cadastral maps, and relevant government portals.\n\n 12. Mobile-responsive interface for field-level data collection and verification.\n\n 13. Secure document repository with version control and audit history.\n\n 14. Customizable MIS reports and executive dashboards for decision-makers.\n\n The solution should significantly enhance transparency, accountability, efficiency, and data-driven governance in land acquisition while reducing processing time and improving inter-agency coordination.\n\n Add 'Suggested components-wise technology' table here",
     "submissions": 0,
     "youtubeLink": "",
     "datasetLink": "https://drive.google.com/drive/folders/1ibmzWpl_nK7aBhQurs22R9kqh9fPAQwC",
-    "isNew": false
+    "isNew": false,
+    "officialPsNumber": "SIH26016",
+    "deadline": "20 September 2026",
+    "maxSubmissions": 500
   },
   {
     "sNo": 17,
@@ -240,7 +288,10 @@ const SIH_PROBLEM_STATEMENTS = [
     "submissions": 0,
     "youtubeLink": "",
     "datasetLink": "https://drive.google.com/drive/folders/1ibmzWpl_nK7aBhQurs22R9kqh9fPAQwC",
-    "isNew": false
+    "isNew": false,
+    "officialPsNumber": "SIH26017",
+    "deadline": "20 September 2026",
+    "maxSubmissions": 500
   },
   {
     "sNo": 18,
@@ -254,7 +305,10 @@ const SIH_PROBLEM_STATEMENTS = [
     "submissions": 0,
     "youtubeLink": "",
     "datasetLink": "https://drive.google.com/drive/folders/1ibmzWpl_nK7aBhQurs22R9kqh9fPAQwC",
-    "isNew": false
+    "isNew": false,
+    "officialPsNumber": "SIH26018",
+    "deadline": "20 September 2026",
+    "maxSubmissions": 500
   },
   {
     "sNo": 19,
@@ -268,7 +322,10 @@ const SIH_PROBLEM_STATEMENTS = [
     "submissions": 0,
     "youtubeLink": "",
     "datasetLink": "https://drive.google.com/drive/folders/1ibmzWpl_nK7aBhQurs22R9kqh9fPAQwC",
-    "isNew": false
+    "isNew": false,
+    "officialPsNumber": "SIH26019",
+    "deadline": "20 September 2026",
+    "maxSubmissions": 500
   },
   {
     "sNo": 20,
@@ -282,7 +339,10 @@ const SIH_PROBLEM_STATEMENTS = [
     "submissions": 0,
     "youtubeLink": "",
     "datasetLink": "",
-    "isNew": false
+    "isNew": false,
+    "officialPsNumber": "SIH26020",
+    "deadline": "20 September 2026",
+    "maxSubmissions": 500
   },
   {
     "sNo": 21,
@@ -292,11 +352,14 @@ const SIH_PROBLEM_STATEMENTS = [
     "department": "Coordination Section",
     "category": "Software",
     "theme": "Agriculture, FoodTech & Rural Development",
-    "description": "Background:\n\n KVICâ€™s Honey Mission supports rural beekeepers with bee boxes and extraction toolkits for livelihood promotion, but they still face challenges like counterfeit honey, low consumer trust, weak market linkages, and lack of traceability and advanced hive management support.\n\n Hence, there is a need for an integrated block chain, AI, and IoT-based digital ecosystem to improve honey authenticity, traceability, productivity, and market credibility.\n\n Description:\n\n Develop 'Honey Chain,' a block chain-based honey traceability and smart beekeeping system with QR-code consumer verification, secure batch tracking, and AI-IoT features for disease detection, environmental monitoring, and productivity prediction to enhance authenticity, transparency, and market access for rural beekeepers.\n\n Expected Solution:\n\n • Develop a prototype block chain-based honey traceability and smart beekeeping system with QR-code consumer authentication.\n • Integrate IoT-enabled hive monitoring and AI analytics for disease detection, colony health tracking, and productivity optimization.\n • Create a scalable deployment framework for implementation across rural beekeeping clusters under KVIC and related institutions.",
+    "description": "Background:\n\n KVIC's Honey Mission supports rural beekeepers with bee boxes and extraction toolkits for livelihood promotion, but they still face challenges like counterfeit honey, low consumer trust, weak market linkages, and lack of traceability and advanced hive management support.\n\n Hence, there is a need for an integrated block chain, AI, and IoT-based digital ecosystem to improve honey authenticity, traceability, productivity, and market credibility.\n\n Description:\n\n Develop 'Honey Chain,' a block chain-based honey traceability and smart beekeeping system with QR-code consumer verification, secure batch tracking, and AI-IoT features for disease detection, environmental monitoring, and productivity prediction to enhance authenticity, transparency, and market access for rural beekeepers.\n\n Expected Solution:\n\n • Develop a prototype block chain-based honey traceability and smart beekeeping system with QR-code consumer authentication.\n • Integrate IoT-enabled hive monitoring and AI analytics for disease detection, colony health tracking, and productivity optimization.\n • Create a scalable deployment framework for implementation across rural beekeeping clusters under KVIC and related institutions.",
     "submissions": 0,
     "youtubeLink": "",
     "datasetLink": "",
-    "isNew": false
+    "isNew": false,
+    "officialPsNumber": "SIH26021",
+    "deadline": "20 September 2026",
+    "maxSubmissions": 500
   },
   {
     "sNo": 22,
@@ -310,7 +373,10 @@ const SIH_PROBLEM_STATEMENTS = [
     "submissions": 0,
     "youtubeLink": "",
     "datasetLink": "",
-    "isNew": false
+    "isNew": false,
+    "officialPsNumber": "SIH26022",
+    "deadline": "20 September 2026",
+    "maxSubmissions": 500
   },
   {
     "sNo": 23,
@@ -320,11 +386,14 @@ const SIH_PROBLEM_STATEMENTS = [
     "department": "Coal India Limited",
     "category": "Software",
     "theme": "Smart Automation",
-    "description": "Background:\n\n CMPDI/CIL subsidiaries play a key role in providing geological and mining information to the Ministry of Coal and responding to parliamentary and high-priority administrative inquiries. These reports require compilation of data from scanned PDFs, digital documents, spreadsheets, images, and historical archives. The current workflow is largely manual, resulting in:\n\n • High dependence on individual expertise\n • Delay in generating reports and analytics\n • Higher probability of manual errors\n • Limited ability to quickly retrieve insights when required Objectives:\n • Deploy an automated platform for AI-assisted geological, mining and any other production figures document processing and reporting.\n • Enhance data validation, consistency, and traceability across historical and contemporary datasets.\n • Build an efficient, scalable foundation for future digital transformation initiatives within each CIL subsidiary and the Ministry of Coal.\n\n Desired Outcomes: The solution should be implemented in structured phases, including requirement analysis, data digitization and pre-processing, platform development, system testing, integration with CIL subsidiary workflows, training, and continuous enhancement to ensure scalability and long-term adoption.\n\n 1. Automated Report Generation Platform 2. Automated Word Cloud and Topic Identification Module 3. AI-Based Query and Response System Expected Benefits:\n\n • Reduction in report preparation time as less as it can be, quantified in percentage.\n • Maximum accuracy, calculated in percentage in structured extraction and report generation.\n • Maximum automation, calculated in percentage of repetitive reporting and response workflows.\n • Faster response to high-level inquiries and parliamentary questions\n • Improved data accessibility, transparency, and standardization\n • Strengthened operational efficiency and informed decision-making using historical insights and AI-generated recommendations Impact:\n\n The proposed system should significantly modernize CMPDI/CIL subsidiaries reporting ecosystem, reduce dependency on manual processes, improve response timelines, and strengthen the coal sectorâ€™s capability to support governance, policy planning, and operational excellence.",
+    "description": "Background:\n\n CMPDI/CIL subsidiaries play a key role in providing geological and mining information to the Ministry of Coal and responding to parliamentary and high-priority administrative inquiries. These reports require compilation of data from scanned PDFs, digital documents, spreadsheets, images, and historical archives. The current workflow is largely manual, resulting in:\n\n • High dependence on individual expertise\n • Delay in generating reports and analytics\n • Higher probability of manual errors\n • Limited ability to quickly retrieve insights when required Objectives:\n • Deploy an automated platform for AI-assisted geological, mining and any other production figures document processing and reporting.\n • Enhance data validation, consistency, and traceability across historical and contemporary datasets.\n • Build an efficient, scalable foundation for future digital transformation initiatives within each CIL subsidiary and the Ministry of Coal.\n\n Desired Outcomes: The solution should be implemented in structured phases, including requirement analysis, data digitization and pre-processing, platform development, system testing, integration with CIL subsidiary workflows, training, and continuous enhancement to ensure scalability and long-term adoption.\n\n 1. Automated Report Generation Platform 2. Automated Word Cloud and Topic Identification Module 3. AI-Based Query and Response System Expected Benefits:\n\n • Reduction in report preparation time as less as it can be, quantified in percentage.\n • Maximum accuracy, calculated in percentage in structured extraction and report generation.\n • Maximum automation, calculated in percentage of repetitive reporting and response workflows.\n • Faster response to high-level inquiries and parliamentary questions\n • Improved data accessibility, transparency, and standardization\n • Strengthened operational efficiency and informed decision-making using historical insights and AI-generated recommendations Impact:\n\n The proposed system should significantly modernize CMPDI/CIL subsidiaries reporting ecosystem, reduce dependency on manual processes, improve response timelines, and strengthen the coal sector's capability to support governance, policy planning, and operational excellence.",
     "submissions": 0,
     "youtubeLink": "",
     "datasetLink": "",
-    "isNew": false
+    "isNew": false,
+    "officialPsNumber": "SIH26023",
+    "deadline": "20 September 2026",
+    "maxSubmissions": 500
   },
   {
     "sNo": 24,
@@ -338,7 +407,10 @@ const SIH_PROBLEM_STATEMENTS = [
     "submissions": 0,
     "youtubeLink": "",
     "datasetLink": "",
-    "isNew": false
+    "isNew": false,
+    "officialPsNumber": "SIH26024",
+    "deadline": "20 September 2026",
+    "maxSubmissions": 500
   },
   {
     "sNo": 25,
@@ -352,7 +424,10 @@ const SIH_PROBLEM_STATEMENTS = [
     "submissions": 0,
     "youtubeLink": "",
     "datasetLink": "",
-    "isNew": false
+    "isNew": false,
+    "officialPsNumber": "SIH26025",
+    "deadline": "20 September 2026",
+    "maxSubmissions": 500
   },
   {
     "sNo": 26,
@@ -366,7 +441,10 @@ const SIH_PROBLEM_STATEMENTS = [
     "submissions": 0,
     "youtubeLink": "",
     "datasetLink": "",
-    "isNew": false
+    "isNew": false,
+    "officialPsNumber": "SIH26026",
+    "deadline": "20 September 2026",
+    "maxSubmissions": 500
   },
   {
     "sNo": 27,
@@ -376,11 +454,14 @@ const SIH_PROBLEM_STATEMENTS = [
     "department": "Ministry of Railways",
     "category": "Software",
     "theme": "Transportation & Logistics",
-    "description": "Background: Railway maintenance for fixed infrastructure of Engineering, Traction Distribution, and Signal & Telecommunication departments is currently planned independently. Each department requests maintenance blocks/disconnections via the BDMS system. This planning process is decentralized and manual. This often leads to inefficient block utilization, poor coordination, and suboptimal scheduling,which may reduce asset availability and impact train operations. Detailed Description: Maintenance data-such as defects and overdue tasksâ€”is maintained separately in systems like Track Management System (TMS), Signalling Maintenance & Management System (SMMS), and Traction Distribution Management System (TDMS). Meanwhile, the Control Office Application (COA) manages block corridor availability. Without integration and coordinated scheduling, maintenance blocks/disconnections are not optimally planned, resulting in asset downtime and reduced availability of fixed infrastructure for train operation.Your task is to develop an Automatic Block Planning system that integrates maintenance, defects and corridor data to generate optimized block schedules. The system should prioritize maintenance activities to minimize asset downtime and maximize the availability of critical infrastructure, ensuring uninterrupted train operations. Expected Solution: Participants should build an Al system that includes:\n\n 1. Integration of maintenance data (defects, overdue maintenance) from TMS, SMMS, and TDMS with corridor block and block availability as per the Train Time Table and the goods trains forecast from the Control Office.\n\n 2. Uses AI/ML algorithms to prioritize and schedule maintenance tasks based on criticality, urgency, and impact on asset availability.\n\n 3. Optimize block scheduling to maximize asset uptime by minimizing downtime and efficiently coordinating multi-department activities.\n\n 4. Provides block plans over multiple time horizons-weekly and monthlyâ€”to support both short-term and long-term maintenance.\n\n The solution should transform current decentralized and manual block planning into a data-driven, coordinated process that maximizes asset availability, improves safety, and supports reliable train operations.",
+    "description": "Background: Railway maintenance for fixed infrastructure of Engineering, Traction Distribution, and Signal & Telecommunication departments is currently planned independently. Each department requests maintenance blocks/disconnections via the BDMS system. This planning process is decentralized and manual. This often leads to inefficient block utilization, poor coordination, and suboptimal scheduling,which may reduce asset availability and impact train operations. Detailed Description: Maintenance data-such as defects and overdue tasks\"”is maintained separately in systems like Track Management System (TMS), Signalling Maintenance & Management System (SMMS), and Traction Distribution Management System (TDMS). Meanwhile, the Control Office Application (COA) manages block corridor availability. Without integration and coordinated scheduling, maintenance blocks/disconnections are not optimally planned, resulting in asset downtime and reduced availability of fixed infrastructure for train operation.Your task is to develop an Automatic Block Planning system that integrates maintenance, defects and corridor data to generate optimized block schedules. The system should prioritize maintenance activities to minimize asset downtime and maximize the availability of critical infrastructure, ensuring uninterrupted train operations. Expected Solution: Participants should build an Al system that includes:\n\n 1. Integration of maintenance data (defects, overdue maintenance) from TMS, SMMS, and TDMS with corridor block and block availability as per the Train Time Table and the goods trains forecast from the Control Office.\n\n 2. Uses AI/ML algorithms to prioritize and schedule maintenance tasks based on criticality, urgency, and impact on asset availability.\n\n 3. Optimize block scheduling to maximize asset uptime by minimizing downtime and efficiently coordinating multi-department activities.\n\n 4. Provides block plans over multiple time horizons-weekly and monthly\"”to support both short-term and long-term maintenance.\n\n The solution should transform current decentralized and manual block planning into a data-driven, coordinated process that maximizes asset availability, improves safety, and supports reliable train operations.",
     "submissions": 0,
     "youtubeLink": "",
     "datasetLink": "",
-    "isNew": false
+    "isNew": false,
+    "officialPsNumber": "SIH26027",
+    "deadline": "20 September 2026",
+    "maxSubmissions": 500
   },
   {
     "sNo": 28,
@@ -394,7 +475,10 @@ const SIH_PROBLEM_STATEMENTS = [
     "submissions": 0,
     "youtubeLink": "",
     "datasetLink": "",
-    "isNew": false
+    "isNew": false,
+    "officialPsNumber": "SIH26028",
+    "deadline": "20 September 2026",
+    "maxSubmissions": 500
   },
   {
     "sNo": 29,
@@ -408,7 +492,10 @@ const SIH_PROBLEM_STATEMENTS = [
     "submissions": 0,
     "youtubeLink": "",
     "datasetLink": "",
-    "isNew": false
+    "isNew": false,
+    "officialPsNumber": "SIH26029",
+    "deadline": "20 September 2026",
+    "maxSubmissions": 500
   },
   {
     "sNo": 30,
@@ -422,7 +509,10 @@ const SIH_PROBLEM_STATEMENTS = [
     "submissions": 0,
     "youtubeLink": "",
     "datasetLink": "",
-    "isNew": false
+    "isNew": false,
+    "officialPsNumber": "SIH26030",
+    "deadline": "20 September 2026",
+    "maxSubmissions": 500
   },
   {
     "sNo": 31,
@@ -436,7 +526,10 @@ const SIH_PROBLEM_STATEMENTS = [
     "submissions": 0,
     "youtubeLink": "",
     "datasetLink": "",
-    "isNew": false
+    "isNew": false,
+    "officialPsNumber": "SIH26031",
+    "deadline": "20 September 2026",
+    "maxSubmissions": 500
   },
   {
     "sNo": 32,
@@ -450,7 +543,10 @@ const SIH_PROBLEM_STATEMENTS = [
     "submissions": 0,
     "youtubeLink": "",
     "datasetLink": "",
-    "isNew": false
+    "isNew": false,
+    "officialPsNumber": "SIH26032",
+    "deadline": "20 September 2026",
+    "maxSubmissions": 500
   },
   {
     "sNo": 33,
@@ -464,7 +560,10 @@ const SIH_PROBLEM_STATEMENTS = [
     "submissions": 0,
     "youtubeLink": "",
     "datasetLink": "",
-    "isNew": false
+    "isNew": false,
+    "officialPsNumber": "SIH26033",
+    "deadline": "20 September 2026",
+    "maxSubmissions": 500
   },
   {
     "sNo": 34,
@@ -478,7 +577,10 @@ const SIH_PROBLEM_STATEMENTS = [
     "submissions": 0,
     "youtubeLink": "",
     "datasetLink": "",
-    "isNew": false
+    "isNew": false,
+    "officialPsNumber": "SIH26034",
+    "deadline": "20 September 2026",
+    "maxSubmissions": 500
   },
   {
     "sNo": 35,
@@ -488,11 +590,14 @@ const SIH_PROBLEM_STATEMENTS = [
     "department": "Department of Consumer Affairs (DoCA)",
     "category": "Software",
     "theme": "Miscellaneous",
-    "description": "Background:\n\n Non-Automatic Weighing Instruments (NAWIs), such as electronic weighing scales, platform scales and weighbridges, are widely used in trade, commerce, healthcare, agriculture and industry where accurate measurement is essential for fair transactions and consumer protection.Under the Legal Metrology Act, 2009 and the Legal Metrology (General) Rules, 2011, such instruments used for transaction and protection are required to conform to prescribed standards,obtain model approval, and undergo verification and stamping before being put into use.\n\n For granting model approval, NAWIs are evaluated by designated laboratories in accordance with OIML Recommendation R 76 â€“ Non-Automatic Weighing Instruments, which specifies internationally accepted technical, metrological and performance requirements. The evaluation involves various metrological and functional tests, the results of which are compiled into detailed test reports.At present, these test reports are largely prepared manually using spreadsheets or document templates, making the process time-consuming, prone to calculation errors and lacking uniformity. Hence, there is a requirement to develop a software application that automates test data recording, compliance evaluation and generation of standardized test reports as per OIML R 76, thereby improving accuracy, consistency, and efficiency in the model approval process.\n\n Description:\n\n Develop a software application capable of generating complete test reports for Non-Automatic Weighing Instruments based on test observations recorded during type evaluation as per OIML R 76.\n\n The system should be capable of: - Capturing instrument details and technical specifications.\n\n • Recording laboratory and environmental conditions.\n • Entering observations from various OIML R 76 test procedures.\n • Automatically calculating permissible errors, and compliance status.\n • Performing validation checks for entered test data.\n • Automatically determining pass/fail criteria based on OIML R 76 requirements.\n • Generating standardized digital test reports in printable formats.\n • Maintaining a digital repository of completed test reports.\n • Providing secure user access with role-based permissions.\n • Supporting future updates whenever OIML recommendations are revised.\n\n Expected Solution:\n\n The proposed solution should include:\n\n • User-friendly desktop and/or web-based application.\n • Digital data entry forms for all applicable OIML R 76 tests.\n • Automated calculations and compliance verification.\n • Standardized test report generation in PDF and editable formats MS Word etc.\n • Instrument-wise test history and report repository.\n • Dashboard for monitoring testing activities and report status.\n • Search and retrieval facility for previously generated reports.\n • Technical documentation describing software architecture, calculation methodology and deployment framework.\n\n Key Functional Requirements:\n\n • Entry of manufacturer details, Instrument specifications, Model information and technical parameters\n • Compliance determination as per OIML R-76\n • Entry of observations for all prescribed tests\n • Automatic validation of input data and related calculations\n • Automatic preparation of standardized test reports with auto-population of laboratory and instrument details\n • Attachment of photographs and supporting documents\n • Digital signatures (optional)\n • Export to PDF and editable formats\n • Dashboard for test report management (completed, in process, history access etc.)",
+    "description": "Background:\n\n Non-Automatic Weighing Instruments (NAWIs), such as electronic weighing scales, platform scales and weighbridges, are widely used in trade, commerce, healthcare, agriculture and industry where accurate measurement is essential for fair transactions and consumer protection.Under the Legal Metrology Act, 2009 and the Legal Metrology (General) Rules, 2011, such instruments used for transaction and protection are required to conform to prescribed standards,obtain model approval, and undergo verification and stamping before being put into use.\n\n For granting model approval, NAWIs are evaluated by designated laboratories in accordance with OIML Recommendation R 76 \"“ Non-Automatic Weighing Instruments, which specifies internationally accepted technical, metrological and performance requirements. The evaluation involves various metrological and functional tests, the results of which are compiled into detailed test reports.At present, these test reports are largely prepared manually using spreadsheets or document templates, making the process time-consuming, prone to calculation errors and lacking uniformity. Hence, there is a requirement to develop a software application that automates test data recording, compliance evaluation and generation of standardized test reports as per OIML R 76, thereby improving accuracy, consistency, and efficiency in the model approval process.\n\n Description:\n\n Develop a software application capable of generating complete test reports for Non-Automatic Weighing Instruments based on test observations recorded during type evaluation as per OIML R 76.\n\n The system should be capable of: - Capturing instrument details and technical specifications.\n\n • Recording laboratory and environmental conditions.\n • Entering observations from various OIML R 76 test procedures.\n • Automatically calculating permissible errors, and compliance status.\n • Performing validation checks for entered test data.\n • Automatically determining pass/fail criteria based on OIML R 76 requirements.\n • Generating standardized digital test reports in printable formats.\n • Maintaining a digital repository of completed test reports.\n • Providing secure user access with role-based permissions.\n • Supporting future updates whenever OIML recommendations are revised.\n\n Expected Solution:\n\n The proposed solution should include:\n\n • User-friendly desktop and/or web-based application.\n • Digital data entry forms for all applicable OIML R 76 tests.\n • Automated calculations and compliance verification.\n • Standardized test report generation in PDF and editable formats MS Word etc.\n • Instrument-wise test history and report repository.\n • Dashboard for monitoring testing activities and report status.\n • Search and retrieval facility for previously generated reports.\n • Technical documentation describing software architecture, calculation methodology and deployment framework.\n\n Key Functional Requirements:\n\n • Entry of manufacturer details, Instrument specifications, Model information and technical parameters\n • Compliance determination as per OIML R-76\n • Entry of observations for all prescribed tests\n • Automatic validation of input data and related calculations\n • Automatic preparation of standardized test reports with auto-population of laboratory and instrument details\n • Attachment of photographs and supporting documents\n • Digital signatures (optional)\n • Export to PDF and editable formats\n • Dashboard for test report management (completed, in process, history access etc.)",
     "submissions": 0,
     "youtubeLink": "",
     "datasetLink": "",
-    "isNew": false
+    "isNew": false,
+    "officialPsNumber": "SIH26035",
+    "deadline": "20 September 2026",
+    "maxSubmissions": 500
   },
   {
     "sNo": 36,
@@ -506,7 +611,10 @@ const SIH_PROBLEM_STATEMENTS = [
     "submissions": 0,
     "youtubeLink": "",
     "datasetLink": "",
-    "isNew": false
+    "isNew": false,
+    "officialPsNumber": "SIH26036",
+    "deadline": "20 September 2026",
+    "maxSubmissions": 500
   },
   {
     "sNo": 37,
@@ -520,7 +628,10 @@ const SIH_PROBLEM_STATEMENTS = [
     "submissions": 0,
     "youtubeLink": "",
     "datasetLink": "",
-    "isNew": false
+    "isNew": false,
+    "officialPsNumber": "SIH26037",
+    "deadline": "20 September 2026",
+    "maxSubmissions": 500
   },
   {
     "sNo": 38,
@@ -534,7 +645,10 @@ const SIH_PROBLEM_STATEMENTS = [
     "submissions": 0,
     "youtubeLink": "",
     "datasetLink": "",
-    "isNew": false
+    "isNew": false,
+    "officialPsNumber": "SIH26038",
+    "deadline": "20 September 2026",
+    "maxSubmissions": 500
   },
   {
     "sNo": 39,
@@ -548,7 +662,10 @@ const SIH_PROBLEM_STATEMENTS = [
     "submissions": 0,
     "youtubeLink": "",
     "datasetLink": "",
-    "isNew": false
+    "isNew": false,
+    "officialPsNumber": "SIH26039",
+    "deadline": "20 September 2026",
+    "maxSubmissions": 500
   },
   {
     "sNo": 40,
@@ -562,7 +679,10 @@ const SIH_PROBLEM_STATEMENTS = [
     "submissions": 0,
     "youtubeLink": "",
     "datasetLink": "",
-    "isNew": false
+    "isNew": false,
+    "officialPsNumber": "SIH26040",
+    "deadline": "20 September 2026",
+    "maxSubmissions": 500
   },
   {
     "sNo": 41,
@@ -576,7 +696,10 @@ const SIH_PROBLEM_STATEMENTS = [
     "submissions": 0,
     "youtubeLink": "",
     "datasetLink": "",
-    "isNew": false
+    "isNew": false,
+    "officialPsNumber": "SIH26041",
+    "deadline": "20 September 2026",
+    "maxSubmissions": 500
   },
   {
     "sNo": 42,
@@ -590,7 +713,10 @@ const SIH_PROBLEM_STATEMENTS = [
     "submissions": 0,
     "youtubeLink": "",
     "datasetLink": "",
-    "isNew": false
+    "isNew": false,
+    "officialPsNumber": "SIH26042",
+    "deadline": "20 September 2026",
+    "maxSubmissions": 500
   },
   {
     "sNo": 43,
@@ -604,7 +730,10 @@ const SIH_PROBLEM_STATEMENTS = [
     "submissions": 0,
     "youtubeLink": "",
     "datasetLink": "",
-    "isNew": false
+    "isNew": false,
+    "officialPsNumber": "SIH26043",
+    "deadline": "20 September 2026",
+    "maxSubmissions": 500
   },
   {
     "sNo": 44,
@@ -614,11 +743,14 @@ const SIH_PROBLEM_STATEMENTS = [
     "department": "All India Institute of Ayurveda",
     "category": "Software",
     "theme": "Smart Automation",
-    "description": "Background:\n\n A significant gap exists between the skills acquired in academic institutions and the competencies expected by industries. Students often struggle to identify the skills required for their desired career paths, while industries face challenges in finding candidates with the right skill sets. Similarly, academicians have limited visibility into industry internship opportunities that could help them gain practical exposure and align teaching with current industry practices. There is a need for a unified platform that connects students, industries, and academicians, enabling seamless collaboration and skill development.\n\n Description:\n\n The proposed solution is a centralized Academiaâ€“Industry Collaboration Portal that serves as a one-stop platform for students, industries, and academicians.\n\n Key features include:\n\n • Skill Assessment: Students complete a questionnaire to evaluate their technical and soft skills shared by industry. The system generates a skill profile and identifies strengths and skill gaps based on current industry requirements.\n • Skill Mapping: Based on the assessment, the platform recommends relevant industries, job roles, and skill development programs aligned with industry requirements.\n • Industry Internship & Job Opportunities: Industries can post internships, projects, apprenticeships, and entry-level job openings with required skills. Students receive recommendations based on their skill profiles and can apply directly.\n • Industry Learning Programs: Companies can publish training programs, certification courses, workshops, and mentorship initiatives to help students acquire in-demand skills before applying.\n • Allow students to search, apply, and track internship and placement opportunities through a single platform.\n • Provide a dedicated portal for academicians to explore faculty internships, industrial training, Faculty Development Programs (FDPs), consultancy opportunities, and collaborative research projects.\n • Facilitate industryâ€“academia collaboration through mentorship programs, workshops, guest lectures, innovation challenges, and live industry projects.\n • Enable institutions to monitor student skill development, internship participation, and placement progress through dashboards and analytics.\n • Maintain a digital portfolio for students containing verified skills, certifications, projects, internships, and achievements to improve employability.\n\n Expected solution:\n\n The solution should provide:\n\n The solution should provide a secure, scalable, and intelligent platform that supports the complete lifecycle of skill development, internships, and placements.\n\n • Skill Development-\n • Skill assessment through questionnaires and aptitude tests.\n • Skill profiling and identification of technical and soft skill gaps.\n • Personalized learning recommendations, certification programs, and industry-relevant training.\n • Career guidance based on individual skills, interests, and industry demand.\n • Student digital portfolios showcasing verified skills, certifications, projects, and achievements.\n • Internship-\n • Centralized internship portal where industries can post internship opportunities with required skills.\n • Matching of students to internships based on their skill profiles and career interests.\n • Internship application and tracking system for students.\n • Internship opportunities for academicians, industrial training, and Faculty Development Programs (FDPs).\n • Progress tracking, mentor feedback, and internship completion records.\n • Placement-\n • Industry portal for posting job opportunities with required qualifications and skill sets.\n • Recommendation engine to match students with relevant placement opportunities.\n • Candidate shortlisting based on skill compatibility and eligibility.\n • Application tracking and recruitment management for students and recruiters.\n • Analytics and reporting dashboards for institutions and industries to monitor placement readiness, recruitment outcomes, and skill demand trends.\n\n Overall Platform Features-\n\n • Role-based access for students, academicians, industries, and institutions.\n • Secure document management for resumes, certificates, internship reports, and academic records.\n • Collaboration features for industry mentorship, live projects, workshops, and research partnerships.\n • Integration with learning platforms, certification providers, and institutional databases.\n • Comprehensive analytics to support data-driven decisions for institutions, industries, and policymakers.",
+    "description": "Background:\n\n A significant gap exists between the skills acquired in academic institutions and the competencies expected by industries. Students often struggle to identify the skills required for their desired career paths, while industries face challenges in finding candidates with the right skill sets. Similarly, academicians have limited visibility into industry internship opportunities that could help them gain practical exposure and align teaching with current industry practices. There is a need for a unified platform that connects students, industries, and academicians, enabling seamless collaboration and skill development.\n\n Description:\n\n The proposed solution is a centralized Academia\"“Industry Collaboration Portal that serves as a one-stop platform for students, industries, and academicians.\n\n Key features include:\n\n • Skill Assessment: Students complete a questionnaire to evaluate their technical and soft skills shared by industry. The system generates a skill profile and identifies strengths and skill gaps based on current industry requirements.\n • Skill Mapping: Based on the assessment, the platform recommends relevant industries, job roles, and skill development programs aligned with industry requirements.\n • Industry Internship & Job Opportunities: Industries can post internships, projects, apprenticeships, and entry-level job openings with required skills. Students receive recommendations based on their skill profiles and can apply directly.\n • Industry Learning Programs: Companies can publish training programs, certification courses, workshops, and mentorship initiatives to help students acquire in-demand skills before applying.\n • Allow students to search, apply, and track internship and placement opportunities through a single platform.\n • Provide a dedicated portal for academicians to explore faculty internships, industrial training, Faculty Development Programs (FDPs), consultancy opportunities, and collaborative research projects.\n • Facilitate industry\"“academia collaboration through mentorship programs, workshops, guest lectures, innovation challenges, and live industry projects.\n • Enable institutions to monitor student skill development, internship participation, and placement progress through dashboards and analytics.\n • Maintain a digital portfolio for students containing verified skills, certifications, projects, internships, and achievements to improve employability.\n\n Expected solution:\n\n The solution should provide:\n\n The solution should provide a secure, scalable, and intelligent platform that supports the complete lifecycle of skill development, internships, and placements.\n\n • Skill Development-\n • Skill assessment through questionnaires and aptitude tests.\n • Skill profiling and identification of technical and soft skill gaps.\n • Personalized learning recommendations, certification programs, and industry-relevant training.\n • Career guidance based on individual skills, interests, and industry demand.\n • Student digital portfolios showcasing verified skills, certifications, projects, and achievements.\n • Internship-\n • Centralized internship portal where industries can post internship opportunities with required skills.\n • Matching of students to internships based on their skill profiles and career interests.\n • Internship application and tracking system for students.\n • Internship opportunities for academicians, industrial training, and Faculty Development Programs (FDPs).\n • Progress tracking, mentor feedback, and internship completion records.\n • Placement-\n • Industry portal for posting job opportunities with required qualifications and skill sets.\n • Recommendation engine to match students with relevant placement opportunities.\n • Candidate shortlisting based on skill compatibility and eligibility.\n • Application tracking and recruitment management for students and recruiters.\n • Analytics and reporting dashboards for institutions and industries to monitor placement readiness, recruitment outcomes, and skill demand trends.\n\n Overall Platform Features-\n\n • Role-based access for students, academicians, industries, and institutions.\n • Secure document management for resumes, certificates, internship reports, and academic records.\n • Collaboration features for industry mentorship, live projects, workshops, and research partnerships.\n • Integration with learning platforms, certification providers, and institutional databases.\n • Comprehensive analytics to support data-driven decisions for institutions, industries, and policymakers.",
     "submissions": 0,
     "youtubeLink": "",
     "datasetLink": "",
-    "isNew": false
+    "isNew": false,
+    "officialPsNumber": "SIH26044",
+    "deadline": "20 September 2026",
+    "maxSubmissions": 500
   },
   {
     "sNo": 45,
@@ -628,11 +760,14 @@ const SIH_PROBLEM_STATEMENTS = [
     "department": "All India Institute of Ayurveda",
     "category": "Software",
     "theme": "MedTech / BioTech / HealthTech",
-    "description": "Background:\n\n Ayurveda rests on a vast corpus of codified and community-held traditional knowledge (TK) and on therapeutics derived from plant, microbial and animal sources. Protecting and commercialising an Ayurvedic product means navigating several overlapping regimes at once: patents, geographical indications (GI), trademarks, copyright, designs, trade secrets and plant-variety rights; the Access-and-Benefit-Sharing duties that flow from Indiaâ€™s sovereignty over its biological resources; and the drug-regulatory framework that decides whether a formulation is a classical medicine, a proprietary medicine, a new drug, a phytopharmaceutical, a food or a cosmetic. Practitioners, researchers, AYUSH startups and MSMEs and cultivators routinely struggle with this. The result is twofold: legitimate Ayurvedic innovation is under-protected and under-commercialised, while Indiaâ€™s traditional knowledge remains exposed to misappropriation abroad. Recent shifts â€” the 2024 patent and biodiversity rules, the WIPO Treaty on Genetic Resources and Associated Traditional Knowledge (2024) and a fast-moving advertising and regulatory landscape â€” make authoritative, plain-language guidance more necessary than ever, yet no such tool exists for the AYUSH community.\n\n Description:\n\n The assistant answers IPR questions specific to Ayurveda with accuracy, source citation and jurisdictional clarity, keeping the national and the international layers distinct through an explicit jurisdiction switch so that answers are never conflated.\n\n Because intellectual property for an Ayurvedic product is inseparable from how the product is regulated, the assistant first helps classify the formulation. It asks the minimum clarifying questions to determine whether the product is a classical/generic medicine (formulation and method drawn from a First-Schedule authoritative text), a patent-or-proprietary medicine, a new or non-classical drug requiring proof of safety and effectiveness, a phytopharmaceutical, an Ayurveda-Aahar / nutraceutical, or a cosmetic â€” and then states what each category requires and its very different IP and ABS posture. For example, a classical formulation is largely traditional knowledge that faces the Section 3(p) patenting bar and is defended through the Traditional Knowledge Digital Library, whereas a new drug gains genuine patent potential but must generate clinical evidence.\n\n National coverage spans the Patents Act (and the 2024 Rules), the GI, Trade Marks, Designs, Copyright and Plant-Variety regimes, the Biological Diversity Act (as amended in 2023, with the 2024 Rules) and the allied drug, advertising, labelling and food/cosmetic regimes â€” the Drugs and Cosmetics Act, the Drugs and Magic Remedies (Objectionable Advertisements) Act and the FSSAI Ayurveda-Aahar regulations. International coverage separately spans TRIPS, the Convention on Biological Diversity and the Nagoya Protocol, the WIPO GRATK Treaty, the PCT, the Madrid and Hague systems, the Budapest Treaty (for micro-organism deposits) and the herbal-product market-access regimes of key export markets.\n\n The assistant also facilitates access to authoritative sources â€” free official databases directly and the userâ€™s own paid subscriptions only with explicit, logged permission â€” so that a user can move from a question to the right registry, record or form. It must cite the specific statute, rule, treaty article or record it relies on; clearly state that it provides information and not legal advice; keep its corpus current as the law changes; and never fabricate authority.\n\n Expected solution:\n\n A deployable, multilingual assistant built on retrieval-augmented generation grounded in a curated, version-tracked corpus of statutes, rules, treaties, pharmacopoeial standards, registry records and case law, so that every answer is traceable to a source and hallucination is minimised. The solution should provide: a jurisdiction toggle (India vs international) with the two answer-sets kept visibly separate; routing across IP types together with the formulation-classification flow; an ABS-compliance helper and a TKDL / prior-art pointer; mandatory source citations with a confidence indicator and a path to escalate to a human IP facilitator; multilingual delivery (leveraging national language infrastructure such as Bhashini); and guardrails, a standing 'information, not legal advice' disclaimer and privacy, audit and security aligned to the Digital Personal Data Protection regime and to recognised AI-application standards. A relational knowledge graph and agentic, multi-source orchestration deepen multi-step reasoning and the build can be staged â€” a citation-grounded retrieval MVP first, then the graph and agentic layers, then paid-source connectors and the full multilingual and voice experience. The output should be evaluable on answer accuracy, citation correctness, safe abstention on out-of-scope or uncertain queries and multilingual quality.",
+    "description": "Background:\n\n Ayurveda rests on a vast corpus of codified and community-held traditional knowledge (TK) and on therapeutics derived from plant, microbial and animal sources. Protecting and commercialising an Ayurvedic product means navigating several overlapping regimes at once: patents, geographical indications (GI), trademarks, copyright, designs, trade secrets and plant-variety rights; the Access-and-Benefit-Sharing duties that flow from India's sovereignty over its biological resources; and the drug-regulatory framework that decides whether a formulation is a classical medicine, a proprietary medicine, a new drug, a phytopharmaceutical, a food or a cosmetic. Practitioners, researchers, AYUSH startups and MSMEs and cultivators routinely struggle with this. The result is twofold: legitimate Ayurvedic innovation is under-protected and under-commercialised, while India's traditional knowledge remains exposed to misappropriation abroad. Recent shifts \"” the 2024 patent and biodiversity rules, the WIPO Treaty on Genetic Resources and Associated Traditional Knowledge (2024) and a fast-moving advertising and regulatory landscape \"” make authoritative, plain-language guidance more necessary than ever, yet no such tool exists for the AYUSH community.\n\n Description:\n\n The assistant answers IPR questions specific to Ayurveda with accuracy, source citation and jurisdictional clarity, keeping the national and the international layers distinct through an explicit jurisdiction switch so that answers are never conflated.\n\n Because intellectual property for an Ayurvedic product is inseparable from how the product is regulated, the assistant first helps classify the formulation. It asks the minimum clarifying questions to determine whether the product is a classical/generic medicine (formulation and method drawn from a First-Schedule authoritative text), a patent-or-proprietary medicine, a new or non-classical drug requiring proof of safety and effectiveness, a phytopharmaceutical, an Ayurveda-Aahar / nutraceutical, or a cosmetic \"” and then states what each category requires and its very different IP and ABS posture. For example, a classical formulation is largely traditional knowledge that faces the Section 3(p) patenting bar and is defended through the Traditional Knowledge Digital Library, whereas a new drug gains genuine patent potential but must generate clinical evidence.\n\n National coverage spans the Patents Act (and the 2024 Rules), the GI, Trade Marks, Designs, Copyright and Plant-Variety regimes, the Biological Diversity Act (as amended in 2023, with the 2024 Rules) and the allied drug, advertising, labelling and food/cosmetic regimes \"” the Drugs and Cosmetics Act, the Drugs and Magic Remedies (Objectionable Advertisements) Act and the FSSAI Ayurveda-Aahar regulations. International coverage separately spans TRIPS, the Convention on Biological Diversity and the Nagoya Protocol, the WIPO GRATK Treaty, the PCT, the Madrid and Hague systems, the Budapest Treaty (for micro-organism deposits) and the herbal-product market-access regimes of key export markets.\n\n The assistant also facilitates access to authoritative sources \"” free official databases directly and the user's own paid subscriptions only with explicit, logged permission \"” so that a user can move from a question to the right registry, record or form. It must cite the specific statute, rule, treaty article or record it relies on; clearly state that it provides information and not legal advice; keep its corpus current as the law changes; and never fabricate authority.\n\n Expected solution:\n\n A deployable, multilingual assistant built on retrieval-augmented generation grounded in a curated, version-tracked corpus of statutes, rules, treaties, pharmacopoeial standards, registry records and case law, so that every answer is traceable to a source and hallucination is minimised. The solution should provide: a jurisdiction toggle (India vs international) with the two answer-sets kept visibly separate; routing across IP types together with the formulation-classification flow; an ABS-compliance helper and a TKDL / prior-art pointer; mandatory source citations with a confidence indicator and a path to escalate to a human IP facilitator; multilingual delivery (leveraging national language infrastructure such as Bhashini); and guardrails, a standing 'information, not legal advice' disclaimer and privacy, audit and security aligned to the Digital Personal Data Protection regime and to recognised AI-application standards. A relational knowledge graph and agentic, multi-source orchestration deepen multi-step reasoning and the build can be staged \"” a citation-grounded retrieval MVP first, then the graph and agentic layers, then paid-source connectors and the full multilingual and voice experience. The output should be evaluable on answer accuracy, citation correctness, safe abstention on out-of-scope or uncertain queries and multilingual quality.",
     "submissions": 0,
     "youtubeLink": "",
     "datasetLink": "",
-    "isNew": false
+    "isNew": false,
+    "officialPsNumber": "SIH26045",
+    "deadline": "20 September 2026",
+    "maxSubmissions": 500
   },
   {
     "sNo": 46,
@@ -642,11 +777,14 @@ const SIH_PROBLEM_STATEMENTS = [
     "department": "All India Institute of Ayurveda",
     "category": "Software",
     "theme": "MedTech / BioTech / HealthTech",
-    "description": "Background:\n\n The All India Institute of Ayurveda (AIIA) conducts and coordinates a growing portfolio of clinical research in Ayurveda â€” interventional and observational studies, multi-centre trials â€” and, as the host of the National Pharmacovigilance Coordination Centre (NPvCC) for ASU&H drugs, it also anchors nationwide safety surveillance. This activity is governed by a demanding compliance framework: mandatory prospective registration in the Clinical Trials Registry â€“ India (CTRI); the Good Clinical Practice guidelines for ASU medicine (GCP-ASU) and the ICMR National Ethical Guidelines; the New Drugs and Clinical Trials Rules, 2019 where applicable; Institutional Ethics Committee oversight; and timely Adverse-Event / Serious-Adverse-Event reporting. Yet study status, recruitment, milestones, data quality and safety signals are typically tracked across spreadsheets and disconnected tools, with no single, real-time, auditable view. The result is delayed decisions, missed reporting timelines and avoidable compliance risk â€” precisely as Ayurveda research scales and seeks global scientific credibility.\n\n Description:\n\n The platform is a real-time, cloud-based Clinical Trial Management System (CTMS) and monitoring dashboard that gives AIIA a single, role-based, auditable view of its entire clinical-research portfolio.It tracks each study across its lifecycle â€” protocol and Institutional Ethics Committee approval, CTRI registration, site activation, screening, enrolment and randomization against target, visit and protocol-deviation compliance, data-query and data-quality status, study milestones and timelines, and close-out â€” surfaced as real-time Key Performance Indicators (KPIs) with configurable alerts (for example, enrolment lag, an ethics approval or CTRI update due, or an overdue monitoring visit).Because AIIA hosts the NPvCC, the dashboard integrates pharmacovigilance: it captures and routes Adverse Drug Reaction / Adverse-Event / Serious-Adverse-Event reports against regulatory reporting timelines, coded to standard dictionaries (MedDRA, WHODrug), and feeds aggregate safety signals to the Data Safety Monitoring Board and institutional leadership.Data must follow recognised clinical-research standards â€” CDISC (CDASH for data collection, SDTM for tabulation, ADaM for analysis) and HL7 FHIR R4 for interoperability with Electronic Data Capture (EDC), the hospital information system and Ayushman Bharat Digital Mission (ABDM) building blocks â€” with full ALCOA+ data integrity and an immutable, time-stamped audit trail. Access is strictly role-based (Principal Investigator, study coordinator, monitor, Ethics Committee, pharmacovigilance, administration, and read-only regulator views).The platform must comply with GCP-ASU, the ICMR ethical guidelines, the NDCT Rules 2019 and CTRI requirements, and with the Digital Personal Data Protection Act, 2023 and its 2025 Rules â€” including informed-consent management, data minimisation, encryption, and hosting on compliant, data-resident cloud infrastructure secured to ISO/IEC 27001 and CERT-In norms, since clinical-trial data is sensitive personal data.\n\n Expected solution:\n\n A deployable, cloud-based CTMS-and-analytics dashboard providing: a real-time portfolio view with per-study drill-down; configurable KPIs and alerting; strictly role-based access and an immutable, ALCOA+-compliant audit trail; CDISC-aligned data models and HL7 FHIR R4 / ABDM interoperability with EDC and the hospital information system; an integrated pharmacovigilance module (AE/SAE capture, MedDRA/WHO Drug coding, regulatory-timeline tracking) reflecting AIIAâ€™s NPvCC role; CTRI and ethics/regulatory milestone tracking; informed-consent and privacy controls aligned to the DPDP regime; electronic-signature and data-integrity controls consistent with GCP; and the ability to export submission-ready datasets (SDTM / ADaM, Define-XML). It should present tailored dashboards for Investigators, the Ethics Committee, pharmacovigilance and institutional leadership, and be hosted on secure, data-resident cloud infrastructure (ISO/IEC 27001, CERT-In). The build can be staged â€” a core study-tracking and KPI MVP first, then EDC/FHIR integration and the pharmacovigilance module, then full CDISC submission export and advanced analytics. The system should be evaluable on data accuracy and integrity, timeliness of safety and regulatory reporting, interoperability conformance, and access-control and audit completeness.",
+    "description": "Background:\n\n The All India Institute of Ayurveda (AIIA) conducts and coordinates a growing portfolio of clinical research in Ayurveda \"” interventional and observational studies, multi-centre trials \"” and, as the host of the National Pharmacovigilance Coordination Centre (NPvCC) for ASU&H drugs, it also anchors nationwide safety surveillance. This activity is governed by a demanding compliance framework: mandatory prospective registration in the Clinical Trials Registry \"“ India (CTRI); the Good Clinical Practice guidelines for ASU medicine (GCP-ASU) and the ICMR National Ethical Guidelines; the New Drugs and Clinical Trials Rules, 2019 where applicable; Institutional Ethics Committee oversight; and timely Adverse-Event / Serious-Adverse-Event reporting. Yet study status, recruitment, milestones, data quality and safety signals are typically tracked across spreadsheets and disconnected tools, with no single, real-time, auditable view. The result is delayed decisions, missed reporting timelines and avoidable compliance risk \"” precisely as Ayurveda research scales and seeks global scientific credibility.\n\n Description:\n\n The platform is a real-time, cloud-based Clinical Trial Management System (CTMS) and monitoring dashboard that gives AIIA a single, role-based, auditable view of its entire clinical-research portfolio.It tracks each study across its lifecycle \"” protocol and Institutional Ethics Committee approval, CTRI registration, site activation, screening, enrolment and randomization against target, visit and protocol-deviation compliance, data-query and data-quality status, study milestones and timelines, and close-out \"” surfaced as real-time Key Performance Indicators (KPIs) with configurable alerts (for example, enrolment lag, an ethics approval or CTRI update due, or an overdue monitoring visit).Because AIIA hosts the NPvCC, the dashboard integrates pharmacovigilance: it captures and routes Adverse Drug Reaction / Adverse-Event / Serious-Adverse-Event reports against regulatory reporting timelines, coded to standard dictionaries (MedDRA, WHODrug), and feeds aggregate safety signals to the Data Safety Monitoring Board and institutional leadership.Data must follow recognised clinical-research standards \"” CDISC (CDASH for data collection, SDTM for tabulation, ADaM for analysis) and HL7 FHIR R4 for interoperability with Electronic Data Capture (EDC), the hospital information system and Ayushman Bharat Digital Mission (ABDM) building blocks \"” with full ALCOA+ data integrity and an immutable, time-stamped audit trail. Access is strictly role-based (Principal Investigator, study coordinator, monitor, Ethics Committee, pharmacovigilance, administration, and read-only regulator views).The platform must comply with GCP-ASU, the ICMR ethical guidelines, the NDCT Rules 2019 and CTRI requirements, and with the Digital Personal Data Protection Act, 2023 and its 2025 Rules \"” including informed-consent management, data minimisation, encryption, and hosting on compliant, data-resident cloud infrastructure secured to ISO/IEC 27001 and CERT-In norms, since clinical-trial data is sensitive personal data.\n\n Expected solution:\n\n A deployable, cloud-based CTMS-and-analytics dashboard providing: a real-time portfolio view with per-study drill-down; configurable KPIs and alerting; strictly role-based access and an immutable, ALCOA+-compliant audit trail; CDISC-aligned data models and HL7 FHIR R4 / ABDM interoperability with EDC and the hospital information system; an integrated pharmacovigilance module (AE/SAE capture, MedDRA/WHO Drug coding, regulatory-timeline tracking) reflecting AIIA's NPvCC role; CTRI and ethics/regulatory milestone tracking; informed-consent and privacy controls aligned to the DPDP regime; electronic-signature and data-integrity controls consistent with GCP; and the ability to export submission-ready datasets (SDTM / ADaM, Define-XML). It should present tailored dashboards for Investigators, the Ethics Committee, pharmacovigilance and institutional leadership, and be hosted on secure, data-resident cloud infrastructure (ISO/IEC 27001, CERT-In). The build can be staged \"” a core study-tracking and KPI MVP first, then EDC/FHIR integration and the pharmacovigilance module, then full CDISC submission export and advanced analytics. The system should be evaluable on data accuracy and integrity, timeliness of safety and regulatory reporting, interoperability conformance, and access-control and audit completeness.",
     "submissions": 0,
     "youtubeLink": "",
     "datasetLink": "",
-    "isNew": false
+    "isNew": false,
+    "officialPsNumber": "SIH26046",
+    "deadline": "20 September 2026",
+    "maxSubmissions": 500
   },
   {
     "sNo": 47,
@@ -656,11 +794,14 @@ const SIH_PROBLEM_STATEMENTS = [
     "department": "All India Institute of Ayurveda",
     "category": "Software",
     "theme": "MedTech / BioTech / HealthTech",
-    "description": "Background:\n\n 1.1 The Clinical History-Taking Bottleneck in Indian Hospitals History taking â€” the structured elicitation of a patient's presenting complaints, history of present illness, past medical and surgical history, drug and allergy history, family and personal history, and a review of systems â€” is the single most important diagnostic activity in clinical medicine. Classical teaching holds that a well-conducted history yields the correct diagnosis in 70â€“80% of cases, even before examination or investigation. Yet in India's overburdened public hospital outpatient departments (OPDs), the time available for this critical interaction has collapsed to unsustainable levels.\n\n India operates one of the most patient-dense healthcare systems in the world. Tertiary government hospitals and apex institutions routinely register 4,000â€“10,000 OPD patients per day, with a doctor-to-patient consultation time frequently reported between 2 and 5 minutes â€” among the shortest globally (study published in BMJ Open, 2017, across 67 countries placed India's average primary-care consultation at just over 2 minutes). Within this window, the physician must simultaneously elicit history, examine the patient, review prior records, formulate a diagnosis, counsel, and prescribe. The result is systematic under-elicitation of history, missed comorbidities, repeated questioning across visits, and diagnostic error.\n\n AYUSH institutions face an additional layer of complexity. Ayurvedic history taking (Trividha, Ashtavidha, and Dashavidha Pariksha) requires detailed assessment of Prakriti (constitution), Vikriti (current imbalance), Agni (digestive capacity), Koshtha (bowel nature), Ahara-Vihara (diet and lifestyle), Nidana (causative factors), and Samprapti (pathogenesis) â€” a far more extensive history framework than allopathic intake. Capturing this depth manually within OPD time constraints is effectively impossible, forcing practitioners to abbreviate the very assessment that defines personalized Ayurvedic care.\n\n 1.2 The Documentation and Records Fragmentation Problem Compounding the time problem is the fragmentation of patient records. Patients in India typically carry physical paper prescriptions, laboratory reports, discharge summaries, and imaging films from multiple prior providers. During consultation, the physician must manually scan through these unstructured documents â€” often handwritten, in varying languages, and chronologically disordered â€” consuming a significant fraction of the already-scarce consultation time. There is no point-of-entry mechanism to digitize, structure, and chronologically organize a patient's prior medical documents before they reach the consultation room.\n\n The Ayushman Bharat Digital Mission (ABDM) has established the national digital health infrastructure â€” ABHA (Ayushman Bharat Health Account) IDs, the Health Information Exchange, and FHIR-based interoperability standards. However, the 'first-mile' problem remains unsolved: there is no efficient, patient-facing software platform that captures structured history and digitizes documents into the ABDM ecosystem before the clinical encounter begins.\n\n 1.3 The Opportunity: AI-Powered Digital Clinical Intake Platform Self-service kiosks have transformed high-throughput service industries â€” ATMs in banking, self-check-in terminals in aviation, and ordering kiosks in quick-service restaurants â€” by offloading structured data-entry tasks from human staff to the user, dramatically improving throughput and accuracy. In healthcare, patient check-in kiosks are now widespread in developed-country hospitals, but these are limited to administrative check-in. None perform deep, AI-driven, multimodal clinical history acquisition with medical document digitization.\n\n The convergence of mature enabling technologies â€” robust automatic speech recognition (ASR) for Indian languages and accents (Bhashini / AI4Bharat models), large language models for conversational clinical history elicitation, high-accuracy OCR for handwritten and printed medical documents, and ABDM's FHIR interoperability â€” now makes it feasible to build an AI-powered clinical history software platform.\n\n Description:\n\n 2.1 The Problem in Precise Terms There is no purpose-built, patient-facing software platform that enables patients to independently and comprehensively record their medical history â€” through both natural spoken conversation and guided touchscreen interaction â€” and simultaneously digitize their existing physical medical documents, generating a structured, physician-ready clinical history summary that integrates with the hospital information system and the ABDM ecosystem before the patient enters the consultation room.\n\n 2.2 Why Existing Solutions Fall Short\n\n • Existing hospital registration systems (currently deployed in some Indian hospitals) capture only demographic and appointment data â€” name, age, department, token number. They do not elicit any clinical history or process medical documents.\n • Mobile health apps and tele-triage chatbots require smartphone literacy, stable connectivity, and patient enrolment ahead of the visit â€” excluding the large elderly, rural, low-literacy, and first-visit patient populations who form the bulk of government hospital OPD load.\n • Manual nurse-led triage / history desks are themselves human-resource-limited, do not scale to 5,000+ daily patients, and reintroduce the same time and transcription bottleneck the system is trying to eliminate.\n • Generic document scanners digitize images but do not extract, structure, or chronologically organize clinical content, nor link it to a structured history or ABHA record.\n\n 2.3 Specific Challenges a Solution Must Overcome\n\n • Multilingual, multi-accent voice capture in noisy hospital environments across Hindi, English, and major regional languages, for patients of varying literacy and digital comfort.\n • Accessibility for low-literacy and elderly users through intuitive icon-driven UI, audio prompts, and conversational guidance â€” the software platform must be usable by a first-time, non-tech-savvy patient with zero training.\n • Accurate clinical history structuring converting free-form patient narration into a standardized, physician-readable history (chief complaint, HPI, past history, drug/allergy, family, personal, review of systems) â€” and, for AYUSH settings, Dashavidha Pariksha parameters.\n • Reliable medical document digitization OCR of handwritten and printed prescriptions, lab reports, and discharge summaries in multiple languages, with intelligent extraction of diagnoses, medications, and investigation values.\n • Privacy, consent, and data security compliance with the Digital Personal Data Protection Act 2023 and ABDM consent framework â€” handling sensitive health data within a secure software environment.\n\n Expected solution:\n\n 3.1 Solution Overview â€” 'MediKiosk' AI Clinical History Software Platform The proposed solution â€” tentatively designated MediKiosk â€” a software platform for an AI-powered clinical history software platform that allows any patient to record a comprehensive medical history through natural voice conversation and guided touchscreen interaction, scan and digitize their existing physical medical documents, and generate a structured, physician-ready clinical history summary that is pushed to the hospital information system (HIS) and linked to the patient's ABHA record â€” all completed before the consultation, with minimal staff assistance required.\n\n • Insert Table*3.2 3.3 Software & AI Stack (Integrated)\n\n Module A â€” Conversational Multimodal History Engine A conversational AI engine that conducts a structured clinical history interview through both voice and touch. The patient speaks naturally in their preferred language; the engine asks intelligent follow-up questions (e.g., on stating 'chest pain', it probes onset, character, radiation, aggravating/relieving factors â€” the SOCRATES framework) and simultaneously offers touch-based multiple-choice options for patients who prefer tapping. Built on Indian-language ASR, a dialogue manager constrained by a clinical history ontology, and text-to-speech for audio prompts.\n\n • Adaptive questioning: dynamically branches based on chief complaint and prior answers, mirroring a physician's clinical reasoning to elicit a complete HPI and review of systems\n • Dual-mode input: every question answerable by speaking OR tapping, ensuring usability across literacy and comfort levels\n • AYUSH history mode: for Ayurvedic OPDs, an extended interview capturing Dashavidha Pariksha (Prakriti, Vikriti, Sara, Samhanana, Pramana, Satmya, Sattva, Ahara Shakti, Vyayama Shakti, Vaya) and Ahara-Vihara assessment\n • Red-flag detection: AI flags emergency symptoms (e.g., acute chest pain with dyspnoea, stroke symptoms) and triggers immediate priority alert to triage staff rather than routine queueing Module B â€” Medical Document Digitization & Intelligence An integrated scanning and document-AI pipeline that allows the patient to upload prior prescriptions, lab reports, and discharge summaries. The system performs high-accuracy OCR (printed and handwritten, multilingual), then extract and structure clinical entities.\n • Intelligent extraction: diagnoses, prescribed medications with dosages, investigation results with values and reference ranges, and procedure/surgery history\n • Chronological organization: automatically dates and orders documents into a coherent medical timeline for the physician\n • Abnormal-value highlighting: flags out-of-range lab values and potential drug interactions for physician attention Module C â€” Structured History Summary Generator An AI summarization engine that synthesizes the conversational history and the digitized documents into a single, concise, physician-ready clinical summary in standard format â€” presented on the consultation screen the moment the patient enters the room. The physician reads a complete, structured history in seconds rather than spending minutes eliciting it, and can edit/confirm before saving.\n • Standard clinical format: Chief complaint ? HPI ? Past medical/surgical ? Drug & allergy ? Family ? Personal ? ROS ? Prior investigations summary\n • Editable & verifiable: physician retains full control â€” the summary is a draft to accept, amend, or reject, never an autonomous diagnosis\n • Bilingual output: patient-facing audio confirmation in local language; physician-facing summary in English/Hindi Module D â€” Consent, Privacy & ABDM Integration A robust consent and security layer compliant with the Digital Personal Data Protection Act 2023 and the ABDM consent framework. The patient authenticates via ABHA ID, grants explicit consent for data capture and sharing, and the structured history is pushed to the hospital HIS/EMR and linked to the ABHA Personal Health Record via FHIR APIs.\n • Secure processing: voice and document AI are processed securely within the software platform\n • Session termination: temporary session data is cleared immediately after submission\n • Consent-first design: granular, revocable consent with audio explanation for low-literacy patients 3.4 End-to-End Patient Journey\n • Step 1 â€” Identify: Patient logs into the software platform, enters/scans ABHA ID or Aadhaar details or registers as new; selects language; grants consent (audio-guided)\n • Step 2 â€” Converse: AI conducts adaptive voice + touch history interview, capturing chief complaint, HPI, and full history; red flags trigger priority triage\n • Step 3 â€” Scan: Patient uploads prior prescriptions, lab reports, and discharge summaries; AI digitizes, structures, and timelines them\n • Step 4 â€” Summarize & Route: AI generates structured history summary, links to ABHA, pushes to HIS, updates the patient's digital record; summary appears on physician's screen at consultation\n • Step 5 â€” Consult: Physician reviews complete history in seconds, edits/confirms, and devotes the full consultation to examination, reasoning, and counselling",
+    "description": "Background:\n\n 1.1 The Clinical History-Taking Bottleneck in Indian Hospitals History taking \"” the structured elicitation of a patient's presenting complaints, history of present illness, past medical and surgical history, drug and allergy history, family and personal history, and a review of systems \"” is the single most important diagnostic activity in clinical medicine. Classical teaching holds that a well-conducted history yields the correct diagnosis in 70\"“80% of cases, even before examination or investigation. Yet in India's overburdened public hospital outpatient departments (OPDs), the time available for this critical interaction has collapsed to unsustainable levels.\n\n India operates one of the most patient-dense healthcare systems in the world. Tertiary government hospitals and apex institutions routinely register 4,000\"“10,000 OPD patients per day, with a doctor-to-patient consultation time frequently reported between 2 and 5 minutes \"” among the shortest globally (study published in BMJ Open, 2017, across 67 countries placed India's average primary-care consultation at just over 2 minutes). Within this window, the physician must simultaneously elicit history, examine the patient, review prior records, formulate a diagnosis, counsel, and prescribe. The result is systematic under-elicitation of history, missed comorbidities, repeated questioning across visits, and diagnostic error.\n\n AYUSH institutions face an additional layer of complexity. Ayurvedic history taking (Trividha, Ashtavidha, and Dashavidha Pariksha) requires detailed assessment of Prakriti (constitution), Vikriti (current imbalance), Agni (digestive capacity), Koshtha (bowel nature), Ahara-Vihara (diet and lifestyle), Nidana (causative factors), and Samprapti (pathogenesis) \"” a far more extensive history framework than allopathic intake. Capturing this depth manually within OPD time constraints is effectively impossible, forcing practitioners to abbreviate the very assessment that defines personalized Ayurvedic care.\n\n 1.2 The Documentation and Records Fragmentation Problem Compounding the time problem is the fragmentation of patient records. Patients in India typically carry physical paper prescriptions, laboratory reports, discharge summaries, and imaging films from multiple prior providers. During consultation, the physician must manually scan through these unstructured documents \"” often handwritten, in varying languages, and chronologically disordered \"” consuming a significant fraction of the already-scarce consultation time. There is no point-of-entry mechanism to digitize, structure, and chronologically organize a patient's prior medical documents before they reach the consultation room.\n\n The Ayushman Bharat Digital Mission (ABDM) has established the national digital health infrastructure \"” ABHA (Ayushman Bharat Health Account) IDs, the Health Information Exchange, and FHIR-based interoperability standards. However, the 'first-mile' problem remains unsolved: there is no efficient, patient-facing software platform that captures structured history and digitizes documents into the ABDM ecosystem before the clinical encounter begins.\n\n 1.3 The Opportunity: AI-Powered Digital Clinical Intake Platform Self-service kiosks have transformed high-throughput service industries \"” ATMs in banking, self-check-in terminals in aviation, and ordering kiosks in quick-service restaurants \"” by offloading structured data-entry tasks from human staff to the user, dramatically improving throughput and accuracy. In healthcare, patient check-in kiosks are now widespread in developed-country hospitals, but these are limited to administrative check-in. None perform deep, AI-driven, multimodal clinical history acquisition with medical document digitization.\n\n The convergence of mature enabling technologies \"” robust automatic speech recognition (ASR) for Indian languages and accents (Bhashini / AI4Bharat models), large language models for conversational clinical history elicitation, high-accuracy OCR for handwritten and printed medical documents, and ABDM's FHIR interoperability \"” now makes it feasible to build an AI-powered clinical history software platform.\n\n Description:\n\n 2.1 The Problem in Precise Terms There is no purpose-built, patient-facing software platform that enables patients to independently and comprehensively record their medical history \"” through both natural spoken conversation and guided touchscreen interaction \"” and simultaneously digitize their existing physical medical documents, generating a structured, physician-ready clinical history summary that integrates with the hospital information system and the ABDM ecosystem before the patient enters the consultation room.\n\n 2.2 Why Existing Solutions Fall Short\n\n • Existing hospital registration systems (currently deployed in some Indian hospitals) capture only demographic and appointment data \"” name, age, department, token number. They do not elicit any clinical history or process medical documents.\n • Mobile health apps and tele-triage chatbots require smartphone literacy, stable connectivity, and patient enrolment ahead of the visit \"” excluding the large elderly, rural, low-literacy, and first-visit patient populations who form the bulk of government hospital OPD load.\n • Manual nurse-led triage / history desks are themselves human-resource-limited, do not scale to 5,000+ daily patients, and reintroduce the same time and transcription bottleneck the system is trying to eliminate.\n • Generic document scanners digitize images but do not extract, structure, or chronologically organize clinical content, nor link it to a structured history or ABHA record.\n\n 2.3 Specific Challenges a Solution Must Overcome\n\n • Multilingual, multi-accent voice capture in noisy hospital environments across Hindi, English, and major regional languages, for patients of varying literacy and digital comfort.\n • Accessibility for low-literacy and elderly users through intuitive icon-driven UI, audio prompts, and conversational guidance \"” the software platform must be usable by a first-time, non-tech-savvy patient with zero training.\n • Accurate clinical history structuring converting free-form patient narration into a standardized, physician-readable history (chief complaint, HPI, past history, drug/allergy, family, personal, review of systems) \"” and, for AYUSH settings, Dashavidha Pariksha parameters.\n • Reliable medical document digitization OCR of handwritten and printed prescriptions, lab reports, and discharge summaries in multiple languages, with intelligent extraction of diagnoses, medications, and investigation values.\n • Privacy, consent, and data security compliance with the Digital Personal Data Protection Act 2023 and ABDM consent framework \"” handling sensitive health data within a secure software environment.\n\n Expected solution:\n\n 3.1 Solution Overview \"” 'MediKiosk' AI Clinical History Software Platform The proposed solution \"” tentatively designated MediKiosk \"” a software platform for an AI-powered clinical history software platform that allows any patient to record a comprehensive medical history through natural voice conversation and guided touchscreen interaction, scan and digitize their existing physical medical documents, and generate a structured, physician-ready clinical history summary that is pushed to the hospital information system (HIS) and linked to the patient's ABHA record \"” all completed before the consultation, with minimal staff assistance required.\n\n • Insert Table*3.2 3.3 Software & AI Stack (Integrated)\n\n Module A \"” Conversational Multimodal History Engine A conversational AI engine that conducts a structured clinical history interview through both voice and touch. The patient speaks naturally in their preferred language; the engine asks intelligent follow-up questions (e.g., on stating 'chest pain', it probes onset, character, radiation, aggravating/relieving factors \"” the SOCRATES framework) and simultaneously offers touch-based multiple-choice options for patients who prefer tapping. Built on Indian-language ASR, a dialogue manager constrained by a clinical history ontology, and text-to-speech for audio prompts.\n\n • Adaptive questioning: dynamically branches based on chief complaint and prior answers, mirroring a physician's clinical reasoning to elicit a complete HPI and review of systems\n • Dual-mode input: every question answerable by speaking OR tapping, ensuring usability across literacy and comfort levels\n • AYUSH history mode: for Ayurvedic OPDs, an extended interview capturing Dashavidha Pariksha (Prakriti, Vikriti, Sara, Samhanana, Pramana, Satmya, Sattva, Ahara Shakti, Vyayama Shakti, Vaya) and Ahara-Vihara assessment\n • Red-flag detection: AI flags emergency symptoms (e.g., acute chest pain with dyspnoea, stroke symptoms) and triggers immediate priority alert to triage staff rather than routine queueing Module B \"” Medical Document Digitization & Intelligence An integrated scanning and document-AI pipeline that allows the patient to upload prior prescriptions, lab reports, and discharge summaries. The system performs high-accuracy OCR (printed and handwritten, multilingual), then extract and structure clinical entities.\n • Intelligent extraction: diagnoses, prescribed medications with dosages, investigation results with values and reference ranges, and procedure/surgery history\n • Chronological organization: automatically dates and orders documents into a coherent medical timeline for the physician\n • Abnormal-value highlighting: flags out-of-range lab values and potential drug interactions for physician attention Module C \"” Structured History Summary Generator An AI summarization engine that synthesizes the conversational history and the digitized documents into a single, concise, physician-ready clinical summary in standard format \"” presented on the consultation screen the moment the patient enters the room. The physician reads a complete, structured history in seconds rather than spending minutes eliciting it, and can edit/confirm before saving.\n • Standard clinical format: Chief complaint ? HPI ? Past medical/surgical ? Drug & allergy ? Family ? Personal ? ROS ? Prior investigations summary\n • Editable & verifiable: physician retains full control \"” the summary is a draft to accept, amend, or reject, never an autonomous diagnosis\n • Bilingual output: patient-facing audio confirmation in local language; physician-facing summary in English/Hindi Module D \"” Consent, Privacy & ABDM Integration A robust consent and security layer compliant with the Digital Personal Data Protection Act 2023 and the ABDM consent framework. The patient authenticates via ABHA ID, grants explicit consent for data capture and sharing, and the structured history is pushed to the hospital HIS/EMR and linked to the ABHA Personal Health Record via FHIR APIs.\n • Secure processing: voice and document AI are processed securely within the software platform\n • Session termination: temporary session data is cleared immediately after submission\n • Consent-first design: granular, revocable consent with audio explanation for low-literacy patients 3.4 End-to-End Patient Journey\n • Step 1 \"” Identify: Patient logs into the software platform, enters/scans ABHA ID or Aadhaar details or registers as new; selects language; grants consent (audio-guided)\n • Step 2 \"” Converse: AI conducts adaptive voice + touch history interview, capturing chief complaint, HPI, and full history; red flags trigger priority triage\n • Step 3 \"” Scan: Patient uploads prior prescriptions, lab reports, and discharge summaries; AI digitizes, structures, and timelines them\n • Step 4 \"” Summarize & Route: AI generates structured history summary, links to ABHA, pushes to HIS, updates the patient's digital record; summary appears on physician's screen at consultation\n • Step 5 \"” Consult: Physician reviews complete history in seconds, edits/confirms, and devotes the full consultation to examination, reasoning, and counselling",
     "submissions": 0,
     "youtubeLink": "",
     "datasetLink": "https://drive.google.com/file/d/1mQ6Qp2MKL8JXdL2kJYqV-SFqcfbxSvrd/view?usp=drive_link",
-    "isNew": false
+    "isNew": false,
+    "officialPsNumber": "SIH26047",
+    "deadline": "20 September 2026",
+    "maxSubmissions": 500
   },
   {
     "sNo": 48,
@@ -674,7 +815,10 @@ const SIH_PROBLEM_STATEMENTS = [
     "submissions": 0,
     "youtubeLink": "",
     "datasetLink": "",
-    "isNew": false
+    "isNew": false,
+    "officialPsNumber": "SIH26048",
+    "deadline": "20 September 2026",
+    "maxSubmissions": 500
   },
   {
     "sNo": 49,
@@ -684,11 +828,14 @@ const SIH_PROBLEM_STATEMENTS = [
     "department": "Department of Defence Production /IDEX",
     "category": "Hardware",
     "theme": "Smart Automation",
-    "description": "• Background:\n\n High Altitude Areas (HAA) and Super High Altitude Areas (SHAA) of Ladakh region presents one of the harshest operating environments for electronic equipment and systems because of its extreme cold, low atmospheric pressure, intense solar/UV radiation and large temperature variations between day and night. These environmental conditions strongly affect the reliability, efficiency, and lifespan of electrical and electronic systems.\n\n • Description:\n\n Ladakh is a cold desert located at elevations of approximately 3000 to 6000m above sea level. There are several environmental challenges viz. very low temperatures (-35Â°C to 40Â°C in winters), low atmospheric pressure, lower partial pressure of oxygen, low humidity, snow, ice and occasional moisture condensation. These conditions pose serious operational and storage issues of electrical and electronic equipment and systems and following effects on same is observed:\n\n 1. Reduced Cooling Efficiency: At high altitude, air density decreases significantly. Thin air removes heat less effectively (degradation of convective cooling), so electronic components run hotter even when ambient temperature is cold. This means overheating of processors, reduced efficiency of cooling fans and heat sinks, thermal stress on semiconductors and premature component failure. Systems being affected are computers and servers, telecom base stations, radar system, power electronics, military communication systems.\n\n 2. Insulation Breakdown and Electrical Arcing: Low atmospheric pressure reduces the dielectric strength of air. Air becomes a weaker insulator, increasing the risk of sparking and arcing between conductors.\n\n 3. Battery Performance Degradation: Cold temperatures severely affect battery chemistry. Lithium-ion and lead-acid batteries lose capacity and discharge faster in freezing conditions. Owing to this there is reduced backup time, slow charging and voltage instability.\n\n 4. Thermal Cycling Damage: Ladakh experiences large temperature variation between day and night. Repeated expansion and contraction develop mechanical stresses in the components. This result in cracking of solder joints, PCB warping etc.\n\n 5. Increased Radiation Exposure: Higher altitude means thinner atmospheric shielding, so electrical and electronic components receive more UV radiation and cosmic rays. This means semiconductor degradation, memory bit error and failure of sensitive sensors.\n\n 6. Effects on Communication Systems: High Mountains and severe weather affect signal propagation. There are problems like signal attenuation and reflection, antenna icing. Because of these cellular networks, satellite communication and military radio system get affected.\n\n 7. Real-World Impact: The Drone Challenge: The Indian Armyâ€™s extensive use of drones along the LAC highlights these exact issues. In the thin air of Ladakh, drone rotors generate less lift, forcing the electronic motors to work much harder and draw more current. Combined with cold-induced battery drain, drones that fly for an hour at sea level might only manage 20-25 minutes of flight time in Ladakh\n\n • Expected Solution:\n\n The environment of Ladakh significantly affects electrical and electronic equipment due to low atmospheric pressure, extreme cold, high UV/cosmic radiation, dust and dryness, and large thermal variations. These conditions can cause overheating, insulation failure, battery degradation, display malfunction, communication instability, and reduced reliability. Therefore, electrical and electronic equipment and systems used in Ladakh require specialized design modifications to improve the reliability, efficiency, and lifespan.",
+    "description": "• Background:\n\n High Altitude Areas (HAA) and Super High Altitude Areas (SHAA) of Ladakh region presents one of the harshest operating environments for electronic equipment and systems because of its extreme cold, low atmospheric pressure, intense solar/UV radiation and large temperature variations between day and night. These environmental conditions strongly affect the reliability, efficiency, and lifespan of electrical and electronic systems.\n\n • Description:\n\n Ladakh is a cold desert located at elevations of approximately 3000 to 6000m above sea level. There are several environmental challenges viz. very low temperatures (-35°C to 40°C in winters), low atmospheric pressure, lower partial pressure of oxygen, low humidity, snow, ice and occasional moisture condensation. These conditions pose serious operational and storage issues of electrical and electronic equipment and systems and following effects on same is observed:\n\n 1. Reduced Cooling Efficiency: At high altitude, air density decreases significantly. Thin air removes heat less effectively (degradation of convective cooling), so electronic components run hotter even when ambient temperature is cold. This means overheating of processors, reduced efficiency of cooling fans and heat sinks, thermal stress on semiconductors and premature component failure. Systems being affected are computers and servers, telecom base stations, radar system, power electronics, military communication systems.\n\n 2. Insulation Breakdown and Electrical Arcing: Low atmospheric pressure reduces the dielectric strength of air. Air becomes a weaker insulator, increasing the risk of sparking and arcing between conductors.\n\n 3. Battery Performance Degradation: Cold temperatures severely affect battery chemistry. Lithium-ion and lead-acid batteries lose capacity and discharge faster in freezing conditions. Owing to this there is reduced backup time, slow charging and voltage instability.\n\n 4. Thermal Cycling Damage: Ladakh experiences large temperature variation between day and night. Repeated expansion and contraction develop mechanical stresses in the components. This result in cracking of solder joints, PCB warping etc.\n\n 5. Increased Radiation Exposure: Higher altitude means thinner atmospheric shielding, so electrical and electronic components receive more UV radiation and cosmic rays. This means semiconductor degradation, memory bit error and failure of sensitive sensors.\n\n 6. Effects on Communication Systems: High Mountains and severe weather affect signal propagation. There are problems like signal attenuation and reflection, antenna icing. Because of these cellular networks, satellite communication and military radio system get affected.\n\n 7. Real-World Impact: The Drone Challenge: The Indian Army's extensive use of drones along the LAC highlights these exact issues. In the thin air of Ladakh, drone rotors generate less lift, forcing the electronic motors to work much harder and draw more current. Combined with cold-induced battery drain, drones that fly for an hour at sea level might only manage 20-25 minutes of flight time in Ladakh\n\n • Expected Solution:\n\n The environment of Ladakh significantly affects electrical and electronic equipment due to low atmospheric pressure, extreme cold, high UV/cosmic radiation, dust and dryness, and large thermal variations. These conditions can cause overheating, insulation failure, battery degradation, display malfunction, communication instability, and reduced reliability. Therefore, electrical and electronic equipment and systems used in Ladakh require specialized design modifications to improve the reliability, efficiency, and lifespan.",
     "submissions": 0,
     "youtubeLink": "",
     "datasetLink": "",
-    "isNew": false
+    "isNew": false,
+    "officialPsNumber": "SIH26049",
+    "deadline": "20 September 2026",
+    "maxSubmissions": 500
   },
   {
     "sNo": 50,
@@ -702,7 +849,10 @@ const SIH_PROBLEM_STATEMENTS = [
     "submissions": 0,
     "youtubeLink": "",
     "datasetLink": "",
-    "isNew": false
+    "isNew": false,
+    "officialPsNumber": "SIH26050",
+    "deadline": "20 September 2026",
+    "maxSubmissions": 500
   },
   {
     "sNo": 51,
@@ -716,7 +866,10 @@ const SIH_PROBLEM_STATEMENTS = [
     "submissions": 0,
     "youtubeLink": "",
     "datasetLink": "",
-    "isNew": false
+    "isNew": false,
+    "officialPsNumber": "SIH26051",
+    "deadline": "20 September 2026",
+    "maxSubmissions": 500
   },
   {
     "sNo": 52,
@@ -726,11 +879,14 @@ const SIH_PROBLEM_STATEMENTS = [
     "department": "Department of Defence Production /IDEX",
     "category": "Hardware",
     "theme": "Miscellaneous",
-    "description": "• Background:\n\n In defence and mission-critical communication systems, reliable speech transmission is severely affected by diverse acoustic disturbances such as gunshots, artillery fire, helicopter rotor noise, armored vehicle sound and emergency sirens. Traditional signal processing techniquesâ€”like spectral subtraction, Wiener filtering, and classical LMS-based ANCâ€”are limited in handling highly dynamic and non-linear noise environments. These methods assume stationary noise characteristics and often introduce artifacts or speech distortion under rapidly changing conditions.\n\n Recent advancements in Artificial Intelligence and Machine Learning (AI/ML)\n\n have transformed the field of speech enhancement and ANC. Deep learning models and time-domain architectures are capable of learning complex spectral-temporal patterns directly from data. These models significantly outperform conventional approaches in terms of perceptual quality (PESQ), intelligibility (STOI), and noise suppression (SNR). Additionally, the rise of edge AI platforms enables deployment of such models on embedded systems for real-time applications.\n\n • Description:\n\n The proposed system integrates AI/ML-driven noise suppression with adaptive filtering to create a robust ANC pipeline. The development begins with dataset generation, where clean speech data is combined with curated defence noise datasets (gunshots, drones, artillery, vehicle engines, wind, etc.)\n\n at varying SNR levels. This synthetic data generation ensures coverage of both stationary and impulsive noise scenarios.\n\n The training pipeline involves transforming audio into time-frequency representations (e.g., STFT spectrograms) or directly using raw waveform inputs. Models process both full-band and sub-band features to capture global and local dependencies. while its also operates in the complex domain to preserve phase information. Training is performed using loss functions such as SI-SNR, L1/L2 loss, and perceptual loss, with evaluation metrics including SNR, STOI, and PESQ. Data augmentation techniques (random noise mixing, reverberation, clipping) are applied to improve generalization.\n\n During inference, the trained model processes incoming noisy audio in real time, estimating a mask or directly reconstructing enhanced speech. The system can optionally include a lightweight adaptive filter (e.g., LMS) for residual noise suppression.\n\n For prototype demonstration, the trained model is deployed on embedded/edge hardware such as DSPs or AI-enabled SoCs (e.g., NVIDIA Jetson AGX Orin 64GB Developer Kit or similar platforms). Optimization techniques like quantization, pruning, and ONNX / TensorRT conversion are applied to meet latency and power constraints. The system is integrated with microphones (primary + reference) and headphones/communication units to validate real-time ANC performance in practical environments\n\n • Expected Solution:\n\n The final solution is a hybrid AI-driven ANC system capable of operating in real-time and handling diverse noise environments, including impulsive and highly dynamic defence scenarios. It should include:\n\n • A scalable dataset pipeline for generating realistic noisy-clean speech pairs\n • A state-of-the-art AI/ML model trained for robust noise suppression\n • A training framework with optimized hyper-parameters and perceptual loss functions\n • A real-time inference engine deployable on edge hardware\n • A prototype system demonstrating live noise cancellation using microphones / headset integration The system is expected to achieve significant performance improvements, targeting SNR > 15 dB, STOI > 0.85, and PESQ > 2.5, while maintaining low latency suitable for real-time communication. This solution will enable reliable and intelligible communication in defence, aerospace, and high-noise industrial environments.",
+    "description": "• Background:\n\n In defence and mission-critical communication systems, reliable speech transmission is severely affected by diverse acoustic disturbances such as gunshots, artillery fire, helicopter rotor noise, armored vehicle sound and emergency sirens. Traditional signal processing techniques\"”like spectral subtraction, Wiener filtering, and classical LMS-based ANC\"”are limited in handling highly dynamic and non-linear noise environments. These methods assume stationary noise characteristics and often introduce artifacts or speech distortion under rapidly changing conditions.\n\n Recent advancements in Artificial Intelligence and Machine Learning (AI/ML)\n\n have transformed the field of speech enhancement and ANC. Deep learning models and time-domain architectures are capable of learning complex spectral-temporal patterns directly from data. These models significantly outperform conventional approaches in terms of perceptual quality (PESQ), intelligibility (STOI), and noise suppression (SNR). Additionally, the rise of edge AI platforms enables deployment of such models on embedded systems for real-time applications.\n\n • Description:\n\n The proposed system integrates AI/ML-driven noise suppression with adaptive filtering to create a robust ANC pipeline. The development begins with dataset generation, where clean speech data is combined with curated defence noise datasets (gunshots, drones, artillery, vehicle engines, wind, etc.)\n\n at varying SNR levels. This synthetic data generation ensures coverage of both stationary and impulsive noise scenarios.\n\n The training pipeline involves transforming audio into time-frequency representations (e.g., STFT spectrograms) or directly using raw waveform inputs. Models process both full-band and sub-band features to capture global and local dependencies. while its also operates in the complex domain to preserve phase information. Training is performed using loss functions such as SI-SNR, L1/L2 loss, and perceptual loss, with evaluation metrics including SNR, STOI, and PESQ. Data augmentation techniques (random noise mixing, reverberation, clipping) are applied to improve generalization.\n\n During inference, the trained model processes incoming noisy audio in real time, estimating a mask or directly reconstructing enhanced speech. The system can optionally include a lightweight adaptive filter (e.g., LMS) for residual noise suppression.\n\n For prototype demonstration, the trained model is deployed on embedded/edge hardware such as DSPs or AI-enabled SoCs (e.g., NVIDIA Jetson AGX Orin 64GB Developer Kit or similar platforms). Optimization techniques like quantization, pruning, and ONNX / TensorRT conversion are applied to meet latency and power constraints. The system is integrated with microphones (primary + reference) and headphones/communication units to validate real-time ANC performance in practical environments\n\n • Expected Solution:\n\n The final solution is a hybrid AI-driven ANC system capable of operating in real-time and handling diverse noise environments, including impulsive and highly dynamic defence scenarios. It should include:\n\n • A scalable dataset pipeline for generating realistic noisy-clean speech pairs\n • A state-of-the-art AI/ML model trained for robust noise suppression\n • A training framework with optimized hyper-parameters and perceptual loss functions\n • A real-time inference engine deployable on edge hardware\n • A prototype system demonstrating live noise cancellation using microphones / headset integration The system is expected to achieve significant performance improvements, targeting SNR > 15 dB, STOI > 0.85, and PESQ > 2.5, while maintaining low latency suitable for real-time communication. This solution will enable reliable and intelligible communication in defence, aerospace, and high-noise industrial environments.",
     "submissions": 0,
     "youtubeLink": "",
     "datasetLink": "",
-    "isNew": false
+    "isNew": false,
+    "officialPsNumber": "SIH26052",
+    "deadline": "20 September 2026",
+    "maxSubmissions": 500
   },
   {
     "sNo": 53,
@@ -740,11 +896,14 @@ const SIH_PROBLEM_STATEMENTS = [
     "department": "Department of Defence Production /IDEX",
     "category": "Software",
     "theme": "Smart Vehicles",
-    "description": "• Background:\n\n Autonomous navigation depends on the ability of a vehicle to perceive its surroundings with high precision. While 3D Lidar point clouds provide rich spatial data, processing millions of points in real-time creates immense computational bottlenecks and memory latency. Conversely, standard 2D occupancy grids lose critical height information necessary for detecting curbs, potholes, or overhanging obstacles. To balance precision and performance, there is a need for a 'foveated' mapping approachâ€”similar to human visionâ€” where the immediate vicinity is rendered in high detail for safety, and distant areas are simplified to reduce the processing load.\n\n • Description:\n\n The goal is to build a deep learning pipeline that transforms raw Lidar point clouds into a variable resolution 2.5D grid (an elevation map with semantic layers). The system must perform three primary tasks:\n\n 1. Terrain Analysis: Distinguish between drivable surfaces and non-drivable terrain.\n\n 2. Object Detection: Identify and classify static obstacles (walls, poles) and dynamic objects (pedestrians, other vehicles).\n\n 3. Adaptive Spatial Representation: Implement a non-uniform grid where the cell size increases as the distance from the sensor increases. This requires a sophisticated data structure that can handle variable resolution without causing alignment errors or data loss during the projection from 3D to 2.5D.\n\n • Expected Solution:\n\n A software framework consisting of:\n\n • A Deep Learning Model: A network (e.g., PointNet++ or a Sparse Convolutional Neural Network) capable of semantic segmentation of point clouds into terrain, static obstacles, and moving objects.\n • Variable Resolution Grid Engine: An algorithm that projects classified 3D points into a 2.5D grid where the resolution is high (e.g., 5cm cells)\n\n within a 10m radius and decreases (e.g., 50cm cells) up to a 100m radius.\n\n • Real-time Visualization: A dashboard showing the 2.5D map with distinct color-coding for terrain and objects, demonstrating a significant reduction in memory usage compared to a uniform high-resolution 3D map.\n • Performance Metrics: Evidence of low latency (high FPS) and high accuracy in object classification across varying distances.",
+    "description": "• Background:\n\n Autonomous navigation depends on the ability of a vehicle to perceive its surroundings with high precision. While 3D Lidar point clouds provide rich spatial data, processing millions of points in real-time creates immense computational bottlenecks and memory latency. Conversely, standard 2D occupancy grids lose critical height information necessary for detecting curbs, potholes, or overhanging obstacles. To balance precision and performance, there is a need for a 'foveated' mapping approach\"”similar to human vision\"” where the immediate vicinity is rendered in high detail for safety, and distant areas are simplified to reduce the processing load.\n\n • Description:\n\n The goal is to build a deep learning pipeline that transforms raw Lidar point clouds into a variable resolution 2.5D grid (an elevation map with semantic layers). The system must perform three primary tasks:\n\n 1. Terrain Analysis: Distinguish between drivable surfaces and non-drivable terrain.\n\n 2. Object Detection: Identify and classify static obstacles (walls, poles) and dynamic objects (pedestrians, other vehicles).\n\n 3. Adaptive Spatial Representation: Implement a non-uniform grid where the cell size increases as the distance from the sensor increases. This requires a sophisticated data structure that can handle variable resolution without causing alignment errors or data loss during the projection from 3D to 2.5D.\n\n • Expected Solution:\n\n A software framework consisting of:\n\n • A Deep Learning Model: A network (e.g., PointNet++ or a Sparse Convolutional Neural Network) capable of semantic segmentation of point clouds into terrain, static obstacles, and moving objects.\n • Variable Resolution Grid Engine: An algorithm that projects classified 3D points into a 2.5D grid where the resolution is high (e.g., 5cm cells)\n\n within a 10m radius and decreases (e.g., 50cm cells) up to a 100m radius.\n\n • Real-time Visualization: A dashboard showing the 2.5D map with distinct color-coding for terrain and objects, demonstrating a significant reduction in memory usage compared to a uniform high-resolution 3D map.\n • Performance Metrics: Evidence of low latency (high FPS) and high accuracy in object classification across varying distances.",
     "submissions": 0,
     "youtubeLink": "",
     "datasetLink": "",
-    "isNew": false
+    "isNew": false,
+    "officialPsNumber": "SIH26053",
+    "deadline": "20 September 2026",
+    "maxSubmissions": 500
   },
   {
     "sNo": 54,
@@ -758,7 +917,10 @@ const SIH_PROBLEM_STATEMENTS = [
     "submissions": 0,
     "youtubeLink": "",
     "datasetLink": "",
-    "isNew": false
+    "isNew": false,
+    "officialPsNumber": "SIH26054",
+    "deadline": "20 September 2026",
+    "maxSubmissions": 500
   },
   {
     "sNo": 55,
@@ -768,11 +930,14 @@ const SIH_PROBLEM_STATEMENTS = [
     "department": "Department of Defence Production /IDEX",
     "category": "Software",
     "theme": "Robotics and Drones",
-    "description": "Development of Smart Scan Strategy for Electronic Warfare in the absence of prior reliable intelligence of emitters and their operating characteristics.\n\n • Background Detection of hostile communication or radar signals starts with search / scan of a wide frequency spectrum which covers relevant emitters. Sensors with typically high sensitivity but with at least an order lower instantaneous bandwidth compared to overall bandwidth of the system are used to maintain surveillance over the entire spectrum. This requires a receiver / receivers to sweep over frequency bands. Hitherto strategies based on pre mission data / prior data (Open loop) are used. Usually the first priority is to rapidly sweep the entire band with the best speed possible. Open loop strategies focus only on this requirement and may lose time to nonthreatening emitters by not giving time to new or threatening ones.\n • Detailed Description This problem statement focusses on development of Smart Scan Strategy for Electronic Warfare. Interception of signals is a two dimensional search problem since it involves adjusting receiverâ€™s frequency at correct time. This includes building up figures of merit for interception performance such as probability of detection, probability of false alarm, sensitivity, Avg intercept rate, Avg Reward / cost function, percentage of correct predictions and average intercept time error. A system model for the receiver needs to be developed with measurements obtained from a simulated RF environment which has truth information on status of emitters in each band and at each time slot. The frequency spectrum for own receiver consists of many bands.\n\n The status of environment for each frequency band at each time step can be recorded as a transmission or a non-transmission. The model should enable prediction of intercept time and interception ratio of a scanning receiver against spatially scanning and frequency agile emitters. Development of a robust scheduler using machine learning to minimize intercept time and ensure a high interception rate is the primary objective of the strategy. The model should then be trained based on hits and misses. Further, approaches to intercept a periodic scan receiver optimally should be outlined. Algorithms and techniques for the same need to be developed.\n\n • Expected Solution Machine learning based Electronic Support receiver scheduler software",
+    "description": "Development of Smart Scan Strategy for Electronic Warfare in the absence of prior reliable intelligence of emitters and their operating characteristics.\n\n • Background Detection of hostile communication or radar signals starts with search / scan of a wide frequency spectrum which covers relevant emitters. Sensors with typically high sensitivity but with at least an order lower instantaneous bandwidth compared to overall bandwidth of the system are used to maintain surveillance over the entire spectrum. This requires a receiver / receivers to sweep over frequency bands. Hitherto strategies based on pre mission data / prior data (Open loop) are used. Usually the first priority is to rapidly sweep the entire band with the best speed possible. Open loop strategies focus only on this requirement and may lose time to nonthreatening emitters by not giving time to new or threatening ones.\n • Detailed Description This problem statement focusses on development of Smart Scan Strategy for Electronic Warfare. Interception of signals is a two dimensional search problem since it involves adjusting receiver's frequency at correct time. This includes building up figures of merit for interception performance such as probability of detection, probability of false alarm, sensitivity, Avg intercept rate, Avg Reward / cost function, percentage of correct predictions and average intercept time error. A system model for the receiver needs to be developed with measurements obtained from a simulated RF environment which has truth information on status of emitters in each band and at each time slot. The frequency spectrum for own receiver consists of many bands.\n\n The status of environment for each frequency band at each time step can be recorded as a transmission or a non-transmission. The model should enable prediction of intercept time and interception ratio of a scanning receiver against spatially scanning and frequency agile emitters. Development of a robust scheduler using machine learning to minimize intercept time and ensure a high interception rate is the primary objective of the strategy. The model should then be trained based on hits and misses. Further, approaches to intercept a periodic scan receiver optimally should be outlined. Algorithms and techniques for the same need to be developed.\n\n • Expected Solution Machine learning based Electronic Support receiver scheduler software",
     "submissions": 0,
     "youtubeLink": "",
     "datasetLink": "",
-    "isNew": false
+    "isNew": false,
+    "officialPsNumber": "SIH26055",
+    "deadline": "20 September 2026",
+    "maxSubmissions": 500
   },
   {
     "sNo": 56,
@@ -786,7 +951,10 @@ const SIH_PROBLEM_STATEMENTS = [
     "submissions": 0,
     "youtubeLink": "",
     "datasetLink": "",
-    "isNew": false
+    "isNew": false,
+    "officialPsNumber": "SIH26056",
+    "deadline": "20 September 2026",
+    "maxSubmissions": 500
   },
   {
     "sNo": 57,
@@ -796,11 +964,14 @@ const SIH_PROBLEM_STATEMENTS = [
     "department": "National Institute of Ocean Technology (NIOT)",
     "category": "Software",
     "theme": "Disaster Management",
-    "description": "• Background The accumulation of anthropogenic (man-made) debris in marine ecosystems poses a critical threat to global biodiversity. Among the most destructive types of pollution are â€˜ghost netsâ€™â€”abandoned, lost, or discarded fishing gear. These nets continuously trap and kill marine life,destroy coral reefs, and damage commercial vessel propellers.\n\n Because the ocean is vast and dark, marine conservationists and underwater technologists rely on Side Scan Sonar (SSS) instruments. These sensors are towed behind ships or mounted on Autonomous Underwater Vehicles (AUVs) to create detailed acoustic maps of the seafloor.However, manual inspection of thousands of kilometers of sonar logs is incredibly slow, tedious, and prone to human error. Debris can easily blend into natural geological features like rock formations, sand ripples, and marine ridges. Automating this process via computer vision is essential for efficient ocean cleanup operations.\n\n • Description Participants must develop an end-to-end automated computer vision pipeline capable of ingesting side-scan sonar imagery, identifying man-made debris against a complex natural background, and generating actionable localized data.The software system must be robust enough to handle the core challenges inherent to acoustic imagery: high speckle noise, varying pixel resolutions, acoustic shadows, and data dropouts caused by underwater vehicle motion (heave, pitch, and roll). The primary objective is to build an algorithm that reliably separates natural seafloor topology from artificial anomalies. The final solution should be optimized to run efficiently, potentially allowing deployment on edge devices or onboard a marine drone without requiring heavy cloud computing dependencies.\n • Expected Solution Teams are expected to deliver a functional, modular software prototype containing the following core components:\n • Object Detection / Semantic Segmentation Model: An AI/ML architecture (such as YOLO,Faster R-CNN, or U-Net) trained to detect and draw bounding boxes or pixel-level masks around man-made objects (including shipwrecks, pipes, cylinders, and entangled debris nets).\n • Confidence Scoring & Noise Filtering Module: An algorithmic pipeline or pre-processing filter that minimizes false positives caused by natural acoustic shadows or rock clusters,outputting a clear confidence score (0% to 100%) for every detected anomaly.\n • Anomalous Reporting & Geotagging Engine: A data-parsing script or lightweight dashboard interface that reads sonar metadata (such as coordinate files or ping headers) to output a structured report (JSON or CSV format). This report must detail the exact location (latitude/longitude), bounding dimensions, and classification of each detected hazard.\n • User Interface (UI) Dashboard: A visual interface where a user can upload a raw sonar image log, view the AI models' detections overlaid on the map in real-time, and download the generated anomaly reports.",
+    "description": "• Background The accumulation of anthropogenic (man-made) debris in marine ecosystems poses a critical threat to global biodiversity. Among the most destructive types of pollution are \"˜ghost nets'\"”abandoned, lost, or discarded fishing gear. These nets continuously trap and kill marine life,destroy coral reefs, and damage commercial vessel propellers.\n\n Because the ocean is vast and dark, marine conservationists and underwater technologists rely on Side Scan Sonar (SSS) instruments. These sensors are towed behind ships or mounted on Autonomous Underwater Vehicles (AUVs) to create detailed acoustic maps of the seafloor.However, manual inspection of thousands of kilometers of sonar logs is incredibly slow, tedious, and prone to human error. Debris can easily blend into natural geological features like rock formations, sand ripples, and marine ridges. Automating this process via computer vision is essential for efficient ocean cleanup operations.\n\n • Description Participants must develop an end-to-end automated computer vision pipeline capable of ingesting side-scan sonar imagery, identifying man-made debris against a complex natural background, and generating actionable localized data.The software system must be robust enough to handle the core challenges inherent to acoustic imagery: high speckle noise, varying pixel resolutions, acoustic shadows, and data dropouts caused by underwater vehicle motion (heave, pitch, and roll). The primary objective is to build an algorithm that reliably separates natural seafloor topology from artificial anomalies. The final solution should be optimized to run efficiently, potentially allowing deployment on edge devices or onboard a marine drone without requiring heavy cloud computing dependencies.\n • Expected Solution Teams are expected to deliver a functional, modular software prototype containing the following core components:\n • Object Detection / Semantic Segmentation Model: An AI/ML architecture (such as YOLO,Faster R-CNN, or U-Net) trained to detect and draw bounding boxes or pixel-level masks around man-made objects (including shipwrecks, pipes, cylinders, and entangled debris nets).\n • Confidence Scoring & Noise Filtering Module: An algorithmic pipeline or pre-processing filter that minimizes false positives caused by natural acoustic shadows or rock clusters,outputting a clear confidence score (0% to 100%) for every detected anomaly.\n • Anomalous Reporting & Geotagging Engine: A data-parsing script or lightweight dashboard interface that reads sonar metadata (such as coordinate files or ping headers) to output a structured report (JSON or CSV format). This report must detail the exact location (latitude/longitude), bounding dimensions, and classification of each detected hazard.\n • User Interface (UI) Dashboard: A visual interface where a user can upload a raw sonar image log, view the AI models' detections overlaid on the map in real-time, and download the generated anomaly reports.",
     "submissions": 0,
     "youtubeLink": "",
     "datasetLink": "",
-    "isNew": false
+    "isNew": false,
+    "officialPsNumber": "SIH26057",
+    "deadline": "20 September 2026",
+    "maxSubmissions": 500
   },
   {
     "sNo": 58,
@@ -810,11 +981,14 @@ const SIH_PROBLEM_STATEMENTS = [
     "department": "National Institute of Ocean Technology (NIOT)",
     "category": "Hardware",
     "theme": "Robotics and Drones",
-    "description": "• Background In underwater exploration and marine mapping, Autonomous Underwater Vehicles (AUVs) rely heavily on side-scan sonar systems. The performance of these systems is entirely dependent on the physical characteristics of the transmitted acoustic wave, known as the â€˜pingâ€™. Traditional sonars transmit short, fixed-frequency pulses. However, modern advanced military and research systems utilize Linear Frequency Modulated (LFM) Chirpsâ€”waveforms that sweep across a spectrum of frequencies over a precise timeframe.The primary bottleneck is that the underwater environment is highly dynamic. Sound waves behave differently depending on water depth, turbidity (suspended mud/sediment particles),temperature, and salinity. A high-frequency chirp (500 kHz) offers ultra-high image resolution but scatters instantly in muddy or deep waters. Conversely, a low-frequency chirp (100 kHz) can penetrate murky water and travel long distances but yields a blurry, low-resolution image. For an AUV to map effectively without draining its limited battery payload, its transmitter hardware must behave like a Software-Defined Radio (SDR)â€”dynamically adapting its physical analog pulse waveform in real-time based on the actual environmental conditions it encounters.\n • Description Participants must design, prototype, and demonstrate a physical, self-contained Software-Defined Sonar Transmitter Payload Module.Instead of a software simulation, the solution must be a physical hardware unit built using an embedded platform (e.g., STM32, ESP32, Texas Instruments DSP, or an FPGA) integrated with custom analog electronics. The hardware must ingest real-time environmental data (via physical sensors, or analog voltage dials acting as sensor inputs) and mathematically synthesize and output an optimized, real-time physical analog waveform via a Digital-to-Analog Converter (DAC) and amplifier circuit.The entire hardware architecture must focus heavily on low-power consumption and hardwarelevel optimization. Teams must utilize low-level configurations (such as Direct Memory Access (DMA) and hardware timers) to ensure the processing unit does not drain a marine drone's battery pack while trying to compute complex trigonometric wave values under strict real-time constraints.\n • Expected Solution Teams are expected to deliver a functional physical hardware prototype consisting of the following modules:\n • Embedded Firmware Engine: A robust program deployed on a physical microcontroller or FPGA (written in C/C++, Verilog, or VHDL). The firmware must utilize hardware timers and DMA to stream wave-generation arrays directly to an internal or external DAC without stalling the CPU. The system must support multiple modulation types on the fly: LFM chirps, geometric sweeps, and phase-coded pulses.\n • Environmental Sensor Interface & Adaptation Logic: A physical control interface where real-time environmental changes are introduced to the hardware (via physical sensors, or potentiometers simulating sensors for parameters like 'Entering Muddy Estuary' or 'Entering Clear Shallow Reef'). The microcontroller must read these inputs via an ADC and modify three critical wave parameters instantly:\n\n 1. Bandwidth/Center Frequency (Tuning for range vs. resolution)\n\n 2. Pulse Duration (Controlling total energy output)\n\n 3. Amplitude/Signal Power\n\n • Analog Signal Conditioning & Hardware Filters: A physical analog frontend circuit (built on a breadboard or custom PCB) featuring active/passive low-pass filters and an operational amplifier. Combined with digital windowing filters (such as Hamming, Hann, or Blackman windows) applied in the firmware, this hardware must smooth out sudden voltage jumps at the start and end of a pulse, protecting the transmitter hardware from electrical stress and eliminating sidelobe artifacts.\n • Physical Form Factor & Output Validation: The physical analog output of the transmitter payload must be connected to an oscilloscope or spectrum analyzer at the judging table.The generated raw waves must demonstrate clean, low-distortion, mathematically sound spectrograms when validated via a Fast Fourier Transform (FFT). Additionally, the module should be housed in a robust, 3D-printed or fabricated structural enclosure representing a field-deployable payload pod designed for an AUV hull slot.",
+    "description": "• Background In underwater exploration and marine mapping, Autonomous Underwater Vehicles (AUVs) rely heavily on side-scan sonar systems. The performance of these systems is entirely dependent on the physical characteristics of the transmitted acoustic wave, known as the \"˜ping'. Traditional sonars transmit short, fixed-frequency pulses. However, modern advanced military and research systems utilize Linear Frequency Modulated (LFM) Chirps\"”waveforms that sweep across a spectrum of frequencies over a precise timeframe.The primary bottleneck is that the underwater environment is highly dynamic. Sound waves behave differently depending on water depth, turbidity (suspended mud/sediment particles),temperature, and salinity. A high-frequency chirp (500 kHz) offers ultra-high image resolution but scatters instantly in muddy or deep waters. Conversely, a low-frequency chirp (100 kHz) can penetrate murky water and travel long distances but yields a blurry, low-resolution image. For an AUV to map effectively without draining its limited battery payload, its transmitter hardware must behave like a Software-Defined Radio (SDR)\"”dynamically adapting its physical analog pulse waveform in real-time based on the actual environmental conditions it encounters.\n • Description Participants must design, prototype, and demonstrate a physical, self-contained Software-Defined Sonar Transmitter Payload Module.Instead of a software simulation, the solution must be a physical hardware unit built using an embedded platform (e.g., STM32, ESP32, Texas Instruments DSP, or an FPGA) integrated with custom analog electronics. The hardware must ingest real-time environmental data (via physical sensors, or analog voltage dials acting as sensor inputs) and mathematically synthesize and output an optimized, real-time physical analog waveform via a Digital-to-Analog Converter (DAC) and amplifier circuit.The entire hardware architecture must focus heavily on low-power consumption and hardwarelevel optimization. Teams must utilize low-level configurations (such as Direct Memory Access (DMA) and hardware timers) to ensure the processing unit does not drain a marine drone's battery pack while trying to compute complex trigonometric wave values under strict real-time constraints.\n • Expected Solution Teams are expected to deliver a functional physical hardware prototype consisting of the following modules:\n • Embedded Firmware Engine: A robust program deployed on a physical microcontroller or FPGA (written in C/C++, Verilog, or VHDL). The firmware must utilize hardware timers and DMA to stream wave-generation arrays directly to an internal or external DAC without stalling the CPU. The system must support multiple modulation types on the fly: LFM chirps, geometric sweeps, and phase-coded pulses.\n • Environmental Sensor Interface & Adaptation Logic: A physical control interface where real-time environmental changes are introduced to the hardware (via physical sensors, or potentiometers simulating sensors for parameters like 'Entering Muddy Estuary' or 'Entering Clear Shallow Reef'). The microcontroller must read these inputs via an ADC and modify three critical wave parameters instantly:\n\n 1. Bandwidth/Center Frequency (Tuning for range vs. resolution)\n\n 2. Pulse Duration (Controlling total energy output)\n\n 3. Amplitude/Signal Power\n\n • Analog Signal Conditioning & Hardware Filters: A physical analog frontend circuit (built on a breadboard or custom PCB) featuring active/passive low-pass filters and an operational amplifier. Combined with digital windowing filters (such as Hamming, Hann, or Blackman windows) applied in the firmware, this hardware must smooth out sudden voltage jumps at the start and end of a pulse, protecting the transmitter hardware from electrical stress and eliminating sidelobe artifacts.\n • Physical Form Factor & Output Validation: The physical analog output of the transmitter payload must be connected to an oscilloscope or spectrum analyzer at the judging table.The generated raw waves must demonstrate clean, low-distortion, mathematically sound spectrograms when validated via a Fast Fourier Transform (FFT). Additionally, the module should be housed in a robust, 3D-printed or fabricated structural enclosure representing a field-deployable payload pod designed for an AUV hull slot.",
     "submissions": 0,
     "youtubeLink": "",
     "datasetLink": "",
-    "isNew": false
+    "isNew": false,
+    "officialPsNumber": "SIH26058",
+    "deadline": "20 September 2026",
+    "maxSubmissions": 500
   },
   {
     "sNo": 59,
@@ -828,7 +1002,10 @@ const SIH_PROBLEM_STATEMENTS = [
     "submissions": 0,
     "youtubeLink": "",
     "datasetLink": "",
-    "isNew": false
+    "isNew": false,
+    "officialPsNumber": "SIH26059",
+    "deadline": "20 September 2026",
+    "maxSubmissions": 500
   },
   {
     "sNo": 60,
@@ -842,7 +1019,10 @@ const SIH_PROBLEM_STATEMENTS = [
     "submissions": 0,
     "youtubeLink": "",
     "datasetLink": "",
-    "isNew": false
+    "isNew": false,
+    "officialPsNumber": "SIH26060",
+    "deadline": "20 September 2026",
+    "maxSubmissions": 500
   },
   {
     "sNo": 61,
@@ -856,7 +1036,10 @@ const SIH_PROBLEM_STATEMENTS = [
     "submissions": 0,
     "youtubeLink": "",
     "datasetLink": "",
-    "isNew": false
+    "isNew": false,
+    "officialPsNumber": "SIH26061",
+    "deadline": "20 September 2026",
+    "maxSubmissions": 500
   },
   {
     "sNo": 62,
@@ -870,7 +1053,10 @@ const SIH_PROBLEM_STATEMENTS = [
     "submissions": 0,
     "youtubeLink": "",
     "datasetLink": "",
-    "isNew": false
+    "isNew": false,
+    "officialPsNumber": "SIH26062",
+    "deadline": "20 September 2026",
+    "maxSubmissions": 500
   },
   {
     "sNo": 63,
@@ -884,7 +1070,10 @@ const SIH_PROBLEM_STATEMENTS = [
     "submissions": 0,
     "youtubeLink": "",
     "datasetLink": "",
-    "isNew": false
+    "isNew": false,
+    "officialPsNumber": "SIH26063",
+    "deadline": "20 September 2026",
+    "maxSubmissions": 500
   },
   {
     "sNo": 64,
@@ -898,7 +1087,10 @@ const SIH_PROBLEM_STATEMENTS = [
     "submissions": 0,
     "youtubeLink": "",
     "datasetLink": "",
-    "isNew": false
+    "isNew": false,
+    "officialPsNumber": "SIH26064",
+    "deadline": "20 September 2026",
+    "maxSubmissions": 500
   },
   {
     "sNo": 65,
@@ -912,7 +1104,10 @@ const SIH_PROBLEM_STATEMENTS = [
     "submissions": 0,
     "youtubeLink": "",
     "datasetLink": "",
-    "isNew": false
+    "isNew": false,
+    "officialPsNumber": "SIH26065",
+    "deadline": "20 September 2026",
+    "maxSubmissions": 500
   },
   {
     "sNo": 66,
@@ -926,7 +1121,10 @@ const SIH_PROBLEM_STATEMENTS = [
     "submissions": 0,
     "youtubeLink": "",
     "datasetLink": "https://drive.google.com/file/d/1TrME3MMW-aYaf7KNmDXpwl2CcvLYjp-T/view?usp=drive_link",
-    "isNew": false
+    "isNew": false,
+    "officialPsNumber": "SIH26066",
+    "deadline": "20 September 2026",
+    "maxSubmissions": 500
   },
   {
     "sNo": 67,
@@ -940,7 +1138,10 @@ const SIH_PROBLEM_STATEMENTS = [
     "submissions": 0,
     "youtubeLink": "",
     "datasetLink": "",
-    "isNew": false
+    "isNew": false,
+    "officialPsNumber": "SIH26067",
+    "deadline": "20 September 2026",
+    "maxSubmissions": 500
   },
   {
     "sNo": 68,
@@ -954,7 +1155,10 @@ const SIH_PROBLEM_STATEMENTS = [
     "submissions": 0,
     "youtubeLink": "",
     "datasetLink": "",
-    "isNew": false
+    "isNew": false,
+    "officialPsNumber": "SIH26068",
+    "deadline": "20 September 2026",
+    "maxSubmissions": 500
   },
   {
     "sNo": 69,
@@ -968,7 +1172,10 @@ const SIH_PROBLEM_STATEMENTS = [
     "submissions": 0,
     "youtubeLink": "",
     "datasetLink": "",
-    "isNew": false
+    "isNew": false,
+    "officialPsNumber": "SIH26069",
+    "deadline": "20 September 2026",
+    "maxSubmissions": 500
   },
   {
     "sNo": 70,
@@ -982,7 +1189,10 @@ const SIH_PROBLEM_STATEMENTS = [
     "submissions": 0,
     "youtubeLink": "",
     "datasetLink": "",
-    "isNew": false
+    "isNew": false,
+    "officialPsNumber": "SIH26070",
+    "deadline": "20 September 2026",
+    "maxSubmissions": 500
   },
   {
     "sNo": 71,
@@ -996,7 +1206,10 @@ const SIH_PROBLEM_STATEMENTS = [
     "submissions": 0,
     "youtubeLink": "",
     "datasetLink": "",
-    "isNew": false
+    "isNew": false,
+    "officialPsNumber": "SIH26071",
+    "deadline": "20 September 2026",
+    "maxSubmissions": 500
   },
   {
     "sNo": 72,
@@ -1010,7 +1223,10 @@ const SIH_PROBLEM_STATEMENTS = [
     "submissions": 0,
     "youtubeLink": "",
     "datasetLink": "",
-    "isNew": false
+    "isNew": false,
+    "officialPsNumber": "SIH26072",
+    "deadline": "20 September 2026",
+    "maxSubmissions": 500
   },
   {
     "sNo": 73,
@@ -1020,11 +1236,14 @@ const SIH_PROBLEM_STATEMENTS = [
     "department": "India Meteorological Department",
     "category": "Software",
     "theme": "Disaster Management",
-    "description": "• Title SkyGuard AI: Intelligent Real-Time Anomaly Detection System for Temperature, Pressure, and Humidity Sensors in Automatic Weather Stations\n • Background Automatic Weather Stations (AWS) are critical components of modern meteorological observation networks. These stations continuously monitor atmospheric parameters and provide real-time data for weather forecasting, climate monitoring, disaster management, aviation, agriculture, and scientific research.However, AWS observations often contain anomalies caused by sensor malfunction,communication failures, calibration drift, power fluctuations, harsh environmental conditions, and data corruption.Erroneous observations can significantly impact weather forecasting accuracy and decision-making systems. Traditional threshold-based quality control methods are often insufficient for identifying complex or hidden anomalies in meteorological data streams.\n • Problem Statement Develop an AI/ML-based intelligent anomaly detection system capable of automatically identifying abnormal, inconsistent, or faulty observations from Automatic Weather Stations in real time using only the following parameters:\n • Temperature (Â°C)\n • Atmospheric Pressure (hPa)\n • Relative Humidity (%)\n\n The system should distinguish between genuine meteorological events and sensor/data anomalies while minimizing false alarms and enabling scalable deployment across large weather observation networks.\n\n • Objectives\n • Detect anomalies in real-time AWS data streams.\n • Identify sensor faults, spikes, frozen values, and communication errors.\n • Learn normal temporal and seasonal patterns of temperature, pressure, and humidity.\n • Perform multivariate consistency analysis among atmospheric parameters.\n • Provide confidence scores and explainable AI-based reasoning for detected anomalies.\n • Predict possible sensor degradation and maintenance requirements.\n • Optionally suggest corrected/imputed values for anomalous observations.\n • Expected Inputs Participants may use historical AWS datasets, simulated anomalies, or streaming sensor data containing the following meteorological parameters:\n\n Parameter- Unit Temperature - Â°C Atmospheric Pressure - hPa Relative Humidity - %\n\n • Expected Outputs\n • Real-time anomaly alerts\n • Severity and confidence scores\n • Root-cause classification\n • Visualization dashboard\n • Sensor health status\n • Corrected data estimation (optional)\n • Suggested Technologies\n • Explainable AI (SHAP/LIME) (Preferable)\n • Edge AI for low-power deployment on ESP32\n • Evaluation Criteria (To be evaluated in anomaly injected data)\n\n Criteria - Weightage Innovation & Novelty - 25% Detection Accuracy - 20% Real-Time Capability - 15% Explainability - 10% Scalability - 10% Practical Deployability - 10% Visualization/UI - 5% Energy Efficiency - 5%\n\n • Example Use Case An AWS suddenly reports a temperature of 55Â°C with extremely high humidity and abnormal pressure variation while neighboring stations show normal conditions. The AI system should analyze temporal and spatial consistency, identify the reading as a probable sensor anomaly, generate an alert, and suggest corrective action.\n • Grand Challenge Can AI build a self-aware and self-healing weather observation network capable of delivering trustworthy atmospheric data under all environmental conditions?\n • Output:\n\n Fully executable code with example usage and a document explaining various use cases",
+    "description": "• Title SkyGuard AI: Intelligent Real-Time Anomaly Detection System for Temperature, Pressure, and Humidity Sensors in Automatic Weather Stations\n • Background Automatic Weather Stations (AWS) are critical components of modern meteorological observation networks. These stations continuously monitor atmospheric parameters and provide real-time data for weather forecasting, climate monitoring, disaster management, aviation, agriculture, and scientific research.However, AWS observations often contain anomalies caused by sensor malfunction,communication failures, calibration drift, power fluctuations, harsh environmental conditions, and data corruption.Erroneous observations can significantly impact weather forecasting accuracy and decision-making systems. Traditional threshold-based quality control methods are often insufficient for identifying complex or hidden anomalies in meteorological data streams.\n • Problem Statement Develop an AI/ML-based intelligent anomaly detection system capable of automatically identifying abnormal, inconsistent, or faulty observations from Automatic Weather Stations in real time using only the following parameters:\n • Temperature (°C)\n • Atmospheric Pressure (hPa)\n • Relative Humidity (%)\n\n The system should distinguish between genuine meteorological events and sensor/data anomalies while minimizing false alarms and enabling scalable deployment across large weather observation networks.\n\n • Objectives\n • Detect anomalies in real-time AWS data streams.\n • Identify sensor faults, spikes, frozen values, and communication errors.\n • Learn normal temporal and seasonal patterns of temperature, pressure, and humidity.\n • Perform multivariate consistency analysis among atmospheric parameters.\n • Provide confidence scores and explainable AI-based reasoning for detected anomalies.\n • Predict possible sensor degradation and maintenance requirements.\n • Optionally suggest corrected/imputed values for anomalous observations.\n • Expected Inputs Participants may use historical AWS datasets, simulated anomalies, or streaming sensor data containing the following meteorological parameters:\n\n Parameter- Unit Temperature - °C Atmospheric Pressure - hPa Relative Humidity - %\n\n • Expected Outputs\n • Real-time anomaly alerts\n • Severity and confidence scores\n • Root-cause classification\n • Visualization dashboard\n • Sensor health status\n • Corrected data estimation (optional)\n • Suggested Technologies\n • Explainable AI (SHAP/LIME) (Preferable)\n • Edge AI for low-power deployment on ESP32\n • Evaluation Criteria (To be evaluated in anomaly injected data)\n\n Criteria - Weightage Innovation & Novelty - 25% Detection Accuracy - 20% Real-Time Capability - 15% Explainability - 10% Scalability - 10% Practical Deployability - 10% Visualization/UI - 5% Energy Efficiency - 5%\n\n • Example Use Case An AWS suddenly reports a temperature of 55°C with extremely high humidity and abnormal pressure variation while neighboring stations show normal conditions. The AI system should analyze temporal and spatial consistency, identify the reading as a probable sensor anomaly, generate an alert, and suggest corrective action.\n • Grand Challenge Can AI build a self-aware and self-healing weather observation network capable of delivering trustworthy atmospheric data under all environmental conditions?\n • Output:\n\n Fully executable code with example usage and a document explaining various use cases",
     "submissions": 0,
     "youtubeLink": "",
     "datasetLink": "",
-    "isNew": false
+    "isNew": false,
+    "officialPsNumber": "SIH26073",
+    "deadline": "20 September 2026",
+    "maxSubmissions": 500
   },
   {
     "sNo": 74,
@@ -1038,7 +1257,10 @@ const SIH_PROBLEM_STATEMENTS = [
     "submissions": 0,
     "youtubeLink": "",
     "datasetLink": "",
-    "isNew": false
+    "isNew": false,
+    "officialPsNumber": "SIH26074",
+    "deadline": "20 September 2026",
+    "maxSubmissions": 500
   },
   {
     "sNo": 75,
@@ -1052,7 +1274,10 @@ const SIH_PROBLEM_STATEMENTS = [
     "submissions": 0,
     "youtubeLink": "",
     "datasetLink": "",
-    "isNew": false
+    "isNew": false,
+    "officialPsNumber": "SIH26075",
+    "deadline": "20 September 2026",
+    "maxSubmissions": 500
   },
   {
     "sNo": 76,
@@ -1066,7 +1291,10 @@ const SIH_PROBLEM_STATEMENTS = [
     "submissions": 0,
     "youtubeLink": "",
     "datasetLink": "",
-    "isNew": false
+    "isNew": false,
+    "officialPsNumber": "SIH26076",
+    "deadline": "20 September 2026",
+    "maxSubmissions": 500
   },
   {
     "sNo": 77,
@@ -1076,11 +1304,14 @@ const SIH_PROBLEM_STATEMENTS = [
     "department": "National Centre for Medium Range Weather Forecasting (NCMRWF)",
     "category": "Software",
     "theme": "Disaster Management",
-    "description": "• Problem Statement India is highly vulnerable to rapidly intensifying, localized extreme weather events such as cloudbursts, severe thunderstorms, and flash floods. Traditional physics-based Numerical Weather Prediction (NWP) models often suffer from computational latency and struggle to capture the rapid, small-scale atmospheric changes that preceded these events. There is a critical need for a real-time, hyper-local early warning system capable of 'nowcasting' severe weather 2 to 6 hours before impact, providing actionable lead time for disaster management.\n • Proposed Solution We propose an advanced AI predictive engine designed for high-precision severe-weather nowcasting. Specifically, the system simultaneously predicts the onset of highly localized, rapidly intensifying events, namely severe thunderstorms, cloudbursts, and the subsequent flash floods,with an actionable lead time of 2 to 6 hours. Instead of relying on computationally intensive thermodynamic simulations, the system utilizes a spatiotemporal deep learning architecture to recognize the complex, multivariate atmospheric signatures that precede these extreme events. A critical component of this methodology is storm nowcasting using variations in integrated water vapor (IWV). By tracking rapid spatial and temporal accumulations of IWV, the model accurately identifies the concentrated moisture pools required for heavy precipitation. To predict multiple extreme events simultaneously, the engine employs a multi-task learning approach. A shared neural network backbone extracts foundational atmospheric features (moisture, instability, and lift) from the input grids. The network then branches into distinct output layers, allowing a single unified model to generate hyper-local probability risk maps for thunderstorms, cloudbursts, and flash floods simultaneously, entirely bypassing the computational latency typical of traditional numerical weather prediction (NWP) models.\n\n Predictive Matrix: Key Atmospheric Variables Severe convective storms require three primary ingredients: moisture, instability, and lift. Our AI model tracks the critical precursors across all three categories to ensure high accuracy and low false-alarm rates:\n\n ? Moisture Availability (The Fuel): The cornerstone of our storm nowcasting is the capture of integrated water vapor (IWV) variations. By tracking rapid spatial and temporal accumulations of IWV from satellites, the model identifies the concentrated moisture pools that trigger localized cloudbursts.\n\n ? Atmospheric Instability (The Energy): The model assesses the atmosphere's thermal profile to determine if it is buoyant enough to support explosive vertical cloud growth. High Convective Available Potential Energy (CAPE) paired with eroding Convective Inhibition (CIN) serves as a prime indicator of impending severe thunderstorms.\n\n Kinematics and Lift (The Trigger & Structure): Low-level convergence (wind vectors colliding at the surface) forces air upward, initiating the development of a storm cell.\n\n Furthermore, tracking vertical wind shear (changes in wind speed/direction with altitude) helps the model predict whether a storm will move quickly or remain stationary.\n\n Observational Signatures: Rapid cooling of cloud tops, measured as the Cloud Top Temperature(CTT) Drop Rate, provides real-time validation of explosive vertical updrafts within the system.\n\n Topographic Dynamics (The Flood Catalyst): To accurately predict flash floods, the AI overlays the atmospheric probability maps onto a high-resolution Digital Elevation Model (DEM). This allows the system to calculate how terrain slope, elevation, and natural drainage basins will channel the extreme precipitation generated by a predicted cloudburst.To capture these predictors with hyper-local accuracy, the model fuses multi-modal, high resolution datasets:\n\n IMDAA Reanalysis Data (Historical Baseline & Thermodynamics): Multi-level air temperature, specific humidity profiles (for calculating CAPE/CIN), geopotential height, and U/V wind components (for calculating shear and convergence).\n\n Satellite Observations (INSAT-3D/3DR via MOSDAC): Water Vapor (WV) Channels. This is essential for deriving real-time Integrated Water Vapor (IWV) fluctuations necessary for our storm nowcasting.\n\n Thermal Infrared (TIR) Channels: Utilized to calculate the rapid Cloud Top Temperature (CTT) drop rate.\n\n Quantitative Precipitation Estimation (QPE): Satellite-derived precipitation estimates are used to monitor real-time rainfall intensity, serving as a reliable, openly accessible alternative to ground-based radar.\n\n Digital Elevation Model (DEM): High-resolution topographical data (such as ISRO's CartoDEM or SRTM) provides a static baseline of elevation, slope, and surface drainage networks, enabling translation of atmospheric cloudburst predictions into actionable flash flood warnings on the ground.\n\n • Technical Methodology ? Data Fusion & Alignment: Raw data from IMDAA reanalysis, INSAT-3D/3DR satellite observations, and high-resolution Digital Elevation Models (DEM) are ingested, normalized, and mapped onto a unified spatiotemporal grid (e.g., using multi-dimensional array structures). This ensures that all dynamic atmospheric predictorsâ€”such as specific humidity and cloud-top temperaturesâ€”and static surface variables align geographically and chronologically for seamless multimodal processing.\n\n ? Multi-Variate Feature Extraction & Multi-Task Inference: A shared multi-modal spatiotemporal transformer network continuously analyzes real-time satellite grids, specifically tracking critical IWV variations and CTT drop rates, against the IMDAA-derived thermodynamic baselines using cross-attention mechanisms. Utilizing a Multi-Task Learning (MTL) architecture,the network branches into distinct output 'heads.' This allows the unified model to simultaneously process the aligned data and generate distinct, hyper-local probability maps for severe thunderstorms, cloudbursts, and flash floods without computational bottlenecking.\n\n ? Automated Alerting: When the predictive matrix breaches the signature thresholds of a severe event, the engine generates a spatial risk map and pushes automated, categorized alerts via a lightweight API.\n\n • Expected Solution The final deliverable for the Smart India Hackathon will be a fully functional, real-time prototypeof the AI-Driven Hyper-Local Early Warning System. At its core is a deployed multi-task inference engine that continuously ingests live INSAT satellite data and IMDAA thermodynamic baselines to simultaneously generate predictive risk maps for severe thunderstorms, cloudbursts, and flash floods within a 2 to 6-hour predictive window. This backend integrates with an interactive, webbased spatial dashboard designed for disaster management authorities, featuring dynamic risk maps overlaid on a Digital Elevation Model (DEM) and an Explainable AI (XAI) module that transparently displays meteorological triggers. Finally, an automated API will translate these predictive insights into immediate, categorized alerts sent directly to first responders and vulnerable communities the moment critical thresholds are breached.",
+    "description": "• Problem Statement India is highly vulnerable to rapidly intensifying, localized extreme weather events such as cloudbursts, severe thunderstorms, and flash floods. Traditional physics-based Numerical Weather Prediction (NWP) models often suffer from computational latency and struggle to capture the rapid, small-scale atmospheric changes that preceded these events. There is a critical need for a real-time, hyper-local early warning system capable of 'nowcasting' severe weather 2 to 6 hours before impact, providing actionable lead time for disaster management.\n • Proposed Solution We propose an advanced AI predictive engine designed for high-precision severe-weather nowcasting. Specifically, the system simultaneously predicts the onset of highly localized, rapidly intensifying events, namely severe thunderstorms, cloudbursts, and the subsequent flash floods,with an actionable lead time of 2 to 6 hours. Instead of relying on computationally intensive thermodynamic simulations, the system utilizes a spatiotemporal deep learning architecture to recognize the complex, multivariate atmospheric signatures that precede these extreme events. A critical component of this methodology is storm nowcasting using variations in integrated water vapor (IWV). By tracking rapid spatial and temporal accumulations of IWV, the model accurately identifies the concentrated moisture pools required for heavy precipitation. To predict multiple extreme events simultaneously, the engine employs a multi-task learning approach. A shared neural network backbone extracts foundational atmospheric features (moisture, instability, and lift) from the input grids. The network then branches into distinct output layers, allowing a single unified model to generate hyper-local probability risk maps for thunderstorms, cloudbursts, and flash floods simultaneously, entirely bypassing the computational latency typical of traditional numerical weather prediction (NWP) models.\n\n Predictive Matrix: Key Atmospheric Variables Severe convective storms require three primary ingredients: moisture, instability, and lift. Our AI model tracks the critical precursors across all three categories to ensure high accuracy and low false-alarm rates:\n\n ? Moisture Availability (The Fuel): The cornerstone of our storm nowcasting is the capture of integrated water vapor (IWV) variations. By tracking rapid spatial and temporal accumulations of IWV from satellites, the model identifies the concentrated moisture pools that trigger localized cloudbursts.\n\n ? Atmospheric Instability (The Energy): The model assesses the atmosphere's thermal profile to determine if it is buoyant enough to support explosive vertical cloud growth. High Convective Available Potential Energy (CAPE) paired with eroding Convective Inhibition (CIN) serves as a prime indicator of impending severe thunderstorms.\n\n Kinematics and Lift (The Trigger & Structure): Low-level convergence (wind vectors colliding at the surface) forces air upward, initiating the development of a storm cell.\n\n Furthermore, tracking vertical wind shear (changes in wind speed/direction with altitude) helps the model predict whether a storm will move quickly or remain stationary.\n\n Observational Signatures: Rapid cooling of cloud tops, measured as the Cloud Top Temperature(CTT) Drop Rate, provides real-time validation of explosive vertical updrafts within the system.\n\n Topographic Dynamics (The Flood Catalyst): To accurately predict flash floods, the AI overlays the atmospheric probability maps onto a high-resolution Digital Elevation Model (DEM). This allows the system to calculate how terrain slope, elevation, and natural drainage basins will channel the extreme precipitation generated by a predicted cloudburst.To capture these predictors with hyper-local accuracy, the model fuses multi-modal, high resolution datasets:\n\n IMDAA Reanalysis Data (Historical Baseline & Thermodynamics): Multi-level air temperature, specific humidity profiles (for calculating CAPE/CIN), geopotential height, and U/V wind components (for calculating shear and convergence).\n\n Satellite Observations (INSAT-3D/3DR via MOSDAC): Water Vapor (WV) Channels. This is essential for deriving real-time Integrated Water Vapor (IWV) fluctuations necessary for our storm nowcasting.\n\n Thermal Infrared (TIR) Channels: Utilized to calculate the rapid Cloud Top Temperature (CTT) drop rate.\n\n Quantitative Precipitation Estimation (QPE): Satellite-derived precipitation estimates are used to monitor real-time rainfall intensity, serving as a reliable, openly accessible alternative to ground-based radar.\n\n Digital Elevation Model (DEM): High-resolution topographical data (such as ISRO's CartoDEM or SRTM) provides a static baseline of elevation, slope, and surface drainage networks, enabling translation of atmospheric cloudburst predictions into actionable flash flood warnings on the ground.\n\n • Technical Methodology ? Data Fusion & Alignment: Raw data from IMDAA reanalysis, INSAT-3D/3DR satellite observations, and high-resolution Digital Elevation Models (DEM) are ingested, normalized, and mapped onto a unified spatiotemporal grid (e.g., using multi-dimensional array structures). This ensures that all dynamic atmospheric predictors\"”such as specific humidity and cloud-top temperatures\"”and static surface variables align geographically and chronologically for seamless multimodal processing.\n\n ? Multi-Variate Feature Extraction & Multi-Task Inference: A shared multi-modal spatiotemporal transformer network continuously analyzes real-time satellite grids, specifically tracking critical IWV variations and CTT drop rates, against the IMDAA-derived thermodynamic baselines using cross-attention mechanisms. Utilizing a Multi-Task Learning (MTL) architecture,the network branches into distinct output 'heads.' This allows the unified model to simultaneously process the aligned data and generate distinct, hyper-local probability maps for severe thunderstorms, cloudbursts, and flash floods without computational bottlenecking.\n\n ? Automated Alerting: When the predictive matrix breaches the signature thresholds of a severe event, the engine generates a spatial risk map and pushes automated, categorized alerts via a lightweight API.\n\n • Expected Solution The final deliverable for the Smart India Hackathon will be a fully functional, real-time prototypeof the AI-Driven Hyper-Local Early Warning System. At its core is a deployed multi-task inference engine that continuously ingests live INSAT satellite data and IMDAA thermodynamic baselines to simultaneously generate predictive risk maps for severe thunderstorms, cloudbursts, and flash floods within a 2 to 6-hour predictive window. This backend integrates with an interactive, webbased spatial dashboard designed for disaster management authorities, featuring dynamic risk maps overlaid on a Digital Elevation Model (DEM) and an Explainable AI (XAI) module that transparently displays meteorological triggers. Finally, an automated API will translate these predictive insights into immediate, categorized alerts sent directly to first responders and vulnerable communities the moment critical thresholds are breached.",
     "submissions": 0,
     "youtubeLink": "",
     "datasetLink": "",
-    "isNew": false
+    "isNew": false,
+    "officialPsNumber": "SIH26077",
+    "deadline": "20 September 2026",
+    "maxSubmissions": 500
   },
   {
     "sNo": 78,
@@ -1090,11 +1321,14 @@ const SIH_PROBLEM_STATEMENTS = [
     "department": "National Centre for Medium Range Weather Forecasting (NCMRWF)",
     "category": "Software",
     "theme": "Smart Automation",
-    "description": "• Problem Statement Identifying and tracking the exact geographic footprints of extreme weather anomalies (such as severe cyclones, heat domes, or cold waves) within massive global Numerical Weather Prediction (NWP) outputs is computationally intensive and heavily reliant on manual interpretation. In medium-range forecasting (3 to 10 days), atmospheric chaos renders traditional deterministic models highly uncertain.\n\n Furthermore, standard deep learning models (like standard CNNs or U-Nets) suffer from spectral smoothingâ€”they tend to 'average out' spatial data, which destroys the extreme amplitudes (the high-intensity peaks of rainfall or wind speed) that forecasters actually need to track. There is a critical gap between broad, coarse 12 km global ensemble datasets and localized, high-fidelity threat tracking.\n\n • Proposed Solution We propose an automated, state-of-the-art AI tracking and downscaling pipeline that shifts the paradigm from manual weather data sorting to automated, physics-informed anomaly tracking.Instead of relying on a single deterministic forecast run, our system directly processes multivariable, 4D Ensemble Prediction Systems (EPS) data.The system uses a two-stage hybrid AI architecture to solve the spectral smoothing problem:First, it utilizes a graph neural network (GNN) to map atmospheric variables onto a spherical mesh,instantly isolating moving anomalies and calculating their trajectory over a 3- to 10-day forecast window.\n\n Second, it pipes this isolated region into a generative diffusion model to perform statistical downscaling. This physics-constrained generative model mathematically derives a hyper-local 5km subgrid impact zone without flattening or blurring the severe amplitudes of the extreme weather event.\n\n • Technical Methodology & Architecture Spherical Anomaly Tracking (Stage 1 GNN): To eliminate the geographic distortions caused by processing the spherical Earth on flat 2D pixel grids, the system maps the 12 km NCMRWF Global Ensemble (NEPS-G) grids directly onto an icosahedral mesh. The message-passing GNN calculates the Extreme Forecast Index (EFI) against a 30-year historical ERA5 baseline distribution to isolate standard deviations and draw a macro-scale temporal bounding box around the anomaly's trajectory.\n\n Amplitude-Preserving Downscaling (Stage 2 Diffusion): The system passes the cropped, macroscale bounding box into a conditional denoising diffusion probabilistic model. Rather than optimizing for mean errors (which blurs peaks), the diffusion model learns the physical relationships between synoptic-scale features and regional topography. It iteratively generates high-resolution, high-amplitude local weather scenarios, downscaling the 12 km grid into a 5 km grid.\n\n Physics-Informed Constraints: To ensure the model remains scientifically accurate, we embed fluid dynamics and thermodynamic conservation laws directly into the neural network's loss function. The model is mathematically penalized if it generates physically impossible weather states (e.g., severe downpours missing corresponding moisture convergence vectors).\n\n • Datasets and Tools ? AI Frameworks: PyTorch / JAX (engineered with custom, physics-guided loss functions),Deep Graph Library (DGL) for icosahedral mesh networks, and Hugging Face Diffusers for generative downscaling.\n\n ? Data Wrangling & Geospatial Tools: Xarray and Dask for processing parallelized, multigigabyte 4D NetCDF/GRIB2 arrays; MetPy for physical meteorological equations;\n\n Cartopy for geographical map projections.\n\n ? Training & Testing Datasets:\n\n ? Baseline: Historical IMDAA / ERA5 reanalysis data to establish the climatological norm.\n\n ? Forecast Inputs: Historical NCUM (12 km deterministic) and NEPS-G (12 km global ensemble) datasets containing documented extreme historical events (e.g., Cyclone Amphan, severe North India heatwaves).\n\n • Expected Outcome & Key Deliverables The Tracking Core: A production-ready Spatio-Temporal GNN module that continuously processes global NWP streams to output dynamic, automated 4D bounding boxes around evolving weather threats.\n\n The Downscaling Core: A generative diffusion module capable of ingesting a 12 km resolution anomaly slice and outputting a probabilistically sound, 5 km resolution sub-grid array that retains extreme value amplitudes.\n\n The Visualization & Alert Dashboard: An automated system that translates the mathematical 5 km centroid arrays into clean, geographic visual layers.\n\n The Alerting API: A lightweight, production-ready REST API that programmatically drops a pinpoint coordinate at the core of the severe anomaly and triggers categorized spatial alerts (low, moderate, and severe) across a precise 5 km geographical impact radius.\n\n • Use Cases & Societal Impact Eliminating Alert Fatigue for the NDRF: Current weather alerts are often too broad, covering entire states or districts, which leads to public complacency. This solution allows meteorologists to issue hyper-localized, highly targeted warnings. It changes a generic'heavy rain in the district' alert into a precise 'high risk of flash flooding within your specific 5 km radius in the next 12 hours' alert, empowering first responders to deploy assets perfectly.\n\n Protecting Rural Economies: Grants farming communities a highly accurate, 3- to 10- day lead time regarding localized catastrophic anomalies like sudden frost, hail, or heat domes. This structural foresight lets farmers alter harvesting schedules or apply cropprotection covers, shielding rural livelihoods from sudden climate shocks.\n\n Democratizing Supercomputing Power: Once this hybrid AI pipeline is trained, it processes live inference data on a standard cloud GPU node in seconds, making high-fidelity climate forecasting highly affordable and easily accessible.",
+    "description": "• Problem Statement Identifying and tracking the exact geographic footprints of extreme weather anomalies (such as severe cyclones, heat domes, or cold waves) within massive global Numerical Weather Prediction (NWP) outputs is computationally intensive and heavily reliant on manual interpretation. In medium-range forecasting (3 to 10 days), atmospheric chaos renders traditional deterministic models highly uncertain.\n\n Furthermore, standard deep learning models (like standard CNNs or U-Nets) suffer from spectral smoothing\"”they tend to 'average out' spatial data, which destroys the extreme amplitudes (the high-intensity peaks of rainfall or wind speed) that forecasters actually need to track. There is a critical gap between broad, coarse 12 km global ensemble datasets and localized, high-fidelity threat tracking.\n\n • Proposed Solution We propose an automated, state-of-the-art AI tracking and downscaling pipeline that shifts the paradigm from manual weather data sorting to automated, physics-informed anomaly tracking.Instead of relying on a single deterministic forecast run, our system directly processes multivariable, 4D Ensemble Prediction Systems (EPS) data.The system uses a two-stage hybrid AI architecture to solve the spectral smoothing problem:First, it utilizes a graph neural network (GNN) to map atmospheric variables onto a spherical mesh,instantly isolating moving anomalies and calculating their trajectory over a 3- to 10-day forecast window.\n\n Second, it pipes this isolated region into a generative diffusion model to perform statistical downscaling. This physics-constrained generative model mathematically derives a hyper-local 5km subgrid impact zone without flattening or blurring the severe amplitudes of the extreme weather event.\n\n • Technical Methodology & Architecture Spherical Anomaly Tracking (Stage 1 GNN): To eliminate the geographic distortions caused by processing the spherical Earth on flat 2D pixel grids, the system maps the 12 km NCMRWF Global Ensemble (NEPS-G) grids directly onto an icosahedral mesh. The message-passing GNN calculates the Extreme Forecast Index (EFI) against a 30-year historical ERA5 baseline distribution to isolate standard deviations and draw a macro-scale temporal bounding box around the anomaly's trajectory.\n\n Amplitude-Preserving Downscaling (Stage 2 Diffusion): The system passes the cropped, macroscale bounding box into a conditional denoising diffusion probabilistic model. Rather than optimizing for mean errors (which blurs peaks), the diffusion model learns the physical relationships between synoptic-scale features and regional topography. It iteratively generates high-resolution, high-amplitude local weather scenarios, downscaling the 12 km grid into a 5 km grid.\n\n Physics-Informed Constraints: To ensure the model remains scientifically accurate, we embed fluid dynamics and thermodynamic conservation laws directly into the neural network's loss function. The model is mathematically penalized if it generates physically impossible weather states (e.g., severe downpours missing corresponding moisture convergence vectors).\n\n • Datasets and Tools ? AI Frameworks: PyTorch / JAX (engineered with custom, physics-guided loss functions),Deep Graph Library (DGL) for icosahedral mesh networks, and Hugging Face Diffusers for generative downscaling.\n\n ? Data Wrangling & Geospatial Tools: Xarray and Dask for processing parallelized, multigigabyte 4D NetCDF/GRIB2 arrays; MetPy for physical meteorological equations;\n\n Cartopy for geographical map projections.\n\n ? Training & Testing Datasets:\n\n ? Baseline: Historical IMDAA / ERA5 reanalysis data to establish the climatological norm.\n\n ? Forecast Inputs: Historical NCUM (12 km deterministic) and NEPS-G (12 km global ensemble) datasets containing documented extreme historical events (e.g., Cyclone Amphan, severe North India heatwaves).\n\n • Expected Outcome & Key Deliverables The Tracking Core: A production-ready Spatio-Temporal GNN module that continuously processes global NWP streams to output dynamic, automated 4D bounding boxes around evolving weather threats.\n\n The Downscaling Core: A generative diffusion module capable of ingesting a 12 km resolution anomaly slice and outputting a probabilistically sound, 5 km resolution sub-grid array that retains extreme value amplitudes.\n\n The Visualization & Alert Dashboard: An automated system that translates the mathematical 5 km centroid arrays into clean, geographic visual layers.\n\n The Alerting API: A lightweight, production-ready REST API that programmatically drops a pinpoint coordinate at the core of the severe anomaly and triggers categorized spatial alerts (low, moderate, and severe) across a precise 5 km geographical impact radius.\n\n • Use Cases & Societal Impact Eliminating Alert Fatigue for the NDRF: Current weather alerts are often too broad, covering entire states or districts, which leads to public complacency. This solution allows meteorologists to issue hyper-localized, highly targeted warnings. It changes a generic'heavy rain in the district' alert into a precise 'high risk of flash flooding within your specific 5 km radius in the next 12 hours' alert, empowering first responders to deploy assets perfectly.\n\n Protecting Rural Economies: Grants farming communities a highly accurate, 3- to 10- day lead time regarding localized catastrophic anomalies like sudden frost, hail, or heat domes. This structural foresight lets farmers alter harvesting schedules or apply cropprotection covers, shielding rural livelihoods from sudden climate shocks.\n\n Democratizing Supercomputing Power: Once this hybrid AI pipeline is trained, it processes live inference data on a standard cloud GPU node in seconds, making high-fidelity climate forecasting highly affordable and easily accessible.",
     "submissions": 0,
     "youtubeLink": "",
     "datasetLink": "",
-    "isNew": false
+    "isNew": false,
+    "officialPsNumber": "SIH26078",
+    "deadline": "20 September 2026",
+    "maxSubmissions": 500
   },
   {
     "sNo": 79,
@@ -1108,7 +1342,10 @@ const SIH_PROBLEM_STATEMENTS = [
     "submissions": 0,
     "youtubeLink": "",
     "datasetLink": "",
-    "isNew": false
+    "isNew": false,
+    "officialPsNumber": "SIH26079",
+    "deadline": "20 September 2026",
+    "maxSubmissions": 500
   },
   {
     "sNo": 80,
@@ -1122,7 +1359,10 @@ const SIH_PROBLEM_STATEMENTS = [
     "submissions": 0,
     "youtubeLink": "",
     "datasetLink": "",
-    "isNew": false
+    "isNew": false,
+    "officialPsNumber": "SIH26080",
+    "deadline": "20 September 2026",
+    "maxSubmissions": 500
   },
   {
     "sNo": 81,
@@ -1132,11 +1372,14 @@ const SIH_PROBLEM_STATEMENTS = [
     "department": "National Centre for Medium Range Weather Forecasting (NCMRWF)",
     "category": "Software",
     "theme": "Disaster Management",
-    "description": "• Problem Statement Different forecasting systems perform differently depending on region, season, lead time and weather situation. Physical NWP models, ensemble forecasts and AI/ML weather models may each have strengths under different conditions. Therefore, there is a need for an intelligent blending system that can dynamically combine multiple forecasts.\n\n The challenge is to develop a hybrid AIâ€“NWP blending framework that assigns adaptive weights to different forecast sources based on historical skill, forecast lead time, region, season and weather regime. The final product should provide an optimized forecast for rainfall, temperature, wind and extreme weather indicators.\n\n Expected Outcome - Description\n\n • Dynamically blended forecast - Best-combined forecast from multiple model sources\n • Model weight maps - Indication of which model is more reliable for each region/lead time\n • Improved forecast skill - Better performance than individual models\n • Extreme weather guidance - Improved signals for heavy rainfall, heat wave and high-wind events\n • Operational workflow - Automated script/dashboard for routine forecast blending",
+    "description": "• Problem Statement Different forecasting systems perform differently depending on region, season, lead time and weather situation. Physical NWP models, ensemble forecasts and AI/ML weather models may each have strengths under different conditions. Therefore, there is a need for an intelligent blending system that can dynamically combine multiple forecasts.\n\n The challenge is to develop a hybrid AI\"“NWP blending framework that assigns adaptive weights to different forecast sources based on historical skill, forecast lead time, region, season and weather regime. The final product should provide an optimized forecast for rainfall, temperature, wind and extreme weather indicators.\n\n Expected Outcome - Description\n\n • Dynamically blended forecast - Best-combined forecast from multiple model sources\n • Model weight maps - Indication of which model is more reliable for each region/lead time\n • Improved forecast skill - Better performance than individual models\n • Extreme weather guidance - Improved signals for heavy rainfall, heat wave and high-wind events\n • Operational workflow - Automated script/dashboard for routine forecast blending",
     "submissions": 0,
     "youtubeLink": "",
     "datasetLink": "",
-    "isNew": false
+    "isNew": false,
+    "officialPsNumber": "SIH26081",
+    "deadline": "20 September 2026",
+    "maxSubmissions": 500
   },
   {
     "sNo": 82,
@@ -1150,7 +1393,10 @@ const SIH_PROBLEM_STATEMENTS = [
     "submissions": 0,
     "youtubeLink": "",
     "datasetLink": "",
-    "isNew": false
+    "isNew": false,
+    "officialPsNumber": "SIH26082",
+    "deadline": "20 September 2026",
+    "maxSubmissions": 500
   },
   {
     "sNo": 83,
@@ -1160,11 +1406,14 @@ const SIH_PROBLEM_STATEMENTS = [
     "department": "National Centre for Medium Range Weather Forecasting (NCMRWF)",
     "category": "Software",
     "theme": "Disaster Management",
-    "description": "In recent years, the frequency, duration, and intensity of heatwaves across India have escalated sharply due to climate change. However, traditional meteorological warnings rely almost exclusively on ambient dry-bulb temperature thresholds. This creates a critical vulnerability:standard forecasts ignore the deadly compounding effects of relative humidity, wind speed, and solar radiation on the human body.\n\n A temperature of 40Â°C at 20% humidity feels vastly different from 40Â°C at 70% humidityâ€”the latter can be fatal. Current public health infrastructure lacks localized, impact-based forecasting that translates raw weather data into actual physiological risk, human thermal stress levels, and projected mortality rates.\n\n The challenge is to design an intelligent, localized early warning system that shifts heatwave forecasting from 'what the weather will be' to 'what the weather will do' to human health.\n\n Participants need to build a predictive platform that computes a comprehensive Human Thermal Stress Index (integrating temperature, humidity, wind, and radiation) and links it directly to an automated Mortality Risk Index. The system should offer high-resolution forecasts to help municipal corporations, healthcare systems, and disaster management authorities deploy targeted,preemptive interventions.\n\n Develop algorithms to calculate advanced heat stress metrics such as the Wet-Bulb Globe Temperature (WBGT), Universal Thermal Climate Index (UTCI), or Heat Index (HI) rather than relying on temperature alone. Integrate historical public health, demographic (e.g., elderly or outdoor worker density), and localized weather data to predict heat-induced mortality and hospitalization spikes 3 to 5 days in advance. A dynamic GIS-mapped dashboard providing colorcoded, hyper-local alerts (Zone/Ward level) paired with actionable, automated public health advisories. An API capable of pushing automated SMS/WhatsApp regional alerts or localized triggers for city administration to initiate heat action plans (e.g., opening cooling centers, adjusting power grids, shifting outdoor work hours).",
+    "description": "In recent years, the frequency, duration, and intensity of heatwaves across India have escalated sharply due to climate change. However, traditional meteorological warnings rely almost exclusively on ambient dry-bulb temperature thresholds. This creates a critical vulnerability:standard forecasts ignore the deadly compounding effects of relative humidity, wind speed, and solar radiation on the human body.\n\n A temperature of 40°C at 20% humidity feels vastly different from 40°C at 70% humidity\"”the latter can be fatal. Current public health infrastructure lacks localized, impact-based forecasting that translates raw weather data into actual physiological risk, human thermal stress levels, and projected mortality rates.\n\n The challenge is to design an intelligent, localized early warning system that shifts heatwave forecasting from 'what the weather will be' to 'what the weather will do' to human health.\n\n Participants need to build a predictive platform that computes a comprehensive Human Thermal Stress Index (integrating temperature, humidity, wind, and radiation) and links it directly to an automated Mortality Risk Index. The system should offer high-resolution forecasts to help municipal corporations, healthcare systems, and disaster management authorities deploy targeted,preemptive interventions.\n\n Develop algorithms to calculate advanced heat stress metrics such as the Wet-Bulb Globe Temperature (WBGT), Universal Thermal Climate Index (UTCI), or Heat Index (HI) rather than relying on temperature alone. Integrate historical public health, demographic (e.g., elderly or outdoor worker density), and localized weather data to predict heat-induced mortality and hospitalization spikes 3 to 5 days in advance. A dynamic GIS-mapped dashboard providing colorcoded, hyper-local alerts (Zone/Ward level) paired with actionable, automated public health advisories. An API capable of pushing automated SMS/WhatsApp regional alerts or localized triggers for city administration to initiate heat action plans (e.g., opening cooling centers, adjusting power grids, shifting outdoor work hours).",
     "submissions": 0,
     "youtubeLink": "",
     "datasetLink": "",
-    "isNew": false
+    "isNew": false,
+    "officialPsNumber": "SIH26083",
+    "deadline": "20 September 2026",
+    "maxSubmissions": 500
   },
   {
     "sNo": 84,
@@ -1174,11 +1423,14 @@ const SIH_PROBLEM_STATEMENTS = [
     "department": "National Centre for Medium Range Weather Forecasting (NCMRWF)",
     "category": "Software",
     "theme": "Disaster Management",
-    "description": "Convective storms, such as severe thunderstorms, hail, downburst winds, and cloudbursts are among Indiaâ€™s deadliest natural hazards, especially during the pre-monsoon and monsoon seasons.Despite advancements in Numerical Weather Prediction (NWP) models, traditional systems often fail to accurately capture these mesoscale extreme weather events.The primary limitation stems from spatial and temporal constraints: these violent storms develop rapidly within a window of minutes and occur at localized scales that slip through coarse grid resolutions. Current early warning infrastructures struggle to provide high-resolution, short-term forecasts (0â€“6 hours), leaving local administrations, aviation sectors, and rural farming communities vulnerable to sudden, devastating impacts.\n\n The challenge is to build a real-time, convective-scale Nowcasting System (0â€“6 hour lead time) operating at a hyper-local 1â€“3 km spatial resolution.\n\n Because traditional physics-based models are too computationally slow to simulate these rapid developments in real-time, participants must design a system rooted in Multi-Source Data Fusion architectures. The core objective is to ingest high-frequency, heterogeneous meteorological streams, automatically detect early convective initiation, and dynamically forecast severe storm parameters (including lightning strike density, hail probability, downburst velocity, and cloudburst thresholds).Design a robust, real-time ingestion engine that fuses data streams from multiple sources: Doppler Weather Radars (DWR - reflectivity and velocity fields), geostationary satellite imagery (INSAT-3D/3DR thermal/infrared bands), and ground-based lightning detection networks. A real-time,interactive GIS-mapped dashboard showcasing high-resolution (1â€“3 km) hazard zones with live countdown clocks for storm arrivals.",
+    "description": "Convective storms, such as severe thunderstorms, hail, downburst winds, and cloudbursts are among India's deadliest natural hazards, especially during the pre-monsoon and monsoon seasons.Despite advancements in Numerical Weather Prediction (NWP) models, traditional systems often fail to accurately capture these mesoscale extreme weather events.The primary limitation stems from spatial and temporal constraints: these violent storms develop rapidly within a window of minutes and occur at localized scales that slip through coarse grid resolutions. Current early warning infrastructures struggle to provide high-resolution, short-term forecasts (0\"“6 hours), leaving local administrations, aviation sectors, and rural farming communities vulnerable to sudden, devastating impacts.\n\n The challenge is to build a real-time, convective-scale Nowcasting System (0\"“6 hour lead time) operating at a hyper-local 1\"“3 km spatial resolution.\n\n Because traditional physics-based models are too computationally slow to simulate these rapid developments in real-time, participants must design a system rooted in Multi-Source Data Fusion architectures. The core objective is to ingest high-frequency, heterogeneous meteorological streams, automatically detect early convective initiation, and dynamically forecast severe storm parameters (including lightning strike density, hail probability, downburst velocity, and cloudburst thresholds).Design a robust, real-time ingestion engine that fuses data streams from multiple sources: Doppler Weather Radars (DWR - reflectivity and velocity fields), geostationary satellite imagery (INSAT-3D/3DR thermal/infrared bands), and ground-based lightning detection networks. A real-time,interactive GIS-mapped dashboard showcasing high-resolution (1\"“3 km) hazard zones with live countdown clocks for storm arrivals.",
     "submissions": 0,
     "youtubeLink": "",
     "datasetLink": "",
-    "isNew": false
+    "isNew": false,
+    "officialPsNumber": "SIH26084",
+    "deadline": "20 September 2026",
+    "maxSubmissions": 500
   },
   {
     "sNo": 85,
@@ -1188,11 +1440,14 @@ const SIH_PROBLEM_STATEMENTS = [
     "department": "National Centre for Medium Range Weather Forecasting (NCMRWF)",
     "category": "Software",
     "theme": "Disaster Management",
-    "description": "Urban flooding in major Indian metros like Mumbai, Delhi, and Chennai has become an annual crisis. Traditional Numerical Weather Prediction (NWP) models fall short because knowing how much rain will fall does not automatically translate into knowing where the streets will flood.Urban flooding is a hyper-local phenomenon dictated by micro-topography, concrete imperviousness, and heavily strained, invisible drainage networks. Currently, municipal bodies lack real-time, street-level predictive systems. Consequently, cities are caught off guard by rapid water accumulation, leading to severe traffic gridlocks, economic disruption, and loss of life.\n\n The challenge is to design a high-resolution, real-time Urban Flood Nowcasting System (0â€“3 hour lead time) capable of predicting street-level inundation before it happens.\n\n Participants must move away from isolated weather models and instead build a coupled framework. This system must fuse real-time rainfall nowcasts with high-resolution Digital Elevation Models (DEM) and a graph-based mathematical model of the cityâ€™s underground drainage network. By mapping how water flows, accumulates, and surcharges across concrete surfaces and drainage nodes, the solution should pinpoint exactly which streets or intersections will flood.Develop a pipeline that takes high-resolution rainfall nowcasts (from Doppler Weather Radars) and instantly routes that volume across a 2D surface terrain model. Represent the city's stormwater drain network as a directed graph (nodes as manholes/inlets, edges as pipes/canals). The model must calculate hydraulic capacity and predict where blockages or overcapacity will cause backflow onto the streets. A dynamic, web-based GIS dashboard showing real-time, street-by-street flooding projections (e.g., water depth estimations in centimeters) with a 0â€“3 hour forward-looking window.An API utility that can interface with navigation maps to suggest flood-safe alternative routes for emergency services, public transit, and commuters during heavy downpours.",
+    "description": "Urban flooding in major Indian metros like Mumbai, Delhi, and Chennai has become an annual crisis. Traditional Numerical Weather Prediction (NWP) models fall short because knowing how much rain will fall does not automatically translate into knowing where the streets will flood.Urban flooding is a hyper-local phenomenon dictated by micro-topography, concrete imperviousness, and heavily strained, invisible drainage networks. Currently, municipal bodies lack real-time, street-level predictive systems. Consequently, cities are caught off guard by rapid water accumulation, leading to severe traffic gridlocks, economic disruption, and loss of life.\n\n The challenge is to design a high-resolution, real-time Urban Flood Nowcasting System (0\"“3 hour lead time) capable of predicting street-level inundation before it happens.\n\n Participants must move away from isolated weather models and instead build a coupled framework. This system must fuse real-time rainfall nowcasts with high-resolution Digital Elevation Models (DEM) and a graph-based mathematical model of the city's underground drainage network. By mapping how water flows, accumulates, and surcharges across concrete surfaces and drainage nodes, the solution should pinpoint exactly which streets or intersections will flood.Develop a pipeline that takes high-resolution rainfall nowcasts (from Doppler Weather Radars) and instantly routes that volume across a 2D surface terrain model. Represent the city's stormwater drain network as a directed graph (nodes as manholes/inlets, edges as pipes/canals). The model must calculate hydraulic capacity and predict where blockages or overcapacity will cause backflow onto the streets. A dynamic, web-based GIS dashboard showing real-time, street-by-street flooding projections (e.g., water depth estimations in centimeters) with a 0\"“3 hour forward-looking window.An API utility that can interface with navigation maps to suggest flood-safe alternative routes for emergency services, public transit, and commuters during heavy downpours.",
     "submissions": 0,
     "youtubeLink": "",
     "datasetLink": "",
-    "isNew": false
+    "isNew": false,
+    "officialPsNumber": "SIH26085",
+    "deadline": "20 September 2026",
+    "maxSubmissions": 500
   },
   {
     "sNo": 86,
@@ -1202,11 +1457,14 @@ const SIH_PROBLEM_STATEMENTS = [
     "department": "National Centre for Medium Range Weather Forecasting (NCMRWF)",
     "category": "Software",
     "theme": "Agriculture, FoodTech & Rural Development",
-    "description": "The Indian Summer Monsoon dictates the economic livelihood of millions of farmers, particularly during the Kharif sowing season. While macro-scale monsoon forecasts across large meteorological subdivisions have improved, Indian agriculture remains highly vulnerable to the unpredictable nature of intra-seasonal variations. Specifically, the exact dates of monsoon onset,prolonged dry spells (break-monsoon phases), and subsequent revival cycles vary drastically from one district to another.\n\n Standard regional forecasts lack the spatial granularity required for localized agricultural planning.If a farmer sows seeds during a false onset just before a major breakthrough pause, entire crops fail due to moisture stress, leading to crushing financial losses.\n\n The challenge is to build a hybrid predictive framework capable of delivering a 7-to-30-day probabilistic outlook of monsoon behavior at the Block and Panchayat (Village cluster) scale.\n\n The system must bridge the gap between global climate teleconnections and hyper-local weather outcomes. Participants should design a solution that ingests large-scale climate indicesâ€”such as the El NiÃ±o-Southern Oscillation (ENSO), Indian Ocean Dipole (IOD), and Madden-Julian Oscillation (MJO)â€”and downscales their signatures using advanced machine learning models to predict localized precipitation behavior, onset thresholds, and active/break durations.Develop a hybrid mathematical or machine learning model that pairs global planetary boundary conditions (ENSO, IOD, MJO phases) with regional atmospheric data to predict local rainfall anomalies. Generate dynamic, color-coded risk maps at the block/panchayat level illustrating the statistical probability percentage of monsoon onset, continuous dry spells (breaks), or heavy downpours 1 to 4 weeks in advance. Build an expert-system engine that translates rainfall probabilities into localized crop-specific agronomic advisories (e.g., advising farmers to delay sowing, prepare irrigation alternatives, or alter crop choices based on upcoming break phases). A mobile-optimized web application or automated SMS/WhatsApp API gateway that pushes clear,actionable text-based advisories in regional Indian languages directly to farmers and local agricultural extension officers.",
+    "description": "The Indian Summer Monsoon dictates the economic livelihood of millions of farmers, particularly during the Kharif sowing season. While macro-scale monsoon forecasts across large meteorological subdivisions have improved, Indian agriculture remains highly vulnerable to the unpredictable nature of intra-seasonal variations. Specifically, the exact dates of monsoon onset,prolonged dry spells (break-monsoon phases), and subsequent revival cycles vary drastically from one district to another.\n\n Standard regional forecasts lack the spatial granularity required for localized agricultural planning.If a farmer sows seeds during a false onset just before a major breakthrough pause, entire crops fail due to moisture stress, leading to crushing financial losses.\n\n The challenge is to build a hybrid predictive framework capable of delivering a 7-to-30-day probabilistic outlook of monsoon behavior at the Block and Panchayat (Village cluster) scale.\n\n The system must bridge the gap between global climate teleconnections and hyper-local weather outcomes. Participants should design a solution that ingests large-scale climate indices\"”such as the El NiÃ±o-Southern Oscillation (ENSO), Indian Ocean Dipole (IOD), and Madden-Julian Oscillation (MJO)\"”and downscales their signatures using advanced machine learning models to predict localized precipitation behavior, onset thresholds, and active/break durations.Develop a hybrid mathematical or machine learning model that pairs global planetary boundary conditions (ENSO, IOD, MJO phases) with regional atmospheric data to predict local rainfall anomalies. Generate dynamic, color-coded risk maps at the block/panchayat level illustrating the statistical probability percentage of monsoon onset, continuous dry spells (breaks), or heavy downpours 1 to 4 weeks in advance. Build an expert-system engine that translates rainfall probabilities into localized crop-specific agronomic advisories (e.g., advising farmers to delay sowing, prepare irrigation alternatives, or alter crop choices based on upcoming break phases). A mobile-optimized web application or automated SMS/WhatsApp API gateway that pushes clear,actionable text-based advisories in regional Indian languages directly to farmers and local agricultural extension officers.",
     "submissions": 0,
     "youtubeLink": "",
     "datasetLink": "",
-    "isNew": false
+    "isNew": false,
+    "officialPsNumber": "SIH26086",
+    "deadline": "20 September 2026",
+    "maxSubmissions": 500
   },
   {
     "sNo": 87,
@@ -1220,7 +1478,10 @@ const SIH_PROBLEM_STATEMENTS = [
     "submissions": 0,
     "youtubeLink": "",
     "datasetLink": "",
-    "isNew": false
+    "isNew": false,
+    "officialPsNumber": "SIH26087",
+    "deadline": "20 September 2026",
+    "maxSubmissions": 500
   },
   {
     "sNo": 88,
@@ -1234,7 +1495,10 @@ const SIH_PROBLEM_STATEMENTS = [
     "submissions": 0,
     "youtubeLink": "",
     "datasetLink": "",
-    "isNew": false
+    "isNew": false,
+    "officialPsNumber": "SIH26088",
+    "deadline": "20 September 2026",
+    "maxSubmissions": 500
   },
   {
     "sNo": 89,
@@ -1248,7 +1512,10 @@ const SIH_PROBLEM_STATEMENTS = [
     "submissions": 0,
     "youtubeLink": "",
     "datasetLink": "",
-    "isNew": false
+    "isNew": false,
+    "officialPsNumber": "SIH26089",
+    "deadline": "20 September 2026",
+    "maxSubmissions": 500
   },
   {
     "sNo": 90,
@@ -1262,7 +1529,10 @@ const SIH_PROBLEM_STATEMENTS = [
     "submissions": 0,
     "youtubeLink": "",
     "datasetLink": "",
-    "isNew": false
+    "isNew": false,
+    "officialPsNumber": "SIH26090",
+    "deadline": "20 September 2026",
+    "maxSubmissions": 500
   },
   {
     "sNo": 91,
@@ -1272,11 +1542,14 @@ const SIH_PROBLEM_STATEMENTS = [
     "department": "Department of Social Justice and Empowerment",
     "category": "Software",
     "theme": "Agriculture, FoodTech & Rural Development",
-    "description": "• Background The government actively promotes the economic empowerment of marginalized communities by providing concessional credit for income-generating activities. Under various schemes,beneficiaries are required to contribute a small margin money fractionâ€”typically 10% of the total project costâ€”while the State Channelizing agencies (SCAs) Channelizing agencies(CAs) provide the remaining 90% as a concessional loan. For example, if an entrepreneur wishes to establish a ?10,00,00 enterprise, they must possess ?1,00,00 as their 10% contribution, making them eligible for a ?9,00,00 loan.\n\n These loans are categorized into specific tiers:\n\n ? Micro Finance Scheme: For small units with a project cost up to ?1.40 lakh. The funding agency provides up to 90% (maximum ?1.25 lakh) at a concessional interest rate of 6.5% per annum for the beneficiary, to be repaid over 3 years (including a 3-month moratorium).\n\n ? Term Loan Scheme: For larger projects costing between ?1.40 lakh and ?50.00 lakh. The agency provides up to 90% (maximum ?45 lakh) at an interest rate of 8% per annum, to be repaid over 7 years (including a 6-month moratorium).\n\n However, despite the availability of capital, many first-time rural entrepreneurs face a high rate of business stagnation. This is due to a profound lack of formal market research tailored to their specific geographical reality, compounded by poor financial literacy regarding loan structuring,margin requirements, and repayment schedules.\n\n • Challenge Beneficiaries often select business activities based on anecdotal success rather than data-driven market demand, and they struggle to calculate exactly how much capital they need or which scheme they qualify for. A prospective entrepreneur in a specific Gram Panchayat (village) lacks the analytical tools to determine local market saturation, optimal pricing, localized threats, and their precise financial eligibility.\n\n There is a critical need for an intelligent tool that democratizes institutional-grade business consulting. The challenge is to build a hyper-local AI Assistant accompanied by a Smart Scheme Calculator that guides the user through a comprehensive business feasibility study and financial structuring plan before they apply for funding.\n\n • Expected Solution Participants are required to develop an NLP-powered, multilingual AI Business Advisory Assistant tailored for rural and semi-urban geographies. The system should take basic inputs from the user:\n\n Geographic Location (Village/Block/District), Available Margin Capital (e.g., ?1,00,000), and the Proposed Business Category (e.g., Dairy, Retail, Textiles etc).\n\n The application must feature two core modules:\n\n Module 1: Hyper-Local Business Feasibility Report The AI must dynamically generate a localized strategy encompassing:\n\n 1. Market Reach: Estimating the immediate consumer base within a 5â€“10 km radius of the village/block and identifying primary distribution channels.\n\n 2. Opportunity Analysis: Highlighting unserved or underserved niches within the chosen business sector in that specific local economy.\n\n 3. General Business Analysis (SWOT): A foundational breakdown of Strengths, Weaknesses,Opportunities, and Threats tailored to the specific micro-enterprise budget.\n\n 4. Threats Identification: Pinpointing local risks such as supply chain bottlenecks, seasonal demand fluctuations, or dependency on single buyers.\n\n 5. Competitor Mapping: Using localized demographic and economic data to estimate the density of existing similar businesses in the block.\n\n 6. Product Market Value: Suggesting optimal pricing strategies and predicting the local market value of the goods/services based on regional purchasing power.\n\n Module 2: Smart Financial Calculator & Scheme Router An integrated financial engine that automatically processes the user's 'Available Margin Capital' to output a clear financial roadmap: 7.\n\n Financial Structuring:\n\n Automatically calculates the total feasible Project Cost (Available Margin / 10%) and the Maximum Loan Amount (90% of Project Cost).\n\n Example: If the user inputs ?1,00,00 as available capital, the tool establishes a ?10,00,00 Project Cost and a ?9,00,00 loan eligibility.\n\n Scheme Auto-Selection:\n\n Routes the user to the correct scheme based on the calculated Project Cost.\n\n Logic A: If Project Cost ? ?1.40 Lakh -> Selects Micro Finance Scheme (6.5% interest, 3-year tenure, 3-month moratorium).\n\n Logic B: If Project Cost > ?1.40 Lakh and ? ?50.00 Lakh -> Selects Term Loan Scheme (8% interest, 7-year tenure, 6-month moratorium).\n\n EMI & Moratorium Generator: Outlines the expected quarterly repayment schedule, operational costs, and working capital requirements, factoring in the specific moratorium periods.\n\n • Impact Goals ? Reduce the failure rate of newly funded micro-enterprises by ensuring beneficiaries choose viable, locally relevant business models based on data.\n\n ? Eliminate financial confusion by clearly mapping a beneficiary's available cash (10%) to their maximum borrowing capacity (90%) and exact repayment obligations.\n\n ? Empower marginalized youth with enterprise intelligence, fostering a culture of data-backed, financially sound entrepreneurship at the grassroots level.",
+    "description": "• Background The government actively promotes the economic empowerment of marginalized communities by providing concessional credit for income-generating activities. Under various schemes,beneficiaries are required to contribute a small margin money fraction\"”typically 10% of the total project cost\"”while the State Channelizing agencies (SCAs) Channelizing agencies(CAs) provide the remaining 90% as a concessional loan. For example, if an entrepreneur wishes to establish a ?10,00,00 enterprise, they must possess ?1,00,00 as their 10% contribution, making them eligible for a ?9,00,00 loan.\n\n These loans are categorized into specific tiers:\n\n ? Micro Finance Scheme: For small units with a project cost up to ?1.40 lakh. The funding agency provides up to 90% (maximum ?1.25 lakh) at a concessional interest rate of 6.5% per annum for the beneficiary, to be repaid over 3 years (including a 3-month moratorium).\n\n ? Term Loan Scheme: For larger projects costing between ?1.40 lakh and ?50.00 lakh. The agency provides up to 90% (maximum ?45 lakh) at an interest rate of 8% per annum, to be repaid over 7 years (including a 6-month moratorium).\n\n However, despite the availability of capital, many first-time rural entrepreneurs face a high rate of business stagnation. This is due to a profound lack of formal market research tailored to their specific geographical reality, compounded by poor financial literacy regarding loan structuring,margin requirements, and repayment schedules.\n\n • Challenge Beneficiaries often select business activities based on anecdotal success rather than data-driven market demand, and they struggle to calculate exactly how much capital they need or which scheme they qualify for. A prospective entrepreneur in a specific Gram Panchayat (village) lacks the analytical tools to determine local market saturation, optimal pricing, localized threats, and their precise financial eligibility.\n\n There is a critical need for an intelligent tool that democratizes institutional-grade business consulting. The challenge is to build a hyper-local AI Assistant accompanied by a Smart Scheme Calculator that guides the user through a comprehensive business feasibility study and financial structuring plan before they apply for funding.\n\n • Expected Solution Participants are required to develop an NLP-powered, multilingual AI Business Advisory Assistant tailored for rural and semi-urban geographies. The system should take basic inputs from the user:\n\n Geographic Location (Village/Block/District), Available Margin Capital (e.g., ?1,00,000), and the Proposed Business Category (e.g., Dairy, Retail, Textiles etc).\n\n The application must feature two core modules:\n\n Module 1: Hyper-Local Business Feasibility Report The AI must dynamically generate a localized strategy encompassing:\n\n 1. Market Reach: Estimating the immediate consumer base within a 5\"“10 km radius of the village/block and identifying primary distribution channels.\n\n 2. Opportunity Analysis: Highlighting unserved or underserved niches within the chosen business sector in that specific local economy.\n\n 3. General Business Analysis (SWOT): A foundational breakdown of Strengths, Weaknesses,Opportunities, and Threats tailored to the specific micro-enterprise budget.\n\n 4. Threats Identification: Pinpointing local risks such as supply chain bottlenecks, seasonal demand fluctuations, or dependency on single buyers.\n\n 5. Competitor Mapping: Using localized demographic and economic data to estimate the density of existing similar businesses in the block.\n\n 6. Product Market Value: Suggesting optimal pricing strategies and predicting the local market value of the goods/services based on regional purchasing power.\n\n Module 2: Smart Financial Calculator & Scheme Router An integrated financial engine that automatically processes the user's 'Available Margin Capital' to output a clear financial roadmap: 7.\n\n Financial Structuring:\n\n Automatically calculates the total feasible Project Cost (Available Margin / 10%) and the Maximum Loan Amount (90% of Project Cost).\n\n Example: If the user inputs ?1,00,00 as available capital, the tool establishes a ?10,00,00 Project Cost and a ?9,00,00 loan eligibility.\n\n Scheme Auto-Selection:\n\n Routes the user to the correct scheme based on the calculated Project Cost.\n\n Logic A: If Project Cost ? ?1.40 Lakh -> Selects Micro Finance Scheme (6.5% interest, 3-year tenure, 3-month moratorium).\n\n Logic B: If Project Cost > ?1.40 Lakh and ? ?50.00 Lakh -> Selects Term Loan Scheme (8% interest, 7-year tenure, 6-month moratorium).\n\n EMI & Moratorium Generator: Outlines the expected quarterly repayment schedule, operational costs, and working capital requirements, factoring in the specific moratorium periods.\n\n • Impact Goals ? Reduce the failure rate of newly funded micro-enterprises by ensuring beneficiaries choose viable, locally relevant business models based on data.\n\n ? Eliminate financial confusion by clearly mapping a beneficiary's available cash (10%) to their maximum borrowing capacity (90%) and exact repayment obligations.\n\n ? Empower marginalized youth with enterprise intelligence, fostering a culture of data-backed, financially sound entrepreneurship at the grassroots level.",
     "submissions": 0,
     "youtubeLink": "",
     "datasetLink": "",
-    "isNew": false
+    "isNew": false,
+    "officialPsNumber": "SIH26091",
+    "deadline": "20 September 2026",
+    "maxSubmissions": 500
   },
   {
     "sNo": 92,
@@ -1286,11 +1559,14 @@ const SIH_PROBLEM_STATEMENTS = [
     "department": "Department of Social Justice and Empowerment",
     "category": "Software",
     "theme": "Smart Automation",
-    "description": "• Background To promote the socio-economic empowerment of the Scheduled Caste (SC) population, the government provides concessional financial assistance and educational loans. Beneficiaries with an annual family income of up to ?5.00 Lakhs are eligible for various tailored financial products covering up to 90% of their project or education costs at highly concessional interest rates (typically 6.5% to 8% per annum).\n\n However, direct loan applications are not entertained. Instead, funds are routed through a 'Channel Finance System' comprising over 100 Channel Partners, including State Channelizing Agencies (SCAs), Public Sector Banks (PSBs), Regional Rural Banks (RRBs), and NBFC-MFIs.\n\n • Challenge Citizens often lack awareness regarding which specific credit scheme fits their needsâ€”such as distinguishing between a Micro Finance Scheme for small projects (up to ?1.40 lakh), a Term Loan for larger projects (up to ?50.00 lakh), or an Educational Loan Scheme. Furthermore,applicants face difficulties identifying and locating the nearest authorized Channel Partner equipped to process their specific loan category. This fragmentation leads to offline confusion,misrouted applications, and delays in disbursement.The challenge is to develop an intelligent, multi-lingual digital platform or mobile application that bridges the gap between the beneficiaries and the channelizing agencies.\n • Expected Solution Participants are expected to develop a comprehensive platform that includes:\n\n 1. Smart Scheme Recommender: An AI/rule-based engine that takes basic user inputs (project type, estimated cost, income level, education status) and automatically recommends the most suitable credit or educational loan scheme.\n\n 2. Financial Calculator: A dynamic tool to calculate projected EMIs, accounting for specific scheme guidelines like maximum loan limits, interest rates (e.g., 6.5% to 15% depending on the scheme), and moratorium periods (3 to 12 months).\n\n 3. Geo-Spatial Partner Locator & Router: Integration of a mapping service to identify the nearest eligible Channel Partner (SCA/Bank/NBFC-MFI) based on the user's location and the partner's current fund utilization eligibility (ensuring applications aren't sent to partners with high NPAs or overdues).\n\n • Impact Goals\n • Enhance financial literacy among the target demographic regarding concessional lending.\n • Improve transparency and efficiency in the channel finance ecosystem, ensuring faster disbursements and better fund utilization.",
+    "description": "• Background To promote the socio-economic empowerment of the Scheduled Caste (SC) population, the government provides concessional financial assistance and educational loans. Beneficiaries with an annual family income of up to ?5.00 Lakhs are eligible for various tailored financial products covering up to 90% of their project or education costs at highly concessional interest rates (typically 6.5% to 8% per annum).\n\n However, direct loan applications are not entertained. Instead, funds are routed through a 'Channel Finance System' comprising over 100 Channel Partners, including State Channelizing Agencies (SCAs), Public Sector Banks (PSBs), Regional Rural Banks (RRBs), and NBFC-MFIs.\n\n • Challenge Citizens often lack awareness regarding which specific credit scheme fits their needs\"”such as distinguishing between a Micro Finance Scheme for small projects (up to ?1.40 lakh), a Term Loan for larger projects (up to ?50.00 lakh), or an Educational Loan Scheme. Furthermore,applicants face difficulties identifying and locating the nearest authorized Channel Partner equipped to process their specific loan category. This fragmentation leads to offline confusion,misrouted applications, and delays in disbursement.The challenge is to develop an intelligent, multi-lingual digital platform or mobile application that bridges the gap between the beneficiaries and the channelizing agencies.\n • Expected Solution Participants are expected to develop a comprehensive platform that includes:\n\n 1. Smart Scheme Recommender: An AI/rule-based engine that takes basic user inputs (project type, estimated cost, income level, education status) and automatically recommends the most suitable credit or educational loan scheme.\n\n 2. Financial Calculator: A dynamic tool to calculate projected EMIs, accounting for specific scheme guidelines like maximum loan limits, interest rates (e.g., 6.5% to 15% depending on the scheme), and moratorium periods (3 to 12 months).\n\n 3. Geo-Spatial Partner Locator & Router: Integration of a mapping service to identify the nearest eligible Channel Partner (SCA/Bank/NBFC-MFI) based on the user's location and the partner's current fund utilization eligibility (ensuring applications aren't sent to partners with high NPAs or overdues).\n\n • Impact Goals\n • Enhance financial literacy among the target demographic regarding concessional lending.\n • Improve transparency and efficiency in the channel finance ecosystem, ensuring faster disbursements and better fund utilization.",
     "submissions": 0,
     "youtubeLink": "",
     "datasetLink": "",
-    "isNew": false
+    "isNew": false,
+    "officialPsNumber": "SIH26092",
+    "deadline": "20 September 2026",
+    "maxSubmissions": 500
   },
   {
     "sNo": 93,
@@ -1304,7 +1580,10 @@ const SIH_PROBLEM_STATEMENTS = [
     "submissions": 0,
     "youtubeLink": "",
     "datasetLink": "",
-    "isNew": false
+    "isNew": false,
+    "officialPsNumber": "SIH26093",
+    "deadline": "20 September 2026",
+    "maxSubmissions": 500
   },
   {
     "sNo": 94,
@@ -1318,7 +1597,10 @@ const SIH_PROBLEM_STATEMENTS = [
     "submissions": 0,
     "youtubeLink": "",
     "datasetLink": "",
-    "isNew": false
+    "isNew": false,
+    "officialPsNumber": "SIH26094",
+    "deadline": "20 September 2026",
+    "maxSubmissions": 500
   },
   {
     "sNo": 95,
@@ -1332,7 +1614,10 @@ const SIH_PROBLEM_STATEMENTS = [
     "submissions": 0,
     "youtubeLink": "",
     "datasetLink": "",
-    "isNew": false
+    "isNew": false,
+    "officialPsNumber": "SIH26095",
+    "deadline": "20 September 2026",
+    "maxSubmissions": 500
   },
   {
     "sNo": 96,
@@ -1342,11 +1627,14 @@ const SIH_PROBLEM_STATEMENTS = [
     "department": "Department of Social Justice and Empowerment",
     "category": "Hardware",
     "theme": "Smart Education",
-    "description": "• Background Dr. B. R. Ambedkarâ€™s writings, speeches, constitutional debates, manuscripts,and historical contributions are spread across libraries, memorials, archives, and fragmented digital sources, making them difficult to access and preserve. Existing archival systems lack intelligent search, multilingual accessibility, and interactive learning features required for students, researchers, and visitors.Institutions such as Dr. Ambedkar International Centre require a modern digital platform through which visitors can explore Ambedkarâ€™s works, speeches, rare manuscripts, and historical records through interactive screens and audio-visual systems.\n • Description:\n\n The proposed system aims to develop an AI-enabled Digital Heritage Archive and Institutional Knowledge Platform dedicated to Dr. B. R. Ambedkar. The platform will combine hardware and software components such as interactive touch-screen kiosks, smart displays, centralized archival servers, and AI-powered search systems.Visitors should be able to access speeches, books, constitutional debates, rare manuscripts,photographs, documentaries, and archival records through an easy-to-use digital interface.\n\n The system should support:\n\n • AI-powered semantic search and intelligent knowledge mapping.\n • Full-Text and summarized access to writings and speeches.\n • OCR-based digitization of old documents and manuscripts.\n • Multilingual translation and audio narration features.\n • Audio-video archival system for lectures, documentaries, and interviews.\n • Interactive timeline and memorial story telling modules.\n • AI Research Assistant for answering queries related to Dr. Ambedkar's works and constitutional ideas.\n • The platform should also support secure digital preservation, metadata tagging, and institutional archival management.\n • Expected Solution:\n\n A centralized hardware-software integrated digital archive system should be developed for institutions such as Dr. Ambedkar International Centre. The solution should include interactive kiosks and smart displays enabling visitors to search, study, listen to, and compile Dr. Ambedkarâ€™s writings, speeches, and historical records.The system should promote digital preservation, constitutional awareness, accessible learning, and immersive heritage experiences for researchers, students, and the general public.",
+    "description": "• Background Dr. B. R. Ambedkar's writings, speeches, constitutional debates, manuscripts,and historical contributions are spread across libraries, memorials, archives, and fragmented digital sources, making them difficult to access and preserve. Existing archival systems lack intelligent search, multilingual accessibility, and interactive learning features required for students, researchers, and visitors.Institutions such as Dr. Ambedkar International Centre require a modern digital platform through which visitors can explore Ambedkar's works, speeches, rare manuscripts, and historical records through interactive screens and audio-visual systems.\n • Description:\n\n The proposed system aims to develop an AI-enabled Digital Heritage Archive and Institutional Knowledge Platform dedicated to Dr. B. R. Ambedkar. The platform will combine hardware and software components such as interactive touch-screen kiosks, smart displays, centralized archival servers, and AI-powered search systems.Visitors should be able to access speeches, books, constitutional debates, rare manuscripts,photographs, documentaries, and archival records through an easy-to-use digital interface.\n\n The system should support:\n\n • AI-powered semantic search and intelligent knowledge mapping.\n • Full-Text and summarized access to writings and speeches.\n • OCR-based digitization of old documents and manuscripts.\n • Multilingual translation and audio narration features.\n • Audio-video archival system for lectures, documentaries, and interviews.\n • Interactive timeline and memorial story telling modules.\n • AI Research Assistant for answering queries related to Dr. Ambedkar's works and constitutional ideas.\n • The platform should also support secure digital preservation, metadata tagging, and institutional archival management.\n • Expected Solution:\n\n A centralized hardware-software integrated digital archive system should be developed for institutions such as Dr. Ambedkar International Centre. The solution should include interactive kiosks and smart displays enabling visitors to search, study, listen to, and compile Dr. Ambedkar's writings, speeches, and historical records.The system should promote digital preservation, constitutional awareness, accessible learning, and immersive heritage experiences for researchers, students, and the general public.",
     "submissions": 0,
     "youtubeLink": "",
     "datasetLink": "",
-    "isNew": false
+    "isNew": false,
+    "officialPsNumber": "SIH26096",
+    "deadline": "20 September 2026",
+    "maxSubmissions": 500
   },
   {
     "sNo": 97,
@@ -1356,11 +1644,14 @@ const SIH_PROBLEM_STATEMENTS = [
     "department": "Department of Social Justice and Empowerment",
     "category": "Software",
     "theme": "Agriculture, FoodTech & Rural Development",
-    "description": "• Background\n • The Pradhan Mantri Anusuchit Jaati Abhyuday Yojana (PM-AJAY) aims to reduce poverty among Scheduled Caste (SC) communities through livelihood promotion, skill development, and enterprise support under its Grant-in-Aid (GIA) component. A major challenge in implementation is the identification of appropriate skill training pathways that align with both the aspirations of beneficiaries and the actual livelihood opportunities available in their local regions.\n • Many target beneficiaries face barriers such as low digital literacy, limited awareness of modern trades, language constraints, and difficulty navigating text-heavy digital systems. As a result, there is often a mismatch between enrolled training programs and the beneficiaryâ€™s interests, capabilities, or local market demand, leading to high dropout rates and poor post-training employment outcomes.\n • To improve inclusion and effectiveness, there is a need for an AI-enabled conversational system that can interact naturally in regional languages and dialects, understand beneficiary aspirations, assess skill gaps, and recommend suitable NSQF aligned livelihood opportunities in and around the beneficiary.\n • Basic Issues under GIA Component:\n • Lack of proper road map and Planning of the Perspective plans from execution to implementation\n • Identification of the participants Trained and skilled Financial consultants\n • Job placement issue after the skilling programme\n • Coordination Issues among the corporation, Ministry/Departments\n • Inadequate Technical and support team at ground level\n • Detailed Description The proposed solution should be an AI-driven, multilingual, voice-based virtual livelihood assistant capable of conducting conversational interviews with beneficiaries from aspirational SC communities. Instead of relying on traditional form-filling methods, the system should use voice interactions to collect information such as:\n • Educational background\n • Existing or traditional family occupations\n • Current livelihood activities\n • Skills and interests\n • Mobility and physical constraints\n • Preference for self-employment or wage employment\n • Local economic realities and opportunities The assistant should support regional languages and dialects to ensure accessibility for users with low literacy or limited digital exposure. The interaction should feel empathetic and conversational rather than administrative.The collected information should be analyzed using AI/MLbased profiling and recommendation mechanisms to identify:\n • Suitable NSQF-aligned training programs\n • Relevant trades and livelihood pathways\n • Skill gaps requiring intervention\n • Region-specific employment or enterprise opportunities The system should also function effectively in lowconnectivity and low-tech environments through deployment channels such as:\n • IVR-based phone calls for feature phone users\n • WhatsApp voice-note interfaces Lightweight mobile or kiosk-based solutions\n • Expected Solution:\n\n An AI-powered multilingual voice assistant application designed to help SC beneficiaries under PM-AJAY identify suitable skill training and livelihood opportunities.The app will support regional languages and local dialects, allowing users to interact through simple voice conversations instead of text-based forms.",
+    "description": "• Background\n • The Pradhan Mantri Anusuchit Jaati Abhyuday Yojana (PM-AJAY) aims to reduce poverty among Scheduled Caste (SC) communities through livelihood promotion, skill development, and enterprise support under its Grant-in-Aid (GIA) component. A major challenge in implementation is the identification of appropriate skill training pathways that align with both the aspirations of beneficiaries and the actual livelihood opportunities available in their local regions.\n • Many target beneficiaries face barriers such as low digital literacy, limited awareness of modern trades, language constraints, and difficulty navigating text-heavy digital systems. As a result, there is often a mismatch between enrolled training programs and the beneficiary's interests, capabilities, or local market demand, leading to high dropout rates and poor post-training employment outcomes.\n • To improve inclusion and effectiveness, there is a need for an AI-enabled conversational system that can interact naturally in regional languages and dialects, understand beneficiary aspirations, assess skill gaps, and recommend suitable NSQF aligned livelihood opportunities in and around the beneficiary.\n • Basic Issues under GIA Component:\n • Lack of proper road map and Planning of the Perspective plans from execution to implementation\n • Identification of the participants Trained and skilled Financial consultants\n • Job placement issue after the skilling programme\n • Coordination Issues among the corporation, Ministry/Departments\n • Inadequate Technical and support team at ground level\n • Detailed Description The proposed solution should be an AI-driven, multilingual, voice-based virtual livelihood assistant capable of conducting conversational interviews with beneficiaries from aspirational SC communities. Instead of relying on traditional form-filling methods, the system should use voice interactions to collect information such as:\n • Educational background\n • Existing or traditional family occupations\n • Current livelihood activities\n • Skills and interests\n • Mobility and physical constraints\n • Preference for self-employment or wage employment\n • Local economic realities and opportunities The assistant should support regional languages and dialects to ensure accessibility for users with low literacy or limited digital exposure. The interaction should feel empathetic and conversational rather than administrative.The collected information should be analyzed using AI/MLbased profiling and recommendation mechanisms to identify:\n • Suitable NSQF-aligned training programs\n • Relevant trades and livelihood pathways\n • Skill gaps requiring intervention\n • Region-specific employment or enterprise opportunities The system should also function effectively in lowconnectivity and low-tech environments through deployment channels such as:\n • IVR-based phone calls for feature phone users\n • WhatsApp voice-note interfaces Lightweight mobile or kiosk-based solutions\n • Expected Solution:\n\n An AI-powered multilingual voice assistant application designed to help SC beneficiaries under PM-AJAY identify suitable skill training and livelihood opportunities.The app will support regional languages and local dialects, allowing users to interact through simple voice conversations instead of text-based forms.",
     "submissions": 0,
     "youtubeLink": "",
     "datasetLink": "",
-    "isNew": false
+    "isNew": false,
+    "officialPsNumber": "SIH26097",
+    "deadline": "20 September 2026",
+    "maxSubmissions": 500
   },
   {
     "sNo": 98,
@@ -1374,7 +1665,10 @@ const SIH_PROBLEM_STATEMENTS = [
     "submissions": 0,
     "youtubeLink": "",
     "datasetLink": "",
-    "isNew": false
+    "isNew": false,
+    "officialPsNumber": "SIH26098",
+    "deadline": "20 September 2026",
+    "maxSubmissions": 500
   },
   {
     "sNo": 99,
@@ -1384,11 +1678,14 @@ const SIH_PROBLEM_STATEMENTS = [
     "department": "Chennai Petroleum Corporation Limited(CPCL)",
     "category": "Software",
     "theme": "Smart Automation",
-    "description": "• Background Central Public Sector Enterprises (CPSEs) operating in sectors such as Oil & Gas, Power, Steel, Mining and Heavy Engineering procure and maintain a large number of similar or functionally equivalent materials. However, the same material may be assigned different material codes, descriptions, specifications, units of measurement and classification across different CPSEs.\n\n This results in duplication of material masters, inconsistent descriptions, difficulty in identifying equivalent materials, fragmented procurement data, higher inventory levels and limited opportunities for collaborative procurement.\n\n A unified and intelligent approach is therefore required to standardize, harmonize and rationalize material master data across CPSEs.\n\n • Description The proposed solution envisages development of an AI-powered National Unified Material Master Framework capable of analysing material codes, descriptions, specifications, technical parameters and historical procurement data from multiple CPSEs.\n\n The system shall use Artificial Intelligence, Machine Learning and Natural Language Processing (NLP) techniques to identify identical, duplicate, near-duplicate and functionally equivalent materials across different ERP/SAP systems.\n\n The platform should automatically recommend standardized material descriptions, specifications, classifications and a Common National Material Code, while retaining mapping with the respective CPSE's existing material codes.\n\n The system should provide intelligent matching and recommendation capabilities, allowing users to review, validate and approve proposed mappings. It should also support migration/mapping of legacy material codes and seamless integration with existing SAP/ERP systems.\n\n • Expected Solution An AI-driven Unified Material Master Platform shall be developed with the following capabilities:\n • AI-based matching of material descriptions and specifications across CPSEs.\n • Identification of duplicate, near-duplicate and equivalent materials.\n • Automated standardization of material descriptions and technical attributes.\n • Intelligent classification and categorization of materials.\n • Generation/recommendation of a Common National Material Code.\n • Mapping of existing CPSE material codes to the common national code.\n • Legacy material code rationalization and migration support.\n • User validation and approval workflow for AI recommendations.\n • Dashboard for material master analytics and duplicate detection.\n • Audit trail and governance mechanism for material master changes.\n • Integration capability with SAP/ERP systems of participating CPSEs.\n\n The proposed solution should enable 'One Nation â€“ One Material Code' for common materials, while maintaining traceability to individual CPSE material codes.\n\n • Key Capabilities 1. AI Material Matching & Recommendation 2. Material Standardization & Classification 3. Duplicate / Near-Duplicate Detection 4. Common National Material Code Generation 5. CPSE Code Mapping & Migration Support 6. Material Master Dashboard & Analytics 7. Audit Trail & Governance 8. SAP / ERP Integration\n • Expected Impact\n • One Nation â€“ One Common Material Code\n • Reduction in duplicate and redundant material codes\n • Improved material master data quality\n • Better inventory optimization and visibility\n • Reduced procurement cost through demand aggregation\n • Improved inter-CPSE material identification and collaboration\n • Faster procurement and specification finalization\n • Better data-driven procurement decisions\n • Foundation for common procurement and strategic sourcing across CPSEs",
+    "description": "• Background Central Public Sector Enterprises (CPSEs) operating in sectors such as Oil & Gas, Power, Steel, Mining and Heavy Engineering procure and maintain a large number of similar or functionally equivalent materials. However, the same material may be assigned different material codes, descriptions, specifications, units of measurement and classification across different CPSEs.\n\n This results in duplication of material masters, inconsistent descriptions, difficulty in identifying equivalent materials, fragmented procurement data, higher inventory levels and limited opportunities for collaborative procurement.\n\n A unified and intelligent approach is therefore required to standardize, harmonize and rationalize material master data across CPSEs.\n\n • Description The proposed solution envisages development of an AI-powered National Unified Material Master Framework capable of analysing material codes, descriptions, specifications, technical parameters and historical procurement data from multiple CPSEs.\n\n The system shall use Artificial Intelligence, Machine Learning and Natural Language Processing (NLP) techniques to identify identical, duplicate, near-duplicate and functionally equivalent materials across different ERP/SAP systems.\n\n The platform should automatically recommend standardized material descriptions, specifications, classifications and a Common National Material Code, while retaining mapping with the respective CPSE's existing material codes.\n\n The system should provide intelligent matching and recommendation capabilities, allowing users to review, validate and approve proposed mappings. It should also support migration/mapping of legacy material codes and seamless integration with existing SAP/ERP systems.\n\n • Expected Solution An AI-driven Unified Material Master Platform shall be developed with the following capabilities:\n • AI-based matching of material descriptions and specifications across CPSEs.\n • Identification of duplicate, near-duplicate and equivalent materials.\n • Automated standardization of material descriptions and technical attributes.\n • Intelligent classification and categorization of materials.\n • Generation/recommendation of a Common National Material Code.\n • Mapping of existing CPSE material codes to the common national code.\n • Legacy material code rationalization and migration support.\n • User validation and approval workflow for AI recommendations.\n • Dashboard for material master analytics and duplicate detection.\n • Audit trail and governance mechanism for material master changes.\n • Integration capability with SAP/ERP systems of participating CPSEs.\n\n The proposed solution should enable 'One Nation \"“ One Material Code' for common materials, while maintaining traceability to individual CPSE material codes.\n\n • Key Capabilities 1. AI Material Matching & Recommendation 2. Material Standardization & Classification 3. Duplicate / Near-Duplicate Detection 4. Common National Material Code Generation 5. CPSE Code Mapping & Migration Support 6. Material Master Dashboard & Analytics 7. Audit Trail & Governance 8. SAP / ERP Integration\n • Expected Impact\n • One Nation \"“ One Common Material Code\n • Reduction in duplicate and redundant material codes\n • Improved material master data quality\n • Better inventory optimization and visibility\n • Reduced procurement cost through demand aggregation\n • Improved inter-CPSE material identification and collaboration\n • Faster procurement and specification finalization\n • Better data-driven procurement decisions\n • Foundation for common procurement and strategic sourcing across CPSEs",
     "submissions": 0,
     "youtubeLink": "",
     "datasetLink": "",
-    "isNew": false
+    "isNew": false,
+    "officialPsNumber": "SIH26099",
+    "deadline": "20 September 2026",
+    "maxSubmissions": 500
   },
   {
     "sNo": 100,
@@ -1398,11 +1695,14 @@ const SIH_PROBLEM_STATEMENTS = [
     "department": "Chennai Petroleum Corporation Limited(CPCL)",
     "category": "Software",
     "theme": "Smart Automation",
-    "description": "• Background Government procurement through the Government e-Marketplace (GeM) involves verification of multiple statutory, regulatory and eligibility requirements of bidders.\n\n Procurement officers are required to examine and validate documents and information related to Udyam/MSME registration, GST registration and return filing, PAN and Income Tax compliance, Make in India/local content, EPFO/ESIC compliance, Startup India, NSIC, OEM authorization, DigiLocker, blacklisting/debarment and other applicable statutory requirements.\n\n The verification process is largely document-intensive and requires cross-checking information across multiple government portals and databases. This results in significant manual effort, longer tender evaluation time and the possibility of inconsistencies or human errors.\n\n • Description The problem statement envisages development of an AI-powered integrated bid compliance verification platform that can automatically verify the eligibility and compliance status of bidders participating in GeM procurement.\n\n The proposed platform shall integrate with relevant Government portals and databases and retrieve/verify bidder information such as Udyam Registration, GSTN, Income Tax, PAN, MCA21, Startup India, NSIC, EPFO, ESIC, DigiLocker, Make in India, BIS/DPIIT and other applicable sources.\n\n An AI Verification Engine shall analyse the submitted bidder documents and portal-derived information, identify missing or inconsistent information, validate applicable compliance requirements and generate an overall compliance assessment. The system shall provide a Compliance Dashboard displaying the compliance score, risk level, document verification status, pending requirements and AI-generated recommendations. The final decision regarding qualification/disqualification shall remain with the Procurement Officer.\n\n • Expected Solution An AI-enabled integrated platform shall be developed for automated verification of bidder compliance in GeM procurement. The solution shall:\n\n 1. Integrate with relevant Government portals/databases for automated verification.\n\n 2. Verify Udyam/MSME status and other applicable statutory registrations.\n\n 3. Verify GST registration and return filing status.\n\n 4. Verify PAN and Income Tax compliance.\n\n 5. Check Make in India/local content requirements.\n\n 6. Verify EPFO/ESIC compliance wherever applicable.\n\n 7. Verify Startup India, NSIC and OEM authorization requirements.\n\n 8. Perform DigiLocker/document verification.\n\n 9. Identify blacklisting and debarment status.\n\n 10.Check other applicable statutory and tender-specific compliance requirements.\n\n 11.Use AI to identify missing, inconsistent or non-compliant information.\n\n 12. Generate an overall Compliance Score and Risk Level.\n\n 13. Provide an AI-generated recommendation to the Procurement Officer.\n\n 14.Maintain an auditable record of verification and compliance checks.\n\n The final qualification/disqualification decision shall remain with the Procurement Officer, with the AI system functioning as a decision-support and verification tool.\n\n • Key Capabilities 1. Multi-Portal Integration â€“ Udyam, GSTN, PAN, GEM etc., 2. AI Document Verification â€“ Automated extraction,validation & cross-verification 3. Automated Compliance Engine â€“ Tender-specific eligibility & statutory compliance checks 4. Risk & Compliance Scoring â€“ Overall compliance score with bidder risk classification 5. AI Recommendation Engine â€“ Identifies gaps,discrepancies & recommends compliance status 6. Audit Trail & Dashboard â€“ Centralized verification status,evidence & decision support\n • Expected Impact\n • 60â€“80% Reduction in Verification Effort\n • Faster Tender Evaluation & Award\n • Improved Compliance & Transparency\n • Reduced Human Errors & Inconsistencies\n • Better Bidder Screening & Risk Identification\n • Standardized Verification Across CPSEs\n • Complete Auditability & Traceability",
+    "description": "• Background Government procurement through the Government e-Marketplace (GeM) involves verification of multiple statutory, regulatory and eligibility requirements of bidders.\n\n Procurement officers are required to examine and validate documents and information related to Udyam/MSME registration, GST registration and return filing, PAN and Income Tax compliance, Make in India/local content, EPFO/ESIC compliance, Startup India, NSIC, OEM authorization, DigiLocker, blacklisting/debarment and other applicable statutory requirements.\n\n The verification process is largely document-intensive and requires cross-checking information across multiple government portals and databases. This results in significant manual effort, longer tender evaluation time and the possibility of inconsistencies or human errors.\n\n • Description The problem statement envisages development of an AI-powered integrated bid compliance verification platform that can automatically verify the eligibility and compliance status of bidders participating in GeM procurement.\n\n The proposed platform shall integrate with relevant Government portals and databases and retrieve/verify bidder information such as Udyam Registration, GSTN, Income Tax, PAN, MCA21, Startup India, NSIC, EPFO, ESIC, DigiLocker, Make in India, BIS/DPIIT and other applicable sources.\n\n An AI Verification Engine shall analyse the submitted bidder documents and portal-derived information, identify missing or inconsistent information, validate applicable compliance requirements and generate an overall compliance assessment. The system shall provide a Compliance Dashboard displaying the compliance score, risk level, document verification status, pending requirements and AI-generated recommendations. The final decision regarding qualification/disqualification shall remain with the Procurement Officer.\n\n • Expected Solution An AI-enabled integrated platform shall be developed for automated verification of bidder compliance in GeM procurement. The solution shall:\n\n 1. Integrate with relevant Government portals/databases for automated verification.\n\n 2. Verify Udyam/MSME status and other applicable statutory registrations.\n\n 3. Verify GST registration and return filing status.\n\n 4. Verify PAN and Income Tax compliance.\n\n 5. Check Make in India/local content requirements.\n\n 6. Verify EPFO/ESIC compliance wherever applicable.\n\n 7. Verify Startup India, NSIC and OEM authorization requirements.\n\n 8. Perform DigiLocker/document verification.\n\n 9. Identify blacklisting and debarment status.\n\n 10.Check other applicable statutory and tender-specific compliance requirements.\n\n 11.Use AI to identify missing, inconsistent or non-compliant information.\n\n 12. Generate an overall Compliance Score and Risk Level.\n\n 13. Provide an AI-generated recommendation to the Procurement Officer.\n\n 14.Maintain an auditable record of verification and compliance checks.\n\n The final qualification/disqualification decision shall remain with the Procurement Officer, with the AI system functioning as a decision-support and verification tool.\n\n • Key Capabilities 1. Multi-Portal Integration \"“ Udyam, GSTN, PAN, GEM etc., 2. AI Document Verification \"“ Automated extraction,validation & cross-verification 3. Automated Compliance Engine \"“ Tender-specific eligibility & statutory compliance checks 4. Risk & Compliance Scoring \"“ Overall compliance score with bidder risk classification 5. AI Recommendation Engine \"“ Identifies gaps,discrepancies & recommends compliance status 6. Audit Trail & Dashboard \"“ Centralized verification status,evidence & decision support\n • Expected Impact\n • 60\"“80% Reduction in Verification Effort\n • Faster Tender Evaluation & Award\n • Improved Compliance & Transparency\n • Reduced Human Errors & Inconsistencies\n • Better Bidder Screening & Risk Identification\n • Standardized Verification Across CPSEs\n • Complete Auditability & Traceability",
     "submissions": 0,
     "youtubeLink": "",
     "datasetLink": "",
-    "isNew": false
+    "isNew": false,
+    "officialPsNumber": "SIH26100",
+    "deadline": "20 September 2026",
+    "maxSubmissions": 500
   },
   {
     "sNo": 101,
@@ -1412,11 +1712,14 @@ const SIH_PROBLEM_STATEMENTS = [
     "department": "Data Informatics & Innovation Division (DIID)",
     "category": "Software",
     "theme": "Smart Education",
-    "description": "• Background India's statistical system is undergoing rapid technology advancement with increasing adoption of Artificial Intelligence (AI), Machine Learning (ML), Big Data Analytics, GIS, cloud computing, and modern statistical methodologies. Officials engaged in data collection, processing, analysis, dissemination, and policy support require continuous upskilling to meet evolving technological and domain-specific requirements.\n\n While the iGOT Karmayogi platform offers a vast repository of learning resources, officials often face challenges in identifying the most relevant courses aligned with their job roles, current competencies, and future skill requirements. Presently, there is no intelligent mechanism that performs comprehensive skill-gap assessment and recommends personalized learning pathways specifically for professionals working in Official Statistics.\n\n Artificial Intelligence (AI) and emerging digital technologies are rapidly transforming the way organizations operate, deliver services, and make decisions. However, many organizations face challenges such as limited AI awareness, skill gaps, inadequate technical expertise, and the absence of structured, scalable training mechanisms.\n\n Traditional training approaches often lack personalization, continuous assessment, and real-time learner support, making it difficult to meet diverse learning needs.\n\n An AI enabled Learning Management System can assess learners existing competencies through learnerâ€™s profile, identify skill gaps, and recommend personalized training through integration with the iGOT Karmayogi platform based on job roles, experience levels, and organizational requirements. Through adaptive learning modules, AI powered virtual assistants, automated assessments, and realtime feedback mechanisms, learners receive targeted training that improves engagement and learning outcomes. The LMS supports continuous capacity building by offering structured courses, hands-on exercises, virtual labs on emerging technologies such as Artificial Intelligence, Data Science, Cloud Computing, Cybersecurity, and Automation. AI driven analytics and dashboards enable organizations to monitor learner progress, evaluate training effectiveness, predict future skill requirements, and make informed decisions regarding workforce development. By integrating personalized learning, competency mapping, performance monitoring, and intelligent content delivery, the AI enabled LMS ensures effective adoption of emerging technologies and helps create a future-ready, digitally skilled workforce.\n\n • Detailed Description The proposed solution aims to develop an AI-enabled Skill Intelligence and Learning Platform that strengthens capacity building for officials engaged in India's Official Statistical System by integrating with the iGOT Karmayogi ecosystem. The platform should leverage Artificial Intelligence to assess competencies, identify skill gaps, and recommend personalized learning pathways aligned with each official's job role, responsibilities, and career progression.\n\n The system should automatically create a comprehensive competency profile for every official using information such as designation, department, job role, current assignment, educational qualifications, work experience, and previous trainings.\n\n Based on this profile, the platform should evaluate the official's existing competencies against predefined competency frameworks for Official Statistics and identify knowledge and skill gaps.\n\n The AI engine should map competencies across multiple domains, including:\n\n • Statistical Competencies: Survey Design, Sampling, National Accounts, Price Statistics, Labour Statistics, Agricultural Statistics, Industrial Statistics, SDG Indicators, Metadata Standards, and Data Quality Frameworks.\n • Technical Competencies: Python, R, SQL, Stata, SPSS, SAS, GIS, Data Visualization, AI/ML, Cloud Computing, APIs, and Open Data.\n • Digital Governance: Cybersecurity, Data Privacy, Digital Signatures, Government Cloud, and Digital Public Infrastructure.\n • Behavioural and Managerial Competencies: Leadership, Communication, Project Management, Ethics, Decision Making, and Change Management.\n\n Using AI techniques such as Machine Learning, Natural Language Processing (NLP), Large Language Models (LLMs), semantic search, and competency mapping, the platform should recommend personalized learning pathways from the iGOT Karmayogi course repository. Recommendations should consider the official's current competency level, previous learning history, departmental priorities, future job requirements, emerging technologies, and career progression.\n\n The platform should integrate seamlessly with iGOT Karmayogi APIs to retrieve course catalogues, recommend relevant courses, monitor enrolment and completion status, and update competency scores automatically.\n\n To support continuous learning, the solution should provide AI-powered virtual assistants for learner support, adaptive assessments, interactive learning modules, virtual laboratories, quizzes, and multilingual learning resources. The system should continuously monitor learner progress and dynamically update recommendations based on performance and newly acquired competencies.\n\n To strengthen capacity building, the platform should support AI powered Intelligent Assessment Engine capable of generating objective type questions (MCQs), and quizzes from uploaded learning materials such as documents, presentations, videos etc. It should provide instant evaluation, explanations for correct answers, and personalized feedback to reinforce learning outcomes. This feature should enable trainers to automatically create assessments and quizzes, and evaluate learner understanding, and provide instant feedback, thereby enhancing continuous learning and competency assessment. The engine should leverage Large Language Models (LLMs), Natural Language Processing (NLP), etc.\n\n A comprehensive analytics dashboard should be provided for both employees and administrators. The employee dashboard should display current competency levels, identified skill gaps, recommended learning paths, learning hours, and overall progress. The administrator dashboard should provide organization-wide insights into workforce competencies, training effectiveness, competency distribution, emerging skill requirements, and predictive analytics for future capacity-building needs.\n\n The solution should be designed as a secure, scalable, cloud-ready, and interoperable web platform capable of integrating with existing government digital ecosystems through standard APIs. The platform should support role-based access control, Single Sign-On (SSO), and secure data exchange while ensuring compliance with government cybersecurity and data privacy guidelines.\n\n The proposed AI-enabled Skill Intelligence Platform will enable data-driven workforce development by delivering personalized, competency-based learning recommendations, improving utilization of iGOT Karmayogi resources, and creating a future-ready statistical workforce equipped with modern statistical, analytical, and digital skills required for the evolving needs of India's Official Statistical System.\n\n • Expected Solution The AI enabled platform for training and capacity building by providing personalized learning recommendations, improving competency levels of officials, enhancing utilization of iGOT Karmayogi resources, and creating a future-ready workforce equipped with modern statistical and digital skills. Additionally, AI powered generation of objective type questions and quizzes from uploaded learning content for automated assessments and self evaluation.\n\n The solution should provide:\n\n • AI-based competency assessment\n • Automated skill-gap analysis\n • Seamless iGOT integration\n • Personalized learning recommendations of iGOT Course Module as well as NSSTAâ€™s TPAC recommended Training Programme\n • AI powered generation of MCQ and Quizzes from uploaded learning content.\n • Interactive dashboards for Learner and Administrator\n • Secure, and scalable web application",
+    "description": "• Background India's statistical system is undergoing rapid technology advancement with increasing adoption of Artificial Intelligence (AI), Machine Learning (ML), Big Data Analytics, GIS, cloud computing, and modern statistical methodologies. Officials engaged in data collection, processing, analysis, dissemination, and policy support require continuous upskilling to meet evolving technological and domain-specific requirements.\n\n While the iGOT Karmayogi platform offers a vast repository of learning resources, officials often face challenges in identifying the most relevant courses aligned with their job roles, current competencies, and future skill requirements. Presently, there is no intelligent mechanism that performs comprehensive skill-gap assessment and recommends personalized learning pathways specifically for professionals working in Official Statistics.\n\n Artificial Intelligence (AI) and emerging digital technologies are rapidly transforming the way organizations operate, deliver services, and make decisions. However, many organizations face challenges such as limited AI awareness, skill gaps, inadequate technical expertise, and the absence of structured, scalable training mechanisms.\n\n Traditional training approaches often lack personalization, continuous assessment, and real-time learner support, making it difficult to meet diverse learning needs.\n\n An AI enabled Learning Management System can assess learners existing competencies through learner's profile, identify skill gaps, and recommend personalized training through integration with the iGOT Karmayogi platform based on job roles, experience levels, and organizational requirements. Through adaptive learning modules, AI powered virtual assistants, automated assessments, and realtime feedback mechanisms, learners receive targeted training that improves engagement and learning outcomes. The LMS supports continuous capacity building by offering structured courses, hands-on exercises, virtual labs on emerging technologies such as Artificial Intelligence, Data Science, Cloud Computing, Cybersecurity, and Automation. AI driven analytics and dashboards enable organizations to monitor learner progress, evaluate training effectiveness, predict future skill requirements, and make informed decisions regarding workforce development. By integrating personalized learning, competency mapping, performance monitoring, and intelligent content delivery, the AI enabled LMS ensures effective adoption of emerging technologies and helps create a future-ready, digitally skilled workforce.\n\n • Detailed Description The proposed solution aims to develop an AI-enabled Skill Intelligence and Learning Platform that strengthens capacity building for officials engaged in India's Official Statistical System by integrating with the iGOT Karmayogi ecosystem. The platform should leverage Artificial Intelligence to assess competencies, identify skill gaps, and recommend personalized learning pathways aligned with each official's job role, responsibilities, and career progression.\n\n The system should automatically create a comprehensive competency profile for every official using information such as designation, department, job role, current assignment, educational qualifications, work experience, and previous trainings.\n\n Based on this profile, the platform should evaluate the official's existing competencies against predefined competency frameworks for Official Statistics and identify knowledge and skill gaps.\n\n The AI engine should map competencies across multiple domains, including:\n\n • Statistical Competencies: Survey Design, Sampling, National Accounts, Price Statistics, Labour Statistics, Agricultural Statistics, Industrial Statistics, SDG Indicators, Metadata Standards, and Data Quality Frameworks.\n • Technical Competencies: Python, R, SQL, Stata, SPSS, SAS, GIS, Data Visualization, AI/ML, Cloud Computing, APIs, and Open Data.\n • Digital Governance: Cybersecurity, Data Privacy, Digital Signatures, Government Cloud, and Digital Public Infrastructure.\n • Behavioural and Managerial Competencies: Leadership, Communication, Project Management, Ethics, Decision Making, and Change Management.\n\n Using AI techniques such as Machine Learning, Natural Language Processing (NLP), Large Language Models (LLMs), semantic search, and competency mapping, the platform should recommend personalized learning pathways from the iGOT Karmayogi course repository. Recommendations should consider the official's current competency level, previous learning history, departmental priorities, future job requirements, emerging technologies, and career progression.\n\n The platform should integrate seamlessly with iGOT Karmayogi APIs to retrieve course catalogues, recommend relevant courses, monitor enrolment and completion status, and update competency scores automatically.\n\n To support continuous learning, the solution should provide AI-powered virtual assistants for learner support, adaptive assessments, interactive learning modules, virtual laboratories, quizzes, and multilingual learning resources. The system should continuously monitor learner progress and dynamically update recommendations based on performance and newly acquired competencies.\n\n To strengthen capacity building, the platform should support AI powered Intelligent Assessment Engine capable of generating objective type questions (MCQs), and quizzes from uploaded learning materials such as documents, presentations, videos etc. It should provide instant evaluation, explanations for correct answers, and personalized feedback to reinforce learning outcomes. This feature should enable trainers to automatically create assessments and quizzes, and evaluate learner understanding, and provide instant feedback, thereby enhancing continuous learning and competency assessment. The engine should leverage Large Language Models (LLMs), Natural Language Processing (NLP), etc.\n\n A comprehensive analytics dashboard should be provided for both employees and administrators. The employee dashboard should display current competency levels, identified skill gaps, recommended learning paths, learning hours, and overall progress. The administrator dashboard should provide organization-wide insights into workforce competencies, training effectiveness, competency distribution, emerging skill requirements, and predictive analytics for future capacity-building needs.\n\n The solution should be designed as a secure, scalable, cloud-ready, and interoperable web platform capable of integrating with existing government digital ecosystems through standard APIs. The platform should support role-based access control, Single Sign-On (SSO), and secure data exchange while ensuring compliance with government cybersecurity and data privacy guidelines.\n\n The proposed AI-enabled Skill Intelligence Platform will enable data-driven workforce development by delivering personalized, competency-based learning recommendations, improving utilization of iGOT Karmayogi resources, and creating a future-ready statistical workforce equipped with modern statistical, analytical, and digital skills required for the evolving needs of India's Official Statistical System.\n\n • Expected Solution The AI enabled platform for training and capacity building by providing personalized learning recommendations, improving competency levels of officials, enhancing utilization of iGOT Karmayogi resources, and creating a future-ready workforce equipped with modern statistical and digital skills. Additionally, AI powered generation of objective type questions and quizzes from uploaded learning content for automated assessments and self evaluation.\n\n The solution should provide:\n\n • AI-based competency assessment\n • Automated skill-gap analysis\n • Seamless iGOT integration\n • Personalized learning recommendations of iGOT Course Module as well as NSSTA's TPAC recommended Training Programme\n • AI powered generation of MCQ and Quizzes from uploaded learning content.\n • Interactive dashboards for Learner and Administrator\n • Secure, and scalable web application",
     "submissions": 0,
     "youtubeLink": "",
     "datasetLink": "",
-    "isNew": false
+    "isNew": false,
+    "officialPsNumber": "SIH26101",
+    "deadline": "20 September 2026",
+    "maxSubmissions": 500
   },
   {
     "sNo": 102,
@@ -1430,7 +1733,10 @@ const SIH_PROBLEM_STATEMENTS = [
     "submissions": 0,
     "youtubeLink": "",
     "datasetLink": "",
-    "isNew": false
+    "isNew": false,
+    "officialPsNumber": "SIH26102",
+    "deadline": "20 September 2026",
+    "maxSubmissions": 500
   },
   {
     "sNo": 103,
@@ -1444,7 +1750,10 @@ const SIH_PROBLEM_STATEMENTS = [
     "submissions": 0,
     "youtubeLink": "",
     "datasetLink": "",
-    "isNew": false
+    "isNew": false,
+    "officialPsNumber": "SIH26103",
+    "deadline": "20 September 2026",
+    "maxSubmissions": 500
   },
   {
     "sNo": 104,
@@ -1454,11 +1763,14 @@ const SIH_PROBLEM_STATEMENTS = [
     "department": "Cyber Security Cell",
     "category": "Software",
     "theme": "Blockchain & Cybersecurity",
-    "description": "• Background Recent advancements in generative AI and neural speech synthesis have made high-fidelity voice cloning possible from only a few seconds of recorded audio. Threat actors are exploiting these capabilities to impersonate CXOs,government officials, and trusted individuals in order to initiate fraudulent financial transactions, manipulate employees,or bypass verification procedures in high-risk workflows. Conventional call verification methodsâ€”such as caller ID, manual call-back, and basic voice familiarityâ€”are no longer sufficient to distinguish genuine callers from AI-generated or manipulated voices, especially in high-pressure social engineering scenarios.\n\n These attacks are increasingly orchestrated over VoIP, mobile networks, and enterprise collaboration platforms,sometimes combined with leaked personal information to create highly convincing narratives. The absence of automated detection of synthetic or cloned voices in real time significantly increases the likelihood of large-scale financial fraud and reputational damage to institutions that rely heavily on telephonic instructions and approvals.\n\n • Problem Statement Current telephony and communication ecosystems lack a robust, AI-driven mechanism to detect and flag voice cloning or synthetic speech impersonation during live calls. Existing solutions rarely perform granular analysis of acoustic artifacts, prosody, and speech generation patterns and typically cannot provide an actionable risk score while the conversation is ongoing.There is a need for an end-to-end security framework that can analyze incoming voice streams in near real time,determine the likelihood that the caller is using a cloned or AI-generated voice, and provide timely alerts and recommendations before sensitive actionsâ€”such as approval of fund transfers or disclosure of confidential informationâ€”are taken. The solution must be privacy-preserving, scalable across telecom and enterprise environments, and support multilingual contexts with diverse Indian accents and dialects.\n • Proposed Solution Develop an AI-powered, real-time voice integrity verification framework that integrates advanced deep learning,digital signal processing, and contextual analysis to detect AI-generated or manipulated voices. The system should continuously process live or near live audio streams from telephony, VoIP, and collaboration platforms,extract discriminative features, and compute a dynamic impersonation risk score.The framework should expose APIs and SDKs for seamless integration with banking applications, enterprise communication systems, and telecom operator infrastructures, enabling proactive fraud prevention and enhanced cyber resilience in voice channels.\n • Key Components\n • Multi-Layer Voice Authenticity Analysis o Acoustic and spectral analysis using deep learning models to detect synthesis artifacts, phase inconsistencies, and spectral signatures indicative of cloned or AI-generated audio.\n\n o Prosody and behavioral analysis to model speech rhythm, pitch contours, pauses, and microvariations, differentiating natural human speech from neural TTS outputs.\n\n o Cross-session consistency checks comparing ongoing call features against historical genuine samples (where available) to detect anomalies in speaker identity.\n\n • Real-Time Risk Scoring Engine o Continuous computation of a confidence/risk score indicating the probability of impersonation or synthetic speech.\n\n o Threshold-based alerting logic configurable for different risk scenarios (for example, high-value transaction calls, privileged access approvals).\n\n o Contextual enrichment using metadata such as call origin, known contact information, transaction context, and historical fraud indicators.\n\n • Alerting and User Interaction Layer o Multi-channel alert mechanisms (UI prompts, SMS/email, in-app notifications) for frontline staff and end users.\n\n o Pre-transaction warning prompts recommending secondary verification such as call-back, multifactor authentication, or escalation to supervisors.\n\n o Configurable workflows for banks,enterprises, and government agencies to define automated responses when impersonation risk crosses thresholds.\n\n • Privacy and Compliance Module o Minimal retention of voice recordings with options for on-device or edge inference to reduce central storage of sensitive audio data.\n\n o Support for anonymization or feature-only logging to comply with data protection and privacy requirements.\n\n • Platform and Integration APIs o REST/gRPC APIs and SDKs for integration with core banking systems, contact center platforms, enterprise communication tools, and telecom networks.\n\n o Support for multiple Indian languages and regional accents through language-agnostic feature extraction and language-specific acoustic models.\n\n • Expected Outcomes\n • Significant reduction in financial fraud and social engineering incidents driven by voice cloning and AIenabled impersonation.\n • Improved trust and assurance in voice-based communication channels for individuals, financial institutions, enterprises, and government organizations.\n • Early detection of AI-driven social engineering attacks, enabling proactive containment and incident response.\n • A reusable security layer for telecom operators and enterprises that strengthens overall cyber resilience and aligns with national cybersecurity objectives.",
+    "description": "• Background Recent advancements in generative AI and neural speech synthesis have made high-fidelity voice cloning possible from only a few seconds of recorded audio. Threat actors are exploiting these capabilities to impersonate CXOs,government officials, and trusted individuals in order to initiate fraudulent financial transactions, manipulate employees,or bypass verification procedures in high-risk workflows. Conventional call verification methods\"”such as caller ID, manual call-back, and basic voice familiarity\"”are no longer sufficient to distinguish genuine callers from AI-generated or manipulated voices, especially in high-pressure social engineering scenarios.\n\n These attacks are increasingly orchestrated over VoIP, mobile networks, and enterprise collaboration platforms,sometimes combined with leaked personal information to create highly convincing narratives. The absence of automated detection of synthetic or cloned voices in real time significantly increases the likelihood of large-scale financial fraud and reputational damage to institutions that rely heavily on telephonic instructions and approvals.\n\n • Problem Statement Current telephony and communication ecosystems lack a robust, AI-driven mechanism to detect and flag voice cloning or synthetic speech impersonation during live calls. Existing solutions rarely perform granular analysis of acoustic artifacts, prosody, and speech generation patterns and typically cannot provide an actionable risk score while the conversation is ongoing.There is a need for an end-to-end security framework that can analyze incoming voice streams in near real time,determine the likelihood that the caller is using a cloned or AI-generated voice, and provide timely alerts and recommendations before sensitive actions\"”such as approval of fund transfers or disclosure of confidential information\"”are taken. The solution must be privacy-preserving, scalable across telecom and enterprise environments, and support multilingual contexts with diverse Indian accents and dialects.\n • Proposed Solution Develop an AI-powered, real-time voice integrity verification framework that integrates advanced deep learning,digital signal processing, and contextual analysis to detect AI-generated or manipulated voices. The system should continuously process live or near live audio streams from telephony, VoIP, and collaboration platforms,extract discriminative features, and compute a dynamic impersonation risk score.The framework should expose APIs and SDKs for seamless integration with banking applications, enterprise communication systems, and telecom operator infrastructures, enabling proactive fraud prevention and enhanced cyber resilience in voice channels.\n • Key Components\n • Multi-Layer Voice Authenticity Analysis o Acoustic and spectral analysis using deep learning models to detect synthesis artifacts, phase inconsistencies, and spectral signatures indicative of cloned or AI-generated audio.\n\n o Prosody and behavioral analysis to model speech rhythm, pitch contours, pauses, and microvariations, differentiating natural human speech from neural TTS outputs.\n\n o Cross-session consistency checks comparing ongoing call features against historical genuine samples (where available) to detect anomalies in speaker identity.\n\n • Real-Time Risk Scoring Engine o Continuous computation of a confidence/risk score indicating the probability of impersonation or synthetic speech.\n\n o Threshold-based alerting logic configurable for different risk scenarios (for example, high-value transaction calls, privileged access approvals).\n\n o Contextual enrichment using metadata such as call origin, known contact information, transaction context, and historical fraud indicators.\n\n • Alerting and User Interaction Layer o Multi-channel alert mechanisms (UI prompts, SMS/email, in-app notifications) for frontline staff and end users.\n\n o Pre-transaction warning prompts recommending secondary verification such as call-back, multifactor authentication, or escalation to supervisors.\n\n o Configurable workflows for banks,enterprises, and government agencies to define automated responses when impersonation risk crosses thresholds.\n\n • Privacy and Compliance Module o Minimal retention of voice recordings with options for on-device or edge inference to reduce central storage of sensitive audio data.\n\n o Support for anonymization or feature-only logging to comply with data protection and privacy requirements.\n\n • Platform and Integration APIs o REST/gRPC APIs and SDKs for integration with core banking systems, contact center platforms, enterprise communication tools, and telecom networks.\n\n o Support for multiple Indian languages and regional accents through language-agnostic feature extraction and language-specific acoustic models.\n\n • Expected Outcomes\n • Significant reduction in financial fraud and social engineering incidents driven by voice cloning and AIenabled impersonation.\n • Improved trust and assurance in voice-based communication channels for individuals, financial institutions, enterprises, and government organizations.\n • Early detection of AI-driven social engineering attacks, enabling proactive containment and incident response.\n • A reusable security layer for telecom operators and enterprises that strengthens overall cyber resilience and aligns with national cybersecurity objectives.",
     "submissions": 0,
     "youtubeLink": "",
     "datasetLink": "",
-    "isNew": false
+    "isNew": false,
+    "officialPsNumber": "SIH26104",
+    "deadline": "20 September 2026",
+    "maxSubmissions": 500
   },
   {
     "sNo": 105,
@@ -1468,11 +1780,14 @@ const SIH_PROBLEM_STATEMENTS = [
     "department": "Cyber Security Cell",
     "category": "Software",
     "theme": "Blockchain & Cybersecurity",
-    "description": "• Background Enterprises and institutions invest heavily in cybersecurity tools, compliance programs, and risk management initiatives, yet cyber risk is still predominantly communicated using qualitative ratings such as 'Low','Medium', or 'High'.\n\n These coarse categories fail to express the potential financial impact of cyber threats,making it difficult for senior management, boards, and regulators to evaluate whether current cyber investments are adequate or optimally allocated.\n\n Cyber risk is inherently dynamic: new vulnerabilities emerge, threat actors change tactics, business services are added or retired, and security controls mature over time. Most current risk assessment practices rely on periodic, manual exercises, resulting in stale risk registers and limited visibility into the organizationâ€™s real-time cyber exposure. This gap leads to suboptimal prioritization of remediation efforts, under- or over-spending on security controls, and weak alignment between technical risk metrics and business decision-making.\n\n • Problem Statement Design and develop an AI-powered platform that continuously quantifies cyber risk in monetary terms by correlating technical security telemetry with business asset criticality and control effectiveness. The platform must estimate the likelihood and financial impact of cyber incidents, identify key risk drivers, and recommend cost-effective mitigation strategies under explicit budget constraints.The solution should bridge the gap between technical cybersecurity metrics and business language, enabling CISOs, risk officers, and executive leadership to make informed, data-driven decisions about cyber risk and security investment.\n • Proposed Solution Develop a cloud-ready cyber risk analytics platform that ingests data from multiple enterprise security and IT sourcesâ€”such as vulnerability management, SIEM, IAM, EDR, CSPM, asset inventories, and threat intelligence feedsâ€”and uses AI/ML models to compute continuous risk scores and estimated financial exposure, such as Expected Annual Loss. The system should provide interactive dashboards and decision-support tools that allow stakeholders to simulate remediation scenarios, evaluate investment options, and understand the return on security investment.The platform must be capable of mapping risk metrics to established cybersecurity frameworks, including ISO/IEC 27001, NIST Cybersecurity Framework, CIS Controls, RBI Cyber Security Framework, and SEBI Cybersecurity and Cyber Resilience Framework, supporting both regulatory reporting and internal governance.\n • Key Components\n • Risk Quantification Engine o Continuous aggregation and normalization of data from vulnerability scanners, SIEM, IAM, EDR,CSPM, asset inventory, and other security tools.\n\n o Statistical and ML-based estimation of incident likelihood and potential business impact, including downtime costs, data breach costs, regulatory penalties, and reputational effects.\n\n o Calculation of enterprise cyber risk as financial exposure metrics (for example, Expected Annual Loss and Value at Risk) at organization, business unit, and asset levels.\n\n o Asset criticality modeling to weigh technical findings based on business importance and service dependencies.\n\n o Control effectiveness evaluation using telemetry about configuration strength,incident history, and compliance status.\n\n • AI Decision Support Layer o Predictive analytics for emerging threats and evolving risk based on trends in vulnerabilities, threat intelligence, and control performance.\n\n o AI-generated mitigation recommendations that propose prioritized actionsâ€”such as patch deployment, access control tightening, network segmentation, and additional monitoringâ€”with quantified risk reduction.\n\n o Natural language query interface for non-technical stakeholders, enabling questions like 'What is our highest financial cyber risk today?' or 'Which vulnerabilities contribute most to our expected losses?'.\n\n o Scenario simulation tools for exploring 'what-if' analyses, such as 'What happens if MFA is implemented across all privileged accounts?' or 'How will delaying remediation by 30 days affect our financial exposure?'.\n\n • Investment Optimization Module o Optimization models that recommend sets of controls and remediation actions delivering maximum risk reduction for a specified budget (for example, ?1 crore).\n\n o Computation of ROSI and cost-benefit metrics for different security initiatives to support strategic planning and board-level approvals.\n\n o Visualization of 'Investment vs. Risk Reduction' curves to highlight diminishing returns and optimal spend zones.\n\n • Executive and Technical Dashboards o Unified views for CISOs and executives, including Enterprise Risk Score, total Financial Exposure, Risk Trend Analysis, Top Risk Contributors, and Risk Reduction Opportunities.\n\n o Drill-down capability for technical teams to see control-level and asset-level findings, remediation backlogs, and mapping to frameworks and policies.\n\n • Compliance and Framework Mapping o Built-in mapping against frameworks such as ISO/IEC 27001, NIST Cybersecurity Framework, CIS Controls, RBI Cyber Security Framework, and SEBI Cybersecurity and Cyber Resilience Framework.\n\n o Support for generating evidence-based reports and dashboards for audits, regulatory filings, and internal governance committees.\n\n • Expected Outcomes\n • Continuous, near real-time visibility into enterprise cyber risk, expressed in monetary terms understandable to business stakeholders.\n • Improved prioritization of cybersecurity initiatives based on quantified impact rather than subjective risk ratings.\n • Enhanced communication of cyber risk to executive management, boards, and regulators through intuitive, data-driven dashboards and narratives.\n • More rational and optimized cybersecurity investment decisions, maximizing risk reduction per unit of spend.\n • Reduction in both the likelihood and financial impact of cyber incidents through targeted remediation and investment strategies.",
+    "description": "• Background Enterprises and institutions invest heavily in cybersecurity tools, compliance programs, and risk management initiatives, yet cyber risk is still predominantly communicated using qualitative ratings such as 'Low','Medium', or 'High'.\n\n These coarse categories fail to express the potential financial impact of cyber threats,making it difficult for senior management, boards, and regulators to evaluate whether current cyber investments are adequate or optimally allocated.\n\n Cyber risk is inherently dynamic: new vulnerabilities emerge, threat actors change tactics, business services are added or retired, and security controls mature over time. Most current risk assessment practices rely on periodic, manual exercises, resulting in stale risk registers and limited visibility into the organization's real-time cyber exposure. This gap leads to suboptimal prioritization of remediation efforts, under- or over-spending on security controls, and weak alignment between technical risk metrics and business decision-making.\n\n • Problem Statement Design and develop an AI-powered platform that continuously quantifies cyber risk in monetary terms by correlating technical security telemetry with business asset criticality and control effectiveness. The platform must estimate the likelihood and financial impact of cyber incidents, identify key risk drivers, and recommend cost-effective mitigation strategies under explicit budget constraints.The solution should bridge the gap between technical cybersecurity metrics and business language, enabling CISOs, risk officers, and executive leadership to make informed, data-driven decisions about cyber risk and security investment.\n • Proposed Solution Develop a cloud-ready cyber risk analytics platform that ingests data from multiple enterprise security and IT sources\"”such as vulnerability management, SIEM, IAM, EDR, CSPM, asset inventories, and threat intelligence feeds\"”and uses AI/ML models to compute continuous risk scores and estimated financial exposure, such as Expected Annual Loss. The system should provide interactive dashboards and decision-support tools that allow stakeholders to simulate remediation scenarios, evaluate investment options, and understand the return on security investment.The platform must be capable of mapping risk metrics to established cybersecurity frameworks, including ISO/IEC 27001, NIST Cybersecurity Framework, CIS Controls, RBI Cyber Security Framework, and SEBI Cybersecurity and Cyber Resilience Framework, supporting both regulatory reporting and internal governance.\n • Key Components\n • Risk Quantification Engine o Continuous aggregation and normalization of data from vulnerability scanners, SIEM, IAM, EDR,CSPM, asset inventory, and other security tools.\n\n o Statistical and ML-based estimation of incident likelihood and potential business impact, including downtime costs, data breach costs, regulatory penalties, and reputational effects.\n\n o Calculation of enterprise cyber risk as financial exposure metrics (for example, Expected Annual Loss and Value at Risk) at organization, business unit, and asset levels.\n\n o Asset criticality modeling to weigh technical findings based on business importance and service dependencies.\n\n o Control effectiveness evaluation using telemetry about configuration strength,incident history, and compliance status.\n\n • AI Decision Support Layer o Predictive analytics for emerging threats and evolving risk based on trends in vulnerabilities, threat intelligence, and control performance.\n\n o AI-generated mitigation recommendations that propose prioritized actions\"”such as patch deployment, access control tightening, network segmentation, and additional monitoring\"”with quantified risk reduction.\n\n o Natural language query interface for non-technical stakeholders, enabling questions like 'What is our highest financial cyber risk today?' or 'Which vulnerabilities contribute most to our expected losses?'.\n\n o Scenario simulation tools for exploring 'what-if' analyses, such as 'What happens if MFA is implemented across all privileged accounts?' or 'How will delaying remediation by 30 days affect our financial exposure?'.\n\n • Investment Optimization Module o Optimization models that recommend sets of controls and remediation actions delivering maximum risk reduction for a specified budget (for example, ?1 crore).\n\n o Computation of ROSI and cost-benefit metrics for different security initiatives to support strategic planning and board-level approvals.\n\n o Visualization of 'Investment vs. Risk Reduction' curves to highlight diminishing returns and optimal spend zones.\n\n • Executive and Technical Dashboards o Unified views for CISOs and executives, including Enterprise Risk Score, total Financial Exposure, Risk Trend Analysis, Top Risk Contributors, and Risk Reduction Opportunities.\n\n o Drill-down capability for technical teams to see control-level and asset-level findings, remediation backlogs, and mapping to frameworks and policies.\n\n • Compliance and Framework Mapping o Built-in mapping against frameworks such as ISO/IEC 27001, NIST Cybersecurity Framework, CIS Controls, RBI Cyber Security Framework, and SEBI Cybersecurity and Cyber Resilience Framework.\n\n o Support for generating evidence-based reports and dashboards for audits, regulatory filings, and internal governance committees.\n\n • Expected Outcomes\n • Continuous, near real-time visibility into enterprise cyber risk, expressed in monetary terms understandable to business stakeholders.\n • Improved prioritization of cybersecurity initiatives based on quantified impact rather than subjective risk ratings.\n • Enhanced communication of cyber risk to executive management, boards, and regulators through intuitive, data-driven dashboards and narratives.\n • More rational and optimized cybersecurity investment decisions, maximizing risk reduction per unit of spend.\n • Reduction in both the likelihood and financial impact of cyber incidents through targeted remediation and investment strategies.",
     "submissions": 0,
     "youtubeLink": "",
     "datasetLink": "",
-    "isNew": false
+    "isNew": false,
+    "officialPsNumber": "SIH26105",
+    "deadline": "20 September 2026",
+    "maxSubmissions": 500
   },
   {
     "sNo": 106,
@@ -1482,11 +1797,14 @@ const SIH_PROBLEM_STATEMENTS = [
     "department": "Cyber Security Cell",
     "category": "Software",
     "theme": "Blockchain & Cybersecurity",
-    "description": "• Background Email continues to be one of the most widely used communication channels in government, education, banking,and enterprise ecosystems. However, it also remains one of the most exploited attack vectors for phishing,impersonation, business email compromise, financial fraud, credential theft, and malware delivery. Threat actors increasingly use spoofed domains, deceptive sender identities, social engineering techniques, and compromised infrastructure to send highly convincing fraudulent emails that appear legitimate to end users.Traditional email security controls such as spam filters, static blacklists, and rule-based signature mechanisms are often insufficient to detect sophisticated fraudulent emails. Attackers now use AI-generated language,domain lookalikes, display-name spoofing, hidden redirection links, and relay chains to evade standard detection systems. In many cases, even when a suspicious email is identified, organizations lack the technical capability to effectively trace the source path, identify probable sender infrastructure, correlate geolocation clues, and support investigation into the origin of the email.This gap creates major challenges for cybersecurity teams, law enforcement support, fraud response units, and institutional administrators who need not only to detect malicious emails but also to investigate their source and reveal indicators that may help identify the actor or infrastructure behind the attack.\n • Problem Statement Current email security ecosystems primarily focus on filtering or blocking suspicious content but provide limited intelligence for deep forensic tracing of fraudulent email origins. Existing tools often do not adequately correlate email headers, SMTP relay paths, SPF/DKIM/DMARC validation results, IP reputation, geolocation indicators, domain registration intelligence, and behavioral patterns to build a complete picture of the senderâ€™s identity or operating location.There is a need for an AI-powered platform capable of detecting phishing, spoofed, impersonated, and fraudulent emails in real time or near real time, analyzing the complete technical structure of an email, tracing its transmission path across mail servers, estimating its origin with location, and generating forensic intelligence and investigative insights that assist in identifying malicious infrastructure, compromised systems, or threat actors behind the attack.The solution should support forensic analysis, fraud prevention, institutional email security, and investigation workflows while maintaining legal, privacy, and evidentiary standards.\n • Proposed Solution Develop an AI-Powered Email Threat Detection, GeoLocation and Forensic Intelligence Platform that combines Natural Language Processing (NLP), Machine Learning (ML), email header forensics, IP intelligence, domain analysis, and graph-based correlation to identify suspicious emails,detect advanced email threats, and investigate their probable origin.\n\n The system should ingest raw email content, metadata, and headers; validate sender authentication mechanisms;\n\n extract indicators of compromise; reconstruct relay paths; analyze originating IP addresses and associated geolocation data; and generate a confidence-based assessment of fraud risk and probable sender origin. The platform should provide actionable alerts, visual trace maps, and forensic reports for security analysts,administrators, and investigators.\n\n • Key Components\n • Fraudulent Email Detection Engine o NLP-based analysis of email subject lines, body text, urgency cues, impersonation language, and social engineering patterns.\n\n o Detection of phishing indicators such as spoofed sender addresses, deceptive domains, suspicious attachments, malicious links, and obfuscated URLs.\n\n o AI/ML models to classify emails as legitimate, suspicious, impersonated, phishing, or fraud-related.\n\n o Identification of business email compromise patterns such as payment diversion, fake invoice requests, credential harvesting attempts, and executive impersonation.\n\n • Email Header and Protocol Analysis Module o Deep analysis of email headers including Return-Path, Received headers, Message-ID, Reply-To,DKIM signatures, SPF alignment, and DMARC status.\n\n o Detection of anomalies in mail routing, forged sender fields, relay manipulation, and spoofed transmission records.\n\n o Validation of whether the email was sent through authorized infrastructure or suspicious relay paths.\n\n • Origin Traceability and Location Analysis o Extraction of originating IP addresses from header chains and identification of the earliest reliable sending node.\n\n o IP geolocation mapping to estimate the likely country, region, city, ISP, hosting provider, or proxy service associated with the email source.\n\n o Correlation with VPN, TOR, open relay, botnet, or cloud-hosted infrastructure indicators where applicable.\n\n o Domain intelligence analysis using WHOIS data, DNS records, MX records, hosting fingerprints,and registrar details to identify suspicious sender infrastructure.\n\n • Identity Correlation and Attribution Support o Correlation of email indicators with known threat intelligence, blacklists, previous incidents,domain clusters, and repeated fraud campaigns.\n\n o Graph-based relationship analysis between sender domains, IP addresses, aliases, reply chains, and linked infrastructure.\n\n o Confidence-based investigative assessment to assist in revealing probable sender identity, associated infrastructure, or campaign-level attribution patterns.\n\n o Support for flagging whether the email likely originated from a compromised account, spoofed domain, anonymized infrastructure, or direct malicious actor environment.\n\n • Alerting, Dashboard, and Forensic Reporting o Real-time alerts for high-risk emails before user interaction or administrative approval.\n\n o Analyst dashboard showing fraud score, spoofing indicators, sender trace path, geolocation map,and attribution confidence.\n\n o Generation of structured forensic reports for institutional action, legal review, cyber incident response, and support to law enforcement agencies.\n\n o Searchable case management view for grouping related fraudulent emails into campaigns.\n\n • Privacy, Legal, and Compliance Safeguards o Controlled handling of personal data and metadata in accordance with organizational privacy policies.\n\n o Logging, evidence preservation, and chain-of-custody support for investigation purposes.\n\n oConfigurable retention and masking mechanisms for sensitive communication data.\n\n • Expected Outcomes\n • Early and accurate detection of fraudulent, spoofed, and phishing-based email attacks.\n • Improved ability to trace suspicious email origin paths and identify probable source infrastructure.\n • Enhanced fraud investigation capability through geolocation analysis, domain intelligence, and sender attribution support.\n • Reduced financial loss, reputational damage, and unauthorized disclosure of confidential information caused by email-based fraud.\n • Better institutional readiness for cyber incident response, forensic investigation, and enforcement coordination.",
+    "description": "• Background Email continues to be one of the most widely used communication channels in government, education, banking,and enterprise ecosystems. However, it also remains one of the most exploited attack vectors for phishing,impersonation, business email compromise, financial fraud, credential theft, and malware delivery. Threat actors increasingly use spoofed domains, deceptive sender identities, social engineering techniques, and compromised infrastructure to send highly convincing fraudulent emails that appear legitimate to end users.Traditional email security controls such as spam filters, static blacklists, and rule-based signature mechanisms are often insufficient to detect sophisticated fraudulent emails. Attackers now use AI-generated language,domain lookalikes, display-name spoofing, hidden redirection links, and relay chains to evade standard detection systems. In many cases, even when a suspicious email is identified, organizations lack the technical capability to effectively trace the source path, identify probable sender infrastructure, correlate geolocation clues, and support investigation into the origin of the email.This gap creates major challenges for cybersecurity teams, law enforcement support, fraud response units, and institutional administrators who need not only to detect malicious emails but also to investigate their source and reveal indicators that may help identify the actor or infrastructure behind the attack.\n • Problem Statement Current email security ecosystems primarily focus on filtering or blocking suspicious content but provide limited intelligence for deep forensic tracing of fraudulent email origins. Existing tools often do not adequately correlate email headers, SMTP relay paths, SPF/DKIM/DMARC validation results, IP reputation, geolocation indicators, domain registration intelligence, and behavioral patterns to build a complete picture of the sender's identity or operating location.There is a need for an AI-powered platform capable of detecting phishing, spoofed, impersonated, and fraudulent emails in real time or near real time, analyzing the complete technical structure of an email, tracing its transmission path across mail servers, estimating its origin with location, and generating forensic intelligence and investigative insights that assist in identifying malicious infrastructure, compromised systems, or threat actors behind the attack.The solution should support forensic analysis, fraud prevention, institutional email security, and investigation workflows while maintaining legal, privacy, and evidentiary standards.\n • Proposed Solution Develop an AI-Powered Email Threat Detection, GeoLocation and Forensic Intelligence Platform that combines Natural Language Processing (NLP), Machine Learning (ML), email header forensics, IP intelligence, domain analysis, and graph-based correlation to identify suspicious emails,detect advanced email threats, and investigate their probable origin.\n\n The system should ingest raw email content, metadata, and headers; validate sender authentication mechanisms;\n\n extract indicators of compromise; reconstruct relay paths; analyze originating IP addresses and associated geolocation data; and generate a confidence-based assessment of fraud risk and probable sender origin. The platform should provide actionable alerts, visual trace maps, and forensic reports for security analysts,administrators, and investigators.\n\n • Key Components\n • Fraudulent Email Detection Engine o NLP-based analysis of email subject lines, body text, urgency cues, impersonation language, and social engineering patterns.\n\n o Detection of phishing indicators such as spoofed sender addresses, deceptive domains, suspicious attachments, malicious links, and obfuscated URLs.\n\n o AI/ML models to classify emails as legitimate, suspicious, impersonated, phishing, or fraud-related.\n\n o Identification of business email compromise patterns such as payment diversion, fake invoice requests, credential harvesting attempts, and executive impersonation.\n\n • Email Header and Protocol Analysis Module o Deep analysis of email headers including Return-Path, Received headers, Message-ID, Reply-To,DKIM signatures, SPF alignment, and DMARC status.\n\n o Detection of anomalies in mail routing, forged sender fields, relay manipulation, and spoofed transmission records.\n\n o Validation of whether the email was sent through authorized infrastructure or suspicious relay paths.\n\n • Origin Traceability and Location Analysis o Extraction of originating IP addresses from header chains and identification of the earliest reliable sending node.\n\n o IP geolocation mapping to estimate the likely country, region, city, ISP, hosting provider, or proxy service associated with the email source.\n\n o Correlation with VPN, TOR, open relay, botnet, or cloud-hosted infrastructure indicators where applicable.\n\n o Domain intelligence analysis using WHOIS data, DNS records, MX records, hosting fingerprints,and registrar details to identify suspicious sender infrastructure.\n\n • Identity Correlation and Attribution Support o Correlation of email indicators with known threat intelligence, blacklists, previous incidents,domain clusters, and repeated fraud campaigns.\n\n o Graph-based relationship analysis between sender domains, IP addresses, aliases, reply chains, and linked infrastructure.\n\n o Confidence-based investigative assessment to assist in revealing probable sender identity, associated infrastructure, or campaign-level attribution patterns.\n\n o Support for flagging whether the email likely originated from a compromised account, spoofed domain, anonymized infrastructure, or direct malicious actor environment.\n\n • Alerting, Dashboard, and Forensic Reporting o Real-time alerts for high-risk emails before user interaction or administrative approval.\n\n o Analyst dashboard showing fraud score, spoofing indicators, sender trace path, geolocation map,and attribution confidence.\n\n o Generation of structured forensic reports for institutional action, legal review, cyber incident response, and support to law enforcement agencies.\n\n o Searchable case management view for grouping related fraudulent emails into campaigns.\n\n • Privacy, Legal, and Compliance Safeguards o Controlled handling of personal data and metadata in accordance with organizational privacy policies.\n\n o Logging, evidence preservation, and chain-of-custody support for investigation purposes.\n\n oConfigurable retention and masking mechanisms for sensitive communication data.\n\n • Expected Outcomes\n • Early and accurate detection of fraudulent, spoofed, and phishing-based email attacks.\n • Improved ability to trace suspicious email origin paths and identify probable source infrastructure.\n • Enhanced fraud investigation capability through geolocation analysis, domain intelligence, and sender attribution support.\n • Reduced financial loss, reputational damage, and unauthorized disclosure of confidential information caused by email-based fraud.\n • Better institutional readiness for cyber incident response, forensic investigation, and enforcement coordination.",
     "submissions": 0,
     "youtubeLink": "",
     "datasetLink": "",
-    "isNew": false
+    "isNew": false,
+    "officialPsNumber": "SIH26106",
+    "deadline": "20 September 2026",
+    "maxSubmissions": 500
   },
   {
     "sNo": 107,
@@ -1500,7 +1818,10 @@ const SIH_PROBLEM_STATEMENTS = [
     "submissions": 0,
     "youtubeLink": "",
     "datasetLink": "",
-    "isNew": false
+    "isNew": false,
+    "officialPsNumber": "SIH26107",
+    "deadline": "20 September 2026",
+    "maxSubmissions": 500
   },
   {
     "sNo": 108,
@@ -1514,7 +1835,10 @@ const SIH_PROBLEM_STATEMENTS = [
     "submissions": 0,
     "youtubeLink": "",
     "datasetLink": "",
-    "isNew": false
+    "isNew": false,
+    "officialPsNumber": "SIH26108",
+    "deadline": "20 September 2026",
+    "maxSubmissions": 500
   },
   {
     "sNo": 109,
@@ -1528,7 +1852,10 @@ const SIH_PROBLEM_STATEMENTS = [
     "submissions": 0,
     "youtubeLink": "",
     "datasetLink": "",
-    "isNew": false
+    "isNew": false,
+    "officialPsNumber": "SIH26109",
+    "deadline": "20 September 2026",
+    "maxSubmissions": 500
   },
   {
     "sNo": 110,
@@ -1538,11 +1865,14 @@ const SIH_PROBLEM_STATEMENTS = [
     "department": "Department of Animal Husbandry & Dairying",
     "category": "Hardware",
     "theme": "Agriculture, FoodTech & Rural Development",
-    "description": "• Background Milk is a highly perishable agricultural product that begins to deteriorate rapidly after milking due to bacterial growth and enzymatic activity. ln many rural and remote dairy-producing regions, particularly Hilly and North Eastern Regions, farmers lack access to bulk milk cooling facilities and reliable electricity. As a result, milk often remains at ambient temperatures for several hours before reaching collection centers, leading to quality degradation, reduced shelf life and economic losses. Available solutions are expensive, relatively heavy and low volume storage cans, making them uneconomical for use or during transportation.\n • Description The proposed problem aims to develop a low-cost, lightweight milk chilling can capable of maintaining milk at safe storage temperatures during collection and transportation. The can should be manufactured using food-grade lightweight materials such as High-Density Polyethylene (HDPE), aluminum alloys or composite materials while ensuring structural strength and hygiene standards.The design should incorporate an insulated double-wall structure with materials such as polyurethane foam (PUF) or other cost-effective insulating materials to minimize heat transfer.\n\n The chilling mechanism may utilize reusable ice packs, phase change materials (PCM), or passive cooling technologies that do not require continuous electrical power. The system should be capable of maintaining milk temperatures between 4Â°C and 8Â°C for several hours under typical rural environmental conditions.The solution should also consider ease of handling, cleaning, transportation and durability.Optional features such as a temperature monitoring indicator, leak-proof lid and ergonomic handles may be included to improve usability. The product should be affordable enough for adoption by small and marginal dairy farmers and suitable for village-level milk collection systems/centres.\n\n • Expected Solution A lightweight, insulated milk chilling can with a capacity of 30-40 litres that can maintain milk at safe temperatures for at least 6-12 hours without external power supply. The developed solution should reduce milk spoilage, improve milk quality during transportation, lower handling effort due lo reduced weight and cost significantly less than conventional insulated stainless-steel chilling containers. The final prototype should be durable, food-safe, easy to manufacture and suitable for widespread deployment in rural dairy supply chains.",
+    "description": "• Background Milk is a highly perishable agricultural product that begins to deteriorate rapidly after milking due to bacterial growth and enzymatic activity. ln many rural and remote dairy-producing regions, particularly Hilly and North Eastern Regions, farmers lack access to bulk milk cooling facilities and reliable electricity. As a result, milk often remains at ambient temperatures for several hours before reaching collection centers, leading to quality degradation, reduced shelf life and economic losses. Available solutions are expensive, relatively heavy and low volume storage cans, making them uneconomical for use or during transportation.\n • Description The proposed problem aims to develop a low-cost, lightweight milk chilling can capable of maintaining milk at safe storage temperatures during collection and transportation. The can should be manufactured using food-grade lightweight materials such as High-Density Polyethylene (HDPE), aluminum alloys or composite materials while ensuring structural strength and hygiene standards.The design should incorporate an insulated double-wall structure with materials such as polyurethane foam (PUF) or other cost-effective insulating materials to minimize heat transfer.\n\n The chilling mechanism may utilize reusable ice packs, phase change materials (PCM), or passive cooling technologies that do not require continuous electrical power. The system should be capable of maintaining milk temperatures between 4°C and 8°C for several hours under typical rural environmental conditions.The solution should also consider ease of handling, cleaning, transportation and durability.Optional features such as a temperature monitoring indicator, leak-proof lid and ergonomic handles may be included to improve usability. The product should be affordable enough for adoption by small and marginal dairy farmers and suitable for village-level milk collection systems/centres.\n\n • Expected Solution A lightweight, insulated milk chilling can with a capacity of 30-40 litres that can maintain milk at safe temperatures for at least 6-12 hours without external power supply. The developed solution should reduce milk spoilage, improve milk quality during transportation, lower handling effort due lo reduced weight and cost significantly less than conventional insulated stainless-steel chilling containers. The final prototype should be durable, food-safe, easy to manufacture and suitable for widespread deployment in rural dairy supply chains.",
     "submissions": 0,
     "youtubeLink": "",
     "datasetLink": "",
-    "isNew": false
+    "isNew": false,
+    "officialPsNumber": "SIH26110",
+    "deadline": "20 September 2026",
+    "maxSubmissions": 500
   },
   {
     "sNo": 111,
@@ -1556,7 +1886,10 @@ const SIH_PROBLEM_STATEMENTS = [
     "submissions": 0,
     "youtubeLink": "",
     "datasetLink": "https://drive.google.com/drive/folders/1KrErp9hRfLlaWw3gqvWFo1EpQiU1qtbG",
-    "isNew": false
+    "isNew": false,
+    "officialPsNumber": "SIH26111",
+    "deadline": "20 September 2026",
+    "maxSubmissions": 500
   },
   {
     "sNo": 112,
@@ -1566,11 +1899,14 @@ const SIH_PROBLEM_STATEMENTS = [
     "department": "Autodesk Education Experience",
     "category": "Hardware",
     "theme": "Robotics and Drones",
-    "description": "• Description Research and develop a concept design of a warehouse automation robot platform and a modular attachment for it, using Autodesk Fusion. Re-imagine their design and optimize for additive manufacturing.\n\n The idea submission consists of two mandatory concept development challenges:\n\n Part A â€“ Universal Mobile Robot Platform (AGV/AMR Base)\n\n Develop a concept design of a universal Autonomous Mobile Robot (AMR) / Automated Guided Vehicle (AGV) chassis that serves as a common mobile platform for warehouse automation. The platform should support multiple interchangeable attachments while considering structural integrity, payload capacity, weight reduction, modularity, manufacturability, and ease of maintenance.\n\n Part B â€“ Modular Functional Attachments Develop a concept design for any one modular attachment that integrates with the universal platform to perform specific warehouse automation tasks. Example attachments include bin handling, pallet handling, conveyor transfer, robotic picking, inventory scanning, inspection, or any other innovative warehouse automation module.\n\n Students should use Fusion features such as Generative Design, Topology Optimization, Additive Build, and Simulation. The redesigned components should demonstrate innovation, enhanced functionality, improved efficiency, and optimized material usage while being suitable for additive manufacturing.\n\n • Participation Guidelines For Idea Submission\n • Each student team should submit Fusion public link of the Conceptual Design as described in Part-A and Part-B of the above problem statement and a PowerPoint presentation (5-7 Slides).\n • Designs should be created using ONLY Autodesk Fusion and not copied or taken from any other source.\n • AI Generated content is NOT ALLOWED.\n\n For Grand Finale*: Students must use Autodesk Fusion to design, and 3D print final design of specific components (scaled down to machine size) within the given time period and present the following to the jury members:\n\n • PPT explaining the final project\n • Final 3D prints\n • Public link of the design\n • Rendered images NOTE: *Grand Finale details to be revealed on competition day.\n • Attach Marking Criteria Table here*\n • Faculty (SIH SPOC) Form Teams choosing to submit idea for Autodeskâ€™s problem statement are required to request their faculty (SIH SPOC) to fill this 'Mandatory Form'.\n • Autodesk Fusion\n • Autodesk Fusion combines Additive Manufacturing (3D printing) capabilities with Generative Design features. It allows users to optimize designs for 3D printing, generate support structures, and explore numerous design options using algorithms. This integration enables the creation of complex and optimized parts using 3D printing technologies.\n • Students and educators can click Here to get FREE access to Fusion.",
+    "description": "• Description Research and develop a concept design of a warehouse automation robot platform and a modular attachment for it, using Autodesk Fusion. Re-imagine their design and optimize for additive manufacturing.\n\n The idea submission consists of two mandatory concept development challenges:\n\n Part A \"“ Universal Mobile Robot Platform (AGV/AMR Base)\n\n Develop a concept design of a universal Autonomous Mobile Robot (AMR) / Automated Guided Vehicle (AGV) chassis that serves as a common mobile platform for warehouse automation. The platform should support multiple interchangeable attachments while considering structural integrity, payload capacity, weight reduction, modularity, manufacturability, and ease of maintenance.\n\n Part B \"“ Modular Functional Attachments Develop a concept design for any one modular attachment that integrates with the universal platform to perform specific warehouse automation tasks. Example attachments include bin handling, pallet handling, conveyor transfer, robotic picking, inventory scanning, inspection, or any other innovative warehouse automation module.\n\n Students should use Fusion features such as Generative Design, Topology Optimization, Additive Build, and Simulation. The redesigned components should demonstrate innovation, enhanced functionality, improved efficiency, and optimized material usage while being suitable for additive manufacturing.\n\n • Participation Guidelines For Idea Submission\n • Each student team should submit Fusion public link of the Conceptual Design as described in Part-A and Part-B of the above problem statement and a PowerPoint presentation (5-7 Slides).\n • Designs should be created using ONLY Autodesk Fusion and not copied or taken from any other source.\n • AI Generated content is NOT ALLOWED.\n\n For Grand Finale*: Students must use Autodesk Fusion to design, and 3D print final design of specific components (scaled down to machine size) within the given time period and present the following to the jury members:\n\n • PPT explaining the final project\n • Final 3D prints\n • Public link of the design\n • Rendered images NOTE: *Grand Finale details to be revealed on competition day.\n • Attach Marking Criteria Table here*\n • Faculty (SIH SPOC) Form Teams choosing to submit idea for Autodesk's problem statement are required to request their faculty (SIH SPOC) to fill this 'Mandatory Form'.\n • Autodesk Fusion\n • Autodesk Fusion combines Additive Manufacturing (3D printing) capabilities with Generative Design features. It allows users to optimize designs for 3D printing, generate support structures, and explore numerous design options using algorithms. This integration enables the creation of complex and optimized parts using 3D printing technologies.\n • Students and educators can click Here to get FREE access to Fusion.",
     "submissions": 0,
     "youtubeLink": "",
     "datasetLink": "https://drive.google.com/drive/folders/1KYkkQjRbpq--YRF5sgVndjLGgItqLr1b",
-    "isNew": false
+    "isNew": false,
+    "officialPsNumber": "SIH26112",
+    "deadline": "20 September 2026",
+    "maxSubmissions": 500
   },
   {
     "sNo": 113,
@@ -1580,11 +1916,14 @@ const SIH_PROBLEM_STATEMENTS = [
     "department": "Autodesk Education Experience",
     "category": "Hardware",
     "theme": "MedTech / BioTech / HealthTech",
-    "description": "• Description Students are required to conceptualize a Human Augmentation device or assembly of their choice using Autodesk Fusion. The design should reflect original thinking and real-world engineering intent. The proposed solution may address applications in healthcare, rehabilitation, industrial ergonomics,assistive living, sports, or personal mobility, and may include (but is not limited to):\n • Exoskeleton Mechanisms\n • Prosthetic Components\n • Rehabilitation Devices\n • Assistive Support Systems\n • Ergonomic Enhancement Products\n • Wearable Assistive Devices\n • Adaptive Mechanical Aids From the complete assembly, participants shall identify one critical machinable mechanical component that is strictly manufacturable using either Subtractive 3-Axis CNC Milling or Subtractive 2-Axis CNC Turning.The selected component shall be clearly identified within the complete assembly, indicating its location and function in the Human Augmentation product. Participants shall also justify why the selected component is suitable for the chosen CNC manufacturing process.Using Autodesk Fusion, participants shall develop the complete digital manufacturing workflow for the selected component, including:\n • CAD Modelling\n • Manufacturing Setup\n • Tool Selection\n • Toolpath Generation\n • Machining Simulation\n • Toolpath Optimization\n • G-code Generation The final solution should demonstrate good engineering design practices, manufacturability, machining efficiency, and effective use of Autodesk Fusion CAD/CAM capabilities.\n • Expected Outcomes The proposed solution should include:\n • CAD model of the identified critical mechanical component within the assembly.\n • Justification for selecting the component for either Subtractive 3-Axis CNC Milling or Subtractive 2-Axis CNC Turning.\n • Manufacturing setup and machining strategy.\n • Toolpath generation and machining simulation.\n • Optimized manufacturing process.\n • Product renders (assembled and exploded views).\n • Participation Guidelines For Idea Submission\n • Each student team shall submit a PowerPoint Presentation (6â€“8 Slides) describing their proposed Human Augmentation solution.\n\n The presentation should include:\n\n • Problem statement and proposed solution.\n • Concept sketches.\n • CAD model of the identified critical mechanical component within the assembly.\n • Assembly view highlighting the selected CNC-manufactured component.\n • Justification for selecting the component for either Subtractive 3-Axis CNC Milling or Subtractive 2-Axis CNC Turning.\n • CAM workflow developed in Autodesk Fusion, including:\n • Manufacturing Setup\n • Tool Selection\n • Toolpath Generation\n • Machining Simulation\n • Toolpath Optimization\n • Product renders (assembled and exploded views).\n\n NOTE: Physical machining or prototype fabrication is not required during the Idea Submission stage. Teams will be evaluated based on the proposed design,CAD model of the identified critical mechanical component, component selection, and digital manufacturing workflow demonstrated in Autodesk Fusion.\n\n • Designs should be created using ONLY Autodesk Fusion and not copied or taken from any other source.\n • AI Generated content is NOT ALLOWED.\n\n For Grand Finale*: Students must use Autodesk Fusion to design and manufacture specific components to machine size within the given time period and present the following to the jury members:\n\n • PPT explaining the final project\n • Final Manufactured components\n • Public link of the design\n • Rendered images NOTE: *Grand Finale details to be revealed on competition day.\n • The required 3-Axis CNC Milling Machine and 2-Axis CNC Turning Machine will be provided by the organizers during the Grand Finale.\n • Attach Marking Criteria Table and Reference Workflow here*\n • Faculty (SIH SPOC) Form Teams choosing to submit idea for Autodeskâ€™s problem statement are required to request their faculty (SIH SPOC) to fill this 'Mandatory Form'\n • Autodesk Fusion\n • Autodesk Fusion is a cloud-based 3D modeling, CAD, CAM, CAE, and PCB software platform for professional product design and manufacturing.\n • Students and educators can click here to get FREE access to Fusion.",
+    "description": "• Description Students are required to conceptualize a Human Augmentation device or assembly of their choice using Autodesk Fusion. The design should reflect original thinking and real-world engineering intent. The proposed solution may address applications in healthcare, rehabilitation, industrial ergonomics,assistive living, sports, or personal mobility, and may include (but is not limited to):\n • Exoskeleton Mechanisms\n • Prosthetic Components\n • Rehabilitation Devices\n • Assistive Support Systems\n • Ergonomic Enhancement Products\n • Wearable Assistive Devices\n • Adaptive Mechanical Aids From the complete assembly, participants shall identify one critical machinable mechanical component that is strictly manufacturable using either Subtractive 3-Axis CNC Milling or Subtractive 2-Axis CNC Turning.The selected component shall be clearly identified within the complete assembly, indicating its location and function in the Human Augmentation product. Participants shall also justify why the selected component is suitable for the chosen CNC manufacturing process.Using Autodesk Fusion, participants shall develop the complete digital manufacturing workflow for the selected component, including:\n • CAD Modelling\n • Manufacturing Setup\n • Tool Selection\n • Toolpath Generation\n • Machining Simulation\n • Toolpath Optimization\n • G-code Generation The final solution should demonstrate good engineering design practices, manufacturability, machining efficiency, and effective use of Autodesk Fusion CAD/CAM capabilities.\n • Expected Outcomes The proposed solution should include:\n • CAD model of the identified critical mechanical component within the assembly.\n • Justification for selecting the component for either Subtractive 3-Axis CNC Milling or Subtractive 2-Axis CNC Turning.\n • Manufacturing setup and machining strategy.\n • Toolpath generation and machining simulation.\n • Optimized manufacturing process.\n • Product renders (assembled and exploded views).\n • Participation Guidelines For Idea Submission\n • Each student team shall submit a PowerPoint Presentation (6\"“8 Slides) describing their proposed Human Augmentation solution.\n\n The presentation should include:\n\n • Problem statement and proposed solution.\n • Concept sketches.\n • CAD model of the identified critical mechanical component within the assembly.\n • Assembly view highlighting the selected CNC-manufactured component.\n • Justification for selecting the component for either Subtractive 3-Axis CNC Milling or Subtractive 2-Axis CNC Turning.\n • CAM workflow developed in Autodesk Fusion, including:\n • Manufacturing Setup\n • Tool Selection\n • Toolpath Generation\n • Machining Simulation\n • Toolpath Optimization\n • Product renders (assembled and exploded views).\n\n NOTE: Physical machining or prototype fabrication is not required during the Idea Submission stage. Teams will be evaluated based on the proposed design,CAD model of the identified critical mechanical component, component selection, and digital manufacturing workflow demonstrated in Autodesk Fusion.\n\n • Designs should be created using ONLY Autodesk Fusion and not copied or taken from any other source.\n • AI Generated content is NOT ALLOWED.\n\n For Grand Finale*: Students must use Autodesk Fusion to design and manufacture specific components to machine size within the given time period and present the following to the jury members:\n\n • PPT explaining the final project\n • Final Manufactured components\n • Public link of the design\n • Rendered images NOTE: *Grand Finale details to be revealed on competition day.\n • The required 3-Axis CNC Milling Machine and 2-Axis CNC Turning Machine will be provided by the organizers during the Grand Finale.\n • Attach Marking Criteria Table and Reference Workflow here*\n • Faculty (SIH SPOC) Form Teams choosing to submit idea for Autodesk's problem statement are required to request their faculty (SIH SPOC) to fill this 'Mandatory Form'\n • Autodesk Fusion\n • Autodesk Fusion is a cloud-based 3D modeling, CAD, CAM, CAE, and PCB software platform for professional product design and manufacturing.\n • Students and educators can click here to get FREE access to Fusion.",
     "submissions": 0,
     "youtubeLink": "",
     "datasetLink": "https://drive.google.com/drive/folders/1KYkkQjRbpq--YRF5sgVndjLGgItqLr1b",
-    "isNew": false
+    "isNew": false,
+    "officialPsNumber": "SIH26113",
+    "deadline": "20 September 2026",
+    "maxSubmissions": 500
   },
   {
     "sNo": 114,
@@ -1594,11 +1933,14 @@ const SIH_PROBLEM_STATEMENTS = [
     "department": "Autodesk Education Experience",
     "category": "Software",
     "theme": "Miscellaneous",
-    "description": "• Description\n • Students are tasked with designing a Smart City using Forma Site Design for effective site design for adding details to the buildings in the site.\n • The Site area selected must have minimum 1 km square area\n • The goal is to design and develop a site including the contextual data (available for free within Forma Site Design) and export Site BIM model suitable for further use in Revit app.\n • The Site designed must include Site Limits, Landscaping, Buildings, and Transportation elements.\n • The Site designed must be analyzed using the Analyze functions available within Forma Site Design for Area Metrics, Embodied Carbon, Sun hours, Daylight potential, Wind Analysis, Microclimate analysis, Noise analysis, Solar Energy.\n • Minimum 2 Site Design proposals must be compared and presented using the Forma Borad available within Forma Site Design.\n • Objective Urban populations continue to grow rapidly, creating the need for smarter, more sustainable, and resilient cities. Planners, architects, and engineers must leverage data-driven design tools to evaluate site performance, optimize land use, and improve the quality of life for future residents.In this project, students are tasked with designing a Smart City Development using Autodesk Forma Site Design for site planning and analysis, and Autodesk Revit for detailed building development.\n • Participation Guidelines For Idea Submission:\n • Each student team should submit Forma Site Design with 2 proposals that are compared for their and a Forma Site Design PowerPoint presentation (5-7 Slides).\n • Models should be created using only Forma Site Design and not copied or taken from any other source.\n • AI Generated content is NOT ALLOWED.\n\n For Grand Finale: Students must use Forma Site Design to design, and create 3D Model of specific office building within the given time period and present the following to the jury members:\n\n • PPT explaining the final Site Design proposal\n • Detailed and synced drawing block of a building exported, edited in Revit app and then synced to Forma Site Design.\n • Presentation of the Proposal Comparison done through Forma Board\n • Rendered images and Walkthrough video (30 secs.) of the final Model.\n\n Note: Teams coming with pre-designed files will be disqualified.\n\n • Attach Marking Criteria Table here*\n • Faculty (SIH SPOC) Form Teams choosing to submit idea for Autodeskâ€™s problem statement are required to request their faculty (SIH SPOC) to fill this 'Mandatory Form'.\n • Autodesk Forma Site Design\n • Autodesk Forma Site Design is a complete Site Design and Site Analysis web app built on native Forma AI HUB primarily used by architects, engineers, and construction professionals to design, model, and document the site and present proposal for approvals.\n • Educators and Students can download 'Autodesk Forma Site Design'.\n • Essential workflow and learning access Click Here to get FREE access to Forma Site Design.",
+    "description": "• Description\n • Students are tasked with designing a Smart City using Forma Site Design for effective site design for adding details to the buildings in the site.\n • The Site area selected must have minimum 1 km square area\n • The goal is to design and develop a site including the contextual data (available for free within Forma Site Design) and export Site BIM model suitable for further use in Revit app.\n • The Site designed must include Site Limits, Landscaping, Buildings, and Transportation elements.\n • The Site designed must be analyzed using the Analyze functions available within Forma Site Design for Area Metrics, Embodied Carbon, Sun hours, Daylight potential, Wind Analysis, Microclimate analysis, Noise analysis, Solar Energy.\n • Minimum 2 Site Design proposals must be compared and presented using the Forma Borad available within Forma Site Design.\n • Objective Urban populations continue to grow rapidly, creating the need for smarter, more sustainable, and resilient cities. Planners, architects, and engineers must leverage data-driven design tools to evaluate site performance, optimize land use, and improve the quality of life for future residents.In this project, students are tasked with designing a Smart City Development using Autodesk Forma Site Design for site planning and analysis, and Autodesk Revit for detailed building development.\n • Participation Guidelines For Idea Submission:\n • Each student team should submit Forma Site Design with 2 proposals that are compared for their and a Forma Site Design PowerPoint presentation (5-7 Slides).\n • Models should be created using only Forma Site Design and not copied or taken from any other source.\n • AI Generated content is NOT ALLOWED.\n\n For Grand Finale: Students must use Forma Site Design to design, and create 3D Model of specific office building within the given time period and present the following to the jury members:\n\n • PPT explaining the final Site Design proposal\n • Detailed and synced drawing block of a building exported, edited in Revit app and then synced to Forma Site Design.\n • Presentation of the Proposal Comparison done through Forma Board\n • Rendered images and Walkthrough video (30 secs.) of the final Model.\n\n Note: Teams coming with pre-designed files will be disqualified.\n\n • Attach Marking Criteria Table here*\n • Faculty (SIH SPOC) Form Teams choosing to submit idea for Autodesk's problem statement are required to request their faculty (SIH SPOC) to fill this 'Mandatory Form'.\n • Autodesk Forma Site Design\n • Autodesk Forma Site Design is a complete Site Design and Site Analysis web app built on native Forma AI HUB primarily used by architects, engineers, and construction professionals to design, model, and document the site and present proposal for approvals.\n • Educators and Students can download 'Autodesk Forma Site Design'.\n • Essential workflow and learning access Click Here to get FREE access to Forma Site Design.",
     "submissions": 0,
     "youtubeLink": "",
     "datasetLink": "https://drive.google.com/drive/folders/1KYkkQjRbpq--YRF5sgVndjLGgItqLr1b",
-    "isNew": false
+    "isNew": false,
+    "officialPsNumber": "SIH26114",
+    "deadline": "20 September 2026",
+    "maxSubmissions": 500
   },
   {
     "sNo": 115,
@@ -1608,11 +1950,14 @@ const SIH_PROBLEM_STATEMENTS = [
     "department": "Autodesk Education Experience",
     "category": "Software",
     "theme": "MedTech / BioTech / HealthTech",
-    "description": "• Description Healthcare facilities generate large volumes of biomedical waste that require safe, compliant, and efficient handling. Manual collection and segregation increase the risk of contamination, operational inefficiencies, and regulatory challenges.\n\n Design and develop an AI-powered, battery-electric autonomous mobile system that automates the collection, identification, segregation, and digital tracking of biomedical waste across hospitals. The solution should leverage AI-enabled vision systems to classify waste, intelligently segregate it into designated compartments, and provide end-to-end traceability while minimizing human exposure to hazardous materials and improving safety, operational efficiency, and regulatory compliance.\n\n Using Autodesk Fusion, students must demonstrate a complete product development lifecycleâ€”from concept ideation to manufacturing-ready product, delivering an innovative, scalable, and solution for next-generation healthcare waste management.\n\n • Participation Guidelines For Idea Submission:\n • Each student team will submit a PowerPoint presentation (5-7 Slides) with conceptual sketches, research, and relevant images.\n • NO design files are required at this stage. The actual design must be created ONLY during the Grand Finale.\n • Designs should be created using ONLY Autodesk Fusion and not copied or taken from any other source.\n • AI Generated content is NOT ALLOWED.\n\n For Grand Finale:\n\n Students must use Autodesk Fusion within the given time period and present:\n\n • PPT explaining the final project\n • Public link of the fully developed Autodesk Fusion design model\n • Use of Generative Design for optimization will be an added advantage.\n • Simulation and Analysis will be advantageous\n • Motion study and exploded assembly view\n • Hi-res rendered images\n • Design should be capable of developing a prototype with a focus on Cost, Manufacturability, Scalability, and Quality.\n\n Note: Teams coming with pre-designed files will be disqualified.\n\n • Attach Marking Criteria Table here*\n • Faculty (SIH SPOC) Form Teams choosing to submit idea for Autodeskâ€™s problem statement are required to request their faculty (SIH SPOC) to fill this 'Mandatory Form'.\n • Autodesk Fusion\n • Autodesk Fusion is a cloud-based 3D modeling, CAD, CAM, CAE, and PCB software platform for professional product design and manufacturing.\n • Students and educators can click here to get FREE access to Fusion.",
+    "description": "• Description Healthcare facilities generate large volumes of biomedical waste that require safe, compliant, and efficient handling. Manual collection and segregation increase the risk of contamination, operational inefficiencies, and regulatory challenges.\n\n Design and develop an AI-powered, battery-electric autonomous mobile system that automates the collection, identification, segregation, and digital tracking of biomedical waste across hospitals. The solution should leverage AI-enabled vision systems to classify waste, intelligently segregate it into designated compartments, and provide end-to-end traceability while minimizing human exposure to hazardous materials and improving safety, operational efficiency, and regulatory compliance.\n\n Using Autodesk Fusion, students must demonstrate a complete product development lifecycle\"”from concept ideation to manufacturing-ready product, delivering an innovative, scalable, and solution for next-generation healthcare waste management.\n\n • Participation Guidelines For Idea Submission:\n • Each student team will submit a PowerPoint presentation (5-7 Slides) with conceptual sketches, research, and relevant images.\n • NO design files are required at this stage. The actual design must be created ONLY during the Grand Finale.\n • Designs should be created using ONLY Autodesk Fusion and not copied or taken from any other source.\n • AI Generated content is NOT ALLOWED.\n\n For Grand Finale:\n\n Students must use Autodesk Fusion within the given time period and present:\n\n • PPT explaining the final project\n • Public link of the fully developed Autodesk Fusion design model\n • Use of Generative Design for optimization will be an added advantage.\n • Simulation and Analysis will be advantageous\n • Motion study and exploded assembly view\n • Hi-res rendered images\n • Design should be capable of developing a prototype with a focus on Cost, Manufacturability, Scalability, and Quality.\n\n Note: Teams coming with pre-designed files will be disqualified.\n\n • Attach Marking Criteria Table here*\n • Faculty (SIH SPOC) Form Teams choosing to submit idea for Autodesk's problem statement are required to request their faculty (SIH SPOC) to fill this 'Mandatory Form'.\n • Autodesk Fusion\n • Autodesk Fusion is a cloud-based 3D modeling, CAD, CAM, CAE, and PCB software platform for professional product design and manufacturing.\n • Students and educators can click here to get FREE access to Fusion.",
     "submissions": 0,
     "youtubeLink": "",
     "datasetLink": "https://drive.google.com/drive/folders/1KYkkQjRbpq--YRF5sgVndjLGgItqLr1b",
-    "isNew": false
+    "isNew": false,
+    "officialPsNumber": "SIH26115",
+    "deadline": "20 September 2026",
+    "maxSubmissions": 500
   },
   {
     "sNo": 116,
@@ -1622,11 +1967,14 @@ const SIH_PROBLEM_STATEMENTS = [
     "department": "Autodesk Education Experience",
     "category": "Software",
     "theme": "Miscellaneous",
-    "description": "• Description\n • Facade-Driven Architectural Expression-Develop an innovative facade system that enhances architectural aesthetics, responds to climate (light, heat, ventilation), and blends with the surrounding urban context.\n • Breathable & Nature-Integrated Design-Incorporate a central landscape courtyard and green interfaces (terraces, balconies) to create an airy, breathable structure that integrates nature and improves occupant well-being.\n • Residential & Commercial Design Efficiency-Ensure functional planning for commercial activation on lower floors and well- designed residential units above, with optimal daylight, ventilation, privacy, and views.\n • Structural Modeling & Detailing-Create 2D structural drawings for key components such as beams, columns, and slabs, including necessary detailing.The model should include all essential building elements: beams, columns, slabs, stairs, and tile flooring.\n • Good to Have (Optional) - Site Compatibility & Environmental Analysis (Using Forma Site Design)-Utilize Forma Site Design to study site orientation, sun path, wind conditions,and massing strategies, ensuring the design is environmentally responsive and contextually appropriate. (1-2 Hour)\n • High-Quality Visual Presentation & Walkthrough-Deliver a pictorial, design-focused presentation including rendered views, facade studies, diagrams, and a 30-second walkthrough animation.Rendering quality and visual storytelling will be key evaluation criteria.\n • Participation Guidelines For Idea Submission:\n • Each student team should submit Revit 3D Model of a Basement Parking + Ground + First Floor that creates a vibrant urban destination while seamlessly integrating nature, sustainability, and user well-being and a PowerPoint presentation (5-7 Slides).\n • Models should be created using ONLY Revit and not copied or taken from any other source.\n • AI Generated content is NOT ALLOWED.\n\n For Grand Finale:\n\n Students must use Autodesk Revit to design and create 3D Model of specific mixed used building within the given time period and present the following to the jury members:\n\n Design a B+G+9 mixed-use development that brings together active commercial spaces and sustainable residential living. Create a nature-integrated, climate-responsive building centered around a landscaped courtyard that enhances daylight,ventilation, and occupant well-being.\n\n Key Deliverables:\n\n • Commercial podium (Basement Parking + Ground + First Floor) with retail, cafÃ©s,and community spaces.\n • Residential levels (2ndâ€“9th Floor) featuring efficient layouts, balconies, natural ventilation, and privacy.\n • Innovative climate-responsive facade with shading elements and green terraces.\n • Central landscaped courtyard as the project's defining feature.\n • Complete Autodesk Revit model with architectural and structural elements,including detailed drawings.\n • Optional Autodesk Forma studies for sun, wind, and environmental analysis.\n • High-quality presentation with renders, diagrams, facade studies, and a 30-second walkthrough animation.\n • PPT explaining the final project.\n • Complete Structural reinforcement drawing of any one floor along with detailing.\n • Complete 3D Model.\n • Rendered images and Walkthrough video (30 secs.) of the final Model.\n\n Note: Teams coming with pre-designed files will be disqualified.\n\n • Attach Marking Criteria Table here*\n • Faculty (SIH SPOC) Form Teams choosing to submit idea for Autodeskâ€™s problem statement are required to request their faculty (SIH SPOC) to fill this 'Mandatory Form'.\n • Autodesk Revit\n • Autodesk Revit is a Building Information Modeling (BIM) software primarily used by architects, engineers, and construction professionals to design, model, and document buildings and infrastructure in 3D.\n • Students and educators can click Here to get FREE access to Revit.",
+    "description": "• Description\n • Facade-Driven Architectural Expression-Develop an innovative facade system that enhances architectural aesthetics, responds to climate (light, heat, ventilation), and blends with the surrounding urban context.\n • Breathable & Nature-Integrated Design-Incorporate a central landscape courtyard and green interfaces (terraces, balconies) to create an airy, breathable structure that integrates nature and improves occupant well-being.\n • Residential & Commercial Design Efficiency-Ensure functional planning for commercial activation on lower floors and well- designed residential units above, with optimal daylight, ventilation, privacy, and views.\n • Structural Modeling & Detailing-Create 2D structural drawings for key components such as beams, columns, and slabs, including necessary detailing.The model should include all essential building elements: beams, columns, slabs, stairs, and tile flooring.\n • Good to Have (Optional) - Site Compatibility & Environmental Analysis (Using Forma Site Design)-Utilize Forma Site Design to study site orientation, sun path, wind conditions,and massing strategies, ensuring the design is environmentally responsive and contextually appropriate. (1-2 Hour)\n • High-Quality Visual Presentation & Walkthrough-Deliver a pictorial, design-focused presentation including rendered views, facade studies, diagrams, and a 30-second walkthrough animation.Rendering quality and visual storytelling will be key evaluation criteria.\n • Participation Guidelines For Idea Submission:\n • Each student team should submit Revit 3D Model of a Basement Parking + Ground + First Floor that creates a vibrant urban destination while seamlessly integrating nature, sustainability, and user well-being and a PowerPoint presentation (5-7 Slides).\n • Models should be created using ONLY Revit and not copied or taken from any other source.\n • AI Generated content is NOT ALLOWED.\n\n For Grand Finale:\n\n Students must use Autodesk Revit to design and create 3D Model of specific mixed used building within the given time period and present the following to the jury members:\n\n Design a B+G+9 mixed-use development that brings together active commercial spaces and sustainable residential living. Create a nature-integrated, climate-responsive building centered around a landscaped courtyard that enhances daylight,ventilation, and occupant well-being.\n\n Key Deliverables:\n\n • Commercial podium (Basement Parking + Ground + First Floor) with retail, cafÃ©s,and community spaces.\n • Residential levels (2nd\"“9th Floor) featuring efficient layouts, balconies, natural ventilation, and privacy.\n • Innovative climate-responsive facade with shading elements and green terraces.\n • Central landscaped courtyard as the project's defining feature.\n • Complete Autodesk Revit model with architectural and structural elements,including detailed drawings.\n • Optional Autodesk Forma studies for sun, wind, and environmental analysis.\n • High-quality presentation with renders, diagrams, facade studies, and a 30-second walkthrough animation.\n • PPT explaining the final project.\n • Complete Structural reinforcement drawing of any one floor along with detailing.\n • Complete 3D Model.\n • Rendered images and Walkthrough video (30 secs.) of the final Model.\n\n Note: Teams coming with pre-designed files will be disqualified.\n\n • Attach Marking Criteria Table here*\n • Faculty (SIH SPOC) Form Teams choosing to submit idea for Autodesk's problem statement are required to request their faculty (SIH SPOC) to fill this 'Mandatory Form'.\n • Autodesk Revit\n • Autodesk Revit is a Building Information Modeling (BIM) software primarily used by architects, engineers, and construction professionals to design, model, and document buildings and infrastructure in 3D.\n • Students and educators can click Here to get FREE access to Revit.",
     "submissions": 0,
     "youtubeLink": "",
     "datasetLink": "https://drive.google.com/drive/folders/1KYkkQjRbpq--YRF5sgVndjLGgItqLr1b",
-    "isNew": false
+    "isNew": false,
+    "officialPsNumber": "SIH26116",
+    "deadline": "20 September 2026",
+    "maxSubmissions": 500
   },
   {
     "sNo": 117,
@@ -1640,7 +1988,10 @@ const SIH_PROBLEM_STATEMENTS = [
     "submissions": 0,
     "youtubeLink": "",
     "datasetLink": "",
-    "isNew": false
+    "isNew": false,
+    "officialPsNumber": "SIH26117",
+    "deadline": "20 September 2026",
+    "maxSubmissions": 500
   },
   {
     "sNo": 118,
@@ -1654,7 +2005,10 @@ const SIH_PROBLEM_STATEMENTS = [
     "submissions": 0,
     "youtubeLink": "",
     "datasetLink": "",
-    "isNew": false
+    "isNew": false,
+    "officialPsNumber": "SIH26118",
+    "deadline": "20 September 2026",
+    "maxSubmissions": 500
   },
   {
     "sNo": 119,
@@ -1668,7 +2022,10 @@ const SIH_PROBLEM_STATEMENTS = [
     "submissions": 0,
     "youtubeLink": "",
     "datasetLink": "",
-    "isNew": false
+    "isNew": false,
+    "officialPsNumber": "SIH26119",
+    "deadline": "20 September 2026",
+    "maxSubmissions": 500
   },
   {
     "sNo": 120,
@@ -1678,11 +2035,14 @@ const SIH_PROBLEM_STATEMENTS = [
     "department": "Oil India Limited",
     "category": "Software",
     "theme": "Smart Automation",
-    "description": "• Background Baghewala Field in Rajasthan produces heavy crude oil (17â€“19Â° API) from the Jodhpur Sandstone reservoir. The reservoir is characterized by High crude viscosity, High asphaltene content, Low reservoir pressure, Low reservoir temperature (46â€“48Â°C) and Poor oil mobility under primary recovery. Consequently, artificial lift and thermal enhanced oil recovery are critical for sustained production. At present, CSS cycle design and SRP operation are optimized separately using historical experience. As reservoir temperature declines after steam injection, crude viscosity increases, leading to reduced pump efficiency, higher energy consumption, rod floating issues, rod failures and lower oil recovery. There is a need for an integrated, data-driven system that continuously optimizes both CSS and artificial lift operations.\n • Problem Description Current operations face the following challenges:\n • CSS parameters (steam volume, injection pressure, soak time and production cut-off)\n\n are largely based on historical practices.\n\n • SRP operating parameters (stroke length, SPM and VFD settings) are adjusted manually and reactively.\n • Heavy crude causes rod floating, impact loading, frequent pump unsetting, rod failures and increased maintenance.\n • Reservoir behaviour, wellbore conditions and SRP performance are not optimized together.\n • Lack of predictive analytics results in higher Steam-Oil Ratio (SOR), increased energy consumption and reduced production efficiency.\n • Expected Outcome / Solution Develop an AI-enabled Well-to-Surface Digital Twin that integrates reservoir, wellbore and surface production systems to provide real-time monitoring, prediction and optimization.\n\n The solution should:\n\n • Optimize CSS cycle parameters.\n • Predict reservoir heating, cooling and production performance.\n • Continuously optimize SRP operation by adjusting stroke speed and SPM based on well conditions.\n • Detect rod floating and minimize impact loading.\n • Improve pump efficiency and equipment reliability.\n • Optimize steam and energy consumption while reducing operating cost.\n • Expected Benefits\n • Increased oil production and recovery.\n • Reduced Steam-Oil Ratio (SOR).\n • Lower energy consumption per barrel.\n • Reduced rod failures and pump unsetting.\n • Improved equipment life and operational reliability.\n • Data-driven and predictive decision making.\n • Relevant Data Availability The field has sufficient historical and operational data, including:\n • Production history\n • CSS cycle records\n • Steam injection parameters\n • VFD and SRP operating data\n • Rod failure and pump unsetting history\n • Well completion and reservoir data\n • Fluid properties and pressure data",
+    "description": "• Background Baghewala Field in Rajasthan produces heavy crude oil (17\"“19° API) from the Jodhpur Sandstone reservoir. The reservoir is characterized by High crude viscosity, High asphaltene content, Low reservoir pressure, Low reservoir temperature (46\"“48°C) and Poor oil mobility under primary recovery. Consequently, artificial lift and thermal enhanced oil recovery are critical for sustained production. At present, CSS cycle design and SRP operation are optimized separately using historical experience. As reservoir temperature declines after steam injection, crude viscosity increases, leading to reduced pump efficiency, higher energy consumption, rod floating issues, rod failures and lower oil recovery. There is a need for an integrated, data-driven system that continuously optimizes both CSS and artificial lift operations.\n • Problem Description Current operations face the following challenges:\n • CSS parameters (steam volume, injection pressure, soak time and production cut-off)\n\n are largely based on historical practices.\n\n • SRP operating parameters (stroke length, SPM and VFD settings) are adjusted manually and reactively.\n • Heavy crude causes rod floating, impact loading, frequent pump unsetting, rod failures and increased maintenance.\n • Reservoir behaviour, wellbore conditions and SRP performance are not optimized together.\n • Lack of predictive analytics results in higher Steam-Oil Ratio (SOR), increased energy consumption and reduced production efficiency.\n • Expected Outcome / Solution Develop an AI-enabled Well-to-Surface Digital Twin that integrates reservoir, wellbore and surface production systems to provide real-time monitoring, prediction and optimization.\n\n The solution should:\n\n • Optimize CSS cycle parameters.\n • Predict reservoir heating, cooling and production performance.\n • Continuously optimize SRP operation by adjusting stroke speed and SPM based on well conditions.\n • Detect rod floating and minimize impact loading.\n • Improve pump efficiency and equipment reliability.\n • Optimize steam and energy consumption while reducing operating cost.\n • Expected Benefits\n • Increased oil production and recovery.\n • Reduced Steam-Oil Ratio (SOR).\n • Lower energy consumption per barrel.\n • Reduced rod failures and pump unsetting.\n • Improved equipment life and operational reliability.\n • Data-driven and predictive decision making.\n • Relevant Data Availability The field has sufficient historical and operational data, including:\n • Production history\n • CSS cycle records\n • Steam injection parameters\n • VFD and SRP operating data\n • Rod failure and pump unsetting history\n • Well completion and reservoir data\n • Fluid properties and pressure data",
     "submissions": 0,
     "youtubeLink": "",
     "datasetLink": "",
-    "isNew": false
+    "isNew": false,
+    "officialPsNumber": "SIH26120",
+    "deadline": "20 September 2026",
+    "maxSubmissions": 500
   },
   {
     "sNo": 121,
@@ -1696,7 +2056,10 @@ const SIH_PROBLEM_STATEMENTS = [
     "submissions": 0,
     "youtubeLink": "",
     "datasetLink": "",
-    "isNew": false
+    "isNew": false,
+    "officialPsNumber": "SIH26121",
+    "deadline": "20 September 2026",
+    "maxSubmissions": 500
   },
   {
     "sNo": 122,
@@ -1706,11 +2069,14 @@ const SIH_PROBLEM_STATEMENTS = [
     "department": "Oil India Limited",
     "category": "Software",
     "theme": "Smart Automation",
-    "description": "• Background Infrastructure project schedules cascade from macro milestones (L1) down to micro, executable activities (L5/L6),spanning multiple engineering disciplines - civil, piping, static/rotating equipment, electrical, instrumentation, HSE- each executing and reporting in parallel. While the baseline plan is well-structured (Primavera/MS Project), actual execution data flows back through daily progress reports, site diaries, discipline-wise spreadsheets, and verbal supervisor updates, each in its own format and cadence, largely disconnected from the L5/L6 activity IDs in the plan.\n • Problem Description There is no reliable, low-friction mechanism to capture actual start/end times of L5/L6 activities across disciplines and auto-link them back to the plan. Input quality varies with manpower skill, reporting discipline, and format.Field execution is often more granular than the planned WBS, and different disciplines describe the same physical progress differently (e.g., 'spool erected' vs. the plan's 'Erect Line 24?-XX').Consequently:\n\n ? Actual progress data is fragmented, delayed, and inconsistently structured across disciplines and contractors.\n\n ? Manual reconciliation with the baseline schedule is slow, error-prone, and often lags the schedule update cycle by days or weeks.\n\n ? Downstream performance analytics, delay/ risk analysis, and forecasting inherit this poor-quality, late data- undermining the AI performance-monitoring stack that depends on it.\n\n ? Once a project closes, the hard-won knowledge of what actually happened - real durations, real bottlenecks,real deviations from plan - is rarely captured in a structured, queryable form, so it is lost rather than feeding future project planning.\n\n • Expected Outcome/Solution ? Ingest heterogeneous discipline-wise inputs - free-text daily reports, spreadsheets, scanned diaries,Primavera/MS Project exports - and extract activity-level actual start/end events.\n\n ? Offer an LLM-based conversational or voice interface ('time agent') for site supervisors across disciplines to log activity start/end with minimal friction, replacing rigid manual forms while still producing structured output.\n\n ? Fuzzy-match and link extracted discipline-specific activity descriptions to the correct L5/L6 plan node,handling terminology differences and granularity mismatches, and flag unmatched/new activities for planner review rather than silently dropping them.\n\n ? Auto-update actual start/end dates in the schedule/PMIS in near real time, with a confidence score and audit trail per entry.\n\n ? Produce a clean, structured, discipline-tagged actual-progress dataset that serves two purposes: (a) live input for performance analytics, delay/risk pattern discovery, and forecasting, and (b) a foundation for institutional memory building - a growing, queryable repository of real project execution patterns (actual durations, recurring delay causes, discipline-wise productivity) that future projects can learn from, instead of that knowledge staying locked in individual supervisors' experience or scattered paper records.\n\n A working prototype demonstrating ingestion of 2â€“3 varied input formats (e.g., a free-text daily report and a discipline spreadsheet), extraction, and schedule-linking logic would be ideal; full production-grade OCR/ASR is not required.\n\n • Relevant Data Availability Anonymized/ sample daily progress report formats, sample L5/L6 schedule extracts, and illustrative discipline-wise (civil/ piping/ electrical) site-diary or spreadsheet templates can be shared under NDA with Institute/ Authorised person. Live project data will not be shared; teams should work with synthetic/sample data of similar structure.",
+    "description": "• Background Infrastructure project schedules cascade from macro milestones (L1) down to micro, executable activities (L5/L6),spanning multiple engineering disciplines - civil, piping, static/rotating equipment, electrical, instrumentation, HSE- each executing and reporting in parallel. While the baseline plan is well-structured (Primavera/MS Project), actual execution data flows back through daily progress reports, site diaries, discipline-wise spreadsheets, and verbal supervisor updates, each in its own format and cadence, largely disconnected from the L5/L6 activity IDs in the plan.\n • Problem Description There is no reliable, low-friction mechanism to capture actual start/end times of L5/L6 activities across disciplines and auto-link them back to the plan. Input quality varies with manpower skill, reporting discipline, and format.Field execution is often more granular than the planned WBS, and different disciplines describe the same physical progress differently (e.g., 'spool erected' vs. the plan's 'Erect Line 24?-XX').Consequently:\n\n ? Actual progress data is fragmented, delayed, and inconsistently structured across disciplines and contractors.\n\n ? Manual reconciliation with the baseline schedule is slow, error-prone, and often lags the schedule update cycle by days or weeks.\n\n ? Downstream performance analytics, delay/ risk analysis, and forecasting inherit this poor-quality, late data- undermining the AI performance-monitoring stack that depends on it.\n\n ? Once a project closes, the hard-won knowledge of what actually happened - real durations, real bottlenecks,real deviations from plan - is rarely captured in a structured, queryable form, so it is lost rather than feeding future project planning.\n\n • Expected Outcome/Solution ? Ingest heterogeneous discipline-wise inputs - free-text daily reports, spreadsheets, scanned diaries,Primavera/MS Project exports - and extract activity-level actual start/end events.\n\n ? Offer an LLM-based conversational or voice interface ('time agent') for site supervisors across disciplines to log activity start/end with minimal friction, replacing rigid manual forms while still producing structured output.\n\n ? Fuzzy-match and link extracted discipline-specific activity descriptions to the correct L5/L6 plan node,handling terminology differences and granularity mismatches, and flag unmatched/new activities for planner review rather than silently dropping them.\n\n ? Auto-update actual start/end dates in the schedule/PMIS in near real time, with a confidence score and audit trail per entry.\n\n ? Produce a clean, structured, discipline-tagged actual-progress dataset that serves two purposes: (a) live input for performance analytics, delay/risk pattern discovery, and forecasting, and (b) a foundation for institutional memory building - a growing, queryable repository of real project execution patterns (actual durations, recurring delay causes, discipline-wise productivity) that future projects can learn from, instead of that knowledge staying locked in individual supervisors' experience or scattered paper records.\n\n A working prototype demonstrating ingestion of 2\"“3 varied input formats (e.g., a free-text daily report and a discipline spreadsheet), extraction, and schedule-linking logic would be ideal; full production-grade OCR/ASR is not required.\n\n • Relevant Data Availability Anonymized/ sample daily progress report formats, sample L5/L6 schedule extracts, and illustrative discipline-wise (civil/ piping/ electrical) site-diary or spreadsheet templates can be shared under NDA with Institute/ Authorised person. Live project data will not be shared; teams should work with synthetic/sample data of similar structure.",
     "submissions": 0,
     "youtubeLink": "",
     "datasetLink": "",
-    "isNew": false
+    "isNew": false,
+    "officialPsNumber": "SIH26122",
+    "deadline": "20 September 2026",
+    "maxSubmissions": 500
   },
   {
     "sNo": 123,
@@ -1724,7 +2090,10 @@ const SIH_PROBLEM_STATEMENTS = [
     "submissions": 0,
     "youtubeLink": "",
     "datasetLink": "",
-    "isNew": false
+    "isNew": false,
+    "officialPsNumber": "SIH26123",
+    "deadline": "20 September 2026",
+    "maxSubmissions": 500
   },
   {
     "sNo": 124,
@@ -1734,11 +2103,14 @@ const SIH_PROBLEM_STATEMENTS = [
     "department": "Bharat Electronics Limited",
     "category": "Software",
     "theme": "Smart Automation",
-    "description": "• Background Urban public transport buses traverse almost every major road in a city every day. Modern buses are increasingly equipped with multiple cameras covering the front, rear, sides, and passenger cabin. However, these cameras are primarily used for recording incidents and are not leveraged as intelligent sensing platforms. At the same time, city authorities rely on fixed CCTV cameras, manual inspections and citizen complaints to identify road defects, traffic congestion,missing infrastructure and unsafe driving behaviour. This results in delayed response,incomplete situational awareness and inefficient maintenance planning.\n • Description Develop an AI-powered onboard and centralized software platform that transforms public transport buses into mobile urban sensing units. The onboard software shall analyse video streams from multiple bus-mounted cameras to detect road defects such as potholes, damaged roads, missing road dividers, missing zebra crossings, damaged or missing traffic signboards,waterlogging and other road hazards. It shall estimate vehicle density through vehicle detection, classification and counting, identify traffic bottlenecks, and detect vulnerable pedestrian situations such as school children crossing roads. During incidents such as hit-and-run or rash driving, the system should detect and track the offending vehicle, extract the registration number with a confidence score, timestamp and GPS location, and securely share alerts with a central command system. The centralized platform shall aggregate information from the entire bus fleet, visualize events on a GIS map, generate congestion heat maps,identify infrastructure deficiencies, analyse originâ€“destination traffic patterns, estimate route delays and provide actionable insights for transport authorities.\n • Expected Solution The solution should provide an edge-AI onboard processing framework integrated with a centralized urban intelligence platform. It should generate reliable alerts, GIS-based dashboards, road condition maps, traffic analytics and incident reports to support proactive road maintenance, improved traffic management, enhanced public safety and evidence-based decision making while minimizing bandwidth through intelligent edge processing.",
+    "description": "• Background Urban public transport buses traverse almost every major road in a city every day. Modern buses are increasingly equipped with multiple cameras covering the front, rear, sides, and passenger cabin. However, these cameras are primarily used for recording incidents and are not leveraged as intelligent sensing platforms. At the same time, city authorities rely on fixed CCTV cameras, manual inspections and citizen complaints to identify road defects, traffic congestion,missing infrastructure and unsafe driving behaviour. This results in delayed response,incomplete situational awareness and inefficient maintenance planning.\n • Description Develop an AI-powered onboard and centralized software platform that transforms public transport buses into mobile urban sensing units. The onboard software shall analyse video streams from multiple bus-mounted cameras to detect road defects such as potholes, damaged roads, missing road dividers, missing zebra crossings, damaged or missing traffic signboards,waterlogging and other road hazards. It shall estimate vehicle density through vehicle detection, classification and counting, identify traffic bottlenecks, and detect vulnerable pedestrian situations such as school children crossing roads. During incidents such as hit-and-run or rash driving, the system should detect and track the offending vehicle, extract the registration number with a confidence score, timestamp and GPS location, and securely share alerts with a central command system. The centralized platform shall aggregate information from the entire bus fleet, visualize events on a GIS map, generate congestion heat maps,identify infrastructure deficiencies, analyse origin\"“destination traffic patterns, estimate route delays and provide actionable insights for transport authorities.\n • Expected Solution The solution should provide an edge-AI onboard processing framework integrated with a centralized urban intelligence platform. It should generate reliable alerts, GIS-based dashboards, road condition maps, traffic analytics and incident reports to support proactive road maintenance, improved traffic management, enhanced public safety and evidence-based decision making while minimizing bandwidth through intelligent edge processing.",
     "submissions": 0,
     "youtubeLink": "",
     "datasetLink": "",
-    "isNew": false
+    "isNew": false,
+    "officialPsNumber": "SIH26124",
+    "deadline": "20 September 2026",
+    "maxSubmissions": 500
   },
   {
     "sNo": 125,
@@ -1748,11 +2120,14 @@ const SIH_PROBLEM_STATEMENTS = [
     "department": "Bharat Electronics Limited",
     "category": "Software",
     "theme": "Blockchain & Cybersecurity",
-    "description": "• Background Organizations today rely heavily on centralized identity and access management systems, which create significant security and operational risks. These systems are vulnerable to cyber attacks, identity theft, unauthorized access, and single points of failure. Additionally, digital and physical asset ownership is often managed through disconnected or semi-centralized systems, making verification of authenticity, access rights, and ownership history difficult and unreliable. There is a growing need for a decentralized, tamper-proof system that can securely manage user identities, control access permissions, and ensure transparent ownership of digital assets\n • Detailed Description The system aims to introduce a blockchain-based framework that integrates decentralized identity management, access control, and NFT-based digital asset ownership. Each user is assigned a decentralized identifier, which serves as a secure and verifiable digital identity independent of centralized authorities and authenticated using cryptographic proofs. Digital assets are represented as Non-Fungible Tokens (NFTs),ensuring each asset is unique, traceable, and permanently recorded on the blockchain.These NFTs are directly allocated to user identities, establishing verifiable ownership that cannot be altered or duplicated.Smart contracts govern all operations within the platform, allowing only authorized administrators to mint NFTs and assign them to user identities, ensuring controlled asset creation and secure distribution. The system also implements Role-Based Access Control (RBAC), where administrators define roles such as Admin, Manager, Auditor,and User and assign specific access rights to each identity. These permissions are enforced automatically by smart contracts during all operations. Every activity, including identity creation, NFT creation, asset allocation, access rights assignment, ownership transfers, and permission updates, is immutably recorded on the blockchain, providing a transparent and tamper-proof audit trail for verifying ownership, authenticity, and access history.\n • Expected Solution The expected solution is a decentralized blockchain-based platform that integrates secure digital identity management, NFT-based asset ownership, and access control into a unified and trustless system. It utilizes decentralized identifiers to provide users with self-sovereign, cryptographically verifiable identities that function independently of centralized authorities. Digital assets are issued as Non-Fungible Tokens (NFTs), ensuring uniqueness, traceability, and immutable ownership, with each NFT directly linked to a userâ€™s decentralized identity to establish a permanent and verifiable connection between assets and their owners.The system should be governed by smart contracts that enforce strict rules for NFT creation, allocation, transfer, and validation. Only authorized administrators are allowed to create NFTs and assign them to identities, ensuring secure and controlled asset governance while preventing unauthorized duplication or reassignment. Additionally, the platform should implement Role-Based Access Control (RBAC), where administrators define roles and assign access permissions that determine user privileges within the system. All identity operations, NFT transactions, and access control updates are permanently recorded on the blockchain, ensuring complete transparency, auditability,and tamper-proof verification of ownership, permissions, and transaction history.",
+    "description": "• Background Organizations today rely heavily on centralized identity and access management systems, which create significant security and operational risks. These systems are vulnerable to cyber attacks, identity theft, unauthorized access, and single points of failure. Additionally, digital and physical asset ownership is often managed through disconnected or semi-centralized systems, making verification of authenticity, access rights, and ownership history difficult and unreliable. There is a growing need for a decentralized, tamper-proof system that can securely manage user identities, control access permissions, and ensure transparent ownership of digital assets\n • Detailed Description The system aims to introduce a blockchain-based framework that integrates decentralized identity management, access control, and NFT-based digital asset ownership. Each user is assigned a decentralized identifier, which serves as a secure and verifiable digital identity independent of centralized authorities and authenticated using cryptographic proofs. Digital assets are represented as Non-Fungible Tokens (NFTs),ensuring each asset is unique, traceable, and permanently recorded on the blockchain.These NFTs are directly allocated to user identities, establishing verifiable ownership that cannot be altered or duplicated.Smart contracts govern all operations within the platform, allowing only authorized administrators to mint NFTs and assign them to user identities, ensuring controlled asset creation and secure distribution. The system also implements Role-Based Access Control (RBAC), where administrators define roles such as Admin, Manager, Auditor,and User and assign specific access rights to each identity. These permissions are enforced automatically by smart contracts during all operations. Every activity, including identity creation, NFT creation, asset allocation, access rights assignment, ownership transfers, and permission updates, is immutably recorded on the blockchain, providing a transparent and tamper-proof audit trail for verifying ownership, authenticity, and access history.\n • Expected Solution The expected solution is a decentralized blockchain-based platform that integrates secure digital identity management, NFT-based asset ownership, and access control into a unified and trustless system. It utilizes decentralized identifiers to provide users with self-sovereign, cryptographically verifiable identities that function independently of centralized authorities. Digital assets are issued as Non-Fungible Tokens (NFTs), ensuring uniqueness, traceability, and immutable ownership, with each NFT directly linked to a user's decentralized identity to establish a permanent and verifiable connection between assets and their owners.The system should be governed by smart contracts that enforce strict rules for NFT creation, allocation, transfer, and validation. Only authorized administrators are allowed to create NFTs and assign them to identities, ensuring secure and controlled asset governance while preventing unauthorized duplication or reassignment. Additionally, the platform should implement Role-Based Access Control (RBAC), where administrators define roles and assign access permissions that determine user privileges within the system. All identity operations, NFT transactions, and access control updates are permanently recorded on the blockchain, ensuring complete transparency, auditability,and tamper-proof verification of ownership, permissions, and transaction history.",
     "submissions": 0,
     "youtubeLink": "",
     "datasetLink": "",
-    "isNew": false
+    "isNew": false,
+    "officialPsNumber": "SIH26125",
+    "deadline": "20 September 2026",
+    "maxSubmissions": 500
   },
   {
     "sNo": 126,
@@ -1762,11 +2137,14 @@ const SIH_PROBLEM_STATEMENTS = [
     "department": "Bharat Electronics Limited",
     "category": "Software",
     "theme": "Smart Automation",
-    "description": "• Background Outdoor Unmanned Ground Vehicles (UGVs) face unpredictable terrain, changing light, and unreliable GPS signals. To achieve true autonomy in applications like search-and-rescue,agriculture, or delivery, UGVs must rely on onboard computer vision. Visual perception provides a cost-effective, data-rich way for vehicles to understand and safely navigate complex,unstructured outdoor surroundings.\n • Description The objective is to build an autonomous navigation system for a UGV operating in a GPS-denied outdoor environment using camera feeds as the primary sensor. Students must solve three key challenges:\n\n 1. Path Detection: Real-time identification of safe, traversable paths vs. hazards (e.g., rocks,ditches, trees).\n\n 2. Visual Localization: Estimating the UGVâ€™s position and orientation without GPS using visual data.\n\n 3. Collision Avoidance: Dynamically routing the vehicle around sudden obstacles toward a destination.\n\n • Expected Solution A functional software module consisting of:\n • Perception AI: A lightweight model for obstacle and path detection.\n • Visual SLAM/Odometry: A pipeline to track vehicle movement.\n • Path Planner: An algorithm to translate visual data into wheel/motor commands.\n • Success Criteria: Successful, collision-free navigation from Point A to Point B across outdoor scenarios",
+    "description": "• Background Outdoor Unmanned Ground Vehicles (UGVs) face unpredictable terrain, changing light, and unreliable GPS signals. To achieve true autonomy in applications like search-and-rescue,agriculture, or delivery, UGVs must rely on onboard computer vision. Visual perception provides a cost-effective, data-rich way for vehicles to understand and safely navigate complex,unstructured outdoor surroundings.\n • Description The objective is to build an autonomous navigation system for a UGV operating in a GPS-denied outdoor environment using camera feeds as the primary sensor. Students must solve three key challenges:\n\n 1. Path Detection: Real-time identification of safe, traversable paths vs. hazards (e.g., rocks,ditches, trees).\n\n 2. Visual Localization: Estimating the UGV's position and orientation without GPS using visual data.\n\n 3. Collision Avoidance: Dynamically routing the vehicle around sudden obstacles toward a destination.\n\n • Expected Solution A functional software module consisting of:\n • Perception AI: A lightweight model for obstacle and path detection.\n • Visual SLAM/Odometry: A pipeline to track vehicle movement.\n • Path Planner: An algorithm to translate visual data into wheel/motor commands.\n • Success Criteria: Successful, collision-free navigation from Point A to Point B across outdoor scenarios",
     "submissions": 0,
     "youtubeLink": "",
     "datasetLink": "",
-    "isNew": false
+    "isNew": false,
+    "officialPsNumber": "SIH26126",
+    "deadline": "20 September 2026",
+    "maxSubmissions": 500
   },
   {
     "sNo": 127,
@@ -1780,7 +2158,10 @@ const SIH_PROBLEM_STATEMENTS = [
     "submissions": 0,
     "youtubeLink": "",
     "datasetLink": "",
-    "isNew": false
+    "isNew": false,
+    "officialPsNumber": "SIH26127",
+    "deadline": "20 September 2026",
+    "maxSubmissions": 500
   },
   {
     "sNo": 128,
@@ -1790,11 +2171,14 @@ const SIH_PROBLEM_STATEMENTS = [
     "department": "Maharashtra State Innovation Society, Department of Skills, Employment, Entrepreneurship and Innovation",
     "category": "Software",
     "theme": "MedTech / BioTech / HealthTech",
-    "description": "• Problem Description Livestock owners, field veterinarians,para-veterinary workers and government departments often lack a unified, realtime mechanism to identify emerging animal-health risks at the village, block and district levels. Disease symptoms may be reported late, diagnostic facilities may be distant, vaccination and treatment histories may be incomplete, and information from farms, veterinary dispensaries, laboratories, vaccination drives and surveillance programmes may remain fragmented. These gaps can delay containment, increase livestock mortality and productivity loss, raise the risk of zoonotic transmission, and affect farmersâ€™ incomes. The challenge is to create a practical system that enables early warning, rapid reporting, risk assessment, preventive action, referral and coordinated response, including in low-connectivity areas.\n • Expected Solution / Outcome A scalable animal-health surveillance and decision-support solution that can: capture symptom and mortality reports from farmers and field workers; use rulebased or AI-assisted triage to flag suspected outbreaks; integrate geospatial risk mapping, weather and historical disease trends; maintain animal-level or herd-level health,vaccination and treatment records; issue multilingual advisories and alerts; support sample collection, laboratory referral and case escalation; provide dashboards for veterinary officials; and operate through mobile, web, IVR or offline-enabled channels. Expected outcomes include reduced reporting time, earlier outbreak identification, improved vaccination coverage, faster treatment and containment, lower mortality and productivity loss, and stronger evidence-based planning.",
+    "description": "• Problem Description Livestock owners, field veterinarians,para-veterinary workers and government departments often lack a unified, realtime mechanism to identify emerging animal-health risks at the village, block and district levels. Disease symptoms may be reported late, diagnostic facilities may be distant, vaccination and treatment histories may be incomplete, and information from farms, veterinary dispensaries, laboratories, vaccination drives and surveillance programmes may remain fragmented. These gaps can delay containment, increase livestock mortality and productivity loss, raise the risk of zoonotic transmission, and affect farmers' incomes. The challenge is to create a practical system that enables early warning, rapid reporting, risk assessment, preventive action, referral and coordinated response, including in low-connectivity areas.\n • Expected Solution / Outcome A scalable animal-health surveillance and decision-support solution that can: capture symptom and mortality reports from farmers and field workers; use rulebased or AI-assisted triage to flag suspected outbreaks; integrate geospatial risk mapping, weather and historical disease trends; maintain animal-level or herd-level health,vaccination and treatment records; issue multilingual advisories and alerts; support sample collection, laboratory referral and case escalation; provide dashboards for veterinary officials; and operate through mobile, web, IVR or offline-enabled channels. Expected outcomes include reduced reporting time, earlier outbreak identification, improved vaccination coverage, faster treatment and containment, lower mortality and productivity loss, and stronger evidence-based planning.",
     "submissions": 0,
     "youtubeLink": "",
     "datasetLink": "",
-    "isNew": false
+    "isNew": false,
+    "officialPsNumber": "SIH26128",
+    "deadline": "20 September 2026",
+    "maxSubmissions": 500
   },
   {
     "sNo": 129,
@@ -1808,7 +2192,10 @@ const SIH_PROBLEM_STATEMENTS = [
     "submissions": 0,
     "youtubeLink": "",
     "datasetLink": "",
-    "isNew": false
+    "isNew": false,
+    "officialPsNumber": "SIH26129",
+    "deadline": "20 September 2026",
+    "maxSubmissions": 500
   },
   {
     "sNo": 130,
@@ -1822,7 +2209,10 @@ const SIH_PROBLEM_STATEMENTS = [
     "submissions": 0,
     "youtubeLink": "",
     "datasetLink": "",
-    "isNew": false
+    "isNew": false,
+    "officialPsNumber": "SIH26130",
+    "deadline": "20 September 2026",
+    "maxSubmissions": 500
   },
   {
     "sNo": 131,
@@ -1836,7 +2226,10 @@ const SIH_PROBLEM_STATEMENTS = [
     "submissions": 0,
     "youtubeLink": "",
     "datasetLink": "",
-    "isNew": false
+    "isNew": false,
+    "officialPsNumber": "SIH26131",
+    "deadline": "20 September 2026",
+    "maxSubmissions": 500
   },
   {
     "sNo": 132,
@@ -1850,7 +2243,10 @@ const SIH_PROBLEM_STATEMENTS = [
     "submissions": 0,
     "youtubeLink": "",
     "datasetLink": "",
-    "isNew": false
+    "isNew": false,
+    "officialPsNumber": "SIH26132",
+    "deadline": "20 September 2026",
+    "maxSubmissions": 500
   },
   {
     "sNo": 133,
@@ -1860,11 +2256,14 @@ const SIH_PROBLEM_STATEMENTS = [
     "department": "Maharashtra State Innovation Society, Department of Skills, Employment, Entrepreneurship and Innovation",
     "category": "Software",
     "theme": "MedTech / BioTech / HealthTech",
-    "description": "• Problem Description Rural and underserved communities may face long travel distances,shortages of specialists, irregular diagnostics, fragmented medical records, delayed referrals and limited awareness of available services. Primary health facilities may have constrained staff and equipment, while patients may move between sub-centres, primary health centres, rural hospitals and district hospitals without continuity of information. Connectivity, language,health literacy and affordability further affect access. The challenge is to improve timely access, continuity, quality and accountability while strengtheningâ€”not replacingâ€”the public-health system.\n • Expected Solution / Outcome An integrated care-access and quality support solution that may combine assisted teleconsultation, appointment and queue management, digital triage,longitudinal patient records, referral tracking, diagnostic coordination,medicine availability, high-risk patient follow-up and facility dashboards. It should support frontline health workers, low-connectivity environments,multilingual interaction, emergency escalation and interoperable health records based on approved standards.Expected outcomes include reduced travel and waiting time, earlier consultation, improved referral completion, better follow-up for maternal, child and chronic conditions,improved medicine/diagnostic availability visibility and enhanced quality monitoring.",
+    "description": "• Problem Description Rural and underserved communities may face long travel distances,shortages of specialists, irregular diagnostics, fragmented medical records, delayed referrals and limited awareness of available services. Primary health facilities may have constrained staff and equipment, while patients may move between sub-centres, primary health centres, rural hospitals and district hospitals without continuity of information. Connectivity, language,health literacy and affordability further affect access. The challenge is to improve timely access, continuity, quality and accountability while strengthening\"”not replacing\"”the public-health system.\n • Expected Solution / Outcome An integrated care-access and quality support solution that may combine assisted teleconsultation, appointment and queue management, digital triage,longitudinal patient records, referral tracking, diagnostic coordination,medicine availability, high-risk patient follow-up and facility dashboards. It should support frontline health workers, low-connectivity environments,multilingual interaction, emergency escalation and interoperable health records based on approved standards.Expected outcomes include reduced travel and waiting time, earlier consultation, improved referral completion, better follow-up for maternal, child and chronic conditions,improved medicine/diagnostic availability visibility and enhanced quality monitoring.",
     "submissions": 0,
     "youtubeLink": "",
     "datasetLink": "",
-    "isNew": false
+    "isNew": false,
+    "officialPsNumber": "SIH26133",
+    "deadline": "20 September 2026",
+    "maxSubmissions": 500
   },
   {
     "sNo": 134,
@@ -1878,7 +2277,10 @@ const SIH_PROBLEM_STATEMENTS = [
     "submissions": 0,
     "youtubeLink": "",
     "datasetLink": "",
-    "isNew": false
+    "isNew": false,
+    "officialPsNumber": "SIH26134",
+    "deadline": "20 September 2026",
+    "maxSubmissions": 500
   },
   {
     "sNo": 135,
@@ -1892,7 +2294,10 @@ const SIH_PROBLEM_STATEMENTS = [
     "submissions": 0,
     "youtubeLink": "",
     "datasetLink": "",
-    "isNew": false
+    "isNew": false,
+    "officialPsNumber": "SIH26135",
+    "deadline": "20 September 2026",
+    "maxSubmissions": 500
   },
   {
     "sNo": 136,
@@ -1906,7 +2311,10 @@ const SIH_PROBLEM_STATEMENTS = [
     "submissions": 0,
     "youtubeLink": "",
     "datasetLink": "",
-    "isNew": false
+    "isNew": false,
+    "officialPsNumber": "SIH26136",
+    "deadline": "20 September 2026",
+    "maxSubmissions": 500
   },
   {
     "sNo": 137,
@@ -1920,7 +2328,10 @@ const SIH_PROBLEM_STATEMENTS = [
     "submissions": 0,
     "youtubeLink": "",
     "datasetLink": "https://drive.google.com/file/d/1iubIiKS9NPr2lpYMVTt2MxgC_qRq5NnM/view?usp=drive_link",
-    "isNew": false
+    "isNew": false,
+    "officialPsNumber": "SIH26137",
+    "deadline": "20 September 2026",
+    "maxSubmissions": 500
   },
   {
     "sNo": 138,
@@ -1934,7 +2345,10 @@ const SIH_PROBLEM_STATEMENTS = [
     "submissions": 0,
     "youtubeLink": "",
     "datasetLink": "https://drive.google.com/file/d/1h0pt48eJAq-wAHUf5-gFA9PIibOxVyk0/view?usp=drive_link",
-    "isNew": false
+    "isNew": false,
+    "officialPsNumber": "SIH26138",
+    "deadline": "20 September 2026",
+    "maxSubmissions": 500
   },
   {
     "sNo": 139,
@@ -1948,7 +2362,10 @@ const SIH_PROBLEM_STATEMENTS = [
     "submissions": 0,
     "youtubeLink": "",
     "datasetLink": "https://drive.google.com/file/d/1IbbUFML0d8J8VcpzS462Ye8RIvAB-qtp/view?usp=drive_link",
-    "isNew": false
+    "isNew": false,
+    "officialPsNumber": "SIH26139",
+    "deadline": "20 September 2026",
+    "maxSubmissions": 500
   },
   {
     "sNo": 140,
@@ -1962,7 +2379,10 @@ const SIH_PROBLEM_STATEMENTS = [
     "submissions": 0,
     "youtubeLink": "",
     "datasetLink": "https://drive.google.com/file/d/1hfk85X50qOAuUqbmA50PQj1vl_7f7X6W/view?usp=drive_link",
-    "isNew": false
+    "isNew": false,
+    "officialPsNumber": "SIH26140",
+    "deadline": "20 September 2026",
+    "maxSubmissions": 500
   },
   {
     "sNo": 141,
@@ -1972,11 +2392,14 @@ const SIH_PROBLEM_STATEMENTS = [
     "department": "Egreen Quanta",
     "category": "Software",
     "theme": "Blockchain & Cybersecurity",
-    "description": "Background The rapid advancement of quantum computing poses a serious threat to classical public-key cryptographic systems such as RSA and Elliptic Curve Cryptography (ECC), which can be broken by algorithms like Shorâ€™s algorithm. This vulnerability endangers the security of critical digital infrastructures. Quantum Digital Signature (QDS) protocols offer information-theoretic security by exploiting fundamental principles of quantum mechanics. Among these, teleportation-based QDS protocols are particularly promising because they enable secure signature generation and verification through quantum teleportation and entanglement, while reducing some of the practical deployment complexities associated with earlier QDS schemes.\n\n Description This problem focuses on developing a quantum-inspired cyber threat detection framework specifically designed for Quantum Digital Signature (QDS) systems. The framework will detect threats to the integrity and authenticity of digital signaturesâ€”such as forgery, impersonation, replay attacks, and quantum channel manipulationâ€”without relying on artificial intelligence or machine learning techniques. Instead, it will utilize quantum principles including Pauli eigenstates, projective measurements, and statistical analysis of measurement outcomes to evaluate forgery probabilities and verification accuracy, while preserving information-theoretic security guarantees.\n\n Objectives\n\n • Design a quantum-inspired threat detection framework for teleportation-based Quantum Digital Signature protocols.\n • Detect digital signature forgery, impersonation, replay attacks, and unauthorized verification attempts.\n • Utilize Pauli eigenstates, quantum measurement analysis, and statistical threshold methods for threat identification.\n • Ensure efficient verification algorithms that maintain information-theoretic security.\n • Evaluate the framework through forgery probability analysis, attack simulations, and performance metrics.\n\n Expected Solution A software framework for Quantum-Inspired Cyber Threat Detection tailored to teleportation-based Quantum Digital Signature protocols. The solution will simulate quantum public key distribution using Bell-state entanglement and quantum teleportation, apply Pauli correction operations and projective measurements for signature verification, and detect malicious activities through statistical evaluation and threshold-based decision rules. The framework will include mathematical modelling, attack simulation capabilities, security analysis, and performance evaluation, ensuring deterministic acceptance of legitimate signatures, low computational complexity, and strong security guarantees.\n\n Add 'Delivery Table (Expected Deliverables)' here",
+    "description": "Background The rapid advancement of quantum computing poses a serious threat to classical public-key cryptographic systems such as RSA and Elliptic Curve Cryptography (ECC), which can be broken by algorithms like Shor's algorithm. This vulnerability endangers the security of critical digital infrastructures. Quantum Digital Signature (QDS) protocols offer information-theoretic security by exploiting fundamental principles of quantum mechanics. Among these, teleportation-based QDS protocols are particularly promising because they enable secure signature generation and verification through quantum teleportation and entanglement, while reducing some of the practical deployment complexities associated with earlier QDS schemes.\n\n Description This problem focuses on developing a quantum-inspired cyber threat detection framework specifically designed for Quantum Digital Signature (QDS) systems. The framework will detect threats to the integrity and authenticity of digital signatures\"”such as forgery, impersonation, replay attacks, and quantum channel manipulation\"”without relying on artificial intelligence or machine learning techniques. Instead, it will utilize quantum principles including Pauli eigenstates, projective measurements, and statistical analysis of measurement outcomes to evaluate forgery probabilities and verification accuracy, while preserving information-theoretic security guarantees.\n\n Objectives\n\n • Design a quantum-inspired threat detection framework for teleportation-based Quantum Digital Signature protocols.\n • Detect digital signature forgery, impersonation, replay attacks, and unauthorized verification attempts.\n • Utilize Pauli eigenstates, quantum measurement analysis, and statistical threshold methods for threat identification.\n • Ensure efficient verification algorithms that maintain information-theoretic security.\n • Evaluate the framework through forgery probability analysis, attack simulations, and performance metrics.\n\n Expected Solution A software framework for Quantum-Inspired Cyber Threat Detection tailored to teleportation-based Quantum Digital Signature protocols. The solution will simulate quantum public key distribution using Bell-state entanglement and quantum teleportation, apply Pauli correction operations and projective measurements for signature verification, and detect malicious activities through statistical evaluation and threshold-based decision rules. The framework will include mathematical modelling, attack simulation capabilities, security analysis, and performance evaluation, ensuring deterministic acceptance of legitimate signatures, low computational complexity, and strong security guarantees.\n\n Add 'Delivery Table (Expected Deliverables)' here",
     "submissions": 0,
     "youtubeLink": "",
     "datasetLink": "https://drive.google.com/drive/folders/1rgGdaPn9rdGZfkaqc3MKVfdCK8r5X_gk",
-    "isNew": false
+    "isNew": false,
+    "officialPsNumber": "SIH26141",
+    "deadline": "20 September 2026",
+    "maxSubmissions": 500
   },
   {
     "sNo": 142,
@@ -1990,7 +2413,10 @@ const SIH_PROBLEM_STATEMENTS = [
     "submissions": 0,
     "youtubeLink": "https://www.youtube.com/watch?v=cQoHSStTEdM",
     "datasetLink": "",
-    "isNew": false
+    "isNew": false,
+    "officialPsNumber": "SIH26142",
+    "deadline": "20 September 2026",
+    "maxSubmissions": 500
   },
   {
     "sNo": 143,
@@ -2004,7 +2430,10 @@ const SIH_PROBLEM_STATEMENTS = [
     "submissions": 0,
     "youtubeLink": "https://www.youtube.com/watch?v=cQoHSStTEdM",
     "datasetLink": "",
-    "isNew": false
+    "isNew": false,
+    "officialPsNumber": "SIH26143",
+    "deadline": "20 September 2026",
+    "maxSubmissions": 500
   },
   {
     "sNo": 144,
@@ -2018,7 +2447,10 @@ const SIH_PROBLEM_STATEMENTS = [
     "submissions": 0,
     "youtubeLink": "",
     "datasetLink": "https://drive.google.com/file/d/1rbQDRWrG-187j4hNqqc_oTiKvdjK8AzZ/view?usp=drive_link",
-    "isNew": false
+    "isNew": false,
+    "officialPsNumber": "SIH26144",
+    "deadline": "20 September 2026",
+    "maxSubmissions": 500
   },
   {
     "sNo": 145,
@@ -2032,7 +2464,10 @@ const SIH_PROBLEM_STATEMENTS = [
     "submissions": 0,
     "youtubeLink": "",
     "datasetLink": "",
-    "isNew": false
+    "isNew": false,
+    "officialPsNumber": "SIH26145",
+    "deadline": "20 September 2026",
+    "maxSubmissions": 500
   },
   {
     "sNo": 146,
@@ -2042,11 +2477,14 @@ const SIH_PROBLEM_STATEMENTS = [
     "department": "National Technical Research Organisation (NTRO)",
     "category": "Software",
     "theme": "Blockchain & Cybersecurity",
-    "description": "• Background Bitcoin's pseudonymous, peer-to-peer design lets criminal actors move, layer, and cash out illicit funds â€” ransomware payments, darknet-market proceeds, extortion, and laundering â€” while evading traditional financial surveillance.\n\n The objective of problem statement is to design and build a complete system (offline) that ingests bulk Bitcoin transaction/network metadata (in CSV/JSON/XML), correlates network-layer (IP/port/timing) observations with blockchain-layer (wallet/TXID/amount) data, and applies AI/ML to detect anomalies, cluster entities, and generate prioritized, explainable investigative leads.\n\n • Description i.Challenge Objectives- • Ingest & parse a bulk metadata dataset (timestamp, src/dst IP & port, TXID, input/output wallet addresses, amounts, fee, script type).\n\n • Build an entity/transaction graph linking IPs, wallets, and transactions.\n\n • Implement AI/ML detection use case (see Section 4) with a working model â€” not just rules.\n\n • Generate a ranked, explainable alert list (why a wallet/transaction was flagged, with a confidence score).\n\n • Present findings via a simple dashboard or link-analysis visualization.\n\n ii.Suggested AI/ML Focus Areas Attach Table Here of AI/ML Focus Areas iii.Dataset: Parameters & Synthetic Generation Participants will work with a synthetic dataset modelled on real Bitcoin P2P/transaction fields (no real seized or live-intercept data will be provided). Minimum fields: timestamp, src_ip, dst_ip, src_port, dst_port, txid, input_addresses[], output_addresses[], input_amounts[], output_amounts[], geo_country/asn (integrate open source downloadable Geo IP database).\n\n • Expected Solution • Workable complete offline solution for linux platform.\n\n • Working prototype (code repo) with ingestion, correlation, and AI/ML model.\n\n • Short technical write-up: approach, model choice, and explain ability method.\n\n • Dashboard/visualization showing flagged entities and evidence for each flag.",
+    "description": "• Background Bitcoin's pseudonymous, peer-to-peer design lets criminal actors move, layer, and cash out illicit funds \"” ransomware payments, darknet-market proceeds, extortion, and laundering \"” while evading traditional financial surveillance.\n\n The objective of problem statement is to design and build a complete system (offline) that ingests bulk Bitcoin transaction/network metadata (in CSV/JSON/XML), correlates network-layer (IP/port/timing) observations with blockchain-layer (wallet/TXID/amount) data, and applies AI/ML to detect anomalies, cluster entities, and generate prioritized, explainable investigative leads.\n\n • Description i.Challenge Objectives- • Ingest & parse a bulk metadata dataset (timestamp, src/dst IP & port, TXID, input/output wallet addresses, amounts, fee, script type).\n\n • Build an entity/transaction graph linking IPs, wallets, and transactions.\n\n • Implement AI/ML detection use case (see Section 4) with a working model \"” not just rules.\n\n • Generate a ranked, explainable alert list (why a wallet/transaction was flagged, with a confidence score).\n\n • Present findings via a simple dashboard or link-analysis visualization.\n\n ii.Suggested AI/ML Focus Areas Attach Table Here of AI/ML Focus Areas iii.Dataset: Parameters & Synthetic Generation Participants will work with a synthetic dataset modelled on real Bitcoin P2P/transaction fields (no real seized or live-intercept data will be provided). Minimum fields: timestamp, src_ip, dst_ip, src_port, dst_port, txid, input_addresses[], output_addresses[], input_amounts[], output_amounts[], geo_country/asn (integrate open source downloadable Geo IP database).\n\n • Expected Solution • Workable complete offline solution for linux platform.\n\n • Working prototype (code repo) with ingestion, correlation, and AI/ML model.\n\n • Short technical write-up: approach, model choice, and explain ability method.\n\n • Dashboard/visualization showing flagged entities and evidence for each flag.",
     "submissions": 0,
     "youtubeLink": "",
     "datasetLink": "https://drive.google.com/file/d/1J7cAKc0i7KPQRjmMU9uvR1yJb7BVgiMs/view?usp=drive_link%22",
-    "isNew": false
+    "isNew": false,
+    "officialPsNumber": "SIH26146",
+    "deadline": "20 September 2026",
+    "maxSubmissions": 500
   },
   {
     "sNo": 147,
@@ -2060,7 +2498,10 @@ const SIH_PROBLEM_STATEMENTS = [
     "submissions": 0,
     "youtubeLink": "",
     "datasetLink": "",
-    "isNew": false
+    "isNew": false,
+    "officialPsNumber": "SIH26147",
+    "deadline": "20 September 2026",
+    "maxSubmissions": 500
   },
   {
     "sNo": 148,
@@ -2070,11 +2511,14 @@ const SIH_PROBLEM_STATEMENTS = [
     "department": "National Technical Research Organisation (NTRO)",
     "category": "Software",
     "theme": "Blockchain & Cybersecurity",
-    "description": "• Background Modern antivirus solutions restrict proprietary software from executing or creating custom scripts designed to analyze the system for deep forensic system analysis. They rely heavily on behavioral heuristics, static signature matching, common compiler outputs (like standard MSVC or GCC artifacts), typical API call sequences and kernel-level monitoring to intercept activities. However, a significant paradigm shift may occur when programmers adopt sophisticated software engineering practicesâ€”specifically continuous integration and continuous deployment (CI/CD).\n\n • Description Creating 'Next-Gen' programming language framework, named as 'JOCKY' using cross-platform compiler (windows & ubuntu) which enables systematic creation of scripts for analyzing malicious activities and also provide the complete digital forensics of the computer or network. By utilizing this specific new developed programming language, the framework will not be hindered by any of the existing anti-virus in the environment. This framework should include various scripts/functions which combined with automated polymorphic engines, custom encryption, and multi-vector in-memory execution via native components or Bring your own vulnerable driver (BYOVD) techniques. Framework also able to handle multiple system analysis simultaneously using central management interface. The traffic b/w management interface and client should be routed through trusted cloud infrastructure or content delivery networks (CDNs) using domain fronting or legitimate cloud APIs.\n\n • Expected Solution The scope of the problem is to create scripts/functions in the proprietary programming language (named JOCKY) which enables the user to detect the adversaries:\n\n 1. Independent programming Language - Programming language or custom Language-independent intermediate representation (LLVM) frontend alters basic control-flow graphs, token generation, and binary structures, rendering signature-based detection ineffective.\n\n 2. Polymorphism in scripts/function generated - Rather than manually packing a binary, the scripts/function in framework uses a continuous delivery pipeline. Every iteration automatically passes through integrated obfuscators, variable-encryption routines, and polymorphic engines. This ensures that every deployment instance possesses unique hashes, modified entry points, and altered import tables, neutralizing traditional file-reputation databases.\n\n 3. Living-off-the-Land & BYOVD Execution - The scripts/functions in framework should avoid standard, noisy API calls for core operations like persistence, privilege escalation, and network routing (SOCKS5). Instead, it relies on:\n\n A. In-Memory Execution: Utilizing multiple distinct file-less techniques (e.g., process hollowing, reflective DLL injection, API unhooking, direct system calls, or thread execution hijacking) to run secondary script entirely within the memory space of trusted processes.\n\n B. Kernel-Level Subversion: Detection of legitimate or vulnerable third-party drivers (BYOVD) to disable EDR callbacks or manipulate kernel structures directly, blinding security agents running in user or kernel space.",
+    "description": "• Background Modern antivirus solutions restrict proprietary software from executing or creating custom scripts designed to analyze the system for deep forensic system analysis. They rely heavily on behavioral heuristics, static signature matching, common compiler outputs (like standard MSVC or GCC artifacts), typical API call sequences and kernel-level monitoring to intercept activities. However, a significant paradigm shift may occur when programmers adopt sophisticated software engineering practices\"”specifically continuous integration and continuous deployment (CI/CD).\n\n • Description Creating 'Next-Gen' programming language framework, named as 'JOCKY' using cross-platform compiler (windows & ubuntu) which enables systematic creation of scripts for analyzing malicious activities and also provide the complete digital forensics of the computer or network. By utilizing this specific new developed programming language, the framework will not be hindered by any of the existing anti-virus in the environment. This framework should include various scripts/functions which combined with automated polymorphic engines, custom encryption, and multi-vector in-memory execution via native components or Bring your own vulnerable driver (BYOVD) techniques. Framework also able to handle multiple system analysis simultaneously using central management interface. The traffic b/w management interface and client should be routed through trusted cloud infrastructure or content delivery networks (CDNs) using domain fronting or legitimate cloud APIs.\n\n • Expected Solution The scope of the problem is to create scripts/functions in the proprietary programming language (named JOCKY) which enables the user to detect the adversaries:\n\n 1. Independent programming Language - Programming language or custom Language-independent intermediate representation (LLVM) frontend alters basic control-flow graphs, token generation, and binary structures, rendering signature-based detection ineffective.\n\n 2. Polymorphism in scripts/function generated - Rather than manually packing a binary, the scripts/function in framework uses a continuous delivery pipeline. Every iteration automatically passes through integrated obfuscators, variable-encryption routines, and polymorphic engines. This ensures that every deployment instance possesses unique hashes, modified entry points, and altered import tables, neutralizing traditional file-reputation databases.\n\n 3. Living-off-the-Land & BYOVD Execution - The scripts/functions in framework should avoid standard, noisy API calls for core operations like persistence, privilege escalation, and network routing (SOCKS5). Instead, it relies on:\n\n A. In-Memory Execution: Utilizing multiple distinct file-less techniques (e.g., process hollowing, reflective DLL injection, API unhooking, direct system calls, or thread execution hijacking) to run secondary script entirely within the memory space of trusted processes.\n\n B. Kernel-Level Subversion: Detection of legitimate or vulnerable third-party drivers (BYOVD) to disable EDR callbacks or manipulate kernel structures directly, blinding security agents running in user or kernel space.",
     "submissions": 0,
     "youtubeLink": "",
     "datasetLink": "",
-    "isNew": false
+    "isNew": false,
+    "officialPsNumber": "SIH26148",
+    "deadline": "20 September 2026",
+    "maxSubmissions": 500
   },
   {
     "sNo": 149,
@@ -2088,7 +2532,10 @@ const SIH_PROBLEM_STATEMENTS = [
     "submissions": 0,
     "youtubeLink": "",
     "datasetLink": "",
-    "isNew": false
+    "isNew": false,
+    "officialPsNumber": "SIH26149",
+    "deadline": "20 September 2026",
+    "maxSubmissions": 500
   },
   {
     "sNo": 150,
@@ -2102,7 +2549,10 @@ const SIH_PROBLEM_STATEMENTS = [
     "submissions": 0,
     "youtubeLink": "",
     "datasetLink": "",
-    "isNew": false
+    "isNew": false,
+    "officialPsNumber": "SIH26150",
+    "deadline": "20 September 2026",
+    "maxSubmissions": 500
   },
   {
     "sNo": 151,
@@ -2112,11 +2562,14 @@ const SIH_PROBLEM_STATEMENTS = [
     "department": "National Technical Research Organisation (NTRO)",
     "category": "Software",
     "theme": "Blockchain & Cybersecurity",
-    "description": "• Background The dark web has become a preferred operating space for threat actors in the modern age, mainly because it lets them hide their identity behind Tor hidden services, which makes attribution of threat actors operating on darkweb the main challenge for any investigation. Such threat actors carry out a wide range of unlawful activities such as drugs and arms sale, stolen data and hacking services, money laundering, terror financing, etc. The objective of this problem statement is to build a system for the deanonymization of dark web threat actors and link them to suspect real-world entities.\n\n • Description The system shall deanonymize dark web threat actors by continuously gathering their footprints from a range of sources (marketplaces, forums, deep web etc.) and linking them to the identifying information available on those sources. The system envisages three core capabilities. First, finding misconfigurations in Tor hidden servicesâ€”such as exposed server-status pages, SSL certificates tied to clearnet domains, default service banners, descriptor inconsistencies, etc and matching them with clearnet infrastructure to point to the likely origin servers. Second, mapping threat actors across multiple marketplaces into a single relationship graph of handles, PGP keys, wallets and trust links. Third, using AI-based analysis, including stylometric persona identification and behavioural profiling, to link rebranded or migrated personas to known threat actors. The system shall provide an analytical front end to query the database across a chosen timeline and shall work in an autonomous mode, drawing on available sources of good quality and reliability.\n\n • Expected Solution An end-to-end system shall be developed for the collection, storage, contextualization and querying (through GUI/dashboards) of dark web threat actor intelligenceâ€”covering actor profiles, identifiers (handles, PGP keys, wallets etc.), hidden service infrastructure indicators, persona linkages, attribution confidence, category, last scan date and source. The system shall also provide the facility to export the result set in CSV, JSON and report formats.",
+    "description": "• Background The dark web has become a preferred operating space for threat actors in the modern age, mainly because it lets them hide their identity behind Tor hidden services, which makes attribution of threat actors operating on darkweb the main challenge for any investigation. Such threat actors carry out a wide range of unlawful activities such as drugs and arms sale, stolen data and hacking services, money laundering, terror financing, etc. The objective of this problem statement is to build a system for the deanonymization of dark web threat actors and link them to suspect real-world entities.\n\n • Description The system shall deanonymize dark web threat actors by continuously gathering their footprints from a range of sources (marketplaces, forums, deep web etc.) and linking them to the identifying information available on those sources. The system envisages three core capabilities. First, finding misconfigurations in Tor hidden services\"”such as exposed server-status pages, SSL certificates tied to clearnet domains, default service banners, descriptor inconsistencies, etc and matching them with clearnet infrastructure to point to the likely origin servers. Second, mapping threat actors across multiple marketplaces into a single relationship graph of handles, PGP keys, wallets and trust links. Third, using AI-based analysis, including stylometric persona identification and behavioural profiling, to link rebranded or migrated personas to known threat actors. The system shall provide an analytical front end to query the database across a chosen timeline and shall work in an autonomous mode, drawing on available sources of good quality and reliability.\n\n • Expected Solution An end-to-end system shall be developed for the collection, storage, contextualization and querying (through GUI/dashboards) of dark web threat actor intelligence\"”covering actor profiles, identifiers (handles, PGP keys, wallets etc.), hidden service infrastructure indicators, persona linkages, attribution confidence, category, last scan date and source. The system shall also provide the facility to export the result set in CSV, JSON and report formats.",
     "submissions": 0,
     "youtubeLink": "",
     "datasetLink": "",
-    "isNew": false
+    "isNew": false,
+    "officialPsNumber": "SIH26151",
+    "deadline": "20 September 2026",
+    "maxSubmissions": 500
   },
   {
     "sNo": 152,
@@ -2130,7 +2583,10 @@ const SIH_PROBLEM_STATEMENTS = [
     "submissions": 0,
     "youtubeLink": "",
     "datasetLink": "",
-    "isNew": false
+    "isNew": false,
+    "officialPsNumber": "SIH26152",
+    "deadline": "20 September 2026",
+    "maxSubmissions": 500
   },
   {
     "sNo": 153,
@@ -2140,11 +2596,14 @@ const SIH_PROBLEM_STATEMENTS = [
     "department": "National Technical Research Organisation (NTRO)",
     "category": "Software",
     "theme": "Blockchain & Cybersecurity",
-    "description": "• Background This challenge seeks AI systems capable of learning network behaviour, anticipating attacker progression and supporting proactive cyber defence using the emerging concept of World Models. Design and develop a software prototype that learns the evolving state of a computer network from traffic telemetry and predicts the likelihood and progression of malicious activity before compromise is completed. The solution should ingest network traffic, learn temporal behaviour, forecast future attack states and provide interpretable decision support for defenders. Solutions should demonstrate applicability to enterprise environments and Critical Information Infrastructure.\n\n • Represent network state using feature vectors or graphs.\n • Learn state-transition dynamics using sequence models (LSTM, Transformer), Graph Neural Networks, latent state models or other AI techniques.\n • Forecast future network states and estimate the probability of attacker progression.\n • Map predicted behaviour to recognised attack stages (e.g. MITRE ATT&CK).\n • Provide explain ability using attention mechanisms, feature attribution or equivalent techniques • Detailed Description Participants are encouraged to build world models based AI systems that move beyond static intrusion classification towards predictive cyber defence. The solution may utilise flow records, packet captures, authentication logs or other publicly available cybersecurity telemetry. It should model temporal relationships, infer evolving network state, predict future attack progression and present meaningful explanations for its predictions.\n\n Traditional machine learning classifiers applied to network traffic treat each flow in isolation and map it to a binary benign/malicious label. This discards the temporal and causal structure of an infiltration: the sequence in which ports are probed, the pattern in which SYN flags precede ACK floods, the inter-arrival timing of reconnaissance packets before lateral movement begins. An infiltration is a process unfolding over time, not a single anomalous packet.\n\n • World Models â€” AI architectures that learn an internal causal simulation of how environment states evolve â€” offer a fundamentally different approach. Rather than classifying traffic, a world model learns the transition dynamics P(S_t+1 | S_t): given the current observed network state (active flows, flag distributions, port activity, packet timing), what is the probability distribution over future states. This enables forward simulation: roll out K steps ahead and identify whether the current trajectory converges to an infiltration state, before the attacker completes the kill chain.\n\n 1. Input Data â€” Two Levels of Traffic Feature Teams must work with both flow-level and packet-level features drawn from open-source network traffic datasets:\n\n • Flow-level features (NetFlow / IPFIX format): source and destination IP/port pairs, TCP flag bitmask (SYN, ACK, FIN, RST, PSH, URG), protocol, bytes transferred per flow, packets per flow, flow duration, inter-arrival time (IAT) statistics (mean, variance, max), and bidirectional flow ratios.\n • Packet-level features (PCAP-derived): Time-To-Live (TTL) values and their variance across a session, TCP window size, IP fragment flags, payload size distribution, port scan signatures (sequential or randomised port access patterns), and retransmission counts.\n\n The combination of both levels is required because flow-level features capture aggregate behaviour (a SYN flood) while packet-level features expose timing and sequencing patterns (a slow reconnaissance scan designed to evade flow-based thresholds).\n\n 2. World Model Architecture The core deliverable is a learned model of network state transition dynamics â€” not a static classifier. The model must:\n\n • Represent network state as a structured feature vector or graph encoding active flows at time t.\n • Learn P(S_t+1 | S_t) â€” the probability distribution over the next network state given the current state â€” using a sequence model such as an LSTM, Temporal Transformer, or Graph Neural Network (GNN) operating over time-windowed traffic observations.\n • Be trained on labelled open-source datasets using supervised dynamics learning, where ground-truth state transitions are derived from the attack timeline annotations in the dataset.\n • Generalise to unseen attack patterns â€” not merely memorize signatures from the training set.\n\n 3. Infiltration Prediction and Attack Stage Mapping The world model must support forward simulation: given current observed traffic, roll out K steps and output\n\n • A time-series probability score: likelihood of infiltration in the next K time windows.\n • Predicted attack stage: mapping to MITRE ATT&CK phases â€” Reconnaissance, Initial Access, Lateral Movement, Command & Control, or Exfiltration â€” based on the predicted future state.\n • Driving features: which specific flags, ports, or flow patterns are contributing most to the infiltration prediction (via attention weights or SHAP values).\n\n The approaches are provided only as examples and are not mandatory. Teams are free to propose alternative architectures that satisfy the objectives.\n\n • Expected Solution(Indicative)\n\n A software-based, fully open-source solution is expected. The solution may include:\n\n • A feature extraction pipeline that ingests CIC-IDS-2018 or CTU-13 CSV flow records and/or raw PCAP files (parsed using Scapy or PyShark) and outputs a timestamped, normalised feature matrix covering both flow-level and packet-level attributes described above.\n • A trained world model (LSTM, Transformer, or GNN architecture) that demonstrably learns traffic state transition dynamics â€” not a static input-output classifier. Training scripts, model weights, and a reproducible training configuration must be included.\n • An infiltration prediction engine that performs K-step forward simulation from a current traffic snapshot and outputs: infiltration probability score, predicted MITRE ATT&CK stage, and top contributing traffic features.\n • An explainability output for each prediction â€” using SHAP values or model attention weights â€” identifying which flags, ports, or flow statistics are driving the prediction. Black-box outputs without interpretability are not acceptable.\n • A working demonstration interface (Streamlit, Flask web app, or CLI) that accepts a PCAP or CSV file as input, runs the world model inference, and displays the infiltration probability timeline, flagged flows, and attack stage annotations. The interface must run fully offline without cloud API dependencies.\n • Benchmark results comparing model performance (F1 score, precision, recall, false positive rate) against a logistic regression baseline trained on the same features, demonstrating that the world model's temporal dynamics learning provides measurable improvement.\n\n • Expected Solution/Deliverables for Evaluation\n\n • Source Code Link (GitHub/Drive Link)\n • Readme with Setup Instructions\n • Architecture Document (Max 2 Pages)\n • Demo Video (Max 2 Minutes)\n • Technical Presentation (Max 5 Slides) .",
+    "description": "• Background This challenge seeks AI systems capable of learning network behaviour, anticipating attacker progression and supporting proactive cyber defence using the emerging concept of World Models. Design and develop a software prototype that learns the evolving state of a computer network from traffic telemetry and predicts the likelihood and progression of malicious activity before compromise is completed. The solution should ingest network traffic, learn temporal behaviour, forecast future attack states and provide interpretable decision support for defenders. Solutions should demonstrate applicability to enterprise environments and Critical Information Infrastructure.\n\n • Represent network state using feature vectors or graphs.\n • Learn state-transition dynamics using sequence models (LSTM, Transformer), Graph Neural Networks, latent state models or other AI techniques.\n • Forecast future network states and estimate the probability of attacker progression.\n • Map predicted behaviour to recognised attack stages (e.g. MITRE ATT&CK).\n • Provide explain ability using attention mechanisms, feature attribution or equivalent techniques • Detailed Description Participants are encouraged to build world models based AI systems that move beyond static intrusion classification towards predictive cyber defence. The solution may utilise flow records, packet captures, authentication logs or other publicly available cybersecurity telemetry. It should model temporal relationships, infer evolving network state, predict future attack progression and present meaningful explanations for its predictions.\n\n Traditional machine learning classifiers applied to network traffic treat each flow in isolation and map it to a binary benign/malicious label. This discards the temporal and causal structure of an infiltration: the sequence in which ports are probed, the pattern in which SYN flags precede ACK floods, the inter-arrival timing of reconnaissance packets before lateral movement begins. An infiltration is a process unfolding over time, not a single anomalous packet.\n\n • World Models \"” AI architectures that learn an internal causal simulation of how environment states evolve \"” offer a fundamentally different approach. Rather than classifying traffic, a world model learns the transition dynamics P(S_t+1 | S_t): given the current observed network state (active flows, flag distributions, port activity, packet timing), what is the probability distribution over future states. This enables forward simulation: roll out K steps ahead and identify whether the current trajectory converges to an infiltration state, before the attacker completes the kill chain.\n\n 1. Input Data \"” Two Levels of Traffic Feature Teams must work with both flow-level and packet-level features drawn from open-source network traffic datasets:\n\n • Flow-level features (NetFlow / IPFIX format): source and destination IP/port pairs, TCP flag bitmask (SYN, ACK, FIN, RST, PSH, URG), protocol, bytes transferred per flow, packets per flow, flow duration, inter-arrival time (IAT) statistics (mean, variance, max), and bidirectional flow ratios.\n • Packet-level features (PCAP-derived): Time-To-Live (TTL) values and their variance across a session, TCP window size, IP fragment flags, payload size distribution, port scan signatures (sequential or randomised port access patterns), and retransmission counts.\n\n The combination of both levels is required because flow-level features capture aggregate behaviour (a SYN flood) while packet-level features expose timing and sequencing patterns (a slow reconnaissance scan designed to evade flow-based thresholds).\n\n 2. World Model Architecture The core deliverable is a learned model of network state transition dynamics \"” not a static classifier. The model must:\n\n • Represent network state as a structured feature vector or graph encoding active flows at time t.\n • Learn P(S_t+1 | S_t) \"” the probability distribution over the next network state given the current state \"” using a sequence model such as an LSTM, Temporal Transformer, or Graph Neural Network (GNN) operating over time-windowed traffic observations.\n • Be trained on labelled open-source datasets using supervised dynamics learning, where ground-truth state transitions are derived from the attack timeline annotations in the dataset.\n • Generalise to unseen attack patterns \"” not merely memorize signatures from the training set.\n\n 3. Infiltration Prediction and Attack Stage Mapping The world model must support forward simulation: given current observed traffic, roll out K steps and output\n\n • A time-series probability score: likelihood of infiltration in the next K time windows.\n • Predicted attack stage: mapping to MITRE ATT&CK phases \"” Reconnaissance, Initial Access, Lateral Movement, Command & Control, or Exfiltration \"” based on the predicted future state.\n • Driving features: which specific flags, ports, or flow patterns are contributing most to the infiltration prediction (via attention weights or SHAP values).\n\n The approaches are provided only as examples and are not mandatory. Teams are free to propose alternative architectures that satisfy the objectives.\n\n • Expected Solution(Indicative)\n\n A software-based, fully open-source solution is expected. The solution may include:\n\n • A feature extraction pipeline that ingests CIC-IDS-2018 or CTU-13 CSV flow records and/or raw PCAP files (parsed using Scapy or PyShark) and outputs a timestamped, normalised feature matrix covering both flow-level and packet-level attributes described above.\n • A trained world model (LSTM, Transformer, or GNN architecture) that demonstrably learns traffic state transition dynamics \"” not a static input-output classifier. Training scripts, model weights, and a reproducible training configuration must be included.\n • An infiltration prediction engine that performs K-step forward simulation from a current traffic snapshot and outputs: infiltration probability score, predicted MITRE ATT&CK stage, and top contributing traffic features.\n • An explainability output for each prediction \"” using SHAP values or model attention weights \"” identifying which flags, ports, or flow statistics are driving the prediction. Black-box outputs without interpretability are not acceptable.\n • A working demonstration interface (Streamlit, Flask web app, or CLI) that accepts a PCAP or CSV file as input, runs the world model inference, and displays the infiltration probability timeline, flagged flows, and attack stage annotations. The interface must run fully offline without cloud API dependencies.\n • Benchmark results comparing model performance (F1 score, precision, recall, false positive rate) against a logistic regression baseline trained on the same features, demonstrating that the world model's temporal dynamics learning provides measurable improvement.\n\n • Expected Solution/Deliverables for Evaluation\n\n • Source Code Link (GitHub/Drive Link)\n • Readme with Setup Instructions\n • Architecture Document (Max 2 Pages)\n • Demo Video (Max 2 Minutes)\n • Technical Presentation (Max 5 Slides) .",
     "submissions": 0,
     "youtubeLink": "",
     "datasetLink": "",
-    "isNew": false
+    "isNew": false,
+    "officialPsNumber": "SIH26153",
+    "deadline": "20 September 2026",
+    "maxSubmissions": 500
   },
   {
     "sNo": 154,
@@ -2158,7 +2617,10 @@ const SIH_PROBLEM_STATEMENTS = [
     "submissions": 0,
     "youtubeLink": "",
     "datasetLink": "",
-    "isNew": false
+    "isNew": false,
+    "officialPsNumber": "SIH26154",
+    "deadline": "20 September 2026",
+    "maxSubmissions": 500
   },
   {
     "sNo": 155,
@@ -2168,11 +2630,14 @@ const SIH_PROBLEM_STATEMENTS = [
     "department": "National Technical Research Organisation (NTRO)",
     "category": "Software",
     "theme": "Blockchain & Cybersecurity",
-    "description": "• Background Modern enterprise networks are inherently heterogeneous, consisting of a vast array of hardware from diverse vendors. Organizations are mandated to align these devices with rigorous security frameworks, including CIS Benchmarks, NIST SP 800-53, DISA STIGs, and ISO/IEC 27001.\n\n The network environment includes, but is not limited to:\n\n • Firewalls & SASE: Palo Alto, Fortinet, Cisco (Firepower/Secure/Meraki), Check Point, Juniper (SRX), Sophos, SonicWall, WatchGuard, Barracuda, Zscaler, Cloud-native firewalls (AWS, Azure, GCP), Sangfor, Hillstone, A10, Forcepoint, Stormshield, Netgate (pf/TNSR), Cato Networks, and others.\n • Routers & Switches: Cisco (Catalyst/Nexus), HPE Aruba, Juniper (EX/MX/PTX), Arista, Extreme, NVIDIA (Mellanox), Allied Telesis, Huawei, D-Link, MikroTik, Ubiquiti, Alcatel-Lucent, Ruijie, Adtran, and others.\n • Specialized Networking: Open/Disaggregated (Dell, Nokia, 'White Box' hardware running SONiC, Cumulus), Hyperscale/AI (NVIDIA, Arista, Juniper), and Physical Infrastructure (Corning).\n\n Note: The aforementioned list is illustrative; the application must be ideally designed to support any network device configuration, regardless of vendor or market segment.\n\n • Description\n • The Core Challenge:\n\n In modern digital infrastructures, network devices act as the primary gatekeepers of data. However, they are also the most common point of misconfiguration, which accounts for a significant percentage of security breaches. Security frameworks like CIS, NIST, and STIGs offer specific 'hardening' protocolsâ€”such as disabling insecure protocols (Telnet/HTTP), enforcing strong cryptographic suites, configuring granular ACLs, and logging all administrative access. Currently, the industry relies on a bifurcated approach: either highly manual, checklist-based human auditing or expensive, vendor-locked enterprise management suites that lack flexibility for heterogeneous, multi-vendor environments.\n\n • Operational Gap:\n\n Administrators managing hybrid networks (composed of firewalls, switches, and routers from various vendors like Palo Alto, Cisco, Arista, etc.) lack a centralized 'Source of Truth' for compliance. The challenge is twofold:\n\n 1.Syntactic Diversity: Each vendor uses proprietary Command Line Interface (CLI) syntax, varied hierarchical structures, and distinct firmware/OS versioning. A 'secure password' setting in a Cisco IOS switch is syntactically distinct from the same setting in a Juniper SRX firewall.\n\n 2.Scalability & Adaptation: The network landscape is not static. As organizations adopt 'White Box' networking (SONiC), Cloud-native security groups (AWS/Azure), or specialized AI-driven infrastructure, traditional parsers fail because they cannot predict or interpret the configuration structures of newly acquired or proprietary hardware.\n\n The requested solution is an AI-augmented, vendor-agnostic Compliance Engine. Rather than relying on a hard-coded library of commandsâ€”which becomes obsolete as vendors release firmware updatesâ€”the system will employ Ai based approaches ( for example (Pattern Recognition and Natural Language Processing (NLP)) to interpret configuration files.\n\n When a configuration file is ingested, the AI-based engine will:\n\n • Normalization: Extract the configuration and map it into a standardized, vendor-neutral schema (e.g., a 'Security Baseline Model').\n • Deviation Analysis: Compare this normalized model against the chosen framework (e.g., checking if the parsed 'ssh_version' is '2' as required by CIS).\n • Dynamic Adaptation (The 'Training' Loop): When the system encounters an unrecognized configuration structure, it will trigger an Interactive Training Interface. In this GUI, the administrator will be presented with the 'raw' unrecognized command lines. Using a user-friendly, low-code interface, the administrator will map these commands to specific security categories (e.g., 'This command sets the timeout limit'). The AI engine will then update its internal heuristics, effectively 'learning' to parse this new vendorâ€™s logic without requiring backend code redeployment.\n\n The proposed solution should be a user-friendly, robust software platform featuring:\n\n 1. Unified Ingestion Engine: A dashboard for uploading single or bulk configuration files from any network device.\n\n 2. AI-Powered Training Module: A dedicated, intuitive GUI where administrators can 'train' the system to parse unseen vendor formats by mapping specific command outputs to compliance parameters.\n\n 3. Multi-Framework Compliance Engine: A logic engine that evaluates configurations against user-selected benchmarks (CIS, NIST, STIGs, ISO).\n\n 4. Actionable Intelligence & PDF Reporting: A comprehensive, single PDF report for each device, covering:\n\n o Device Identification: Including serial numbers and hardware details.\n\n o Compliance Findings: Clear 'Pass/Fail' results with risk severity assessments.\n\n o Remediation Paths: Device-specific, step-by-step CLI command sequences to resolve non-compliance and harden the device.\n\n 5.Vendor-Agnostic Scalability: A modular architecture designed to support new vendors, standards, and OS versions without requiring manual code modifications for every update.\n\n • Suggested Development Workflow The development can be visualized in the following stages:\n\n 1. Normalization: Converting proprietary CLI outputs into a structured JSON/Schema model.\n\n 2. Compliance Engine: Using Python libraries (e.g., Netmiko or NAPALM) for data collection and custom logic for mapping.\n\n 3. AI/ML Integration: Using Natural Language Processing (NLP) or pattern matching to identify keywords in configurations that the system has not been pre-trained on.\n\n 4. Reporting: Generating dynamic PDFs (e.g., using ReportLab or FPDF in Python) that are customized based on the device's specific model and software version.\n\n • Expected Solution/Deliverables for Evaluation\n • Source Code Link (GitHub/Drive Link)\n • Readme with Setup Instructions\n • Architecture Document (Max 2 Pages)\n • Demo Video (Max 2 Minutes)\n • Technical Presentation (Max 5 Slides)",
+    "description": "• Background Modern enterprise networks are inherently heterogeneous, consisting of a vast array of hardware from diverse vendors. Organizations are mandated to align these devices with rigorous security frameworks, including CIS Benchmarks, NIST SP 800-53, DISA STIGs, and ISO/IEC 27001.\n\n The network environment includes, but is not limited to:\n\n • Firewalls & SASE: Palo Alto, Fortinet, Cisco (Firepower/Secure/Meraki), Check Point, Juniper (SRX), Sophos, SonicWall, WatchGuard, Barracuda, Zscaler, Cloud-native firewalls (AWS, Azure, GCP), Sangfor, Hillstone, A10, Forcepoint, Stormshield, Netgate (pf/TNSR), Cato Networks, and others.\n • Routers & Switches: Cisco (Catalyst/Nexus), HPE Aruba, Juniper (EX/MX/PTX), Arista, Extreme, NVIDIA (Mellanox), Allied Telesis, Huawei, D-Link, MikroTik, Ubiquiti, Alcatel-Lucent, Ruijie, Adtran, and others.\n • Specialized Networking: Open/Disaggregated (Dell, Nokia, 'White Box' hardware running SONiC, Cumulus), Hyperscale/AI (NVIDIA, Arista, Juniper), and Physical Infrastructure (Corning).\n\n Note: The aforementioned list is illustrative; the application must be ideally designed to support any network device configuration, regardless of vendor or market segment.\n\n • Description\n • The Core Challenge:\n\n In modern digital infrastructures, network devices act as the primary gatekeepers of data. However, they are also the most common point of misconfiguration, which accounts for a significant percentage of security breaches. Security frameworks like CIS, NIST, and STIGs offer specific 'hardening' protocols\"”such as disabling insecure protocols (Telnet/HTTP), enforcing strong cryptographic suites, configuring granular ACLs, and logging all administrative access. Currently, the industry relies on a bifurcated approach: either highly manual, checklist-based human auditing or expensive, vendor-locked enterprise management suites that lack flexibility for heterogeneous, multi-vendor environments.\n\n • Operational Gap:\n\n Administrators managing hybrid networks (composed of firewalls, switches, and routers from various vendors like Palo Alto, Cisco, Arista, etc.) lack a centralized 'Source of Truth' for compliance. The challenge is twofold:\n\n 1.Syntactic Diversity: Each vendor uses proprietary Command Line Interface (CLI) syntax, varied hierarchical structures, and distinct firmware/OS versioning. A 'secure password' setting in a Cisco IOS switch is syntactically distinct from the same setting in a Juniper SRX firewall.\n\n 2.Scalability & Adaptation: The network landscape is not static. As organizations adopt 'White Box' networking (SONiC), Cloud-native security groups (AWS/Azure), or specialized AI-driven infrastructure, traditional parsers fail because they cannot predict or interpret the configuration structures of newly acquired or proprietary hardware.\n\n The requested solution is an AI-augmented, vendor-agnostic Compliance Engine. Rather than relying on a hard-coded library of commands\"”which becomes obsolete as vendors release firmware updates\"”the system will employ Ai based approaches ( for example (Pattern Recognition and Natural Language Processing (NLP)) to interpret configuration files.\n\n When a configuration file is ingested, the AI-based engine will:\n\n • Normalization: Extract the configuration and map it into a standardized, vendor-neutral schema (e.g., a 'Security Baseline Model').\n • Deviation Analysis: Compare this normalized model against the chosen framework (e.g., checking if the parsed 'ssh_version' is '2' as required by CIS).\n • Dynamic Adaptation (The 'Training' Loop): When the system encounters an unrecognized configuration structure, it will trigger an Interactive Training Interface. In this GUI, the administrator will be presented with the 'raw' unrecognized command lines. Using a user-friendly, low-code interface, the administrator will map these commands to specific security categories (e.g., 'This command sets the timeout limit'). The AI engine will then update its internal heuristics, effectively 'learning' to parse this new vendor's logic without requiring backend code redeployment.\n\n The proposed solution should be a user-friendly, robust software platform featuring:\n\n 1. Unified Ingestion Engine: A dashboard for uploading single or bulk configuration files from any network device.\n\n 2. AI-Powered Training Module: A dedicated, intuitive GUI where administrators can 'train' the system to parse unseen vendor formats by mapping specific command outputs to compliance parameters.\n\n 3. Multi-Framework Compliance Engine: A logic engine that evaluates configurations against user-selected benchmarks (CIS, NIST, STIGs, ISO).\n\n 4. Actionable Intelligence & PDF Reporting: A comprehensive, single PDF report for each device, covering:\n\n o Device Identification: Including serial numbers and hardware details.\n\n o Compliance Findings: Clear 'Pass/Fail' results with risk severity assessments.\n\n o Remediation Paths: Device-specific, step-by-step CLI command sequences to resolve non-compliance and harden the device.\n\n 5.Vendor-Agnostic Scalability: A modular architecture designed to support new vendors, standards, and OS versions without requiring manual code modifications for every update.\n\n • Suggested Development Workflow The development can be visualized in the following stages:\n\n 1. Normalization: Converting proprietary CLI outputs into a structured JSON/Schema model.\n\n 2. Compliance Engine: Using Python libraries (e.g., Netmiko or NAPALM) for data collection and custom logic for mapping.\n\n 3. AI/ML Integration: Using Natural Language Processing (NLP) or pattern matching to identify keywords in configurations that the system has not been pre-trained on.\n\n 4. Reporting: Generating dynamic PDFs (e.g., using ReportLab or FPDF in Python) that are customized based on the device's specific model and software version.\n\n • Expected Solution/Deliverables for Evaluation\n • Source Code Link (GitHub/Drive Link)\n • Readme with Setup Instructions\n • Architecture Document (Max 2 Pages)\n • Demo Video (Max 2 Minutes)\n • Technical Presentation (Max 5 Slides)",
     "submissions": 0,
     "youtubeLink": "",
     "datasetLink": "",
-    "isNew": false
+    "isNew": false,
+    "officialPsNumber": "SIH26155",
+    "deadline": "20 September 2026",
+    "maxSubmissions": 500
   },
   {
     "sNo": 156,
@@ -2182,11 +2647,14 @@ const SIH_PROBLEM_STATEMENTS = [
     "department": "National Technical Research Organisation (NTRO)",
     "category": "Software",
     "theme": "Blockchain & Cybersecurity",
-    "description": "• Background Modern enterprises generate massive volumes of logs from a wide range of sources, including network devices, servers, operating systems, applications, databases, cloud services, containers, endpoint security tools, identity and access management systems, IoT devices, and other hardware and software platforms. These logs are produced in diverse formats such as Syslog, JSON, XML, CSV, CEF, LEEF, proprietary vendor formats, and application-specific schemas.\n\n The diversity of log structures creates significant challenges in centralized monitoring, security operations, compliance reporting, incident investigation, and threat analytics. Security teams often spend substantial effort developing source-specific parsers and normalization rules before the data can be effectively utilized by SIEM, data lake, or machine learning platforms.\n\n As organizations adopt hybrid, multi-cloud, and AI-driven environments, the need for a universal and extensible log standard that can accommodate both current and future data sources have become increasingly critical.\n\n • Detailed Description Design and develop a Universal Log Pre-processing Framework (ULPF) capable of ingesting, parsing, normalizing, and standardizing logs and events generated by any hardware or software system.\n\n The framework should support diverse event sources while preserving the original event data for forensic and compliance purposes. It should transform heterogeneous logs into a unified schema that enables consistent analytics, correlation, visualization, threat hunting, anomaly detection, and machine learning applications.\n\n The framework must be scalable, extensible, vendor-agnostic, and suitable for deployment in Big Data environments handling billions of events per day.\n\n • Expected Solutions This solution should cover universal event schema and processing framework that enables:\n\n a) Preserve complete raw event data without information loss.\n\n b) Extract and parse source-specific attributes.\n\n c) Normalize fields into a common event taxonomy.\n\n d) Maintain traceability between normalized and original events.\n\n e) Plug-and-play on boarding of new log sources.\n\n f) Unified visibility across enterprise environments.\n\n g) Efficient SIEM and Data Lake integration.\n\n h) AI/ML-ready security and operational analytics.\n\n i) Reduced parser development effort.\n\n j) The solution shall be deployable in an air-gapped network.\n\n k) Solution may be packaged in a container for making it platform independent.\n\n • Current Scope Build a framework that converts any perimeter network device-generated log or eventâ€”regardless of source, format, vendor, or technology into a standardized, lossless, analytics-ready representation for next-generation SIEM and cybersecurity platforms.\n • Expected Solution/Deliverables for Evaluation\n • Source Code Link (GitHub/Drive Link)\n • Readme with Setup Instructions\n • Architecture Document (Max 2 Pages)\n • Demo Video (Max 2 Minutes)\n • Technical Presentation (Max 5 Slides)",
+    "description": "• Background Modern enterprises generate massive volumes of logs from a wide range of sources, including network devices, servers, operating systems, applications, databases, cloud services, containers, endpoint security tools, identity and access management systems, IoT devices, and other hardware and software platforms. These logs are produced in diverse formats such as Syslog, JSON, XML, CSV, CEF, LEEF, proprietary vendor formats, and application-specific schemas.\n\n The diversity of log structures creates significant challenges in centralized monitoring, security operations, compliance reporting, incident investigation, and threat analytics. Security teams often spend substantial effort developing source-specific parsers and normalization rules before the data can be effectively utilized by SIEM, data lake, or machine learning platforms.\n\n As organizations adopt hybrid, multi-cloud, and AI-driven environments, the need for a universal and extensible log standard that can accommodate both current and future data sources have become increasingly critical.\n\n • Detailed Description Design and develop a Universal Log Pre-processing Framework (ULPF) capable of ingesting, parsing, normalizing, and standardizing logs and events generated by any hardware or software system.\n\n The framework should support diverse event sources while preserving the original event data for forensic and compliance purposes. It should transform heterogeneous logs into a unified schema that enables consistent analytics, correlation, visualization, threat hunting, anomaly detection, and machine learning applications.\n\n The framework must be scalable, extensible, vendor-agnostic, and suitable for deployment in Big Data environments handling billions of events per day.\n\n • Expected Solutions This solution should cover universal event schema and processing framework that enables:\n\n a) Preserve complete raw event data without information loss.\n\n b) Extract and parse source-specific attributes.\n\n c) Normalize fields into a common event taxonomy.\n\n d) Maintain traceability between normalized and original events.\n\n e) Plug-and-play on boarding of new log sources.\n\n f) Unified visibility across enterprise environments.\n\n g) Efficient SIEM and Data Lake integration.\n\n h) AI/ML-ready security and operational analytics.\n\n i) Reduced parser development effort.\n\n j) The solution shall be deployable in an air-gapped network.\n\n k) Solution may be packaged in a container for making it platform independent.\n\n • Current Scope Build a framework that converts any perimeter network device-generated log or event\"”regardless of source, format, vendor, or technology into a standardized, lossless, analytics-ready representation for next-generation SIEM and cybersecurity platforms.\n • Expected Solution/Deliverables for Evaluation\n • Source Code Link (GitHub/Drive Link)\n • Readme with Setup Instructions\n • Architecture Document (Max 2 Pages)\n • Demo Video (Max 2 Minutes)\n • Technical Presentation (Max 5 Slides)",
     "submissions": 0,
     "youtubeLink": "",
     "datasetLink": "",
-    "isNew": false
+    "isNew": false,
+    "officialPsNumber": "SIH26156",
+    "deadline": "20 September 2026",
+    "maxSubmissions": 500
   },
   {
     "sNo": 157,
@@ -2200,7 +2668,10 @@ const SIH_PROBLEM_STATEMENTS = [
     "submissions": 0,
     "youtubeLink": "",
     "datasetLink": "",
-    "isNew": false
+    "isNew": false,
+    "officialPsNumber": "SIH26157",
+    "deadline": "20 September 2026",
+    "maxSubmissions": 500
   },
   {
     "sNo": 158,
@@ -2214,7 +2685,10 @@ const SIH_PROBLEM_STATEMENTS = [
     "submissions": 0,
     "youtubeLink": "",
     "datasetLink": "https://drive.google.com/file/d/119hjXkLhMW_AhQ4cyYz-XJgcVz4BA-hD/view?usp=drive_link",
-    "isNew": false
+    "isNew": false,
+    "officialPsNumber": "SIH26158",
+    "deadline": "20 September 2026",
+    "maxSubmissions": 500
   },
   {
     "sNo": 159,
@@ -2228,7 +2702,10 @@ const SIH_PROBLEM_STATEMENTS = [
     "submissions": 0,
     "youtubeLink": "",
     "datasetLink": "",
-    "isNew": false
+    "isNew": false,
+    "officialPsNumber": "SIH26159",
+    "deadline": "20 September 2026",
+    "maxSubmissions": 500
   },
   {
     "sNo": 160,
@@ -2238,11 +2715,14 @@ const SIH_PROBLEM_STATEMENTS = [
     "department": "National Technical Research Organisation (NTRO)",
     "category": "Software",
     "theme": "Blockchain & Cybersecurity",
-    "description": "• Background Virtual Private Networks (VPNs) are fundamental to secure communication over untrusted networks. Among the available VPN technologies, IPsec is widely adopted across enterprise, government, military, and cloud infrastructures because of its ability to provide confidentiality, integrity and authentication.\n\n However, the security of an IPsec deployment depends on multiple factors, including the chosen cryptographic algorithms, authentication mechanisms, key exchange protocols, and operational mode (Tunnel or Transport). Misconfigurations, outdated cipher suites, improper key management, or protocol implementation flaws can significantly weaken the overall security posture.\n\n Traditional protocol analysis tools provide packet-level visibility but often require expert interpretation. There is a growing need for intelligent systems capable of automatically analyzing IPsec deployments, identifying protocol characteristics, assessing security risks, and generating actionable recommendations.\n\n • Description: Design and develop an AI-driven protocol analysis platform capable of automatically analysing IPsec VPN deployments established under different security configurations. The platform should inspect captured traffic or live network streams, identify protocol characteristics, infer VPN operating modes, evaluate cryptographic configurations and generate an automated security assessment report.\n\n The solution should assist analysts in understanding the security posture of IPsec deployments without requiring manual packet inspection. Participants are expected to develop an intelligent framework capable of performing the following tasks.\n\n a) VPN Testbed Generation: Develop a laboratory environment capable of establishing IPsec VPNs using multiple configurations. The framework should support variations such as:\n\n • Tunnel Mode\n • Transport Mode\n • AES-128\n • AES-256\n • AES-GCM\n • AES-CBC + HMAC\n • Different DH Groups\n • Perfect Forward Secrecy enabled/disabled\n • IPv4 and IPv6 communication\n • Different types of traffic â€“ VoIP, Whatsapp, E-mail, Web-browsing, ICMP, Video streaming etc.\n\n b) Traffic Capture: Acquire network traces using tools such as Wireshark, TCP-dump, Custom packet capture utilities. Captured dataset should include\n\n • IKE negotiation\n • ESP packets\n • AH packets (optional)\n • Normal communication c) AI-Based Protocol Identification: Develop an AI engine capable of automatically identifying\n • IPsec protocol\n • IKE version\n • Tunnel Mode\n • Transport Mode\n • Encryption algorithm\n • Authentication algorithm\n • Key exchange method\n • Security Association characteristics\n • Predict Type of traffic inside ESP-IPsec d) Security Assessment: The framework should automatically evaluate\n • Cryptographic strength\n • Configuration compliance\n • Security Association parameters\n • Key lifetime\n • Replay protection\n • Forward Secrecy configuration\n • Cipher suite strength\n • Metadata exposure e) The output should include a comprehensive security score, traffic analysis and metadata inference. Automatically generate\n • Executive Report & Technical Report\n • Risk Score\n • Threat Matrix\n • AI Confidence Score\n • Expected Solution/Deliverables:\n • Working software prototype\n • AI classification engine\n • Interactive dashboard\n • Security assessment report\n • Demonstration video\n • Technical documentation\n • Dataset used for training/testing",
+    "description": "• Background Virtual Private Networks (VPNs) are fundamental to secure communication over untrusted networks. Among the available VPN technologies, IPsec is widely adopted across enterprise, government, military, and cloud infrastructures because of its ability to provide confidentiality, integrity and authentication.\n\n However, the security of an IPsec deployment depends on multiple factors, including the chosen cryptographic algorithms, authentication mechanisms, key exchange protocols, and operational mode (Tunnel or Transport). Misconfigurations, outdated cipher suites, improper key management, or protocol implementation flaws can significantly weaken the overall security posture.\n\n Traditional protocol analysis tools provide packet-level visibility but often require expert interpretation. There is a growing need for intelligent systems capable of automatically analyzing IPsec deployments, identifying protocol characteristics, assessing security risks, and generating actionable recommendations.\n\n • Description: Design and develop an AI-driven protocol analysis platform capable of automatically analysing IPsec VPN deployments established under different security configurations. The platform should inspect captured traffic or live network streams, identify protocol characteristics, infer VPN operating modes, evaluate cryptographic configurations and generate an automated security assessment report.\n\n The solution should assist analysts in understanding the security posture of IPsec deployments without requiring manual packet inspection. Participants are expected to develop an intelligent framework capable of performing the following tasks.\n\n a) VPN Testbed Generation: Develop a laboratory environment capable of establishing IPsec VPNs using multiple configurations. The framework should support variations such as:\n\n • Tunnel Mode\n • Transport Mode\n • AES-128\n • AES-256\n • AES-GCM\n • AES-CBC + HMAC\n • Different DH Groups\n • Perfect Forward Secrecy enabled/disabled\n • IPv4 and IPv6 communication\n • Different types of traffic \"“ VoIP, Whatsapp, E-mail, Web-browsing, ICMP, Video streaming etc.\n\n b) Traffic Capture: Acquire network traces using tools such as Wireshark, TCP-dump, Custom packet capture utilities. Captured dataset should include\n\n • IKE negotiation\n • ESP packets\n • AH packets (optional)\n • Normal communication c) AI-Based Protocol Identification: Develop an AI engine capable of automatically identifying\n • IPsec protocol\n • IKE version\n • Tunnel Mode\n • Transport Mode\n • Encryption algorithm\n • Authentication algorithm\n • Key exchange method\n • Security Association characteristics\n • Predict Type of traffic inside ESP-IPsec d) Security Assessment: The framework should automatically evaluate\n • Cryptographic strength\n • Configuration compliance\n • Security Association parameters\n • Key lifetime\n • Replay protection\n • Forward Secrecy configuration\n • Cipher suite strength\n • Metadata exposure e) The output should include a comprehensive security score, traffic analysis and metadata inference. Automatically generate\n • Executive Report & Technical Report\n • Risk Score\n • Threat Matrix\n • AI Confidence Score\n • Expected Solution/Deliverables:\n • Working software prototype\n • AI classification engine\n • Interactive dashboard\n • Security assessment report\n • Demonstration video\n • Technical documentation\n • Dataset used for training/testing",
     "submissions": 0,
     "youtubeLink": "",
     "datasetLink": "",
-    "isNew": false
+    "isNew": false,
+    "officialPsNumber": "SIH26160",
+    "deadline": "20 September 2026",
+    "maxSubmissions": 500
   },
   {
     "sNo": 161,
@@ -2252,11 +2732,14 @@ const SIH_PROBLEM_STATEMENTS = [
     "department": "National Technical Research Organisation (NTRO)",
     "category": "Software",
     "theme": "Disaster Management",
-    "description": "• Background In India, due to natural disaster various natural dam / lake formations were observed which can be a major reason of flash flood in the lower catchment, for example, natural lake formed over the Rishi Ganga river of Uttarakhand in Feb 2021, Wapriyang river in Nov 2021, Phuktal river near Sumdo, J&K in Mar 15, Kosi river in 2008 etc. Devastating flood happened in the Kashmir valley, Assam in 2014 and many other places over a period of time. Therefore, simulation modelling for flash flood and scenario generation is important from Humanitarian Assistance and Disaster Relief (HADR) point of view. Another important aspect is water release issues from the Dam of major rivers. In the crisis situation, if the dam brakes, how much water will flow into the river and what are the area it will inundated / impacted need to be estimated. In order to carry out this work simulation modelling needs to be done for the same. In other way if any dam break situation happened then what will be the impacted area. Development of a modelling framework is required which will carry out simulation modelling for the same.\n • Description The above problem statement envisages that a software tool need to be developed which should automatically carry out the simulation modelling for Dam break analysis and identify the inundated area due to flash flood in the lower catchment. The modelling framework should be developed using hydrological data, DEM and satellite imagery of any river. The software/ tools should be capable of carrying out the simulation modelling of water flow in case of dam break or water release through â€˜Smooth Particle Hydrodynamicsâ€™ and â€˜Delf3Dâ€™ model and compare the scenario.\n • Expected Solution/Deliverables The proposed study aims to illustrate the current problems regarding framework generation of Humanitarian Assistance and Disaster Relief using simulation modelling related to flood management as follows:\n\n i. Creation of generalized modelling framework to predict / simulate dam break/ river blockage analysis providing the necessary inputs on the basis of sudden water surge as well as loss and damage analysis using â€˜Smooth Particle Hydrodynamics model and Delf3D modelâ€™.\n\n ii. Building a customized tool/ framework so that it is possible to generate a flood inundation simulation scenario using different input datasets.\n\n iii. Developing a Dashboard for providing modelling input and output visualization framework (GUI). The program should support the large volume of data. Output should be converted to .shp or .Kml file.\n\n iv. Additionally, developing a framework for near real time flood analysis through Google Earth Engine with the help of open source data.\n\n v. Simulation needs to be done by taking the any river and Dam data (open source) of India during the final demonstration of the software.",
+    "description": "• Background In India, due to natural disaster various natural dam / lake formations were observed which can be a major reason of flash flood in the lower catchment, for example, natural lake formed over the Rishi Ganga river of Uttarakhand in Feb 2021, Wapriyang river in Nov 2021, Phuktal river near Sumdo, J&K in Mar 15, Kosi river in 2008 etc. Devastating flood happened in the Kashmir valley, Assam in 2014 and many other places over a period of time. Therefore, simulation modelling for flash flood and scenario generation is important from Humanitarian Assistance and Disaster Relief (HADR) point of view. Another important aspect is water release issues from the Dam of major rivers. In the crisis situation, if the dam brakes, how much water will flow into the river and what are the area it will inundated / impacted need to be estimated. In order to carry out this work simulation modelling needs to be done for the same. In other way if any dam break situation happened then what will be the impacted area. Development of a modelling framework is required which will carry out simulation modelling for the same.\n • Description The above problem statement envisages that a software tool need to be developed which should automatically carry out the simulation modelling for Dam break analysis and identify the inundated area due to flash flood in the lower catchment. The modelling framework should be developed using hydrological data, DEM and satellite imagery of any river. The software/ tools should be capable of carrying out the simulation modelling of water flow in case of dam break or water release through \"˜Smooth Particle Hydrodynamics' and \"˜Delf3D' model and compare the scenario.\n • Expected Solution/Deliverables The proposed study aims to illustrate the current problems regarding framework generation of Humanitarian Assistance and Disaster Relief using simulation modelling related to flood management as follows:\n\n i. Creation of generalized modelling framework to predict / simulate dam break/ river blockage analysis providing the necessary inputs on the basis of sudden water surge as well as loss and damage analysis using \"˜Smooth Particle Hydrodynamics model and Delf3D model'.\n\n ii. Building a customized tool/ framework so that it is possible to generate a flood inundation simulation scenario using different input datasets.\n\n iii. Developing a Dashboard for providing modelling input and output visualization framework (GUI). The program should support the large volume of data. Output should be converted to .shp or .Kml file.\n\n iv. Additionally, developing a framework for near real time flood analysis through Google Earth Engine with the help of open source data.\n\n v. Simulation needs to be done by taking the any river and Dam data (open source) of India during the final demonstration of the software.",
     "submissions": 0,
     "youtubeLink": "",
     "datasetLink": "",
-    "isNew": false
+    "isNew": false,
+    "officialPsNumber": "SIH26161",
+    "deadline": "20 September 2026",
+    "maxSubmissions": 500
   },
   {
     "sNo": 162,
@@ -2270,7 +2753,10 @@ const SIH_PROBLEM_STATEMENTS = [
     "submissions": 0,
     "youtubeLink": "",
     "datasetLink": "",
-    "isNew": false
+    "isNew": false,
+    "officialPsNumber": "SIH26162",
+    "deadline": "20 September 2026",
+    "maxSubmissions": 500
   },
   {
     "sNo": 163,
@@ -2284,7 +2770,10 @@ const SIH_PROBLEM_STATEMENTS = [
     "submissions": 0,
     "youtubeLink": "https://www.youtube.com/watch?v=-wws31Ol3mc",
     "datasetLink": "",
-    "isNew": false
+    "isNew": false,
+    "officialPsNumber": "SIH26163",
+    "deadline": "20 September 2026",
+    "maxSubmissions": 500
   },
   {
     "sNo": 164,
@@ -2294,11 +2783,14 @@ const SIH_PROBLEM_STATEMENTS = [
     "department": "National Technical Research Organisation (NTRO)",
     "category": "Software",
     "theme": "Blockchain & Cybersecurity",
-    "description": "• Background Transitioning to Post Quantum Cryptography based solutions requires preparedness, risk assessment and financial and operational investment. Towards this, discovery and inventory of Cryptographic Artefacts is the critical first step, that will enable the transition.\n • Description i. Identify and catalogue all cryptographic artefacts (algorithms, keys, certificates, protocols, libraries, hardware modules, cloud services) across internal and external facing applications, products and infrastructure.\n\n ii. The tool should perform a comprehensive quantum risk assessment and identify systems prone to potential quantum attacks, and highlight risks to sensitive data.\n\n iii. Classify all the artefacts by type, lifetime and business criticality. Apply structured frameworks such as Moscaâ€™s algorithm (compare data lifetime plus migration time against expected arrival of cryptographic relevant quantum computer) to identify and categorize risks.\n\n iv. Recommend suitable alternatives (PQC/ Hybrid algorithms) for applications based on risk profile, latency, cost, etc.\n\n • Expected Solution/Deliverables:\n\n A Comprehensive CBOM analytics tool that can scan Source code repositories, binaries, libraries and container images, for assessing risks (due to quantum computers), classifying artefacts and suggesting alternatives: - Produce a report displaying all cryptographic assets including versions/ modes in standardised formats Interactive GUI platform to visualise the scan, risks and results",
+    "description": "• Background Transitioning to Post Quantum Cryptography based solutions requires preparedness, risk assessment and financial and operational investment. Towards this, discovery and inventory of Cryptographic Artefacts is the critical first step, that will enable the transition.\n • Description i. Identify and catalogue all cryptographic artefacts (algorithms, keys, certificates, protocols, libraries, hardware modules, cloud services) across internal and external facing applications, products and infrastructure.\n\n ii. The tool should perform a comprehensive quantum risk assessment and identify systems prone to potential quantum attacks, and highlight risks to sensitive data.\n\n iii. Classify all the artefacts by type, lifetime and business criticality. Apply structured frameworks such as Mosca's algorithm (compare data lifetime plus migration time against expected arrival of cryptographic relevant quantum computer) to identify and categorize risks.\n\n iv. Recommend suitable alternatives (PQC/ Hybrid algorithms) for applications based on risk profile, latency, cost, etc.\n\n • Expected Solution/Deliverables:\n\n A Comprehensive CBOM analytics tool that can scan Source code repositories, binaries, libraries and container images, for assessing risks (due to quantum computers), classifying artefacts and suggesting alternatives: - Produce a report displaying all cryptographic assets including versions/ modes in standardised formats Interactive GUI platform to visualise the scan, risks and results",
     "submissions": 0,
     "youtubeLink": "",
     "datasetLink": "",
-    "isNew": false
+    "isNew": false,
+    "officialPsNumber": "SIH26164",
+    "deadline": "20 September 2026",
+    "maxSubmissions": 500
   },
   {
     "sNo": 165,
@@ -2308,11 +2800,14 @@ const SIH_PROBLEM_STATEMENTS = [
     "department": "Oil India Limited",
     "category": "Software",
     "theme": "Smart Automation",
-    "description": "• Background OIL collects large volumes of UA/UC observations, near-miss and incident reports through its HSSE platform but these are triaged manually after certain time intervals such as monthly, quarterly etc.However, Global best practice (DEKRA Martin & Black 2015; EEI SIF Precursor model; VelocityEHS 2024 PSIF classifier) has established that low-severity incidents do not share the same causes as fatalities â€” non-fatal US accidents fell 51% over 15 years while fatalities fell only 25.5%.Leading operators therefore separately flag the ~20â€“25% of reports carrying genuine fatal potential.\n\n Problem Description Build a prototype that ingests OIL's free-text safety reports and automatically a) Classifies each as SIF-potential vs non-SIF-potential b) Tags it to the relevant IOGP Life-Saving Rule (e.g., Energy Isolation, Hot Work,Confined Space, Line of Fire)\n\n c) Surfaces recurring precursor patterns (activity, location, barrier failure) via a dashboard.\n\n Expected Outcome/Solution A working AI/NLP with an interactive dashboard that ranks sites/activities by SIF-precursor density and auto-maps to Life-Saving Rules, enabling HSE to focus interventions where fatal potential is highest.\n\n Relevant Data Availability (if any)\n\n OIL's UA/UC observations, near-miss and incident reports.",
+    "description": "• Background OIL collects large volumes of UA/UC observations, near-miss and incident reports through its HSSE platform but these are triaged manually after certain time intervals such as monthly, quarterly etc.However, Global best practice (DEKRA Martin & Black 2015; EEI SIF Precursor model; VelocityEHS 2024 PSIF classifier) has established that low-severity incidents do not share the same causes as fatalities \"” non-fatal US accidents fell 51% over 15 years while fatalities fell only 25.5%.Leading operators therefore separately flag the ~20\"“25% of reports carrying genuine fatal potential.\n\n Problem Description Build a prototype that ingests OIL's free-text safety reports and automatically a) Classifies each as SIF-potential vs non-SIF-potential b) Tags it to the relevant IOGP Life-Saving Rule (e.g., Energy Isolation, Hot Work,Confined Space, Line of Fire)\n\n c) Surfaces recurring precursor patterns (activity, location, barrier failure) via a dashboard.\n\n Expected Outcome/Solution A working AI/NLP with an interactive dashboard that ranks sites/activities by SIF-precursor density and auto-maps to Life-Saving Rules, enabling HSE to focus interventions where fatal potential is highest.\n\n Relevant Data Availability (if any)\n\n OIL's UA/UC observations, near-miss and incident reports.",
     "submissions": 0,
     "youtubeLink": "",
     "datasetLink": "",
-    "isNew": false
+    "isNew": false,
+    "officialPsNumber": "SIH26165",
+    "deadline": "20 September 2026",
+    "maxSubmissions": 500
   },
   {
     "sNo": 166,
@@ -2326,7 +2821,10 @@ const SIH_PROBLEM_STATEMENTS = [
     "submissions": 0,
     "youtubeLink": "",
     "datasetLink": "",
-    "isNew": false
+    "isNew": false,
+    "officialPsNumber": "SIH26166",
+    "deadline": "20 September 2026",
+    "maxSubmissions": 500
   },
   {
     "sNo": 167,
@@ -2336,11 +2834,14 @@ const SIH_PROBLEM_STATEMENTS = [
     "department": "Department of Space / Indian Space Research Organisation",
     "category": "Software",
     "theme": "Space Technology",
-    "description": "Background Remote-sensing imagery is widely used for agricultural monitoring, disaster management, urban planning, forest monitoring, water-resource assessment, infrastructure mapping, and environmental analysis. However, most existing remote-sensing AI solutions are developed as isolated applications for a single predefined task, such as land-cover classification, object detection, visual question answering, or change detection. These systems often require users to understand satellite-data characteristics, GIS workflows, model selection, and task-specific parameters. Consequently, non-expert users may find it difficult to obtain meaningful information from satellite imagery through simple natural-language queries.\n\n Many operational remote-sensing questions cannot always be answered reliably using a single optical image. Relevant information may be distributed across paired or multiple observations acquired at different times or by different sensors. Optical and multispectral imagery provides spectral and contextual information, whereas synthetic aperture radar (SAR) provides complementary structural information and supports day-and-night acquisition through cloud cover. Multitemporal image pairs are required to identify and interpret changes over time, while co-registered opticalâ€“SAR pairs can provide more complete and reliable information than either modality alone.\n\n A general-purpose large language model (LLM) or vision-language model (VLM) cannot be expected to perform these specialised tasks reliably without adaptation to remote-sensing imagery, sensor characteristics, and domain-specific terminology. The proposed solution must therefore include remote-sensing fine-tuning or domain adaptation and may employ multiple specialised models for different tasks. BigEarthNet.txt will serve as the primary dataset for adapting imageâ€“text representations to multisensor remote-sensing data. VRSBench and RSVQA will be used to evaluate single-image captioning, grounding, and visual question answering, while CDVQA will be used to evaluate multitemporal change-based visual question answering.\n\n The novelty of SatQuery AI lies in its agentic, query-driven framework. Instead of applying a single generic VLM, the system selects and executes suitable remote-sensing specialist models, validates inputs, combines their outputs, and returns an evidence-grounded response.\n\n Description The objective is to develop SatQuery AI, a software-based agentic vision-language assistant for analysing single and paired remote-sensing images through natural-language queries. Single-image understanding is a mandatory baseline, while the principal focus is joint reasoning over paired cross-modal and multitemporal imagery.\n\n Defined Input Scope\n\n • Single image: One optical/multispectral or SAR image for captioning, visual question answering, and text-guided region grounding.\n • Cross-modal pair: Co-registered optical/multispectral and SAR images of the same geographic area for joint information extraction and cross-modal analysis.\n • Bi-temporal pair: Two spatially corresponding images of the same geographic area acquired at different times for change detection, change description, and change-based visual question answering.\n • Supported formats: GeoTIFF or TIFF for geospatial imagery. PNG and JPEG inputs may be accepted only for the prescribed public benchmark datasets.\n\n Mandatory Functional Scope\n\n • Remote-sensing adaptation: At least one visual or vision-language component must be fine-tuned or otherwise adapted using BigEarthNet.txt or the any open source training data.\n • Single-image baseline: Visual question answering shall be mandatory. Each solution must additionally implement either captioning/scene description or text-guided region grounding.\n • Multi-image change analysis: Change description or change-based visual question answering from a bi-temporal image pair shall be mandatory. A spatial change map may also be generated where reference masks are available.\n • Cross-modal pair analysis: The system must extract complementary information from a co-registered optical/multispectral and SAR image pair.\n • Agentic orchestration: The system must automatically select, sequence, and execute the appropriate specialist models or tools according to the query and input configuration.\n\n Representative Queries\n\n • 'Describe the land-cover and major objects visible in this image.'\n • 'Highlight the water body referred to in the query.'\n • 'What changed between these two dates, and where did the change occur?'\n • 'Use the optical and SAR images together to identify built-up and water-covered regions.'\n • 'Has the built-up area increased, decreased, or remained unchanged?'\n\n Agentic Model and Tool Orchestration The system may use multiple specialised components, such as a remote-sensing VQA or captioning model, a grounding model, a change-understanding or change-VQA model, and an opticalâ€“SAR fusion or information-extraction model.\n\n • interpret the query and classify the requested task;\n • check the number, modality, format, metadata, and compatibility of the input images;\n • select one or more models or tools from a predefined registry;\n • configure only permitted task parameters and execute the selected workflow;\n • combine textual and spatial outputs, estimate confidence, and return visual evidence; and\n • provide an auditable execution summary containing the selected task, model/tool names, and key parameters.\n\n The controller may perform internal task planning; however, only the observable execution trace, including the selected task, models or tools, permitted parameters, and outputs will be evaluated. Internal reasoning text is neither required nor evaluated.\n\n Expected Solution The expected solution is an interactive GUI or web application with an agentic remote-sensing AI backend. It should accept supported image inputs and natural-language queries, select the appropriate specialist workflow, and return evidence-grounded textual and visual results.\n\n The solution should include:\n\n • Input upload and compatibility checking.\n • A remote-sensing-adapted vision-language component.\n • Specialist tools for VQA, captioning or grounding, change understanding, and opticalâ€“SAR analysis.\n • An agentic controller for task routing, tool execution, and output integration.\n • Visual evidence, confidence information, execution summaries, and downloadable reports.\n\n Each solution must demonstrate single-image VQA, one additional single-image task, multitemporal change understanding, opticalâ€“SAR paired-image analysis, and agentic model/tool orchestration. A generic LLM or VLM without remote-sensing adaptation will not satisfy the requirements.\n\n Deliverables An interactive GUI or web application with an agentic remote-sensing AI backend, Codes and models including test and demonstration.\n\n Implementation Scope The system shall support single optical/multispectral or SAR images, co-registered opticalâ€“SAR pairs, and bi-temporal pairs in GeoTIFF/TIFF or approved benchmark formats. It must perform single-image VQA, one additional single-image task, change analysis, opticalâ€“SAR joint analysis, and agentic model/tool selection through an interactive GUI or web application.\n\n Evaluation/Judging Criteria Final evaluation will use prescribed public benchmark test subsets and an ISRO/SAC evaluation dataset. Scores will be normalised before combining different metrics.\n\n Add 'Evaluation/Judging Criteria' table here Public benchmarks will be evaluated using the prescribed test splits. The ISRO/SAC evaluation set will contain pre-georeferenced and co-registered Cartosat-2S optical and RISAT SAR image pairs, with task-specific reference answers, labels, bounding boxes, or masks, as applicable. Evaluation annotations will not be disclosed to participating teams.",
+    "description": "Background Remote-sensing imagery is widely used for agricultural monitoring, disaster management, urban planning, forest monitoring, water-resource assessment, infrastructure mapping, and environmental analysis. However, most existing remote-sensing AI solutions are developed as isolated applications for a single predefined task, such as land-cover classification, object detection, visual question answering, or change detection. These systems often require users to understand satellite-data characteristics, GIS workflows, model selection, and task-specific parameters. Consequently, non-expert users may find it difficult to obtain meaningful information from satellite imagery through simple natural-language queries.\n\n Many operational remote-sensing questions cannot always be answered reliably using a single optical image. Relevant information may be distributed across paired or multiple observations acquired at different times or by different sensors. Optical and multispectral imagery provides spectral and contextual information, whereas synthetic aperture radar (SAR) provides complementary structural information and supports day-and-night acquisition through cloud cover. Multitemporal image pairs are required to identify and interpret changes over time, while co-registered optical\"“SAR pairs can provide more complete and reliable information than either modality alone.\n\n A general-purpose large language model (LLM) or vision-language model (VLM) cannot be expected to perform these specialised tasks reliably without adaptation to remote-sensing imagery, sensor characteristics, and domain-specific terminology. The proposed solution must therefore include remote-sensing fine-tuning or domain adaptation and may employ multiple specialised models for different tasks. BigEarthNet.txt will serve as the primary dataset for adapting image\"“text representations to multisensor remote-sensing data. VRSBench and RSVQA will be used to evaluate single-image captioning, grounding, and visual question answering, while CDVQA will be used to evaluate multitemporal change-based visual question answering.\n\n The novelty of SatQuery AI lies in its agentic, query-driven framework. Instead of applying a single generic VLM, the system selects and executes suitable remote-sensing specialist models, validates inputs, combines their outputs, and returns an evidence-grounded response.\n\n Description The objective is to develop SatQuery AI, a software-based agentic vision-language assistant for analysing single and paired remote-sensing images through natural-language queries. Single-image understanding is a mandatory baseline, while the principal focus is joint reasoning over paired cross-modal and multitemporal imagery.\n\n Defined Input Scope\n\n • Single image: One optical/multispectral or SAR image for captioning, visual question answering, and text-guided region grounding.\n • Cross-modal pair: Co-registered optical/multispectral and SAR images of the same geographic area for joint information extraction and cross-modal analysis.\n • Bi-temporal pair: Two spatially corresponding images of the same geographic area acquired at different times for change detection, change description, and change-based visual question answering.\n • Supported formats: GeoTIFF or TIFF for geospatial imagery. PNG and JPEG inputs may be accepted only for the prescribed public benchmark datasets.\n\n Mandatory Functional Scope\n\n • Remote-sensing adaptation: At least one visual or vision-language component must be fine-tuned or otherwise adapted using BigEarthNet.txt or the any open source training data.\n • Single-image baseline: Visual question answering shall be mandatory. Each solution must additionally implement either captioning/scene description or text-guided region grounding.\n • Multi-image change analysis: Change description or change-based visual question answering from a bi-temporal image pair shall be mandatory. A spatial change map may also be generated where reference masks are available.\n • Cross-modal pair analysis: The system must extract complementary information from a co-registered optical/multispectral and SAR image pair.\n • Agentic orchestration: The system must automatically select, sequence, and execute the appropriate specialist models or tools according to the query and input configuration.\n\n Representative Queries\n\n • 'Describe the land-cover and major objects visible in this image.'\n • 'Highlight the water body referred to in the query.'\n • 'What changed between these two dates, and where did the change occur?'\n • 'Use the optical and SAR images together to identify built-up and water-covered regions.'\n • 'Has the built-up area increased, decreased, or remained unchanged?'\n\n Agentic Model and Tool Orchestration The system may use multiple specialised components, such as a remote-sensing VQA or captioning model, a grounding model, a change-understanding or change-VQA model, and an optical\"“SAR fusion or information-extraction model.\n\n • interpret the query and classify the requested task;\n • check the number, modality, format, metadata, and compatibility of the input images;\n • select one or more models or tools from a predefined registry;\n • configure only permitted task parameters and execute the selected workflow;\n • combine textual and spatial outputs, estimate confidence, and return visual evidence; and\n • provide an auditable execution summary containing the selected task, model/tool names, and key parameters.\n\n The controller may perform internal task planning; however, only the observable execution trace, including the selected task, models or tools, permitted parameters, and outputs will be evaluated. Internal reasoning text is neither required nor evaluated.\n\n Expected Solution The expected solution is an interactive GUI or web application with an agentic remote-sensing AI backend. It should accept supported image inputs and natural-language queries, select the appropriate specialist workflow, and return evidence-grounded textual and visual results.\n\n The solution should include:\n\n • Input upload and compatibility checking.\n • A remote-sensing-adapted vision-language component.\n • Specialist tools for VQA, captioning or grounding, change understanding, and optical\"“SAR analysis.\n • An agentic controller for task routing, tool execution, and output integration.\n • Visual evidence, confidence information, execution summaries, and downloadable reports.\n\n Each solution must demonstrate single-image VQA, one additional single-image task, multitemporal change understanding, optical\"“SAR paired-image analysis, and agentic model/tool orchestration. A generic LLM or VLM without remote-sensing adaptation will not satisfy the requirements.\n\n Deliverables An interactive GUI or web application with an agentic remote-sensing AI backend, Codes and models including test and demonstration.\n\n Implementation Scope The system shall support single optical/multispectral or SAR images, co-registered optical\"“SAR pairs, and bi-temporal pairs in GeoTIFF/TIFF or approved benchmark formats. It must perform single-image VQA, one additional single-image task, change analysis, optical\"“SAR joint analysis, and agentic model/tool selection through an interactive GUI or web application.\n\n Evaluation/Judging Criteria Final evaluation will use prescribed public benchmark test subsets and an ISRO/SAC evaluation dataset. Scores will be normalised before combining different metrics.\n\n Add 'Evaluation/Judging Criteria' table here Public benchmarks will be evaluated using the prescribed test splits. The ISRO/SAC evaluation set will contain pre-georeferenced and co-registered Cartosat-2S optical and RISAT SAR image pairs, with task-specific reference answers, labels, bounding boxes, or masks, as applicable. Evaluation annotations will not be disclosed to participating teams.",
     "submissions": 0,
     "youtubeLink": "",
     "datasetLink": "",
-    "isNew": false
+    "isNew": false,
+    "officialPsNumber": "SIH26167",
+    "deadline": "20 September 2026",
+    "maxSubmissions": 500
   },
   {
     "sNo": 168,
@@ -2350,11 +2851,14 @@ const SIH_PROBLEM_STATEMENTS = [
     "department": "Department of Space / Indian Space Research Organisation",
     "category": "Software",
     "theme": "Smart Vehicles",
-    "description": "Background Vehicle logistics, ride-hailing services, quick commerce and emergency responders heavily rely on smartphone-based navigation apps (like Google Maps or MapmyIndia) powered by GNSS (GPS/Galileo/NavIC etc). However, when a vehicle enters a long underground tunnel/ underpass, a multi-level parking lot, a dense forested highway, or a deep urban canyon surrounded by skyscrapers, GNSS connectivity drops entirely. GNSS signals are inherently weak and vulnerable to structural blockage (urban canyons, dense foliage, tunnels, deep valleys) and unintentional electromagnetic interferences from variety of sources such as jamming. This causes navigation apps to freeze, jump erratically, or miscalculate upcoming turns, leading to missed exits, delivery delays, and safety hazards.\n\n In these environments, systems must rely on self-contained Inertial Navigation Systems (INS) built from Inertial Measurement Units (IMUs) (accelerometers and gyroscopes) to calculate position via dead reckoning during GNSS outage and switch back to GNSS aided INS after blackout. While INS is immune to external jamming, low-cost tactical or MEMS-grade IMUs suffer from inherent sensor biases, deterministic errors, and thermo-mechanical noise. While modern high-end cars possess factory-fitted, wheel-connected Inertial Navigation Systems (INS), the vast majority of vehicles on Indian roadsâ€”including commercial trucks, older cars, and millions of two-wheelers (motorcycles/scooters)â€”rely solely on the driverâ€™s smartphone mounted on the dashboard or placed in mobile holder.\n\n Using a smartphone's internal MEMS IMU (accelerometer and gyroscope) to track vehicle position via dead reckoning during a GNSS blackout is highly challenging. The smartphone is subjected to severe chassis vibrations, engine harmonics, sudden braking, and road potholes. Without an external speedometer feed from the vehicle's OBD-II port, calculating distance and velocity exclusively from consumer-grade smartphone sensors results in exponential error accumulation, causing the estimated location to drift away within seconds. To overcome these challenges, there is a need for AI-ML enhanced dead reckoning and sensor fusion(GNSS+INS) techniques that integrate AI and machine learning models with real-time correction strategies.\n\n Description The goal is to develop a lightweight, edge-deployable software engine and mobile application that transforms a standalone smartphone into an Intelligent Dead Reckoning (IDR) system with GNSS Fusion. When a GNSS outage occurs, the application must instantly transition to inertial tracking(INS), maintaining lane-level accuracy without requiring any physical connection to the vehicleâ€™s internal computer and seamlessly switch back to GNSS aided INS solution.\n\n To bypass the need for an external speedometer, the solution must employ AI/ML models trained on vehicle kinematics to accurately predict vehicle speed and acceleration profiles solely from the smartphoneâ€™s noisy accelerometer/gyro inputs. It must dynamically detect and filter out non-navigation motions such as engine idling vibrations, pothole shocks, bumps, and accidental phone misalignments on the mount.\n\n Furthermore, the navigation engine should implement a smart Map-Matching Filter. By overlaying the inertial trajectory onto an offline map database (e.g., Open Street Map), the system should use the road layout as a constraint. For instance, it can apply Non-Holonomic Constraints (NHC), assuming a car cannot slide sideways or fly upwards, to dramatically snap the drifting IMU path back onto the actual road grid.\n\n Also, the GNSS+INS fusion Algorithm should employ AI/ML techniques to develop an AI based fusion model to mitigate drift errors and provide accurate position.\n\n The Final solution and AI/ML models developed should not be constricted to smart phone IMU sensors data alone (Mobile application). These algorithms/models should also work with any other external IMU sensors data (Edge deployable software engine).\n\n Dataset Details: IO-VNBD: Inertial and Odometry benchmark dataset for ground vehicle positioning.\n\n This dataset should be used to train & test the models and submit for screening of proposals. Teams are required to include the preliminary AI models and the results of the position plot inferenced from the subset of IO-VNBD dataset as part of their proposals submitted for evaluation. During the screening process more datasets will be provided for further evaluation of the AI models.\n\n The On-Device Workflow Dead reckoning and GNSS fusion algorithms are hybrid. Complex training happens in the cloud/desktop apriori, while inference happens on the smartphone.\n\n 1. Model Training (Cloud/Desktop): Teams should train AI-ML models using IMU sensors datasets collected using a smartphone mounted on their vehicles or datasets available in open-source domain (for eg. â€˜IO-VNBD datasetâ€™) and bring trained models with them for SIH finale. Teams can bring the downloaded map database (e.g., Open Street Map).\n\n 2. On-Device Execution (Smartphone): During SIH Finale, the trained, lightweight model will need to be exported to the smartphone. It should receive live inputs from the phone's built-in Inertial Measurement Unit (IMU)â€”the accelerometer, gyroscope, and magnetometer/compass and GNSS data if available. The AI-ML based algorithms should remove IMU sensors noise & bias, predict corrections, perform map matching and determine continuous position using AI-ML based algorithms for both dead reckoning and GNSS+INS Fusion. For complete details regarding final solution, refer to the expected solution section.\n\n Expected Solution The final deliverable must be a working mobile application and an Edge deployable software engine exhibiting the following technical capabilities:\n\n • In-Vehicle Alignment & Calibration Engine: An algorithmic module that automatically determines the phoneâ€™s pitch, roll, and yaw relative to the vehicle's driving direction, whether the phone is strictly dashboard-mounted or placed in mobile holder.\n • AI Speed & Vibration Filter: A deep-learning or statistical signal-processing model running locally on the phone that filters out high-frequency road noise/potholes and directly estimates vehicle forward velocity from IMU signals.\n • Advanced Map-Matching & Kinematic Constraints: A framework (e.g., AI-ML framework or Unscented Kalman Filter + Hidden Markov Map Matching) that binds the calculated position to known road networks and geometric paths during a dropout.\n • GNSS+INS Fusion Engine: An innovative AI based Sensor Fusion Algorithm that combines GNSS & IMU measurements and provides significant improvement in overall output by eliminating drift errors and providing accurate position and velocity.\n • Seamless GNSS Deficit Handler: An instant seamless transition mechanism between GNSS aided INS and Dead reckoning modes within milliseconds of GNSS signal blackout and vice-versa.\n • Real-time Navigation Interface: A functional mobile application with UI displaying a smooth, uninterrupted vehicle icon showing seamless navigation.\n\n Performance Benchmark:\n\n Dead Reckoning: The solution must restrict positional drift to less than 10% of the total distance travelled using smartphone IMUs sensors during GNSS signals blackout (for e.g., in case of smartphones IMU, a drift of less than 5 meters is desired over 50m GNSS denied environment in <1 minutes OR less than 100m of drift over a 1km GNSS denied environment at a speed of 60kmph in tunnels/underground metro OR similar simulated environments where GNSS signals are unavailable).\n\n GNSS+INS Fusion: Position update rate of 10Hz with processing on smartphones (Mobile application) and higher update rates on Edge deployable software engine using FOG based IMU sensors data (around 200Hz).",
+    "description": "Background Vehicle logistics, ride-hailing services, quick commerce and emergency responders heavily rely on smartphone-based navigation apps (like Google Maps or MapmyIndia) powered by GNSS (GPS/Galileo/NavIC etc). However, when a vehicle enters a long underground tunnel/ underpass, a multi-level parking lot, a dense forested highway, or a deep urban canyon surrounded by skyscrapers, GNSS connectivity drops entirely. GNSS signals are inherently weak and vulnerable to structural blockage (urban canyons, dense foliage, tunnels, deep valleys) and unintentional electromagnetic interferences from variety of sources such as jamming. This causes navigation apps to freeze, jump erratically, or miscalculate upcoming turns, leading to missed exits, delivery delays, and safety hazards.\n\n In these environments, systems must rely on self-contained Inertial Navigation Systems (INS) built from Inertial Measurement Units (IMUs) (accelerometers and gyroscopes) to calculate position via dead reckoning during GNSS outage and switch back to GNSS aided INS after blackout. While INS is immune to external jamming, low-cost tactical or MEMS-grade IMUs suffer from inherent sensor biases, deterministic errors, and thermo-mechanical noise. While modern high-end cars possess factory-fitted, wheel-connected Inertial Navigation Systems (INS), the vast majority of vehicles on Indian roads\"”including commercial trucks, older cars, and millions of two-wheelers (motorcycles/scooters)\"”rely solely on the driver's smartphone mounted on the dashboard or placed in mobile holder.\n\n Using a smartphone's internal MEMS IMU (accelerometer and gyroscope) to track vehicle position via dead reckoning during a GNSS blackout is highly challenging. The smartphone is subjected to severe chassis vibrations, engine harmonics, sudden braking, and road potholes. Without an external speedometer feed from the vehicle's OBD-II port, calculating distance and velocity exclusively from consumer-grade smartphone sensors results in exponential error accumulation, causing the estimated location to drift away within seconds. To overcome these challenges, there is a need for AI-ML enhanced dead reckoning and sensor fusion(GNSS+INS) techniques that integrate AI and machine learning models with real-time correction strategies.\n\n Description The goal is to develop a lightweight, edge-deployable software engine and mobile application that transforms a standalone smartphone into an Intelligent Dead Reckoning (IDR) system with GNSS Fusion. When a GNSS outage occurs, the application must instantly transition to inertial tracking(INS), maintaining lane-level accuracy without requiring any physical connection to the vehicle's internal computer and seamlessly switch back to GNSS aided INS solution.\n\n To bypass the need for an external speedometer, the solution must employ AI/ML models trained on vehicle kinematics to accurately predict vehicle speed and acceleration profiles solely from the smartphone's noisy accelerometer/gyro inputs. It must dynamically detect and filter out non-navigation motions such as engine idling vibrations, pothole shocks, bumps, and accidental phone misalignments on the mount.\n\n Furthermore, the navigation engine should implement a smart Map-Matching Filter. By overlaying the inertial trajectory onto an offline map database (e.g., Open Street Map), the system should use the road layout as a constraint. For instance, it can apply Non-Holonomic Constraints (NHC), assuming a car cannot slide sideways or fly upwards, to dramatically snap the drifting IMU path back onto the actual road grid.\n\n Also, the GNSS+INS fusion Algorithm should employ AI/ML techniques to develop an AI based fusion model to mitigate drift errors and provide accurate position.\n\n The Final solution and AI/ML models developed should not be constricted to smart phone IMU sensors data alone (Mobile application). These algorithms/models should also work with any other external IMU sensors data (Edge deployable software engine).\n\n Dataset Details: IO-VNBD: Inertial and Odometry benchmark dataset for ground vehicle positioning.\n\n This dataset should be used to train & test the models and submit for screening of proposals. Teams are required to include the preliminary AI models and the results of the position plot inferenced from the subset of IO-VNBD dataset as part of their proposals submitted for evaluation. During the screening process more datasets will be provided for further evaluation of the AI models.\n\n The On-Device Workflow Dead reckoning and GNSS fusion algorithms are hybrid. Complex training happens in the cloud/desktop apriori, while inference happens on the smartphone.\n\n 1. Model Training (Cloud/Desktop): Teams should train AI-ML models using IMU sensors datasets collected using a smartphone mounted on their vehicles or datasets available in open-source domain (for eg. \"˜IO-VNBD dataset') and bring trained models with them for SIH finale. Teams can bring the downloaded map database (e.g., Open Street Map).\n\n 2. On-Device Execution (Smartphone): During SIH Finale, the trained, lightweight model will need to be exported to the smartphone. It should receive live inputs from the phone's built-in Inertial Measurement Unit (IMU)\"”the accelerometer, gyroscope, and magnetometer/compass and GNSS data if available. The AI-ML based algorithms should remove IMU sensors noise & bias, predict corrections, perform map matching and determine continuous position using AI-ML based algorithms for both dead reckoning and GNSS+INS Fusion. For complete details regarding final solution, refer to the expected solution section.\n\n Expected Solution The final deliverable must be a working mobile application and an Edge deployable software engine exhibiting the following technical capabilities:\n\n • In-Vehicle Alignment & Calibration Engine: An algorithmic module that automatically determines the phone's pitch, roll, and yaw relative to the vehicle's driving direction, whether the phone is strictly dashboard-mounted or placed in mobile holder.\n • AI Speed & Vibration Filter: A deep-learning or statistical signal-processing model running locally on the phone that filters out high-frequency road noise/potholes and directly estimates vehicle forward velocity from IMU signals.\n • Advanced Map-Matching & Kinematic Constraints: A framework (e.g., AI-ML framework or Unscented Kalman Filter + Hidden Markov Map Matching) that binds the calculated position to known road networks and geometric paths during a dropout.\n • GNSS+INS Fusion Engine: An innovative AI based Sensor Fusion Algorithm that combines GNSS & IMU measurements and provides significant improvement in overall output by eliminating drift errors and providing accurate position and velocity.\n • Seamless GNSS Deficit Handler: An instant seamless transition mechanism between GNSS aided INS and Dead reckoning modes within milliseconds of GNSS signal blackout and vice-versa.\n • Real-time Navigation Interface: A functional mobile application with UI displaying a smooth, uninterrupted vehicle icon showing seamless navigation.\n\n Performance Benchmark:\n\n Dead Reckoning: The solution must restrict positional drift to less than 10% of the total distance travelled using smartphone IMUs sensors during GNSS signals blackout (for e.g., in case of smartphones IMU, a drift of less than 5 meters is desired over 50m GNSS denied environment in <1 minutes OR less than 100m of drift over a 1km GNSS denied environment at a speed of 60kmph in tunnels/underground metro OR similar simulated environments where GNSS signals are unavailable).\n\n GNSS+INS Fusion: Position update rate of 10Hz with processing on smartphones (Mobile application) and higher update rates on Edge deployable software engine using FOG based IMU sensors data (around 200Hz).",
     "submissions": 0,
     "youtubeLink": "",
     "datasetLink": "",
-    "isNew": false
+    "isNew": false,
+    "officialPsNumber": "SIH26168",
+    "deadline": "20 September 2026",
+    "maxSubmissions": 500
   },
   {
     "sNo": 169,
@@ -2364,11 +2868,14 @@ const SIH_PROBLEM_STATEMENTS = [
     "department": "Department of Space / Indian Space Research Organisation",
     "category": "Software",
     "theme": "Smart Automation",
-    "description": "Background Free Space Optical Communication (FSOC) offers unprecedented advantages for next-generation mobile networks, including gigabit-to-terabit data rates, license-free spectrum operation, high immunity to electromagnetic interference, etc. However, deploying FSOC links between mobile platforms (satellites, UAVs presents a severe challenge of pointing, acquisition and tracking (PAT) of highly narrow laser beams. PAT typically happens in two stages: coarse alignment and fine alignment. Coarse alignment is one of the key challenges of PAT, where the transmitting terminal must first locate and maintain the remote terminal within its camera Field-of-View (FOV).\n\n Developing and testing such algorithms on real hardware requires expensive cameras, pan-tilt mechanisms, and optical components & equipment. A software based virtual camera tracking provides an inexpensive and accessible platform for algorithm development and learning.\n\n Description Unlike conventional radio-frequency systems, FSOC relies on a highly directional optical beam. Even a small angular error can prevent successful communication. Before fine pointing mechanism can take over, a coarse alignment stage must:\n\n • Observe the surrounding environment,\n • Acquire and detect the remote terminal or beacon,\n • Estimate the position, and\n • Continuously adjust the pointing direction to maintain visibility.\n\n The participants shall develop this coarse alignment process in software, allowing to develop and validate tracking algorithms without specialized hardware and setup. The following section provides reference parameters and performance criteria to be considered for the software development.\n\n Parameters and Specifications Functional Objective: Develop a software system that autonomously detects, identifies, and continuously tracks a designated moving target within a virtual scene by controlling a virtual camera viewport.\n\n Add 'Parameters and Specifications' table here Expected Solution Participants shall develop an AI-assisted camera tracking system capable of automatically detecting and continuously tracking a moving optical beacon in a simulated video stream while controlling a virtual pan-tilt camera.\n\n The developed software shall be able to:\n\n • Generate a configurable virtual environment,\n • Generate one or more moving targets,\n • Implement a movable virtual camera,\n • Detect the target beacon automatically,\n • Track the beacon continuously using computer vision,\n • Control and reposition the virtual camera,\n • Generate and introduce disturbances due to atmospheric turbulence, platform vibrations, camera motion, noise, etc., in the virtual camera feed,\n • Display tracking performance and statistics in real-time Deliverables Each participating team shall submit the following mandatory deliverables:\n\n Software Application A standalone executable application implementing the complete virtual camera tracking system. The application shall provide all the mandatory functions and features as described above.\n\n Source Code Complete source code with proper documentation. The code shall be modular and adequately commented.\n\n Technical Report The technical report (about 10-15 pages) containing problem understanding, system architecture, description of software modules, tracking methods, AI methods (if used), test methodology, performance analysis and future improvements shall be submitted.\n\n User Manual The user manual with the description of installation of software, application operation, parameter configuration, GUI description, etc. shall be submitted. A 3â€“5 minutes video may also be provided as an optional deliverable for demonstration of the application.\n\n Performance Log The software should be capable of automatically generating a performance report containing simulation duration, FPS, acquisition time, average and maximum tracking error, lock retention rate, processing time, etc.\n\n Evaluation Method and Criteria The solutions developed by participating teams will be evaluated using multi-layered evaluation method. The following table describes stages of evaluation, their weightage and methods.\n\n Add 'Evaluation Method and Criteria' table here",
+    "description": "Background Free Space Optical Communication (FSOC) offers unprecedented advantages for next-generation mobile networks, including gigabit-to-terabit data rates, license-free spectrum operation, high immunity to electromagnetic interference, etc. However, deploying FSOC links between mobile platforms (satellites, UAVs presents a severe challenge of pointing, acquisition and tracking (PAT) of highly narrow laser beams. PAT typically happens in two stages: coarse alignment and fine alignment. Coarse alignment is one of the key challenges of PAT, where the transmitting terminal must first locate and maintain the remote terminal within its camera Field-of-View (FOV).\n\n Developing and testing such algorithms on real hardware requires expensive cameras, pan-tilt mechanisms, and optical components & equipment. A software based virtual camera tracking provides an inexpensive and accessible platform for algorithm development and learning.\n\n Description Unlike conventional radio-frequency systems, FSOC relies on a highly directional optical beam. Even a small angular error can prevent successful communication. Before fine pointing mechanism can take over, a coarse alignment stage must:\n\n • Observe the surrounding environment,\n • Acquire and detect the remote terminal or beacon,\n • Estimate the position, and\n • Continuously adjust the pointing direction to maintain visibility.\n\n The participants shall develop this coarse alignment process in software, allowing to develop and validate tracking algorithms without specialized hardware and setup. The following section provides reference parameters and performance criteria to be considered for the software development.\n\n Parameters and Specifications Functional Objective: Develop a software system that autonomously detects, identifies, and continuously tracks a designated moving target within a virtual scene by controlling a virtual camera viewport.\n\n Add 'Parameters and Specifications' table here Expected Solution Participants shall develop an AI-assisted camera tracking system capable of automatically detecting and continuously tracking a moving optical beacon in a simulated video stream while controlling a virtual pan-tilt camera.\n\n The developed software shall be able to:\n\n • Generate a configurable virtual environment,\n • Generate one or more moving targets,\n • Implement a movable virtual camera,\n • Detect the target beacon automatically,\n • Track the beacon continuously using computer vision,\n • Control and reposition the virtual camera,\n • Generate and introduce disturbances due to atmospheric turbulence, platform vibrations, camera motion, noise, etc., in the virtual camera feed,\n • Display tracking performance and statistics in real-time Deliverables Each participating team shall submit the following mandatory deliverables:\n\n Software Application A standalone executable application implementing the complete virtual camera tracking system. The application shall provide all the mandatory functions and features as described above.\n\n Source Code Complete source code with proper documentation. The code shall be modular and adequately commented.\n\n Technical Report The technical report (about 10-15 pages) containing problem understanding, system architecture, description of software modules, tracking methods, AI methods (if used), test methodology, performance analysis and future improvements shall be submitted.\n\n User Manual The user manual with the description of installation of software, application operation, parameter configuration, GUI description, etc. shall be submitted. A 3\"“5 minutes video may also be provided as an optional deliverable for demonstration of the application.\n\n Performance Log The software should be capable of automatically generating a performance report containing simulation duration, FPS, acquisition time, average and maximum tracking error, lock retention rate, processing time, etc.\n\n Evaluation Method and Criteria The solutions developed by participating teams will be evaluated using multi-layered evaluation method. The following table describes stages of evaluation, their weightage and methods.\n\n Add 'Evaluation Method and Criteria' table here",
     "submissions": 0,
     "youtubeLink": "",
     "datasetLink": "https://drive.google.com/file/d/1AWRWChSMKU8FI38XxfFyQJfCRp3gqkF6/view?usp=drive_link",
-    "isNew": false
+    "isNew": false,
+    "officialPsNumber": "SIH26169",
+    "deadline": "20 September 2026",
+    "maxSubmissions": 500
   },
   {
     "sNo": 170,
@@ -2378,11 +2885,14 @@ const SIH_PROBLEM_STATEMENTS = [
     "department": "Department of Space / Indian Space Research Organisation",
     "category": "Software",
     "theme": "Smart Automation",
-    "description": "Background In high-reliability sectors (like space) electronic components undergo rigorous environmental stress screening (ESS), including Burn-In testing (operating components at elevated temperatures, e.g., 125Â°C for extended periods).\n\n Traditional screening relies on static parametric pass/fail limits. However, 'latent defects'â€”components that pass the absolute limits but exhibit subtle, anomalous drift over timeâ€”often escape into final payloads, leading to catastrophic field failures.\n\n Description Development of a predictive machine learning model that analyzes time-series parametric data (e.g., standby current Iddq, leakage currents, or propagation delays measured at intervals like 0h, 24h, 96h, and 168h to detect anomalous components.\n\n Expected Solution Module A: The outlier detection system Static limits catch obvious failures. Participants need to develop a 'Dynamic' outlier detection system. If a lot has an average leakage current of 10ÂµA, a part showing 45 ÂµA is a massive anomaly, even if the absolute datasheet maximum limit is 50 ÂµA.\n\n Module B: Time-Series Drift Predictor Build a predictive regression model that takes Value_0h and Value_24h as inputs and forecasts Value_168h. If the predicted 168h drift rate exceeds a calculated safety slope, the system flags the component for early rejection.\n\n Evaluation Metrics:\n\n • Anomaly Detection Score: a False Negative (missing a defective part) is catastrophic, penalizing teams that let bad parts escape.\n • Drift Prediction Accuracy : The mean absolute error between the predicted Value_168h and the actual hidden ground-truth values.\n • Explainability : Can the model justify its classification to a QA inspector, or is it a complete black box?",
+    "description": "Background In high-reliability sectors (like space) electronic components undergo rigorous environmental stress screening (ESS), including Burn-In testing (operating components at elevated temperatures, e.g., 125°C for extended periods).\n\n Traditional screening relies on static parametric pass/fail limits. However, 'latent defects'\"”components that pass the absolute limits but exhibit subtle, anomalous drift over time\"”often escape into final payloads, leading to catastrophic field failures.\n\n Description Development of a predictive machine learning model that analyzes time-series parametric data (e.g., standby current Iddq, leakage currents, or propagation delays measured at intervals like 0h, 24h, 96h, and 168h to detect anomalous components.\n\n Expected Solution Module A: The outlier detection system Static limits catch obvious failures. Participants need to develop a 'Dynamic' outlier detection system. If a lot has an average leakage current of 10µA, a part showing 45 µA is a massive anomaly, even if the absolute datasheet maximum limit is 50 µA.\n\n Module B: Time-Series Drift Predictor Build a predictive regression model that takes Value_0h and Value_24h as inputs and forecasts Value_168h. If the predicted 168h drift rate exceeds a calculated safety slope, the system flags the component for early rejection.\n\n Evaluation Metrics:\n\n • Anomaly Detection Score: a False Negative (missing a defective part) is catastrophic, penalizing teams that let bad parts escape.\n • Drift Prediction Accuracy : The mean absolute error between the predicted Value_168h and the actual hidden ground-truth values.\n • Explainability : Can the model justify its classification to a QA inspector, or is it a complete black box?",
     "submissions": 0,
     "youtubeLink": "",
     "datasetLink": "",
-    "isNew": false
+    "isNew": false,
+    "officialPsNumber": "SIH26170",
+    "deadline": "20 September 2026",
+    "maxSubmissions": 500
   },
   {
     "sNo": 171,
@@ -2392,11 +2902,14 @@ const SIH_PROBLEM_STATEMENTS = [
     "department": "Department of Space / Indian Space Research Organisation",
     "category": "Software",
     "theme": "Smart Automation",
-    "description": "Background AI agents are becoming omnipresent in the current era and can play an important role in our digital interactions. If an agentic AI pipeline has access to our visual context, screen states, they can assist users in complex workflows and automate many tasks. Most of the agentic AI pipelines are deployed on server side which limits the type to data that a user can share with it. It would open a new dimension of possibilities, if a local agent is deployed on user machine particularly browser which can eliminate the need to share the sensitive data with the server. Local system generally has fewer resources than server and is unable to host a full-fledged pipeline therefore only the non-sensitive data such as structure of the screen, application fields etc can be sent to server for processing.\n\n Modern browser APIs (such as WebGPU and WebAssembly) and local inference libraries (like ONNX Runtime Web and Transformers.js) have unlocked the ability to run lightweight machine learning models directly on the client. The aim is to bridge these two environments: leveraging the reasoning power of cloud or server based AI while strictly enforcing data privacy at the client side.\n\n Description Participants are required to build a privacy-preserving vision agent which runs on browser. This involves implementing a client-side architecture where a local Vision Transformer (ViT) or equivalent computer vision model 'reads' the user's screen and takes decision based on that. If it requires the visual context to be sent to server, it shall sanitize the sensitive/PII data using DOM tags or any other method, before any network request is made. It should dynamically detect and redact sensitive elements. For example, blurring faces, blacking out passwords, and masking PII etc. Only this anonymized, unidentifiable data should be transmitted to the central server which should be aware for this redaction scheme and can process data accordingly. The server will then process the sanitized context and return actionable commands for the browser agent to execute. Participants must balance the trade-offs between inference latency and the accuracy.\n\n Expected Solution A successful submission should include a working prototype consisting of client side extension and server that demonstrates the following:\n\n Client-side (extension/JS) running in popular browsers (chrome, Firefox) components:\n\n • Local Vision Processing: Implementation of a client-side vision model running in the browser (e.g., via WebGPU) that evaluates the current screen state.\n • Privacy Preserving Filter: A mechanism for sanitizing sensitive or personal visual data. This can be achieved through local bounding-box redaction, semantic obfuscation, masking etc. This should be clearly demonstrated.\n\n Server-side implementation components:\n\n • Server Side Integration: The transmission of the anonymized visual context to a centralized LLM/VLM, which successfully interprets the sanitized data and returns the response which may be processed data to be again ingested by local client or an UI action (e.g., 'click the submit button,' 'scroll down') that the local client executes.\n • Participants are free to use any offline deployable (open-source/open-weights) model on server side. During SIH they can use cloud hosted version of these. An end-to-end task assisting the user should be demonstrated.\n\n Evaluation will be done on the following metrics:\n\n 1-Accuracy of visual context from screen â€“ 25% 2-Recall and precision for detection of sensitive/PII data â€“ 20% 3-Precision of redaction â€“ 20% 4-Client side resource utilization â€“ 20% 5-Overall end-to-end latency of the provided task -15%",
+    "description": "Background AI agents are becoming omnipresent in the current era and can play an important role in our digital interactions. If an agentic AI pipeline has access to our visual context, screen states, they can assist users in complex workflows and automate many tasks. Most of the agentic AI pipelines are deployed on server side which limits the type to data that a user can share with it. It would open a new dimension of possibilities, if a local agent is deployed on user machine particularly browser which can eliminate the need to share the sensitive data with the server. Local system generally has fewer resources than server and is unable to host a full-fledged pipeline therefore only the non-sensitive data such as structure of the screen, application fields etc can be sent to server for processing.\n\n Modern browser APIs (such as WebGPU and WebAssembly) and local inference libraries (like ONNX Runtime Web and Transformers.js) have unlocked the ability to run lightweight machine learning models directly on the client. The aim is to bridge these two environments: leveraging the reasoning power of cloud or server based AI while strictly enforcing data privacy at the client side.\n\n Description Participants are required to build a privacy-preserving vision agent which runs on browser. This involves implementing a client-side architecture where a local Vision Transformer (ViT) or equivalent computer vision model 'reads' the user's screen and takes decision based on that. If it requires the visual context to be sent to server, it shall sanitize the sensitive/PII data using DOM tags or any other method, before any network request is made. It should dynamically detect and redact sensitive elements. For example, blurring faces, blacking out passwords, and masking PII etc. Only this anonymized, unidentifiable data should be transmitted to the central server which should be aware for this redaction scheme and can process data accordingly. The server will then process the sanitized context and return actionable commands for the browser agent to execute. Participants must balance the trade-offs between inference latency and the accuracy.\n\n Expected Solution A successful submission should include a working prototype consisting of client side extension and server that demonstrates the following:\n\n Client-side (extension/JS) running in popular browsers (chrome, Firefox) components:\n\n • Local Vision Processing: Implementation of a client-side vision model running in the browser (e.g., via WebGPU) that evaluates the current screen state.\n • Privacy Preserving Filter: A mechanism for sanitizing sensitive or personal visual data. This can be achieved through local bounding-box redaction, semantic obfuscation, masking etc. This should be clearly demonstrated.\n\n Server-side implementation components:\n\n • Server Side Integration: The transmission of the anonymized visual context to a centralized LLM/VLM, which successfully interprets the sanitized data and returns the response which may be processed data to be again ingested by local client or an UI action (e.g., 'click the submit button,' 'scroll down') that the local client executes.\n • Participants are free to use any offline deployable (open-source/open-weights) model on server side. During SIH they can use cloud hosted version of these. An end-to-end task assisting the user should be demonstrated.\n\n Evaluation will be done on the following metrics:\n\n 1-Accuracy of visual context from screen \"“ 25% 2-Recall and precision for detection of sensitive/PII data \"“ 20% 3-Precision of redaction \"“ 20% 4-Client side resource utilization \"“ 20% 5-Overall end-to-end latency of the provided task -15%",
     "submissions": 0,
     "youtubeLink": "",
     "datasetLink": "",
-    "isNew": false
+    "isNew": false,
+    "officialPsNumber": "SIH26171",
+    "deadline": "20 September 2026",
+    "maxSubmissions": 500
   },
   {
     "sNo": 172,
@@ -2410,7 +2923,10 @@ const SIH_PROBLEM_STATEMENTS = [
     "submissions": 0,
     "youtubeLink": "",
     "datasetLink": "",
-    "isNew": false
+    "isNew": false,
+    "officialPsNumber": "SIH26172",
+    "deadline": "20 September 2026",
+    "maxSubmissions": 500
   },
   {
     "sNo": 173,
@@ -2420,11 +2936,14 @@ const SIH_PROBLEM_STATEMENTS = [
     "department": "Department of Space / Indian Space Research Organisation",
     "category": "Software",
     "theme": "Smart Automation",
-    "description": "Background As vocal audio information is very data intensive making it difficult to transmit through low data rate links. In alert and distress based scenarios Transmitting Audio information is critical instead of written message as it will be more inclusive and will cater to everyone even if they are literate or not.\n\n Description Build an Android App with lightweight, highly accurate STT and TTS models for 10 Indian Languages (Hindi, Gujarati, Marathi, Kannada, Malayalam, Tamil, Telugu, Odia, Bengali, English) that runs locally on a low-power device. The systemâ€™s STT module when activated after detecting pauses and stoppages should form the sentences detected and must instantly and efficiently stream the data through wifi/Bluetooth connected embedded device or another phone with same application with minimal latency. The systems TTS module when activated after receiving the Text data should convert it into intelligible speech which will be played as a voice note and alert type messages will be announced at highest volume non-interruptible. To verify the complete loop two phones with same app one in TTS mode and another in STT mode can be connected via wifi or Bluetooth and it should work like a walkie talkie using push to talk feature, if turned off it should work like a phone.\n\n Key Metrics for Evaluation\n\n • Efficiency: Model size, App size (RAM/Flash footprint) and CPU usage during idle listening. (20%)\n • Accuracy: Low Word Error Rate for STT and High human legibility and flow for TTS. (40%)\n • Latency: The Time delay between the Words said and STT completion, Time delay between the text received and audio processed and played for TTS along with RTF (Real Time Factor). The time delta between the sentence said and the same sentence started as audio in another phone. (20%)\n\n Software & Framework Restrictions\n\n • Open-Source Only: The use of proprietary, closed-source, or commercial voice-activation SDKs is strictly prohibited.\n • Allowed Frameworks: Teams must build their pipelines using open-source machine learning and TinyML frameworks. Recommended tools include TensorFlow Lite for Microcontrollers, PyTorch Mobile or similar.\n • Fully Offline Working: Model or pipeline should work fully offline only and no internet hosted API based solutions are expected and encouraged for the STT or TTS.\n\n Expected Solution Teams are expected to deliver a robust, deployable system architecture. A successful submission must strictly satisfy the following technical boundaries:\n\n • Hardware & Runtime Environment: The Android application must run smoothly on Low and Mid rage mobile phones.",
+    "description": "Background As vocal audio information is very data intensive making it difficult to transmit through low data rate links. In alert and distress based scenarios Transmitting Audio information is critical instead of written message as it will be more inclusive and will cater to everyone even if they are literate or not.\n\n Description Build an Android App with lightweight, highly accurate STT and TTS models for 10 Indian Languages (Hindi, Gujarati, Marathi, Kannada, Malayalam, Tamil, Telugu, Odia, Bengali, English) that runs locally on a low-power device. The system's STT module when activated after detecting pauses and stoppages should form the sentences detected and must instantly and efficiently stream the data through wifi/Bluetooth connected embedded device or another phone with same application with minimal latency. The systems TTS module when activated after receiving the Text data should convert it into intelligible speech which will be played as a voice note and alert type messages will be announced at highest volume non-interruptible. To verify the complete loop two phones with same app one in TTS mode and another in STT mode can be connected via wifi or Bluetooth and it should work like a walkie talkie using push to talk feature, if turned off it should work like a phone.\n\n Key Metrics for Evaluation\n\n • Efficiency: Model size, App size (RAM/Flash footprint) and CPU usage during idle listening. (20%)\n • Accuracy: Low Word Error Rate for STT and High human legibility and flow for TTS. (40%)\n • Latency: The Time delay between the Words said and STT completion, Time delay between the text received and audio processed and played for TTS along with RTF (Real Time Factor). The time delta between the sentence said and the same sentence started as audio in another phone. (20%)\n\n Software & Framework Restrictions\n\n • Open-Source Only: The use of proprietary, closed-source, or commercial voice-activation SDKs is strictly prohibited.\n • Allowed Frameworks: Teams must build their pipelines using open-source machine learning and TinyML frameworks. Recommended tools include TensorFlow Lite for Microcontrollers, PyTorch Mobile or similar.\n • Fully Offline Working: Model or pipeline should work fully offline only and no internet hosted API based solutions are expected and encouraged for the STT or TTS.\n\n Expected Solution Teams are expected to deliver a robust, deployable system architecture. A successful submission must strictly satisfy the following technical boundaries:\n\n • Hardware & Runtime Environment: The Android application must run smoothly on Low and Mid rage mobile phones.",
     "submissions": 0,
     "youtubeLink": "",
     "datasetLink": "",
-    "isNew": false
+    "isNew": false,
+    "officialPsNumber": "SIH26173",
+    "deadline": "20 September 2026",
+    "maxSubmissions": 500
   },
   {
     "sNo": 174,
@@ -2434,11 +2953,14 @@ const SIH_PROBLEM_STATEMENTS = [
     "department": "Department of Space / Indian Space Research Organisation",
     "category": "Software",
     "theme": "Space Technology",
-    "description": "Background As humanity aims for space missions such as BAS and lunar missions, real-time ground support becomes impossible due to communication delays. An AI-based HAR system acts as an on-board assistant that supports the execution of scientific experiments, ensuring the success of science beyond Earth's orbit.\n\n In the space environment, AI-based HAR system may act as mission-critical support for astronauts. By tracking astronaut movements and activities in real time, HAR ensures scientific experiments and related protocols are executed flawlessly without requiring constant, high-bandwidth communication with mission control.\n\n Description Challenge is to design and train an AI model that recognizes and validates the sequence of a pre-defined experiment using human activity recognition techniques.\n\n Standalone operation: Space stations operate on restricted data bandwidth to Earth. Rather than streaming raw video to ground control, data is processed locally at the 'edge.' Inputs are given from fixed-payload cameras.\n\n Dataset generation to train model for object detection, pose estimation and hand-object interaction based on the steps of the experiment.\n\n Optional: Another challenge is that Standard 2D or ground-based 3D posture models fail because astronauts do not have a fixed 'up' or 'down' orientation. The AI model should use orientation-agnostic 3D Human Mesh Recovery (HMR) to track the astronautâ€™s body relative to the payload rack, not the floor.\n\n Expected Solution\n\n • The software should continuously process local video feeds to track the sequence of experiment.\n • At the start or after each step, the model should suggest the next step to be performed.\n • It should alert when a step is skipped or an out of sequence step is added. It should be a voice based alert.\n • Using the live video, it should generate a timestamped and structured lightweight text file of the conducted steps with outcomes/ status.\n • Stream the video of the experiment to specific IP and also store the video locally.\n • A graphical user interface for monitoring the above activities.\n • Deliverable: A trained AI model that runs on offline standalone system",
+    "description": "Background As humanity aims for space missions such as BAS and lunar missions, real-time ground support becomes impossible due to communication delays. An AI-based HAR system acts as an on-board assistant that supports the execution of scientific experiments, ensuring the success of science beyond Earth's orbit.\n\n In the space environment, AI-based HAR system may act as mission-critical support for astronauts. By tracking astronaut movements and activities in real time, HAR ensures scientific experiments and related protocols are executed flawlessly without requiring constant, high-bandwidth communication with mission control.\n\n Description Challenge is to design and train an AI model that recognizes and validates the sequence of a pre-defined experiment using human activity recognition techniques.\n\n Standalone operation: Space stations operate on restricted data bandwidth to Earth. Rather than streaming raw video to ground control, data is processed locally at the 'edge.' Inputs are given from fixed-payload cameras.\n\n Dataset generation to train model for object detection, pose estimation and hand-object interaction based on the steps of the experiment.\n\n Optional: Another challenge is that Standard 2D or ground-based 3D posture models fail because astronauts do not have a fixed 'up' or 'down' orientation. The AI model should use orientation-agnostic 3D Human Mesh Recovery (HMR) to track the astronaut's body relative to the payload rack, not the floor.\n\n Expected Solution\n\n • The software should continuously process local video feeds to track the sequence of experiment.\n • At the start or after each step, the model should suggest the next step to be performed.\n • It should alert when a step is skipped or an out of sequence step is added. It should be a voice based alert.\n • Using the live video, it should generate a timestamped and structured lightweight text file of the conducted steps with outcomes/ status.\n • Stream the video of the experiment to specific IP and also store the video locally.\n • A graphical user interface for monitoring the above activities.\n • Deliverable: A trained AI model that runs on offline standalone system",
     "submissions": 0,
     "youtubeLink": "",
     "datasetLink": "",
-    "isNew": false
+    "isNew": false,
+    "officialPsNumber": "SIH26174",
+    "deadline": "20 September 2026",
+    "maxSubmissions": 500
   },
   {
     "sNo": 175,
@@ -2452,7 +2974,10 @@ const SIH_PROBLEM_STATEMENTS = [
     "submissions": 0,
     "youtubeLink": "",
     "datasetLink": "",
-    "isNew": false
+    "isNew": false,
+    "officialPsNumber": "SIH26175",
+    "deadline": "20 September 2026",
+    "maxSubmissions": 500
   },
   {
     "sNo": 176,
@@ -2466,7 +2991,10 @@ const SIH_PROBLEM_STATEMENTS = [
     "submissions": 0,
     "youtubeLink": "",
     "datasetLink": "",
-    "isNew": false
+    "isNew": false,
+    "officialPsNumber": "SIH26176",
+    "deadline": "20 September 2026",
+    "maxSubmissions": 500
   },
   {
     "sNo": 177,
@@ -2480,7 +3008,10 @@ const SIH_PROBLEM_STATEMENTS = [
     "submissions": 0,
     "youtubeLink": "",
     "datasetLink": "",
-    "isNew": false
+    "isNew": false,
+    "officialPsNumber": "SIH26177",
+    "deadline": "20 September 2026",
+    "maxSubmissions": 500
   },
   {
     "sNo": 178,
@@ -2494,7 +3025,10 @@ const SIH_PROBLEM_STATEMENTS = [
     "submissions": 0,
     "youtubeLink": "",
     "datasetLink": "",
-    "isNew": false
+    "isNew": false,
+    "officialPsNumber": "SIH26178",
+    "deadline": "20 September 2026",
+    "maxSubmissions": 500
   },
   {
     "sNo": 179,
@@ -2508,7 +3042,10 @@ const SIH_PROBLEM_STATEMENTS = [
     "submissions": 0,
     "youtubeLink": "",
     "datasetLink": "",
-    "isNew": false
+    "isNew": false,
+    "officialPsNumber": "SIH26179",
+    "deadline": "20 September 2026",
+    "maxSubmissions": 500
   },
   {
     "sNo": 180,
@@ -2522,7 +3059,10 @@ const SIH_PROBLEM_STATEMENTS = [
     "submissions": 0,
     "youtubeLink": "",
     "datasetLink": "",
-    "isNew": false
+    "isNew": false,
+    "officialPsNumber": "SIH26180",
+    "deadline": "20 September 2026",
+    "maxSubmissions": 500
   },
   {
     "sNo": 181,
@@ -2536,7 +3076,10 @@ const SIH_PROBLEM_STATEMENTS = [
     "submissions": 0,
     "youtubeLink": "",
     "datasetLink": "",
-    "isNew": false
+    "isNew": false,
+    "officialPsNumber": "SIH26181",
+    "deadline": "20 September 2026",
+    "maxSubmissions": 500
   },
   {
     "sNo": 182,
@@ -2550,7 +3093,10 @@ const SIH_PROBLEM_STATEMENTS = [
     "submissions": 0,
     "youtubeLink": "",
     "datasetLink": "",
-    "isNew": false
+    "isNew": false,
+    "officialPsNumber": "SIH26182",
+    "deadline": "20 September 2026",
+    "maxSubmissions": 500
   },
   {
     "sNo": 183,
@@ -2564,7 +3110,10 @@ const SIH_PROBLEM_STATEMENTS = [
     "submissions": 0,
     "youtubeLink": "",
     "datasetLink": "",
-    "isNew": false
+    "isNew": false,
+    "officialPsNumber": "SIH26183",
+    "deadline": "20 September 2026",
+    "maxSubmissions": 500
   },
   {
     "sNo": 184,
@@ -2578,7 +3127,10 @@ const SIH_PROBLEM_STATEMENTS = [
     "submissions": 0,
     "youtubeLink": "",
     "datasetLink": "",
-    "isNew": false
+    "isNew": false,
+    "officialPsNumber": "SIH26184",
+    "deadline": "20 September 2026",
+    "maxSubmissions": 500
   },
   {
     "sNo": 185,
@@ -2588,11 +3140,14 @@ const SIH_PROBLEM_STATEMENTS = [
     "department": "National Security Guard (NSG), Police II Division",
     "category": "Hardware",
     "theme": "Robotics and Drones",
-    "description": "• Background During high-intensity urban counter-terrorism (CT) and Close-Quarter Battle (CQB) operations, the National Security Guard (NSG) operates in highly restrictive indoor spaces like closed rooms, basement areas, narrow corridors and stairwells. For seamless communication, commandos rely on vest-mounted handheld tactical radios. These systems traditionally use rigid, protruding omnidirectional whip antennas mounted on top of the radio itself. In fast-paced operations in confined spaces, these external whip antennas not only restricts ranges but also present an obstruction or cause frequent snagging on obstacles like door frames, windows or loose and hanging objects which can damage the the radio interface or obstruct his tactical movement.\n • Description Traditional whip antennas pose significant operational limitations.\n\n When an assault team enters a reinforced concrete or steel/glass-framed building, the RF signals radiated from a vest-mounted antenna suffers from severe attenuation and fading as the signals are tend to be blocked by virtue of its low positioning. Additionally, omnidirectional radiation patterns make the team vulnerable to electronic eavesdropping or directional tracking by sophisticated adversaries. To address these challenges, the antenna system needs to be elevated to the highest physical point of the commando - the helmet - without adding bulk or altering ballistic integrity. There is an immediate requirement to develop a low-profile, flexible conformal antenna array that integrates seamlessly into or onto tactical ballistic helmets while maintaining high gain and minimal protruding hardware.\n\n • Expected Solution A ruggedized, zero-profile wearable antenna system should be developed with the following parameters:- (a) Lightweight, ultra-thin and flexible microstrip patch antenna elements designed for integration with NSG ballistic helmets without degrading impact or ballistic protection ratings.\n\n (b) The conformal array must support UHF and L band frequencies to be able to operate with handheld radios and with the svl equipment like helmet mounted/ body worn cameras to transmit live video streams.\n\n (c) Advanced RF shielding layers built into the underside of the array to isolate the commandoâ€™s head from radiation while directing an optimized radiation pattern upward and outward.\n\n (d) A ruggedized coaxial interface cable routed cleanly along the helmet to connect directly into the NSG existing handheld radios and body-worn camera systems being procured.",
+    "description": "• Background During high-intensity urban counter-terrorism (CT) and Close-Quarter Battle (CQB) operations, the National Security Guard (NSG) operates in highly restrictive indoor spaces like closed rooms, basement areas, narrow corridors and stairwells. For seamless communication, commandos rely on vest-mounted handheld tactical radios. These systems traditionally use rigid, protruding omnidirectional whip antennas mounted on top of the radio itself. In fast-paced operations in confined spaces, these external whip antennas not only restricts ranges but also present an obstruction or cause frequent snagging on obstacles like door frames, windows or loose and hanging objects which can damage the the radio interface or obstruct his tactical movement.\n • Description Traditional whip antennas pose significant operational limitations.\n\n When an assault team enters a reinforced concrete or steel/glass-framed building, the RF signals radiated from a vest-mounted antenna suffers from severe attenuation and fading as the signals are tend to be blocked by virtue of its low positioning. Additionally, omnidirectional radiation patterns make the team vulnerable to electronic eavesdropping or directional tracking by sophisticated adversaries. To address these challenges, the antenna system needs to be elevated to the highest physical point of the commando - the helmet - without adding bulk or altering ballistic integrity. There is an immediate requirement to develop a low-profile, flexible conformal antenna array that integrates seamlessly into or onto tactical ballistic helmets while maintaining high gain and minimal protruding hardware.\n\n • Expected Solution A ruggedized, zero-profile wearable antenna system should be developed with the following parameters:- (a) Lightweight, ultra-thin and flexible microstrip patch antenna elements designed for integration with NSG ballistic helmets without degrading impact or ballistic protection ratings.\n\n (b) The conformal array must support UHF and L band frequencies to be able to operate with handheld radios and with the svl equipment like helmet mounted/ body worn cameras to transmit live video streams.\n\n (c) Advanced RF shielding layers built into the underside of the array to isolate the commando's head from radiation while directing an optimized radiation pattern upward and outward.\n\n (d) A ruggedized coaxial interface cable routed cleanly along the helmet to connect directly into the NSG existing handheld radios and body-worn camera systems being procured.",
     "submissions": 0,
     "youtubeLink": "",
     "datasetLink": "",
-    "isNew": false
+    "isNew": false,
+    "officialPsNumber": "SIH26185",
+    "deadline": "20 September 2026",
+    "maxSubmissions": 500
   },
   {
     "sNo": 186,
@@ -2606,7 +3161,10 @@ const SIH_PROBLEM_STATEMENTS = [
     "submissions": 0,
     "youtubeLink": "",
     "datasetLink": "",
-    "isNew": false
+    "isNew": false,
+    "officialPsNumber": "SIH26186",
+    "deadline": "20 September 2026",
+    "maxSubmissions": 500
   },
   {
     "sNo": 187,
@@ -2616,11 +3174,14 @@ const SIH_PROBLEM_STATEMENTS = [
     "department": "Sashastra Seema Bal (SSB), Police II Division",
     "category": "Software",
     "theme": "Blockchain & Cybersecurity",
-    "description": "• Background Border security forces deploy CCTV cameras at Border Out Posts(BOPs), check posts, border roads, and other strategic locations for surveillance and monitoring. However, conventional CCTV systems primarily provide video recording and live monitoring capabilities,requiring continuous human observation. Advanced surveillance functionalities such as Facial Recognition Systems (FRS), Automatic Number Plate Recognition (ANPR), intrusion detection, and object tracking often require specialized hardware and proprietary solutions,making large-scale deployment costly and difficult, particularly in remote border areas.\n • Description The proposed solution aims to develop an AI-driven software platform capable of transforming existing CCTV infrastructure into an intelligent surveillance network without requiring dedicated FRS, ANPR, or smart-camera hardware. The platform shall ingest live video streams from standard IP-based CCTV cameras and perform real-time video analytics using Artificial Intelligence and Computer Vision techniques.\n\n The solution should provide capabilities such as:\n\n • Human detection and tracking\n • Vehicle detection and classification\n • Face detection\n • Automatic Number Plate Recognition (ANPR)\n • Virtual fence intrusion detection\n • Suspicious activity detection\n • Night-time movement detection\n • Real-time alert generation and event logging\n • Expected Solution The proposed system should leverage Artificial Intelligence, Machine Learning, Computer Vision, and Video Analytics to create a software-defined surveillance platform capable of extracting actionable intelligence from existing CCTV infrastructure.\n\n The solution should:\n\n • Eliminate dependence on expensive dedicated surveillance hardware.\n • Enable intelligent monitoring through AI-powered video analytics.\n • Provide real-time alerts for security incidents and border intrusions.\n • Support facial recognition, vehicle identification, and behavioral analytics through software.\n • Improve situational awareness and response time for border security forces.\n • Support integration with existing command and control systems.\n • The final solution should be cost-effective, scalable, and suitable for deployment across remote border locations and strategic installations.\n • Possible Project Name IBVAP â€“ Intelligent Border Video Analytics Platform",
+    "description": "• Background Border security forces deploy CCTV cameras at Border Out Posts(BOPs), check posts, border roads, and other strategic locations for surveillance and monitoring. However, conventional CCTV systems primarily provide video recording and live monitoring capabilities,requiring continuous human observation. Advanced surveillance functionalities such as Facial Recognition Systems (FRS), Automatic Number Plate Recognition (ANPR), intrusion detection, and object tracking often require specialized hardware and proprietary solutions,making large-scale deployment costly and difficult, particularly in remote border areas.\n • Description The proposed solution aims to develop an AI-driven software platform capable of transforming existing CCTV infrastructure into an intelligent surveillance network without requiring dedicated FRS, ANPR, or smart-camera hardware. The platform shall ingest live video streams from standard IP-based CCTV cameras and perform real-time video analytics using Artificial Intelligence and Computer Vision techniques.\n\n The solution should provide capabilities such as:\n\n • Human detection and tracking\n • Vehicle detection and classification\n • Face detection\n • Automatic Number Plate Recognition (ANPR)\n • Virtual fence intrusion detection\n • Suspicious activity detection\n • Night-time movement detection\n • Real-time alert generation and event logging\n • Expected Solution The proposed system should leverage Artificial Intelligence, Machine Learning, Computer Vision, and Video Analytics to create a software-defined surveillance platform capable of extracting actionable intelligence from existing CCTV infrastructure.\n\n The solution should:\n\n • Eliminate dependence on expensive dedicated surveillance hardware.\n • Enable intelligent monitoring through AI-powered video analytics.\n • Provide real-time alerts for security incidents and border intrusions.\n • Support facial recognition, vehicle identification, and behavioral analytics through software.\n • Improve situational awareness and response time for border security forces.\n • Support integration with existing command and control systems.\n • The final solution should be cost-effective, scalable, and suitable for deployment across remote border locations and strategic installations.\n • Possible Project Name IBVAP \"“ Intelligent Border Video Analytics Platform",
     "submissions": 0,
     "youtubeLink": "",
     "datasetLink": "",
-    "isNew": false
+    "isNew": false,
+    "officialPsNumber": "SIH26187",
+    "deadline": "20 September 2026",
+    "maxSubmissions": 500
   },
   {
     "sNo": 188,
@@ -2634,7 +3195,10 @@ const SIH_PROBLEM_STATEMENTS = [
     "submissions": 0,
     "youtubeLink": "",
     "datasetLink": "",
-    "isNew": false
+    "isNew": false,
+    "officialPsNumber": "SIH26188",
+    "deadline": "20 September 2026",
+    "maxSubmissions": 500
   },
   {
     "sNo": 189,
@@ -2648,7 +3212,10 @@ const SIH_PROBLEM_STATEMENTS = [
     "submissions": 0,
     "youtubeLink": "",
     "datasetLink": "",
-    "isNew": false
+    "isNew": false,
+    "officialPsNumber": "SIH26189",
+    "deadline": "20 September 2026",
+    "maxSubmissions": 500
   },
   {
     "sNo": 190,
@@ -2662,7 +3229,10 @@ const SIH_PROBLEM_STATEMENTS = [
     "submissions": 0,
     "youtubeLink": "",
     "datasetLink": "",
-    "isNew": false
+    "isNew": false,
+    "officialPsNumber": "SIH26190",
+    "deadline": "20 September 2026",
+    "maxSubmissions": 500
   },
   {
     "sNo": 191,
@@ -2672,11 +3242,14 @@ const SIH_PROBLEM_STATEMENTS = [
     "department": "National Disaster Response Force (NDRF), DM Division",
     "category": "Software",
     "theme": "Disaster Management",
-    "description": "• Background Indiaâ€™s disaster-prone regions face recurring hazards such as landslides,floods, coastal erosion, and cloudbursts. Vulnerable habitations often remain in unsafe zones, leading to repeated loss of lives and property.Current relocation efforts are largely reactive, initiated after disasters strike, rather than proactively planned.\n • Description The initiative seeks to develop an intelligent, GIS-enabled decision support platform. This platform will dynamically identify and update multi-hazard Red Zones (areas unsuitable for permanent habitation),assess the carrying capacity of safer alternative sites, and prioritize vulnerable habitations for relocation. The system will integrate hazard intensity, population vulnerability, and disaster history to guide evidence-based decisions.\n • Expected Solution A robust, AI-driven GIS platform that Maps and updates hazard-based Red Zones in real time, assesses suitability and carrying capacity of safer relocation sites, prioritizes vulnerable habitations for immediate,short-term, and medium-term relocation and provides actionable insights to State Disaster Management Authorities for proactive planning.",
+    "description": "• Background India's disaster-prone regions face recurring hazards such as landslides,floods, coastal erosion, and cloudbursts. Vulnerable habitations often remain in unsafe zones, leading to repeated loss of lives and property.Current relocation efforts are largely reactive, initiated after disasters strike, rather than proactively planned.\n • Description The initiative seeks to develop an intelligent, GIS-enabled decision support platform. This platform will dynamically identify and update multi-hazard Red Zones (areas unsuitable for permanent habitation),assess the carrying capacity of safer alternative sites, and prioritize vulnerable habitations for relocation. The system will integrate hazard intensity, population vulnerability, and disaster history to guide evidence-based decisions.\n • Expected Solution A robust, AI-driven GIS platform that Maps and updates hazard-based Red Zones in real time, assesses suitability and carrying capacity of safer relocation sites, prioritizes vulnerable habitations for immediate,short-term, and medium-term relocation and provides actionable insights to State Disaster Management Authorities for proactive planning.",
     "submissions": 0,
     "youtubeLink": "",
     "datasetLink": "",
-    "isNew": false
+    "isNew": false,
+    "officialPsNumber": "SIH26191",
+    "deadline": "20 September 2026",
+    "maxSubmissions": 500
   },
   {
     "sNo": 192,
@@ -2690,7 +3263,10 @@ const SIH_PROBLEM_STATEMENTS = [
     "submissions": 0,
     "youtubeLink": "",
     "datasetLink": "",
-    "isNew": false
+    "isNew": false,
+    "officialPsNumber": "SIH26192",
+    "deadline": "20 September 2026",
+    "maxSubmissions": 500
   },
   {
     "sNo": 193,
@@ -2704,7 +3280,10 @@ const SIH_PROBLEM_STATEMENTS = [
     "submissions": 0,
     "youtubeLink": "",
     "datasetLink": "",
-    "isNew": false
+    "isNew": false,
+    "officialPsNumber": "SIH26193",
+    "deadline": "20 September 2026",
+    "maxSubmissions": 500
   },
   {
     "sNo": 194,
@@ -2718,7 +3297,10 @@ const SIH_PROBLEM_STATEMENTS = [
     "submissions": 0,
     "youtubeLink": "",
     "datasetLink": "",
-    "isNew": false
+    "isNew": false,
+    "officialPsNumber": "SIH26194",
+    "deadline": "20 September 2026",
+    "maxSubmissions": 500
   },
   {
     "sNo": 195,
@@ -2732,7 +3314,10 @@ const SIH_PROBLEM_STATEMENTS = [
     "submissions": 0,
     "youtubeLink": "",
     "datasetLink": "",
-    "isNew": false
+    "isNew": false,
+    "officialPsNumber": "SIH26195",
+    "deadline": "20 September 2026",
+    "maxSubmissions": 500
   },
   {
     "sNo": 196,
@@ -2746,7 +3331,10 @@ const SIH_PROBLEM_STATEMENTS = [
     "submissions": 0,
     "youtubeLink": "",
     "datasetLink": "",
-    "isNew": false
+    "isNew": false,
+    "officialPsNumber": "SIH26196",
+    "deadline": "20 September 2026",
+    "maxSubmissions": 500
   },
   {
     "sNo": 197,
@@ -2760,7 +3348,10 @@ const SIH_PROBLEM_STATEMENTS = [
     "submissions": 0,
     "youtubeLink": "",
     "datasetLink": "",
-    "isNew": false
+    "isNew": false,
+    "officialPsNumber": "SIH26197",
+    "deadline": "20 September 2026",
+    "maxSubmissions": 500
   },
   {
     "sNo": 198,
@@ -2774,7 +3365,10 @@ const SIH_PROBLEM_STATEMENTS = [
     "submissions": 0,
     "youtubeLink": "",
     "datasetLink": "",
-    "isNew": false
+    "isNew": false,
+    "officialPsNumber": "SIH26198",
+    "deadline": "20 September 2026",
+    "maxSubmissions": 500
   },
   {
     "sNo": 199,
@@ -2788,7 +3382,10 @@ const SIH_PROBLEM_STATEMENTS = [
     "submissions": 0,
     "youtubeLink": "",
     "datasetLink": "",
-    "isNew": false
+    "isNew": false,
+    "officialPsNumber": "SIH26199",
+    "deadline": "20 September 2026",
+    "maxSubmissions": 500
   },
   {
     "sNo": 200,
@@ -2802,7 +3399,10 @@ const SIH_PROBLEM_STATEMENTS = [
     "submissions": 0,
     "youtubeLink": "",
     "datasetLink": "",
-    "isNew": false
+    "isNew": false,
+    "officialPsNumber": "SIH26200",
+    "deadline": "20 September 2026",
+    "maxSubmissions": 500
   },
   {
     "sNo": 201,
@@ -2816,7 +3416,10 @@ const SIH_PROBLEM_STATEMENTS = [
     "submissions": 0,
     "youtubeLink": "",
     "datasetLink": "",
-    "isNew": false
+    "isNew": false,
+    "officialPsNumber": "SIH26201",
+    "deadline": "20 September 2026",
+    "maxSubmissions": 500
   },
   {
     "sNo": 202,
@@ -2830,7 +3433,10 @@ const SIH_PROBLEM_STATEMENTS = [
     "submissions": 0,
     "youtubeLink": "",
     "datasetLink": "",
-    "isNew": false
+    "isNew": false,
+    "officialPsNumber": "SIH26202",
+    "deadline": "20 September 2026",
+    "maxSubmissions": 500
   },
   {
     "sNo": 203,
@@ -2844,7 +3450,10 @@ const SIH_PROBLEM_STATEMENTS = [
     "submissions": 0,
     "youtubeLink": "",
     "datasetLink": "",
-    "isNew": false
+    "isNew": false,
+    "officialPsNumber": "SIH26203",
+    "deadline": "20 September 2026",
+    "maxSubmissions": 500
   },
   {
     "sNo": 204,
@@ -2858,7 +3467,10 @@ const SIH_PROBLEM_STATEMENTS = [
     "submissions": 0,
     "youtubeLink": "",
     "datasetLink": "",
-    "isNew": false
+    "isNew": false,
+    "officialPsNumber": "SIH26204",
+    "deadline": "20 September 2026",
+    "maxSubmissions": 500
   },
   {
     "sNo": 205,
@@ -2872,7 +3484,10 @@ const SIH_PROBLEM_STATEMENTS = [
     "submissions": 0,
     "youtubeLink": "",
     "datasetLink": "",
-    "isNew": false
+    "isNew": false,
+    "officialPsNumber": "SIH26205",
+    "deadline": "20 September 2026",
+    "maxSubmissions": 500
   },
   {
     "sNo": 206,
@@ -2886,7 +3501,10 @@ const SIH_PROBLEM_STATEMENTS = [
     "submissions": 0,
     "youtubeLink": "",
     "datasetLink": "",
-    "isNew": false
+    "isNew": false,
+    "officialPsNumber": "SIH26206",
+    "deadline": "20 September 2026",
+    "maxSubmissions": 500
   },
   {
     "sNo": 207,
@@ -2900,7 +3518,10 @@ const SIH_PROBLEM_STATEMENTS = [
     "submissions": 0,
     "youtubeLink": "",
     "datasetLink": "",
-    "isNew": true
+    "isNew": true,
+    "officialPsNumber": "SIH26207",
+    "deadline": "20 September 2026",
+    "maxSubmissions": 500
   },
   {
     "sNo": 208,
@@ -2914,7 +3535,10 @@ const SIH_PROBLEM_STATEMENTS = [
     "submissions": 0,
     "youtubeLink": "",
     "datasetLink": "",
-    "isNew": true
+    "isNew": true,
+    "officialPsNumber": "SIH26208",
+    "deadline": "20 September 2026",
+    "maxSubmissions": 500
   },
   {
     "sNo": 209,
@@ -2928,7 +3552,10 @@ const SIH_PROBLEM_STATEMENTS = [
     "submissions": 0,
     "youtubeLink": "",
     "datasetLink": "",
-    "isNew": true
+    "isNew": true,
+    "officialPsNumber": "SIH26209",
+    "deadline": "20 September 2026",
+    "maxSubmissions": 500
   },
   {
     "sNo": 210,
@@ -2942,7 +3569,10 @@ const SIH_PROBLEM_STATEMENTS = [
     "submissions": 0,
     "youtubeLink": "",
     "datasetLink": "",
-    "isNew": true
+    "isNew": true,
+    "officialPsNumber": "SIH26210",
+    "deadline": "20 September 2026",
+    "maxSubmissions": 500
   },
   {
     "sNo": 211,
@@ -2956,7 +3586,10 @@ const SIH_PROBLEM_STATEMENTS = [
     "submissions": 0,
     "youtubeLink": "",
     "datasetLink": "",
-    "isNew": true
+    "isNew": true,
+    "officialPsNumber": "SIH26211",
+    "deadline": "20 September 2026",
+    "maxSubmissions": 500
   },
   {
     "sNo": 212,
@@ -2970,7 +3603,10 @@ const SIH_PROBLEM_STATEMENTS = [
     "submissions": 0,
     "youtubeLink": "",
     "datasetLink": "",
-    "isNew": true
+    "isNew": true,
+    "officialPsNumber": "SIH26212",
+    "deadline": "20 September 2026",
+    "maxSubmissions": 500
   },
   {
     "sNo": 213,
@@ -2984,7 +3620,10 @@ const SIH_PROBLEM_STATEMENTS = [
     "submissions": 0,
     "youtubeLink": "",
     "datasetLink": "",
-    "isNew": true
+    "isNew": true,
+    "officialPsNumber": "SIH26213",
+    "deadline": "20 September 2026",
+    "maxSubmissions": 500
   },
   {
     "sNo": 214,
@@ -2998,7 +3637,10 @@ const SIH_PROBLEM_STATEMENTS = [
     "submissions": 0,
     "youtubeLink": "",
     "datasetLink": "",
-    "isNew": true
+    "isNew": true,
+    "officialPsNumber": "SIH26214",
+    "deadline": "20 September 2026",
+    "maxSubmissions": 500
   },
   {
     "sNo": 215,
@@ -3012,7 +3654,10 @@ const SIH_PROBLEM_STATEMENTS = [
     "submissions": 0,
     "youtubeLink": "",
     "datasetLink": "",
-    "isNew": true
+    "isNew": true,
+    "officialPsNumber": "SIH26215",
+    "deadline": "20 September 2026",
+    "maxSubmissions": 500
   },
   {
     "sNo": 216,
@@ -3026,7 +3671,10 @@ const SIH_PROBLEM_STATEMENTS = [
     "submissions": 0,
     "youtubeLink": "",
     "datasetLink": "",
-    "isNew": true
+    "isNew": true,
+    "officialPsNumber": "SIH26216",
+    "deadline": "20 September 2026",
+    "maxSubmissions": 500
   },
   {
     "sNo": 217,
@@ -3040,7 +3688,10 @@ const SIH_PROBLEM_STATEMENTS = [
     "submissions": 0,
     "youtubeLink": "",
     "datasetLink": "",
-    "isNew": true
+    "isNew": true,
+    "officialPsNumber": "SIH26217",
+    "deadline": "20 September 2026",
+    "maxSubmissions": 500
   },
   {
     "sNo": 218,
@@ -3054,7 +3705,10 @@ const SIH_PROBLEM_STATEMENTS = [
     "submissions": 0,
     "youtubeLink": "",
     "datasetLink": "",
-    "isNew": true
+    "isNew": true,
+    "officialPsNumber": "SIH26218",
+    "deadline": "20 September 2026",
+    "maxSubmissions": 500
   },
   {
     "sNo": 219,
@@ -3068,7 +3722,10 @@ const SIH_PROBLEM_STATEMENTS = [
     "submissions": 0,
     "youtubeLink": "",
     "datasetLink": "",
-    "isNew": true
+    "isNew": true,
+    "officialPsNumber": "SIH26219",
+    "deadline": "20 September 2026",
+    "maxSubmissions": 500
   },
   {
     "sNo": 220,
@@ -3082,7 +3739,10 @@ const SIH_PROBLEM_STATEMENTS = [
     "submissions": 0,
     "youtubeLink": "",
     "datasetLink": "",
-    "isNew": true
+    "isNew": true,
+    "officialPsNumber": "SIH26220",
+    "deadline": "20 September 2026",
+    "maxSubmissions": 500
   },
   {
     "sNo": 221,
@@ -3096,7 +3756,10 @@ const SIH_PROBLEM_STATEMENTS = [
     "submissions": 0,
     "youtubeLink": "",
     "datasetLink": "",
-    "isNew": true
+    "isNew": true,
+    "officialPsNumber": "SIH26221",
+    "deadline": "20 September 2026",
+    "maxSubmissions": 500
   },
   {
     "sNo": 222,
@@ -3110,7 +3773,10 @@ const SIH_PROBLEM_STATEMENTS = [
     "submissions": 0,
     "youtubeLink": "",
     "datasetLink": "",
-    "isNew": true
+    "isNew": true,
+    "officialPsNumber": "SIH26222",
+    "deadline": "20 September 2026",
+    "maxSubmissions": 500
   },
   {
     "sNo": 223,
@@ -3124,7 +3790,10 @@ const SIH_PROBLEM_STATEMENTS = [
     "submissions": 0,
     "youtubeLink": "",
     "datasetLink": "",
-    "isNew": true
+    "isNew": true,
+    "officialPsNumber": "SIH26223",
+    "deadline": "20 September 2026",
+    "maxSubmissions": 500
   },
   {
     "sNo": 224,
@@ -3138,7 +3807,10 @@ const SIH_PROBLEM_STATEMENTS = [
     "submissions": 0,
     "youtubeLink": "",
     "datasetLink": "",
-    "isNew": true
+    "isNew": true,
+    "officialPsNumber": "SIH26224",
+    "deadline": "20 September 2026",
+    "maxSubmissions": 500
   },
   {
     "sNo": 225,
@@ -3152,7 +3824,10 @@ const SIH_PROBLEM_STATEMENTS = [
     "submissions": 0,
     "youtubeLink": "",
     "datasetLink": "",
-    "isNew": true
+    "isNew": true,
+    "officialPsNumber": "SIH26225",
+    "deadline": "20 September 2026",
+    "maxSubmissions": 500
   },
   {
     "sNo": 226,
@@ -3166,7 +3841,10 @@ const SIH_PROBLEM_STATEMENTS = [
     "submissions": 0,
     "youtubeLink": "",
     "datasetLink": "",
-    "isNew": true
+    "isNew": true,
+    "officialPsNumber": "SIH26226",
+    "deadline": "20 September 2026",
+    "maxSubmissions": 500
   },
   {
     "sNo": 227,
@@ -3180,7 +3858,10 @@ const SIH_PROBLEM_STATEMENTS = [
     "submissions": 0,
     "youtubeLink": "",
     "datasetLink": "",
-    "isNew": true
+    "isNew": true,
+    "officialPsNumber": "SIH26227",
+    "deadline": "20 September 2026",
+    "maxSubmissions": 500
   },
   {
     "sNo": 228,
@@ -3190,25 +3871,31 @@ const SIH_PROBLEM_STATEMENTS = [
     "department": "Indian Army (DGIS)",
     "category": "Software",
     "theme": "Blockchain & Cybersecurity",
-    "description": "2. Description. \r\n2.1. Background. Operational computer vision pipelines may combine training data from multiple contributors, pretrained or vendor-supplied models, and inference outputs consumed by downstream systems. This creates distinct integrity and assurance risks across the data, model and inference lifecycle. Data may contain deliberately or inadvertently mislabelled samples, duplicated content, out-of-distribution material or trigger-based backdoors. A model may be substituted, modified or contain hidden behaviour that is not apparent during routine validation. Inference records may also be replayed, replaced or altered after generation unless they are cryptographically linked to the exact input, model and processing chain that produced them. Existing controls often address only individual parts of this lifecycle. The challenge is therefore to create a unified, evidence-based assurance layer that can assess these risks without assuming that every contributing source is trusted. of Fos \r\n2.2. Detailed Description.\r\nTeams are required to build an extensible computer-vision assurance framework that can evaluate a contributed dataset, a trained model and associated inference records, and produce an evidence-based assessment of integrity and risk. The solution should not be hard-coded to a single model architecture or dataset. Five core capabilities are required. \r\n 2.2.1. Training-Data Integrity. Identify suspicious or anomalous samples associated with trigger injection, label flipping, systematic mislabelling, near-duplicate flooding and out-of-distribution insertion. Where contributor, batch or source metadata is available, the system should aggregate sample-level evidence into a source-level risk assessment rather than flagging samples in isolation.\r\n 2.2.2. Model Integrity. Assess whether a supplied model exhibits anomalous, substituted or backdoor-like behaviour using methods appropriate to the level of access available. Approaches may include behavioural fingerprinting, trigger search or reconstruction, parameter or activation statistics, and comparison against a defined reference battery. The system must state the access assumptions, confidence and limitations of its assessment. \r\n 2.2.3. Inference Provenance and Output Integrity. Create a verifiable cryptographic binding among the input image, model identifier or weight digest, preprocessing and inference configuration, and resulting output. The design should make post-hoc alteration, substitution or replay of protected inference records detectable through hashes, signatures and appropriate sequence, timestamp or nonce controls. \r\n 2.2.4. Distribution-Shift and Anomaly Assessment. Detect material deviation from a declared reference distribution, including changes caused by terrain, season, sensor, illumination or acquisition conditions. The system should characterise the observed shift, provide a calibrated risk or confidence score, and distinguish probable operational drift from suspicious manipulation where the available evidence supports such a distinction.\r\n 2.2.5. Analyst-Facing Assurance and Governance. Every flag must include a human-readable reason, supporting evidence, confidence or severity, the affected asset, and a recommended disposition such as accept, review or quarantine. The solution must maintain a tamper-evident audit trail and explicitly declare attack classes or conditions that it does not support.\r\n\r\n 2.2.6. Constraints, the complete evaluation workflow must operate offline and in an air-gapped environment with no dependency on cloud services or external APIs. The solution should ingest common computer-vision dataset formats, including COCO and YOLO, and support the organiser-defined reference model formats, including ONNX and PyTorch/TorchScript. Baseline integrity assessment must not require retraining of the contributed model, although optional remediation may use retraining. Methods that require white-box access must fall back gracefully or clearly report that the relevant assessment is unavailable when only black-box access is provided.\r\n\r\n2.3 Expected Solution. \r\nTeams are expected to develop a model-agnostic assurance system for assessing the integrity of training data, trained computer-vision models and inference outputs. The solution shall use publicly available or team-generated datasets and models, with teams developing reproducible methods to introduce representative poisoning, backdoor, substitution and tampering scenarios for testing. The system should identify suspicious data or contributor behaviour, assess model integrity, detect tampering of inference records, provide supporting evidence for each finding, and generate a clear assurance report stating confidence, limitations and recommended action. Each team must submit the source code, architecture and setup notes, the assurance-report schema, a reproducible audit log, and a clear coverage statement identifying supported attack classes, assumptions and known limitations.",
+    "description": "2. Description. \n2.1. Background. Operational computer vision pipelines may combine training data from multiple contributors, pretrained or vendor-supplied models, and inference outputs consumed by downstream systems. This creates distinct integrity and assurance risks across the data, model and inference lifecycle. Data may contain deliberately or inadvertently mislabelled samples, duplicated content, out-of-distribution material or trigger-based backdoors. A model may be substituted, modified or contain hidden behaviour that is not apparent during routine validation. Inference records may also be replayed, replaced or altered after generation unless they are cryptographically linked to the exact input, model and processing chain that produced them. Existing controls often address only individual parts of this lifecycle. The challenge is therefore to create a unified, evidence-based assurance layer that can assess these risks without assuming that every contributing source is trusted. of Fos \n2.2. Detailed Description.\nTeams are required to build an extensible computer-vision assurance framework that can evaluate a contributed dataset, a trained model and associated inference records, and produce an evidence-based assessment of integrity and risk. The solution should not be hard-coded to a single model architecture or dataset. Five core capabilities are required. \n 2.2.1. Training-Data Integrity. Identify suspicious or anomalous samples associated with trigger injection, label flipping, systematic mislabelling, near-duplicate flooding and out-of-distribution insertion. Where contributor, batch or source metadata is available, the system should aggregate sample-level evidence into a source-level risk assessment rather than flagging samples in isolation.\n 2.2.2. Model Integrity. Assess whether a supplied model exhibits anomalous, substituted or backdoor-like behaviour using methods appropriate to the level of access available. Approaches may include behavioural fingerprinting, trigger search or reconstruction, parameter or activation statistics, and comparison against a defined reference battery. The system must state the access assumptions, confidence and limitations of its assessment. \n 2.2.3. Inference Provenance and Output Integrity. Create a verifiable cryptographic binding among the input image, model identifier or weight digest, preprocessing and inference configuration, and resulting output. The design should make post-hoc alteration, substitution or replay of protected inference records detectable through hashes, signatures and appropriate sequence, timestamp or nonce controls. \n 2.2.4. Distribution-Shift and Anomaly Assessment. Detect material deviation from a declared reference distribution, including changes caused by terrain, season, sensor, illumination or acquisition conditions. The system should characterise the observed shift, provide a calibrated risk or confidence score, and distinguish probable operational drift from suspicious manipulation where the available evidence supports such a distinction.\n 2.2.5. Analyst-Facing Assurance and Governance. Every flag must include a human-readable reason, supporting evidence, confidence or severity, the affected asset, and a recommended disposition such as accept, review or quarantine. The solution must maintain a tamper-evident audit trail and explicitly declare attack classes or conditions that it does not support.\n\n 2.2.6. Constraints, the complete evaluation workflow must operate offline and in an air-gapped environment with no dependency on cloud services or external APIs. The solution should ingest common computer-vision dataset formats, including COCO and YOLO, and support the organiser-defined reference model formats, including ONNX and PyTorch/TorchScript. Baseline integrity assessment must not require retraining of the contributed model, although optional remediation may use retraining. Methods that require white-box access must fall back gracefully or clearly report that the relevant assessment is unavailable when only black-box access is provided.\n\n2.3 Expected Solution. \nTeams are expected to develop a model-agnostic assurance system for assessing the integrity of training data, trained computer-vision models and inference outputs. The solution shall use publicly available or team-generated datasets and models, with teams developing reproducible methods to introduce representative poisoning, backdoor, substitution and tampering scenarios for testing. The system should identify suspicious data or contributor behaviour, assess model integrity, detect tampering of inference records, provide supporting evidence for each finding, and generate a clear assurance report stating confidence, limitations and recommended action. Each team must submit the source code, architecture and setup notes, the assurance-report schema, a reproducible audit log, and a clear coverage statement identifying supported attack classes, assumptions and known limitations.",
     "submissions": 0,
     "youtubeLink": "",
     "datasetLink": "",
-    "isNew": true
+    "isNew": true,
+    "officialPsNumber": "SIH26228",
+    "deadline": "20 September 2026",
+    "maxSubmissions": 500
   },
   {
     "sNo": 229,
     "psId": "26229",
-    "title": "Kabadiwala Connect – Bringing the Informal Collector into the Formal Recycling\r\nChain",
+    "title": "Kabadiwala Connect – Bringing the Informal Collector into the Formal Recycling\nChain",
     "organization": "Ministry of Mines (MoM)",
     "department": "Jawaharlal Nehru Aluminium Research Development and Design Centre (JNARDDC)",
     "category": "Software",
     "theme": "Clean & Green Technology",
-    "description": "Background: \r\nThe overwhelming majority of India’s end-of-life electronics is collected through informal scrap dealers, waste-pickers, and local aggregators due to their extensive last-mile reach and low collection costs. \r\nHowever, these informal collectors remain largely outside the formal recycling ecosystem. The E-Waste (Management) Rules, 2022 established a formal Extended Producer Responsibility (EPR) framework involving authorized recyclers, but there is currently limited access for informal collectors to participate in this formal recycling chain.\r\n As a result, material collected by informal aggregators may undergo unsafe backyard processing such as open-air cable burning, acid leaching of printed circuit boards, and manual desoldering without proper extraction facilities. While materials such as copper and small quantities of gold may be recovered, valuable materials including lithium, cobalt, neodymium, tantalum, gallium, and indium may be lost. \r\nThese practices also expose workers to significant health and safety risks. The fundamental gap is not only technological but also informational and institutional. Informal collectors may not know the prevailing fair price of materials, which nearby recyclers are authorized, how to complete a compliant material handover, or how to obtain a documented record of the transaction. Consequently, there is limited incentive for collectors to prefer the formal recycling route\r\n\r\nProblem: \r\nDesign and develop a vernacular, low-literacy, offline-tolerant mobile platform that enables informal scrap collectors to discover fair prices, connect directly with authorized recyclers, complete a documented and traceable handover of collected materials, and receive payment. The platform should make the formal recycling channel an economically attractive and convenient option for informal collectors rather than creating an additional compliance burden\r\n\r\nThe platform should:\r\n\r\n• Allow collectors to photograph, categorize, and create digital lots of collected materials such as CRTs, LCD panels, PCBs, cables, batteries, motors and magnet-bearing assemblies, and mixed plastics, enter approximate weight, and receive an instant value estimate.\r\n• Provide a price discovery and historical price dataset containing material category, sub-category,location, date, prevailing buying price, unit of measurement, approximate market range, and recycler/aggregator offered price. The system should use this dataset to provide transparent and current price information to collectors and identify basic price trends.\r\n• Maintain a material and transaction dataset containing lot/reference ID, material category, material description, photograph/image reference, approximate weight, estimated value, quoted price, final sale value, date and time of collection, collection location, recycler details, and transaction status. This dataset should enable traceability of material from collection to authorized recycling.\r\n• Maintain an authorized recycler/aggregator dataset containing recycler/aggregator name, facility location, materials accepted, authorization/registration details, authorization status, contact details, offered rates, pickup availability, and service area. The platform should use this information to identify and rank suitable authorized recyclers for a collector's lot.\r\n• Use the collected material image, category, weight, location, historical price, and transaction data to support AI/ML-based features such as material classification, approximate valuation, recycler matching, and identification of abnormal or inconsistent transaction values, wherever sufficient training data is available.\r\n• Provide current buying rates for different material categories and locations through a simple price board, including spoken price information and basic price trends.\r\n• Match collected lots with nearby authorized recyclers or aggregators based on location, material category, offered rate, pickup availability, and authorization status.\r\n• Generate a digital and verifiable handover/transfer record containing photographs, weight, timestamp, GPS/location details, and a unique reference that can be confirmed by the recycler.\r\n• Maintain an easy-to-understand earnings ledger showing transactions, payments, and pending dues, thereby building a usable financial and transaction history for collectors.\r\n• Provide pictorial and/or audio-based safety guidance on hazardous practices, including improper burning or opening of materials and safe handling of batteries and CRTs.\r\n• Support Marathi and Hindi at a minimum and provide a genuinely usable interface for users with limited literacy.\r\n• Operate in low-connectivity environments through an offline-first architecture, allowing core activities to be completed offline and synchronized when connectivity becomes available.\r\n• Support entry-level Android devices with a small application size and low memory requirements. Allow cash-based transactions while keeping digital payment optional and not making it a prerequisite for using the platform.\r\nDataset Requirements: \r\nThe solution should be designed to create and utilize structured datasets generated through field operations and platform transactions. The minimum dataset should cover the following:\r\n\r\n• Material Dataset: Material category, sub-category, material description, image, approximate weight, condition, source type, and estimated value.\r\n• Price Dataset: Material category, location, date/time, buying price, selling/quoted price, unit, recycler/aggregator, and historical price information.\r\n• Recycler Dataset: Recycler/facility name, location, materials accepted, authorization status/details,contact information, offered rate, pickup availability, and service area.\r\n• Transaction Dataset: Unique lot ID, collector ID, material category, quantity/weight, quoted price, final price, recycler ID, collection location, handover location, date/time, payment status, and transaction status.\r\n• Traceability Dataset: Lot ID, photographs, weight, timestamp, GPS/location, handover reference number, recycler confirmation, and subsequent transaction status.\r\n• Collector Dataset: A minimal profile containing collector ID, preferred language, general operating location, transaction history, and earnings history. The system should avoid collecting unnecessary personal information.\r\n• AI/ML Training Dataset: Where AI/ML functionality is proposed, teams should develop or use appropriately sourced datasets containing material images, material categories, weights, prices, locations, and transaction records for model training and validation. Teams should clearly identify the source, quality, size, and limitations of such datasets.\r\n• The dataset should support data cleaning, validation, anonymization where required, historical analysis, price prediction, material classification, recycler recommendation, and transaction-level traceability.\r\n• Teams should demonstrate how the dataset is generated, stored, validated, updated, and used by the application rather than treating the dataset as a static database.\r\n\nExpected Outcome: \r\nThe proposed solution should create a simple digital bridge between informal collectors and the formal recycling ecosystem, improving price transparency, enabling traceable material handovers, connecting collectors with authorized recyclers, promoting safer handling practices, and encouraging greater participation in the formal recycling chain. The solution should include a working mobile application, recycler-side interface, structured datasets for materials, prices, recyclers and transactions, field research involving at least two working scrap collectors or aggregators, and a live usability demonstration. Teams should also provide a short unit-economics assessment comparing the collector's existing earnings with the potential earnings through the proposed platform and explaining how the platform can sustain its operations.",
+    "description": "Background: \nThe overwhelming majority of India’s end-of-life electronics is collected through informal scrap dealers, waste-pickers, and local aggregators due to their extensive last-mile reach and low collection costs. \nHowever, these informal collectors remain largely outside the formal recycling ecosystem. The E-Waste (Management) Rules, 2022 established a formal Extended Producer Responsibility (EPR) framework involving authorized recyclers, but there is currently limited access for informal collectors to participate in this formal recycling chain.\n As a result, material collected by informal aggregators may undergo unsafe backyard processing such as open-air cable burning, acid leaching of printed circuit boards, and manual desoldering without proper extraction facilities. While materials such as copper and small quantities of gold may be recovered, valuable materials including lithium, cobalt, neodymium, tantalum, gallium, and indium may be lost. \nThese practices also expose workers to significant health and safety risks. The fundamental gap is not only technological but also informational and institutional. Informal collectors may not know the prevailing fair price of materials, which nearby recyclers are authorized, how to complete a compliant material handover, or how to obtain a documented record of the transaction. Consequently, there is limited incentive for collectors to prefer the formal recycling route\n\nProblem: \nDesign and develop a vernacular, low-literacy, offline-tolerant mobile platform that enables informal scrap collectors to discover fair prices, connect directly with authorized recyclers, complete a documented and traceable handover of collected materials, and receive payment. The platform should make the formal recycling channel an economically attractive and convenient option for informal collectors rather than creating an additional compliance burden\n\nThe platform should:\n\n• Allow collectors to photograph, categorize, and create digital lots of collected materials such as CRTs, LCD panels, PCBs, cables, batteries, motors and magnet-bearing assemblies, and mixed plastics, enter approximate weight, and receive an instant value estimate.\n• Provide a price discovery and historical price dataset containing material category, sub-category,location, date, prevailing buying price, unit of measurement, approximate market range, and recycler/aggregator offered price. The system should use this dataset to provide transparent and current price information to collectors and identify basic price trends.\n• Maintain a material and transaction dataset containing lot/reference ID, material category, material description, photograph/image reference, approximate weight, estimated value, quoted price, final sale value, date and time of collection, collection location, recycler details, and transaction status. This dataset should enable traceability of material from collection to authorized recycling.\n• Maintain an authorized recycler/aggregator dataset containing recycler/aggregator name, facility location, materials accepted, authorization/registration details, authorization status, contact details, offered rates, pickup availability, and service area. The platform should use this information to identify and rank suitable authorized recyclers for a collector's lot.\n• Use the collected material image, category, weight, location, historical price, and transaction data to support AI/ML-based features such as material classification, approximate valuation, recycler matching, and identification of abnormal or inconsistent transaction values, wherever sufficient training data is available.\n• Provide current buying rates for different material categories and locations through a simple price board, including spoken price information and basic price trends.\n• Match collected lots with nearby authorized recyclers or aggregators based on location, material category, offered rate, pickup availability, and authorization status.\n• Generate a digital and verifiable handover/transfer record containing photographs, weight, timestamp, GPS/location details, and a unique reference that can be confirmed by the recycler.\n• Maintain an easy-to-understand earnings ledger showing transactions, payments, and pending dues, thereby building a usable financial and transaction history for collectors.\n• Provide pictorial and/or audio-based safety guidance on hazardous practices, including improper burning or opening of materials and safe handling of batteries and CRTs.\n• Support Marathi and Hindi at a minimum and provide a genuinely usable interface for users with limited literacy.\n• Operate in low-connectivity environments through an offline-first architecture, allowing core activities to be completed offline and synchronized when connectivity becomes available.\n• Support entry-level Android devices with a small application size and low memory requirements. Allow cash-based transactions while keeping digital payment optional and not making it a prerequisite for using the platform.\nDataset Requirements: \nThe solution should be designed to create and utilize structured datasets generated through field operations and platform transactions. The minimum dataset should cover the following:\n\n• Material Dataset: Material category, sub-category, material description, image, approximate weight, condition, source type, and estimated value.\n• Price Dataset: Material category, location, date/time, buying price, selling/quoted price, unit, recycler/aggregator, and historical price information.\n• Recycler Dataset: Recycler/facility name, location, materials accepted, authorization status/details,contact information, offered rate, pickup availability, and service area.\n• Transaction Dataset: Unique lot ID, collector ID, material category, quantity/weight, quoted price, final price, recycler ID, collection location, handover location, date/time, payment status, and transaction status.\n• Traceability Dataset: Lot ID, photographs, weight, timestamp, GPS/location, handover reference number, recycler confirmation, and subsequent transaction status.\n• Collector Dataset: A minimal profile containing collector ID, preferred language, general operating location, transaction history, and earnings history. The system should avoid collecting unnecessary personal information.\n• AI/ML Training Dataset: Where AI/ML functionality is proposed, teams should develop or use appropriately sourced datasets containing material images, material categories, weights, prices, locations, and transaction records for model training and validation. Teams should clearly identify the source, quality, size, and limitations of such datasets.\n• The dataset should support data cleaning, validation, anonymization where required, historical analysis, price prediction, material classification, recycler recommendation, and transaction-level traceability.\n• Teams should demonstrate how the dataset is generated, stored, validated, updated, and used by the application rather than treating the dataset as a static database.\n\nExpected Outcome: \nThe proposed solution should create a simple digital bridge between informal collectors and the formal recycling ecosystem, improving price transparency, enabling traceable material handovers, connecting collectors with authorized recyclers, promoting safer handling practices, and encouraging greater participation in the formal recycling chain. The solution should include a working mobile application, recycler-side interface, structured datasets for materials, prices, recyclers and transactions, field research involving at least two working scrap collectors or aggregators, and a live usability demonstration. Teams should also provide a short unit-economics assessment comparing the collector's existing earnings with the potential earnings through the proposed platform and explaining how the platform can sustain its operations.",
     "submissions": 0,
     "youtubeLink": "",
     "datasetLink": "",
-    "isNew": true
+    "isNew": true,
+    "officialPsNumber": "SIH26229",
+    "deadline": "20 September 2026",
+    "maxSubmissions": 500
   },
   {
     "sNo": 230,
@@ -3222,7 +3909,10 @@ const SIH_PROBLEM_STATEMENTS = [
     "submissions": 0,
     "youtubeLink": "",
     "datasetLink": "",
-    "isNew": true
+    "isNew": true,
+    "officialPsNumber": "SIH26230",
+    "deadline": "20 September 2026",
+    "maxSubmissions": 500
   },
   {
     "sNo": 231,
@@ -3236,6 +3926,9 @@ const SIH_PROBLEM_STATEMENTS = [
     "submissions": 0,
     "youtubeLink": "",
     "datasetLink": "",
-    "isNew": true
+    "isNew": true,
+    "officialPsNumber": "SIH26231",
+    "deadline": "20 September 2026",
+    "maxSubmissions": 500
   }
 ];
