@@ -240,6 +240,50 @@
     </div>
 
     <!-- ══════════════════════════════════════════════════════════════════ -->
+    <!-- UIT TOP 50 TEAMS ADVISORY & BRAINSTORMING ACCELERATOR BANNER -->
+    <!-- ══════════════════════════════════════════════════════════════════ -->
+    <div class="glass-card-pro rounded-3xl p-5 sm:p-7 bg-gradient-to-r from-amber-500/10 via-orange-500/10 to-blue-500/10 border-2 border-amber-300 shadow-md relative overflow-hidden space-y-4">
+      <div class="flex flex-col md:flex-row md:items-center justify-between gap-4">
+        <div class="space-y-1.5 max-w-3xl">
+          <div class="inline-flex items-center gap-2 px-3 py-1 bg-amber-100 text-amber-950 border border-amber-300 text-[11px] font-black uppercase tracking-wider rounded-xl shadow-xs">
+            <span>🎯 EXCLUSIVELY DESIGNED FOR UIT TOP 50 TEAMS</span>
+          </div>
+          <h2 class="text-lg sm:text-xl font-black text-slate-900 font-display">
+            Decision Hub for Shortlisted &amp; Waitlisted Teams (45 + 5)
+          </h2>
+          <p class="text-xs text-slate-700 font-medium leading-relaxed">
+            All 50 selected teams from the UIT Internal Hackathon must explore these 231 official problem statements, shortlist their top choices with their team members, and prepare the <strong>4-slide Idea PPT</strong> for final registration on the national portal.
+          </p>
+        </div>
+
+        <!-- Quick Resource Buttons -->
+        <div class="flex items-center gap-2.5 flex-wrap flex-shrink-0 text-xs font-black">
+          <a
+            href="https://www.sih.gov.in/letters/2026/SIH2026-IDEA-Presentation-Format.pptx"
+            target="_blank"
+            rel="noopener noreferrer"
+            class="px-4 py-2.5 rounded-xl bg-orange-600 hover:bg-orange-700 text-white shadow-sm transition-all flex items-center gap-1.5 active:scale-95"
+          >
+            <span>📥 Download SIH Idea PPT Template</span>
+          </a>
+          <a
+            href="https://www.sih.gov.in/letters/2026/SIH%202026%20Guidelines.pdf"
+            target="_blank"
+            rel="noopener noreferrer"
+            class="px-4 py-2.5 rounded-xl bg-white hover:bg-slate-100 border border-slate-300 text-slate-800 shadow-xs transition-all flex items-center gap-1.5"
+          >
+            <span>📜 Official Guidelines PDF</span>
+          </a>
+          <a
+            href="results.html"
+            class="px-4 py-2.5 rounded-xl bg-blue-50 hover:bg-blue-100 border border-blue-200 text-blue-800 shadow-xs transition-all flex items-center gap-1.5"
+          >
+            <span>🏆 View Top 50 Roster</span>
+          </a>
+        </div>
+      </div>
+    </div>
+
     <!-- 2. CONTROL CENTER: SEARCH & COLORFUL FILTERS -->
     <!-- ══════════════════════════════════════════════════════════════════ -->
     <div class="glass-card-pro rounded-3xl p-4 sm:p-6 space-y-4 shadow-md bg-white/95">
@@ -381,9 +425,16 @@
         </div>
 
         <div class="flex items-center gap-2">
-          <a id="modal-official-link" href="https://www.sih.gov.in/sih2026PS" target="_blank" rel="noopener noreferrer" class="px-4 py-3 rounded-2xl bg-white hover:bg-slate-100 border border-slate-300 text-slate-800 text-xs sm:text-sm font-bold transition-all flex items-center gap-1">
-            <span>Official SIH Portal</span>
-            <svg class="w-3.5 h-3.5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10 6H6a2 2 0 00-2 2v10a2 2 0 002 2h10a2 2 0 002-2v-4M14 4h6m0 0v6m0-6L10 14"/></svg>
+          <a
+            id="modal-official-link"
+            href="https://www.sih.gov.in/sih2026PS"
+            target="_blank"
+            rel="noopener noreferrer"
+            class="px-5 py-3 rounded-2xl bg-gradient-to-r from-amber-500 via-orange-500 to-amber-600 hover:from-amber-600 hover:to-orange-600 text-white text-xs sm:text-sm font-black shadow-md hover:shadow-lg transition-all flex items-center gap-2 border border-amber-300 active:scale-95 animate-pulse"
+            title="Click to open this exact problem statement on official SIH portal"
+          >
+            <span>🏛️ Open Exact PS on Official SIH Portal</span>
+            <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2.5" d="M10 6H6a2 2 0 00-2 2v10a2 2 0 002 2h10a2 2 0 002-2v-4M14 4h6m0 0v6m0-6L10 14"/></svg>
           </a>
           <button id="modal-close-secondary-btn" class="px-5 py-3 rounded-2xl bg-slate-200 hover:bg-slate-300 text-slate-800 text-xs sm:text-sm font-bold transition-all">
             Close
@@ -568,6 +619,20 @@ Analyze the problem statement above and help our student team build a winning, p
       modalTheme.textContent = item.theme;
       modalTitle.textContent = item.title;
       modalOrg.textContent = item.organization;
+
+      // Update Highlighted Official SIH Portal Link
+      const modalOfficialLink = document.getElementById('modal-official-link');
+      if (modalOfficialLink) {
+        modalOfficialLink.href = 'https://www.sih.gov.in/sih2026PS#ViewProblemStatement' + item.psId;
+        modalOfficialLink.innerHTML = `
+          <span>🏛️ Open PS ${item.psId} on Official SIH Portal</span>
+          <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2.5" d="M10 6H6a2 2 0 00-2 2v10a2 2 0 002 2h10a2 2 0 002-2v-4M14 4h6m0 0v6m0-6L10 14"/></svg>
+        `;
+        modalOfficialLink.onclick = () => {
+          navigator.clipboard.writeText(String(item.psId));
+          showToast(`Copied PS ${item.psId}! Opening SIH Portal — paste in search if needed.`);
+        };
+      }
       
       const modalDept = document.getElementById('modal-dept');
       if (modalDept) {
@@ -776,7 +841,6 @@ Analyze the problem statement above and help our student team build a winning, p
           }
         }
       });
-    }
     }
 
     if (modalCloseBtn) modalCloseBtn.addEventListener('click', closeModal);
