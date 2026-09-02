@@ -475,17 +475,13 @@
         </div>
 
         <div class="flex items-center gap-2">
-          <a
-            id="modal-official-link"
-            href="https://www.sih.gov.in/sih2026PS"
-            target="_blank"
-            rel="noopener noreferrer"
-            class="px-5 py-3 rounded-2xl bg-gradient-to-r from-amber-500 via-orange-500 to-amber-600 hover:from-amber-600 hover:to-orange-600 text-white text-xs sm:text-sm font-black shadow-md hover:shadow-lg transition-all flex items-center gap-2 border border-amber-300 active:scale-95"
-            title="Click to open this exact statement on official SIH portal"
+          <button
+            id="modal-official-btn"
+            class="px-5 py-3 rounded-2xl bg-gradient-to-r from-amber-500 via-orange-500 to-amber-600 hover:from-amber-600 hover:to-orange-600 text-white text-xs sm:text-sm font-black shadow-md hover:shadow-lg transition-all flex items-center gap-2 border border-amber-300 active:scale-95 cursor-pointer"
+            title="Copies PS ID and opens official SIH portal"
           >
-            <span>🏛️ Open Exact PS on Official SIH Portal</span>
-            <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2.5" d="M10 6H6a2 2 0 00-2 2v10a2 2 0 002 2h10a2 2 0 002-2v-4M14 4h6m0 0v6m0-6L10 14"/></svg>
-          </a>
+            <span>🏛️ Open Official SIH Portal (Auto-Copies ID to Paste) ↗</span>
+          </button>
           <button id="modal-close-secondary-btn" class="px-5 py-3 rounded-2xl bg-slate-200 hover:bg-slate-300 text-slate-800 text-xs sm:text-sm font-bold transition-all">
             Close
           </button>
@@ -727,12 +723,23 @@ Analyze the problem statement above and help our student team build a winning, p
         starText.textContent = isShortlisted ? 'Remove from Shortlist' : 'Add to Shortlist';
       }
 
-      // Highlighted Official SIH Portal Link
-      if (modalOfficialLink) {
-        modalOfficialLink.href = 'https://www.sih.gov.in/sih2026PS#ViewProblemStatement' + item.psId;
-        modalOfficialLink.onclick = () => {
-          navigator.clipboard.writeText(String(item.officialPsNumber || item.psId));
-          showToast(`Copied PS ${item.officialPsNumber || item.psId}! Opening SIH Portal — paste in search.`);
+      // Highlighted Official SIH Portal Button (with Auto-Copy & Navigation)
+      const modalOfficialBtn = document.getElementById('modal-official-btn');
+      if (modalOfficialBtn) {
+        const psNumberToSearch = item.officialPsNumber || item.psId;
+        modalOfficialBtn.innerHTML = `
+          <span>🏛️ Open Official SIH Portal (Auto-Copies ${psNumberToSearch}) ↗</span>
+        `;
+        modalOfficialBtn.onclick = () => {
+          // Copy to clipboard
+          navigator.clipboard.writeText(String(psNumberToSearch)).then(() => {
+            showToast(`✓ Copied ${psNumberToSearch} to clipboard! On official SIH page, simply press Ctrl+V in the Search box.`);
+          }).catch(() => {
+            showToast(`Copied ${psNumberToSearch}! Paste into Search on SIH portal.`);
+          });
+
+          // Open SIH Portal in new tab
+          window.open('https://www.sih.gov.in/sih2026PS', '_blank');
         };
       }
 
