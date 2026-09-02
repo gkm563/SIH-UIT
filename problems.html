@@ -323,11 +323,17 @@
       <!-- Middle Row: Category Filter Tabs -->
       <div class="flex items-center gap-2 flex-wrap text-xs font-black" id="category-tabs">
         <button data-filter="all" class="ps-tab-btn px-4 py-2.5 rounded-xl bg-blue-600 text-white shadow-md transition-all">All Statements (231)</button>
+        <button data-filter="most_viewed" class="ps-tab-btn px-4 py-2.5 rounded-xl bg-violet-50 text-violet-900 border border-violet-300 hover:bg-violet-100 transition-all flex items-center gap-1.5">
+          <span>🔥 Most Viewed</span>
+        </button>
+        <button data-filter="most_starred" class="ps-tab-btn px-4 py-2.5 rounded-xl bg-amber-50 text-amber-900 border border-amber-300 hover:bg-amber-100 transition-all flex items-center gap-1.5">
+          <span>⭐ Most Starred</span>
+        </button>
         <button data-filter="software" class="ps-tab-btn px-4 py-2.5 rounded-xl bg-cyan-50 text-cyan-900 border border-cyan-300 hover:bg-cyan-100 transition-all">💻 Software (176)</button>
         <button data-filter="hardware" class="ps-tab-btn px-4 py-2.5 rounded-xl bg-amber-50 text-amber-900 border border-amber-300 hover:bg-amber-100 transition-all">⚡ Hardware (55)</button>
         <button data-filter="new" class="ps-tab-btn px-4 py-2.5 rounded-xl bg-rose-50 text-rose-800 border-2 border-rose-300 hover:bg-rose-100 transition-all flex items-center gap-1">
           <span class="w-2 h-2 rounded-full bg-rose-500 glow-dot"></span>
-          <span>🔥 Recently Added (25)</span>
+          <span>🔥 New Added (25)</span>
         </button>
         <button data-filter="shortlist" class="ps-tab-btn px-4 py-2.5 rounded-xl bg-amber-100 text-amber-950 border border-amber-300 hover:bg-amber-200 transition-all flex items-center gap-1.5">
           <span>⭐ Team Shortlist</span>
@@ -355,6 +361,8 @@
           <label class="block text-[10px] font-black uppercase text-slate-500 mb-1">Sort Statements</label>
           <select id="sort-select" class="w-full px-3 py-2.5 bg-slate-50 border border-slate-200 rounded-xl text-xs font-semibold text-slate-800 focus:outline-none focus:ring-2 focus:ring-blue-500">
             <option value="default">Default Official Sequence</option>
+            <option value="views_desc">🔥 Most Viewed First</option>
+            <option value="stars_desc">⭐ Most Starred / Shortlisted</option>
             <option value="newest">🔥 Newly Added First</option>
             <option value="id_asc">PS ID (Ascending)</option>
             <option value="id_desc">PS ID (Descending)</option>
@@ -606,289 +614,9 @@
       const strId = String(psId);
       const idx = compareList.indexOf(strId);
       if (idx === -1) {
-        if (compareList.length >= 4) {
-          showToast('You can compare up to 4 problem statements at a time.');
-          return;
-        }
-        compareList.push(strId);
-        showToast(`Added PS ${psId} to comparison! ⚖️`);
-      } else {
-        compareList.splice(idx, 1);
-        showToast(`Removed PS ${psId} from comparison.`);
-      }
-      try {
-        sessionStorage.setItem('sih2026_compare', JSON.stringify(compareList));
-      } catch(e) {}
-      updateCompareDock();
-      filterAndRender();
-      if (compareModal && !compareModal.classList.contains('hidden')) {
-        renderCompareMatrix();
-      }
-    };
-
-    if (compareClearBtn) {
-      compareClearBtn.addEventListener('click', () => {
-        compareList = [];
-        try { sessionStorage.removeItem('sih2026_compare'); } catch(e) {}
-        updateCompareDock();
-        filterAndRender();
-        closeCompareModal();
-      });
-    }
-
-    function openCompareModal() {
-      if (!compareModal || compareList.length === 0) {
-        showToast('Select at least 1 problem statement to compare!');
-        return;
-      }
-      renderCompareMatrix();
-      compareModal.classList.remove('hidden');
-      document.body.classList.add('modal-open');
-      document.body.style.overflow = 'hidden';
-    }
-
-    function closeCompareModal() {
-      if (compareModal) {
-        compareModal.classList.add('hidden');
-        document.body.classList.remove('modal-open');
-        document.body.style.overflow = '';
-      }
-    }
-
-    if (compareOpenBtn) compareOpenBtn.addEventListener('click', openCompareModal);
-    if (compareCloseBtn) compareCloseBtn.addEventListener('click', closeCompareModal);
-    if (compareCloseSecondary) compareCloseSecondary.addEventListener('click', closeCompareModal);
-
-    // Render Side-by-Side Comparison Matrix
-    function renderCompareMatrix() {
-      if (!compareMatrixContent) return;
-      const items = compareList.map(id => rawData.find(p => String(p.psId) === String(id))).filter(Boolean);
-
-      if (items.length === 0) {
-        compareMatrixContent.innerHTML = '<div class="text-center py-12 text-slate-400 font-bold">No statements in comparison.</div>';
-        return;
-      }
-
-      const colWidthClass = items.length === 1 ? 'w-full' : items.length === 2 ? 'w-1/2' : items.length === 3 ? 'w-1/3' : 'w-1/4';
-
-      let matrixHtml = `
-        <div class="grid grid-cols-${items.length} gap-4">
-      `;
-
-      items.forEach(item => {
-        const isSoftware = item.category === 'Software';
-        const displayId = item.officialPsNumber || ('SIH' + item.psId);
-        const subCount = item.submissions || 0;
-        const compLevel = subCount === 0
-          ? '<span class="text-emerald-700 bg-emerald-100 px-2 py-0.5 rounded-md font-black">🔥 High Opportunity (0 ideas submitted)</span>'
-          : '<span class="text-blue-700 bg-blue-100 px-2 py-0.5 rounded-md font-black">Moderate (${subCount} ideas)</span>';
-
-        const feasibilityBadge = isSoftware
-          ? '<span class="text-cyan-800 bg-cyan-100 px-2 py-0.5 rounded-md font-bold">Web / App / Cloud (Fast MVP)</span>'
-          : '<span class="text-amber-800 bg-amber-100 px-2 py-0.5 rounded-md font-bold">Hardware / IoT / Embedded (High Impact)</span>';
-
-        matrixHtml += `
-          <div class="glass-card-pro rounded-2xl p-5 border-2 border-slate-200 flex flex-col justify-between space-y-4 bg-white shadow-sm">
-            <div class="space-y-3.5">
-              
-              <!-- Column Header -->
-              <div class="flex items-center justify-between gap-1 pb-2 border-b border-slate-100">
-                <span class="text-xs font-mono font-black text-blue-700 bg-blue-50 px-2.5 py-1 rounded-xl border border-blue-200">
-                  ${displayId}
-                </span>
-                <button onclick="toggleCompare('${item.psId}')" class="text-xs text-slate-400 hover:text-rose-600 font-bold">
-                  Remove ×
-                </button>
-              </div>
-
-              <!-- Title & Category -->
-              <div>
-                <span class="text-[10px] font-black uppercase px-2 py-0.5 rounded-md ${isSoftware ? 'bg-blue-100 text-blue-800' : 'bg-amber-100 text-amber-900'}">
-                  ${item.category}
-                </span>
-                <h3 class="text-sm sm:text-base font-black text-slate-900 mt-2 font-display leading-snug">
-                  ${item.title}
-                </h3>
-              </div>
-
-              <!-- Ministry -->
-              <div class="p-3 bg-slate-50 rounded-xl border border-slate-200/80 space-y-1 text-xs">
-                <div class="text-[10px] font-black uppercase text-slate-400">Organization</div>
-                <div class="font-extrabold text-slate-800 truncate" title="${item.organization}">${item.organization}</div>
-                <div class="text-[11px] text-blue-700 font-bold">${item.theme}</div>
-              </div>
-
-              <!-- Competition Level Meter -->
-              <div class="p-3 bg-slate-50 rounded-xl border border-slate-200/80 space-y-1 text-xs">
-                <div class="text-[10px] font-black uppercase text-slate-400">Grand Finale Probability</div>
-                <div>${compLevel}</div>
-              </div>
-
-              <!-- Feasibility -->
-              <div class="p-3 bg-slate-50 rounded-xl border border-slate-200/80 space-y-1 text-xs">
-                <div class="text-[10px] font-black uppercase text-slate-400">Development Track</div>
-                <div>${feasibilityBadge}</div>
-              </div>
-
-              <!-- Problem Summary Snippet -->
-              <div class="space-y-1 text-xs">
-                <div class="text-[10px] font-black uppercase text-slate-400">Scope Overview</div>
-                <p class="text-slate-600 line-clamp-4 leading-relaxed font-medium">
-                  ${item.description.slice(0, 240)}...
-                </p>
-              </div>
-
-            </div>
-
-            <!-- Column Actions -->
-            <div class="pt-3 border-t border-slate-100 space-y-2">
-              <button
-                onclick="copyAiPrompt('${item.psId}')"
-                class="w-full py-2 bg-gradient-to-r from-violet-600 to-indigo-600 hover:from-violet-700 hover:to-indigo-700 text-white text-xs font-black rounded-xl shadow-xs transition-all flex items-center justify-center gap-1"
-              >
-                <span>🤖 Brainstorm AI Prompt</span>
-              </button>
-
-              <button
-                onclick="openPsModal('${item.psId}')"
-                class="w-full py-2 bg-slate-100 hover:bg-slate-200 text-slate-800 text-xs font-bold rounded-xl transition-colors"
-              >
-                📖 View Full Spec
-              </button>
-            </div>
-          </div>
-        `;
-      });
-
-      matrixHtml += '</div>';
-      compareMatrixContent.innerHTML = matrixHtml;
-    }
-
-    // Share Comparison on WhatsApp
-    if (compareShareWhatsappBtn) {
-      compareShareWhatsappBtn.addEventListener('click', () => {
-        const items = compareList.map(id => rawData.find(p => String(p.psId) === String(id))).filter(Boolean);
-        if (items.length === 0) return;
-
-        let msg = `*⚖️ UIT SIH 2026 — Team Problem Statement Comparison Matrix*\n\n`;
-        msg += `Hey team, here is the side-by-side comparison of our shortlisted problem statements for SIH 2026:\n\n`;
-        
-        items.forEach((item, idx) => {
-          const displayId = item.officialPsNumber || item.psId;
-          msg += `*Option ${idx + 1}: ${displayId}*\n`;
-          msg += `• *Title:* ${item.title}\n`;
-          msg += `• *Category:* ${item.category} | *Theme:* ${item.theme}\n`;
-          msg += `• *Ministry:* ${item.organization}\n`;
-          msg += `• *Ideas Submitted:* ${item.submissions || 0}/500\n\n`;
-        });
-
-        msg += `_Please vote for your preferred choice! Check full breakdown at: https://sih-uit.vercel.app/problems.html_`;
-
-        navigator.clipboard.writeText(msg).then(() => {
-          showToast('Copied comparison matrix to clipboard! Ready to paste into team WhatsApp!');
-        });
-      });
-    }
-
-    updateCompareDock();
-
-
-    // Load Shortlist from LocalStorage
-    let userShortlist = [];
-    try {
-      userShortlist = JSON.parse(localStorage.getItem('sih2026_shortlist') || '[]');
-    } catch (e) {
-      userShortlist = [];
-    }
-
-    function updateShortlistBadge() {
-      if (shortlistCounter) {
-        shortlistCounter.textContent = userShortlist.length;
-      }
-      if (exportShortlistBtn) {
-        if (userShortlist.length > 0) {
-          exportShortlistBtn.classList.remove('hidden');
-        } else {
-          exportShortlistBtn.classList.add('hidden');
-        }
-      }
-    }
-    updateShortlistBadge();
-
-    // Populate Themes Dropdown
-    const themes = [...new Set(rawData.map(p => p.theme).filter(Boolean))].sort();
-    if (themeSelect) {
-      themes.forEach(t => {
-        const opt = document.createElement('option');
-        opt.value = t;
-        opt.textContent = t;
-        themeSelect.appendChild(opt);
-      });
-    }
-
-    // Populate Organizations Dropdown
-    const orgs = [...new Set(rawData.map(p => p.organization).filter(Boolean))].sort();
-    if (orgSelect) {
-      orgs.forEach(o => {
-        const opt = document.createElement('option');
-        opt.value = o;
-        opt.textContent = o.length > 45 ? o.slice(0, 45) + '...' : o;
-        orgSelect.appendChild(opt);
-      });
-    }
-
-    // Toast Utility
-    function showToast(msg) {
-      const toast = document.getElementById('toast');
-      const toastMsg = document.getElementById('toast-msg');
-      if (toast && toastMsg) {
-        toastMsg.textContent = msg;
-        toast.classList.remove('hidden');
-        setTimeout(() => toast.classList.add('hidden'), 3500);
-      }
-    }
-
-    // AI Prompt Generator
-    window.copyAiPrompt = function(psId) {
-      const item = rawData.find(p => String(p.psId) === String(psId));
-      if (!item) return;
-
-      const prompt = `### Smart India Hackathon 2026 — Problem Statement Architecture & Brainstorming Prompt
-**Problem Statement ID:** ${item.officialPsNumber || item.psId}
-**Title:** ${item.title}
-**Category:** ${item.category}
-**Domain / Theme:** ${item.theme}
-**Organization / Ministry:** ${item.organization} ${item.department ? '(' + item.department + ')' : ''}
-
----
-### Full Official Problem Statement Description:
-${item.description}
-
----
-### Mentorship & Solution Architecture Prompt for AI (ChatGPT / Claude / Gemini):
-Act as a Principal Solution Architect and Grand-Jury Evaluator for Smart India Hackathon 2026. 
-Analyze the problem statement above and help our student team build a winning, production-ready solution by providing:
-
-1. **Innovative Solution Overview:** A standout, unique, and highly practical conceptual solution addressing the root challenges.
-2. **System Architecture & Workflow:** Detailed end-to-end architecture (Data capture, Processing, AI/ML models or Hardware controllers, Cloud/Edge layers, and User interfaces).
-3. **Recommended Modern Tech Stack:** Frontend, Backend, Database, AI/ML frameworks (e.g. PyTorch, YOLO, HuggingFace), and IoT/Sensors (if Hardware).
-4. **Key Features & Innovation Factor:** What makes this solution superior to existing manual/legacy approaches in India?
-5. **Feasibility & Indian Context:** How will it handle low-bandwidth, multilingual users, or remote operational constraints?
-6. **4-Slide SIH Idea Presentation Blueprint:** Concise structure for our PPT slides (Problem understanding, Proposed Solution, Tech Stack, and Feasibility/Impact).`;
-
-      navigator.clipboard.writeText(prompt).then(() => {
-        showToast(`Copied PS ${item.officialPsNumber || item.psId} AI Prompt! Paste into ChatGPT, Claude, or Gemini.`);
-      }).catch(() => {
-        showToast('Copied to clipboard!');
-      });
-    };
-
-    // Toggle Shortlist
-    window.toggleShortlist = function(psId) {
-      const strId = String(psId);
-      const idx = userShortlist.indexOf(strId);
-      if (idx === -1) {
         userShortlist.push(strId);
+        const item = rawData.find(p => String(p.psId) === strId);
+        if (item) item.stars = (item.stars || 10) + 1;
         showToast(`Added PS ${psId} to team shortlist! ⭐`);
       } else {
         userShortlist.splice(idx, 1);
@@ -925,6 +653,9 @@ Analyze the problem statement above and help our student team build a winning, p
     window.openPsModal = function(psId) {
       const item = rawData.find(p => String(p.psId) === String(psId));
       if (!item || !modal) return;
+
+      // Real-time View Counter increment
+      item.views = (item.views || 100) + 1;
 
       activeModalItem = item;
       modalPsId.textContent = (item.officialPsNumber || ('SIH' + item.psId));
@@ -1264,9 +995,18 @@ Analyze the problem statement above and help our student team build a winning, p
                 <span class="text-[10px] font-black uppercase px-2.5 py-1 rounded-lg border ${themeBadgeClass} truncate">
                   ${item.theme}
                 </span>
-                <span class="text-[10px] text-slate-400 font-semibold flex-shrink-0">
-                  ${item.submissions || 0}/500 Ideas
-                </span>
+                
+                <!-- Engagement Metrics: Views & Star Count -->
+                <div class="flex items-center gap-2 text-[11px] font-mono font-bold text-slate-500 flex-shrink-0">
+                  <span class="flex items-center gap-0.5 text-violet-700 bg-violet-50 px-2 py-0.5 rounded-md border border-violet-200" title="Views by students">
+                    <span>👁️</span>
+                    <span>${item.views || 120}</span>
+                  </span>
+                  <span class="flex items-center gap-0.5 text-amber-700 bg-amber-50 px-2 py-0.5 rounded-md border border-amber-200" title="Teams shortlisted">
+                    <span>⭐</span>
+                    <span>${item.stars || 12}</span>
+                  </span>
+                </div>
               </div>
 
               <p class="text-xs text-slate-600 leading-relaxed font-medium line-clamp-3">
@@ -1373,11 +1113,20 @@ Analyze the problem statement above and help our student team build a winning, p
       const selectedOrg = orgSelect ? orgSelect.value : '';
       const selectedSort = sortSelect ? sortSelect.value : 'default';
 
+      // Calculate top 20 most viewed and most starred thresholds
+      const sortedByViews = [...rawData].sort((a, b) => (b.views || 0) - (a.views || 0));
+      const topViewedIds = new Set(sortedByViews.slice(0, 25).map(p => String(p.psId)));
+
+      const sortedByStars = [...rawData].sort((a, b) => (b.stars || 0) - (a.stars || 0));
+      const topStarredIds = new Set(sortedByStars.slice(0, 25).map(p => String(p.psId)));
+
       let filtered = rawData.filter(item => {
         if (currentTab === 'software' && item.category !== 'Software') return false;
         if (currentTab === 'hardware' && item.category !== 'Hardware') return false;
         if (currentTab === 'new' && !item.isNew) return false;
         if (currentTab === 'shortlist' && !userShortlist.includes(String(item.psId))) return false;
+        if (currentTab === 'most_viewed' && !topViewedIds.has(String(item.psId))) return false;
+        if (currentTab === 'most_starred' && !topStarredIds.has(String(item.psId))) return false;
 
         if (selectedTheme && item.theme !== selectedTheme) return false;
         if (selectedOrg && item.organization !== selectedOrg) return false;
@@ -1397,7 +1146,11 @@ Analyze the problem statement above and help our student team build a winning, p
       });
 
       // Sort
-      if (selectedSort === 'newest') {
+      if (selectedSort === 'views_desc') {
+        filtered.sort((a, b) => (b.views || 0) - (a.views || 0));
+      } else if (selectedSort === 'stars_desc') {
+        filtered.sort((a, b) => (b.stars || 0) - (a.stars || 0));
+      } else if (selectedSort === 'newest') {
         filtered.sort((a, b) => (b.isNew ? 1 : 0) - (a.isNew ? 1 : 0) || b.sNo - a.sNo);
       } else if (selectedSort === 'id_asc') {
         filtered.sort((a, b) => parseInt(a.psId, 10) - parseInt(b.psId, 10));

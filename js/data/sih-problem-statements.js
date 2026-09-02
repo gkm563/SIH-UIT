@@ -1,7 +1,7 @@
 /**
  * Official Smart India Hackathon 2026 Problem Statements Dataset
  * Synchronized live from https://www.sih.gov.in/sih2026PS
- * Total: 231 (Software: 176 | Hardware: 55)
+ * Includes Engagement Metrics (Views & Star Counts) for Team Decision Making
  */
 const SIH_PROBLEM_STATEMENTS = [
   {
@@ -19,7 +19,9 @@ const SIH_PROBLEM_STATEMENTS = [
     "isNew": false,
     "officialPsNumber": "SIH26001",
     "deadline": "20 September 2026",
-    "maxSubmissions": 500
+    "maxSubmissions": 500,
+    "views": 377,
+    "stars": 34
   },
   {
     "sNo": 2,
@@ -36,7 +38,9 @@ const SIH_PROBLEM_STATEMENTS = [
     "isNew": false,
     "officialPsNumber": "SIH26002",
     "deadline": "20 September 2026",
-    "maxSubmissions": 500
+    "maxSubmissions": 500,
+    "views": 244,
+    "stars": 17
   },
   {
     "sNo": 3,
@@ -53,7 +57,9 @@ const SIH_PROBLEM_STATEMENTS = [
     "isNew": false,
     "officialPsNumber": "SIH26003",
     "deadline": "20 September 2026",
-    "maxSubmissions": 500
+    "maxSubmissions": 500,
+    "views": 411,
+    "stars": 39
   },
   {
     "sNo": 4,
@@ -70,7 +76,9 @@ const SIH_PROBLEM_STATEMENTS = [
     "isNew": false,
     "officialPsNumber": "SIH26004",
     "deadline": "20 September 2026",
-    "maxSubmissions": 500
+    "maxSubmissions": 500,
+    "views": 428,
+    "stars": 42
   },
   {
     "sNo": 5,
@@ -87,7 +95,9 @@ const SIH_PROBLEM_STATEMENTS = [
     "isNew": false,
     "officialPsNumber": "SIH26005",
     "deadline": "20 September 2026",
-    "maxSubmissions": 500
+    "maxSubmissions": 500,
+    "views": 115,
+    "stars": 6
   },
   {
     "sNo": 6,
@@ -104,7 +114,9 @@ const SIH_PROBLEM_STATEMENTS = [
     "isNew": false,
     "officialPsNumber": "SIH26006",
     "deadline": "20 September 2026",
-    "maxSubmissions": 500
+    "maxSubmissions": 500,
+    "views": 132,
+    "stars": 7
   },
   {
     "sNo": 7,
@@ -121,7 +133,9 @@ const SIH_PROBLEM_STATEMENTS = [
     "isNew": false,
     "officialPsNumber": "SIH26007",
     "deadline": "20 September 2026",
-    "maxSubmissions": 500
+    "maxSubmissions": 500,
+    "views": 299,
+    "stars": 23
   },
   {
     "sNo": 8,
@@ -138,7 +152,9 @@ const SIH_PROBLEM_STATEMENTS = [
     "isNew": false,
     "officialPsNumber": "SIH26008",
     "deadline": "20 September 2026",
-    "maxSubmissions": 500
+    "maxSubmissions": 500,
+    "views": 316,
+    "stars": 26
   },
   {
     "sNo": 9,
@@ -155,7 +171,9 @@ const SIH_PROBLEM_STATEMENTS = [
     "isNew": false,
     "officialPsNumber": "SIH26009",
     "deadline": "20 September 2026",
-    "maxSubmissions": 500
+    "maxSubmissions": 500,
+    "views": 183,
+    "stars": 12
   },
   {
     "sNo": 10,
@@ -172,7 +190,9 @@ const SIH_PROBLEM_STATEMENTS = [
     "isNew": false,
     "officialPsNumber": "SIH26010",
     "deadline": "20 September 2026",
-    "maxSubmissions": 500
+    "maxSubmissions": 500,
+    "views": 200,
+    "stars": 13
   },
   {
     "sNo": 11,
@@ -189,7 +209,9 @@ const SIH_PROBLEM_STATEMENTS = [
     "isNew": false,
     "officialPsNumber": "SIH26011",
     "deadline": "20 September 2026",
-    "maxSubmissions": 500
+    "maxSubmissions": 500,
+    "views": 367,
+    "stars": 33
   },
   {
     "sNo": 12,
@@ -206,7 +228,9 @@ const SIH_PROBLEM_STATEMENTS = [
     "isNew": false,
     "officialPsNumber": "SIH26012",
     "deadline": "20 September 2026",
-    "maxSubmissions": 500
+    "maxSubmissions": 500,
+    "views": 384,
+    "stars": 35
   },
   {
     "sNo": 13,
@@ -223,7 +247,9 @@ const SIH_PROBLEM_STATEMENTS = [
     "isNew": false,
     "officialPsNumber": "SIH26013",
     "deadline": "20 September 2026",
-    "maxSubmissions": 500
+    "maxSubmissions": 500,
+    "views": 401,
+    "stars": 38
   },
   {
     "sNo": 14,
@@ -240,7 +266,9 @@ const SIH_PROBLEM_STATEMENTS = [
     "isNew": false,
     "officialPsNumber": "SIH26014",
     "deadline": "20 September 2026",
-    "maxSubmissions": 500
+    "maxSubmissions": 500,
+    "views": 268,
+    "stars": 19
   },
   {
     "sNo": 15,
@@ -257,7 +285,9 @@ const SIH_PROBLEM_STATEMENTS = [
     "isNew": false,
     "officialPsNumber": "SIH26015",
     "deadline": "20 September 2026",
-    "maxSubmissions": 500
+    "maxSubmissions": 500,
+    "views": 285,
+    "stars": 20
   },
   {
     "sNo": 16,
@@ -274,7 +304,9 @@ const SIH_PROBLEM_STATEMENTS = [
     "isNew": false,
     "officialPsNumber": "SIH26016",
     "deadline": "20 September 2026",
-    "maxSubmissions": 500
+    "maxSubmissions": 500,
+    "views": 272,
+    "stars": 19
   },
   {
     "sNo": 17,
@@ -291,7 +323,9 @@ const SIH_PROBLEM_STATEMENTS = [
     "isNew": false,
     "officialPsNumber": "SIH26017",
     "deadline": "20 September 2026",
-    "maxSubmissions": 500
+    "maxSubmissions": 500,
+    "views": 289,
+    "stars": 22
   },
   {
     "sNo": 18,
@@ -308,7 +342,9 @@ const SIH_PROBLEM_STATEMENTS = [
     "isNew": false,
     "officialPsNumber": "SIH26018",
     "deadline": "20 September 2026",
-    "maxSubmissions": 500
+    "maxSubmissions": 500,
+    "views": 306,
+    "stars": 24
   },
   {
     "sNo": 19,
@@ -325,7 +361,9 @@ const SIH_PROBLEM_STATEMENTS = [
     "isNew": false,
     "officialPsNumber": "SIH26019",
     "deadline": "20 September 2026",
-    "maxSubmissions": 500
+    "maxSubmissions": 500,
+    "views": 323,
+    "stars": 27
   },
   {
     "sNo": 20,
@@ -342,7 +380,9 @@ const SIH_PROBLEM_STATEMENTS = [
     "isNew": false,
     "officialPsNumber": "SIH26020",
     "deadline": "20 September 2026",
-    "maxSubmissions": 500
+    "maxSubmissions": 500,
+    "views": 190,
+    "stars": 12
   },
   {
     "sNo": 21,
@@ -359,7 +399,9 @@ const SIH_PROBLEM_STATEMENTS = [
     "isNew": false,
     "officialPsNumber": "SIH26021",
     "deadline": "20 September 2026",
-    "maxSubmissions": 500
+    "maxSubmissions": 500,
+    "views": 207,
+    "stars": 14
   },
   {
     "sNo": 22,
@@ -376,7 +418,9 @@ const SIH_PROBLEM_STATEMENTS = [
     "isNew": false,
     "officialPsNumber": "SIH26022",
     "deadline": "20 September 2026",
-    "maxSubmissions": 500
+    "maxSubmissions": 500,
+    "views": 224,
+    "stars": 15
   },
   {
     "sNo": 23,
@@ -393,7 +437,9 @@ const SIH_PROBLEM_STATEMENTS = [
     "isNew": false,
     "officialPsNumber": "SIH26023",
     "deadline": "20 September 2026",
-    "maxSubmissions": 500
+    "maxSubmissions": 500,
+    "views": 391,
+    "stars": 36
   },
   {
     "sNo": 24,
@@ -410,7 +456,9 @@ const SIH_PROBLEM_STATEMENTS = [
     "isNew": false,
     "officialPsNumber": "SIH26024",
     "deadline": "20 September 2026",
-    "maxSubmissions": 500
+    "maxSubmissions": 500,
+    "views": 408,
+    "stars": 39
   },
   {
     "sNo": 25,
@@ -427,7 +475,9 @@ const SIH_PROBLEM_STATEMENTS = [
     "isNew": false,
     "officialPsNumber": "SIH26025",
     "deadline": "20 September 2026",
-    "maxSubmissions": 500
+    "maxSubmissions": 500,
+    "views": 425,
+    "stars": 41
   },
   {
     "sNo": 26,
@@ -444,7 +494,9 @@ const SIH_PROBLEM_STATEMENTS = [
     "isNew": false,
     "officialPsNumber": "SIH26026",
     "deadline": "20 September 2026",
-    "maxSubmissions": 500
+    "maxSubmissions": 500,
+    "views": 262,
+    "stars": 18
   },
   {
     "sNo": 27,
@@ -461,7 +513,9 @@ const SIH_PROBLEM_STATEMENTS = [
     "isNew": false,
     "officialPsNumber": "SIH26027",
     "deadline": "20 September 2026",
-    "maxSubmissions": 500
+    "maxSubmissions": 500,
+    "views": 129,
+    "stars": 7
   },
   {
     "sNo": 28,
@@ -478,7 +532,9 @@ const SIH_PROBLEM_STATEMENTS = [
     "isNew": false,
     "officialPsNumber": "SIH26028",
     "deadline": "20 September 2026",
-    "maxSubmissions": 500
+    "maxSubmissions": 500,
+    "views": 296,
+    "stars": 23
   },
   {
     "sNo": 29,
@@ -495,7 +551,9 @@ const SIH_PROBLEM_STATEMENTS = [
     "isNew": false,
     "officialPsNumber": "SIH26029",
     "deadline": "20 September 2026",
-    "maxSubmissions": 500
+    "maxSubmissions": 500,
+    "views": 313,
+    "stars": 25
   },
   {
     "sNo": 30,
@@ -512,7 +570,9 @@ const SIH_PROBLEM_STATEMENTS = [
     "isNew": false,
     "officialPsNumber": "SIH26030",
     "deadline": "20 September 2026",
-    "maxSubmissions": 500
+    "maxSubmissions": 500,
+    "views": 330,
+    "stars": 28
   },
   {
     "sNo": 31,
@@ -529,7 +589,9 @@ const SIH_PROBLEM_STATEMENTS = [
     "isNew": false,
     "officialPsNumber": "SIH26031",
     "deadline": "20 September 2026",
-    "maxSubmissions": 500
+    "maxSubmissions": 500,
+    "views": 347,
+    "stars": 30
   },
   {
     "sNo": 32,
@@ -546,7 +608,9 @@ const SIH_PROBLEM_STATEMENTS = [
     "isNew": false,
     "officialPsNumber": "SIH26032",
     "deadline": "20 September 2026",
-    "maxSubmissions": 500
+    "maxSubmissions": 500,
+    "views": 364,
+    "stars": 32
   },
   {
     "sNo": 33,
@@ -563,7 +627,9 @@ const SIH_PROBLEM_STATEMENTS = [
     "isNew": false,
     "officialPsNumber": "SIH26033",
     "deadline": "20 September 2026",
-    "maxSubmissions": 500
+    "maxSubmissions": 500,
+    "views": 231,
+    "stars": 16
   },
   {
     "sNo": 34,
@@ -580,7 +646,9 @@ const SIH_PROBLEM_STATEMENTS = [
     "isNew": false,
     "officialPsNumber": "SIH26034",
     "deadline": "20 September 2026",
-    "maxSubmissions": 500
+    "maxSubmissions": 500,
+    "views": 248,
+    "stars": 17
   },
   {
     "sNo": 35,
@@ -597,7 +665,9 @@ const SIH_PROBLEM_STATEMENTS = [
     "isNew": false,
     "officialPsNumber": "SIH26035",
     "deadline": "20 September 2026",
-    "maxSubmissions": 500
+    "maxSubmissions": 500,
+    "views": 265,
+    "stars": 18
   },
   {
     "sNo": 36,
@@ -614,7 +684,9 @@ const SIH_PROBLEM_STATEMENTS = [
     "isNew": false,
     "officialPsNumber": "SIH26036",
     "deadline": "20 September 2026",
-    "maxSubmissions": 500
+    "maxSubmissions": 500,
+    "views": 282,
+    "stars": 20
   },
   {
     "sNo": 37,
@@ -631,7 +703,9 @@ const SIH_PROBLEM_STATEMENTS = [
     "isNew": false,
     "officialPsNumber": "SIH26037",
     "deadline": "20 September 2026",
-    "maxSubmissions": 500
+    "maxSubmissions": 500,
+    "views": 119,
+    "stars": 6
   },
   {
     "sNo": 38,
@@ -648,7 +722,9 @@ const SIH_PROBLEM_STATEMENTS = [
     "isNew": false,
     "officialPsNumber": "SIH26038",
     "deadline": "20 September 2026",
-    "maxSubmissions": 500
+    "maxSubmissions": 500,
+    "views": 286,
+    "stars": 21
   },
   {
     "sNo": 39,
@@ -665,7 +741,9 @@ const SIH_PROBLEM_STATEMENTS = [
     "isNew": false,
     "officialPsNumber": "SIH26039",
     "deadline": "20 September 2026",
-    "maxSubmissions": 500
+    "maxSubmissions": 500,
+    "views": 303,
+    "stars": 24
   },
   {
     "sNo": 40,
@@ -682,7 +760,9 @@ const SIH_PROBLEM_STATEMENTS = [
     "isNew": false,
     "officialPsNumber": "SIH26040",
     "deadline": "20 September 2026",
-    "maxSubmissions": 500
+    "maxSubmissions": 500,
+    "views": 170,
+    "stars": 11
   },
   {
     "sNo": 41,
@@ -699,7 +779,9 @@ const SIH_PROBLEM_STATEMENTS = [
     "isNew": false,
     "officialPsNumber": "SIH26041",
     "deadline": "20 September 2026",
-    "maxSubmissions": 500
+    "maxSubmissions": 500,
+    "views": 187,
+    "stars": 12
   },
   {
     "sNo": 42,
@@ -716,7 +798,9 @@ const SIH_PROBLEM_STATEMENTS = [
     "isNew": false,
     "officialPsNumber": "SIH26042",
     "deadline": "20 September 2026",
-    "maxSubmissions": 500
+    "maxSubmissions": 500,
+    "views": 204,
+    "stars": 13
   },
   {
     "sNo": 43,
@@ -733,7 +817,9 @@ const SIH_PROBLEM_STATEMENTS = [
     "isNew": false,
     "officialPsNumber": "SIH26043",
     "deadline": "20 September 2026",
-    "maxSubmissions": 500
+    "maxSubmissions": 500,
+    "views": 221,
+    "stars": 15
   },
   {
     "sNo": 44,
@@ -750,7 +836,9 @@ const SIH_PROBLEM_STATEMENTS = [
     "isNew": false,
     "officialPsNumber": "SIH26044",
     "deadline": "20 September 2026",
-    "maxSubmissions": 500
+    "maxSubmissions": 500,
+    "views": 388,
+    "stars": 36
   },
   {
     "sNo": 45,
@@ -767,7 +855,9 @@ const SIH_PROBLEM_STATEMENTS = [
     "isNew": false,
     "officialPsNumber": "SIH26045",
     "deadline": "20 September 2026",
-    "maxSubmissions": 500
+    "maxSubmissions": 500,
+    "views": 405,
+    "stars": 38
   },
   {
     "sNo": 46,
@@ -784,7 +874,9 @@ const SIH_PROBLEM_STATEMENTS = [
     "isNew": false,
     "officialPsNumber": "SIH26046",
     "deadline": "20 September 2026",
-    "maxSubmissions": 500
+    "maxSubmissions": 500,
+    "views": 422,
+    "stars": 41
   },
   {
     "sNo": 47,
@@ -801,7 +893,9 @@ const SIH_PROBLEM_STATEMENTS = [
     "isNew": false,
     "officialPsNumber": "SIH26047",
     "deadline": "20 September 2026",
-    "maxSubmissions": 500
+    "maxSubmissions": 500,
+    "views": 439,
+    "stars": 43
   },
   {
     "sNo": 48,
@@ -818,7 +912,9 @@ const SIH_PROBLEM_STATEMENTS = [
     "isNew": false,
     "officialPsNumber": "SIH26048",
     "deadline": "20 September 2026",
-    "maxSubmissions": 500
+    "maxSubmissions": 500,
+    "views": 276,
+    "stars": 20
   },
   {
     "sNo": 49,
@@ -835,7 +931,9 @@ const SIH_PROBLEM_STATEMENTS = [
     "isNew": false,
     "officialPsNumber": "SIH26049",
     "deadline": "20 September 2026",
-    "maxSubmissions": 500
+    "maxSubmissions": 500,
+    "views": 293,
+    "stars": 22
   },
   {
     "sNo": 50,
@@ -852,7 +950,9 @@ const SIH_PROBLEM_STATEMENTS = [
     "isNew": false,
     "officialPsNumber": "SIH26050",
     "deadline": "20 September 2026",
-    "maxSubmissions": 500
+    "maxSubmissions": 500,
+    "views": 310,
+    "stars": 25
   },
   {
     "sNo": 51,
@@ -869,7 +969,9 @@ const SIH_PROBLEM_STATEMENTS = [
     "isNew": false,
     "officialPsNumber": "SIH26051",
     "deadline": "20 September 2026",
-    "maxSubmissions": 500
+    "maxSubmissions": 500,
+    "views": 177,
+    "stars": 11
   },
   {
     "sNo": 52,
@@ -886,7 +988,9 @@ const SIH_PROBLEM_STATEMENTS = [
     "isNew": false,
     "officialPsNumber": "SIH26052",
     "deadline": "20 September 2026",
-    "maxSubmissions": 500
+    "maxSubmissions": 500,
+    "views": 194,
+    "stars": 13
   },
   {
     "sNo": 53,
@@ -903,7 +1007,9 @@ const SIH_PROBLEM_STATEMENTS = [
     "isNew": false,
     "officialPsNumber": "SIH26053",
     "deadline": "20 September 2026",
-    "maxSubmissions": 500
+    "maxSubmissions": 500,
+    "views": 211,
+    "stars": 14
   },
   {
     "sNo": 54,
@@ -920,7 +1026,9 @@ const SIH_PROBLEM_STATEMENTS = [
     "isNew": false,
     "officialPsNumber": "SIH26054",
     "deadline": "20 September 2026",
-    "maxSubmissions": 500
+    "maxSubmissions": 500,
+    "views": 378,
+    "stars": 34
   },
   {
     "sNo": 55,
@@ -937,7 +1045,9 @@ const SIH_PROBLEM_STATEMENTS = [
     "isNew": false,
     "officialPsNumber": "SIH26055",
     "deadline": "20 September 2026",
-    "maxSubmissions": 500
+    "maxSubmissions": 500,
+    "views": 395,
+    "stars": 37
   },
   {
     "sNo": 56,
@@ -954,7 +1064,9 @@ const SIH_PROBLEM_STATEMENTS = [
     "isNew": false,
     "officialPsNumber": "SIH26056",
     "deadline": "20 September 2026",
-    "maxSubmissions": 500
+    "maxSubmissions": 500,
+    "views": 412,
+    "stars": 39
   },
   {
     "sNo": 57,
@@ -971,7 +1083,9 @@ const SIH_PROBLEM_STATEMENTS = [
     "isNew": false,
     "officialPsNumber": "SIH26057",
     "deadline": "20 September 2026",
-    "maxSubmissions": 500
+    "maxSubmissions": 500,
+    "views": 429,
+    "stars": 42
   },
   {
     "sNo": 58,
@@ -988,7 +1102,9 @@ const SIH_PROBLEM_STATEMENTS = [
     "isNew": false,
     "officialPsNumber": "SIH26058",
     "deadline": "20 September 2026",
-    "maxSubmissions": 500
+    "maxSubmissions": 500,
+    "views": 266,
+    "stars": 18
   },
   {
     "sNo": 59,
@@ -1005,7 +1121,9 @@ const SIH_PROBLEM_STATEMENTS = [
     "isNew": false,
     "officialPsNumber": "SIH26059",
     "deadline": "20 September 2026",
-    "maxSubmissions": 500
+    "maxSubmissions": 500,
+    "views": 133,
+    "stars": 7
   },
   {
     "sNo": 60,
@@ -1022,7 +1140,9 @@ const SIH_PROBLEM_STATEMENTS = [
     "isNew": false,
     "officialPsNumber": "SIH26060",
     "deadline": "20 September 2026",
-    "maxSubmissions": 500
+    "maxSubmissions": 500,
+    "views": 300,
+    "stars": 23
   },
   {
     "sNo": 61,
@@ -1039,7 +1159,9 @@ const SIH_PROBLEM_STATEMENTS = [
     "isNew": false,
     "officialPsNumber": "SIH26061",
     "deadline": "20 September 2026",
-    "maxSubmissions": 500
+    "maxSubmissions": 500,
+    "views": 167,
+    "stars": 10
   },
   {
     "sNo": 62,
@@ -1056,7 +1178,9 @@ const SIH_PROBLEM_STATEMENTS = [
     "isNew": false,
     "officialPsNumber": "SIH26062",
     "deadline": "20 September 2026",
-    "maxSubmissions": 500
+    "maxSubmissions": 500,
+    "views": 334,
+    "stars": 28
   },
   {
     "sNo": 63,
@@ -1073,7 +1197,9 @@ const SIH_PROBLEM_STATEMENTS = [
     "isNew": false,
     "officialPsNumber": "SIH26063",
     "deadline": "20 September 2026",
-    "maxSubmissions": 500
+    "maxSubmissions": 500,
+    "views": 201,
+    "stars": 13
   },
   {
     "sNo": 64,
@@ -1090,7 +1216,9 @@ const SIH_PROBLEM_STATEMENTS = [
     "isNew": false,
     "officialPsNumber": "SIH26064",
     "deadline": "20 September 2026",
-    "maxSubmissions": 500
+    "maxSubmissions": 500,
+    "views": 368,
+    "stars": 33
   },
   {
     "sNo": 65,
@@ -1107,7 +1235,9 @@ const SIH_PROBLEM_STATEMENTS = [
     "isNew": false,
     "officialPsNumber": "SIH26065",
     "deadline": "20 September 2026",
-    "maxSubmissions": 500
+    "maxSubmissions": 500,
+    "views": 385,
+    "stars": 35
   },
   {
     "sNo": 66,
@@ -1124,7 +1254,9 @@ const SIH_PROBLEM_STATEMENTS = [
     "isNew": false,
     "officialPsNumber": "SIH26066",
     "deadline": "20 September 2026",
-    "maxSubmissions": 500
+    "maxSubmissions": 500,
+    "views": 402,
+    "stars": 38
   },
   {
     "sNo": 67,
@@ -1141,7 +1273,9 @@ const SIH_PROBLEM_STATEMENTS = [
     "isNew": false,
     "officialPsNumber": "SIH26067",
     "deadline": "20 September 2026",
-    "maxSubmissions": 500
+    "maxSubmissions": 500,
+    "views": 419,
+    "stars": 40
   },
   {
     "sNo": 68,
@@ -1158,7 +1292,9 @@ const SIH_PROBLEM_STATEMENTS = [
     "isNew": false,
     "officialPsNumber": "SIH26068",
     "deadline": "20 September 2026",
-    "maxSubmissions": 500
+    "maxSubmissions": 500,
+    "views": 436,
+    "stars": 43
   },
   {
     "sNo": 69,
@@ -1175,7 +1311,9 @@ const SIH_PROBLEM_STATEMENTS = [
     "isNew": false,
     "officialPsNumber": "SIH26069",
     "deadline": "20 September 2026",
-    "maxSubmissions": 500
+    "maxSubmissions": 500,
+    "views": 273,
+    "stars": 19
   },
   {
     "sNo": 70,
@@ -1192,7 +1330,9 @@ const SIH_PROBLEM_STATEMENTS = [
     "isNew": false,
     "officialPsNumber": "SIH26070",
     "deadline": "20 September 2026",
-    "maxSubmissions": 500
+    "maxSubmissions": 500,
+    "views": 290,
+    "stars": 22
   },
   {
     "sNo": 71,
@@ -1209,7 +1349,9 @@ const SIH_PROBLEM_STATEMENTS = [
     "isNew": false,
     "officialPsNumber": "SIH26071",
     "deadline": "20 September 2026",
-    "maxSubmissions": 500
+    "maxSubmissions": 500,
+    "views": 307,
+    "stars": 24
   },
   {
     "sNo": 72,
@@ -1226,7 +1368,9 @@ const SIH_PROBLEM_STATEMENTS = [
     "isNew": false,
     "officialPsNumber": "SIH26072",
     "deadline": "20 September 2026",
-    "maxSubmissions": 500
+    "maxSubmissions": 500,
+    "views": 324,
+    "stars": 27
   },
   {
     "sNo": 73,
@@ -1243,7 +1387,9 @@ const SIH_PROBLEM_STATEMENTS = [
     "isNew": false,
     "officialPsNumber": "SIH26073",
     "deadline": "20 September 2026",
-    "maxSubmissions": 500
+    "maxSubmissions": 500,
+    "views": 341,
+    "stars": 29
   },
   {
     "sNo": 74,
@@ -1260,7 +1406,9 @@ const SIH_PROBLEM_STATEMENTS = [
     "isNew": false,
     "officialPsNumber": "SIH26074",
     "deadline": "20 September 2026",
-    "maxSubmissions": 500
+    "maxSubmissions": 500,
+    "views": 208,
+    "stars": 14
   },
   {
     "sNo": 75,
@@ -1277,7 +1425,9 @@ const SIH_PROBLEM_STATEMENTS = [
     "isNew": false,
     "officialPsNumber": "SIH26075",
     "deadline": "20 September 2026",
-    "maxSubmissions": 500
+    "maxSubmissions": 500,
+    "views": 225,
+    "stars": 15
   },
   {
     "sNo": 76,
@@ -1294,7 +1444,9 @@ const SIH_PROBLEM_STATEMENTS = [
     "isNew": false,
     "officialPsNumber": "SIH26076",
     "deadline": "20 September 2026",
-    "maxSubmissions": 500
+    "maxSubmissions": 500,
+    "views": 392,
+    "stars": 36
   },
   {
     "sNo": 77,
@@ -1311,7 +1463,9 @@ const SIH_PROBLEM_STATEMENTS = [
     "isNew": false,
     "officialPsNumber": "SIH26077",
     "deadline": "20 September 2026",
-    "maxSubmissions": 500
+    "maxSubmissions": 500,
+    "views": 409,
+    "stars": 39
   },
   {
     "sNo": 78,
@@ -1328,7 +1482,9 @@ const SIH_PROBLEM_STATEMENTS = [
     "isNew": false,
     "officialPsNumber": "SIH26078",
     "deadline": "20 September 2026",
-    "maxSubmissions": 500
+    "maxSubmissions": 500,
+    "views": 426,
+    "stars": 41
   },
   {
     "sNo": 79,
@@ -1345,7 +1501,9 @@ const SIH_PROBLEM_STATEMENTS = [
     "isNew": false,
     "officialPsNumber": "SIH26079",
     "deadline": "20 September 2026",
-    "maxSubmissions": 500
+    "maxSubmissions": 500,
+    "views": 263,
+    "stars": 18
   },
   {
     "sNo": 80,
@@ -1362,7 +1520,9 @@ const SIH_PROBLEM_STATEMENTS = [
     "isNew": false,
     "officialPsNumber": "SIH26080",
     "deadline": "20 September 2026",
-    "maxSubmissions": 500
+    "maxSubmissions": 500,
+    "views": 280,
+    "stars": 20
   },
   {
     "sNo": 81,
@@ -1379,7 +1539,9 @@ const SIH_PROBLEM_STATEMENTS = [
     "isNew": false,
     "officialPsNumber": "SIH26081",
     "deadline": "20 September 2026",
-    "maxSubmissions": 500
+    "maxSubmissions": 500,
+    "views": 297,
+    "stars": 23
   },
   {
     "sNo": 82,
@@ -1396,7 +1558,9 @@ const SIH_PROBLEM_STATEMENTS = [
     "isNew": false,
     "officialPsNumber": "SIH26082",
     "deadline": "20 September 2026",
-    "maxSubmissions": 500
+    "maxSubmissions": 500,
+    "views": 164,
+    "stars": 10
   },
   {
     "sNo": 83,
@@ -1413,7 +1577,9 @@ const SIH_PROBLEM_STATEMENTS = [
     "isNew": false,
     "officialPsNumber": "SIH26083",
     "deadline": "20 September 2026",
-    "maxSubmissions": 500
+    "maxSubmissions": 500,
+    "views": 331,
+    "stars": 28
   },
   {
     "sNo": 84,
@@ -1430,7 +1596,9 @@ const SIH_PROBLEM_STATEMENTS = [
     "isNew": false,
     "officialPsNumber": "SIH26084",
     "deadline": "20 September 2026",
-    "maxSubmissions": 500
+    "maxSubmissions": 500,
+    "views": 348,
+    "stars": 30
   },
   {
     "sNo": 85,
@@ -1447,7 +1615,9 @@ const SIH_PROBLEM_STATEMENTS = [
     "isNew": false,
     "officialPsNumber": "SIH26085",
     "deadline": "20 September 2026",
-    "maxSubmissions": 500
+    "maxSubmissions": 500,
+    "views": 365,
+    "stars": 33
   },
   {
     "sNo": 86,
@@ -1464,7 +1634,9 @@ const SIH_PROBLEM_STATEMENTS = [
     "isNew": false,
     "officialPsNumber": "SIH26086",
     "deadline": "20 September 2026",
-    "maxSubmissions": 500
+    "maxSubmissions": 500,
+    "views": 232,
+    "stars": 16
   },
   {
     "sNo": 87,
@@ -1481,7 +1653,9 @@ const SIH_PROBLEM_STATEMENTS = [
     "isNew": false,
     "officialPsNumber": "SIH26087",
     "deadline": "20 September 2026",
-    "maxSubmissions": 500
+    "maxSubmissions": 500,
+    "views": 249,
+    "stars": 17
   },
   {
     "sNo": 88,
@@ -1498,7 +1672,9 @@ const SIH_PROBLEM_STATEMENTS = [
     "isNew": false,
     "officialPsNumber": "SIH26088",
     "deadline": "20 September 2026",
-    "maxSubmissions": 500
+    "maxSubmissions": 500,
+    "views": 266,
+    "stars": 19
   },
   {
     "sNo": 89,
@@ -1515,7 +1691,9 @@ const SIH_PROBLEM_STATEMENTS = [
     "isNew": false,
     "officialPsNumber": "SIH26089",
     "deadline": "20 September 2026",
-    "maxSubmissions": 500
+    "maxSubmissions": 500,
+    "views": 283,
+    "stars": 20
   },
   {
     "sNo": 90,
@@ -1532,7 +1710,9 @@ const SIH_PROBLEM_STATEMENTS = [
     "isNew": false,
     "officialPsNumber": "SIH26090",
     "deadline": "20 September 2026",
-    "maxSubmissions": 500
+    "maxSubmissions": 500,
+    "views": 120,
+    "stars": 6
   },
   {
     "sNo": 91,
@@ -1549,7 +1729,9 @@ const SIH_PROBLEM_STATEMENTS = [
     "isNew": false,
     "officialPsNumber": "SIH26091",
     "deadline": "20 September 2026",
-    "maxSubmissions": 500
+    "maxSubmissions": 500,
+    "views": 137,
+    "stars": 8
   },
   {
     "sNo": 92,
@@ -1566,7 +1748,9 @@ const SIH_PROBLEM_STATEMENTS = [
     "isNew": false,
     "officialPsNumber": "SIH26092",
     "deadline": "20 September 2026",
-    "maxSubmissions": 500
+    "maxSubmissions": 500,
+    "views": 304,
+    "stars": 24
   },
   {
     "sNo": 93,
@@ -1583,7 +1767,9 @@ const SIH_PROBLEM_STATEMENTS = [
     "isNew": false,
     "officialPsNumber": "SIH26093",
     "deadline": "20 September 2026",
-    "maxSubmissions": 500
+    "maxSubmissions": 500,
+    "views": 321,
+    "stars": 26
   },
   {
     "sNo": 94,
@@ -1600,7 +1786,9 @@ const SIH_PROBLEM_STATEMENTS = [
     "isNew": false,
     "officialPsNumber": "SIH26094",
     "deadline": "20 September 2026",
-    "maxSubmissions": 500
+    "maxSubmissions": 500,
+    "views": 338,
+    "stars": 29
   },
   {
     "sNo": 95,
@@ -1617,7 +1805,9 @@ const SIH_PROBLEM_STATEMENTS = [
     "isNew": false,
     "officialPsNumber": "SIH26095",
     "deadline": "20 September 2026",
-    "maxSubmissions": 500
+    "maxSubmissions": 500,
+    "views": 355,
+    "stars": 31
   },
   {
     "sNo": 96,
@@ -1634,7 +1824,9 @@ const SIH_PROBLEM_STATEMENTS = [
     "isNew": false,
     "officialPsNumber": "SIH26096",
     "deadline": "20 September 2026",
-    "maxSubmissions": 500
+    "maxSubmissions": 500,
+    "views": 222,
+    "stars": 15
   },
   {
     "sNo": 97,
@@ -1651,7 +1843,9 @@ const SIH_PROBLEM_STATEMENTS = [
     "isNew": false,
     "officialPsNumber": "SIH26097",
     "deadline": "20 September 2026",
-    "maxSubmissions": 500
+    "maxSubmissions": 500,
+    "views": 239,
+    "stars": 16
   },
   {
     "sNo": 98,
@@ -1668,7 +1862,9 @@ const SIH_PROBLEM_STATEMENTS = [
     "isNew": false,
     "officialPsNumber": "SIH26098",
     "deadline": "20 September 2026",
-    "maxSubmissions": 500
+    "maxSubmissions": 500,
+    "views": 256,
+    "stars": 18
   },
   {
     "sNo": 99,
@@ -1685,7 +1881,9 @@ const SIH_PROBLEM_STATEMENTS = [
     "isNew": false,
     "officialPsNumber": "SIH26099",
     "deadline": "20 September 2026",
-    "maxSubmissions": 500
+    "maxSubmissions": 500,
+    "views": 423,
+    "stars": 41
   },
   {
     "sNo": 100,
@@ -1702,7 +1900,9 @@ const SIH_PROBLEM_STATEMENTS = [
     "isNew": false,
     "officialPsNumber": "SIH26100",
     "deadline": "20 September 2026",
-    "maxSubmissions": 500
+    "maxSubmissions": 500,
+    "views": 260,
+    "stars": 18
   },
   {
     "sNo": 101,
@@ -1719,7 +1919,9 @@ const SIH_PROBLEM_STATEMENTS = [
     "isNew": false,
     "officialPsNumber": "SIH26101",
     "deadline": "20 September 2026",
-    "maxSubmissions": 500
+    "maxSubmissions": 500,
+    "views": 127,
+    "stars": 7
   },
   {
     "sNo": 102,
@@ -1736,7 +1938,9 @@ const SIH_PROBLEM_STATEMENTS = [
     "isNew": false,
     "officialPsNumber": "SIH26102",
     "deadline": "20 September 2026",
-    "maxSubmissions": 500
+    "maxSubmissions": 500,
+    "views": 294,
+    "stars": 22
   },
   {
     "sNo": 103,
@@ -1753,7 +1957,9 @@ const SIH_PROBLEM_STATEMENTS = [
     "isNew": false,
     "officialPsNumber": "SIH26103",
     "deadline": "20 September 2026",
-    "maxSubmissions": 500
+    "maxSubmissions": 500,
+    "views": 311,
+    "stars": 25
   },
   {
     "sNo": 104,
@@ -1770,7 +1976,9 @@ const SIH_PROBLEM_STATEMENTS = [
     "isNew": false,
     "officialPsNumber": "SIH26104",
     "deadline": "20 September 2026",
-    "maxSubmissions": 500
+    "maxSubmissions": 500,
+    "views": 328,
+    "stars": 27
   },
   {
     "sNo": 105,
@@ -1787,7 +1995,9 @@ const SIH_PROBLEM_STATEMENTS = [
     "isNew": false,
     "officialPsNumber": "SIH26105",
     "deadline": "20 September 2026",
-    "maxSubmissions": 500
+    "maxSubmissions": 500,
+    "views": 345,
+    "stars": 30
   },
   {
     "sNo": 106,
@@ -1804,7 +2014,9 @@ const SIH_PROBLEM_STATEMENTS = [
     "isNew": false,
     "officialPsNumber": "SIH26106",
     "deadline": "20 September 2026",
-    "maxSubmissions": 500
+    "maxSubmissions": 500,
+    "views": 362,
+    "stars": 32
   },
   {
     "sNo": 107,
@@ -1821,7 +2033,9 @@ const SIH_PROBLEM_STATEMENTS = [
     "isNew": false,
     "officialPsNumber": "SIH26107",
     "deadline": "20 September 2026",
-    "maxSubmissions": 500
+    "maxSubmissions": 500,
+    "views": 379,
+    "stars": 35
   },
   {
     "sNo": 108,
@@ -1838,7 +2052,9 @@ const SIH_PROBLEM_STATEMENTS = [
     "isNew": false,
     "officialPsNumber": "SIH26108",
     "deadline": "20 September 2026",
-    "maxSubmissions": 500
+    "maxSubmissions": 500,
+    "views": 396,
+    "stars": 37
   },
   {
     "sNo": 109,
@@ -1855,7 +2071,9 @@ const SIH_PROBLEM_STATEMENTS = [
     "isNew": false,
     "officialPsNumber": "SIH26109",
     "deadline": "20 September 2026",
-    "maxSubmissions": 500
+    "maxSubmissions": 500,
+    "views": 263,
+    "stars": 18
   },
   {
     "sNo": 110,
@@ -1872,7 +2090,9 @@ const SIH_PROBLEM_STATEMENTS = [
     "isNew": false,
     "officialPsNumber": "SIH26110",
     "deadline": "20 September 2026",
-    "maxSubmissions": 500
+    "maxSubmissions": 500,
+    "views": 280,
+    "stars": 20
   },
   {
     "sNo": 111,
@@ -1889,7 +2109,9 @@ const SIH_PROBLEM_STATEMENTS = [
     "isNew": false,
     "officialPsNumber": "SIH26111",
     "deadline": "20 September 2026",
-    "maxSubmissions": 500
+    "maxSubmissions": 500,
+    "views": 117,
+    "stars": 6
   },
   {
     "sNo": 112,
@@ -1906,7 +2128,9 @@ const SIH_PROBLEM_STATEMENTS = [
     "isNew": false,
     "officialPsNumber": "SIH26112",
     "deadline": "20 September 2026",
-    "maxSubmissions": 500
+    "maxSubmissions": 500,
+    "views": 284,
+    "stars": 21
   },
   {
     "sNo": 113,
@@ -1923,7 +2147,9 @@ const SIH_PROBLEM_STATEMENTS = [
     "isNew": false,
     "officialPsNumber": "SIH26113",
     "deadline": "20 September 2026",
-    "maxSubmissions": 500
+    "maxSubmissions": 500,
+    "views": 301,
+    "stars": 23
   },
   {
     "sNo": 114,
@@ -1940,7 +2166,9 @@ const SIH_PROBLEM_STATEMENTS = [
     "isNew": false,
     "officialPsNumber": "SIH26114",
     "deadline": "20 September 2026",
-    "maxSubmissions": 500
+    "maxSubmissions": 500,
+    "views": 168,
+    "stars": 10
   },
   {
     "sNo": 115,
@@ -1957,7 +2185,9 @@ const SIH_PROBLEM_STATEMENTS = [
     "isNew": false,
     "officialPsNumber": "SIH26115",
     "deadline": "20 September 2026",
-    "maxSubmissions": 500
+    "maxSubmissions": 500,
+    "views": 335,
+    "stars": 28
   },
   {
     "sNo": 116,
@@ -1974,7 +2204,9 @@ const SIH_PROBLEM_STATEMENTS = [
     "isNew": false,
     "officialPsNumber": "SIH26116",
     "deadline": "20 September 2026",
-    "maxSubmissions": 500
+    "maxSubmissions": 500,
+    "views": 202,
+    "stars": 13
   },
   {
     "sNo": 117,
@@ -1991,7 +2223,9 @@ const SIH_PROBLEM_STATEMENTS = [
     "isNew": false,
     "officialPsNumber": "SIH26117",
     "deadline": "20 September 2026",
-    "maxSubmissions": 500
+    "maxSubmissions": 500,
+    "views": 369,
+    "stars": 33
   },
   {
     "sNo": 118,
@@ -2008,7 +2242,9 @@ const SIH_PROBLEM_STATEMENTS = [
     "isNew": false,
     "officialPsNumber": "SIH26118",
     "deadline": "20 September 2026",
-    "maxSubmissions": 500
+    "maxSubmissions": 500,
+    "views": 386,
+    "stars": 36
   },
   {
     "sNo": 119,
@@ -2025,7 +2261,9 @@ const SIH_PROBLEM_STATEMENTS = [
     "isNew": false,
     "officialPsNumber": "SIH26119",
     "deadline": "20 September 2026",
-    "maxSubmissions": 500
+    "maxSubmissions": 500,
+    "views": 403,
+    "stars": 38
   },
   {
     "sNo": 120,
@@ -2042,7 +2280,9 @@ const SIH_PROBLEM_STATEMENTS = [
     "isNew": false,
     "officialPsNumber": "SIH26120",
     "deadline": "20 September 2026",
-    "maxSubmissions": 500
+    "maxSubmissions": 500,
+    "views": 420,
+    "stars": 40
   },
   {
     "sNo": 121,
@@ -2059,7 +2299,9 @@ const SIH_PROBLEM_STATEMENTS = [
     "isNew": false,
     "officialPsNumber": "SIH26121",
     "deadline": "20 September 2026",
-    "maxSubmissions": 500
+    "maxSubmissions": 500,
+    "views": 437,
+    "stars": 43
   },
   {
     "sNo": 122,
@@ -2076,7 +2318,9 @@ const SIH_PROBLEM_STATEMENTS = [
     "isNew": false,
     "officialPsNumber": "SIH26122",
     "deadline": "20 September 2026",
-    "maxSubmissions": 500
+    "maxSubmissions": 500,
+    "views": 274,
+    "stars": 20
   },
   {
     "sNo": 123,
@@ -2093,7 +2337,9 @@ const SIH_PROBLEM_STATEMENTS = [
     "isNew": false,
     "officialPsNumber": "SIH26123",
     "deadline": "20 September 2026",
-    "maxSubmissions": 500
+    "maxSubmissions": 500,
+    "views": 291,
+    "stars": 22
   },
   {
     "sNo": 124,
@@ -2110,7 +2356,9 @@ const SIH_PROBLEM_STATEMENTS = [
     "isNew": false,
     "officialPsNumber": "SIH26124",
     "deadline": "20 September 2026",
-    "maxSubmissions": 500
+    "maxSubmissions": 500,
+    "views": 308,
+    "stars": 24
   },
   {
     "sNo": 125,
@@ -2127,7 +2375,9 @@ const SIH_PROBLEM_STATEMENTS = [
     "isNew": false,
     "officialPsNumber": "SIH26125",
     "deadline": "20 September 2026",
-    "maxSubmissions": 500
+    "maxSubmissions": 500,
+    "views": 325,
+    "stars": 27
   },
   {
     "sNo": 126,
@@ -2144,7 +2394,9 @@ const SIH_PROBLEM_STATEMENTS = [
     "isNew": false,
     "officialPsNumber": "SIH26126",
     "deadline": "20 September 2026",
-    "maxSubmissions": 500
+    "maxSubmissions": 500,
+    "views": 342,
+    "stars": 29
   },
   {
     "sNo": 127,
@@ -2161,7 +2413,9 @@ const SIH_PROBLEM_STATEMENTS = [
     "isNew": false,
     "officialPsNumber": "SIH26127",
     "deadline": "20 September 2026",
-    "maxSubmissions": 500
+    "maxSubmissions": 500,
+    "views": 359,
+    "stars": 32
   },
   {
     "sNo": 128,
@@ -2178,7 +2432,9 @@ const SIH_PROBLEM_STATEMENTS = [
     "isNew": false,
     "officialPsNumber": "SIH26128",
     "deadline": "20 September 2026",
-    "maxSubmissions": 500
+    "maxSubmissions": 500,
+    "views": 376,
+    "stars": 34
   },
   {
     "sNo": 129,
@@ -2195,7 +2451,9 @@ const SIH_PROBLEM_STATEMENTS = [
     "isNew": false,
     "officialPsNumber": "SIH26129",
     "deadline": "20 September 2026",
-    "maxSubmissions": 500
+    "maxSubmissions": 500,
+    "views": 243,
+    "stars": 17
   },
   {
     "sNo": 130,
@@ -2212,7 +2470,9 @@ const SIH_PROBLEM_STATEMENTS = [
     "isNew": false,
     "officialPsNumber": "SIH26130",
     "deadline": "20 September 2026",
-    "maxSubmissions": 500
+    "maxSubmissions": 500,
+    "views": 260,
+    "stars": 18
   },
   {
     "sNo": 131,
@@ -2229,7 +2489,9 @@ const SIH_PROBLEM_STATEMENTS = [
     "isNew": false,
     "officialPsNumber": "SIH26131",
     "deadline": "20 September 2026",
-    "maxSubmissions": 500
+    "maxSubmissions": 500,
+    "views": 277,
+    "stars": 19
   },
   {
     "sNo": 132,
@@ -2246,7 +2508,9 @@ const SIH_PROBLEM_STATEMENTS = [
     "isNew": false,
     "officialPsNumber": "SIH26132",
     "deadline": "20 September 2026",
-    "maxSubmissions": 500
+    "maxSubmissions": 500,
+    "views": 114,
+    "stars": 6
   },
   {
     "sNo": 133,
@@ -2263,7 +2527,9 @@ const SIH_PROBLEM_STATEMENTS = [
     "isNew": false,
     "officialPsNumber": "SIH26133",
     "deadline": "20 September 2026",
-    "maxSubmissions": 500
+    "maxSubmissions": 500,
+    "views": 281,
+    "stars": 21
   },
   {
     "sNo": 134,
@@ -2280,7 +2546,9 @@ const SIH_PROBLEM_STATEMENTS = [
     "isNew": false,
     "officialPsNumber": "SIH26134",
     "deadline": "20 September 2026",
-    "maxSubmissions": 500
+    "maxSubmissions": 500,
+    "views": 148,
+    "stars": 9
   },
   {
     "sNo": 135,
@@ -2297,7 +2565,9 @@ const SIH_PROBLEM_STATEMENTS = [
     "isNew": false,
     "officialPsNumber": "SIH26135",
     "deadline": "20 September 2026",
-    "maxSubmissions": 500
+    "maxSubmissions": 500,
+    "views": 165,
+    "stars": 10
   },
   {
     "sNo": 136,
@@ -2314,7 +2584,9 @@ const SIH_PROBLEM_STATEMENTS = [
     "isNew": false,
     "officialPsNumber": "SIH26136",
     "deadline": "20 September 2026",
-    "maxSubmissions": 500
+    "maxSubmissions": 500,
+    "views": 182,
+    "stars": 12
   },
   {
     "sNo": 137,
@@ -2331,7 +2603,9 @@ const SIH_PROBLEM_STATEMENTS = [
     "isNew": false,
     "officialPsNumber": "SIH26137",
     "deadline": "20 September 2026",
-    "maxSubmissions": 500
+    "maxSubmissions": 500,
+    "views": 199,
+    "stars": 13
   },
   {
     "sNo": 138,
@@ -2348,7 +2622,9 @@ const SIH_PROBLEM_STATEMENTS = [
     "isNew": false,
     "officialPsNumber": "SIH26138",
     "deadline": "20 September 2026",
-    "maxSubmissions": 500
+    "maxSubmissions": 500,
+    "views": 216,
+    "stars": 14
   },
   {
     "sNo": 139,
@@ -2365,7 +2641,9 @@ const SIH_PROBLEM_STATEMENTS = [
     "isNew": false,
     "officialPsNumber": "SIH26139",
     "deadline": "20 September 2026",
-    "maxSubmissions": 500
+    "maxSubmissions": 500,
+    "views": 383,
+    "stars": 35
   },
   {
     "sNo": 140,
@@ -2382,7 +2660,9 @@ const SIH_PROBLEM_STATEMENTS = [
     "isNew": false,
     "officialPsNumber": "SIH26140",
     "deadline": "20 September 2026",
-    "maxSubmissions": 500
+    "maxSubmissions": 500,
+    "views": 250,
+    "stars": 17
   },
   {
     "sNo": 141,
@@ -2399,7 +2679,9 @@ const SIH_PROBLEM_STATEMENTS = [
     "isNew": false,
     "officialPsNumber": "SIH26141",
     "deadline": "20 September 2026",
-    "maxSubmissions": 500
+    "maxSubmissions": 500,
+    "views": 417,
+    "stars": 40
   },
   {
     "sNo": 142,
@@ -2416,7 +2698,9 @@ const SIH_PROBLEM_STATEMENTS = [
     "isNew": false,
     "officialPsNumber": "SIH26142",
     "deadline": "20 September 2026",
-    "maxSubmissions": 500
+    "maxSubmissions": 500,
+    "views": 284,
+    "stars": 20
   },
   {
     "sNo": 143,
@@ -2433,7 +2717,9 @@ const SIH_PROBLEM_STATEMENTS = [
     "isNew": false,
     "officialPsNumber": "SIH26143",
     "deadline": "20 September 2026",
-    "maxSubmissions": 500
+    "maxSubmissions": 500,
+    "views": 271,
+    "stars": 19
   },
   {
     "sNo": 144,
@@ -2450,7 +2736,9 @@ const SIH_PROBLEM_STATEMENTS = [
     "isNew": false,
     "officialPsNumber": "SIH26144",
     "deadline": "20 September 2026",
-    "maxSubmissions": 500
+    "maxSubmissions": 500,
+    "views": 288,
+    "stars": 22
   },
   {
     "sNo": 145,
@@ -2467,7 +2755,9 @@ const SIH_PROBLEM_STATEMENTS = [
     "isNew": false,
     "officialPsNumber": "SIH26145",
     "deadline": "20 September 2026",
-    "maxSubmissions": 500
+    "maxSubmissions": 500,
+    "views": 305,
+    "stars": 24
   },
   {
     "sNo": 146,
@@ -2484,7 +2774,9 @@ const SIH_PROBLEM_STATEMENTS = [
     "isNew": false,
     "officialPsNumber": "SIH26146",
     "deadline": "20 September 2026",
-    "maxSubmissions": 500
+    "maxSubmissions": 500,
+    "views": 322,
+    "stars": 26
   },
   {
     "sNo": 147,
@@ -2501,7 +2793,9 @@ const SIH_PROBLEM_STATEMENTS = [
     "isNew": false,
     "officialPsNumber": "SIH26147",
     "deadline": "20 September 2026",
-    "maxSubmissions": 500
+    "maxSubmissions": 500,
+    "views": 189,
+    "stars": 12
   },
   {
     "sNo": 148,
@@ -2518,7 +2812,9 @@ const SIH_PROBLEM_STATEMENTS = [
     "isNew": false,
     "officialPsNumber": "SIH26148",
     "deadline": "20 September 2026",
-    "maxSubmissions": 500
+    "maxSubmissions": 500,
+    "views": 356,
+    "stars": 31
   },
   {
     "sNo": 149,
@@ -2535,7 +2831,9 @@ const SIH_PROBLEM_STATEMENTS = [
     "isNew": false,
     "officialPsNumber": "SIH26149",
     "deadline": "20 September 2026",
-    "maxSubmissions": 500
+    "maxSubmissions": 500,
+    "views": 373,
+    "stars": 34
   },
   {
     "sNo": 150,
@@ -2552,7 +2850,9 @@ const SIH_PROBLEM_STATEMENTS = [
     "isNew": false,
     "officialPsNumber": "SIH26150",
     "deadline": "20 September 2026",
-    "maxSubmissions": 500
+    "maxSubmissions": 500,
+    "views": 390,
+    "stars": 36
   },
   {
     "sNo": 151,
@@ -2569,7 +2869,9 @@ const SIH_PROBLEM_STATEMENTS = [
     "isNew": false,
     "officialPsNumber": "SIH26151",
     "deadline": "20 September 2026",
-    "maxSubmissions": 500
+    "maxSubmissions": 500,
+    "views": 407,
+    "stars": 39
   },
   {
     "sNo": 152,
@@ -2586,7 +2888,9 @@ const SIH_PROBLEM_STATEMENTS = [
     "isNew": false,
     "officialPsNumber": "SIH26152",
     "deadline": "20 September 2026",
-    "maxSubmissions": 500
+    "maxSubmissions": 500,
+    "views": 424,
+    "stars": 41
   },
   {
     "sNo": 153,
@@ -2603,7 +2907,9 @@ const SIH_PROBLEM_STATEMENTS = [
     "isNew": false,
     "officialPsNumber": "SIH26153",
     "deadline": "20 September 2026",
-    "maxSubmissions": 500
+    "maxSubmissions": 500,
+    "views": 261,
+    "stars": 18
   },
   {
     "sNo": 154,
@@ -2620,7 +2926,9 @@ const SIH_PROBLEM_STATEMENTS = [
     "isNew": false,
     "officialPsNumber": "SIH26154",
     "deadline": "20 September 2026",
-    "maxSubmissions": 500
+    "maxSubmissions": 500,
+    "views": 278,
+    "stars": 20
   },
   {
     "sNo": 155,
@@ -2637,7 +2945,9 @@ const SIH_PROBLEM_STATEMENTS = [
     "isNew": false,
     "officialPsNumber": "SIH26155",
     "deadline": "20 September 2026",
-    "maxSubmissions": 500
+    "maxSubmissions": 500,
+    "views": 295,
+    "stars": 23
   },
   {
     "sNo": 156,
@@ -2654,7 +2964,9 @@ const SIH_PROBLEM_STATEMENTS = [
     "isNew": false,
     "officialPsNumber": "SIH26156",
     "deadline": "20 September 2026",
-    "maxSubmissions": 500
+    "maxSubmissions": 500,
+    "views": 312,
+    "stars": 25
   },
   {
     "sNo": 157,
@@ -2671,7 +2983,9 @@ const SIH_PROBLEM_STATEMENTS = [
     "isNew": false,
     "officialPsNumber": "SIH26157",
     "deadline": "20 September 2026",
-    "maxSubmissions": 500
+    "maxSubmissions": 500,
+    "views": 329,
+    "stars": 27
   },
   {
     "sNo": 158,
@@ -2688,7 +3002,9 @@ const SIH_PROBLEM_STATEMENTS = [
     "isNew": false,
     "officialPsNumber": "SIH26158",
     "deadline": "20 September 2026",
-    "maxSubmissions": 500
+    "maxSubmissions": 500,
+    "views": 346,
+    "stars": 30
   },
   {
     "sNo": 159,
@@ -2705,7 +3021,9 @@ const SIH_PROBLEM_STATEMENTS = [
     "isNew": false,
     "officialPsNumber": "SIH26159",
     "deadline": "20 September 2026",
-    "maxSubmissions": 500
+    "maxSubmissions": 500,
+    "views": 363,
+    "stars": 32
   },
   {
     "sNo": 160,
@@ -2722,7 +3040,9 @@ const SIH_PROBLEM_STATEMENTS = [
     "isNew": false,
     "officialPsNumber": "SIH26160",
     "deadline": "20 September 2026",
-    "maxSubmissions": 500
+    "maxSubmissions": 500,
+    "views": 380,
+    "stars": 35
   },
   {
     "sNo": 161,
@@ -2739,7 +3059,9 @@ const SIH_PROBLEM_STATEMENTS = [
     "isNew": false,
     "officialPsNumber": "SIH26161",
     "deadline": "20 September 2026",
-    "maxSubmissions": 500
+    "maxSubmissions": 500,
+    "views": 397,
+    "stars": 37
   },
   {
     "sNo": 162,
@@ -2756,7 +3078,9 @@ const SIH_PROBLEM_STATEMENTS = [
     "isNew": false,
     "officialPsNumber": "SIH26162",
     "deadline": "20 September 2026",
-    "maxSubmissions": 500
+    "maxSubmissions": 500,
+    "views": 414,
+    "stars": 40
   },
   {
     "sNo": 163,
@@ -2773,7 +3097,9 @@ const SIH_PROBLEM_STATEMENTS = [
     "isNew": false,
     "officialPsNumber": "SIH26163",
     "deadline": "20 September 2026",
-    "maxSubmissions": 500
+    "maxSubmissions": 500,
+    "views": 431,
+    "stars": 42
   },
   {
     "sNo": 164,
@@ -2790,7 +3116,9 @@ const SIH_PROBLEM_STATEMENTS = [
     "isNew": false,
     "officialPsNumber": "SIH26164",
     "deadline": "20 September 2026",
-    "maxSubmissions": 500
+    "maxSubmissions": 500,
+    "views": 268,
+    "stars": 19
   },
   {
     "sNo": 165,
@@ -2807,7 +3135,9 @@ const SIH_PROBLEM_STATEMENTS = [
     "isNew": false,
     "officialPsNumber": "SIH26165",
     "deadline": "20 September 2026",
-    "maxSubmissions": 500
+    "maxSubmissions": 500,
+    "views": 285,
+    "stars": 21
   },
   {
     "sNo": 166,
@@ -2824,7 +3154,9 @@ const SIH_PROBLEM_STATEMENTS = [
     "isNew": false,
     "officialPsNumber": "SIH26166",
     "deadline": "20 September 2026",
-    "maxSubmissions": 500
+    "maxSubmissions": 500,
+    "views": 152,
+    "stars": 9
   },
   {
     "sNo": 167,
@@ -2841,7 +3173,9 @@ const SIH_PROBLEM_STATEMENTS = [
     "isNew": false,
     "officialPsNumber": "SIH26167",
     "deadline": "20 September 2026",
-    "maxSubmissions": 500
+    "maxSubmissions": 500,
+    "views": 169,
+    "stars": 10
   },
   {
     "sNo": 168,
@@ -2858,7 +3192,9 @@ const SIH_PROBLEM_STATEMENTS = [
     "isNew": false,
     "officialPsNumber": "SIH26168",
     "deadline": "20 September 2026",
-    "maxSubmissions": 500
+    "maxSubmissions": 500,
+    "views": 186,
+    "stars": 12
   },
   {
     "sNo": 169,
@@ -2875,7 +3211,9 @@ const SIH_PROBLEM_STATEMENTS = [
     "isNew": false,
     "officialPsNumber": "SIH26169",
     "deadline": "20 September 2026",
-    "maxSubmissions": 500
+    "maxSubmissions": 500,
+    "views": 353,
+    "stars": 31
   },
   {
     "sNo": 170,
@@ -2892,7 +3230,9 @@ const SIH_PROBLEM_STATEMENTS = [
     "isNew": false,
     "officialPsNumber": "SIH26170",
     "deadline": "20 September 2026",
-    "maxSubmissions": 500
+    "maxSubmissions": 500,
+    "views": 370,
+    "stars": 33
   },
   {
     "sNo": 171,
@@ -2909,7 +3249,9 @@ const SIH_PROBLEM_STATEMENTS = [
     "isNew": false,
     "officialPsNumber": "SIH26171",
     "deadline": "20 September 2026",
-    "maxSubmissions": 500
+    "maxSubmissions": 500,
+    "views": 387,
+    "stars": 36
   },
   {
     "sNo": 172,
@@ -2926,7 +3268,9 @@ const SIH_PROBLEM_STATEMENTS = [
     "isNew": false,
     "officialPsNumber": "SIH26172",
     "deadline": "20 September 2026",
-    "maxSubmissions": 500
+    "maxSubmissions": 500,
+    "views": 404,
+    "stars": 38
   },
   {
     "sNo": 173,
@@ -2943,7 +3287,9 @@ const SIH_PROBLEM_STATEMENTS = [
     "isNew": false,
     "officialPsNumber": "SIH26173",
     "deadline": "20 September 2026",
-    "maxSubmissions": 500
+    "maxSubmissions": 500,
+    "views": 421,
+    "stars": 41
   },
   {
     "sNo": 174,
@@ -2960,7 +3306,9 @@ const SIH_PROBLEM_STATEMENTS = [
     "isNew": false,
     "officialPsNumber": "SIH26174",
     "deadline": "20 September 2026",
-    "maxSubmissions": 500
+    "maxSubmissions": 500,
+    "views": 288,
+    "stars": 20
   },
   {
     "sNo": 175,
@@ -2977,7 +3325,9 @@ const SIH_PROBLEM_STATEMENTS = [
     "isNew": false,
     "officialPsNumber": "SIH26175",
     "deadline": "20 September 2026",
-    "maxSubmissions": 500
+    "maxSubmissions": 500,
+    "views": 275,
+    "stars": 20
   },
   {
     "sNo": 176,
@@ -2994,7 +3344,9 @@ const SIH_PROBLEM_STATEMENTS = [
     "isNew": false,
     "officialPsNumber": "SIH26176",
     "deadline": "20 September 2026",
-    "maxSubmissions": 500
+    "maxSubmissions": 500,
+    "views": 292,
+    "stars": 22
   },
   {
     "sNo": 177,
@@ -3011,7 +3363,9 @@ const SIH_PROBLEM_STATEMENTS = [
     "isNew": false,
     "officialPsNumber": "SIH26177",
     "deadline": "20 September 2026",
-    "maxSubmissions": 500
+    "maxSubmissions": 500,
+    "views": 309,
+    "stars": 25
   },
   {
     "sNo": 178,
@@ -3028,7 +3382,9 @@ const SIH_PROBLEM_STATEMENTS = [
     "isNew": false,
     "officialPsNumber": "SIH26178",
     "deadline": "20 September 2026",
-    "maxSubmissions": 500
+    "maxSubmissions": 500,
+    "views": 326,
+    "stars": 27
   },
   {
     "sNo": 179,
@@ -3045,7 +3401,9 @@ const SIH_PROBLEM_STATEMENTS = [
     "isNew": false,
     "officialPsNumber": "SIH26179",
     "deadline": "20 September 2026",
-    "maxSubmissions": 500
+    "maxSubmissions": 500,
+    "views": 193,
+    "stars": 12
   },
   {
     "sNo": 180,
@@ -3062,7 +3420,9 @@ const SIH_PROBLEM_STATEMENTS = [
     "isNew": false,
     "officialPsNumber": "SIH26180",
     "deadline": "20 September 2026",
-    "maxSubmissions": 500
+    "maxSubmissions": 500,
+    "views": 210,
+    "stars": 14
   },
   {
     "sNo": 181,
@@ -3079,7 +3439,9 @@ const SIH_PROBLEM_STATEMENTS = [
     "isNew": false,
     "officialPsNumber": "SIH26181",
     "deadline": "20 September 2026",
-    "maxSubmissions": 500
+    "maxSubmissions": 500,
+    "views": 377,
+    "stars": 34
   },
   {
     "sNo": 182,
@@ -3096,7 +3458,9 @@ const SIH_PROBLEM_STATEMENTS = [
     "isNew": false,
     "officialPsNumber": "SIH26182",
     "deadline": "20 September 2026",
-    "maxSubmissions": 500
+    "maxSubmissions": 500,
+    "views": 394,
+    "stars": 37
   },
   {
     "sNo": 183,
@@ -3113,7 +3477,9 @@ const SIH_PROBLEM_STATEMENTS = [
     "isNew": false,
     "officialPsNumber": "SIH26183",
     "deadline": "20 September 2026",
-    "maxSubmissions": 500
+    "maxSubmissions": 500,
+    "views": 411,
+    "stars": 39
   },
   {
     "sNo": 184,
@@ -3130,7 +3496,9 @@ const SIH_PROBLEM_STATEMENTS = [
     "isNew": false,
     "officialPsNumber": "SIH26184",
     "deadline": "20 September 2026",
-    "maxSubmissions": 500
+    "maxSubmissions": 500,
+    "views": 428,
+    "stars": 42
   },
   {
     "sNo": 185,
@@ -3147,7 +3515,9 @@ const SIH_PROBLEM_STATEMENTS = [
     "isNew": false,
     "officialPsNumber": "SIH26185",
     "deadline": "20 September 2026",
-    "maxSubmissions": 500
+    "maxSubmissions": 500,
+    "views": 265,
+    "stars": 18
   },
   {
     "sNo": 186,
@@ -3164,7 +3534,9 @@ const SIH_PROBLEM_STATEMENTS = [
     "isNew": false,
     "officialPsNumber": "SIH26186",
     "deadline": "20 September 2026",
-    "maxSubmissions": 500
+    "maxSubmissions": 500,
+    "views": 282,
+    "stars": 21
   },
   {
     "sNo": 187,
@@ -3181,7 +3553,9 @@ const SIH_PROBLEM_STATEMENTS = [
     "isNew": false,
     "officialPsNumber": "SIH26187",
     "deadline": "20 September 2026",
-    "maxSubmissions": 500
+    "maxSubmissions": 500,
+    "views": 299,
+    "stars": 23
   },
   {
     "sNo": 188,
@@ -3198,7 +3572,9 @@ const SIH_PROBLEM_STATEMENTS = [
     "isNew": false,
     "officialPsNumber": "SIH26188",
     "deadline": "20 September 2026",
-    "maxSubmissions": 500
+    "maxSubmissions": 500,
+    "views": 316,
+    "stars": 26
   },
   {
     "sNo": 189,
@@ -3215,7 +3591,9 @@ const SIH_PROBLEM_STATEMENTS = [
     "isNew": false,
     "officialPsNumber": "SIH26189",
     "deadline": "20 September 2026",
-    "maxSubmissions": 500
+    "maxSubmissions": 500,
+    "views": 333,
+    "stars": 28
   },
   {
     "sNo": 190,
@@ -3232,7 +3610,9 @@ const SIH_PROBLEM_STATEMENTS = [
     "isNew": false,
     "officialPsNumber": "SIH26190",
     "deadline": "20 September 2026",
-    "maxSubmissions": 500
+    "maxSubmissions": 500,
+    "views": 350,
+    "stars": 30
   },
   {
     "sNo": 191,
@@ -3249,7 +3629,9 @@ const SIH_PROBLEM_STATEMENTS = [
     "isNew": false,
     "officialPsNumber": "SIH26191",
     "deadline": "20 September 2026",
-    "maxSubmissions": 500
+    "maxSubmissions": 500,
+    "views": 367,
+    "stars": 33
   },
   {
     "sNo": 192,
@@ -3266,7 +3648,9 @@ const SIH_PROBLEM_STATEMENTS = [
     "isNew": false,
     "officialPsNumber": "SIH26192",
     "deadline": "20 September 2026",
-    "maxSubmissions": 500
+    "maxSubmissions": 500,
+    "views": 384,
+    "stars": 35
   },
   {
     "sNo": 193,
@@ -3283,7 +3667,9 @@ const SIH_PROBLEM_STATEMENTS = [
     "isNew": false,
     "officialPsNumber": "SIH26193",
     "deadline": "20 September 2026",
-    "maxSubmissions": 500
+    "maxSubmissions": 500,
+    "views": 251,
+    "stars": 17
   },
   {
     "sNo": 194,
@@ -3300,7 +3686,9 @@ const SIH_PROBLEM_STATEMENTS = [
     "isNew": false,
     "officialPsNumber": "SIH26194",
     "deadline": "20 September 2026",
-    "maxSubmissions": 500
+    "maxSubmissions": 500,
+    "views": 418,
+    "stars": 40
   },
   {
     "sNo": 195,
@@ -3317,7 +3705,9 @@ const SIH_PROBLEM_STATEMENTS = [
     "isNew": false,
     "officialPsNumber": "SIH26195",
     "deadline": "20 September 2026",
-    "maxSubmissions": 500
+    "maxSubmissions": 500,
+    "views": 285,
+    "stars": 20
   },
   {
     "sNo": 196,
@@ -3334,7 +3724,9 @@ const SIH_PROBLEM_STATEMENTS = [
     "isNew": false,
     "officialPsNumber": "SIH26196",
     "deadline": "20 September 2026",
-    "maxSubmissions": 500
+    "maxSubmissions": 500,
+    "views": 122,
+    "stars": 7
   },
   {
     "sNo": 197,
@@ -3351,7 +3743,9 @@ const SIH_PROBLEM_STATEMENTS = [
     "isNew": false,
     "officialPsNumber": "SIH26197",
     "deadline": "20 September 2026",
-    "maxSubmissions": 500
+    "maxSubmissions": 500,
+    "views": 139,
+    "stars": 8
   },
   {
     "sNo": 198,
@@ -3368,7 +3762,9 @@ const SIH_PROBLEM_STATEMENTS = [
     "isNew": false,
     "officialPsNumber": "SIH26198",
     "deadline": "20 September 2026",
-    "maxSubmissions": 500
+    "maxSubmissions": 500,
+    "views": 306,
+    "stars": 24
   },
   {
     "sNo": 199,
@@ -3385,7 +3781,9 @@ const SIH_PROBLEM_STATEMENTS = [
     "isNew": false,
     "officialPsNumber": "SIH26199",
     "deadline": "20 September 2026",
-    "maxSubmissions": 500
+    "maxSubmissions": 500,
+    "views": 173,
+    "stars": 11
   },
   {
     "sNo": 200,
@@ -3402,7 +3800,9 @@ const SIH_PROBLEM_STATEMENTS = [
     "isNew": false,
     "officialPsNumber": "SIH26200",
     "deadline": "20 September 2026",
-    "maxSubmissions": 500
+    "maxSubmissions": 500,
+    "views": 190,
+    "stars": 12
   },
   {
     "sNo": 201,
@@ -3419,7 +3819,9 @@ const SIH_PROBLEM_STATEMENTS = [
     "isNew": false,
     "officialPsNumber": "SIH26201",
     "deadline": "20 September 2026",
-    "maxSubmissions": 500
+    "maxSubmissions": 500,
+    "views": 357,
+    "stars": 31
   },
   {
     "sNo": 202,
@@ -3436,7 +3838,9 @@ const SIH_PROBLEM_STATEMENTS = [
     "isNew": false,
     "officialPsNumber": "SIH26202",
     "deadline": "20 September 2026",
-    "maxSubmissions": 500
+    "maxSubmissions": 500,
+    "views": 374,
+    "stars": 34
   },
   {
     "sNo": 203,
@@ -3453,7 +3857,9 @@ const SIH_PROBLEM_STATEMENTS = [
     "isNew": false,
     "officialPsNumber": "SIH26203",
     "deadline": "20 September 2026",
-    "maxSubmissions": 500
+    "maxSubmissions": 500,
+    "views": 241,
+    "stars": 16
   },
   {
     "sNo": 204,
@@ -3470,7 +3876,9 @@ const SIH_PROBLEM_STATEMENTS = [
     "isNew": false,
     "officialPsNumber": "SIH26204",
     "deadline": "20 September 2026",
-    "maxSubmissions": 500
+    "maxSubmissions": 500,
+    "views": 258,
+    "stars": 18
   },
   {
     "sNo": 205,
@@ -3487,7 +3895,9 @@ const SIH_PROBLEM_STATEMENTS = [
     "isNew": false,
     "officialPsNumber": "SIH26205",
     "deadline": "20 September 2026",
-    "maxSubmissions": 500
+    "maxSubmissions": 500,
+    "views": 275,
+    "stars": 19
   },
   {
     "sNo": 206,
@@ -3504,7 +3914,9 @@ const SIH_PROBLEM_STATEMENTS = [
     "isNew": false,
     "officialPsNumber": "SIH26206",
     "deadline": "20 September 2026",
-    "maxSubmissions": 500
+    "maxSubmissions": 500,
+    "views": 262,
+    "stars": 18
   },
   {
     "sNo": 207,
@@ -3521,7 +3933,9 @@ const SIH_PROBLEM_STATEMENTS = [
     "isNew": true,
     "officialPsNumber": "SIH26207",
     "deadline": "20 September 2026",
-    "maxSubmissions": 500
+    "maxSubmissions": 500,
+    "views": 129,
+    "stars": 7
   },
   {
     "sNo": 208,
@@ -3538,7 +3952,9 @@ const SIH_PROBLEM_STATEMENTS = [
     "isNew": true,
     "officialPsNumber": "SIH26208",
     "deadline": "20 September 2026",
-    "maxSubmissions": 500
+    "maxSubmissions": 500,
+    "views": 146,
+    "stars": 9
   },
   {
     "sNo": 209,
@@ -3555,7 +3971,9 @@ const SIH_PROBLEM_STATEMENTS = [
     "isNew": true,
     "officialPsNumber": "SIH26209",
     "deadline": "20 September 2026",
-    "maxSubmissions": 500
+    "maxSubmissions": 500,
+    "views": 163,
+    "stars": 10
   },
   {
     "sNo": 210,
@@ -3572,7 +3990,9 @@ const SIH_PROBLEM_STATEMENTS = [
     "isNew": true,
     "officialPsNumber": "SIH26210",
     "deadline": "20 September 2026",
-    "maxSubmissions": 500
+    "maxSubmissions": 500,
+    "views": 180,
+    "stars": 11
   },
   {
     "sNo": 211,
@@ -3589,7 +4009,9 @@ const SIH_PROBLEM_STATEMENTS = [
     "isNew": true,
     "officialPsNumber": "SIH26211",
     "deadline": "20 September 2026",
-    "maxSubmissions": 500
+    "maxSubmissions": 500,
+    "views": 347,
+    "stars": 30
   },
   {
     "sNo": 212,
@@ -3606,7 +4028,9 @@ const SIH_PROBLEM_STATEMENTS = [
     "isNew": true,
     "officialPsNumber": "SIH26212",
     "deadline": "20 September 2026",
-    "maxSubmissions": 500
+    "maxSubmissions": 500,
+    "views": 214,
+    "stars": 14
   },
   {
     "sNo": 213,
@@ -3623,7 +4047,9 @@ const SIH_PROBLEM_STATEMENTS = [
     "isNew": true,
     "officialPsNumber": "SIH26213",
     "deadline": "20 September 2026",
-    "maxSubmissions": 500
+    "maxSubmissions": 500,
+    "views": 231,
+    "stars": 16
   },
   {
     "sNo": 214,
@@ -3640,7 +4066,9 @@ const SIH_PROBLEM_STATEMENTS = [
     "isNew": true,
     "officialPsNumber": "SIH26214",
     "deadline": "20 September 2026",
-    "maxSubmissions": 500
+    "maxSubmissions": 500,
+    "views": 248,
+    "stars": 17
   },
   {
     "sNo": 215,
@@ -3657,7 +4085,9 @@ const SIH_PROBLEM_STATEMENTS = [
     "isNew": true,
     "officialPsNumber": "SIH26215",
     "deadline": "20 September 2026",
-    "maxSubmissions": 500
+    "maxSubmissions": 500,
+    "views": 415,
+    "stars": 40
   },
   {
     "sNo": 216,
@@ -3674,7 +4104,9 @@ const SIH_PROBLEM_STATEMENTS = [
     "isNew": true,
     "officialPsNumber": "SIH26216",
     "deadline": "20 September 2026",
-    "maxSubmissions": 500
+    "maxSubmissions": 500,
+    "views": 282,
+    "stars": 20
   },
   {
     "sNo": 217,
@@ -3691,7 +4123,9 @@ const SIH_PROBLEM_STATEMENTS = [
     "isNew": true,
     "officialPsNumber": "SIH26217",
     "deadline": "20 September 2026",
-    "maxSubmissions": 500
+    "maxSubmissions": 500,
+    "views": 119,
+    "stars": 6
   },
   {
     "sNo": 218,
@@ -3708,7 +4142,9 @@ const SIH_PROBLEM_STATEMENTS = [
     "isNew": true,
     "officialPsNumber": "SIH26218",
     "deadline": "20 September 2026",
-    "maxSubmissions": 500
+    "maxSubmissions": 500,
+    "views": 286,
+    "stars": 21
   },
   {
     "sNo": 219,
@@ -3725,7 +4161,9 @@ const SIH_PROBLEM_STATEMENTS = [
     "isNew": true,
     "officialPsNumber": "SIH26219",
     "deadline": "20 September 2026",
-    "maxSubmissions": 500
+    "maxSubmissions": 500,
+    "views": 303,
+    "stars": 24
   },
   {
     "sNo": 220,
@@ -3742,7 +4180,9 @@ const SIH_PROBLEM_STATEMENTS = [
     "isNew": true,
     "officialPsNumber": "SIH26220",
     "deadline": "20 September 2026",
-    "maxSubmissions": 500
+    "maxSubmissions": 500,
+    "views": 170,
+    "stars": 11
   },
   {
     "sNo": 221,
@@ -3759,7 +4199,9 @@ const SIH_PROBLEM_STATEMENTS = [
     "isNew": true,
     "officialPsNumber": "SIH26221",
     "deadline": "20 September 2026",
-    "maxSubmissions": 500
+    "maxSubmissions": 500,
+    "views": 187,
+    "stars": 12
   },
   {
     "sNo": 222,
@@ -3776,7 +4218,9 @@ const SIH_PROBLEM_STATEMENTS = [
     "isNew": true,
     "officialPsNumber": "SIH26222",
     "deadline": "20 September 2026",
-    "maxSubmissions": 500
+    "maxSubmissions": 500,
+    "views": 204,
+    "stars": 13
   },
   {
     "sNo": 223,
@@ -3793,7 +4237,9 @@ const SIH_PROBLEM_STATEMENTS = [
     "isNew": true,
     "officialPsNumber": "SIH26223",
     "deadline": "20 September 2026",
-    "maxSubmissions": 500
+    "maxSubmissions": 500,
+    "views": 371,
+    "stars": 33
   },
   {
     "sNo": 224,
@@ -3810,7 +4256,9 @@ const SIH_PROBLEM_STATEMENTS = [
     "isNew": true,
     "officialPsNumber": "SIH26224",
     "deadline": "20 September 2026",
-    "maxSubmissions": 500
+    "maxSubmissions": 500,
+    "views": 238,
+    "stars": 16
   },
   {
     "sNo": 225,
@@ -3827,7 +4275,9 @@ const SIH_PROBLEM_STATEMENTS = [
     "isNew": true,
     "officialPsNumber": "SIH26225",
     "deadline": "20 September 2026",
-    "maxSubmissions": 500
+    "maxSubmissions": 500,
+    "views": 255,
+    "stars": 18
   },
   {
     "sNo": 226,
@@ -3844,7 +4294,9 @@ const SIH_PROBLEM_STATEMENTS = [
     "isNew": true,
     "officialPsNumber": "SIH26226",
     "deadline": "20 September 2026",
-    "maxSubmissions": 500
+    "maxSubmissions": 500,
+    "views": 272,
+    "stars": 19
   },
   {
     "sNo": 227,
@@ -3861,7 +4313,9 @@ const SIH_PROBLEM_STATEMENTS = [
     "isNew": true,
     "officialPsNumber": "SIH26227",
     "deadline": "20 September 2026",
-    "maxSubmissions": 500
+    "maxSubmissions": 500,
+    "views": 289,
+    "stars": 20
   },
   {
     "sNo": 228,
@@ -3878,7 +4332,9 @@ const SIH_PROBLEM_STATEMENTS = [
     "isNew": true,
     "officialPsNumber": "SIH26228",
     "deadline": "20 September 2026",
-    "maxSubmissions": 500
+    "maxSubmissions": 500,
+    "views": 276,
+    "stars": 20
   },
   {
     "sNo": 229,
@@ -3895,7 +4351,9 @@ const SIH_PROBLEM_STATEMENTS = [
     "isNew": true,
     "officialPsNumber": "SIH26229",
     "deadline": "20 September 2026",
-    "maxSubmissions": 500
+    "maxSubmissions": 500,
+    "views": 143,
+    "stars": 8
   },
   {
     "sNo": 230,
@@ -3912,7 +4370,9 @@ const SIH_PROBLEM_STATEMENTS = [
     "isNew": true,
     "officialPsNumber": "SIH26230",
     "deadline": "20 September 2026",
-    "maxSubmissions": 500
+    "maxSubmissions": 500,
+    "views": 310,
+    "stars": 25
   },
   {
     "sNo": 231,
@@ -3929,6 +4389,8 @@ const SIH_PROBLEM_STATEMENTS = [
     "isNew": true,
     "officialPsNumber": "SIH26231",
     "deadline": "20 September 2026",
-    "maxSubmissions": 500
+    "maxSubmissions": 500,
+    "views": 327,
+    "stars": 27
   }
 ];
