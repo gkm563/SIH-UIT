@@ -560,6 +560,238 @@
 
     let currentTab = 'all';
     let activeModalItem = null;
+    let compareList = []; // array of psIds (max 4)
+
+    // Load compareList from sessionStorage if any
+    try {
+      compareList = JSON.parse(sessionStorage.getItem('sih2026_compare') || '[]');
+    } catch(e) {
+      compareList = [];
+    }
+
+    const compareDock = document.getElementById('compare-dock');
+    const comparePills = document.getElementById('compare-pills');
+    const compareBadgeCount = document.getElementById('compare-badge-count');
+    const compareOpenBtn = document.getElementById('compare-open-modal-btn');
+    const compareClearBtn = document.getElementById('compare-clear-btn');
+    const compareModal = document.getElementById('compare-modal');
+    const compareCloseBtn = document.getElementById('compare-close-btn');
+    const compareCloseSecondary = document.getElementById('compare-close-secondary-btn');
+    const compareMatrixContent = document.getElementById('compare-matrix-content');
+    const compareShareWhatsappBtn = document.getElementById('compare-share-whatsapp-btn');
+
+    function updateCompareDock() {
+      if (!compareDock || !comparePills || !compareBadgeCount) return;
+      if (compareList.length === 0) {
+        compareDock.classList.add('hidden');
+        return;
+      }
+
+      compareDock.classList.remove('hidden');
+      compareBadgeCount.textContent = compareList.length;
+
+      comparePills.innerHTML = compareList.map(id => {
+        const item = rawData.find(p => String(p.psId) === String(id));
+        const displayCode = item ? (item.officialPsNumber || item.psId) : id;
+        return `
+          <span class="inline-flex items-center gap-1.5 px-2.5 py-1 bg-white/10 hover:bg-white/20 rounded-full text-[11px] font-mono font-bold text-white border border-white/20 transition-all flex-shrink-0">
+            <span>${displayCode}</span>
+            <button onclick="toggleCompare('${id}')" class="text-slate-400 hover:text-rose-300 text-xs font-black">×</button>
+          </span>
+        `;
+      }).join('');
+    }
+
+    window.toggleCompare = function(psId) {
+      const strId = String(psId);
+      const idx = compareList.indexOf(strId);
+      if (idx === -1) {
+        if (compareList.length >= 4) {
+          showToast('You can compare up to 4 problem statements at a time.');
+          return;
+        }
+        compareList.push(strId);
+        showToast(`Added PS ${psId} to comparison! ⚖️`);
+      } else {
+        compareList.splice(idx, 1);
+        showToast(`Removed PS ${psId} from comparison.`);
+      }
+      try {
+        sessionStorage.setItem('sih2026_compare', JSON.stringify(compareList));
+      } catch(e) {}
+      updateCompareDock();
+      filterAndRender();
+      if (compareModal && !compareModal.classList.contains('hidden')) {
+        renderCompareMatrix();
+      }
+    };
+
+    if (compareClearBtn) {
+      compareClearBtn.addEventListener('click', () => {
+        compareList = [];
+        try { sessionStorage.removeItem('sih2026_compare'); } catch(e) {}
+        updateCompareDock();
+        filterAndRender();
+        closeCompareModal();
+      });
+    }
+
+    function openCompareModal() {
+      if (!compareModal || compareList.length === 0) {
+        showToast('Select at least 1 problem statement to compare!');
+        return;
+      }
+      renderCompareMatrix();
+      compareModal.classList.remove('hidden');
+      document.body.classList.add('modal-open');
+      document.body.style.overflow = 'hidden';
+    }
+
+    function closeCompareModal() {
+      if (compareModal) {
+        compareModal.classList.add('hidden');
+        document.body.classList.remove('modal-open');
+        document.body.style.overflow = '';
+      }
+    }
+
+    if (compareOpenBtn) compareOpenBtn.addEventListener('click', openCompareModal);
+    if (compareCloseBtn) compareCloseBtn.addEventListener('click', closeCompareModal);
+    if (compareCloseSecondary) compareCloseSecondary.addEventListener('click', closeCompareModal);
+
+    // Render Side-by-Side Comparison Matrix
+    function renderCompareMatrix() {
+      if (!compareMatrixContent) return;
+      const items = compareList.map(id => rawData.find(p => String(p.psId) === String(id))).filter(Boolean);
+
+      if (items.length === 0) {
+        compareMatrixContent.innerHTML = '<div class="text-center py-12 text-slate-400 font-bold">No statements in comparison.</div>';
+        return;
+      }
+
+      const colWidthClass = items.length === 1 ? 'w-full' : items.length === 2 ? 'w-1/2' : items.length === 3 ? 'w-1/3' : 'w-1/4';
+
+      let matrixHtml = `
+        <div class="grid grid-cols-${items.length} gap-4">
+      `;
+
+      items.forEach(item => {
+        const isSoftware = item.category === 'Software';
+        const displayId = item.officialPsNumber || ('SIH' + item.psId);
+        const subCount = item.submissions || 0;
+        const compLevel = subCount === 0
+          ? '<span class="text-emerald-700 bg-emerald-100 px-2 py-0.5 rounded-md font-black">🔥 High Opportunity (0 ideas submitted)</span>'
+          : '<span class="text-blue-700 bg-blue-100 px-2 py-0.5 rounded-md font-black">Moderate (${subCount} ideas)</span>';
+
+        const feasibilityBadge = isSoftware
+          ? '<span class="text-cyan-800 bg-cyan-100 px-2 py-0.5 rounded-md font-bold">Web / App / Cloud (Fast MVP)</span>'
+          : '<span class="text-amber-800 bg-amber-100 px-2 py-0.5 rounded-md font-bold">Hardware / IoT / Embedded (High Impact)</span>';
+
+        matrixHtml += `
+          <div class="glass-card-pro rounded-2xl p-5 border-2 border-slate-200 flex flex-col justify-between space-y-4 bg-white shadow-sm">
+            <div class="space-y-3.5">
+              
+              <!-- Column Header -->
+              <div class="flex items-center justify-between gap-1 pb-2 border-b border-slate-100">
+                <span class="text-xs font-mono font-black text-blue-700 bg-blue-50 px-2.5 py-1 rounded-xl border border-blue-200">
+                  ${displayId}
+                </span>
+                <button onclick="toggleCompare('${item.psId}')" class="text-xs text-slate-400 hover:text-rose-600 font-bold">
+                  Remove ×
+                </button>
+              </div>
+
+              <!-- Title & Category -->
+              <div>
+                <span class="text-[10px] font-black uppercase px-2 py-0.5 rounded-md ${isSoftware ? 'bg-blue-100 text-blue-800' : 'bg-amber-100 text-amber-900'}">
+                  ${item.category}
+                </span>
+                <h3 class="text-sm sm:text-base font-black text-slate-900 mt-2 font-display leading-snug">
+                  ${item.title}
+                </h3>
+              </div>
+
+              <!-- Ministry -->
+              <div class="p-3 bg-slate-50 rounded-xl border border-slate-200/80 space-y-1 text-xs">
+                <div class="text-[10px] font-black uppercase text-slate-400">Organization</div>
+                <div class="font-extrabold text-slate-800 truncate" title="${item.organization}">${item.organization}</div>
+                <div class="text-[11px] text-blue-700 font-bold">${item.theme}</div>
+              </div>
+
+              <!-- Competition Level Meter -->
+              <div class="p-3 bg-slate-50 rounded-xl border border-slate-200/80 space-y-1 text-xs">
+                <div class="text-[10px] font-black uppercase text-slate-400">Grand Finale Probability</div>
+                <div>${compLevel}</div>
+              </div>
+
+              <!-- Feasibility -->
+              <div class="p-3 bg-slate-50 rounded-xl border border-slate-200/80 space-y-1 text-xs">
+                <div class="text-[10px] font-black uppercase text-slate-400">Development Track</div>
+                <div>${feasibilityBadge}</div>
+              </div>
+
+              <!-- Problem Summary Snippet -->
+              <div class="space-y-1 text-xs">
+                <div class="text-[10px] font-black uppercase text-slate-400">Scope Overview</div>
+                <p class="text-slate-600 line-clamp-4 leading-relaxed font-medium">
+                  ${item.description.slice(0, 240)}...
+                </p>
+              </div>
+
+            </div>
+
+            <!-- Column Actions -->
+            <div class="pt-3 border-t border-slate-100 space-y-2">
+              <button
+                onclick="copyAiPrompt('${item.psId}')"
+                class="w-full py-2 bg-gradient-to-r from-violet-600 to-indigo-600 hover:from-violet-700 hover:to-indigo-700 text-white text-xs font-black rounded-xl shadow-xs transition-all flex items-center justify-center gap-1"
+              >
+                <span>🤖 Brainstorm AI Prompt</span>
+              </button>
+
+              <button
+                onclick="openPsModal('${item.psId}')"
+                class="w-full py-2 bg-slate-100 hover:bg-slate-200 text-slate-800 text-xs font-bold rounded-xl transition-colors"
+              >
+                📖 View Full Spec
+              </button>
+            </div>
+          </div>
+        `;
+      });
+
+      matrixHtml += '</div>';
+      compareMatrixContent.innerHTML = matrixHtml;
+    }
+
+    // Share Comparison on WhatsApp
+    if (compareShareWhatsappBtn) {
+      compareShareWhatsappBtn.addEventListener('click', () => {
+        const items = compareList.map(id => rawData.find(p => String(p.psId) === String(id))).filter(Boolean);
+        if (items.length === 0) return;
+
+        let msg = `*⚖️ UIT SIH 2026 — Team Problem Statement Comparison Matrix*\n\n`;
+        msg += `Hey team, here is the side-by-side comparison of our shortlisted problem statements for SIH 2026:\n\n`;
+        
+        items.forEach((item, idx) => {
+          const displayId = item.officialPsNumber || item.psId;
+          msg += `*Option ${idx + 1}: ${displayId}*\n`;
+          msg += `• *Title:* ${item.title}\n`;
+          msg += `• *Category:* ${item.category} | *Theme:* ${item.theme}\n`;
+          msg += `• *Ministry:* ${item.organization}\n`;
+          msg += `• *Ideas Submitted:* ${item.submissions || 0}/500\n\n`;
+        });
+
+        msg += `_Please vote for your preferred choice! Check full breakdown at: https://sih-uit.vercel.app/problems.html_`;
+
+        navigator.clipboard.writeText(msg).then(() => {
+          showToast('Copied comparison matrix to clipboard! Ready to paste into team WhatsApp!');
+        });
+      });
+    }
+
+    updateCompareDock();
+
 
     // Load Shortlist from LocalStorage
     let userShortlist = [];
@@ -718,6 +950,7 @@ Analyze the problem statement above and help our student team build a winning, p
       const starIcon = document.getElementById('modal-star-icon');
       const starText = document.getElementById('modal-star-text');
       const isShortlisted = userShortlist.includes(String(item.psId));
+        const isCompared = compareList.includes(String(item.psId));
       if (starIcon && starText) {
         starIcon.textContent = isShortlisted ? '★' : '☆';
         starText.textContent = isShortlisted ? 'Remove from Shortlist' : 'Add to Shortlist';
@@ -972,6 +1205,7 @@ Analyze the problem statement above and help our student team build a winning, p
 
       grid.innerHTML = list.map((item) => {
         const isShortlisted = userShortlist.includes(String(item.psId));
+        const isCompared = compareList.includes(String(item.psId));
         const isSoftware = item.category === 'Software';
         const displayPsId = item.officialPsNumber || ('SIH' + item.psId);
 
@@ -1079,6 +1313,7 @@ Analyze the problem statement above and help our student team build a winning, p
 
       tableBody.innerHTML = list.map((item, idx) => {
         const isShortlisted = userShortlist.includes(String(item.psId));
+        const isCompared = compareList.includes(String(item.psId));
         const displayPsId = item.officialPsNumber || ('SIH' + item.psId);
         const categoryBadge = item.category === 'Software'
           ? '<span class="px-2 py-0.5 rounded-md text-[10px] font-black uppercase bg-blue-100 text-blue-800">Software</span>'
@@ -1329,5 +1564,81 @@ Analyze the problem statement above and help our student team build a winning, p
     }
   })();
   </script>
+
+  <!-- ══════════════════════════════════════════════════════════════════ -->
+  <!-- 7. FLIPKART-STYLE FLOATING BOTTOM COMPARE DOCK -->
+  <!-- ══════════════════════════════════════════════════════════════════ -->
+  <div id="compare-dock" class="fixed bottom-5 left-1/2 -translate-x-1/2 z-40 hidden max-w-2xl w-[94%] bg-slate-900/95 text-white backdrop-blur-xl rounded-2xl sm:rounded-full p-2.5 sm:px-5 sm:py-3 shadow-2xl border border-slate-700 flex flex-col sm:flex-row items-center justify-between gap-3 transition-all duration-300">
+    <div class="flex items-center gap-2 overflow-x-auto w-full sm:w-auto no-scrollbar py-0.5">
+      <span class="text-xs font-black text-amber-400 flex items-center gap-1 flex-shrink-0">
+        <span>⚖️ Compare:</span>
+      </span>
+      <div id="compare-pills" class="flex items-center gap-1.5 flex-wrap sm:flex-nowrap">
+        <!-- Injected dynamically: e.g. [SIH26001 ×] -->
+      </div>
+    </div>
+
+    <div class="flex items-center gap-2 flex-shrink-0 w-full sm:w-auto justify-end">
+      <button id="compare-open-modal-btn" class="px-5 py-2 rounded-full bg-gradient-to-r from-blue-500 to-indigo-600 hover:from-blue-600 hover:to-indigo-700 text-white text-xs font-black shadow-md transition-all active:scale-95 flex items-center gap-1.5">
+        <span>Compare Now</span>
+        <span id="compare-badge-count" class="bg-white/20 px-1.5 py-0.2 rounded-full text-[10px]">0</span>
+      </button>
+      <button id="compare-clear-btn" class="text-slate-400 hover:text-white text-xs font-bold px-2 py-1 transition-colors">
+        Clear
+      </button>
+    </div>
+  </div>
+
+  <!-- ══════════════════════════════════════════════════════════════════ -->
+  <!-- 8. SIDE-BY-SIDE PROBLEM COMPARISON STUDIO MODAL -->
+  <!-- ══════════════════════════════════════════════════════════════════ -->
+  <div id="compare-modal" class="fixed inset-0 z-[9999] hidden bg-slate-950/85 backdrop-blur-md flex items-center justify-center p-2 sm:p-4 md:p-6 overflow-y-auto">
+    <div id="compare-modal-card" class="bg-white rounded-3xl max-w-6xl w-full max-h-[94vh] flex flex-col shadow-2xl border border-slate-200 overflow-hidden relative my-auto">
+      
+      <!-- Compare Header -->
+      <div class="p-4 sm:p-6 border-b border-slate-200 bg-gradient-to-r from-slate-900 via-blue-950 to-indigo-950 text-white flex items-center justify-between gap-4 flex-shrink-0">
+        <div>
+          <div class="inline-flex items-center gap-2 px-3 py-1 bg-blue-500/20 text-blue-200 border border-blue-400/40 text-[11px] font-black uppercase tracking-wider rounded-full shadow-xs mb-1">
+            <span>⚖️ SIDE-BY-SIDE TEAM DECISION MATRIX</span>
+          </div>
+          <h2 class="text-lg sm:text-2xl font-black text-white font-display">
+            Problem Statements Comparison
+          </h2>
+          <p class="text-xs text-slate-300 font-medium mt-0.5">
+            Evaluate competition level, technical complexity, deliverables, and alignment to pick your team's winning statement.
+          </p>
+        </div>
+
+        <div class="flex items-center gap-2 flex-shrink-0">
+          <button id="compare-share-whatsapp-btn" class="hidden sm:inline-flex items-center gap-1.5 px-3.5 py-2 rounded-xl bg-emerald-600 hover:bg-emerald-700 text-white text-xs font-black shadow-xs transition-all active:scale-95">
+            <span>📲 Share to Team WhatsApp</span>
+          </button>
+          <button id="compare-close-btn" class="p-2 rounded-2xl bg-white/10 hover:bg-white/20 text-slate-300 hover:text-white border border-white/20 transition-colors" aria-label="Close comparison">
+            <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2.5" d="M6 18L18 6M6 6l12 12"/></svg>
+          </button>
+        </div>
+      </div>
+
+      <!-- Compare Body: Horizontal Scrollable Comparison Grid -->
+      <div class="p-4 sm:p-6 overflow-x-auto overflow-y-auto flex-1">
+        <div id="compare-matrix-content" class="min-w-[700px] space-y-4">
+          <!-- Dynamically populated comparison columns -->
+        </div>
+      </div>
+
+      <!-- Compare Footer -->
+      <div class="p-3.5 sm:p-4 border-t border-slate-200 bg-slate-50 flex items-center justify-between gap-3 flex-wrap flex-shrink-0">
+        <div class="text-xs text-slate-600 font-semibold flex items-center gap-2">
+          <span>💡 Tip:</span>
+          <span>Statements with fewer submitted ideas (e.g. 0/500) provide a significantly higher chance of advancing to the SIH Grand Finale!</span>
+        </div>
+        <button id="compare-close-secondary-btn" class="px-5 py-2.5 rounded-xl bg-slate-200 hover:bg-slate-300 text-slate-800 text-xs font-bold transition-all">
+          Close Comparison
+        </button>
+      </div>
+
+    </div>
+  </div>
+
 </body>
 </html>
