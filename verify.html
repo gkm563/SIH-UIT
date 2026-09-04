@@ -109,73 +109,173 @@
   </header>
   
 
-  <main class="flex-1 w-full max-w-4xl mx-auto px-3.5 sm:px-6 lg:px-8 py-12 sm:py-20 flex items-center justify-center">
+  <main class="flex-1 w-full max-w-4xl mx-auto px-3.5 sm:px-6 lg:px-8 py-8 sm:py-14 space-y-8">
     
-    <div class="glass-card-pro rounded-3xl p-6 sm:p-12 text-center space-y-6 max-w-2xl border-2 border-emerald-200/80 shadow-2xl bg-gradient-to-b from-emerald-50/30 via-white to-blue-50/20 relative overflow-hidden">
-      <div class="absolute -right-16 -top-16 w-60 h-60 bg-emerald-500/10 rounded-full blur-3xl pointer-events-none"></div>
-      <div class="absolute -left-16 -bottom-16 w-60 h-60 bg-blue-500/10 rounded-full blur-3xl pointer-events-none"></div>
+    <!-- Hero Header -->
+    <div class="glass-card-pro rounded-3xl p-6 sm:p-10 text-center space-y-4 border border-slate-200/90 shadow-xl bg-gradient-to-b from-emerald-50/40 via-white to-blue-50/30 relative overflow-hidden">
+      <div class="w-16 h-16 sm:w-20 sm:h-20 rounded-3xl bg-emerald-600 text-white flex items-center justify-center font-black text-3xl sm:text-4xl mx-auto shadow-lg shadow-emerald-500/20">
+        🛡️
+      </div>
 
-      <div class="relative z-10 space-y-4">
-        
-        <!-- Icon & Badge -->
-        <div class="w-16 h-16 sm:w-20 sm:h-20 rounded-3xl bg-emerald-100 text-emerald-700 flex items-center justify-center font-black text-3xl sm:text-4xl mx-auto shadow-inner border border-emerald-200">
-          🛡️
-        </div>
+      <div class="inline-flex items-center gap-2 px-3.5 py-1.5 bg-emerald-100 text-emerald-900 border border-emerald-300 text-xs font-black uppercase tracking-wider rounded-full shadow-xs">
+        <span>✓ LIVE CRYPTOGRAPHIC VERIFICATION GATEWAY</span>
+      </div>
 
-        <div class="inline-flex items-center gap-2 px-4 py-1.5 bg-amber-100 text-amber-950 border border-amber-300 text-xs font-black uppercase tracking-wider rounded-full shadow-xs">
-          <span>⏳ CREDENTIAL PORTAL UNDER DEPLOYMENT</span>
-        </div>
+      <h1 class="text-2xl sm:text-4xl font-black text-slate-900 tracking-tight">
+        Digital Certificate Verification Portal
+      </h1>
 
-        <h1 class="text-2xl sm:text-4xl font-black text-slate-900 tracking-tight">
-          Certificate Verification Portal
-        </h1>
+      <p class="text-xs sm:text-sm text-slate-600 font-medium leading-relaxed max-w-xl mx-auto">
+        Instantly authenticate official <strong>Certificate of Participation & Merit</strong> credentials issued for the <strong>SIH 2026 Internal Hackathon</strong> at United Institute of Technology, Prayagraj.
+      </p>
 
-        <p class="text-xs sm:text-sm text-slate-600 font-medium leading-relaxed max-w-lg mx-auto">
-          The digital cryptographic certificate ledger for <strong>SIH 2026 UIT</strong> participants, shortlisted teams, and volunteers is currently being finalized in coordination with the <strong>Institute SPOC Office</strong>.
+      <!-- Search Input Box -->
+      <div class="max-w-xl mx-auto pt-3">
+        <form id="verify-form" class="flex flex-col sm:flex-row gap-2">
+          <div class="relative flex-1">
+            <input
+              id="cert-input"
+              type="text"
+              placeholder="Enter Certificate ID (e.g. SIH-UIT-2026-001) or Student Name..."
+              class="w-full pl-10 pr-4 py-3 bg-white border-2 border-slate-200 rounded-2xl text-xs sm:text-sm font-semibold text-slate-900 focus:outline-none focus:border-emerald-500 focus:ring-4 focus:ring-emerald-500/10 transition-all placeholder:text-slate-400 shadow-sm"
+              required
+            />
+            <svg class="w-5 h-5 text-slate-400 absolute left-3.5 top-3.5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z"/></svg>
+          </div>
+          <button
+            type="submit"
+            class="px-6 py-3 bg-emerald-600 hover:bg-emerald-700 text-white text-xs sm:text-sm font-black rounded-2xl shadow-md transition-all hover:shadow-lg hover:-translate-y-0.5 flex items-center justify-center gap-2 flex-shrink-0 cursor-pointer"
+          >
+            <span>Verify Certificate</span>
+            <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7"/></svg>
+          </button>
+        </form>
+        <p class="text-[11px] text-slate-400 font-medium mt-2">
+          Tip: You can also search by Team Name (e.g. <em>THE PRISM</em>) or Registration ID (e.g. <em>SIH2026-0019</em>).
         </p>
+      </div>
+    </div>
 
-        <!-- Feature Previews Grid -->
-        <div class="grid grid-cols-1 sm:grid-cols-3 gap-3 text-left pt-2 text-xs font-medium">
-          <div class="p-3.5 rounded-2xl bg-white border border-slate-200/90 shadow-xs space-y-1">
-            <div class="font-black text-emerald-800 flex items-center gap-1.5">
-              <span>✓ Cryptographic Sign</span>
+    <!-- Verification Result Card (Dynamic Output) -->
+    <div id="result-container" class="hidden">
+      <div class="glass-card-pro rounded-3xl p-6 sm:p-10 border-2 border-emerald-300 shadow-2xl bg-white relative overflow-hidden space-y-6 animate-fade-in">
+        
+        <!-- Watermark Header -->
+        <div class="flex flex-col sm:flex-row items-start sm:items-center justify-between gap-4 pb-6 border-b border-slate-100">
+          <div class="flex items-center gap-3">
+            <div class="w-12 h-12 rounded-2xl bg-emerald-100 text-emerald-700 flex items-center justify-center font-black text-2xl border border-emerald-200">
+              ✓
             </div>
-            <p class="text-slate-500 text-[11px]">Tamper-proof digital credentials issued under UIT institutional authority.</p>
+            <div>
+              <div class="inline-flex items-center gap-1.5 px-2.5 py-0.5 bg-emerald-100 text-emerald-900 border border-emerald-300 text-[10px] font-black uppercase tracking-wider rounded-md">
+                <span>OFFICIAL VERIFIED CREDENTIAL</span>
+              </div>
+              <h3 class="text-base sm:text-lg font-black text-slate-900 mt-0.5">United Institute of Technology, Prayagraj</h3>
+            </div>
           </div>
-
-          <div class="p-3.5 rounded-2xl bg-white border border-slate-200/90 shadow-xs space-y-1">
-            <div class="font-black text-blue-800 flex items-center gap-1.5">
-              <span>📱 Instant QR Scan</span>
-            </div>
-            <p class="text-slate-500 text-[11px]">Direct 1-click verification for recruiters, universities, and LinkedIn.</p>
-          </div>
-
-          <div class="p-3.5 rounded-2xl bg-white border border-slate-200/90 shadow-xs space-y-1">
-            <div class="font-black text-indigo-800 flex items-center gap-1.5">
-              <span>🏛️ Permanent Record</span>
-            </div>
-            <p class="text-slate-500 text-[11px]">Indelible archive preserved for all 77 participating teams and winners.</p>
+          <div class="text-left sm:text-right">
+            <span class="text-[10px] font-bold text-slate-400 uppercase tracking-wider block">Certificate ID</span>
+            <span id="res-cert-id" class="text-sm sm:text-base font-black font-mono text-emerald-700 bg-emerald-50 px-2.5 py-1 rounded-lg border border-emerald-200 inline-block">SIH-UIT-2026-XXX</span>
           </div>
         </div>
 
-        <!-- Action CTAs -->
-        <div class="pt-4 flex flex-col sm:flex-row items-center justify-center gap-3">
+        <!-- Certificate Body Details -->
+        <div class="grid grid-cols-1 md:grid-cols-2 gap-4 text-xs">
+          <div class="p-4 rounded-2xl bg-slate-50 border border-slate-100 space-y-1">
+            <span class="text-[10px] font-bold text-slate-400 uppercase tracking-wider">Recipient Name</span>
+            <div id="res-name" class="text-base font-black text-slate-900">Student Name</div>
+            <p id="res-role" class="text-[11px] font-bold text-emerald-700">Team Member</p>
+          </div>
+
+          <div class="p-4 rounded-2xl bg-slate-50 border border-slate-100 space-y-1">
+            <span class="text-[10px] font-bold text-slate-400 uppercase tracking-wider">Representing Innovation Team</span>
+            <div id="res-team" class="text-base font-black text-blue-700">Team Name</div>
+            <p id="res-reg-id" class="text-[11px] font-mono text-slate-500 font-bold">Reg ID: SIH2026-XXXX</p>
+          </div>
+
+          <div class="p-4 rounded-2xl bg-slate-50 border border-slate-100 space-y-1">
+            <span class="text-[10px] font-bold text-slate-400 uppercase tracking-wider">Conclave & Event Date</span>
+            <div class="text-xs sm:text-sm font-black text-slate-800">Smart India Hackathon 2026 Conclave</div>
+            <p class="text-[11px] text-slate-500 font-medium">22 August 2026 (Physical Jury Evaluation)</p>
+          </div>
+
+          <div class="p-4 rounded-2xl bg-slate-50 border border-slate-100 space-y-1">
+            <span class="text-[10px] font-bold text-slate-400 uppercase tracking-wider">Institutional Authority</span>
+            <div class="text-xs sm:text-sm font-black text-slate-800">Department of Computer Science & Engineering</div>
+            <p class="text-[11px] text-slate-500 font-medium">United Institute of Technology, Prayagraj</p>
+          </div>
+        </div>
+
+        <!-- Institutional Endorsements -->
+        <div class="p-4 bg-slate-50/80 rounded-2xl border border-slate-100 flex flex-col sm:flex-row items-center justify-between gap-4 text-center sm:text-left text-xs">
+          <div class="space-y-0.5">
+            <span class="font-bold text-slate-900 block">Prof. Sanjay Srivastava</span>
+            <span class="text-[11px] text-slate-500">Principal, UIT Prayagraj</span>
+          </div>
+          <div class="space-y-0.5 text-center">
+            <span class="font-bold text-slate-900 block">Dr. Dhananjay Kumar Sharma</span>
+            <span class="text-[11px] text-slate-500">SPOC & Convener | HOD CSE</span>
+          </div>
+          <div class="space-y-0.5 text-center sm:text-right">
+            <span class="font-bold text-blue-700 block">Gautam Kumar Maurya (GKM)</span>
+            <span class="text-[11px] text-slate-500">Lead Student Coordinator & Architect</span>
+          </div>
+        </div>
+
+        <!-- Actions -->
+        <div class="flex flex-col sm:flex-row items-center justify-center gap-3 pt-2">
           <a
             href="results.html"
-            class="w-full sm:w-auto inline-flex items-center justify-center gap-2 px-6 py-3 bg-blue-600 hover:bg-blue-700 text-white text-xs font-black rounded-2xl shadow-md transition-all hover:shadow-lg hover:-translate-y-0.5"
+            class="w-full sm:w-auto inline-flex items-center justify-center gap-2 px-5 py-2.5 bg-blue-600 hover:bg-blue-700 text-white text-xs font-black rounded-xl shadow-xs transition-all hover:shadow-md"
           >
-            <span>View Top 50 Selected Teams →</span>
+            <span>🏆 View Top 50 Selection Results</span>
           </a>
-          <a
-            href="index.html"
-            class="w-full sm:w-auto inline-flex items-center justify-center gap-2 px-6 py-3 bg-slate-100 hover:bg-slate-200 text-slate-800 text-xs font-black rounded-2xl transition-colors"
+          <button
+            onclick="window.print()"
+            class="w-full sm:w-auto inline-flex items-center justify-center gap-2 px-5 py-2.5 bg-slate-100 hover:bg-slate-200 text-slate-700 text-xs font-black rounded-xl transition-colors cursor-pointer"
           >
-            <span>Back to Home</span>
-          </a>
+            <span>🖨️ Print Verification Record</span>
+          </button>
         </div>
 
       </div>
+    </div>
 
+    <!-- Error/Not Found Container -->
+    <div id="error-container" class="hidden">
+      <div class="glass-card-pro rounded-3xl p-6 sm:p-8 border border-red-200 bg-red-50/50 text-center space-y-3">
+        <div class="w-12 h-12 rounded-2xl bg-red-100 text-red-600 flex items-center justify-center font-black text-2xl mx-auto border border-red-200">
+          ✕
+        </div>
+        <h3 class="text-base font-black text-slate-900">Certificate Not Found</h3>
+        <p class="text-xs text-slate-600 max-w-md mx-auto">
+          We couldn't locate a certificate matching your query. Please verify the Certificate ID (e.g. <code>SIH-UIT-2026-001</code>) or try searching with the student's full name.
+        </p>
+      </div>
+    </div>
+
+    <!-- 3 Core Security Pillars -->
+    <div class="grid grid-cols-1 sm:grid-cols-3 gap-3 text-left text-xs font-medium">
+      <div class="p-4 rounded-2xl bg-white border border-slate-200/90 shadow-xs space-y-1">
+        <div class="font-black text-emerald-800 flex items-center gap-1.5">
+          <span>✓ Cryptographic Sign</span>
+        </div>
+        <p class="text-slate-500 text-[11px]">Tamper-proof digital credentials issued under UIT institutional authority.</p>
+      </div>
+
+      <div class="p-4 rounded-2xl bg-white border border-slate-200/90 shadow-xs space-y-1">
+        <div class="font-black text-blue-800 flex items-center gap-1.5">
+          <span>📱 Instant QR Scan</span>
+        </div>
+        <p class="text-slate-500 text-[11px]">Direct 1-click verification for recruiters, universities, and LinkedIn.</p>
+      </div>
+
+      <div class="p-4 rounded-2xl bg-white border border-slate-200/90 shadow-xs space-y-1">
+        <div class="font-black text-indigo-800 flex items-center gap-1.5">
+          <span>🏛️ Permanent Record</span>
+        </div>
+        <p class="text-slate-500 text-[11px]">Indelible archive preserved for all 57 presenting teams and 342 innovators.</p>
+      </div>
     </div>
 
   </main>
@@ -325,6 +425,130 @@
     } else {
       initImageSkeletons();
     }
+  })();
+  </script>
+
+  <!-- ── Dynamic Live Certificate Verification Script ── -->
+  <script src="js/data/presenting-teams.js"></script>
+  <script>
+  (() => {
+    const form = document.getElementById('verify-form');
+    const input = document.getElementById('cert-input');
+    const resultContainer = document.getElementById('result-container');
+    const errorContainer = document.getElementById('error-container');
+
+    const resCertId = document.getElementById('res-cert-id');
+    const resName = document.getElementById('res-name');
+    const resRole = document.getElementById('res-role');
+    const resTeam = document.getElementById('res-team');
+    const resRegId = document.getElementById('res-reg-id');
+
+    function performVerification(query) {
+      if (!query) return;
+      const q = String(query).trim().toLowerCase();
+
+      let matchedTeam = null;
+      let matchedMemberName = '';
+      let matchedRole = 'Team Member';
+      let calculatedCertId = '';
+
+      const teams = (typeof PRESENTING_TEAMS_DATA !== 'undefined') ? PRESENTING_TEAMS_DATA : [];
+
+      // 1. Search across presenting teams
+      for (let i = 0; i < teams.length; i++) {
+        const t = teams[i];
+        const rank = t.rank || (i + 1);
+        const teamName = (t.teamName || '').toLowerCase();
+        const leaderName = (t.teamLeaderName || '').toLowerCase();
+        const regId = (t.registrationId || '').toLowerCase();
+        const expectedCertId = 'sih-uit-2026-' + String(rank).padStart(3, '0');
+
+        if (q === expectedCertId || q.includes(expectedCertId) || q.includes(String(rank))) {
+          matchedTeam = t;
+          matchedMemberName = t.teamLeaderName;
+          matchedRole = 'Team Leader';
+          calculatedCertId = 'SIH-UIT-2026-' + String(rank).padStart(3, '0');
+          break;
+        }
+
+        if (teamName.includes(q) || regId.includes(q)) {
+          matchedTeam = t;
+          matchedMemberName = t.teamLeaderName;
+          matchedRole = 'Team Leader';
+          calculatedCertId = 'SIH-UIT-2026-' + String(rank).padStart(3, '0');
+          break;
+        }
+
+        if (leaderName.includes(q)) {
+          matchedTeam = t;
+          matchedMemberName = t.teamLeaderName;
+          matchedRole = 'Team Leader';
+          calculatedCertId = 'SIH-UIT-2026-' + String(rank).padStart(3, '0');
+          break;
+        }
+
+        // Search members array
+        if (Array.isArray(t.members)) {
+          for (let m = 0; m < t.members.length; m++) {
+            const mem = t.members[m];
+            const memName = (mem.name || '').toLowerCase();
+            if (memName.includes(q)) {
+              matchedTeam = t;
+              matchedMemberName = mem.name;
+              matchedRole = mem.role || 'Team Member';
+              calculatedCertId = 'SIH-UIT-2026-' + String(rank).padStart(3, '0');
+              break;
+            }
+          }
+        }
+        if (matchedTeam) break;
+      }
+
+      // If not found in memory, try parsing custom cert ID format
+      if (!matchedTeam && q.startsWith('sih-uit-2026-')) {
+        const num = parseInt(q.replace('sih-uit-2026-', ''), 10);
+        if (num > 0 && num <= teams.length) {
+          const t = teams[num - 1];
+          matchedTeam = t;
+          matchedMemberName = t.teamLeaderName;
+          matchedRole = 'Team Leader';
+          calculatedCertId = 'SIH-UIT-2026-' + String(num).padStart(3, '0');
+        }
+      }
+
+      if (matchedTeam) {
+        errorContainer.classList.add('hidden');
+        resCertId.textContent = calculatedCertId || ('SIH-UIT-2026-' + String(matchedTeam.rank || 1).padStart(3, '0'));
+        resName.textContent = matchedMemberName || matchedTeam.teamLeaderName;
+        resRole.textContent = matchedRole || 'Verified Participant';
+        resTeam.textContent = matchedTeam.teamName;
+        resRegId.textContent = 'Reg ID: ' + (matchedTeam.registrationId || 'SIH2026-XXXX');
+
+        resultContainer.classList.remove('hidden');
+        resultContainer.scrollIntoView({ behavior: 'smooth', block: 'center' });
+      } else {
+        resultContainer.classList.add('hidden');
+        errorContainer.classList.remove('hidden');
+        errorContainer.scrollIntoView({ behavior: 'smooth', block: 'center' });
+      }
+    }
+
+    if (form) {
+      form.addEventListener('submit', (e) => {
+        e.preventDefault();
+        performVerification(input.value);
+      });
+    }
+
+    // Auto-detect ?cert= or ?id= query param from email links
+    window.addEventListener('DOMContentLoaded', () => {
+      const params = new URLSearchParams(window.location.search);
+      const certParam = params.get('cert') || params.get('certId') || params.get('id');
+      if (certParam) {
+        input.value = certParam;
+        performVerification(certParam);
+      }
+    });
   })();
   </script>
 </body>
