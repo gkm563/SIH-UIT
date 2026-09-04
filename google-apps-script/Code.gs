@@ -51,7 +51,18 @@ function SEND_TEST_CERTIFICATE() {
     return;
   }
 
-  // Explicit test recipient specified by user
+  var currentSender = Session.getActiveUser().getEmail();
+  if (currentSender.toLowerCase() !== 'sihuit2026@gmail.com') {
+    var proceed = ui.alert(
+      '⚠️ Sender Warning',
+      'You are currently running as: ' + currentSender + '\n\n' +
+      'To send from "sihuit2026@gmail.com", please open this sheet in your "sihuit2026@gmail.com" Chrome profile.\n\n' +
+      'Do you still want to proceed and send test email from ' + currentSender + '?',
+      ui.ButtonSet.YES_NO
+    );
+    if (proceed !== ui.Button.YES) return;
+  }
+
   var testEmail = 'gkmwin563@gmail.com';
   
   // Sample Data from Row 6 (first student: Riya Gupta - THE PRISM)
@@ -303,23 +314,27 @@ function sendCertificateEmail_(recipientEmail, participantName, teamName, certId
   var cleanCertId = String(certId || 'SIH-UIT-2026-XXX').trim();
   var cleanRole = String(role || 'Team Member').trim();
 
-  var subject = '🎓 Official Certificate of Participation — ' + cleanName + ' (Team ' + cleanTeam + ') | SIH 2026 UIT';
+  // Clean, professional subject line without broken emojis
+  var subject = 'Official Certificate of Participation - ' + cleanName + ' (Team ' + cleanTeam + ') | SIH 2026 UIT Prayagraj';
 
   var verifyUrl = 'https://sih-uit.vercel.app/verify.html?cert=' + encodeURIComponent(cleanCertId);
 
   var htmlBody = 
-    "<div style='font-family: Arial, sans-serif; max-width: 640px; margin: 0 auto; background: #ffffff; border: 1px solid #e2e8f0; border-radius: 18px; overflow: hidden; box-shadow: 0 4px 24px rgba(0,0,0,0.08);'>" +
+    "<div style='font-family: Arial, Helvetica, sans-serif; max-width: 640px; margin: 0 auto; background: #ffffff; border: 1px solid #e2e8f0; border-radius: 18px; overflow: hidden; box-shadow: 0 4px 24px rgba(0,0,0,0.08);'>" +
+      // Header Banner
       "<div style='background: linear-gradient(135deg,#0f172a 0%,#1e3a8a 50%,#312e81 100%); padding: 36px 24px; text-align: center; color: #ffffff;'>" +
         "<div style='display: inline-block; background: rgba(255,255,255,0.15); padding: 6px 18px; border-radius: 999px; font-size: 11px; font-weight: 800; letter-spacing: 1.5px; text-transform: uppercase; margin-bottom: 14px; border: 1px solid rgba(255,255,255,0.3);'>" +
-          "🏛️ United Institute of Technology, Prayagraj" +
+          "United Institute of Technology, Prayagraj" +
         "</div>" +
         "<h1 style='margin: 0; font-size: 24px; font-weight: 900; letter-spacing: -0.5px; color: #ffffff; line-height: 1.3;'>" +
           "Smart India Hackathon 2026" +
         "</h1>" +
         "<p style='margin: 6px 0 0; font-size: 13px; color: #93c5fd; font-weight: 600;'>" +
-          "College-Level Internal Hackathon Conclave · 22 August 2026" +
+          "College-Level Internal Hackathon Conclave &middot; 22 August 2026" +
         "</p>" +
       "</div>" +
+
+      // Body Content
       "<div style='padding: 32px 28px; color: #334155; line-height: 1.65; font-size: 14px;'>" +
         "<p style='font-size: 17px; margin: 0 0 16px; color: #0f172a;'>" +
           "Dear <strong>" + cleanName + "</strong>," +
@@ -327,9 +342,11 @@ function sendCertificateEmail_(recipientEmail, participantName, teamName, certId
         "<p style='margin: 0 0 16px;'>" +
           "Congratulations on your active participation and technical presentation as <strong>" + cleanRole + "</strong> of team <strong>\"" + cleanTeam + "\"</strong> during the <strong>Smart India Hackathon 2026 Internal Hackathon</strong> held at United Institute of Technology, Prayagraj on <strong>22 August 2026</strong>." +
         "</p>" +
+
+        // Certificate Details Card
         "<div style='background: linear-gradient(135deg,#f8fafc 0%,#eff6ff 100%); border: 2px dashed #93c5fd; border-radius: 14px; padding: 20px 22px; margin: 24px 0; text-align: center;'>" +
           "<div style='font-size: 11px; font-weight: 800; color: #1e40af; text-transform: uppercase; letter-spacing: 1.5px; margin-bottom: 6px;'>" +
-            "Official Issued Certificate ID" +
+            "Official Certificate ID" +
           "</div>" +
           "<div style='font-size: 22px; font-weight: 900; color: #1e3a8a; font-family: monospace; letter-spacing: 1.5px; background: #ffffff; display: inline-block; padding: 6px 18px; border-radius: 8px; border: 1px solid #bfdbfe;'>" +
             cleanCertId +
@@ -339,42 +356,38 @@ function sendCertificateEmail_(recipientEmail, participantName, teamName, certId
             "Representing Team: <strong style='color: #2563eb;'>" + cleanTeam + "</strong>" +
           "</div>" +
         "</div>" +
+
         "<p style='margin: 0 0 16px;'>" +
           "Your official <strong>Certificate of Participation</strong> has been generated and attached as a high-resolution PDF document to this email. You can download and save it directly for your academic and professional records." +
         "</p>" +
+
+        // 1-Click Verification & Results Action Buttons
         "<div style='text-align: center; margin: 28px 0;'>" +
           "<a href='" + verifyUrl + "' target='_blank' style='display: inline-block; background: linear-gradient(135deg,#2563eb,#1d4ed8); color: #ffffff; text-decoration: none; padding: 12px 28px; border-radius: 12px; font-weight: 800; font-size: 13px; box-shadow: 0 4px 14px rgba(37,99,235,0.3); margin-right: 8px;'>" +
-            "✓ Verify Certificate Online ↗" +
+            "View &amp; Verify Certificate Online &rarr;" +
           "</a>" +
           "<a href='https://sih-uit.vercel.app/results.html' target='_blank' style='display: inline-block; background: #f1f5f9; color: #334155; text-decoration: none; padding: 12px 20px; border-radius: 12px; font-weight: 700; font-size: 13px; border: 1px solid #cbd5e1;'>" +
-            "🏆 View Results (45+5)" +
+            "View Conclave Results" +
           "</a>" +
         "</div>" +
+
         "<p style='margin: 0 0 8px; font-size: 13px; color: #64748b;'>" +
           "We applaud your innovation mindset and wish you and team <strong>\"" + cleanTeam + "\"</strong> immense success in your upcoming national hackathons and technical endeavors!" +
         "</p>" +
       "</div>" +
-      "<div style='background: #f8fafc; border-top: 1px solid #e2e8f0; padding: 24px 28px; font-size: 12px; color: #64748b;'>" +
-        "<div style='display: flex; justify-content: space-between; margin-bottom: 16px;'>" +
-          "<div>" +
-            "<strong style='color: #0f172a; display: block;'>Prof. Sanjay Srivastava</strong>" +
-            "Principal, United Institute of Technology" +
-          "</div>" +
-          "<div style='text-align: right;'>" +
-            "<strong style='color: #0f172a; display: block;'>Dr. Dhananjay Kumar Sharma</strong>" +
-            "SPOC & Convener, SIH 2026 | HOD CSE" +
-          "</div>" +
-        "</div>" +
-        "<div style='border-top: 1px solid #e2e8f0; padding-top: 12px; text-align: center; font-size: 11px; color: #94a3b8;'>" +
-          "Organized & Digitally Engineered by <strong>Gautam Kumar Maurya (GKM)</strong> · Head, Developers Club, UIT<br>" +
-          "Official Conclave Portal: <a href='https://sih-uit.vercel.app' style='color: #2563eb; text-decoration: none; font-weight: 700;'>sih-uit.vercel.app</a>" +
-        "</div>" +
+
+      // Clean Institutional Footer (without individual signature blocks)
+      "<div style='background: #f8fafc; border-top: 1px solid #e2e8f0; padding: 22px 24px; text-align: center; font-size: 12px; color: #64748b; line-height: 1.5;'>" +
+        "<strong style='color: #0f172a; display: block; font-size: 13px; margin-bottom: 4px;'>Department of Computer Science &amp; Engineering</strong>" +
+        "United Institute of Technology, Prayagraj &middot; Smart India Hackathon 2026<br>" +
+        "Official Verification: <a href='https://sih-uit.vercel.app/verify.html' style='color: #2563eb; font-weight: 700; text-decoration: none;'>sih-uit.vercel.app/verify.html</a>" +
       "</div>" +
     "</div>";
 
   GmailApp.sendEmail(recipientEmail, subject, "Please view this email in an HTML-compatible client.", {
     htmlBody: htmlBody,
-    name: "SIH UIT 2026 Conclave",
+    name: 'SIH UIT Conclave 2026',
+    replyTo: 'sihuit2026@gmail.com',
     attachments: [pdfAttachment]
   });
 }
