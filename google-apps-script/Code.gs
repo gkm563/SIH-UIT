@@ -191,55 +191,66 @@ function SEND_ALL_PENDING_CERTIFICATES() {
 /**
  * Generates a PDF Certificate by replacing placeholders in Google Slides template
  */
-function generateCertificatePdf_(slideTemplateId, certId, participantName, teamName, folder) {
-  if (!slideTemplateId) {
-    throw new Error('Please specify a valid Google Slides template ID or URL.');
-  }
-
-  // Extract clean ID if full URL was pasted
-  var cleanId = String(slideTemplateId).trim();
+/**
+ * Helper to get template file with automatic Drive search fallback
+ */
+function getTemplateFile_(slideTemplateId) {
+  var cleanId = String(slideTemplateId || '').trim();
   var urlMatch = cleanId.match(/\/d\/([a-zA-Z0-9_-]+)/);
   if (urlMatch && urlMatch[1]) {
     cleanId = urlMatch[1];
   }
 
-  var targetFolder = folder || getOrCreateCertificatesFolder_();
-  
-  var copyFile;
-  try {
-    var templateFile = DriveApp.getFileById(cleanId);
-    copyFile = templateFile.makeCopy('Temp_Cert_' + certId, targetFolder);
-  } catch (driveErr) {
-    // If DriveApp.getFileById fails due to cross-account sharing, try creating a fresh presentation and copying slides
+  // 1. Try exact cleanId
+  if (cleanId && cleanId.indexOf('YOUR_') === -1) {
     try {
-      var sourcePres = SlidesApp.openById(cleanId);
-      var newPres = SlidesApp.create('Temp_Cert_' + certId);
-      var newPresFile = DriveApp.getFileById(newPres.getId());
-      
-      // Move to target folder
-      targetFolder.addFile(newPresFile);
-      DriveApp.getRootFolder().removeFile(newPresFile);
-      
-      // Remove default blank slide in new presentation
-      var defaultSlides = newPres.getSlides();
-      
-      // Append slide from template
-      var sourceSlides = sourcePres.getSlides();
-      for (var k = 0; k < sourceSlides.length; k++) {
-        newPres.appendSlide(sourceSlides[k]);
-      }
-      
-      if (defaultSlides.length > 0) {
-        defaultSlides[0].remove();
-      }
-      
-      newPres.saveAndClose();
-      copyFile = newPresFile;
-    } catch (slidesErr) {
-      throw new Error('Cannot access Google Slide (ID: ' + cleanId + ').\n\nSOLUTION: In your Google Slide, click "Share" ➔ Add "' + Session.getActiveUser().getEmail() + '" as Editor, OR make sure you are logged into the same account.');
-    }
+      return DriveApp.getFileById(cleanId);
+    } catch (e1) {}
+
+    // 2. Try swapping '_' with '-' and vice-versa
+    try {
+      var altId = cleanId.indexOf('_') !== -1 ? cleanId.replace(/_/g, '-') : cleanId.replace(/-/g, '_');
+      return DriveApp.getFileById(altId);
+    } catch (e2) {}
   }
 
+  // 3. Search user's Drive automatically for presentation named "SIH"
+  try {
+    var files = DriveApp.getFilesByName('SIH');
+    while (files.hasNext()) {
+      var f = files.next();
+      if (f.getMimeType() === MimeType.GOOGLE_SLIDES || f.getMimeType() === 'application/vnd.google-apps.presentation') {
+        Logger.log('Auto-discovered SIH Google Slide template! ID: ' + f.getId());
+        return f;
+      }
+    }
+  } catch (e3) {}
+
+  // 4. Search all Google Slides in Drive for any with "sih" in title
+  try {
+    var allPres = DriveApp.getFilesByType(MimeType.GOOGLE_SLIDES);
+    while (allPres.hasNext()) {
+      var p = allPres.next();
+      var pName = p.getName().toLowerCase();
+      if (pName.indexOf('sih') !== -1 || pName.indexOf('cert') !== -1) {
+        Logger.log('Auto-found presentation: ' + p.getName() + ' (ID: ' + p.getId() + ')');
+        return p;
+      }
+    }
+  } catch (e4) {}
+
+  throw new Error('Google Slides template could not be found.\n\nPlease click "Copy link" in your Google Slide Share modal and paste that link into CERTIFICATE_TEMPLATE_SLIDE_ID.');
+}
+
+/**
+ * Generates a PDF Certificate by replacing placeholders in Google Slides template
+ */
+function generateCertificatePdf_(slideTemplateId, certId, participantName, teamName, folder) {
+  var targetFolder = folder || getOrCreateCertificatesFolder_();
+  var templateFile = getTemplateFile_(slideTemplateId);
+
+  // 1. Make a temporary copy of the slide template
+  var copyFile = templateFile.makeCopy('Temp_Cert_' + certId, targetFolder);
   var copySlide = SlidesApp.openById(copyFile.getId());
 
   // 2. Replace placeholders in all slides (handles all tag formats & spaces)
