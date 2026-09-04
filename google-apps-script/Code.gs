@@ -63,6 +63,10 @@ function onOpen() {
       .addItem('⚡ Update PS-37 & Refresh Summary Sheet', 'SETUP_ADD_PS37_OPEN_INNOVATION')
       .addItem('📊 Refresh PS Selection Summary', 'REFRESH_PS_SUMMARY_SHEET')
       .addItem('📈 Generate Live Analytics Dashboard', 'GENERATE_ANALYTICS_DASHBOARD')
+      .addSeparator()
+      .addItem('🧪 Send 1 Test Certificate (Verify Layout)', 'SEND_TEST_CERTIFICATE')
+      .addItem('🎓 Send All Pending Certificates (Auto-Email)', 'SEND_ALL_PENDING_CERTIFICATES')
+      .addItem('📊 Refresh Certificate Statistics', 'REFRESH_CERTIFICATE_STATS')
       .addToUi();
   } catch (e) {}
 }
@@ -2675,3 +2679,350 @@ function updateAnalyticsDashboardSheet_() {
   }
 }
 
+
+/* =============================================================================
+ * 🎓 SIH 2026 CERTIFICATE DISPATCH & AUTOMATION ENGINE
+ * ============================================================================= */
+
+// 🔴 PASTE YOUR GOOGLE SLIDES TEMPLATE ID HERE:
+// (Open your Google Slide Template in browser, copy ID from URL: https://docs.google.com/presentation/d/TEMPLATE_ID/edit)
+var CERTIFICATE_TEMPLATE_SLIDE_ID = 'YOUR_GOOGLE_SLIDE_TEMPLATE_ID_HERE';
+
+// Folder name in Google Drive to store generated PDF certificates temporarily
+var CERTIFICATES_FOLDER_NAME = 'SIH 2026 Certificates Archive';
+
+/**
+ * 🧪 TEST FUNCTION: Sends 1 sample certificate to the admin email (sihuit2026@gmail.com)
+ * Use this to verify formatting, alignment, and email delivery before sending to all 402 students.
+ */
+function SEND_TEST_CERTIFICATE() {
+  var ss = SpreadsheetApp.getActiveSpreadsheet() || SpreadsheetApp.openById(SPREADSHEET_ID);
+  var sheet = ss.getSheetByName('Certificates');
+  var ui = SpreadsheetApp.getUi();
+
+  if (!sheet) {
+    ui.alert('Error', 'Could not find "Certificates" tab in this spreadsheet.', ui.ButtonSet.OK);
+    return;
+  }
+
+  var adminEmail = Session.getActiveUser().getEmail() || 'sihuit2026@gmail.com';
+  
+  // Sample Data from Row 6 (first student)
+  var sampleCertId = sheet.getRange('A6').getValue() || 'SIH-UIT-2026-001';
+  var sampleName = sheet.getRange('C6').getValue() || 'Riya Gupta';
+  var sampleTeam = sheet.getRange('E6').getValue() || 'THE PRISM';
+
+  try {
+    var pdfFile = generateCertificatePdf_(CERTIFICATE_TEMPLATE_SLIDE_ID, sampleCertId, sampleName, sampleTeam);
+    
+    sendCertificateEmail_(
+      adminEmail,
+      sampleName,
+      sampleTeam,
+      sampleCertId,
+      pdfFile
+    );
+
+    ui.alert('✅ Test Certificate Sent!', 
+      'A test certificate for "' + sampleName + '" (' + sampleCertId + ') has been sent to ' + adminEmail + '.
+
+Please check your inbox and verify the PDF attachment.', 
+      ui.ButtonSet.OK
+    );
+  } catch (err) {
+    ui.alert('❌ Error Generating Certificate', 
+      'Error: ' + err.message + '
+
+Please ensure CERTIFICATE_TEMPLATE_SLIDE_ID is set correctly in Code.gs.', 
+      ui.ButtonSet.OK
+    );
+  }
+}
+
+/**
+ * 🚀 MAIN AUTOMATION: Sends personalized certificates to all students with status "Pending"
+ * Automatically tracks progress, updates status to "Sent", and updates top dashboard stats.
+ */
+function SEND_ALL_PENDING_CERTIFICATES() {
+  var ss = SpreadsheetApp.getActiveSpreadsheet() || SpreadsheetApp.openById(SPREADSHEET_ID);
+  var sheet = ss.getSheetByName('Certificates');
+  var ui = SpreadsheetApp.getUi();
+
+  if (!sheet) {
+    ui.alert('Error', 'Could not find "Certificates" tab.', ui.ButtonSet.OK);
+    return;
+  }
+
+  var lastRow = sheet.getLastRow();
+  if (lastRow < 6) {
+    ui.alert('Info', 'No certificate records found below row 5.', ui.ButtonSet.OK);
+    return;
+  }
+
+  // Confirm with Admin
+  var confirm = ui.alert('🎓 Confirm Certificate Dispatch',
+    'Are you sure you want to generate and email certificates to all PENDING participants in the "Certificates" tab?
+
+' +
+    '• Email Sender: ' + Session.getActiveUser().getEmail() + '
+' +
+    '• Daily Gmail Quota Remaining: ' + MailApp.getRemainingDailyQuota() + ' emails',
+    ui.ButtonSet.YES_NO
+  );
+
+  if (confirm !== ui.Button.YES) return;
+
+  var dataRange = sheet.getRange(6, 1, lastRow - 5, 7); // Cols A to G
+  var data = dataRange.getValues();
+
+  var sentCount = 0;
+  var skippedCount = 0;
+  var errorCount = 0;
+
+  var tempFolder = getOrCreateCertificatesFolder_();
+
+  for (var i = 0; i < data.length; i++) {
+    var rowNum = 6 + i;
+    var certId = data[i][0];       // Col A
+    var regId = data[i][1];        // Col B
+    var name = data[i][2];         // Col C
+    var email = data[i][3];        // Col D
+    var teamName = data[i][4];     // Col E
+    var role = data[i][5];         // Col F
+    var status = String(data[i][6]).toLowerCase().trim(); // Col G
+
+    // Skip if already sent
+    if (status.indexOf('sent') !== -1) {
+      skippedCount++;
+      continue;
+    }
+
+    // Check remaining email quota
+    if (MailApp.getRemainingDailyQuota() <= 0) {
+      ui.alert('⚠️ Daily Quota Limit Reached',
+        'Daily email quota has been exhausted. Sent: ' + sentCount + ' certificates.
+
+' +
+        'Remaining pending rows are preserved. Simply run this function again tomorrow to resume automatically!',
+        ui.ButtonSet.OK
+      );
+      break;
+    }
+
+    if (!email || email.indexOf('@') === -1) {
+      sheet.getRange(rowNum, 7).setValue('Error: Invalid Email').setBackground('#fee2e2');
+      errorCount++;
+      continue;
+    }
+
+    try {
+      // 1. Generate personalized PDF Certificate
+      var pdfBlob = generateCertificatePdf_(CERTIFICATE_TEMPLATE_SLIDE_ID, certId, name, teamName, tempFolder);
+
+      // 2. Send Official Email
+      sendCertificateEmail_(email, name, teamName, certId, pdfBlob);
+
+      // 3. Mark as Sent in Sheet
+      var timestamp = Utilities.formatDate(new Date(), Session.getScriptTimeZone(), "dd-MMM hh:mm a");
+      sheet.getRange(rowNum, 7).setValue('Sent (' + timestamp + ')').setBackground('#dcfce7').setFontColor('#166534');
+      sentCount++;
+
+      // Small pause to prevent rate-limiting
+      Utilities.sleep(1200);
+
+    } catch (e) {
+      Logger.log('Error row ' + rowNum + ' (' + name + '): ' + e.message);
+      sheet.getRange(rowNum, 7).setValue('Error: ' + e.message.substring(0, 30)).setBackground('#fee2e2');
+      errorCount++;
+    }
+  }
+
+  // Refresh Top Stats Counters (Cells A2, B2, C2, D2)
+  REFRESH_CERTIFICATE_STATS();
+
+  ui.alert('🎉 Certificate Dispatch Batch Complete!',
+    'Summary:
+' +
+    '• Successfully Sent: ' + sentCount + '
+' +
+    '• Previously Sent (Skipped): ' + skippedCount + '
+' +
+    '• Errors: ' + errorCount + '
+' +
+    '• Remaining Daily Email Quota: ' + MailApp.getRemainingDailyQuota(),
+    ui.ButtonSet.OK
+  );
+}
+
+/**
+ * Generates a PDF Certificate by replacing {{CertificateID}}, {{ParticipantName}}, {{TeamName}} in Google Slides template
+ */
+function generateCertificatePdf_(slideTemplateId, certId, participantName, teamName, folder) {
+  if (!slideTemplateId || slideTemplateId === 'YOUR_GOOGLE_SLIDE_TEMPLATE_ID_HERE') {
+    throw new Error('Please set CERTIFICATE_TEMPLATE_SLIDE_ID in Code.gs to your Google Slides template ID.');
+  }
+
+  var targetFolder = folder || getOrCreateCertificatesFolder_();
+  var templateFile = DriveApp.getFileById(slideTemplateId);
+
+  // 1. Make a temporary copy of the slide template
+  var copyFile = templateFile.makeCopy('Temp_Cert_' + certId, targetFolder);
+  var copySlide = SlidesApp.openById(copyFile.getId());
+
+  // 2. Replace placeholders in all slides
+  var slides = copySlide.getSlides();
+  for (var s = 0; s < slides.length; s++) {
+    slides[s].replaceAllText('{{CertificateID}}', String(certId || ''));
+    slides[s].replaceAllText('{{CertID}}', String(certId || ''));
+    slides[s].replaceAllText('{{ParticipantName}}', String(participantName || ''));
+    slides[s].replaceAllText('{{Name}}', String(participantName || ''));
+    slides[s].replaceAllText('{{TeamName}}', String(teamName || ''));
+    slides[s].replaceAllText('{{Team}}', String(teamName || ''));
+  }
+
+  copySlide.saveAndClose();
+
+  // 3. Export as high-quality PDF
+  var pdfBlob = copyFile.getAs('application/pdf');
+  var cleanFileName = 'SIH2026_Certificate_' + String(participantName).replace(/[^a-zA-Z0-9]/g, '_') + '_' + certId + '.pdf';
+  pdfBlob.setName(cleanFileName);
+
+  // 4. Delete the temporary slide file
+  copyFile.setTrashed(true);
+
+  return pdfBlob;
+}
+
+/**
+ * Sends a high-impact, professional HTML email with the certificate attached
+ */
+function sendCertificateEmail_(recipientEmail, participantName, teamName, certId, pdfAttachment) {
+  var subject = '🎓 Official Certificate of Participation — SIH 2026 Internal Hackathon (UIT Prayagraj)';
+
+  var htmlBody = 
+    '<div style="font-family:'Segoe UI',Helvetica,Arial,sans-serif;max-width:640px;margin:0 auto;background:#ffffff;border:1px solid #e2e8f0;border-radius:16px;overflow:hidden;box-shadow:0 4px 20px rgba(0,0,0,0.06);">' +
+      
+      // Header Banner
+      '<div style="background:linear-gradient(135deg,#0f172a 0%,#1e3a8a 50%,#312e81 100%);padding:32px 24px;text-align:center;color:#ffffff;">' +
+        '<div style="display:inline-block;background:rgba(255,255,255,0.15);padding:6px 16px;border-radius:999px;font-size:11px;font-weight:800;letter-spacing:1.5px;text-transform:uppercase;margin-bottom:12px;border:1px solid rgba(255,255,255,0.3);">' +
+          '🏛️ United Institute of Technology, Prayagraj' +
+        '</div>' +
+        '<h1 style="margin:0;font-size:24px;font-weight:900;letter-spacing:-0.5px;color:#ffffff;line-height:1.3;">' +
+          'Smart India Hackathon 2026' +
+        '</h1>' +
+        '<p style="margin:6px 0 0;font-size:13px;color:#cbd5e1;font-weight:500;">' +
+          'College-Level Internal Hackathon Conclave · 22 August 2026' +
+        '</p>' +
+      '</div>' +
+
+      // Body Content
+      '<div style="padding:32px 28px;color:#334155;line-height:1.6;font-size:14px;">' +
+        
+        '<p style="font-size:16px;margin:0 0 16px;color:#0f172a;">' +
+          'Dear <strong>' + participantName + '</strong>,' +
+        '</p>' +
+
+        '<p style="margin:0 0 16px;">' +
+          'Congratulations on your active participation and technical presentation with team <strong>"' + teamName + '"</strong> in the <strong>Smart India Hackathon 2026 College-Level Internal Hackathon</strong> held at United Institute of Technology, Prayagraj on 22 August 2026.' +
+        '</p>' +
+
+        // Certificate Details Card
+        '<div style="background:#f8fafc;border:2px dashed #cbd5e1;border-radius:12px;padding:18px 20px;margin:24px 0;text-align:center;">' +
+          '<div style="font-size:11px;font-weight:700;color:#64748b;text-transform:uppercase;letter-spacing:1px;margin-bottom:4px;">' +
+            'Official Certificate ID' +
+          '</div>' +
+          '<div style="font-size:18px;font-weight:900;color:#1e40af;font-family:monospace;letter-spacing:1px;">' +
+            certId +
+          '</div>' +
+          '<div style="font-size:12px;color:#475569;margin-top:6px;">' +
+            'Participant: <strong>' + participantName + '</strong> · Team: <strong>' + teamName + '</strong>' +
+          '</div>' +
+        '</div>' +
+
+        '<p style="margin:0 0 16px;">' +
+          'Your official <strong>Certificate of Participation</strong> has been generated and attached as a high-resolution PDF to this email. You can also verify your certificate anytime on the official institutional portal using your Certificate ID.' +
+        '</p>' +
+
+        // Action Buttons
+        '<div style="text-align:center;margin:28px 0;">' +
+          '<a href="https://sih-uit.vercel.app/verify.html" style="display:inline-block;background:linear-gradient(135deg,#2563eb,#1d4ed8);color:#ffffff;text-decoration:none;padding:12px 28px;border-radius:10px;font-weight:800;font-size:13px;box-shadow:0 4px 12px rgba(37,99,235,0.25);margin-right:8px;">' +
+            '✓ Verify Certificate Online' +
+          '</a>' +
+          '<a href="https://sih-uit.vercel.app/results.html" style="display:inline-block;background:#f1f5f9;color:#334155;text-decoration:none;padding:12px 20px;border-radius:10px;font-weight:700;font-size:13px;border:1px solid #cbd5e1;">' +
+            '🏆 View Conclave Results' +
+          '</a>' +
+        '</div>' +
+
+        '<p style="margin:0 0 8px;font-size:13px;color:#64748b;">' +
+          'We commend your innovation spirit and wish you and your team the very best in your upcoming hackathons and technical endeavors!' +
+        '</p>' +
+
+      '</div>' +
+
+      // Signatures Footer
+      '<div style="background:#f8fafc;border-top:1px solid #e2e8f0;padding:24px 28px;font-size:12px;color:#64748b;">' +
+        '<div style="display:flex;justify-content:space-between;margin-bottom:16px;">' +
+          '<div>' +
+            '<strong style="color:#0f172a;display:block;">Prof. Sanjay Srivastava</strong>' +
+            'Principal, United Institute of Technology' +
+          '</div>' +
+          '<div style="text-align:right;">' +
+            '<strong style="color:#0f172a;display:block;">Dr. Dhananjay Kumar Sharma</strong>' +
+            'SPOC & Convener, SIH 2026 | HOD CSE' +
+          '</div>' +
+        '</div>' +
+        '<div style="border-top:1px solid #e2e8f0;padding-top:12px;text-align:center;font-size:11px;color:#94a3b8;">' +
+          'Organized & Digitally Engineered by <strong>Gautam Kumar Maurya (GKM)</strong> · Head, Developers Club, UIT<br>' +
+          'SIH 2026 Internal Hackathon · United Institute of Technology, Prayagraj' +
+        '</div>' +
+      '</div>' +
+
+    '</div>';
+
+  GmailApp.sendEmail(recipientEmail, subject, 'Please view this email in an HTML-compatible client.', {
+    htmlBody: htmlBody,
+    name: 'SIH UIT 2026 Conclave',
+    attachments: [pdfAttachment]
+  });
+}
+
+/**
+ * Refreshes top statistics box in Certificates sheet (Cells A2, B2, C2, D2)
+ */
+function REFRESH_CERTIFICATE_STATS() {
+  var ss = SpreadsheetApp.getActiveSpreadsheet() || SpreadsheetApp.openById(SPREADSHEET_ID);
+  var sheet = ss.getSheetByName('Certificates');
+  if (!sheet) return;
+
+  var lastRow = sheet.getLastRow();
+  if (lastRow < 6) return;
+
+  var statuses = sheet.getRange(6, 7, lastRow - 5, 1).getValues();
+  var total = statuses.length;
+  var sent = 0;
+
+  for (var i = 0; i < total; i++) {
+    if (String(statuses[i][0]).toLowerCase().indexOf('sent') !== -1) {
+      sent++;
+    }
+  }
+
+  var pending = total - sent;
+  var completionRate = total > 0 ? (sent / total) : 0;
+
+  sheet.getRange('A2').setValue(total);
+  sheet.getRange('B2').setValue(pending);
+  sheet.getRange('C2').setValue(sent);
+  sheet.getRange('D2').setValue(completionRate);
+}
+
+/**
+ * Helper to get or create Drive folder for certificates
+ */
+function getOrCreateCertificatesFolder_() {
+  var folders = DriveApp.getFoldersByName(CERTIFICATES_FOLDER_NAME);
+  if (folders.hasNext()) {
+    return folders.next();
+  }
+  return DriveApp.createFolder(CERTIFICATES_FOLDER_NAME);
+}
