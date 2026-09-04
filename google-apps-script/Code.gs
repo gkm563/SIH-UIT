@@ -205,15 +205,41 @@ function generateCertificatePdf_(slideTemplateId, certId, participantName, teamN
 
   var targetFolder = folder || getOrCreateCertificatesFolder_();
   
-  var templateFile;
+  var copyFile;
   try {
-    templateFile = DriveApp.getFileById(cleanId);
+    var templateFile = DriveApp.getFileById(cleanId);
+    copyFile = templateFile.makeCopy('Temp_Cert_' + certId, targetFolder);
   } catch (driveErr) {
-    throw new Error('Cannot access Google Slide (ID: ' + cleanId + ').\n\nSOLUTION: Please open your Google Slide, click the blue "Share" button at top-right, and set access to "Anyone with the link can view".');
+    // If DriveApp.getFileById fails due to cross-account sharing, try creating a fresh presentation and copying slides
+    try {
+      var sourcePres = SlidesApp.openById(cleanId);
+      var newPres = SlidesApp.create('Temp_Cert_' + certId);
+      var newPresFile = DriveApp.getFileById(newPres.getId());
+      
+      // Move to target folder
+      targetFolder.addFile(newPresFile);
+      DriveApp.getRootFolder().removeFile(newPresFile);
+      
+      // Remove default blank slide in new presentation
+      var defaultSlides = newPres.getSlides();
+      
+      // Append slide from template
+      var sourceSlides = sourcePres.getSlides();
+      for (var k = 0; k < sourceSlides.length; k++) {
+        newPres.appendSlide(sourceSlides[k]);
+      }
+      
+      if (defaultSlides.length > 0) {
+        defaultSlides[0].remove();
+      }
+      
+      newPres.saveAndClose();
+      copyFile = newPresFile;
+    } catch (slidesErr) {
+      throw new Error('Cannot access Google Slide (ID: ' + cleanId + ').\n\nSOLUTION: In your Google Slide, click "Share" ➔ Add "' + Session.getActiveUser().getEmail() + '" as Editor, OR make sure you are logged into the same account.');
+    }
   }
 
-  // 1. Make a temporary copy of the slide template
-  var copyFile = templateFile.makeCopy('Temp_Cert_' + certId, targetFolder);
   var copySlide = SlidesApp.openById(copyFile.getId());
 
   // 2. Replace placeholders in all slides (handles all tag formats & spaces)
