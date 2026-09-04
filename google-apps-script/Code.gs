@@ -372,7 +372,7 @@ function sendCertificateEmail_(recipientEmail, participantName, teamName, certId
   // 4. Body Content
   htmlBody += '<div style="padding: 32px 28px; color: #334155; line-height: 1.7; font-size: 14px;">';
   htmlBody += '<p style="font-size: 17px; margin: 0 0 16px; color: #0f172a;">Dear <strong>' + cleanName + '</strong>,</p>';
-  htmlBody += '<p style="margin: 0 0 16px; font-size: 15px; color: #0f172a; font-weight: 700;">Heartiest Congratulations on your Participation &amp; Technical Achievement!</p>';
+  htmlBody += '<p style="margin: 0 0 16px; font-size: 15px; color: #0f172a; font-weight: 800;">Heartiest Congratulations on your Participation &amp; Technical Achievement!</p>';
   htmlBody += '<p style="margin: 0 0 16px;">We take immense pleasure in awarding you the official <strong>Certificate of Participation</strong> for successfully presenting and demonstrating your technical solution in the <strong>Smart India Hackathon 2026 Internal Hackathon</strong>, organized at United Institute of Technology, Prayagraj on <strong>22 August 2026</strong>.</p>';
   htmlBody += '<p style="margin: 0 0 20px;">Your technical competence, creative problem-solving, and dedication as <strong>' + cleanRole + '</strong> representing team <strong>&ldquo;' + cleanTeam + '&rdquo;</strong> contributed significantly to the high standard of innovation showcased during the institutional evaluations.</p>';
 
@@ -387,17 +387,27 @@ function sendCertificateEmail_(recipientEmail, participantName, teamName, certId
 
   htmlBody += '<p style="margin: 0 0 16px;">You can directly access, view, download, or verify your credential using the official links below:</p>';
 
-  // 6. Dual Action Buttons (clean separation with margin: 8px)
-  htmlBody += '<div style="text-align: center; margin: 28px 0;">';
-  htmlBody += '<a href="' + downloadUrl + '" target="_blank" style="display: inline-block; background: linear-gradient(135deg,#0d2344,#1e3a8a); color: #ffffff; text-decoration: none; padding: 13px 26px; border-radius: 12px; font-weight: 800; font-size: 13px; margin: 6px 8px; box-shadow: 0 4px 14px rgba(13,35,68,0.25);">&darr; Download / View Certificate</a>';
-  htmlBody += '<a href="' + verifyUrl + '" target="_blank" style="display: inline-block; background: linear-gradient(135deg,#059669,#047857); color: #ffffff; text-decoration: none; padding: 13px 26px; border-radius: 12px; font-weight: 800; font-size: 13px; margin: 6px 8px; box-shadow: 0 4px 14px rgba(5,150,105,0.25);">&#10003; Verify Certificate Here</a>';
+  // 6. Dual Action Buttons (Table-based layout for bulletproof spacing in all email clients)
+  htmlBody += '<table role="presentation" border="0" cellpadding="0" cellspacing="0" align="center" style="margin: 26px auto; text-align: center;">';
+  htmlBody += '<tr>';
+  htmlBody += '<td align="center" style="padding: 6px 8px;">';
+  htmlBody += '<a href="' + downloadUrl + '" target="_blank" style="display: inline-block; background: #0d2344; color: #ffffff; text-decoration: none; padding: 13px 22px; border-radius: 12px; font-weight: 800; font-size: 13px; box-shadow: 0 4px 14px rgba(13,35,68,0.25); text-align: center;">Download / View Certificate &rarr;</a>';
+  htmlBody += '</td>';
+  htmlBody += '<td align="center" style="padding: 6px 8px;">';
+  htmlBody += '<a href="' + verifyUrl + '" target="_blank" style="display: inline-block; background: #059669; color: #ffffff; text-decoration: none; padding: 13px 22px; border-radius: 12px; font-weight: 800; font-size: 13px; box-shadow: 0 4px 14px rgba(5,150,105,0.25); text-align: center;">&#10003; Verify Certificate Here</a>';
+  htmlBody += '</td>';
+  htmlBody += '</tr>';
+  htmlBody += '</table>';
+
+  // 7. Attachment Box (Clean, entity-based, zero broken icons)
+  htmlBody += '<div style="background: #f8fafc; border: 1px solid #e2e8f0; border-left: 4px solid #2563eb; border-radius: 8px; padding: 12px 16px; margin: 18px 0; font-size: 13px; color: #475569; line-height: 1.5;">';
+  htmlBody += '<strong style="color: #0f172a;">Official PDF Attachment:</strong> A high-resolution, print-ready PDF certificate is attached directly to this email for your permanent academic portfolio.';
   htmlBody += '</div>';
 
-  htmlBody += '<p style="margin: 0 0 12px; font-size: 13px; color: #64748b; background: #f8fafc; padding: 12px 16px; border-radius: 10px; border-left: 4px solid #3b82f6;"><strong>Attached PDF Document:</strong> A high-resolution, print-ready PDF certificate is attached directly to this email for your permanent academic portfolio.</p>';
   htmlBody += '<p style="margin: 18px 0 0; font-size: 13px; color: #475569;">We commend your innovative spirit and wish you and team <strong>&ldquo;' + cleanTeam + '&rdquo;</strong> immense success in all future national hackathons and technical endeavors!</p>';
   htmlBody += '</div>';
 
-  // 7. Institutional Footer
+  // 8. Institutional Footer
   htmlBody += '<div style="background: #f8fafc; border-top: 1px solid #e2e8f0; padding: 22px 24px; text-align: center; font-size: 12px; color: #64748b; line-height: 1.5;">';
   htmlBody += '<strong style="color: #0f172a; display: block; font-size: 13px; margin-bottom: 4px;">Internal Hackathon Organizing Committee</strong>';
   htmlBody += 'Department of Computer Science &amp; Engineering<br>';
