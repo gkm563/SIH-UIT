@@ -130,9 +130,19 @@ function SEND_ALL_PENDING_CERTIFICATES() {
   var skippedCount = 0;
   var errorCount = 0;
 
+  var MAX_EXECUTION_TIME_MS = 4.5 * 60 * 1000; // 4.5 minutes safety buffer (prevents Google 6-min hard crash)
+  var startTime = new Date().getTime();
+  var timedOut = false;
+
   var tempFolder = getOrCreateCertificatesFolder_();
 
   for (var i = 0; i < data.length; i++) {
+    // Check execution time limit to prevent "Exceeded maximum execution time"
+    if (new Date().getTime() - startTime > MAX_EXECUTION_TIME_MS) {
+      timedOut = true;
+      break;
+    }
+
     var rowNum = 6 + i;
     var certId = data[i][0];       // Col A
     var regId = data[i][1];        // Col B
@@ -181,8 +191,8 @@ function SEND_ALL_PENDING_CERTIFICATES() {
 
       sentCount++;
 
-      // Small pause to prevent rate-limiting
-      Utilities.sleep(1200);
+      // Minimal pause to prevent Google rate-limiting
+      Utilities.sleep(150);
 
     } catch (e) {
       Logger.log('Error row ' + rowNum + ' (' + name + '): ' + e.message);
@@ -194,15 +204,27 @@ function SEND_ALL_PENDING_CERTIFICATES() {
   // Refresh Top Stats Counters (Cells A2, B2, C2, D2)
   REFRESH_CERTIFICATE_STATS();
 
-  ui.alert(
-    '🎉 Certificate Dispatch Batch Complete!',
-    'Summary:\n' +
-    '• Successfully Sent: ' + sentCount + '\n' +
-    '• Previously Sent (Skipped): ' + skippedCount + '\n' +
-    '• Errors: ' + errorCount + '\n' +
-    '• Remaining Daily Email Quota: ' + MailApp.getRemainingDailyQuota(),
-    ui.ButtonSet.OK
-  );
+  if (timedOut) {
+    ui.alert(
+      '⏱️ Batch Safely Paused (Timeout Guard)',
+      '• Sent in this batch: ' + sentCount + ' certificates\n' +
+      '• Previously sent: ' + skippedCount + '\n' +
+      '• Daily Gmail Quota Remaining: ' + MailApp.getRemainingDailyQuota() + '\n\n' +
+      'Google limits each script run to 6 minutes. All sent certificates are safely recorded in green.\n\n' +
+      '👉 Click "🚀 Send All Pending Certificates (Auto-Email)" again to send the next batch!',
+      ui.ButtonSet.OK
+    );
+  } else {
+    ui.alert(
+      '🎉 Certificate Dispatch Batch Complete!',
+      'Summary:\n' +
+      '• Successfully Sent: ' + sentCount + '\n' +
+      '• Previously Sent (Skipped): ' + skippedCount + '\n' +
+      '• Errors: ' + errorCount + '\n' +
+      '• Remaining Daily Email Quota: ' + MailApp.getRemainingDailyQuota(),
+      ui.ButtonSet.OK
+    );
+  }
 }
 
 /**
@@ -270,33 +292,27 @@ function generateCertificatePdf_(slideTemplateId, certId, participantName, teamN
   var copyFile = templateFile.makeCopy('Temp_Cert_' + certId, targetFolder);
   var copySlide = SlidesApp.openById(copyFile.getId());
 
-  // 2. Replace placeholders in all slides (handles all tag formats & spaces)
-  var slides = copySlide.getSlides();
-  for (var s = 0; s < slides.length; s++) {
-    // Certificate ID tags
-    slides[s].replaceAllText('{{CertificateID}}', String(certId || ''));
-    slides[s].replaceAllText('{{ CertificateID }}', String(certId || ''));
-    slides[s].replaceAllText('{{CertID}}', String(certId || ''));
-    slides[s].replaceAllText('{{ CertID }}', String(certId || ''));
-    slides[s].replaceAllText('{{Certificate ID}}', String(certId || ''));
-    slides[s].replaceAllText('{{ Certificate ID }}', String(certId || ''));
-    
-    // Participant Name tags
-    slides[s].replaceAllText('{{ParticipantName}}', String(participantName || ''));
-    slides[s].replaceAllText('{{ ParticipantName }}', String(participantName || ''));
-    slides[s].replaceAllText('{{Name}}', String(participantName || ''));
-    slides[s].replaceAllText('{{ Name }}', String(participantName || ''));
-    slides[s].replaceAllText('{{Participant Name}}', String(participantName || ''));
-    slides[s].replaceAllText('{{ Participant Name }}', String(participantName || ''));
-    
-    // Team Name tags
-    slides[s].replaceAllText('{{TeamName}}', String(teamName || ''));
-    slides[s].replaceAllText('{{ Team Name }}', String(teamName || ''));
-    slides[s].replaceAllText('{{Team}}', String(teamName || ''));
-    slides[s].replaceAllText('{{ Team }}', String(teamName || ''));
-    slides[s].replaceAllText('{{Team Name}}', String(teamName || ''));
-    slides[s].replaceAllText('{{ Team Name }}', String(teamName || ''));
-  }
+  // 2. Replace placeholders across entire presentation (fast single-call batch)
+  var cleanId = String(certId || '').trim();
+  var cleanName = String(participantName || '').trim();
+  var cleanTeam = String(teamName || '').trim();
+
+  // Certificate ID tags
+  copySlide.replaceAllText('{{CertificateID}}', cleanId);
+  copySlide.replaceAllText('{{ CertificateID }}', cleanId);
+  copySlide.replaceAllText('{{CertID}}', cleanId);
+  copySlide.replaceAllText('{{ Certificate ID }}', cleanId);
+
+  // Participant Name tags
+  copySlide.replaceAllText('{{ParticipantName}}', cleanName);
+  copySlide.replaceAllText('{{ ParticipantName }}', cleanName);
+  copySlide.replaceAllText('{{Name}}', cleanName);
+  copySlide.replaceAllText('{{ Participant Name }}', cleanName);
+
+  // Team Name tags
+  copySlide.replaceAllText('{{TeamName}}', cleanTeam);
+  copySlide.replaceAllText('{{ Team Name }}', cleanTeam);
+  copySlide.replaceAllText('{{Team}}', cleanTeam);
 
   copySlide.saveAndClose();
 
