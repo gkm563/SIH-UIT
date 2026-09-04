@@ -302,7 +302,7 @@ function generateCertificatePdf_(slideTemplateId, certId, participantName, teamN
 
   // 3. Export as high-quality PDF
   var pdfBlob = copyFile.getAs('application/pdf');
-  var cleanFileName = 'SIH2026_Certificate_' + String(participantName).replace(/[^a-zA-Z0-9]/g, '_') + '_' + certId + '.pdf';
+  var cleanFileName = 'Certificate - ' + String(participantName).replace(/[^a-zA-Z0-9 ]/g, '').trim() + '.pdf';
   pdfBlob.setName(cleanFileName);
 
   // 4. Save PDF to Certificates Drive folder with Public View access
@@ -346,10 +346,14 @@ function sendCertificateEmail_(recipientEmail, participantName, teamName, certId
   var verifyUrl = 'https://sih-uit.vercel.app/verify.html?cert=' + encodeURIComponent(cleanCertId);
   var downloadUrl = driveFileUrl || verifyUrl;
 
-  // Clean, professional subject line
-  var subject = 'Official Certificate of Participation - ' + cleanName + ' (Team ' + cleanTeam + ') | SIH 2026 UIT Prayagraj';
+  // Clean, professional subject line that fits Gmail inbox width without harsh truncation
+  var subject = 'Official Certificate of Participation — ' + cleanName + ' (Team ' + cleanTeam + ') | SIH 2026';
 
   var htmlBody = 
+    // Invisible Pre-Header snippet for Gmail inbox preview
+    "<div style='display:none;font-size:1px;color:#ffffff;line-height:1px;max-height:0px;max-width:0px;opacity:0;overflow:hidden;mso-hide:all;'>" +
+      "Official Certificate of Participation awarded to " + cleanName + " (" + cleanRole + ") for Smart India Hackathon 2026 at United Institute of Technology, Prayagraj." +
+    "</div>" +
     "<div style='font-family: Arial, Helvetica, sans-serif; max-width: 640px; margin: 0 auto; background: #ffffff; border: 1px solid #e2e8f0; border-radius: 18px; overflow: hidden; box-shadow: 0 4px 24px rgba(0,0,0,0.08);'>" +
       // Header Banner
       "<div style='background: linear-gradient(135deg,#0d2344 0%,#1e3a8a 60%,#0f172a 100%); padding: 36px 24px; text-align: center; color: #ffffff;'>" +
@@ -427,7 +431,7 @@ function sendCertificateEmail_(recipientEmail, participantName, teamName, certId
 
   GmailApp.sendEmail(recipientEmail, subject, "Please view this email in an HTML-compatible client.", {
     htmlBody: htmlBody,
-    name: 'Smart India Hackathon 2026 | UIT Prayagraj',
+    name: 'SIH 2026 UIT',
     replyTo: 'sihuit2026@gmail.com',
     attachments: [pdfAttachment]
   });
