@@ -29,7 +29,7 @@ function onOpen() {
   try {
     var ui = SpreadsheetApp.getUi();
     ui.createMenu('🎓 SIH 2026 Certificate Tools')
-      .addItem('🧪 Send 1 Test Certificate to GKM (maurgk212104@gmail.com)', 'SEND_TEST_CERTIFICATE')
+      .addItem('🧪 Send 1 Test Certificate to GKM (gkmwin563@gmail.com)', 'SEND_TEST_CERTIFICATE')
       .addItem('🚀 Send All Pending Certificates (Auto-Email)', 'SEND_ALL_PENDING_CERTIFICATES')
       .addSeparator()
       .addItem('📈 Refresh Certificate Statistics', 'REFRESH_CERTIFICATE_STATS')
@@ -38,7 +38,7 @@ function onOpen() {
 }
 
 /**
- * 🧪 TEST FUNCTION: Sends 1 sample certificate to maurgk212104@gmail.com
+ * 🧪 TEST FUNCTION: Sends 1 sample certificate to gkmwin563@gmail.com
  * Use this to verify formatting, alignment, and email delivery before sending to all 402 students.
  */
 function SEND_TEST_CERTIFICATE() {
@@ -52,7 +52,7 @@ function SEND_TEST_CERTIFICATE() {
   }
 
   // Explicit test recipient specified by user
-  var testEmail = 'maurgk212104@gmail.com';
+  var testEmail = 'gkmwin563@gmail.com';
   
   // Sample Data from Row 6 (first student: Riya Gupta - THE PRISM)
   var sampleCertId = sheet.getRange('A6').getValue() || 'SIH-UIT-2026-001';
