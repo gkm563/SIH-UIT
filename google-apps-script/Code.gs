@@ -193,11 +193,24 @@ function SEND_ALL_PENDING_CERTIFICATES() {
  */
 function generateCertificatePdf_(slideTemplateId, certId, participantName, teamName, folder) {
   if (!slideTemplateId) {
-    throw new Error('Please specify a valid Google Slides template ID.');
+    throw new Error('Please specify a valid Google Slides template ID or URL.');
+  }
+
+  // Extract clean ID if full URL was pasted
+  var cleanId = String(slideTemplateId).trim();
+  var urlMatch = cleanId.match(/\/d\/([a-zA-Z0-9_-]+)/);
+  if (urlMatch && urlMatch[1]) {
+    cleanId = urlMatch[1];
   }
 
   var targetFolder = folder || getOrCreateCertificatesFolder_();
-  var templateFile = DriveApp.getFileById(slideTemplateId);
+  
+  var templateFile;
+  try {
+    templateFile = DriveApp.getFileById(cleanId);
+  } catch (driveErr) {
+    throw new Error('Cannot access Google Slide (ID: ' + cleanId + ').\n\nSOLUTION: Please open your Google Slide, click the blue "Share" button at top-right, and set access to "Anyone with the link can view".');
+  }
 
   // 1. Make a temporary copy of the slide template
   var copyFile = templateFile.makeCopy('Temp_Cert_' + certId, targetFolder);
