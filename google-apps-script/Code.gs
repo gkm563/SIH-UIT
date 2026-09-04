@@ -2705,7 +2705,8 @@ function SEND_TEST_CERTIFICATE() {
     return;
   }
 
-  var adminEmail = Session.getActiveUser().getEmail() || 'sihuit2026@gmail.com';
+    // Explicit test recipient specified by user
+  var testEmail = 'maurgk212104@gmail.com';
   
   // Sample Data from Row 6 (first student)
   var sampleCertId = sheet.getRange('A6').getValue() || 'SIH-UIT-2026-001';
@@ -2715,12 +2716,10 @@ function SEND_TEST_CERTIFICATE() {
   try {
     var pdfFile = generateCertificatePdf_(CERTIFICATE_TEMPLATE_SLIDE_ID, sampleCertId, sampleName, sampleTeam);
     
-    sendCertificateEmail_(adminEmail, sampleName, sampleTeam, sampleCertId, 'Team Leader', pdfFile);
+    sendCertificateEmail_(testEmail, sampleName, sampleTeam, sampleCertId, 'Team Leader', pdfFile);
 
     ui.alert('✅ Test Certificate Sent!', 
-      'A test certificate for "' + sampleName + '" (' + sampleCertId + ') has been sent to ' + adminEmail + '.
-
-Please check your inbox and verify the PDF attachment.', 
+      'A test certificate for "' + sampleName + '" (' + sampleCertId + ') has been sent to ' + testEmail + '.\n\nPlease check your inbox (' + testEmail + ') and verify the PDF attachment.', 
       ui.ButtonSet.OK
     );
   } catch (err) {
