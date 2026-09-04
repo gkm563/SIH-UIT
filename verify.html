@@ -239,8 +239,8 @@
     <!-- ══════════════════════════════════════════════════════════════ -->
     <div id="result-container" class="hidden space-y-5 animate-fade-in">
       
-      <!-- Top Action Toolbar & Verification Banner -->
-      <div id="status-banner" class="flex flex-col sm:flex-row items-center justify-between gap-3 p-3.5 sm:p-4 bg-emerald-50 border border-emerald-200 rounded-2xl text-emerald-950 text-xs sm:text-sm font-semibold shadow-xs">
+      <!-- Top Verification Status Banner -->
+      <div id="status-banner" class="flex items-center justify-between p-3.5 sm:p-4 bg-emerald-50 border border-emerald-200 rounded-2xl text-emerald-950 text-xs sm:text-sm font-semibold shadow-xs">
         <div class="flex items-center gap-3">
           <div class="w-9 h-9 rounded-xl bg-emerald-600 text-white flex items-center justify-center font-black text-base flex-shrink-0 shadow-xs">
             ✓
@@ -250,26 +250,8 @@
             <span class="text-emerald-800 text-[11px] sm:text-xs">Issued under institutional authority of United Institute of Technology, Prayagraj</span>
           </div>
         </div>
-
-        <!-- Action Buttons: Print, Download, Share -->
-        <div class="flex items-center gap-2 w-full sm:w-auto">
-          <button
-            onclick="window.print()"
-            class="flex-1 sm:flex-none inline-flex items-center justify-center gap-1.5 px-3.5 py-2 bg-emerald-600 hover:bg-emerald-700 text-white text-xs font-bold rounded-xl shadow-xs transition-all hover:shadow-md cursor-pointer"
-            title="Print or Save Certificate as PDF"
-          >
-            <svg class="w-3.5 h-3.5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 17h2a2 2 0 002-2v-4a2 2 0 00-2-2H5a2 2 0 00-2 2v4a2 2 0 002 2h2m2 4h6a2 2 0 002-2v-4a2 2 0 00-2-2H9a2 2 0 00-2 2v4a2 2 0 002 2zm8-12V5a2 2 0 00-2-2H9a2 2 0 00-2 2v4h10z"/></svg>
-            <span>Print / PDF</span>
-          </button>
-          
-          <button
-            id="copy-link-btn"
-            class="flex-1 sm:flex-none inline-flex items-center justify-center gap-1.5 px-3.5 py-2 bg-white hover:bg-slate-50 border border-slate-200 text-slate-700 text-xs font-bold rounded-xl transition-all cursor-pointer shadow-2xs"
-            title="Copy Permanent Shareable Link"
-          >
-            <svg class="w-3.5 h-3.5 text-slate-500" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M8 16H6a2 2 0 01-2-2V6a2 2 0 012-2h8a2 2 0 012 2v2m-6 12h8a2 2 0 002-2v-8a2 2 0 00-2-2h-8a2 2 0 00-2 2v8a2 2 0 002 2z"/></svg>
-            <span id="copy-btn-text">Share Link</span>
-          </button>
+        <div class="hidden sm:inline-flex items-center gap-1.5 px-3 py-1.5 bg-emerald-100 text-emerald-900 border border-emerald-300 rounded-xl text-xs font-bold font-mono">
+          <span>✓ VERIFIED</span>
         </div>
       </div>
 
@@ -340,7 +322,7 @@
               <div class="text-[#d4af37] text-xs">&bull;</div>
               <div class="px-2 py-0.5 rounded bg-amber-50/70 border border-amber-200/60">
                 <div class="text-[8px] sm:text-[9px] font-black uppercase tracking-wider text-slate-800">MoE's Innovation Cell</div>
-                <div class="text-[7px] font-semibold text-slate-500">MIC Conclave</div>
+                <div class="text-[7px] font-semibold text-slate-500">MIC India</div>
               </div>
             </div>
 
@@ -401,7 +383,7 @@
               representing team <span id="res-team" class="font-sans font-black text-[#1d4ed8] text-sm sm:text-lg md:text-xl px-1">THE PRISM</span>
             </div>
 
-            <!-- Official Conclave Description -->
+            <!-- Official Event Description -->
             <p class="text-xs sm:text-sm text-slate-600 max-w-xl mx-auto leading-relaxed font-serif px-2 sm:px-4">
               for active participation and technical presentation in the <strong>Internal Smart India Hackathon</strong> held on <strong>22 August 2026</strong> organized by <strong>United Institute of Technology, Prayagraj</strong>.
             </p>
@@ -810,23 +792,6 @@
       });
     }
 
-    // Copy Link feature
-    const copyBtn = document.getElementById('copy-link-btn');
-    const copyBtnText = document.getElementById('copy-btn-text');
-    if (copyBtn) {
-      copyBtn.addEventListener('click', () => {
-        const certId = resCertId.textContent.trim();
-        const shareUrl = window.location.origin + window.location.pathname + '?cert=' + encodeURIComponent(certId);
-        navigator.clipboard.writeText(shareUrl).then(() => {
-          if (copyBtnText) copyBtnText.textContent = 'Copied!';
-          setTimeout(() => {
-            if (copyBtnText) copyBtnText.textContent = 'Share Link';
-          }, 2000);
-        }).catch(() => {
-          prompt('Copy this certificate verification URL:', shareUrl);
-        });
-      });
-    }
 
     // Auto-detect URL Parameters on page load
     window.addEventListener('DOMContentLoaded', () => {

@@ -72,13 +72,15 @@ function SEND_TEST_CERTIFICATE() {
   var sampleRole = sheet.getRange('F6').getValue() || 'Team Leader';
 
   try {
-    var pdfFile = generateCertificatePdf_(CERTIFICATE_TEMPLATE_SLIDE_ID, sampleCertId, sampleName, sampleTeam);
+    var certResult = generateCertificatePdf_(CERTIFICATE_TEMPLATE_SLIDE_ID, sampleCertId, sampleName, sampleTeam);
     
-    sendCertificateEmail_(testEmail, sampleName, sampleTeam, sampleCertId, sampleRole, pdfFile);
+    sendCertificateEmail_(testEmail, sampleName, sampleTeam, sampleCertId, sampleRole, certResult.blob, certResult.driveUrl);
 
     ui.alert(
       '✅ Test Certificate Sent!', 
-      'A test certificate for "' + sampleName + '" (' + sampleCertId + ') has been sent to ' + testEmail + '.\n\nPlease check your inbox (' + testEmail + ') and verify the PDF attachment.', 
+      'A test certificate for "' + sampleName + '" (' + sampleCertId + ') has been sent to ' + testEmail + '.\n\n' +
+      '• Google Drive File Link:\n' + certResult.driveUrl + '\n\n' +
+      'Please check your inbox (' + testEmail + ') to review the email formatting, buttons, and PDF attachment.', 
       ui.ButtonSet.OK
     );
   } catch (err) {
@@ -164,15 +166,19 @@ function SEND_ALL_PENDING_CERTIFICATES() {
     }
 
     try {
-      // 1. Generate personalized PDF Certificate
-      var pdfBlob = generateCertificatePdf_(CERTIFICATE_TEMPLATE_SLIDE_ID, certId, name, teamName, tempFolder);
+      // 1. Generate personalized PDF Certificate & Save to Drive
+      var certResult = generateCertificatePdf_(CERTIFICATE_TEMPLATE_SLIDE_ID, certId, name, teamName, tempFolder);
 
-      // 2. Send Official Email
-      sendCertificateEmail_(email, name, teamName, certId, role, pdfBlob);
+      // 2. Send Official Email with Drive Link and Verification URL
+      sendCertificateEmail_(email, name, teamName, certId, role, certResult.blob, certResult.driveUrl);
 
-      // 3. Mark as Sent in Sheet
+      // 3. Mark as Sent in Sheet (Col G) & Record Drive Link (Col H)
       var timestamp = Utilities.formatDate(new Date(), Session.getScriptTimeZone(), "dd-MMM hh:mm a");
       sheet.getRange(rowNum, 7).setValue('Sent (' + timestamp + ')').setBackground('#dcfce7').setFontColor('#166534');
+      try {
+        sheet.getRange(rowNum, 8).setValue(certResult.driveUrl);
+      } catch (eColH) {}
+
       sentCount++;
 
       // Small pause to prevent rate-limiting
@@ -299,94 +305,129 @@ function generateCertificatePdf_(slideTemplateId, certId, participantName, teamN
   var cleanFileName = 'SIH2026_Certificate_' + String(participantName).replace(/[^a-zA-Z0-9]/g, '_') + '_' + certId + '.pdf';
   pdfBlob.setName(cleanFileName);
 
-  // 4. Delete the temporary slide file
+  // 4. Save PDF to Certificates Drive folder with Public View access
+  var certPdfFile = targetFolder.createFile(pdfBlob);
+  try {
+    certPdfFile.setSharing(DriveApp.Access.ANYONE_WITH_LINK, DriveApp.Permission.VIEW);
+  } catch (eShare) {
+    Logger.log('Note on file sharing permission: ' + eShare.message);
+  }
+  var driveViewUrl = certPdfFile.getUrl();
+
+  // 5. Delete the temporary slide file
   copyFile.setTrashed(true);
 
-  return pdfBlob;
+  return {
+    blob: pdfBlob,
+    driveUrl: driveViewUrl,
+    fileId: certPdfFile.getId()
+  };
 }
 
 /**
  * Sends a high-impact, professional HTML email with the certificate attached
  */
-function sendCertificateEmail_(recipientEmail, participantName, teamName, certId, role, pdfAttachment) {
+function sendCertificateEmail_(recipientEmail, participantName, teamName, certId, role, pdfData, explicitDriveUrl) {
   var cleanName = String(participantName || 'Participant').trim();
   var cleanTeam = String(teamName || 'Innovation Team').trim();
   var cleanCertId = String(certId || 'SIH-UIT-2026-XXX').trim();
   var cleanRole = String(role || 'Team Member').trim();
 
-  // Clean, professional subject line without broken emojis
-  var subject = 'Official Certificate of Participation - ' + cleanName + ' (Team ' + cleanTeam + ') | SIH 2026 UIT Prayagraj';
+  // Extract PDF attachment blob and Drive URL
+  var pdfAttachment = pdfData;
+  var driveFileUrl = explicitDriveUrl || '';
 
+  if (pdfData && pdfData.blob) {
+    pdfAttachment = pdfData.blob;
+    driveFileUrl = pdfData.driveUrl || explicitDriveUrl || '';
+  }
+
+  // Official verification URL on live website
   var verifyUrl = 'https://sih-uit.vercel.app/verify.html?cert=' + encodeURIComponent(cleanCertId);
+  var downloadUrl = driveFileUrl || verifyUrl;
+
+  // Clean, professional subject line
+  var subject = 'Official Certificate of Participation - ' + cleanName + ' (Team ' + cleanTeam + ') | SIH 2026 UIT Prayagraj';
 
   var htmlBody = 
     "<div style='font-family: Arial, Helvetica, sans-serif; max-width: 640px; margin: 0 auto; background: #ffffff; border: 1px solid #e2e8f0; border-radius: 18px; overflow: hidden; box-shadow: 0 4px 24px rgba(0,0,0,0.08);'>" +
       // Header Banner
-      "<div style='background: linear-gradient(135deg,#0f172a 0%,#1e3a8a 50%,#312e81 100%); padding: 36px 24px; text-align: center; color: #ffffff;'>" +
-        "<div style='display: inline-block; background: rgba(255,255,255,0.15); padding: 6px 18px; border-radius: 999px; font-size: 11px; font-weight: 800; letter-spacing: 1.5px; text-transform: uppercase; margin-bottom: 14px; border: 1px solid rgba(255,255,255,0.3);'>" +
+      "<div style='background: linear-gradient(135deg,#0d2344 0%,#1e3a8a 60%,#0f172a 100%); padding: 36px 24px; text-align: center; color: #ffffff;'>" +
+        "<div style='display: inline-block; background: rgba(255,255,255,0.12); padding: 5px 16px; border-radius: 999px; font-size: 11px; font-weight: 800; letter-spacing: 1.5px; text-transform: uppercase; margin-bottom: 12px; border: 1px solid rgba(255,255,255,0.25);'>" +
           "United Institute of Technology, Prayagraj" +
         "</div>" +
         "<h1 style='margin: 0; font-size: 24px; font-weight: 900; letter-spacing: -0.5px; color: #ffffff; line-height: 1.3;'>" +
           "Smart India Hackathon 2026" +
         "</h1>" +
         "<p style='margin: 6px 0 0; font-size: 13px; color: #93c5fd; font-weight: 600;'>" +
-          "College-Level Internal Hackathon Conclave &middot; 22 August 2026" +
+          "College-Level Internal Hackathon &middot; 22 August 2026" +
         "</p>" +
       "</div>" +
 
       // Body Content
-      "<div style='padding: 32px 28px; color: #334155; line-height: 1.65; font-size: 14px;'>" +
+      "<div style='padding: 32px 28px; color: #334155; line-height: 1.7; font-size: 14px;'>" +
         "<p style='font-size: 17px; margin: 0 0 16px; color: #0f172a;'>" +
           "Dear <strong>" + cleanName + "</strong>," +
         "</p>" +
+        "<p style='margin: 0 0 16px; font-size: 15px; color: #0f172a; font-weight: 600;'>" +
+          "🎉 <strong>Heartiest Congratulations on your Participation &amp; Technical Achievement!</strong>" +
+        "</p>" +
         "<p style='margin: 0 0 16px;'>" +
-          "Congratulations on your active participation and technical presentation as <strong>" + cleanRole + "</strong> of team <strong>\"" + cleanTeam + "\"</strong> during the <strong>Smart India Hackathon 2026 Internal Hackathon</strong> held at United Institute of Technology, Prayagraj on <strong>22 August 2026</strong>." +
+          "We take immense pleasure in awarding you the official <strong>Certificate of Participation</strong> for successfully presenting and demonstrating your technical solution in the <strong>Smart India Hackathon 2026 Internal Hackathon</strong>, organized at United Institute of Technology, Prayagraj on <strong>22 August 2026</strong>." +
+        "</p>" +
+        "<p style='margin: 0 0 20px;'>" +
+          "Your technical competence, creative problem-solving, and dedication as <strong>" + cleanRole + "</strong> representing team <strong>\"" + cleanTeam + "\"</strong> contributed significantly to the high standard of innovation showcased during the institutional evaluations." +
         "</p>" +
 
         // Certificate Details Card
-        "<div style='background: linear-gradient(135deg,#f8fafc 0%,#eff6ff 100%); border: 2px dashed #93c5fd; border-radius: 14px; padding: 20px 22px; margin: 24px 0; text-align: center;'>" +
+        "<div style='background: linear-gradient(135deg,#f8fafc 0%,#eff6ff 100%); border: 2px solid #bfdbfe; border-radius: 14px; padding: 22px 20px; margin: 24px 0; text-align: center; box-shadow: 0 2px 8px rgba(30,58,138,0.06);'>" +
           "<div style='font-size: 11px; font-weight: 800; color: #1e40af; text-transform: uppercase; letter-spacing: 1.5px; margin-bottom: 6px;'>" +
-            "Official Certificate ID" +
+            "Official Credential ID" +
           "</div>" +
-          "<div style='font-size: 22px; font-weight: 900; color: #1e3a8a; font-family: monospace; letter-spacing: 1.5px; background: #ffffff; display: inline-block; padding: 6px 18px; border-radius: 8px; border: 1px solid #bfdbfe;'>" +
+          "<div style='font-size: 22px; font-weight: 900; color: #1e3a8a; font-family: monospace; letter-spacing: 1.5px; background: #ffffff; display: inline-block; padding: 7px 20px; border-radius: 8px; border: 1px solid #93c5fd; box-shadow: 0 1px 3px rgba(0,0,0,0.05);'>" +
             cleanCertId +
           "</div>" +
-          "<div style='font-size: 13px; color: #334155; margin-top: 10px; font-weight: 600;'>" +
+          "<div style='font-size: 13px; color: #334155; margin-top: 12px; font-weight: 600; line-height: 1.6;'>" +
             "Awarded to: <strong style='color: #0f172a;'>" + cleanName + "</strong> (" + cleanRole + ")<br>" +
-            "Representing Team: <strong style='color: #2563eb;'>" + cleanTeam + "</strong>" +
+            "Team: <strong style='color: #2563eb;'>" + cleanTeam + "</strong> &middot; Status: <span style='color: #059669; font-weight: 800;'>Authenticated &amp; Issued</span>" +
           "</div>" +
         "</div>" +
 
         "<p style='margin: 0 0 16px;'>" +
-          "Your official <strong>Certificate of Participation</strong> has been generated and attached as a high-resolution PDF document to this email. You can download and save it directly for your academic and professional records." +
+          "You can directly access, view, download, or verify your credential using the official links below:" +
         "</p>" +
 
-        // 1-Click Verification & Results Action Buttons
-        "<div style='text-align: center; margin: 28px 0;'>" +
-          "<a href='" + verifyUrl + "' target='_blank' style='display: inline-block; background: linear-gradient(135deg,#2563eb,#1d4ed8); color: #ffffff; text-decoration: none; padding: 12px 28px; border-radius: 12px; font-weight: 800; font-size: 13px; box-shadow: 0 4px 14px rgba(37,99,235,0.3); margin-right: 8px;'>" +
-            "View &amp; Verify Certificate Online &rarr;" +
+        // Dual Action Buttons: 1 for Google Drive Download/View, 1 for Website Verification
+        "<div style='text-align: center; margin: 26px 0;'>" +
+          "<a href='" + downloadUrl + "' target='_blank' style='display: inline-block; background: linear-gradient(135deg,#0d2344,#1e3a8a); color: #ffffff; text-decoration: none; padding: 13px 24px; border-radius: 12px; font-weight: 800; font-size: 13px; margin: 6px 4px; box-shadow: 0 4px 14px rgba(13,35,68,0.25);'>" +
+            "📥 Download / View Certificate" +
           "</a>" +
-          "<a href='https://sih-uit.vercel.app/results.html' target='_blank' style='display: inline-block; background: #f1f5f9; color: #334155; text-decoration: none; padding: 12px 20px; border-radius: 12px; font-weight: 700; font-size: 13px; border: 1px solid #cbd5e1;'>" +
-            "View Conclave Results" +
+          "<a href='" + verifyUrl + "' target='_blank' style='display: inline-block; background: linear-gradient(135deg,#059669,#047857); color: #ffffff; text-decoration: none; padding: 13px 24px; border-radius: 12px; font-weight: 800; font-size: 13px; margin: 6px 4px; box-shadow: 0 4px 14px rgba(5,150,105,0.25);'>" +
+            "✓ Verify Certificate Here" +
           "</a>" +
         "</div>" +
 
-        "<p style='margin: 0 0 8px; font-size: 13px; color: #64748b;'>" +
-          "We applaud your innovation mindset and wish you and team <strong>\"" + cleanTeam + "\"</strong> immense success in your upcoming national hackathons and technical endeavors!" +
+        "<p style='margin: 0 0 12px; font-size: 13px; color: #64748b; background: #f8fafc; padding: 12px 16px; border-radius: 10px; border-left: 4px solid #3b82f6;'>" +
+          "📎 <strong>Attachment:</strong> A high-resolution, print-ready PDF certificate is also attached directly to this email for your permanent academic portfolio." +
+        "</p>" +
+
+        "<p style='margin: 18px 0 0; font-size: 13px; color: #475569;'>" +
+          "We commend your innovative spirit and wish you and team <strong>\"" + cleanTeam + "\"</strong> immense success in all future national hackathons and technical endeavors! 🚀" +
         "</p>" +
       "</div>" +
 
-      // Clean Institutional Footer (without individual signature blocks)
+      // Institutional Footer
       "<div style='background: #f8fafc; border-top: 1px solid #e2e8f0; padding: 22px 24px; text-align: center; font-size: 12px; color: #64748b; line-height: 1.5;'>" +
-        "<strong style='color: #0f172a; display: block; font-size: 13px; margin-bottom: 4px;'>Department of Computer Science &amp; Engineering</strong>" +
+        "<strong style='color: #0f172a; display: block; font-size: 13px; margin-bottom: 4px;'>Internal Hackathon Organizing Committee</strong>" +
+        "Department of Computer Science &amp; Engineering<br>" +
         "United Institute of Technology, Prayagraj &middot; Smart India Hackathon 2026<br>" +
-        "Official Verification: <a href='https://sih-uit.vercel.app/verify.html' style='color: #2563eb; font-weight: 700; text-decoration: none;'>sih-uit.vercel.app/verify.html</a>" +
+        "Official Portal: <a href='https://sih-uit.vercel.app' style='color: #2563eb; font-weight: 700; text-decoration: none;'>sih-uit.vercel.app</a>" +
       "</div>" +
     "</div>";
 
   GmailApp.sendEmail(recipientEmail, subject, "Please view this email in an HTML-compatible client.", {
     htmlBody: htmlBody,
-    name: 'SIH UIT Conclave 2026',
+    name: 'Smart India Hackathon 2026 | UIT Prayagraj',
     replyTo: 'sihuit2026@gmail.com',
     attachments: [pdfAttachment]
   });
