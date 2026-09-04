@@ -56,16 +56,7 @@ function GENERATE_ANALYTICS_DASHBOARD() {
 /**
  * Creates custom "🚀 SIH 2026 Admin" menu in Google Sheets menu bar automatically
  */
-function onOpen() {
-  try {
-    var ui = SpreadsheetApp.getUi();
-    ui.createMenu('🚀 SIH 2026 Admin')
-      .addItem('⚡ Update PS-37 & Refresh Summary Sheet', 'SETUP_ADD_PS37_OPEN_INNOVATION')
-      .addItem('📊 Refresh PS Selection Summary', 'REFRESH_PS_SUMMARY_SHEET')
-      .addItem('📈 Generate Live Analytics Dashboard', 'GENERATE_ANALYTICS_DASHBOARD')
-      .addToUi();
-  } catch (e) {}
-}
+
 
 const SHEET_NAME = 'Registrations';
 const REG_ID_PREFIX = 'SIH2026-';
