@@ -2686,7 +2686,7 @@ function updateAnalyticsDashboardSheet_() {
 
 // 🔴 PASTE YOUR GOOGLE SLIDES TEMPLATE ID HERE:
 // (Open your Google Slide Template in browser, copy ID from URL: https://docs.google.com/presentation/d/TEMPLATE_ID/edit)
-var CERTIFICATE_TEMPLATE_SLIDE_ID = 'YOUR_GOOGLE_SLIDE_TEMPLATE_ID_HERE';
+var CERTIFICATE_TEMPLATE_SLIDE_ID = '1qheLVRQxgpfVqAoC4v2Ce0JblKYGAP2_mYHZJi2PsCA';
 
 // Folder name in Google Drive to store generated PDF certificates temporarily
 var CERTIFICATES_FOLDER_NAME = 'SIH 2026 Certificates Archive';
@@ -2863,15 +2863,32 @@ function generateCertificatePdf_(slideTemplateId, certId, participantName, teamN
   var copyFile = templateFile.makeCopy('Temp_Cert_' + certId, targetFolder);
   var copySlide = SlidesApp.openById(copyFile.getId());
 
-  // 2. Replace placeholders in all slides
+  // 2. Replace placeholders in all slides (handles all tag formats & spaces)
   var slides = copySlide.getSlides();
   for (var s = 0; s < slides.length; s++) {
+    // Certificate ID tags
     slides[s].replaceAllText('{{CertificateID}}', String(certId || ''));
+    slides[s].replaceAllText('{{ CertificateID }}', String(certId || ''));
     slides[s].replaceAllText('{{CertID}}', String(certId || ''));
+    slides[s].replaceAllText('{{ CertID }}', String(certId || ''));
+    slides[s].replaceAllText('{{Certificate ID}}', String(certId || ''));
+    slides[s].replaceAllText('{{ Certificate ID }}', String(certId || ''));
+    
+    // Participant Name tags
     slides[s].replaceAllText('{{ParticipantName}}', String(participantName || ''));
+    slides[s].replaceAllText('{{ ParticipantName }}', String(participantName || ''));
     slides[s].replaceAllText('{{Name}}', String(participantName || ''));
+    slides[s].replaceAllText('{{ Name }}', String(participantName || ''));
+    slides[s].replaceAllText('{{Participant Name}}', String(participantName || ''));
+    slides[s].replaceAllText('{{ Participant Name }}', String(participantName || ''));
+    
+    // Team Name tags
     slides[s].replaceAllText('{{TeamName}}', String(teamName || ''));
+    slides[s].replaceAllText('{{ TeamName }}', String(teamName || ''));
     slides[s].replaceAllText('{{Team}}', String(teamName || ''));
+    slides[s].replaceAllText('{{ Team }}', String(teamName || ''));
+    slides[s].replaceAllText('{{Team Name}}', String(teamName || ''));
+    slides[s].replaceAllText('{{ Team Name }}', String(teamName || ''));
   }
 
   copySlide.saveAndClose();
