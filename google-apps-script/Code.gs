@@ -2715,13 +2715,7 @@ function SEND_TEST_CERTIFICATE() {
   try {
     var pdfFile = generateCertificatePdf_(CERTIFICATE_TEMPLATE_SLIDE_ID, sampleCertId, sampleName, sampleTeam);
     
-    sendCertificateEmail_(
-      adminEmail,
-      sampleName,
-      sampleTeam,
-      sampleCertId,
-      pdfFile
-    );
+    sendCertificateEmail_(adminEmail, sampleName, sampleTeam, sampleCertId, 'Team Leader', pdfFile);
 
     ui.alert('✅ Test Certificate Sent!', 
       'A test certificate for "' + sampleName + '" (' + sampleCertId + ') has been sent to ' + adminEmail + '.
@@ -2820,7 +2814,7 @@ function SEND_ALL_PENDING_CERTIFICATES() {
       var pdfBlob = generateCertificatePdf_(CERTIFICATE_TEMPLATE_SLIDE_ID, certId, name, teamName, tempFolder);
 
       // 2. Send Official Email
-      sendCertificateEmail_(email, name, teamName, certId, pdfBlob);
+      sendCertificateEmail_(email, name, teamName, certId, role, pdfBlob);
 
       // 3. Mark as Sent in Sheet
       var timestamp = Utilities.formatDate(new Date(), Session.getScriptTimeZone(), "dd-MMM hh:mm a");
@@ -2896,70 +2890,78 @@ function generateCertificatePdf_(slideTemplateId, certId, participantName, teamN
 /**
  * Sends a high-impact, professional HTML email with the certificate attached
  */
-function sendCertificateEmail_(recipientEmail, participantName, teamName, certId, pdfAttachment) {
-  var subject = '🎓 Official Certificate of Participation — SIH 2026 Internal Hackathon (UIT Prayagraj)';
+function sendCertificateEmail_(recipientEmail, participantName, teamName, certId, role, pdfAttachment) {
+  var cleanName = String(participantName || 'Participant').trim();
+  var cleanTeam = String(teamName || 'Innovation Team').trim();
+  var cleanCertId = String(certId || 'SIH-UIT-2026-XXX').trim();
+  var cleanRole = String(role || 'Team Member').trim();
+
+  var subject = '🎓 Official Certificate of Participation — ' + cleanName + ' (Team ' + cleanTeam + ') | SIH 2026 UIT';
+
+  var verifyUrl = 'https://sih-uit.vercel.app/verify.html?cert=' + encodeURIComponent(cleanCertId);
 
   var htmlBody = 
-    '<div style="font-family:'Segoe UI',Helvetica,Arial,sans-serif;max-width:640px;margin:0 auto;background:#ffffff;border:1px solid #e2e8f0;border-radius:16px;overflow:hidden;box-shadow:0 4px 20px rgba(0,0,0,0.06);">' +
+    '<div style="font-family:'Segoe UI',Helvetica,Arial,sans-serif;max-width:640px;margin:0 auto;background:#ffffff;border:1px solid #e2e8f0;border-radius:18px;overflow:hidden;box-shadow:0 4px 24px rgba(0,0,0,0.08);">' +
       
       // Header Banner
-      '<div style="background:linear-gradient(135deg,#0f172a 0%,#1e3a8a 50%,#312e81 100%);padding:32px 24px;text-align:center;color:#ffffff;">' +
-        '<div style="display:inline-block;background:rgba(255,255,255,0.15);padding:6px 16px;border-radius:999px;font-size:11px;font-weight:800;letter-spacing:1.5px;text-transform:uppercase;margin-bottom:12px;border:1px solid rgba(255,255,255,0.3);">' +
+      '<div style="background:linear-gradient(135deg,#0f172a 0%,#1e3a8a 50%,#312e81 100%);padding:36px 24px;text-align:center;color:#ffffff;">' +
+        '<div style="display:inline-block;background:rgba(255,255,255,0.15);padding:6px 18px;border-radius:999px;font-size:11px;font-weight:800;letter-spacing:1.5px;text-transform:uppercase;margin-bottom:14px;border:1px solid rgba(255,255,255,0.3);">' +
           '🏛️ United Institute of Technology, Prayagraj' +
         '</div>' +
         '<h1 style="margin:0;font-size:24px;font-weight:900;letter-spacing:-0.5px;color:#ffffff;line-height:1.3;">' +
           'Smart India Hackathon 2026' +
         '</h1>' +
-        '<p style="margin:6px 0 0;font-size:13px;color:#cbd5e1;font-weight:500;">' +
+        '<p style="margin:6px 0 0;font-size:13px;color:#93c5fd;font-weight:600;">' +
           'College-Level Internal Hackathon Conclave · 22 August 2026' +
         '</p>' +
       '</div>' +
 
       // Body Content
-      '<div style="padding:32px 28px;color:#334155;line-height:1.6;font-size:14px;">' +
+      '<div style="padding:32px 28px;color:#334155;line-height:1.65;font-size:14px;">' +
         
-        '<p style="font-size:16px;margin:0 0 16px;color:#0f172a;">' +
-          'Dear <strong>' + participantName + '</strong>,' +
+        '<p style="font-size:17px;margin:0 0 16px;color:#0f172a;">' +
+          'Dear <strong>' + cleanName + '</strong>,' +
         '</p>' +
 
         '<p style="margin:0 0 16px;">' +
-          'Congratulations on your active participation and technical presentation with team <strong>"' + teamName + '"</strong> in the <strong>Smart India Hackathon 2026 College-Level Internal Hackathon</strong> held at United Institute of Technology, Prayagraj on 22 August 2026.' +
+          'Congratulations on your active participation and technical presentation as <strong>' + cleanRole + '</strong> of team <strong>"' + cleanTeam + '"</strong> during the <strong>Smart India Hackathon 2026 Internal Hackathon</strong> held at United Institute of Technology, Prayagraj on <strong>22 August 2026</strong>.' +
         '</p>' +
 
-        // Certificate Details Card
-        '<div style="background:#f8fafc;border:2px dashed #cbd5e1;border-radius:12px;padding:18px 20px;margin:24px 0;text-align:center;">' +
-          '<div style="font-size:11px;font-weight:700;color:#64748b;text-transform:uppercase;letter-spacing:1px;margin-bottom:4px;">' +
-            'Official Certificate ID' +
+        // 100% Personalized Certificate Identification Card
+        '<div style="background:linear-gradient(135deg,#f8fafc 0%,#eff6ff 100%);border:2px dashed #93c5fd;border-radius:14px;padding:20px 22px;margin:24px 0;text-align:center;">' +
+          '<div style="font-size:11px;font-weight:800;color:#1e40af;text-transform:uppercase;letter-spacing:1.5px;margin-bottom:6px;">' +
+            'Official Issued Certificate ID' +
           '</div>' +
-          '<div style="font-size:18px;font-weight:900;color:#1e40af;font-family:monospace;letter-spacing:1px;">' +
-            certId +
+          '<div style="font-size:22px;font-weight:900;color:#1e3a8a;font-family:monospace;letter-spacing:1.5px;background:#ffffff;display:inline-block;padding:6px 18px;border-radius:8px;border:1px solid #bfdbfe;">' +
+            cleanCertId +
           '</div>' +
-          '<div style="font-size:12px;color:#475569;margin-top:6px;">' +
-            'Participant: <strong>' + participantName + '</strong> · Team: <strong>' + teamName + '</strong>' +
+          '<div style="font-size:13px;color:#334155;margin-top:10px;font-weight:600;">' +
+            'Awarded to: <strong style="color:#0f172a;">' + cleanName + '</strong> (' + cleanRole + ')<br>' +
+            'Representing Team: <strong style="color:#2563eb;">' + cleanTeam + '</strong>' +
           '</div>' +
         '</div>' +
 
         '<p style="margin:0 0 16px;">' +
-          'Your official <strong>Certificate of Participation</strong> has been generated and attached as a high-resolution PDF to this email. You can also verify your certificate anytime on the official institutional portal using your Certificate ID.' +
+          'Your official <strong>Certificate of Participation</strong> has been generated and attached as a high-resolution PDF document to this email. You can download and save it directly for your academic and professional records.' +
         '</p>' +
 
-        // Action Buttons
+        // 1-Click Verification & Results Action Buttons
         '<div style="text-align:center;margin:28px 0;">' +
-          '<a href="https://sih-uit.vercel.app/verify.html" style="display:inline-block;background:linear-gradient(135deg,#2563eb,#1d4ed8);color:#ffffff;text-decoration:none;padding:12px 28px;border-radius:10px;font-weight:800;font-size:13px;box-shadow:0 4px 12px rgba(37,99,235,0.25);margin-right:8px;">' +
-            '✓ Verify Certificate Online' +
+          '<a href="' + verifyUrl + '" target="_blank" style="display:inline-block;background:linear-gradient(135deg,#2563eb,#1d4ed8);color:#ffffff;text-decoration:none;padding:12px 28px;border-radius:12px;font-weight:800;font-size:13px;box-shadow:0 4px 14px rgba(37,99,235,0.3);margin-right:8px;">' +
+            '✓ Verify Certificate Online ↗' +
           '</a>' +
-          '<a href="https://sih-uit.vercel.app/results.html" style="display:inline-block;background:#f1f5f9;color:#334155;text-decoration:none;padding:12px 20px;border-radius:10px;font-weight:700;font-size:13px;border:1px solid #cbd5e1;">' +
-            '🏆 View Conclave Results' +
+          '<a href="https://sih-uit.vercel.app/results.html" target="_blank" style="display:inline-block;background:#f1f5f9;color:#334155;text-decoration:none;padding:12px 20px;border-radius:12px;font-weight:700;font-size:13px;border:1px solid #cbd5e1;">' +
+            '🏆 View Results (45+5)' +
           '</a>' +
         '</div>' +
 
         '<p style="margin:0 0 8px;font-size:13px;color:#64748b;">' +
-          'We commend your innovation spirit and wish you and your team the very best in your upcoming hackathons and technical endeavors!' +
+          'We applaud your innovation mindset and wish you and team <strong>"' + cleanTeam + '"</strong> immense success in your upcoming national hackathons and technical endeavors!' +
         '</p>' +
 
       '</div>' +
 
-      // Signatures Footer
+      // Institutional Signatures Footer
       '<div style="background:#f8fafc;border-top:1px solid #e2e8f0;padding:24px 28px;font-size:12px;color:#64748b;">' +
         '<div style="display:flex;justify-content:space-between;margin-bottom:16px;">' +
           '<div>' +
@@ -2973,7 +2975,7 @@ function sendCertificateEmail_(recipientEmail, participantName, teamName, certId
         '</div>' +
         '<div style="border-top:1px solid #e2e8f0;padding-top:12px;text-align:center;font-size:11px;color:#94a3b8;">' +
           'Organized & Digitally Engineered by <strong>Gautam Kumar Maurya (GKM)</strong> · Head, Developers Club, UIT<br>' +
-          'SIH 2026 Internal Hackathon · United Institute of Technology, Prayagraj' +
+          'Official Conclave Portal: <a href="https://sih-uit.vercel.app" style="color:#2563eb;text-decoration:none;font-weight:700;">sih-uit.vercel.app</a>' +
         '</div>' +
       '</div>' +
 
