@@ -346,10 +346,10 @@ function sendCertificateEmail_(recipientEmail, participantName, teamName, certId
   var verifyUrl = 'https://sih-uit.vercel.app/verify.html?cert=' + encodeURIComponent(cleanCertId);
   var downloadUrl = driveFileUrl || verifyUrl;
 
-  // Clean, professional subject line
-  var subject = 'Official Certificate of Participation — ' + cleanName + ' (Team ' + cleanTeam + ') | SIH 2026';
+  // Clean, professional subject line (pure ASCII to guarantee zero encoding glitches)
+  var subject = 'Official Certificate of Participation - ' + cleanName + ' (Team ' + cleanTeam + ') | SIH 2026';
 
-  // Construct HTML Body safely using string concatenation statements (no inline comment conflicts)
+  // Construct HTML Body safely using standard HTML entities (never broken emojis)
   var htmlBody = '';
 
   // 1. Pre-Header snippet for Gmail inbox preview
@@ -372,7 +372,7 @@ function sendCertificateEmail_(recipientEmail, participantName, teamName, certId
   // 4. Body Content
   htmlBody += '<div style="padding: 32px 28px; color: #334155; line-height: 1.7; font-size: 14px;">';
   htmlBody += '<p style="font-size: 17px; margin: 0 0 16px; color: #0f172a;">Dear <strong>' + cleanName + '</strong>,</p>';
-  htmlBody += '<p style="margin: 0 0 16px; font-size: 15px; color: #0f172a; font-weight: 600;">🎉 <strong>Heartiest Congratulations on your Participation &amp; Technical Achievement!</strong></p>';
+  htmlBody += '<p style="margin: 0 0 16px; font-size: 15px; color: #0f172a; font-weight: 700;">Heartiest Congratulations on your Participation &amp; Technical Achievement!</p>';
   htmlBody += '<p style="margin: 0 0 16px;">We take immense pleasure in awarding you the official <strong>Certificate of Participation</strong> for successfully presenting and demonstrating your technical solution in the <strong>Smart India Hackathon 2026 Internal Hackathon</strong>, organized at United Institute of Technology, Prayagraj on <strong>22 August 2026</strong>.</p>';
   htmlBody += '<p style="margin: 0 0 20px;">Your technical competence, creative problem-solving, and dedication as <strong>' + cleanRole + '</strong> representing team <strong>&ldquo;' + cleanTeam + '&rdquo;</strong> contributed significantly to the high standard of innovation showcased during the institutional evaluations.</p>';
 
@@ -387,14 +387,14 @@ function sendCertificateEmail_(recipientEmail, participantName, teamName, certId
 
   htmlBody += '<p style="margin: 0 0 16px;">You can directly access, view, download, or verify your credential using the official links below:</p>';
 
-  // 6. Dual Action Buttons
-  htmlBody += '<div style="text-align: center; margin: 26px 0;">';
-  htmlBody += '<a href="' + downloadUrl + '" target="_blank" style="display: inline-block; background: linear-gradient(135deg,#0d2344,#1e3a8a); color: #ffffff; text-decoration: none; padding: 13px 24px; border-radius: 12px; font-weight: 800; font-size: 13px; margin: 6px 4px; box-shadow: 0 4px 14px rgba(13,35,68,0.25);">📥 Download / View Certificate</a>';
-  htmlBody += '<a href="' + verifyUrl + '" target="_blank" style="display: inline-block; background: linear-gradient(135deg,#059669,#047857); color: #ffffff; text-decoration: none; padding: 13px 24px; border-radius: 12px; font-weight: 800; font-size: 13px; margin: 6px 4px; box-shadow: 0 4px 14px rgba(5,150,105,0.25);">✓ Verify Certificate Here</a>';
+  // 6. Dual Action Buttons (clean separation with margin: 8px)
+  htmlBody += '<div style="text-align: center; margin: 28px 0;">';
+  htmlBody += '<a href="' + downloadUrl + '" target="_blank" style="display: inline-block; background: linear-gradient(135deg,#0d2344,#1e3a8a); color: #ffffff; text-decoration: none; padding: 13px 26px; border-radius: 12px; font-weight: 800; font-size: 13px; margin: 6px 8px; box-shadow: 0 4px 14px rgba(13,35,68,0.25);">&darr; Download / View Certificate</a>';
+  htmlBody += '<a href="' + verifyUrl + '" target="_blank" style="display: inline-block; background: linear-gradient(135deg,#059669,#047857); color: #ffffff; text-decoration: none; padding: 13px 26px; border-radius: 12px; font-weight: 800; font-size: 13px; margin: 6px 8px; box-shadow: 0 4px 14px rgba(5,150,105,0.25);">&#10003; Verify Certificate Here</a>';
   htmlBody += '</div>';
 
-  htmlBody += '<p style="margin: 0 0 12px; font-size: 13px; color: #64748b; background: #f8fafc; padding: 12px 16px; border-radius: 10px; border-left: 4px solid #3b82f6;">📎 <strong>Attachment:</strong> A high-resolution, print-ready PDF certificate is also attached directly to this email for your permanent academic portfolio.</p>';
-  htmlBody += '<p style="margin: 18px 0 0; font-size: 13px; color: #475569;">We commend your innovative spirit and wish you and team <strong>&ldquo;' + cleanTeam + '&rdquo;</strong> immense success in all future national hackathons and technical endeavors! 🚀</p>';
+  htmlBody += '<p style="margin: 0 0 12px; font-size: 13px; color: #64748b; background: #f8fafc; padding: 12px 16px; border-radius: 10px; border-left: 4px solid #3b82f6;"><strong>Attached PDF Document:</strong> A high-resolution, print-ready PDF certificate is attached directly to this email for your permanent academic portfolio.</p>';
+  htmlBody += '<p style="margin: 18px 0 0; font-size: 13px; color: #475569;">We commend your innovative spirit and wish you and team <strong>&ldquo;' + cleanTeam + '&rdquo;</strong> immense success in all future national hackathons and technical endeavors!</p>';
   htmlBody += '</div>';
 
   // 7. Institutional Footer
