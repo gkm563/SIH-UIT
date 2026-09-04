@@ -346,88 +346,64 @@ function sendCertificateEmail_(recipientEmail, participantName, teamName, certId
   var verifyUrl = 'https://sih-uit.vercel.app/verify.html?cert=' + encodeURIComponent(cleanCertId);
   var downloadUrl = driveFileUrl || verifyUrl;
 
-  // Clean, professional subject line that fits Gmail inbox width without harsh truncation
+  // Clean, professional subject line
   var subject = 'Official Certificate of Participation — ' + cleanName + ' (Team ' + cleanTeam + ') | SIH 2026';
 
-  var htmlBody = 
-    // Invisible Pre-Header snippet for Gmail inbox preview
-    "<div style='display:none;font-size:1px;color:#ffffff;line-height:1px;max-height:0px;max-width:0px;opacity:0;overflow:hidden;mso-hide:all;'>" +
-      "Official Certificate of Participation awarded to " + cleanName + " (" + cleanRole + ") for Smart India Hackathon 2026 at United Institute of Technology, Prayagraj." +
-    "</div>" +
-    "<div style='font-family: Arial, Helvetica, sans-serif; max-width: 640px; margin: 0 auto; background: #ffffff; border: 1px solid #e2e8f0; border-radius: 18px; overflow: hidden; box-shadow: 0 4px 24px rgba(0,0,0,0.08);'>" +
-      // Header Banner
-      "<div style='background: linear-gradient(135deg,#0d2344 0%,#1e3a8a 60%,#0f172a 100%); padding: 36px 24px; text-align: center; color: #ffffff;'>" +
-        "<div style='display: inline-block; background: rgba(255,255,255,0.12); padding: 5px 16px; border-radius: 999px; font-size: 11px; font-weight: 800; letter-spacing: 1.5px; text-transform: uppercase; margin-bottom: 12px; border: 1px solid rgba(255,255,255,0.25);'>" +
-          "United Institute of Technology, Prayagraj" +
-        "</div>" +
-        "<h1 style='margin: 0; font-size: 24px; font-weight: 900; letter-spacing: -0.5px; color: #ffffff; line-height: 1.3;'>" +
-          "Smart India Hackathon 2026" +
-        "</h1>" +
-        "<p style='margin: 6px 0 0; font-size: 13px; color: #93c5fd; font-weight: 600;'>" +
-          "College-Level Internal Hackathon &middot; 22 August 2026" +
-        "</p>" +
-      "</div>" +
+  // Construct HTML Body safely using string concatenation statements (no inline comment conflicts)
+  var htmlBody = '';
 
-      // Body Content
-      "<div style='padding: 32px 28px; color: #334155; line-height: 1.7; font-size: 14px;'>" +
-        "<p style='font-size: 17px; margin: 0 0 16px; color: #0f172a;'>" +
-          "Dear <strong>" + cleanName + "</strong>," +
-        "</p>" +
-        "<p style='margin: 0 0 16px; font-size: 15px; color: #0f172a; font-weight: 600;'>" +
-          "🎉 <strong>Heartiest Congratulations on your Participation &amp; Technical Achievement!</strong>" +
-        "</p>" +
-        "<p style='margin: 0 0 16px;'>" +
-          "We take immense pleasure in awarding you the official <strong>Certificate of Participation</strong> for successfully presenting and demonstrating your technical solution in the <strong>Smart India Hackathon 2026 Internal Hackathon</strong>, organized at United Institute of Technology, Prayagraj on <strong>22 August 2026</strong>." +
-        "</p>" +
-        "<p style='margin: 0 0 20px;'>" +
-          "Your technical competence, creative problem-solving, and dedication as <strong>" + cleanRole + "</strong> representing team <strong>\"" + cleanTeam + "\"</strong> contributed significantly to the high standard of innovation showcased during the institutional evaluations." +
-        "</p>" +
+  // 1. Pre-Header snippet for Gmail inbox preview
+  htmlBody += '<div style="display:none;font-size:1px;color:#ffffff;line-height:1px;max-height:0px;max-width:0px;opacity:0;overflow:hidden;mso-hide:all;">';
+  htmlBody += 'Official Certificate of Participation awarded to ' + cleanName + ' (' + cleanRole + ') for Smart India Hackathon 2026 at United Institute of Technology, Prayagraj.';
+  htmlBody += '</div>';
 
-        // Certificate Details Card
-        "<div style='background: linear-gradient(135deg,#f8fafc 0%,#eff6ff 100%); border: 2px solid #bfdbfe; border-radius: 14px; padding: 22px 20px; margin: 24px 0; text-align: center; box-shadow: 0 2px 8px rgba(30,58,138,0.06);'>" +
-          "<div style='font-size: 11px; font-weight: 800; color: #1e40af; text-transform: uppercase; letter-spacing: 1.5px; margin-bottom: 6px;'>" +
-            "Official Credential ID" +
-          "</div>" +
-          "<div style='font-size: 22px; font-weight: 900; color: #1e3a8a; font-family: monospace; letter-spacing: 1.5px; background: #ffffff; display: inline-block; padding: 7px 20px; border-radius: 8px; border: 1px solid #93c5fd; box-shadow: 0 1px 3px rgba(0,0,0,0.05);'>" +
-            cleanCertId +
-          "</div>" +
-          "<div style='font-size: 13px; color: #334155; margin-top: 12px; font-weight: 600; line-height: 1.6;'>" +
-            "Awarded to: <strong style='color: #0f172a;'>" + cleanName + "</strong> (" + cleanRole + ")<br>" +
-            "Team: <strong style='color: #2563eb;'>" + cleanTeam + "</strong> &middot; Status: <span style='color: #059669; font-weight: 800;'>Authenticated &amp; Issued</span>" +
-          "</div>" +
-        "</div>" +
+  // 2. Main Outer Container
+  htmlBody += '<div style="font-family: Arial, Helvetica, sans-serif; max-width: 640px; margin: 0 auto; background: #ffffff; border: 1px solid #e2e8f0; border-radius: 18px; overflow: hidden; box-shadow: 0 4px 24px rgba(0,0,0,0.08);">';
 
-        "<p style='margin: 0 0 16px;'>" +
-          "You can directly access, view, download, or verify your credential using the official links below:" +
-        "</p>" +
+  // 3. Header Banner
+  htmlBody += '<div style="background: linear-gradient(135deg,#0d2344 0%,#1e3a8a 60%,#0f172a 100%); padding: 36px 24px; text-align: center; color: #ffffff;">';
+  htmlBody += '<div style="display: inline-block; background: rgba(255,255,255,0.12); padding: 5px 16px; border-radius: 999px; font-size: 11px; font-weight: 800; letter-spacing: 1.5px; text-transform: uppercase; margin-bottom: 12px; border: 1px solid rgba(255,255,255,0.25);">';
+  htmlBody += 'United Institute of Technology, Prayagraj';
+  htmlBody += '</div>';
+  htmlBody += '<h1 style="margin: 0; font-size: 24px; font-weight: 900; letter-spacing: -0.5px; color: #ffffff; line-height: 1.3;">Smart India Hackathon 2026</h1>';
+  htmlBody += '<p style="margin: 6px 0 0; font-size: 13px; color: #93c5fd; font-weight: 600;">College-Level Internal Hackathon &middot; 22 August 2026</p>';
+  htmlBody += '</div>';
 
-        // Dual Action Buttons: 1 for Google Drive Download/View, 1 for Website Verification
-        "<div style='text-align: center; margin: 26px 0;'>" +
-          "<a href='" + downloadUrl + "' target='_blank' style='display: inline-block; background: linear-gradient(135deg,#0d2344,#1e3a8a); color: #ffffff; text-decoration: none; padding: 13px 24px; border-radius: 12px; font-weight: 800; font-size: 13px; margin: 6px 4px; box-shadow: 0 4px 14px rgba(13,35,68,0.25);'>" +
-            "📥 Download / View Certificate" +
-          "</a>" +
-          "<a href='" + verifyUrl + "' target='_blank' style='display: inline-block; background: linear-gradient(135deg,#059669,#047857); color: #ffffff; text-decoration: none; padding: 13px 24px; border-radius: 12px; font-weight: 800; font-size: 13px; margin: 6px 4px; box-shadow: 0 4px 14px rgba(5,150,105,0.25);'>" +
-            "✓ Verify Certificate Here" +
-          "</a>" +
-        "</div>" +
+  // 4. Body Content
+  htmlBody += '<div style="padding: 32px 28px; color: #334155; line-height: 1.7; font-size: 14px;">';
+  htmlBody += '<p style="font-size: 17px; margin: 0 0 16px; color: #0f172a;">Dear <strong>' + cleanName + '</strong>,</p>';
+  htmlBody += '<p style="margin: 0 0 16px; font-size: 15px; color: #0f172a; font-weight: 600;">🎉 <strong>Heartiest Congratulations on your Participation &amp; Technical Achievement!</strong></p>';
+  htmlBody += '<p style="margin: 0 0 16px;">We take immense pleasure in awarding you the official <strong>Certificate of Participation</strong> for successfully presenting and demonstrating your technical solution in the <strong>Smart India Hackathon 2026 Internal Hackathon</strong>, organized at United Institute of Technology, Prayagraj on <strong>22 August 2026</strong>.</p>';
+  htmlBody += '<p style="margin: 0 0 20px;">Your technical competence, creative problem-solving, and dedication as <strong>' + cleanRole + '</strong> representing team <strong>&ldquo;' + cleanTeam + '&rdquo;</strong> contributed significantly to the high standard of innovation showcased during the institutional evaluations.</p>';
 
-        "<p style='margin: 0 0 12px; font-size: 13px; color: #64748b; background: #f8fafc; padding: 12px 16px; border-radius: 10px; border-left: 4px solid #3b82f6;'>" +
-          "📎 <strong>Attachment:</strong> A high-resolution, print-ready PDF certificate is also attached directly to this email for your permanent academic portfolio." +
-        "</p>" +
+  // 5. Certificate Details Card
+  htmlBody += '<div style="background: linear-gradient(135deg,#f8fafc 0%,#eff6ff 100%); border: 2px solid #bfdbfe; border-radius: 14px; padding: 22px 20px; margin: 24px 0; text-align: center; box-shadow: 0 2px 8px rgba(30,58,138,0.06);">';
+  htmlBody += '<div style="font-size: 11px; font-weight: 800; color: #1e40af; text-transform: uppercase; letter-spacing: 1.5px; margin-bottom: 6px;">Official Credential ID</div>';
+  htmlBody += '<div style="font-size: 22px; font-weight: 900; color: #1e3a8a; font-family: monospace; letter-spacing: 1.5px; background: #ffffff; display: inline-block; padding: 7px 20px; border-radius: 8px; border: 1px solid #93c5fd; box-shadow: 0 1px 3px rgba(0,0,0,0.05);">' + cleanCertId + '</div>';
+  htmlBody += '<div style="font-size: 13px; color: #334155; margin-top: 12px; font-weight: 600; line-height: 1.6;">';
+  htmlBody += 'Awarded to: <strong style="color: #0f172a;">' + cleanName + '</strong> (' + cleanRole + ')<br>';
+  htmlBody += 'Team: <strong style="color: #2563eb;">' + cleanTeam + '</strong> &middot; Status: <span style="color: #059669; font-weight: 800;">Authenticated &amp; Issued</span>';
+  htmlBody += '</div></div>';
 
-        "<p style='margin: 18px 0 0; font-size: 13px; color: #475569;'>" +
-          "We commend your innovative spirit and wish you and team <strong>\"" + cleanTeam + "\"</strong> immense success in all future national hackathons and technical endeavors! 🚀" +
-        "</p>" +
-      "</div>" +
+  htmlBody += '<p style="margin: 0 0 16px;">You can directly access, view, download, or verify your credential using the official links below:</p>';
 
-      // Institutional Footer
-      "<div style='background: #f8fafc; border-top: 1px solid #e2e8f0; padding: 22px 24px; text-align: center; font-size: 12px; color: #64748b; line-height: 1.5;'>" +
-        "<strong style='color: #0f172a; display: block; font-size: 13px; margin-bottom: 4px;'>Internal Hackathon Organizing Committee</strong>" +
-        "Department of Computer Science &amp; Engineering<br>" +
-        "United Institute of Technology, Prayagraj &middot; Smart India Hackathon 2026<br>" +
-        "Official Portal: <a href='https://sih-uit.vercel.app' style='color: #2563eb; font-weight: 700; text-decoration: none;'>sih-uit.vercel.app</a>" +
-      "</div>" +
-    "</div>";
+  // 6. Dual Action Buttons
+  htmlBody += '<div style="text-align: center; margin: 26px 0;">';
+  htmlBody += '<a href="' + downloadUrl + '" target="_blank" style="display: inline-block; background: linear-gradient(135deg,#0d2344,#1e3a8a); color: #ffffff; text-decoration: none; padding: 13px 24px; border-radius: 12px; font-weight: 800; font-size: 13px; margin: 6px 4px; box-shadow: 0 4px 14px rgba(13,35,68,0.25);">📥 Download / View Certificate</a>';
+  htmlBody += '<a href="' + verifyUrl + '" target="_blank" style="display: inline-block; background: linear-gradient(135deg,#059669,#047857); color: #ffffff; text-decoration: none; padding: 13px 24px; border-radius: 12px; font-weight: 800; font-size: 13px; margin: 6px 4px; box-shadow: 0 4px 14px rgba(5,150,105,0.25);">✓ Verify Certificate Here</a>';
+  htmlBody += '</div>';
+
+  htmlBody += '<p style="margin: 0 0 12px; font-size: 13px; color: #64748b; background: #f8fafc; padding: 12px 16px; border-radius: 10px; border-left: 4px solid #3b82f6;">📎 <strong>Attachment:</strong> A high-resolution, print-ready PDF certificate is also attached directly to this email for your permanent academic portfolio.</p>';
+  htmlBody += '<p style="margin: 18px 0 0; font-size: 13px; color: #475569;">We commend your innovative spirit and wish you and team <strong>&ldquo;' + cleanTeam + '&rdquo;</strong> immense success in all future national hackathons and technical endeavors! 🚀</p>';
+  htmlBody += '</div>';
+
+  // 7. Institutional Footer
+  htmlBody += '<div style="background: #f8fafc; border-top: 1px solid #e2e8f0; padding: 22px 24px; text-align: center; font-size: 12px; color: #64748b; line-height: 1.5;">';
+  htmlBody += '<strong style="color: #0f172a; display: block; font-size: 13px; margin-bottom: 4px;">Internal Hackathon Organizing Committee</strong>';
+  htmlBody += 'Department of Computer Science &amp; Engineering<br>';
+  htmlBody += 'United Institute of Technology, Prayagraj &middot; Smart India Hackathon 2026<br>';
+  htmlBody += 'Official Portal: <a href="https://sih-uit.vercel.app" style="color: #2563eb; font-weight: 700; text-decoration: none;">sih-uit.vercel.app</a>';
+  htmlBody += '</div></div>';
 
   GmailApp.sendEmail(recipientEmail, subject, "Please view this email in an HTML-compatible client.", {
     htmlBody: htmlBody,
@@ -437,9 +413,6 @@ function sendCertificateEmail_(recipientEmail, participantName, teamName, certId
   });
 }
 
-/**
- * Refreshes top statistics box in Certificates sheet (Cells A2, B2, C2, D2)
- */
 function REFRESH_CERTIFICATE_STATS() {
   var ss = SpreadsheetApp.getActiveSpreadsheet() || SpreadsheetApp.openById(SPREADSHEET_ID);
   var sheet = ss.getSheetByName('Certificates');
