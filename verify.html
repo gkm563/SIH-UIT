@@ -205,6 +205,9 @@
             <input
               id="cert-input"
               type="text"
+              maxlength="80"
+              autocomplete="off"
+              spellcheck="false"
               placeholder="Certificate ID (e.g. SIH-UIT-2026-001) or Student Name..."
               class="w-full pl-10 pr-4 py-3 bg-white border-2 border-slate-200 rounded-2xl text-xs sm:text-sm font-semibold text-slate-900 focus:outline-none focus:border-emerald-500 focus:ring-4 focus:ring-emerald-500/10 transition-all placeholder:text-slate-400 shadow-sm"
               required
@@ -521,27 +524,56 @@
       resultContainer.scrollIntoView({ behavior: 'smooth', block: 'start' });
     }
 
+    // Strict Security Sanitizer (Zero SQLi, XSS, and Script Injections)
+    function sanitizeInput(str) {
+      if (!str) return '';
+      // 1. Enforce strict max length of 80 characters (prevents buffer/ReDoS attacks)
+      let cleaned = String(str).trim().slice(0, 80);
+
+      // 2. Strip HTML tags, script markers, null bytes, backticks, control chars
+      cleaned = cleaned.replace(/<[^>]*>?/gm, '');
+      cleaned = cleaned.replace(/[\0\b\f\n\r\t\v`]/g, '');
+
+      // 3. Remove common SQL injection operators and tokens:
+      // '--', '/*', '*/', ';', '\', quotes
+      cleaned = cleaned.replace(/(--|\/\*|\*\/|;|\\)/g, '');
+      cleaned = cleaned.replace(/['"]/g, '');
+
+      // 4. Strip dangerous SQL keywords if used as standalone malicious clauses (e.g. OR 1=1, UNION SELECT, DROP TABLE)
+      const sqliPattern = /\b(union\s+all|union\s+select|select\s+.*\s+from|insert\s+into|delete\s+from|drop\s+table|drop\s+database|truncate\s+table|exec\s*\(|execute\s*\(|cast\s*\(|declare\s+@|xp_cmdshell|information_schema)\b/gi;
+      cleaned = cleaned.replace(sqliPattern, '');
+
+      return cleaned.trim();
+    }
+
     // Core Verification Resolver
     function performVerification(query, directOverride) {
       if (directOverride && directOverride.name) {
         displayCertificate({
-          certId: directOverride.certId || 'SIH-UIT-2026-001',
-          name: directOverride.name,
-          role: directOverride.role || 'Team Member',
-          teamName: directOverride.teamName || 'Innovation Team',
-          registrationId: directOverride.registrationId || 'SIH2026-UIT'
+          certId: sanitizeInput(directOverride.certId) || 'SIH-UIT-2026-001',
+          name: sanitizeInput(directOverride.name),
+          role: sanitizeInput(directOverride.role) || 'Participant',
+          teamName: sanitizeInput(directOverride.teamName) || 'Innovation Team',
+          registrationId: sanitizeInput(directOverride.registrationId) || 'SIH2026-UIT'
         });
         return;
       }
 
       if (!query) return;
-      const raw = String(query).trim();
+      const raw = sanitizeInput(query);
+      if (!raw) {
+        resultContainer.classList.add('hidden');
+        multipleMatches.classList.add('hidden');
+        errorContainer.classList.remove('hidden');
+        errorContainer.scrollIntoView({ behavior: 'smooth', block: 'center' });
+        return;
+      }
       const q = raw.toLowerCase();
 
       // Normalize cert query: "SIH-UIT-2026-001" or "001" or "1"
       let parsedNum = null;
-      const numMatch = q.match(/^(?:sih[s_-]?uit[s_-]?2026[s_-]?)?(d+)$/);
-      if (numMatch) {
+      const numMatch = q.match(/^(?:sih[\s_-]?uit[\s_-]?2026[\s_-]?)?(\d+)$/);
+      if (numMatch && numMatch[1]) {
         parsedNum = parseInt(numMatch[1], 10);
       }
 
@@ -609,13 +641,27 @@
         const btn = document.createElement('button');
         btn.type = 'button';
         btn.className = 'text-left p-2.5 rounded-xl bg-white border border-slate-200 hover:border-blue-500 hover:bg-blue-50/50 transition-all shadow-2xs group flex flex-col justify-between';
-        btn.innerHTML = `
-          <div class="font-bold text-slate-900 group-hover:text-blue-700 truncate">${rec.name}</div>
-          <div class="text-[11px] text-slate-500 flex items-center justify-between mt-1">
-            <span class="truncate">${rec.teamName}</span>
-            <span class="font-mono font-semibold text-emerald-700 ml-1">${rec.certId}</span>
-          </div>
-        `;
+
+        const nameDiv = document.createElement('div');
+        nameDiv.className = 'font-bold text-slate-900 group-hover:text-blue-700 truncate';
+        nameDiv.textContent = rec.name;
+
+        const metaDiv = document.createElement('div');
+        metaDiv.className = 'text-[11px] text-slate-500 flex items-center justify-between mt-1';
+
+        const teamSpan = document.createElement('span');
+        teamSpan.className = 'truncate';
+        teamSpan.textContent = rec.teamName;
+
+        const certSpan = document.createElement('span');
+        certSpan.className = 'font-mono font-semibold text-emerald-700 ml-1 flex-shrink-0';
+        certSpan.textContent = rec.certId;
+
+        metaDiv.appendChild(teamSpan);
+        metaDiv.appendChild(certSpan);
+        btn.appendChild(nameDiv);
+        btn.appendChild(metaDiv);
+
         btn.onclick = () => {
           input.value = rec.certId;
           displayCertificate(rec);
@@ -629,8 +675,9 @@
 
     // Expose quick verify helper to global window
     window.quickVerify = function(val) {
-      if (input) input.value = val;
-      performVerification(val);
+      const sanitized = sanitizeInput(val);
+      if (input) input.value = sanitized;
+      performVerification(sanitized);
     };
 
     // Form submit listener
@@ -641,14 +688,18 @@
       });
     }
 
-
-    // Auto-detect URL Parameters on page load
+    // Auto-detect URL Parameters on page load with strict sanitization
     window.addEventListener('DOMContentLoaded', () => {
       const params = new URLSearchParams(window.location.search);
-      const certParam = params.get('cert') || params.get('certId') || params.get('id');
-      const nameParam = params.get('name');
-      const teamParam = params.get('team');
-      const roleParam = params.get('role');
+      const rawCert = params.get('cert') || params.get('certId') || params.get('id');
+      const rawName = params.get('name');
+      const rawTeam = params.get('team');
+      const rawRole = params.get('role');
+
+      const certParam = sanitizeInput(rawCert);
+      const nameParam = sanitizeInput(rawName);
+      const teamParam = sanitizeInput(rawTeam);
+      const roleParam = sanitizeInput(rawRole);
 
       if (certParam) {
         input.value = certParam;
